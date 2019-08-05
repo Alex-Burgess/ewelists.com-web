@@ -18,8 +18,6 @@
 import React from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import List from "@material-ui/core/List";
@@ -28,21 +26,38 @@ import ListItem from "@material-ui/core/ListItem";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
+import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
 
-import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
+import errorPageStyle from "assets/jss/material-kit-pro-react/views/errorPageStyles.jsx";
 
-// Sections for this page
-import SectionProduct from "./Sections/SectionProduct.jsx";
-import SectionLists from "./Sections/SectionLists.jsx";
-import SectionTestimonials from "./Sections/SectionTestimonials.jsx";
+import image from "assets/img/clint-mckoy.jpg";
 
-class LandingPage extends React.Component {
+class ErrorPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: [1]
+    };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+  handleToggle(value) {
+    const { checked } = this.state;
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    this.setState({
+      checked: newChecked
+    });
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -52,46 +67,33 @@ class LandingPage extends React.Component {
     return (
       <div>
         <Header
+          absolute
           color="transparent"
           brand="ewelist"
-          links={<HeaderLinks dropdownHoverColor="rose" />}
-          fixed
-          changeColorOnScroll={{
-            height: 300,
-            color: "info"
-          }}
+          links={<HeaderLinks dropdownHoverColor="dark" />}
           {...rest}
         />
-        <Parallax image={require("assets/img/bg8.jpg")} filter="dark">
-          <div className={classes.container}>
+        <div
+          className={classes.pageHeader}
+          style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center"
+          }}
+        >
+          {/* <div className={classes.container}> */}
+          <div className={classes.contentCenter}>
             <GridContainer>
-              <GridItem xs={12} sm={6} md={6}>
-                <h1 className={classes.title}>Create your Baby Gift List</h1>
-                <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that{"'"}s why we added this text here. Add here
-                  all the information that can make you or your product create
-                  the first impression.
+              <GridItem md={12}>
+                <h1 className={classes.title}>404</h1>
+                <h2 className={classes.subTitle}>Page not found :(</h2>
+                <h4 className={classes.description}>
+                  Ooooups! Looks like you got lost.
                 </h4>
-                <br />
-                <Button
-                  color="danger"
-                  size="lg"
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
-                  target="_blank"
-                >
-                  Create List - It's Free!
-                </Button>
               </GridItem>
             </GridContainer>
           </div>
-        </Parallax>
-        <div className={classNames(classes.main, classes.mainRaised)}>
-          <div className={classes.container}>
-            <SectionProduct />
-            <SectionLists />
-            <SectionTestimonials />
-          </div>
+          {/* </div> */}
         </div>
         <Footer
           content={
@@ -100,7 +102,7 @@ class LandingPage extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/?ref=mkpr-landing"
+                      href="https://www.creative-tim.com/?ref=mkpr-error"
                       target="_blank"
                       className={classes.block}
                     >
@@ -109,7 +111,7 @@ class LandingPage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=mkpr-landing"
+                      href="https://www.creative-tim.com/presentation/?ref=mkpr-error"
                       target="_blank"
                       className={classes.block}
                     >
@@ -126,7 +128,7 @@ class LandingPage extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/license?ref=mkpr-landing"
+                      href="https://www.creative-tim.com/license/?ref=mkpr-error"
                       target="_blank"
                       className={classes.block}
                     >
@@ -139,7 +141,7 @@ class LandingPage extends React.Component {
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
-                  href="https://www.creative-tim.com/?ref=mkpr-landing"
+                  href="https://www.creative-tim.com/?ref=mkpr-error"
                   target="_blank"
                 >
                   Creative Tim
@@ -154,8 +156,8 @@ class LandingPage extends React.Component {
   }
 }
 
-LandingPage.propTypes = {
+ErrorPage.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(landingPageStyle)(LandingPage);
+export default withStyles(errorPageStyle)(ErrorPage);
