@@ -21,9 +21,9 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
+import List from "@material-ui/icons/List";
+import Share from "@material-ui/icons/Share";
+import Perm from "@material-ui/icons/PermIdentity";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -35,49 +35,47 @@ class SectionProduct extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.section}>
-        <GridContainer justify="center">
-          <GridItem xs={12} sm={8} md={8}>
-            <h2 className={classes.title}>Let{"'"}s talk product</h2>
-            <h5 className={classes.description}>
-              This is the paragraph where you can write more details about your
-              product. Keep you user engaged by providing meaningful
-              information. Remember that by this time, the user is curious,
-              otherwise he wouldn{"'"}t scroll to get here. Add a button if you
-              want the user to see more.
-            </h5>
-          </GridItem>
-        </GridContainer>
-        <div>
-          <GridContainer>
-            <GridItem xs={12} sm={4} md={4}>
-              <InfoArea
-                title="Free Chat"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-                icon={Chat}
-                iconColor="info"
-                vertical
-              />
-            </GridItem>
-            <GridItem xs={12} sm={4} md={4}>
-              <InfoArea
-                title="Verified Users"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-                icon={VerifiedUser}
-                iconColor="success"
-                vertical
-              />
-            </GridItem>
-            <GridItem xs={12} sm={4} md={4}>
-              <InfoArea
-                title="Fingerprint"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-                icon={Fingerprint}
-                iconColor="danger"
-                vertical
-              />
+      <div className={classes.section + " " + classes.sectionGray}>
+        <div className={classes.container}>
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={8} md={8}>
+              <h2 className={classes.title}>Get organised with Ewelists</h2>
+              <h5 className={classes.description}>
+                Create your first Ewelist with the things you know you want, or just the essentials.
+              </h5>
             </GridItem>
           </GridContainer>
+          <div>
+            <GridContainer>
+              <GridItem xs={12} sm={4} md={4}>
+                <InfoArea
+                  title="Sign Up"
+                  description="Sign up using one of your social accounts, or alternatively just an email, to create your first list."
+                  icon={Perm}
+                  iconColor="primary"
+                  vertical
+                />
+              </GridItem>
+              <GridItem xs={12} sm={4} md={4}>
+                <InfoArea
+                  title="Add Items"
+                  description="Add items by copying the link to the product, or alternatively use one of our ready made lists if you're looking for inspiration."
+                  icon={List}
+                  iconColor="info"
+                  vertical
+                />
+              </GridItem>
+              <GridItem xs={12} sm={4} md={4}>
+                <InfoArea
+                  title="Share"
+                  description="Share your first ewelist with friends and family."
+                  icon={Share}
+                  iconColor="success"
+                  vertical
+                />
+              </GridItem>
+            </GridContainer>
+          </div>
         </div>
       </div>
     );

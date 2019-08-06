@@ -14,12 +14,28 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import { title, grayColor } from "assets/jss/material-kit-pro-react.jsx";
+import {
+  container,
+  title,
+  grayColor,
+  whiteColor
+} from "assets/jss/material-kit-pro-react.jsx";
 
 const productStyle = {
+  container: {
+    color: whiteColor,
+    ...container,
+    zIndex: "2"
+  },
   section: {
-    padding: "70px 0",
+    paddingTop: "20px",
+    paddingRight: "0px",
+    paddingBottom: "70px",
+    paddingLeft: "0px",
     textAlign: "center"
+  },
+  sectionGray: {
+    background: grayColor[14]
   },
   title: {
     ...title,
@@ -29,7 +45,8 @@ const productStyle = {
     textDecoration: "none"
   },
   description: {
-    color: grayColor[0]
+    color: grayColor[0],
+    fontSize: "16px"
   }
 };
 

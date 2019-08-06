@@ -61,19 +61,13 @@ class LandingPage extends React.Component {
           brand="ewelists"
           links={<HeaderLinks dropdownHoverColor="rose" />}
           fixed
-          changeColorOnScroll={{
-            height: 300,
-            color: "info"
-          }}
           {...rest}
         />
         <div className={classes.main}>
-          <div className={classes.container}>
-            <SectionCreate />
-            <SectionProduct />
-            <SectionLists />
-            <SectionTestimonials />
-          </div>
+          <SectionCreate />
+          <SectionProduct />
+          <SectionLists />
+          <SectionTestimonials />
         </div>
         <Footer
           content={

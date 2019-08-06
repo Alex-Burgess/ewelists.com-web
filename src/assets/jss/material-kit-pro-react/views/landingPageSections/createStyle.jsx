@@ -15,15 +15,26 @@
 
 */
 import {
+  container,
   title,
-  description,
+  whiteColor,
   blackColor,
+  grayColor,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const createStyle = {
-  description,
+  container: {
+    color: whiteColor,
+    ...container,
+    zIndex: "2"
+  },
+  description: {
+    color: grayColor[0],
+    fontSize: "20px"
+  },
   section: {
-    padding: "150px 0",
+    paddingTop: "150px",
+    paddingBottom: "70px",
     textAlign: "left"
   },
   title: {
@@ -35,7 +46,7 @@ const createStyle = {
     color: blackColor,
     textDecoration: "none"
   },
-  phoneContainer: {
+  sheepContainer: {
     "& img": {
       width: "100%"
     }
