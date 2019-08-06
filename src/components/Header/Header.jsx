@@ -25,7 +25,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
@@ -33,6 +32,8 @@ import Menu from "@material-ui/icons/Menu";
 import Close from "@material-ui/icons/Close";
 // core components
 import headerStyle from "assets/jss/material-kit-pro-react/components/headerStyle.jsx";
+
+import "./Header.css";
 
 class Header extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class Header extends React.Component {
     }
   }
   render() {
-    const { classes, color, links, brand, fixed, absolute } = this.props;
+    const { classes, color, links, fixed, absolute } = this.props;
     const appBarClasses = classNames({
       [classes.appBar]: true,
       [classes[color]]: color,
@@ -86,9 +87,7 @@ class Header extends React.Component {
     return (
       <AppBar className={appBarClasses}>
         <Toolbar className={classes.container}>
-          <Button className={classes.title}>
-            <Link to="/">{brand}</Link>
-          </Button>
+          <Link to="/">{<img className="logo" src={require("assets/img/logo-white.png")} alt="logo"/>}</Link>
           <Hidden smDown implementation="css" className={classes.hidden}>
             <div className={classes.collapse}>{links}</div>
           </Hidden>

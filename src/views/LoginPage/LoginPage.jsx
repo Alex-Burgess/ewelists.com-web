@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand="Material Kit PRO React"
+          brand="ewelist"
           links={<HeaderLinks dropdownHoverColor="info" />}
         />
         <div

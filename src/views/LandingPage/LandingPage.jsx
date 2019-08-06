@@ -53,7 +53,7 @@ class LandingPage extends React.Component {
       <div>
         <Header
           color="transparent"
-          brand="ewelist"
+          brand="ewelists"
           links={<HeaderLinks dropdownHoverColor="rose" />}
           fixed
           changeColorOnScroll={{
@@ -77,7 +77,7 @@ class LandingPage extends React.Component {
                 <Button
                   color="danger"
                   size="lg"
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
+                  href="/create"
                   target="_blank"
                 >
                   Create List - It's Free!

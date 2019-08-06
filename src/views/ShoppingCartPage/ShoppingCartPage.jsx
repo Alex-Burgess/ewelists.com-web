@@ -59,7 +59,7 @@ class ShoppingCartPage extends React.Component {
     return (
       <div>
         <Header
-          brand="Material Kit PRO React"
+          brand="ewelist"
           links={<HeaderLinks dropdownHoverColor="info" />}
           fixed
           color="transparent"
@@ -85,7 +85,7 @@ class ShoppingCartPage extends React.Component {
                   classes.textCenter
                 )}
               >
-                <h2 className={classes.title}>Shopping Page</h2>
+                <h2 className={classes.title}>Create List</h2>
               </GridItem>
             </GridContainer>
           </div>
@@ -94,7 +94,7 @@ class ShoppingCartPage extends React.Component {
           <div className={classes.container}>
             <Card plain>
               <CardBody plain>
-                <h3 className={classes.cardTitle}>Shopping Cart</h3>
+                <h3 className={classes.cardTitle}>Nursery List</h3>
                 <Table
                   tableHead={[
                     "",

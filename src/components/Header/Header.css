@@ -6,3 +6,8 @@
 [class^="HeaderLinks-navLink-"]:hover {
   color: #999;
 } */
+
+.logo {
+  height: 40px;
+  vertical-align: middle;
+}
