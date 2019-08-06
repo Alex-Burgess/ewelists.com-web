@@ -26,6 +26,9 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
+import Extension from "@material-ui/icons/Extension";
+import ChildFriendly from "@material-ui/icons/ChildFriendly";
+import WatchLater from "@material-ui/icons/WatchLater";
 // core components
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
@@ -34,13 +37,17 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
+import InfoArea from "components/InfoArea/InfoArea.jsx";
 
 import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
 
 // Sections for this page
+import SectionCreate from "./Sections/SectionCreate.jsx";
 import SectionProduct from "./Sections/SectionProduct.jsx";
 import SectionLists from "./Sections/SectionLists.jsx";
 import SectionTestimonials from "./Sections/SectionTestimonials.jsx";
+
+import iphone from "assets/img/iphone.png";
 
 class LandingPage extends React.Component {
   componentDidMount() {
@@ -52,7 +59,7 @@ class LandingPage extends React.Component {
     return (
       <div>
         <Header
-          color="transparent"
+          color="info"
           brand="ewelists"
           links={<HeaderLinks dropdownHoverColor="rose" />}
           fixed
@@ -62,32 +69,9 @@ class LandingPage extends React.Component {
           }}
           {...rest}
         />
-        <Parallax image={require("assets/img/bg8.jpg")} filter="dark">
+        <div className={classes.main}>
           <div className={classes.container}>
-            <GridContainer>
-              <GridItem xs={12} sm={6} md={6}>
-                <h1 className={classes.title}>Create your Baby Gift List</h1>
-                <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that{"'"}s why we added this text here. Add here
-                  all the information that can make you or your product create
-                  the first impression.
-                </h4>
-                <br />
-                <Button
-                  color="danger"
-                  size="lg"
-                  href="/create"
-                  target="_blank"
-                >
-                  Create List - It's Free!
-                </Button>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Parallax>
-        <div className={classNames(classes.main, classes.mainRaised)}>
-          <div className={classes.container}>
+            <SectionCreate />
             <SectionProduct />
             <SectionLists />
             <SectionTestimonials />
