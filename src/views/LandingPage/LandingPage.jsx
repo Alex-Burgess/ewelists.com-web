@@ -42,8 +42,7 @@ import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPag
 // Sections for this page
 import SectionCreate from "./Sections/SectionCreate.jsx";
 import SectionProduct from "./Sections/SectionProduct.jsx";
-import SectionLists from "./Sections/SectionLists.jsx";
-import SectionTestimonials from "./Sections/SectionTestimonials.jsx";
+import SectionIdeas from "./Sections/SectionIdeas.jsx";
 
 import iphone from "assets/img/iphone.png";
 
@@ -66,8 +65,7 @@ class LandingPage extends React.Component {
         <div className={classes.main}>
           <SectionCreate />
           <SectionProduct />
-          <SectionLists />
-          <SectionTestimonials />
+          <SectionIdeas />
         </div>
         <Footer
           content={

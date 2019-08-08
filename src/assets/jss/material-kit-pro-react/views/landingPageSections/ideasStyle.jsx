@@ -25,7 +25,7 @@ import {
   grayColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const blogsSection = {
+const ideasSection = {
   container,
   title,
   coloredShadow,
@@ -33,10 +33,15 @@ const blogsSection = {
   mlAuto,
   mrAuto,
   description,
-  blog: {
+  section: {
     padding: "50px 0"
   },
+  title: {
+    ...title,
+    fontSize: "2.25rem"
+  },
   cardCategory: {
+    fontSize: "0.75rem",
     marginBottom: "0",
     marginTop: "10px",
     "& svg,& .fab,& .fas,& .far,& .fal,& .material-icons": {
@@ -64,4 +69,4 @@ const blogsSection = {
   }
 };
 
-export default blogsSection;
+export default ideasSection;
