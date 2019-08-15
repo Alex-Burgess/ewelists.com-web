@@ -12,10 +12,17 @@ phases:
   build:
     commands:
       - REACT_APP_STAGE=${ENVIRONMENT} npm run build
+      - |
+        if expr "${ENVIRONMENT}" : "staging" >/dev/null; then
+          mv build/staging.robots.txt build/robots.txt;
+        else
+          rm build/staging.robots.txt;
+        fi
   post_build:
     commands:
       - echo Uploaded to ${WEB_BUCKET}
-      - aws s3 sync build/ s3://${WEB_BUCKET} --delete
+      - aws s3 sync build/ s3://${WEB_BUCKET} --delete --exclude 'build/status.html'
+      - aws s3 cp build/status.html s3://${WEB_BUCKET}/status.html --cache-control no-cache
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
 artifacts:
   files:
