@@ -102,41 +102,23 @@ function HeaderLinks({ ...props }) {
 
   const { classes, dropdownHoverColor } = props;
   return (
-    props.isAuthenticated
-      ? <List className={classes.list + " " + classes.mlAuto}>
-          <ListItem className={classes.listItem}>
-            <Link to="/listexamples" className={classes.dropdownLink}>
-              Gift List Ideas
-            </Link>
-          </ListItem>
-          <ListItem className={classes.listItem}>
-            <Link to="/lists" className={classes.dropdownLink}>
-              My Lists
-            </Link>
-          </ListItem>
-          <ListItem className={classes.listItem}>
-            <Link to="/logout" className={classes.dropdownLink}>
-              Sign Out
-            </Link>
-          </ListItem>
-        </List>
-      : <List className={classes.list + " " + classes.mlAuto}>
-          <ListItem className={classes.listItem}>
-            <Link to="/lists" className={classes.dropdownLink}>
-              Gift List Ideas
-            </Link>
-          </ListItem>
-          <ListItem className={classes.listItem}>
-            <Link to="/login" className={classes.dropdownLink}>
-              Log In
-            </Link>
-          </ListItem>
-          <ListItem className={classes.listItem}>
-            <Link to="/signup" className={classes.dropdownLink}>
-              Sign Up
-            </Link>
-          </ListItem>
-        </List>
+    <List className={classes.list + " " + classes.mlAuto}>
+      <ListItem className={classes.listItem}>
+        <Link to="/lists" className={classes.dropdownLink}>
+          Gift List Ideas
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link to="/login" className={classes.dropdownLink}>
+          Log In
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link to="/signup" className={classes.dropdownLink}>
+          Sign Up
+        </Link>
+      </ListItem>
+    </List>
   );
 }
 
