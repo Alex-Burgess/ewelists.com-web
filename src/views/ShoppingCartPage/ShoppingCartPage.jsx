@@ -33,7 +33,7 @@ import Add from "@material-ui/icons/Add";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 // core components
 import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -60,7 +60,7 @@ class ShoppingCartPage extends React.Component {
       <div>
         <Header
           brand="ewelist"
-          links={<HeaderLinks dropdownHoverColor="info" />}
+          links={<HeaderLinksAuth dropdownHoverColor="info" />}
           fixed
           color="transparent"
           changeColorOnScroll={{

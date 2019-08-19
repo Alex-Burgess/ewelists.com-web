@@ -54,21 +54,14 @@ class LandingPage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  }
+    console.log("LandPage isAuthed: " + this.props.isAuthenticated);
 
-  userDashboard(){
-    this.props.history.push("/create");
+    if (this.props.isAuthenticated) {
+      this.props.history.push("/create");
+    }
   }
 
   render() {
-    return (
-      <div className="Home">
-        {this.props.isAuthenticated ? this.userDashboard() : this.renderLander()}
-      </div>
-    );
-  }
-
-  renderLander() {
     const { classes, ...rest } = this.props;
     return (
       <div>
