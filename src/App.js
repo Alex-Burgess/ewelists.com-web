@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import './App.css';
 import Routes from "./Routes";
 import { Auth, Hub } from "aws-amplify";
-
+import { Helmet } from 'react-helmet';
 
 class App extends React.Component {
   constructor(props) {
@@ -74,6 +74,19 @@ class App extends React.Component {
     this.setState({ isAuthenticated: authenticated });
   }
 
+  setTitle() {
+    var title = 'Ewelists';
+
+    if (process.env.REACT_APP_STAGE === "staging") {
+      title = 'Ewelists - Staging';
+    } else if (process.env.REACT_APP_STAGE === 'test') {
+      title = 'Ewelists - Test';
+    } else if (process.env.REACT_APP_STAGE === undefined) {
+      title = 'Ewelists - Test';
+    }
+    return title
+  }
+
   render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
@@ -82,7 +95,12 @@ class App extends React.Component {
     };
 
     return (
-      <Routes childProps={childProps} />
+      <div>
+        <Helmet>
+          <title>{this.setTitle()}</title>
+        </Helmet>
+        <Routes childProps={childProps} />
+      </div>
     );
   }
 }

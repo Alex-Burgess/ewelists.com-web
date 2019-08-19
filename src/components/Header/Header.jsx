@@ -77,13 +77,19 @@ class Header extends React.Component {
     }
   }
   render() {
-    const { classes, color, links, fixed, absolute } = this.props;
+    var { classes, color, links, fixed, absolute } = this.props;
+
+    if ((process.env.REACT_APP_STAGE === "test") || (process.env.REACT_APP_STAGE === undefined) ) {
+      color = "warning"
+    }
+
     const appBarClasses = classNames({
       [classes.appBar]: true,
       [classes[color]]: color,
       [classes.absolute]: absolute,
       [classes.fixed]: fixed
     });
+
     return (
       <AppBar className={appBarClasses}>
         <Toolbar className={classes.container}>
