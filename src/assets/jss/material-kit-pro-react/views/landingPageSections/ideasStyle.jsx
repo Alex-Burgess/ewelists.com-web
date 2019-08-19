@@ -27,7 +27,6 @@ import {
 
 const ideasSection = {
   container,
-  title,
   coloredShadow,
   cardTitle,
   mlAuto,
