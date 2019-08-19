@@ -16,6 +16,7 @@
 */
 /*eslint-disable*/
 import React from "react";
+import { Auth } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -54,10 +55,66 @@ class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: [1]
+      checked: [1],
+      email: "",
+      password: "",
+      confirmPassword: "",
+      confirmationCode: "",
+      newUser: null
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
+
+  validateForm() {
+    return (
+      this.state.email.length > 0 &&
+      this.state.password.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
+  }
+
+  validateConfirmationForm() {
+    return this.state.confirmationCode.length > 0;
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    console.log("Submitted Email is: " + this.state.email);
+
+    try {
+      const newUser = await Auth.signUp({
+        username: this.state.email,
+        password: this.state.password
+      });
+      this.setState({
+        newUser
+      });
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+
+  handleConfirmationSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
+      await Auth.signIn(this.state.email, this.state.password);
+
+      // this.props.userHasAuthenticated(true);
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+
   handleToggle(value) {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
@@ -77,7 +134,8 @@ class SignUpPage extends React.Component {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
-  render() {
+
+  renderForm() {
     const { classes, ...rest } = this.props;
     return (
       <div>
@@ -128,15 +186,15 @@ class SignUpPage extends React.Component {
                       </GridItem>
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <Button justIcon round color="twitter">
+                          <Button justIcon round color="white">
                             <i
-                              className={classes.socials + " fab fa-twitter"}
+                              className={classes.socials + " fab fa-amazon"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="dribbble">
+                          <Button justIcon round color="google">
                             <i
-                              className={classes.socials + " fab fa-dribbble"}
+                              className={classes.socials + " fab fa-google"}
                             />
                           </Button>
                           {` `}
@@ -150,8 +208,9 @@ class SignUpPage extends React.Component {
                             or be classical
                           </h4>
                         </div>
-                        <form className={classes.form}>
+                        <form className={classes.form} onSubmit={this.handleSubmit}>
                           <CustomInput
+                            id="name"
                             formControlProps={{
                               fullWidth: true,
                               className: classes.customFormControlClasses
@@ -167,13 +226,16 @@ class SignUpPage extends React.Component {
                                   />
                                 </InputAdornment>
                               ),
-                              placeholder: "First Name..."
+                              placeholder: "Name..."
                             }}
                           />
                           <CustomInput
+                            id="email"
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.customFormControlClasses
+                              className: classes.customFormControlClasses,
+                              value: this.state.email,
+                              onChange: this.handleChange
                             }}
                             inputProps={{
                               startAdornment: (
@@ -190,9 +252,12 @@ class SignUpPage extends React.Component {
                             }}
                           />
                           <CustomInput
+                            id="password"
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.customFormControlClasses
+                              className: classes.customFormControlClasses,
+                              value: this.state.password,
+                              onChange: this.handleChange,
                             }}
                             inputProps={{
                               startAdornment: (
@@ -205,7 +270,33 @@ class SignUpPage extends React.Component {
                                   </Icon>
                                 </InputAdornment>
                               ),
+                              type: "password",
+                              autoComplete: "off",
                               placeholder: "Password..."
+                            }}
+                          />
+                          <CustomInput
+                            id="confirmPassword"
+                            formControlProps={{
+                              fullWidth: true,
+                              className: classes.customFormControlClasses,
+                              value: this.state.confirmPassword,
+                              onChange: this.handleChange
+                            }}
+                            inputProps={{
+                              startAdornment: (
+                                <InputAdornment
+                                  position="start"
+                                  className={classes.inputAdornment}
+                                >
+                                  <Icon className={classes.inputAdornmentIcon}>
+                                    lock_outline
+                                  </Icon>
+                                </InputAdornment>
+                              ),
+                              type: "password",
+                              autoComplete: "off",
+                              placeholder: "Confirm Password..."
                             }}
                           />
                           <FormControlLabel
@@ -241,7 +332,7 @@ class SignUpPage extends React.Component {
                             }
                           />
                           <div className={classes.textCenter}>
-                            <Button round color="primary">
+                            <Button round color="primary" type="submit">
                               Get started
                             </Button>
                           </div>
@@ -310,6 +401,141 @@ class SignUpPage extends React.Component {
             }
           />
         </div>
+      </div>
+    );
+  }
+
+  renderConfirmationForm() {
+    const { classes, ...rest } = this.props;
+    return (
+      <div>
+        <Header
+          absolute
+          color="transparent"
+          brand="ewelist"
+          links={<HeaderLinks dropdownHoverColor="rose" />}
+          {...rest}
+        />
+        <div
+          className={classes.pageHeader}
+          style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center"
+          }}
+        >
+          <div className={classes.container}>
+            <GridContainer justify="center">
+              <GridItem xs={12} sm={12} md={5}>
+                <Card className={classes.cardSignup}>
+                  <h2 className={classes.cardTitle}>Confirmation Code</h2>
+                  <CardBody>
+                    <form className={classes.form} onSubmit={this.handleConfirmationSubmit}>
+                    <CustomInput
+                        id="confirmationCode"
+                        formControlProps={{
+                          fullWidth: true,
+                          className: classes.customFormControlClasses,
+                          value: this.state.confirmationCode,
+                          onChange: this.handleChange
+                        }}
+                        inputProps={{
+                          startAdornment: (
+                            <InputAdornment
+                              position="start"
+                              className={classes.inputAdornment}
+                            >
+                              <Icon className={classes.inputAdornmentIcon}>
+                                lock_outline
+                              </Icon>
+                            </InputAdornment>
+                          ),
+                          autoComplete: "off",
+                          placeholder: "Confirmation Code..."
+                        }}
+                      />
+                      <p>
+                        Please check your email for the code.
+                      </p>
+                      <div className={classes.textCenter}>
+                        <Button round color="primary" type="submit">
+                          Verify
+                        </Button>
+                      </div>
+                    </form>
+                  </CardBody>
+                </Card>
+              </GridItem>
+            </GridContainer>
+          </div>
+          <Footer
+            content={
+              <div>
+                <div className={classes.left}>
+                  <List className={classes.list}>
+                    <ListItem className={classes.inlineBlock}>
+                      <a
+                        href="https://www.creative-tim.com/?ref=mkpr-signup"
+                        target="_blank"
+                        className={classes.block}
+                      >
+                        Creative Tim
+                      </a>
+                    </ListItem>
+                    <ListItem className={classes.inlineBlock}>
+                      <a
+                        href="https://www.creative-tim.com/presentation?ref=mkpr-signup"
+                        target="_blank"
+                        className={classes.block}
+                      >
+                        About us
+                      </a>
+                    </ListItem>
+                    <ListItem className={classes.inlineBlock}>
+                      <a
+                        href="//blog.creative-tim.com/"
+                        className={classes.block}
+                      >
+                        Blog
+                      </a>
+                    </ListItem>
+                    <ListItem className={classes.inlineBlock}>
+                      <a
+                        href="https://www.creative-tim.com/license?ref=mkpr-signup"
+                        target="_blank"
+                        className={classes.block}
+                      >
+                        Licenses
+                      </a>
+                    </ListItem>
+                  </List>
+                </div>
+                <div className={classes.right}>
+                  &copy; {1900 + new Date().getYear()} , made with{" "}
+                  <Favorite className={classes.icon} /> by{" "}
+                  <a
+                    href="https://www.creative-tim.com?ref=mkpr-signup"
+                    target="_blank"
+                  >
+                    Creative Tim
+                  </a>{" "}
+                  for a better web.
+                </div>
+              </div>
+            }
+          />
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { classes, ...rest } = this.props;
+    return (
+      <div>
+        {this.state.newUser === null
+          ? this.renderForm()
+          : this.renderConfirmationForm()}
       </div>
     );
   }

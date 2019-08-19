@@ -16,6 +16,7 @@
 */
 /*eslint-disable*/
 import React from "react";
+import { Auth } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -45,6 +46,36 @@ import loginPageStyle from "assets/jss/material-kit-pro-react/views/loginPageSty
 import image from "assets/img/bg7.jpg";
 
 class LoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await Auth.signIn(this.state.email, this.state.password);
+      this.props.userHasAuthenticated(true);
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -71,7 +102,7 @@ class LoginPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={4}>
                 <Card>
-                  <form className={classes.form}>
+                  <form className={classes.form} onSubmit={this.handleSubmit}>
                     <CardHeader
                       color="primary"
                       signup
@@ -83,25 +114,25 @@ class LoginPage extends React.Component {
                           justIcon
                           color="transparent"
                           className={classes.iconButtons}
-                          onClick={e => e.preventDefault()}
+                          onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}
                         >
-                          <i className="fab fa-twitter" />
+                          <i className="fab fa-amazon" />
                         </Button>
                         <Button
                           justIcon
                           color="transparent"
                           className={classes.iconButtons}
-                          onClick={e => e.preventDefault()}
+                          onClick={() => Auth.federatedSignIn({provider: 'Google'})}
+                        >
+                          <i className="fab fa-google" />
+                        </Button>
+                        <Button
+                          justIcon
+                          color="transparent"
+                          className={classes.iconButtons}
+                          onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}
                         >
                           <i className="fab fa-facebook" />
-                        </Button>
-                        <Button
-                          justIcon
-                          color="transparent"
-                          className={classes.iconButtons}
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fab fa-google-plus-g" />
                         </Button>
                       </div>
                     </CardHeader>
@@ -112,24 +143,11 @@ class LoginPage extends React.Component {
                     </p>
                     <CardBody signup>
                       <CustomInput
-                        id="first"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          placeholder: "First Name...",
-                          type: "text",
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <Face className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                      <CustomInput
                         id="email"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.email,
+                          onChange: this.handleChange
                         }}
                         inputProps={{
                           placeholder: "Email...",
@@ -142,9 +160,11 @@ class LoginPage extends React.Component {
                         }}
                       />
                       <CustomInput
-                        id="pass"
+                        id="password"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.email,
+                          onChange: this.handleChange
                         }}
                         inputProps={{
                           placeholder: "Password",
@@ -161,8 +181,8 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <div className={classes.textCenter}>
-                      <Button simple color="primary" size="lg">
-                        Get started
+                      <Button simple color="primary" size="lg" type="submit">
+                        Login
                       </Button>
                     </div>
                   </form>
