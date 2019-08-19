@@ -108,7 +108,7 @@ class SignUpPage extends React.Component {
       await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
       await Auth.signIn(this.state.email, this.state.password);
 
-      // this.props.userHasAuthenticated(true);
+      this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
       alert(e.message);

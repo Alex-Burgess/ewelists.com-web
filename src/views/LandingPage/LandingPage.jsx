@@ -47,11 +47,28 @@ import SectionIdeas from "./Sections/SectionIdeas.jsx";
 import iphone from "assets/img/iphone.png";
 
 class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+
+  userDashboard(){
+    this.props.history.push("/create");
+  }
+
   render() {
+    return (
+      <div className="Home">
+        {this.props.isAuthenticated ? this.userDashboard() : this.renderLander()}
+      </div>
+    );
+  }
+
+  renderLander() {
     const { classes, ...rest } = this.props;
     return (
       <div>

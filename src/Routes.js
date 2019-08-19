@@ -3,15 +3,21 @@ import { Route, Switch } from "react-router-dom";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
 import ErrorPage from "views/ErrorPage/ErrorPage.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
+import LogoutPage from "views/LogoutPage/LogoutPage.jsx";
 import SignupPage from "views/SignupPage/SignupPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 
-export default () =>
+import AppliedRoute from "./components/Routes/AppliedRoute";
+import AuthenticatedRoute from "./components/Routes/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/Routes/UnauthenticatedRoute";
+
+export default ({childProps}) =>
   <Switch>
-    <Route path="/" exact component={LandingPage} />
-    <Route path="/login" exact component={LoginPage} />
-    <Route path="/signup" exact component={SignupPage} />
-    <Route path="/create" exact component={ShoppingCartPage} />
+    <AppliedRoute path="/" exact component={LandingPage} props={childProps} />
+    <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
+    <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
+    <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
+    <AuthenticatedRoute path="/create" exact component={ShoppingCartPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={ErrorPage} />
   </Switch>;
