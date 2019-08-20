@@ -95,6 +95,7 @@ class App extends React.Component {
     };
 
     return (
+      !this.state.isAuthenticating &&
       <div>
         <Helmet>
           <title>{this.setTitle()}</title>
