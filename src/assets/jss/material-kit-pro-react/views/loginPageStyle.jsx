@@ -18,6 +18,7 @@ import {
   container,
   description,
   cardTitle,
+  infoColor,
   blackColor,
   whiteColor,
   grayColor,
@@ -43,12 +44,29 @@ const signupPageStyle = theme => ({
     height: "100%",
     margin: "0",
     display: "flex!important",
-    padding: "120px 0",
+    // padding: "120px 0",
     position: "relative",
     minHeight: "100vh",
     alignItems: "center",
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      // background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
+    },
+    // "&:after": {
+    //   background:
+    //     "linear-gradient(60deg,rgba(" +
+    //     hexToRgb(infoColor[4]) +
+    //     ",.56),rgba(" +
+    //     hexToRgb(infoColor[5]) +
+    //     ",.95))"
+    // },
+    "&:after": {
+      background:
+        "linear-gradient(60deg,rgba(" +
+        hexToRgb(infoColor[4]) +
+        ",.30),rgba(" +
+        hexToRgb(infoColor[5]) +
+        ",.70))"
     },
     "&:before,&:after": {
       position: "absolute",

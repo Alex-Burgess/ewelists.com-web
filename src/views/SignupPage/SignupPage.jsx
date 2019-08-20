@@ -28,13 +28,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
-import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
 import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
 import Check from "@material-ui/icons/Check";
 import Favorite from "@material-ui/icons/Favorite";
+import ListIcon from "@material-ui/icons/List";
+import Perm from "@material-ui/icons/PermIdentity";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
@@ -49,7 +49,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.jsx";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/sheep-with-shoes.jpg";
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -161,29 +161,6 @@ class SignUpPage extends React.Component {
                   <h2 className={classes.cardTitle}>Register</h2>
                   <CardBody>
                     <GridContainer justify="center">
-                      <GridItem xs={12} sm={5} md={5}>
-                        <InfoArea
-                          className={classes.infoArea}
-                          title="Marketing"
-                          description="We've created the marketing campaign of the website. It was a very interesting collaboration."
-                          icon={Timeline}
-                          iconColor="rose"
-                        />
-                        <InfoArea
-                          className={classes.infoArea}
-                          title="Fully Coded in HTML5"
-                          description="We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
-                          icon={Code}
-                          iconColor="primary"
-                        />
-                        <InfoArea
-                          className={classes.infoArea}
-                          title="Built Audience"
-                          description="There is also a Fully Customizable CMS Admin Dashboard for this product."
-                          icon={Group}
-                          iconColor="info"
-                        />
-                      </GridItem>
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
                           <Button justIcon round color="white">
@@ -332,11 +309,34 @@ class SignUpPage extends React.Component {
                             }
                           />
                           <div className={classes.textCenter}>
-                            <Button round color="primary" type="submit">
+                            <Button round color="info" type="submit">
                               Get started
                             </Button>
                           </div>
                         </form>
+                      </GridItem>
+                      <GridItem xs={12} sm={5} md={5}>
+                        <InfoArea
+                          className={classes.infoArea}
+                          title="Sign Up"
+                          description="Sign up using one of your social accounts, or alternatively just an email, to create your first list."
+                          icon={Perm}
+                          iconColor="primary"
+                        />
+                        <InfoArea
+                          className={classes.infoArea}
+                          title="Add Items"
+                          description="Add items by copying the link to the product, or alternatively use one of our ready made lists if you're looking for inspiration."
+                          icon={ListIcon}
+                          iconColor="rose"
+                        />
+                        <InfoArea
+                          className={classes.infoArea}
+                          title="Share"
+                          description="Share your first ewelist with friends and family."
+                          icon={Group}
+                          iconColor="info"
+                        />
                       </GridItem>
                     </GridContainer>
                   </CardBody>
@@ -458,7 +458,7 @@ class SignUpPage extends React.Component {
                         Please check your email for the code.
                       </p>
                       <div className={classes.textCenter}>
-                        <Button round color="primary" type="submit">
+                        <Button round color="info" type="submit">
                           Verify
                         </Button>
                       </div>
@@ -469,6 +469,7 @@ class SignUpPage extends React.Component {
             </GridContainer>
           </div>
           <Footer
+            className={classes.footer}
             content={
               <div>
                 <div className={classes.left}>

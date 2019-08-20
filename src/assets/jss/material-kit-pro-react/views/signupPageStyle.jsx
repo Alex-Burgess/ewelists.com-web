@@ -15,7 +15,7 @@
 
 */
 import {
-  primaryColor,
+  infoColor,
   grayColor,
   container,
   cardTitle,
@@ -44,15 +44,24 @@ const signupPageStyle = {
     border: "0",
     alignItems: "center",
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      // background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
     },
+    // "&:after": {
+    //   background:
+    //     "linear-gradient(60deg,rgba(" +
+    //     hexToRgb(infoColor[4]) +
+    //     ",.56),rgba(" +
+    //     hexToRgb(infoColor[5]) +
+    //     ",.95))"
+    // },
     "&:after": {
       background:
         "linear-gradient(60deg,rgba(" +
-        hexToRgb(primaryColor[4]) +
-        ",.56),rgba(" +
-        hexToRgb(primaryColor[5]) +
-        ",.95))"
+        hexToRgb(infoColor[4]) +
+        ",.30),rgba(" +
+        hexToRgb(infoColor[5]) +
+        ",.70))"
     },
     "&:before,&:after": {
       position: "absolute",
@@ -110,7 +119,7 @@ const signupPageStyle = {
     margin: "0"
   },
   infoArea: {
-    padding: "0px 0px 20px !important"
+    padding: "0px 10px 20px !important"
   },
   block: {
     color: "inherit",
@@ -153,6 +162,14 @@ const signupPageStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  footer: {
+    position: "absolute",
+    width: "100%",
+    background: "transparent",
+    bottom: "0",
+    color: whiteColor,
+    zIndex: "2"
   }
 };
 

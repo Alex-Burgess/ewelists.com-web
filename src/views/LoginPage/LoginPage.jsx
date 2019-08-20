@@ -43,7 +43,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-pro-react/views/loginPageStyle.jsx";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/sheep-with-shoes.jpg";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -100,11 +100,11 @@ class LoginPage extends React.Component {
         >
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={10} md={6}>
                 <Card>
                   <form className={classes.form} onSubmit={this.handleSubmit}>
                     <CardHeader
-                      color="primary"
+                      color="info"
                       signup
                       className={classes.cardHeader}
                     >
@@ -181,7 +181,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <div className={classes.textCenter}>
-                      <Button simple color="primary" size="lg" type="submit">
+                      <Button simple color="info" size="lg" type="submit">
                         Login
                       </Button>
                     </div>

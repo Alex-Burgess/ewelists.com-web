@@ -27,7 +27,7 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/createStyle.jsx";
 
-import sheeptoy from "assets/img/sheep-toy.jpg";
+import sheeptoy from "assets/img/sheep-toy1.jpg";
 
 class SectionCreate extends React.Component {
   render() {

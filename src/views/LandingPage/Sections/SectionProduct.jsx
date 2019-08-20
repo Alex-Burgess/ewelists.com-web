@@ -22,8 +22,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 // @material-ui/icons
 import List from "@material-ui/icons/List";
-import Share from "@material-ui/icons/Share";
 import Perm from "@material-ui/icons/PermIdentity";
+import Group from "@material-ui/icons/Group";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -61,7 +61,7 @@ class SectionProduct extends React.Component {
                   title="Add Items"
                   description="Add items by copying the link to the product, or alternatively use one of our ready made lists if you're looking for inspiration."
                   icon={List}
-                  iconColor="info"
+                  iconColor="rose"
                   vertical
                 />
               </GridItem>
@@ -69,8 +69,8 @@ class SectionProduct extends React.Component {
                 <InfoArea
                   title="Share"
                   description="Share your first ewelist with friends and family."
-                  icon={Share}
-                  iconColor="success"
+                  icon={Group}
+                  iconColor="info"
                   vertical
                 />
               </GridItem>
