@@ -163,19 +163,19 @@ class SignUpPage extends React.Component {
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <Button justIcon round color="white">
+                          <Button justIcon round color="white" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
                             <i
                               className={classes.socials + " fab fa-amazon"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="google">
+                          <Button justIcon round color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})}>
                             <i
                               className={classes.socials + " fab fa-google"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="facebook">
+                          <Button justIcon round color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>
                             <i
                               className={classes.socials + " fab fa-facebook-f"}
                             />
