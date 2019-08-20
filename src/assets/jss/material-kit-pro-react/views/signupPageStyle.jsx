@@ -157,6 +157,11 @@ const signupPageStyle = {
       color: whiteColor + "  !important"
     }
   },
+  terms: {
+    color: "#999",
+    padding: "15px 0",
+    fontSize: "12px"
+  },
   icon: {
     width: "18px",
     height: "18px",

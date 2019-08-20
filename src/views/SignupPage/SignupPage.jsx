@@ -276,38 +276,13 @@ class SignUpPage extends React.Component {
                               placeholder: "Confirm Password..."
                             }}
                           />
-                          <FormControlLabel
-                            classes={{
-                              label: classes.label
-                            }}
-                            control={
-                              <Checkbox
-                                tabIndex={-1}
-                                onClick={() => this.handleToggle(1)}
-                                checkedIcon={
-                                  <Check className={classes.checkedIcon} />
-                                }
-                                icon={
-                                  <Check className={classes.uncheckedIcon} />
-                                }
-                                classes={{
-                                  checked: classes.checked,
-                                  root: classes.checkRoot
-                                }}
-                                checked={
-                                  this.state.checked.indexOf(1) !== -1
-                                    ? true
-                                    : false
-                                }
-                              />
-                            }
-                            label={
-                              <span>
-                                I agree to the{" "}
-                                <a href="#pablo">terms and conditions</a>.
-                              </span>
-                            }
-                          />
+                          <div className={classes.terms}>
+                            <span>
+                              By signing up to Ewelists, you agree to the{" "}
+                              <a href="/terms">terms of service</a>. View
+                              our <a href="/privacy">privacy policy</a>.
+                            </span>
+                          </div>
                           <div className={classes.textCenter}>
                             <Button round color="info" type="submit">
                               Get started
