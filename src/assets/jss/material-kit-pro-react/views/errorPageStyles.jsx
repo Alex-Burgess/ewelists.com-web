@@ -18,6 +18,7 @@ import {
   title,
   whiteColor,
   blackColor,
+  infoColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
@@ -61,7 +62,15 @@ const errorPageStyles = {
     border: "0",
     alignItems: "center",
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
+    },
+    "&:after": {
+      background:
+        "linear-gradient(60deg,rgba(" +
+        hexToRgb(infoColor[4]) +
+        ",.30),rgba(" +
+        hexToRgb(infoColor[5]) +
+        ",.70))"
     },
     "&:before,&:after": {
       position: "absolute",

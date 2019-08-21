@@ -33,7 +33,7 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import errorPageStyle from "assets/jss/material-kit-pro-react/views/errorPageStyles.jsx";
 
-import image from "assets/img/clint-mckoy.jpg";
+import image from "assets/img/sheep-with-shoes.jpg";
 
 class ErrorPage extends React.Component {
   constructor(props) {
