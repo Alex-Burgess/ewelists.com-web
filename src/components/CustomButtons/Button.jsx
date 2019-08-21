@@ -78,6 +78,7 @@ RegularButton.propTypes = {
     "twitter",
     "facebook",
     "google",
+    "amazon",
     "linkedin",
     "pinterest",
     "youtube",

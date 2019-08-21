@@ -163,7 +163,7 @@ class SignUpPage extends React.Component {
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <Button justIcon round color="white" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
+                          <Button justIcon round color="amazon" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
                             <i
                               className={classes.socials + " fab fa-amazon"}
                             />
