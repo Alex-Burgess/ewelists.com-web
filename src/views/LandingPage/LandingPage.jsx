@@ -36,6 +36,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 
 import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
 
@@ -43,6 +44,7 @@ import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPag
 import SectionCreate from "./Sections/SectionCreate.jsx";
 import SectionProduct from "./Sections/SectionProduct.jsx";
 import SectionIdeas from "./Sections/SectionIdeas.jsx";
+import SectionDashboardPlaceholder from "./Sections/SectionDashboardPlaceholder.jsx";
 
 import iphone from "assets/img/iphone.png";
 
@@ -54,14 +56,91 @@ class LandingPage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-    console.log("LandPage isAuthed: " + this.props.isAuthenticated);
-
-    if (this.props.isAuthenticated) {
-      this.props.history.push("/create");
-    }
   }
 
   render() {
+    return (
+      <div>
+        {this.props.isAuthenticated ? this.renderAuthed() : this.renderUnAuthed()}
+      </div>
+    );
+  }
+
+  renderAuthed() {
+    const { classes, ...rest } = this.props;
+    return (
+      <div>
+        <Header
+          color="info"
+          brand="ewelists"
+          links={<HeaderLinksAuth dropdownHoverColor="info" />}
+          fixed
+          {...rest}
+        />
+        <div className={classes.main}>
+          <SectionDashboardPlaceholder />
+        </div>
+        <Footer
+          content={
+            <div>
+              <div className={classes.left}>
+                <List className={classes.list}>
+                  <ListItem className={classes.inlineBlock}>
+                    <a
+                      href="https://www.creative-tim.com/?ref=mkpr-landing"
+                      target="_blank"
+                      className={classes.block}
+                    >
+                      Creative Tim
+                    </a>
+                  </ListItem>
+                  <ListItem className={classes.inlineBlock}>
+                    <a
+                      href="https://www.creative-tim.com/presentation?ref=mkpr-landing"
+                      target="_blank"
+                      className={classes.block}
+                    >
+                      About us
+                    </a>
+                  </ListItem>
+                  <ListItem className={classes.inlineBlock}>
+                    <a
+                      href="//blog.creative-tim.com/"
+                      className={classes.block}
+                    >
+                      Blog
+                    </a>
+                  </ListItem>
+                  <ListItem className={classes.inlineBlock}>
+                    <a
+                      href="https://www.creative-tim.com/license?ref=mkpr-landing"
+                      target="_blank"
+                      className={classes.block}
+                    >
+                      Licenses
+                    </a>
+                  </ListItem>
+                </List>
+              </div>
+              <div className={classes.right}>
+                &copy; {1900 + new Date().getYear()} , made with{" "}
+                <Favorite className={classes.icon} /> by{" "}
+                <a
+                  href="https://www.creative-tim.com/?ref=mkpr-landing"
+                  target="_blank"
+                >
+                  Creative Tim
+                </a>{" "}
+                for a better web.
+              </div>
+            </div>
+          }
+        />
+      </div>
+    );
+  }
+
+  renderUnAuthed() {
     const { classes, ...rest } = this.props;
     return (
       <div>
