@@ -81,11 +81,9 @@ class ErrorPage extends React.Component {
           <div className={classes.contentCenter}>
             <GridContainer>
               <GridItem md={12}>
-                <h1 className={classes.title}>404</h1>
-                <h2 className={classes.subTitle}>Page not found :(</h2>
-                <h4 className={classes.description}>
-                  Ooooups! Looks like you got lost.
-                </h4>
+                <h1 className={classes.title}>Page not found</h1>
+                <h2 className={classes.subTitle}>The page you are looking for does not exist.</h2>
+                <a href="/">Click to go back to the home page.</a>
               </GridItem>
             </GridContainer>
           </div>

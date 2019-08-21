@@ -37,15 +37,15 @@ const errorPageStyles = {
   },
   title: {
     ...title,
-    fontSize: "13.7em",
+    fontSize: "4em",
     color: whiteColor,
-    letterSpacing: "14px !important",
+    // letterSpacing: "14px !important",
     fontWeight: "700"
   },
   subTitle: {
     fontSize: "2.25rem",
     marginTop: "0",
-    marginBottom: "8px"
+    marginBottom: "20px"
   },
   description: {
     fontSize: "1.125rem",
