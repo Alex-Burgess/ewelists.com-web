@@ -121,42 +121,6 @@ const signupPageStyle = {
   infoArea: {
     padding: "0px 10px 20px !important"
   },
-  block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
-  },
-  inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
-  },
-  list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
-  },
-  left: {
-    float: "left!important",
-    display: "block",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
-  right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
   terms: {
     color: "#999",
     padding: "15px 0",
@@ -167,14 +131,6 @@ const signupPageStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
-  },
-  footer: {
-    position: "absolute",
-    width: "100%",
-    background: "transparent",
-    bottom: "0",
-    color: whiteColor,
-    zIndex: "2"
   }
 };
 

@@ -31,19 +31,27 @@ const signupPageStyle = theme => ({
     ...cardTitle,
     color: whiteColor + "  !important"
   },
+  // container: {
+  //   ...container,
+  //   zIndex: "4",
+  //   [theme.breakpoints.down("sm")]: {
+  //     paddingBottom: "100px"
+  //   }
+  // },
   container: {
     ...container,
-    zIndex: "4",
-    [theme.breakpoints.down("sm")]: {
-      paddingBottom: "100px"
-    }
+    zIndex: "2",
+    position: "relative",
+    paddingTop: "20vh",
+    color: whiteColor
   },
   pageHeader: {
     color: whiteColor,
     border: "0",
     height: "100%",
     margin: "0",
-    display: "flex!important",
+    // display: "flex!important",
+    display: "inherit",
     // padding: "120px 0",
     position: "relative",
     minHeight: "100vh",
@@ -101,55 +109,11 @@ const signupPageStyle = theme => ({
     marginRight: "3px !important",
     marginLeft: "3px !important"
   },
-  block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
-  },
-  inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
-  },
-  list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
-  },
-  left: {
-    float: "left!important",
-    display: "block",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
-  right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
   icon: {
     width: "18px",
     height: "18px",
     top: "3px",
     position: "relative"
-  },
-  footer: {
-    position: "absolute",
-    width: "100%",
-    background: "transparent",
-    bottom: "0",
-    color: whiteColor,
-    zIndex: "2"
   }
 });
 

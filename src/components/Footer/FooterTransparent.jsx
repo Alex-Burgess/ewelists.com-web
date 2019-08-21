@@ -1,0 +1,104 @@
+/*!
+
+=========================================================
+* Material Kit PRO React - v1.7.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+/*eslint-disable*/
+import React from "react";
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
+// @material-ui/core components
+import withStyles from "@material-ui/core/styles/withStyles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Icon from "@material-ui/core/Icon";
+// @material-ui/icons
+import Email from "@material-ui/icons/Email";
+import Favorite from "@material-ui/icons/Favorite";
+import Face from "@material-ui/icons/Face";
+// core components
+import Header from "components/Header/Header.jsx";
+import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import Footer from "components/Footer/Footer.jsx";
+import GridContainer from "components/Grid/GridContainer.jsx";
+import GridItem from "components/Grid/GridItem.jsx";
+import Button from "components/CustomButtons/Button.jsx";
+import Card from "components/Card/Card.jsx";
+import CardBody from "components/Card/CardBody.jsx";
+import CardHeader from "components/Card/CardHeader.jsx";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
+
+import footerTransparentStyle from "assets/jss/material-kit-pro-react/components/footerTransparentStyle.jsx";
+
+function FooterTransparent(props) {
+  const { classes } = props;
+
+  return (
+    <div>
+      <Footer
+        className={classes.footer}
+        content={
+          <div>
+            <div className={classes.left}>
+              <List className={classes.list}>
+                <ListItem className={classes.inlineBlock}>
+                  <a
+                    href="/contact"
+                    className={classes.block}
+                  >
+                    Contact Us
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a
+                    href="/about"
+                    className={classes.block}
+                  >
+                    About us
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a
+                    href="/privacy"
+                    className={classes.block}
+                  >
+                    Privacy
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a
+                    href="/terms"
+                    className={classes.block}
+                  >
+                    Terms
+                  </a>
+                </ListItem>
+              </List>
+            </div>
+            <div className={classes.right}>
+              &copy; {1900 + new Date().getYear()} ewelists
+            </div>
+          </div>
+        }
+      />
+    </div>
+  );
+}
+
+FooterTransparent.propTypes = {
+  classes: PropTypes.object
+};
+
+export default withStyles(footerTransparentStyle)(FooterTransparent);

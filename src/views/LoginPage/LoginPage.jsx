@@ -22,17 +22,14 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-import Favorite from "@material-ui/icons/Favorite";
 import Face from "@material-ui/icons/Face";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Footer from "components/Footer/Footer.jsx";
+import FooterTransparent from "components/Footer/FooterTransparent.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -190,63 +187,7 @@ class LoginPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <Footer
-            className={classes.footer}
-            content={
-              <div>
-                <div className={classes.left}>
-                  <List className={classes.list}>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="https://www.creative-tim.com/?ref=mkpr-login"
-                        target="_blank"
-                        className={classes.block}
-                      >
-                        Creative Tim
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="https://www.creative-tim.com/presentation?ref=mkpr-login"
-                        target="_blank"
-                        className={classes.block}
-                      >
-                        About us
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="//blog.creative-tim.com/"
-                        className={classes.block}
-                      >
-                        Blog
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="https://www.creative-tim.com/license?ref=mkpr-login"
-                        target="_blank"
-                        className={classes.block}
-                      >
-                        Licenses
-                      </a>
-                    </ListItem>
-                  </List>
-                </div>
-                <div className={classes.right}>
-                  &copy; {1900 + new Date().getYear()} , made with{" "}
-                  <Favorite className={classes.icon} /> by{" "}
-                  <a
-                    href="https://www.creative-tim.com?ref=mkpr-login"
-                    target="_blank"
-                  >
-                    Creative Tim
-                  </a>{" "}
-                  for a better web
-                </div>
-              </div>
-            }
-          />
+          <FooterTransparent />
         </div>
       </div>
     );
