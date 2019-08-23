@@ -55,7 +55,11 @@ class SignUpPage extends React.Component {
       password: "",
       confirmPassword: "",
       confirmationCode: "",
-      newUser: null
+      newUser: null,
+      error: "",
+      showError: false,
+      confirmationError: "",
+      showConfirmationError: false
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
@@ -98,7 +102,10 @@ class SignUpPage extends React.Component {
         newUser
       });
     } catch (e) {
-      alert(e.message);
+      this.setState({
+        showError: true,
+        error: e.message
+      });
     }
   }
 
@@ -112,7 +119,10 @@ class SignUpPage extends React.Component {
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
-      alert(e.message);
+      this.setState({
+        showConfirmationError: true,
+        confirmationError: e.message
+      });
     }
   }
 
@@ -255,6 +265,12 @@ class SignUpPage extends React.Component {
                               placeholder: "Password..."
                             }}
                           />
+                          { this.state.showError
+                            ? <div className={classes.signUpError}>
+                                <p>{this.state.error}</p>
+                              </div>
+                            : null
+                          }
                           <div className={classes.terms}>
                             <span>
                               By signing up to Ewelists, you agree to the{" "}
@@ -353,6 +369,12 @@ class SignUpPage extends React.Component {
                           placeholder: "Confirmation Code..."
                         }}
                       />
+                      { this.state.showConfirmationError
+                        ? <div className={classes.signUpError}>
+                            <p>{this.state.confirmationError}</p>
+                          </div>
+                        : null
+                      }
                       <p>
                         Please check your email for the code.
                       </p>

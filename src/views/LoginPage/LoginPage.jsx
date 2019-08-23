@@ -48,7 +48,9 @@ class LoginPage extends React.Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      error: "",
+      showError: false
     };
   }
 
@@ -69,7 +71,10 @@ class LoginPage extends React.Component {
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
     } catch (e) {
-      alert(e.message);
+      this.setState({
+        showError: true,
+        error: e.message
+      });
     }
   }
 
@@ -176,6 +181,12 @@ class LoginPage extends React.Component {
                           autoComplete: "off"
                         }}
                       />
+                      { this.state.showError
+                        ? <div className={classes.loginError}>
+                            <p>{this.state.error}</p>
+                          </div>
+                        : null
+                      }
                     </CardBody>
                     <div className={classes.textCenter}>
                       <Button round color="info" type="submit" disabled={!this.validateForm()}>

@@ -22,6 +22,7 @@ import {
   blackColor,
   whiteColor,
   grayColor,
+  dangerColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
@@ -117,6 +118,9 @@ const signupPageStyle = theme => ({
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  loginError: {
+    color: dangerColor[1]
   }
 });
 

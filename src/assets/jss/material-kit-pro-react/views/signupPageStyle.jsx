@@ -17,6 +17,7 @@
 import {
   infoColor,
   grayColor,
+  dangerColor,
   container,
   cardTitle,
   whiteColor,
@@ -131,6 +132,9 @@ const signupPageStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  signUpError: {
+    color: dangerColor[1]
   }
 };
 
