@@ -31,7 +31,7 @@ import ChildFriendly from "@material-ui/icons/ChildFriendly";
 import WatchLater from "@material-ui/icons/WatchLater";
 // core components
 import Header from "components/Header/Header.jsx";
-import FooterDark from "components/Footer/FooterDark.jsx";
+import FooterLarge from "components/Footer/FooterLarge.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -100,7 +100,7 @@ class LandingPage extends React.Component {
           <SectionProduct />
           <SectionIdeas />
         </div>
-        <FooterDark />
+        <FooterLarge />
       </div>
     );
   }
