@@ -61,7 +61,6 @@ function FooterLarge(props) {
     <div>
       <Footer
         theme="dark"
-        // className={classes.footer}
         content={
           <div>
             <div className={classes.left}>
@@ -76,7 +75,7 @@ function FooterLarge(props) {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="/about"
+                    href="/#about"
                     className={classes.block}
                   >
                     About us
@@ -108,7 +107,7 @@ function FooterLarge(props) {
       >
       <GridContainer>
         <GridItem xs={12} sm={8} md={8}>
-          <h5>About Us</h5>
+          <h5 id="about">About Us</h5>
           <p>
             Creative Tim is a startup that creates design tools that make
             the web development process faster and easier.{" "}

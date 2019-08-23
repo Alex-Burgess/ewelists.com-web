@@ -63,7 +63,7 @@ function FooterDark(props) {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="/about"
+                    href="/#about"
                     className={classes.block}
                   >
                     About us
