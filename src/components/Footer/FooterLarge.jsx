@@ -42,16 +42,6 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 
-import face1 from "assets/img/faces/card-profile6-square.jpg";
-// import face2 from "assets/img/faces/christian.jpg";
-// import face3 from "assets/img/faces/card-profile4-square.jpg";
-// import face4 from "assets/img/faces/card-profile1-square.jpg";
-// import face5 from "assets/img/faces/marc.jpg";
-// import face6 from "assets/img/faces/kendall.jpg";
-// import face7 from "assets/img/faces/card-profile5-square.jpg";
-// import face8 from "assets/img/faces/card-profile2-square.jpg";
-
-
 import footerLargeStyle from "assets/jss/material-kit-pro-react/components/footerLargeStyle.jsx";
 
 function FooterLarge(props) {
