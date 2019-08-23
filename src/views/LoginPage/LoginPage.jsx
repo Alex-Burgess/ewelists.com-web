@@ -98,7 +98,7 @@ class LoginPage extends React.Component {
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={10} md={6}>
-                <Card>
+                <Card className={classes.cardLogin}>
                   <form className={classes.form} onSubmit={this.handleSubmit}>
                     <CardHeader
                       color="info"
@@ -136,7 +136,7 @@ class LoginPage extends React.Component {
                     <p
                       className={classes.description + " " + classes.textCenter}
                     >
-                      Or Be Classical
+                      Or log in with email
                     </p>
                     <CardBody signup>
                       <CustomInput
@@ -178,7 +178,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <div className={classes.textCenter}>
-                      <Button simple color="info" size="lg" type="submit">
+                      <Button round color="info" type="submit" disabled={!this.validateForm()}>
                         Login
                       </Button>
                     </div>

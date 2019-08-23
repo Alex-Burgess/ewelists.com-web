@@ -87,6 +87,9 @@ const signupPageStyle = theme => ({
       content: '""'
     }
   },
+  cardLogin: {
+    paddingBottom: "20px"
+  },
   form: {
     margin: "0"
   },

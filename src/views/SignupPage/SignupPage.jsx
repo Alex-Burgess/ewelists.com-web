@@ -50,6 +50,7 @@ class SignUpPage extends React.Component {
     super(props);
     this.state = {
       checked: [1],
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -61,10 +62,18 @@ class SignUpPage extends React.Component {
 
   validateForm() {
     return (
+      this.state.name.length > 0 &&
       this.state.email.length > 0 &&
-      this.state.password.length > 0 &&
-      this.state.password === this.state.confirmPassword
+      this.validateEmail() &&
+      this.state.password.length > 5
     );
+  }
+
+  validateEmail() {
+    if (/^[a-zA-Z0-9.+]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
+      return true
+    }
+    return false
   }
 
   validateConfirmationForm() {
@@ -79,8 +88,6 @@ class SignUpPage extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-
-    console.log("Submitted Email is: " + this.state.email);
 
     try {
       const newUser = await Auth.signUp({
@@ -176,7 +183,7 @@ class SignUpPage extends React.Component {
                           </Button>
                           {` `}
                           <h4 className={classes.socialTitle}>
-                            or be classical
+                            or sign up with your email address
                           </h4>
                         </div>
                         <form className={classes.form} onSubmit={this.handleSubmit}>
@@ -184,7 +191,9 @@ class SignUpPage extends React.Component {
                             id="name"
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.customFormControlClasses
+                              className: classes.customFormControlClasses,
+                              value: this.state.name,
+                              onChange: this.handleChange
                             }}
                             inputProps={{
                               startAdornment: (
@@ -246,39 +255,15 @@ class SignUpPage extends React.Component {
                               placeholder: "Password..."
                             }}
                           />
-                          <CustomInput
-                            id="confirmPassword"
-                            formControlProps={{
-                              fullWidth: true,
-                              className: classes.customFormControlClasses,
-                              value: this.state.confirmPassword,
-                              onChange: this.handleChange
-                            }}
-                            inputProps={{
-                              startAdornment: (
-                                <InputAdornment
-                                  position="start"
-                                  className={classes.inputAdornment}
-                                >
-                                  <Icon className={classes.inputAdornmentIcon}>
-                                    lock_outline
-                                  </Icon>
-                                </InputAdornment>
-                              ),
-                              type: "password",
-                              autoComplete: "off",
-                              placeholder: "Confirm Password..."
-                            }}
-                          />
                           <div className={classes.terms}>
                             <span>
                               By signing up to Ewelists, you agree to the{" "}
-                              <a href="/terms">terms of service</a>. View
-                              our <a href="/privacy">privacy policy</a>.
+                              <a href="/terms" target="_blank">terms of service</a>. View
+                              our <a href="/privacy" target="_blank">privacy policy</a>.
                             </span>
                           </div>
                           <div className={classes.textCenter}>
-                            <Button round color="info" type="submit">
+                            <Button round color="info" type="submit" disabled={!this.validateForm()}>
                               Get started
                             </Button>
                           </div>
@@ -372,7 +357,7 @@ class SignUpPage extends React.Component {
                         Please check your email for the code.
                       </p>
                       <div className={classes.textCenter}>
-                        <Button round color="info" type="submit">
+                        <Button round color="info" type="submit" disabled={!this.validateConfirmationForm()}>
                           Verify
                         </Button>
                       </div>
