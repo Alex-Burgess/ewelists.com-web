@@ -18,13 +18,11 @@ import {
   container,
   title,
   main,
-  // whiteColor,
-  mainRaised
+  grayColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const termsPageStyle = {
   container: {
-    // color: whiteColor,
     ...container,
     zIndex: "2"
   },
@@ -38,7 +36,6 @@ const termsPageStyle = {
     position: "relative",
     marginTop: "30px",
     minHeight: "32px",
-    // color: whiteColor,
     textDecoration: "none"
   },
   subtitle: {
@@ -49,8 +46,17 @@ const termsPageStyle = {
   main: {
     ...main
   },
-  mainRaised: {
-    ...mainRaised
+  textContent: {
+    paddingBottom: "0",
+    backgroundPosition: "50%",
+    backgroundSize: "cover",
+    padding: "30px 0",
+    "& p": {
+      fontSize: "1.188rem",
+      lineHeight: "1.5em",
+      color: grayColor[15],
+      marginBottom: "30px"
+    }
   },
   block: {
     color: "inherit",

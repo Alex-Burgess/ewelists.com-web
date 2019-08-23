@@ -15,49 +15,10 @@
 
 */
 import {
-  container,
-  title,
-  main,
   grayColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const privacyPageStyle = {
-  container: {
-    ...container,
-    zIndex: "2"
-  },
-  privacyContent: {
-    paddingBottom: "40px",
-    paddingTop: "80px"
-  },
-  title: {
-    ...title,
-    display: "inline-block",
-    position: "relative",
-    marginTop: "30px",
-    minHeight: "32px",
-    textDecoration: "none"
-  },
-  subtitle: {
-    fontSize: "1.313rem",
-    maxWidth: "500px",
-    margin: "10px auto 0"
-  },
-  main: {
-    ...main
-  },
-  textContent: {
-    paddingBottom: "0",
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
-    padding: "30px 0",
-    "& p": {
-      fontSize: "1.188rem",
-      lineHeight: "1.5em",
-      color: grayColor[15],
-      marginBottom: "30px"
-    }
-  },
+const footerDarkStyle = {
   block: {
     color: "inherit",
     padding: "0.9375rem",
@@ -81,7 +42,7 @@ const privacyPageStyle = {
   },
   left: {
     float: "left!important",
-    display: "block"
+    display: "block",
   },
   right: {
     padding: "15px 0",
@@ -93,7 +54,9 @@ const privacyPageStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  footer: {
+    background: grayColor[14]
   }
 };
-
-export default privacyPageStyle;
+export default footerDarkStyle;

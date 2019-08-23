@@ -28,7 +28,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
-import Footer from "components/Footer/Footer.jsx";
+import FooterDark from "components/Footer/FooterDark.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 
@@ -68,70 +68,77 @@ class PrivacyPage extends React.Component {
           <div className={classes.privacyContent}>
             <div className={classes.container}>
               <h1 className={classes.title}>Privacy Policy</h1>
-              <h4 className={classes.description}>
-                Ewelists helps new and expecting parents get the gifts they
-                need for their new arrival. Create a gift list, which you can
-                share with friends and family, for free.
-              </h4>
+
+              <div className={classes.textContent}>
+                <h3 className={classes.title}>
+                  Information gathering and usage
+                </h3>
+                <p>
+                  This is the paragraph where you can write more details about your
+                  product. Keep you user engaged by providing meaningful information.
+                  Remember that by this time, the user is curious, otherwise he wouldn
+                  {"'"}t scroll to get here. Add a button if you want the user to see
+                  more. We are here to make life better.
+                  <br />
+                  <br />
+                  And now I look and look around and there’s so many Kanyes I{"'"}ve
+                  been trying to figure out the bed design for the master bedroom at
+                  our Hidden Hills compound... and thank you for turning my personal
+                  jean jacket into a couture piece.
+                </p>
+
+                <h3 className={classes.title}>
+                  Your data
+                </h3>
+                <p>
+                  This is the paragraph where you can write more details about your
+                  product. Keep you user engaged by providing meaningful information.
+                  Remember that by this time, the user is curious, otherwise he wouldn
+                  {"'"}t scroll to get here. Add a button if you want the user to see
+                  more. We are here to make life better.
+                  <br />
+                  <br />
+                  And now I look and look around and there’s so many Kanyes I{"'"}ve
+                  been trying to figure out the bed design for the master bedroom at
+                  our Hidden Hills compound... and thank you for turning my personal
+                  jean jacket into a couture piece.
+                </p>
+
+                <h3 className={classes.title}>
+                  The Rest
+                </h3>
+                <p>
+                  We are here to make life better. And now I look and look around and
+                  there’s so many Kanyes I{"'"}ve been trying to figure out the bed
+                  design for the master bedroom at our Hidden Hills compound... and
+                  thank you for turning my personal jean jacket into a couture piece.
+                  <br />I speak yell scream directly at the old guard on behalf of the
+                  future. daytime All respect prayers and love to Phife’s family Thank
+                  you for so much inspiration.
+                </p>
+                <p>
+                  Thank you Anna for the invite thank you to the whole Vogue team And
+                  I love you like Kanye loves Kanye Pand Pand Panda I{"'"}ve been
+                  trying to figure out the bed design for the master bedroom at our
+                  Hidden Hills compound...The Pablo pop up was almost a pop up of
+                  influence. All respect prayers and love to Phife’s family Thank you
+                  for so much inspiration daytime I love this new Ferg album! The Life
+                  of Pablo is now available for purchase I have a dream. Thank you to
+                  everybody who made The Life of Pablo the number 1 album in the
+                  world! I{"'"}m so proud of the nr #1 song in the country. Panda!
+                  Good music 2016!
+                </p>
+                <p>
+                  I love this new Ferg album! The Life of Pablo is now available for
+                  purchase I have a dream. Thank you to everybody who made The Life of
+                  Pablo the number 1 album in the world! I{"'"}m so proud of the nr #1
+                  song in the country. Panda! Good music 2016!
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <Footer
-          content={
-            <div>
-              <div className={classes.left}>
-                <List className={classes.list}>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/?ref=mkpr-landing"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Creative Tim
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/presentation?ref=mkpr-landing"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      About us
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="//blog.creative-tim.com/"
-                      className={classes.block}
-                    >
-                      Blog
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/license?ref=mkpr-landing"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Licenses
-                    </a>
-                  </ListItem>
-                </List>
-              </div>
-              <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{" "}
-                <Favorite className={classes.icon} /> by{" "}
-                <a
-                  href="https://www.creative-tim.com/?ref=mkpr-landing"
-                  target="_blank"
-                >
-                  Creative Tim
-                </a>{" "}
-                for a better web.
-              </div>
-            </div>
-          }
-        />
+        <FooterDark />
       </div>
     );
   }
