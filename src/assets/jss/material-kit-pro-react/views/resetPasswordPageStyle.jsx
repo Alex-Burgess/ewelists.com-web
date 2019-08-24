@@ -15,30 +15,19 @@
 
 */
 import {
-  container,
-  description,
-  cardTitle,
   infoColor,
-  blackColor,
-  whiteColor,
   grayColor,
   dangerColor,
+  container,
+  cardTitle,
+  whiteColor,
+  blackColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const signupPageStyle = theme => ({
-  description,
-  cardTitle: {
-    ...cardTitle,
-    color: whiteColor + "  !important"
-  },
-  // container: {
-  //   ...container,
-  //   zIndex: "4",
-  //   [theme.breakpoints.down("sm")]: {
-  //     paddingBottom: "100px"
-  //   }
-  // },
+import customCheckboxRadioSwitchStyle from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.jsx";
+
+const resetPasswordPageStyle = {
   container: {
     ...container,
     zIndex: "2",
@@ -47,28 +36,17 @@ const signupPageStyle = theme => ({
     color: whiteColor
   },
   pageHeader: {
-    color: whiteColor,
-    border: "0",
-    height: "100%",
-    margin: "0",
-    // display: "flex!important",
-    display: "inherit",
-    // padding: "120px 0",
-    position: "relative",
     minHeight: "100vh",
+    height: "auto",
+    display: "inherit",
+    position: "relative",
+    margin: "0",
+    padding: "0",
+    border: "0",
     alignItems: "center",
     "&:before": {
-      // background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
       background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
     },
-    // "&:after": {
-    //   background:
-    //     "linear-gradient(60deg,rgba(" +
-    //     hexToRgb(infoColor[4]) +
-    //     ",.56),rgba(" +
-    //     hexToRgb(infoColor[5]) +
-    //     ",.95))"
-    // },
     "&:after": {
       background:
         "linear-gradient(60deg,rgba(" +
@@ -88,30 +66,62 @@ const signupPageStyle = theme => ({
       content: '""'
     }
   },
-  cardLogin: {
-    paddingBottom: "20px"
+  cardSignup: {
+    borderRadius: "6px",
+    boxShadow:
+      "0 16px 24px 2px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.14), 0 6px 30px 5px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.12), 0 8px 10px -5px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.2);",
+    marginBottom: "100px",
+    padding: "40px 0px"
   },
-  form: {
-    margin: "0"
+  cardTitle: {
+    ...cardTitle,
+    textDecoration: "none",
+    textAlign: "center !important",
+    marginBottom: "0.75rem"
   },
-  cardHeader: {
-    width: "auto",
-    textAlign: "center"
-  },
-  socialLine: {
-    marginTop: "1rem",
-    textAlign: "center",
-    padding: "0"
-  },
-  inputIconsColor: {
-    color: grayColor[13]
+  ...customCheckboxRadioSwitchStyle,
+  socials: {
+    marginTop: "0",
+    position: "absolute",
+    width: "100%",
+    transform: "none",
+    left: "0",
+    top: "0",
+    height: "100%",
+    lineHeight: "41px",
+    fontSize: "20px"
   },
   textCenter: {
     textAlign: "center"
   },
-  iconButtons: {
-    marginRight: "3px !important",
-    marginLeft: "3px !important"
+  inputAdornment: {
+    marginRight: "18px",
+    position: "relative"
+  },
+  inputAdornmentIcon: {
+    color: grayColor[13]
+  },
+  form: {
+    margin: "0"
+  },
+  infoArea: {
+    padding: "0px 10px 20px !important"
+  },
+  details: {
+    color: "#999",
+    fontSize: "12px"
+  },
+  link: {
+    textDecoration: "none",
+    "&,& *,& *:hover,& *:focus": {
+      color: infoColor[2] + "  !important"
+    }
   },
   icon: {
     width: "18px",
@@ -119,20 +129,9 @@ const signupPageStyle = theme => ({
     top: "3px",
     position: "relative"
   },
-  loginError: {
+  error: {
     color: dangerColor[1]
-  },
-  details: {
-    color: "#999",
-    paddingBottom: "10px"
-  },
-  link: {
-    fontSize: "12px",
-    textDecoration: "none",
-    "&,& *,& *:hover,& *:focus": {
-      color: infoColor[2] + "  !important"
-    }
   }
-});
+};
 
-export default signupPageStyle;
+export default resetPasswordPageStyle;

@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
 import ErrorPage from "views/ErrorPage/ErrorPage.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
+import ResetPasswordPage from "views/ResetPasswordPage/ResetPasswordPage.jsx";
 import LogoutPage from "views/LogoutPage/LogoutPage.jsx";
 import SignupPage from "views/SignupPage/SignupPage.jsx";
 import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
@@ -22,6 +23,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
+    <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
     <AuthenticatedRoute path="/create" exact component={ShoppingCartPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }

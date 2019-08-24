@@ -181,6 +181,9 @@ class LoginPage extends React.Component {
                           autoComplete: "off"
                         }}
                       />
+                      <div className={classes.details}>
+                        <a href="/login/reset" className={classes.link}>Forgot your password?</a>
+                      </div>
                       { this.state.showError
                         ? <div className={classes.loginError}>
                             <p>{this.state.error}</p>
