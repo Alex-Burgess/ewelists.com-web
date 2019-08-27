@@ -20,16 +20,12 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
-import TrendingUp from "@material-ui/icons/TrendingUp";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import Info from "components/Typography/Info.jsx";
-import Success from "components/Typography/Success.jsx";
-import Danger from "components/Typography/Danger.jsx";
 
 import bg5 from "assets/img/bg5.jpg";
 import blog5 from "assets/img/examples/blog5.jpg";
