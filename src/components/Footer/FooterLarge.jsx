@@ -117,6 +117,11 @@ function FooterLarge(props) {
               </Button>
             </li>
             <li>
+              <Button justIcon simple href="https://twitter.com/ewelists" target="_blank" color="twitter">
+                <i className="fab fa-twitter" />
+              </Button>
+            </li>
+            <li>
               <Button justIcon simple href="https://www.instagram.com/ewelists/" target="_blank" color="instagram">
                 <i className="fab fa-instagram" />
               </Button>

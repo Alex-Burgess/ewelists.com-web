@@ -109,11 +109,20 @@ function FooterTransparent(props) {
                 </li>
                 <li>
                   <Button
+                    href="https://twitter.com/ewelists"
+                    target="_blank"
+                    justIcon
+                    simple
+                  >
+                    <i className="fab fa-twitter" />
+                  </Button>
+                </li>
+                <li>
+                  <Button
                     href="https://www.instagram.com/ewelists/"
                     target="_blank"
                     justIcon
                     simple
-                    className="sm"
                   >
                     <i className="fab fa-instagram" />
                   </Button>

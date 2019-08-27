@@ -111,6 +111,17 @@ function FooterDark(props) {
                 </li>
                 <li>
                   <Button
+                    href="https://twitter.com/ewelists"
+                    target="_blank"
+                    color="twitter"
+                    justIcon
+                    simple
+                  >
+                    <i className="fab fa-twitter" />
+                  </Button>
+                </li>
+                <li>
+                  <Button
                     href="https://www.instagram.com/ewelists/"
                     target="_blank"
                     color="instagram"
