@@ -61,9 +61,6 @@ function SectionInterested({ ...props }) {
               />
             </CardHeader>
             <CardBody plain>
-              <Info>
-                <h6>ENTERPRISE</h6>
-              </Info>
               <h4 className={classes.cardTitle}>
                 <a href="#pablo">
                   Autodesk looks to future of 3D printing with Project Escher
@@ -73,7 +70,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo"> Read More </a>
+                <a href="#pablo" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>
@@ -93,9 +90,6 @@ function SectionInterested({ ...props }) {
               />
             </CardHeader>
             <CardBody plain>
-              <Success>
-                <h6>STARTUPS</h6>
-              </Success>
               <h4 className={classes.cardTitle}>
                 <a href="#pablo">
                   Lyft launching cross-platform service this week
@@ -105,7 +99,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo"> Read More </a>
+                <a href="#pablo" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>
@@ -125,11 +119,6 @@ function SectionInterested({ ...props }) {
               />
             </CardHeader>
             <CardBody plain>
-              <Danger>
-                <h6>
-                  <TrendingUp /> ENTERPRISE
-                </h6>
-              </Danger>
               <h4 className={classes.cardTitle}>
                 <a href="#pablo">
                   6 insights into the French Fashion landscape
@@ -139,7 +128,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo"> Read More </a>
+                <a href="#pablo" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>

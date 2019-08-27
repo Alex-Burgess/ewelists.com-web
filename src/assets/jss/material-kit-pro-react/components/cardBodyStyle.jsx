@@ -31,6 +31,15 @@ const cardBodyStyle = {
     maxWidth: "440px",
     margin: "0 auto"
   },
+  cardBodyListsBackground: {
+    position: "relative",
+    zIndex: "2",
+    minHeight: "280px",
+    paddingTop: "65px",
+    paddingBottom: "15px",
+    maxWidth: "440px",
+    margin: "0 auto"
+  },
   cardBodyPlain: {
     paddingLeft: "5px",
     paddingRight: "5px"

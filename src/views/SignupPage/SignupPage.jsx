@@ -274,8 +274,8 @@ class SignUpPage extends React.Component {
                           <div className={classes.terms}>
                             <span>
                               By signing up to Ewelists, you agree to the{" "}
-                              <a href="/terms" target="_blank">terms of service</a>. View
-                              our <a href="/privacy" target="_blank">privacy policy</a>.
+                              <a href="/terms" target="_blank" className={classes.link}>terms of service</a>. View
+                              our <a href="/privacy" target="_blank" className={classes.link}>privacy policy</a>.
                             </span>
                           </div>
                           <div className={classes.textCenter}>

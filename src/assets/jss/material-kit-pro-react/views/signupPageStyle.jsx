@@ -135,6 +135,13 @@ const signupPageStyle = {
   },
   signUpError: {
     color: dangerColor[1]
+  },
+  link: {
+    fontSize: "12px",
+    textDecoration: "none",
+    "&,& *,& *:hover,& *:focus": {
+      color: infoColor[2] + "  !important"
+    }
   }
 };
 

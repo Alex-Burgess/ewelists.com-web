@@ -55,16 +55,16 @@ class ListIdeasPage extends React.Component {
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 400,
+            height: 200,
             color: "info"
           }}
         />
-        <Parallax image={image} filter="info" small>
+        <Parallax filter="infoBanner" verySmall>
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
                 <h2 className={classes.title}>
-                  A Place for Entrepreneurs to Share and Discover New Stories
+                  Gift List Ideas
                 </h2>
               </GridItem>
             </GridContainer>

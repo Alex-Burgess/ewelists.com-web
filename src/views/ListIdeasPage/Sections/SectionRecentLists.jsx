@@ -39,10 +39,6 @@ function SectionPills({ ...props }) {
   const { classes } = props;
   return (
     <div className={classes.section}>
-      <h3 className={classes.title + " " + classes.textCenter}>
-        Sample our recent lists
-      </h3>
-      <br />
       <GridContainer>
         <GridItem xs={12} sm={6} md={6}>
           <Card
@@ -50,9 +46,8 @@ function SectionPills({ ...props }) {
             background
             style={{ backgroundImage: "url(" + office2 + ")" }}
           >
-            <CardBody background>
-              <h6 className={classes.category}>WORLDS</h6>
-              <a href="#pablo">
+            <CardBody listsBackground>
+              <a href="#pablo" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   The Best Productivity Apps on Market
                 </h3>
@@ -74,9 +69,8 @@ function SectionPills({ ...props }) {
             background
             style={{ backgroundImage: "url(" + blog8 + ")" }}
           >
-            <CardBody background>
-              <h6 className={classes.category}>BUSINESS</h6>
-              <a href="#pablo">
+            <CardBody listsBackground>
+              <a href="#pablo" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   Working on Wallstreet is Not So Easy
                 </h3>
@@ -98,9 +92,8 @@ function SectionPills({ ...props }) {
             background
             style={{ backgroundImage: "url(" + cardProject6 + ")" }}
           >
-            <CardBody background>
-              <h6 className={classes.category}>MARKETING</h6>
-              <a href="#pablo">
+            <CardBody listsBackground>
+              <a href="#pablo" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   0 to 100.000 Customers in 6 months
                 </h3>
@@ -113,16 +106,6 @@ function SectionPills({ ...props }) {
               <Button round href="#pablo" color="warning">
                 <FormatAlignLeft className={classes.icons} /> Read case study
               </Button>
-              <Tooltip
-                id="tooltip-pocket"
-                title="Save to Pocket"
-                placement="top"
-                classes={{ tooltip: classes.tooltip }}
-              >
-                <Button color="white" simple justIcon>
-                  <i className="fab fa-get-pocket" />
-                </Button>
-              </Tooltip>
             </CardBody>
           </Card>
         </GridItem>

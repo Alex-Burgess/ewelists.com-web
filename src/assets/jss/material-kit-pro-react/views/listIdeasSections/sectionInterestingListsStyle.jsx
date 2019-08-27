@@ -18,7 +18,8 @@ import {
   title,
   cardTitle,
   coloredShadow,
-  grayColor
+  grayColor,
+  infoColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const sectionInterestingListsStyle = {
@@ -35,6 +36,13 @@ const sectionInterestingListsStyle = {
   },
   description: {
     color: grayColor[0]
+  },
+  link: {
+    fontSize: "13px",
+    textDecoration: "none",
+    "&,& *,& *:hover,& *:focus": {
+      color: infoColor[2] + "  !important"
+    }
   }
 };
 

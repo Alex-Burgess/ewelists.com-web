@@ -88,21 +88,6 @@ const parallaxStyle = {
   },
   darkColor: {
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.2)"
-    },
-    "&:after,&:before": {
-      position: "absolute",
-      zIndex: "1",
-      width: "100%",
-      height: "100%",
-      display: "block",
-      left: "0",
-      top: "0",
-      content: "''"
-    }
-  },
-  darkColorOld: {
-    "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
     "&:after,&:before": {
@@ -116,16 +101,16 @@ const parallaxStyle = {
       content: "''"
     }
   },
-  infoColor: {
+  infoBannerColor: {
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
     "&:after": {
       background:
         "linear-gradient(60deg,rgba(" +
-        hexToRgb(infoColor[4]) +
+        hexToRgb(infoColor[1]) +
         ",.56),rgba(" +
-        hexToRgb(infoColor[5]) +
+        hexToRgb(infoColor[1]) +
         ",.95))"
     },
     "&:after,&:before": {
@@ -139,7 +124,7 @@ const parallaxStyle = {
       content: "''"
     }
   },
-  infoColorOld: {
+  infoColor: {
     "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
@@ -237,9 +222,9 @@ const parallaxStyle = {
     maxHeight: "650px"
   },
   verySmall: {
-    height: "35vh",
-    minHeight: "35vh",
-    maxHeight: "650px"
+    height: "25vh",
+    minHeight: "25vh",
+    maxHeight: "250px"
   }
 };
 

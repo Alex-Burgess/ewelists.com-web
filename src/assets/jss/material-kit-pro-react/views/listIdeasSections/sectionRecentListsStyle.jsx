@@ -58,6 +58,13 @@ const sectionRecentListsStyle = {
   },
   tabSpace: {
     padding: "20px 0 50px"
+  },
+  link: {
+    fontSize: "12px",
+    textDecoration: "none",
+    "&,& *,& *:hover,& *:focus": {
+      color: whiteColor + "  !important"
+    }
   }
 };
 
