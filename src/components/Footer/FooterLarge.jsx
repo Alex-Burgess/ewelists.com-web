@@ -97,7 +97,7 @@ function FooterLarge(props) {
       >
       <GridContainer>
         <GridItem xs={12} sm={8} md={8}>
-          <h5 id="about">About Us</h5>
+          <h4 id="about">About Us</h4>
           <p>
             Creative Tim is a startup that creates design tools that make
             the web development process faster and easier.{" "}
@@ -109,24 +109,19 @@ function FooterLarge(props) {
           </p>
         </GridItem>
         <GridItem xs={12} sm={4} md={4}>
-          <h5>Social Feed</h5>
-          <div className={classes.socialFeed}>
-            <div>
-              <i className="fab fa-twitter" />
-              <p>How to handle ethical disagreements with your clients.</p>
-            </div>
-            <div>
-              <i className="fab fa-twitter" />
-              <p>The tangible benefits of designing at 1x pixel density.</p>
-            </div>
-            <div>
-              <i className="fab fa-facebook-square" />
-              <p>
-                A collection of 25 stunning sites that you can use for
-                inspiration.
-              </p>
-            </div>
-          </div>
+          <h4>Follow Us</h4>
+          <ul className={classes.socialButtons}>
+            <li>
+              <Button justIcon simple href="https://www.facebook.com/ewelists" target="_blank" color="facebook">
+                <i className="fab fa-facebook-square" />
+              </Button>
+            </li>
+            <li>
+              <Button justIcon simple href="https://www.instagram.com/ewelists/" target="_blank" color="instagram">
+                <i className="fab fa-instagram" />
+              </Button>
+            </li>
+          </ul>
         </GridItem>
       </GridContainer>
       </Footer>

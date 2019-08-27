@@ -55,6 +55,14 @@ function FooterTransparent(props) {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a
+                    href="/"
+                    className={classes.block}
+                  >
+                    &copy; {1900 + new Date().getYear()} ewelists
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a
                     href="/contact"
                     className={classes.block}
                   >
@@ -87,8 +95,30 @@ function FooterTransparent(props) {
                 </ListItem>
               </List>
             </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} ewelists
+            <div className={classes.rightLinks}>
+              <ul>
+                <li>
+                  <Button
+                    href="https://www.facebook.com/ewelists"
+                    target="_blank"
+                    justIcon
+                    simple
+                  >
+                    <i className="fab fa-facebook" />
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    href="https://www.instagram.com/ewelists/"
+                    target="_blank"
+                    justIcon
+                    simple
+                    className="sm"
+                  >
+                    <i className="fab fa-instagram" />
+                  </Button>
+                </li>
+              </ul>
             </div>
           </div>
         }

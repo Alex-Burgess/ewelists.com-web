@@ -113,7 +113,7 @@ const buttonStyle = {
         top: "0px",
         height: "100%",
         lineHeight: "41px",
-        fontSize: "25px"
+        fontSize: "20px"
       }
     }
   },

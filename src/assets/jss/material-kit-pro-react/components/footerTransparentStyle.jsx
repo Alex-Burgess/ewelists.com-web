@@ -41,6 +41,7 @@ const footerTransparentStyle = {
     marginTop: "0"
   },
   left: {
+    paddingTop: "5px",
     float: "left!important",
     display: "block",
     "&,& *,& *:hover,& *:focus": {
@@ -59,7 +60,8 @@ const footerTransparentStyle = {
     width: "18px",
     height: "18px",
     top: "3px",
-    position: "relative"
+    position: "relative",
+    fontSize: "10px",
   },
   footer: {
     position: "absolute",
@@ -68,6 +70,23 @@ const footerTransparentStyle = {
     bottom: "0",
     color: whiteColor,
     zIndex: "2"
+  },
+  rightLinks: {
+    float: "right!important",
+    "& ul": {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+      "& li": {
+        display: "inline-block"
+      },
+      "& a": {
+        display: "block"
+      }
+    },
+    "& i": {
+      fontSize: "20px"
+    }
   }
 };
 export default footerTransparentStyle;

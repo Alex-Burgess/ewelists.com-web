@@ -48,6 +48,11 @@ const footerLargeStyle = {
     padding: "15px 0",
     margin: "0",
     float: "right"
+  },
+  socialButtons: {
+    "& li": {
+      display: "inline-block"
+    }
   }
 };
 export default footerLargeStyle;

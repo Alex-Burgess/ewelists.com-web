@@ -41,6 +41,7 @@ const footerDarkStyle = {
     marginTop: "0"
   },
   left: {
+    paddingTop: "5px",
     float: "left!important",
     display: "block",
   },
@@ -61,6 +62,24 @@ const footerDarkStyle = {
   spacer: {
     height: "4vh",
     minHeight: "20px",
-  }
+  },
+  rightLinks: {
+    fontSize: "20px",
+    float: "right!important",
+    "& ul": {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+      "& li": {
+        display: "inline-block"
+      },
+      "& a": {
+        display: "block"
+      }
+    },
+    "& i": {
+      fontSize: "15px"
+    }
+  },
 };
 export default footerDarkStyle;
