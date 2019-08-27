@@ -88,6 +88,21 @@ const parallaxStyle = {
   },
   darkColor: {
     "&:before": {
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.2)"
+    },
+    "&:after,&:before": {
+      position: "absolute",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      display: "block",
+      left: "0",
+      top: "0",
+      content: "''"
+    }
+  },
+  darkColorOld: {
+    "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
     "&:after,&:before": {
@@ -102,6 +117,29 @@ const parallaxStyle = {
     }
   },
   infoColor: {
+    "&:before": {
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
+    },
+    "&:after": {
+      background:
+        "linear-gradient(60deg,rgba(" +
+        hexToRgb(infoColor[4]) +
+        ",.56),rgba(" +
+        hexToRgb(infoColor[5]) +
+        ",.95))"
+    },
+    "&:after,&:before": {
+      position: "absolute",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      display: "block",
+      left: "0",
+      top: "0",
+      content: "''"
+    }
+  },
+  infoColorOld: {
     "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
@@ -194,6 +232,11 @@ const parallaxStyle = {
     }
   },
   small: {
+    height: "65vh",
+    minHeight: "65vh",
+    maxHeight: "650px"
+  },
+  verySmall: {
     height: "35vh",
     minHeight: "35vh",
     maxHeight: "650px"

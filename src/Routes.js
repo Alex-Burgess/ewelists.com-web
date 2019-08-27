@@ -9,6 +9,7 @@ import SignupPage from "views/SignupPage/SignupPage.jsx";
 import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
 import TermsPage from "views/TermsPage/TermsPage.jsx";
 import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
+import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 
 import AppliedRoute from "./components/Routes/AppliedRoute";
@@ -21,6 +22,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/terms" exact component={TermsPage} props={childProps} />
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
+    <AppliedRoute path="/lists" exact component={ListIdeasPage} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />

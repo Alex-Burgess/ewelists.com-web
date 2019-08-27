@@ -15,10 +15,32 @@
 
 */
 import {
-  grayColor
+  container,
+  title,
+  main,
+  whiteColor,
+  mainRaised
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const footerDarkStyle = {
+const blogPostsPageStyle = {
+  container: {
+    ...container,
+    zIndex: "2",
+    position: "relative"
+  },
+  textCenter: {
+    textAlign: "center"
+  },
+  title: {
+    ...title,
+    color: whiteColor,
+    fontSize: "2.25rem",
+    lineHeight: "1.5em"
+  },
+  main: {
+    ...main,
+    ...mainRaised
+  },
   block: {
     color: "inherit",
     padding: "0.9375rem",
@@ -42,7 +64,7 @@ const footerDarkStyle = {
   },
   left: {
     float: "left!important",
-    display: "block",
+    display: "block"
   },
   right: {
     padding: "15px 0",
@@ -54,13 +76,7 @@ const footerDarkStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
-  },
-  footer: {
-    background: grayColor[14]
-  },
-  spacer: {
-    height: "4vh",
-    minHeight: "20px",
   }
 };
-export default footerDarkStyle;
+
+export default blogPostsPageStyle;

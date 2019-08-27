@@ -47,6 +47,7 @@ function FooterDark(props) {
 
   return (
     <div>
+      <div className={classes.spacer} />
       <Footer
         className={classes.footer}
         content={
