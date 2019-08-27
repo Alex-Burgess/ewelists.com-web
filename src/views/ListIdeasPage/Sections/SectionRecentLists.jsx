@@ -47,7 +47,7 @@ function SectionPills({ ...props }) {
             style={{ backgroundImage: "url(" + office2 + ")" }}
           >
             <CardBody listsBackground>
-              <a href="#pablo" className={classes.link}>
+              <a href="/lists/nursery" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   The Best Productivity Apps on Market
                 </h3>
@@ -57,7 +57,7 @@ function SectionPills({ ...props }) {
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <Button round href="#pablo" color="danger">
+              <Button round href="/lists/nursery" color="danger">
                 <FormatAlignLeft className={classes.icons} /> Read article
               </Button>
             </CardBody>
@@ -70,7 +70,7 @@ function SectionPills({ ...props }) {
             style={{ backgroundImage: "url(" + blog8 + ")" }}
           >
             <CardBody listsBackground>
-              <a href="#pablo" className={classes.link}>
+              <a href="/lists/nursery" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   Working on Wallstreet is Not So Easy
                 </h3>
@@ -80,7 +80,7 @@ function SectionPills({ ...props }) {
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <Button round href="#pablo" color="primary">
+              <Button round href="/lists/nursery" color="primary">
                 <FormatAlignLeft className={classes.icons} /> Read article
               </Button>
             </CardBody>
@@ -93,7 +93,7 @@ function SectionPills({ ...props }) {
             style={{ backgroundImage: "url(" + cardProject6 + ")" }}
           >
             <CardBody listsBackground>
-              <a href="#pablo" className={classes.link}>
+              <a href="/lists/nursery" className={classes.link}>
                 <h3 className={classes.cardTitle}>
                   0 to 100.000 Customers in 6 months
                 </h3>
@@ -103,7 +103,7 @@ function SectionPills({ ...props }) {
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <Button round href="#pablo" color="warning">
+              <Button round href="/lists/nursery" color="warning">
                 <FormatAlignLeft className={classes.icons} /> Read case study
               </Button>
             </CardBody>

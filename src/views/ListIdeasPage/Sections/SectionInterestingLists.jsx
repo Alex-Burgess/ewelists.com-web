@@ -49,7 +49,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader image plain>
-              <a href="#pablo">
+              <a href="/lists/nursery">
                 <img src={bg5} alt="..." />
               </a>
               <div
@@ -62,7 +62,7 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="#pablo">
+                <a href="/lists/nursery">
                   Autodesk looks to future of 3D printing with Project Escher
                 </a>
               </h4>
@@ -70,7 +70,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo" className={classes.link}> Read More </a>
+                <a href="/lists/nursery" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>
@@ -78,7 +78,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader plain image>
-              <a href="#pablo">
+              <a href="/lists/nursery">
                 <img src={blog5} alt="..." />
               </a>
               <div
@@ -91,7 +91,7 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="#pablo">
+                <a href="/lists/nursery">
                   Lyft launching cross-platform service this week
                 </a>
               </h4>
@@ -99,7 +99,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo" className={classes.link}> Read More </a>
+                <a href="/lists/nursery" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>
@@ -107,7 +107,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader plain image>
-              <a href="#pablo">
+              <a href="/lists/nursery">
                 <img src={blog6} alt="..." />
               </a>
               <div
@@ -120,7 +120,7 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="#pablo">
+                <a href="/lists/nursery">
                   6 insights into the French Fashion landscape
                 </a>
               </h4>
@@ -128,7 +128,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="#pablo" className={classes.link}> Read More </a>
+                <a href="/lists/nursery" className={classes.link}> Read More </a>
               </p>
             </CardBody>
           </Card>
