@@ -99,13 +99,13 @@ function FooterLarge(props) {
         <GridItem xs={12} sm={8} md={8}>
           <h4 id="about">About Us</h4>
           <p>
-            Creative Tim is a startup that creates design tools that make
-            the web development process faster and easier.{" "}
+            Ewelists is an online gift list tool, focused on helping new and expectant parents.
+            Our goal is simple, to make creating a gift list for your little one's special occasion, such as baby shower,
+            first birthday or Christmas faster and easier.{" "}
           </p>
           <p>
-            We love the web and care deeply for how users interact with a
-            digital product. We power businesses and individuals to create
-            better looking web projects around the world.{" "}
+            We started by building the tool we would want to use, but would also love to hear your ideas.
+            If you have any suggestions please contact us!{" "}
           </p>
         </GridItem>
         <GridItem xs={12} sm={4} md={4}>
