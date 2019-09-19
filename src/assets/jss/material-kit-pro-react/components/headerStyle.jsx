@@ -222,6 +222,10 @@ const headerStyle = theme => ({
     right: "8px",
     top: "9px",
     zIndex: "1"
+  },
+  logo: {
+    height: "40px",
+    verticalAlign: "middle"
   }
 });
 
