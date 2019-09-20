@@ -35,7 +35,8 @@ const signupPageStyle = theme => ({
     ...container,
     zIndex: "4",
     [theme.breakpoints.down("sm")]: {
-      paddingBottom: "100px"
+      // paddingBottom: "100px"
+      paddingBottom: "10px"
     }
   },
   pageHeader: {
@@ -143,6 +144,9 @@ const signupPageStyle = theme => ({
     },
     "& i": {
       fontSize: "20px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
     }
   },
   icon: {
