@@ -96,6 +96,9 @@ const signupPageStyle = theme => ({
   block: {
     color: "inherit",
     padding: "0.9375rem",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.2rem 0.8rem 0.2rem 0.8rem",
+    },
     fontWeight: "500",
     fontSize: "12px",
     textTransform: "uppercase",

@@ -27,7 +27,7 @@ import {
 
 import customCheckboxRadioSwitchStyle from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.jsx";
 
-const resetPasswordPageStyle = {
+const resetPasswordPageStyle = theme => ({
   container: {
     ...container,
     zIndex: "2",
@@ -116,6 +116,9 @@ const resetPasswordPageStyle = {
   block: {
     color: "inherit",
     padding: "0.9375rem",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.2rem 0.8rem 0.2rem 0.8rem",
+    },
     fontWeight: "500",
     fontSize: "12px",
     textTransform: "uppercase",
@@ -164,6 +167,9 @@ const resetPasswordPageStyle = {
     },
     "& i": {
       fontSize: "20px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
     }
   },
   icon: {
@@ -193,6 +199,6 @@ const resetPasswordPageStyle = {
   error: {
     color: dangerColor[1]
   }
-};
+});
 
 export default resetPasswordPageStyle;

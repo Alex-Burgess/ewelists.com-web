@@ -22,7 +22,7 @@ import {
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const errorPageStyles = {
+const errorPageStyles = theme => ({
   contentCenter: {
     position: "absolute",
     top: "50%",
@@ -86,6 +86,9 @@ const errorPageStyles = {
   block: {
     color: "inherit",
     padding: "0.9375rem",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.2rem 0.8rem 0.2rem 0.8rem",
+    },
     fontWeight: "500",
     fontSize: "12px",
     textTransform: "uppercase",
@@ -134,6 +137,9 @@ const errorPageStyles = {
     },
     "& i": {
       fontSize: "20px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
     }
   },
   icon: {
@@ -150,6 +156,6 @@ const errorPageStyles = {
     color: whiteColor,
     zIndex: "2"
   },
-};
+});
 
 export default errorPageStyles;
