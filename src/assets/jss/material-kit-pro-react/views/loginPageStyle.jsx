@@ -22,7 +22,6 @@ import {
   blackColor,
   whiteColor,
   grayColor,
-  dangerColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
@@ -32,43 +31,26 @@ const signupPageStyle = theme => ({
     ...cardTitle,
     color: whiteColor + "  !important"
   },
-  // container: {
-  //   ...container,
-  //   zIndex: "4",
-  //   [theme.breakpoints.down("sm")]: {
-  //     paddingBottom: "100px"
-  //   }
-  // },
   container: {
     ...container,
-    zIndex: "2",
-    position: "relative",
-    paddingTop: "20vh",
-    color: whiteColor
+    zIndex: "4",
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: "100px"
+    }
   },
   pageHeader: {
     color: whiteColor,
     border: "0",
     height: "100%",
     margin: "0",
-    // display: "flex!important",
-    display: "inherit",
-    // padding: "120px 0",
+    display: "flex!important",
+    padding: "120px 0",
     position: "relative",
     minHeight: "100vh",
     alignItems: "center",
     "&:before": {
-      // background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
       background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
     },
-    // "&:after": {
-    //   background:
-    //     "linear-gradient(60deg,rgba(" +
-    //     hexToRgb(infoColor[4]) +
-    //     ",.56),rgba(" +
-    //     hexToRgb(infoColor[5]) +
-    //     ",.95))"
-    // },
     "&:after": {
       background:
         "linear-gradient(60deg,rgba(" +
@@ -87,9 +69,6 @@ const signupPageStyle = theme => ({
       top: "0",
       content: '""'
     }
-  },
-  cardLogin: {
-    paddingBottom: "20px"
   },
   form: {
     margin: "0"
@@ -113,21 +92,78 @@ const signupPageStyle = theme => ({
     marginRight: "3px !important",
     marginLeft: "3px !important"
   },
+  block: {
+    color: "inherit",
+    padding: "0.9375rem",
+    fontWeight: "500",
+    fontSize: "12px",
+    textTransform: "uppercase",
+    borderRadius: "3px",
+    textDecoration: "none",
+    position: "relative",
+    display: "block"
+  },
+  inlineBlock: {
+    display: "inline-block",
+    padding: "0px",
+    width: "auto"
+  },
+  list: {
+    marginBottom: "0",
+    padding: "0",
+    marginTop: "0"
+  },
+  left: {
+    float: "left!important",
+    display: "block",
+    "&,& *,& *:hover,& *:focus": {
+      color: whiteColor + "  !important"
+    }
+  },
+  right: {
+    padding: "15px 0",
+    margin: "0",
+    float: "right",
+    "&,& *,& *:hover,& *:focus": {
+      color: whiteColor + "  !important"
+    }
+  },
+  rightLinks: {
+    float: "right!important",
+    "& ul": {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+      "& li": {
+        display: "inline-block"
+      },
+      "& a": {
+        display: "block"
+      }
+    },
+    "& i": {
+      fontSize: "20px"
+    }
+  },
   icon: {
     width: "18px",
     height: "18px",
     top: "3px",
     position: "relative"
   },
-  loginError: {
-    color: dangerColor[1]
+  footer: {
+    position: "absolute",
+    width: "100%",
+    background: "transparent",
+    bottom: "0",
+    color: whiteColor,
+    zIndex: "2"
   },
-  details: {
-    color: "#999",
-    paddingBottom: "10px"
+  cardLogin: {
+    paddingBottom: "20px"
   },
   link: {
-    fontSize: "12px",
+    fontSize: "13px",
     textDecoration: "none",
     "&,& *,& *:hover,& *:focus": {
       color: infoColor[2] + "  !important"

@@ -50,7 +50,7 @@ class SectionCreate extends React.Component {
                 href="/create"
                 target="_blank"
               >
-                Create Gift List - It's Free!
+                Create Your List - It's Free!
               </Button>
             </GridItem>
             <GridItem xs={12} sm={6} md={6}>

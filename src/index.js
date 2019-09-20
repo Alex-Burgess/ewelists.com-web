@@ -7,6 +7,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Amplify from "aws-amplify";
 import config from "./config";
 
+import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
+
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,

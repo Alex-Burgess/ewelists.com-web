@@ -78,7 +78,7 @@ class ContactUsPage extends React.Component {
               <GridContainer>
                 <GridItem md={12} sm={12}>
                   <p className={classes.subHeading}>
-                    You can contact us with anything related to our Ewelists. We
+                    You can contact us with anything related to Ewelists. We
                     {"'"}ll get in touch with you as soon as possible.
                     <br />
                     <br />

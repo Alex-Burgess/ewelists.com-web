@@ -45,17 +45,8 @@ const signupPageStyle = {
     border: "0",
     alignItems: "center",
     "&:before": {
-      // background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
       background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
     },
-    // "&:after": {
-    //   background:
-    //     "linear-gradient(60deg,rgba(" +
-    //     hexToRgb(infoColor[4]) +
-    //     ",.56),rgba(" +
-    //     hexToRgb(infoColor[5]) +
-    //     ",.95))"
-    // },
     "&:after": {
       background:
         "linear-gradient(60deg,rgba(" +
@@ -122,10 +113,58 @@ const signupPageStyle = {
   infoArea: {
     padding: "0px 10px 20px !important"
   },
-  terms: {
-    color: "#999",
+  block: {
+    color: "inherit",
+    padding: "0.9375rem",
+    fontWeight: "500",
+    fontSize: "12px",
+    textTransform: "uppercase",
+    borderRadius: "3px",
+    textDecoration: "none",
+    position: "relative",
+    display: "block"
+  },
+  inlineBlock: {
+    display: "inline-block",
+    padding: "0px",
+    width: "auto"
+  },
+  list: {
+    marginBottom: "0",
+    padding: "0",
+    marginTop: "0"
+  },
+  left: {
+    float: "left!important",
+    display: "block",
+    "&,& *,& *:hover,& *:focus": {
+      color: whiteColor + "  !important"
+    }
+  },
+  right: {
     padding: "15px 0",
-    fontSize: "12px"
+    margin: "0",
+    float: "right",
+    "&,& *,& *:hover,& *:focus": {
+      color: whiteColor + "  !important"
+    }
+  },
+  rightLinks: {
+    float: "right!important",
+    "& ul": {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+      "& li": {
+        display: "inline-block"
+      },
+      "& a": {
+        display: "block"
+      }
+    },
+    "& i": {
+      fontSize: "20px"
+    }
   },
   icon: {
     width: "18px",
@@ -133,11 +172,24 @@ const signupPageStyle = {
     top: "3px",
     position: "relative"
   },
+  footer: {
+    position: "absolute",
+    width: "100%",
+    background: "transparent",
+    bottom: "0",
+    color: whiteColor,
+    zIndex: "2"
+  },
+  terms: {
+    color: "#999",
+    padding: "15px 0",
+    fontSize: "13px"
+  },
   signUpError: {
     color: dangerColor[1]
   },
   link: {
-    fontSize: "12px",
+    fontSize: "13px",
     textDecoration: "none",
     "&,& *,& *:hover,& *:focus": {
       color: infoColor[2] + "  !important"

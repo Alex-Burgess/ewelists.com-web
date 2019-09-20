@@ -36,7 +36,7 @@ const cardBodyStyle = {
     zIndex: "2",
     minHeight: "280px",
     paddingTop: "65px",
-    paddingBottom: "15px",
+    paddingBottom: "40px",
     maxWidth: "440px",
     margin: "0 auto"
   },

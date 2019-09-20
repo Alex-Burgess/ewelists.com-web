@@ -77,7 +77,9 @@ class App extends React.Component {
   setTitle() {
     var title = 'Ewelists';
 
-    if (process.env.REACT_APP_STAGE === "staging") {
+    if (process.env.REACT_APP_STAGE === "prod") {
+      title = 'Ewelists';
+    } else if (process.env.REACT_APP_STAGE === "staging") {
       title = 'Ewelists - Staging';
     } else if (process.env.REACT_APP_STAGE === 'test') {
       title = 'Ewelists - Test';
