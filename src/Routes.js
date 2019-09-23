@@ -10,7 +10,7 @@ import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
 import TermsPage from "views/TermsPage/TermsPage.jsx";
 import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
 import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
-import ListArticlePage from "views/ListArticlePage/ListArticlePage.jsx";
+import ArticlePageTravelGear from "views/ArticlePageTravelGear/ArticlePageTravelGear.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 
 import AppliedRoute from "./components/Routes/AppliedRoute";
@@ -24,7 +24,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
     <AppliedRoute path="/lists" exact component={ListIdeasPage} props={childProps} />
-    <AppliedRoute path="/lists/nursery" exact component={ListArticlePage} props={childProps} />
+    <AppliedRoute path="/lists/travelgear" exact component={ArticlePageTravelGear} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
