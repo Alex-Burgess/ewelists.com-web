@@ -31,6 +31,8 @@ import bg5 from "assets/img/bg5.jpg";
 import blog5 from "assets/img/examples/blog5.jpg";
 import blog6 from "assets/img/examples/blog6.jpg";
 
+import beach from "assets/img/article/travelgear/bg-beach.jpg";
+
 import sectionInterestingListsStyle from "assets/jss/material-kit-pro-react/views/listIdeasSections/sectionInterestingListsStyle.jsx";
 
 function SectionInterested({ ...props }) {
@@ -45,8 +47,8 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader image plain>
-              <a href="/lists/nursery">
-                <img src={bg5} alt="..." />
+              <a href="/lists/travelgear">
+                <img src={beach} className={classes.listImage} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
@@ -58,15 +60,13 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="/lists/nursery">
-                  Autodesk looks to future of 3D printing with Project Escher
+                <a href="/lists/travelgear">
+                  Travel Gear List
                 </a>
               </h4>
               <p className={classes.description}>
-                Like so many organizations these days, Autodesk is a company in
-                transition. It was until recently a traditional boxed software
-                company selling licenses.
-                <a href="/lists/nursery" className={classes.link}> Read More </a>
+                Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+                <a href="/lists/travelgear" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>
@@ -95,7 +95,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="/lists/nursery" className={classes.link}> Read More </a>
+                <a href="/lists/nursery" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>
@@ -124,7 +124,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="/lists/nursery" className={classes.link}> Read More </a>
+                <a href="/lists/nursery" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>

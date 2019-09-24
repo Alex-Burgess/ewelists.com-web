@@ -25,7 +25,7 @@ import {
   grayColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const ideasSection = {
+const ideasSection = theme => ({
   container,
   coloredShadow,
   cardTitle,
@@ -60,12 +60,30 @@ const ideasSection = {
     }
   },
   card: {
-    marginBottom: "80px"
+    marginBottom: "80px",
+    marginTop: "0px"
   },
   card4: {
     marginBottom: "60px",
     textAlign: "center"
+  },
+  listImage: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    },
+    height: "18vw",
+    maxHeight: "202.47px",
+    objectFit: "cover"
+  },
+  listImageMobile: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "230.28px",
+      objectFit: "cover",
+      display: "inline"
+    },
+    display: "none"
   }
-};
+});
 
 export default ideasSection;

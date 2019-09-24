@@ -22,7 +22,7 @@ import {
   infoColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const sectionInterestingListsStyle = {
+const sectionInterestingListsStyle = theme => ({
   title,
   cardTitle,
   coloredShadow,
@@ -43,7 +43,16 @@ const sectionInterestingListsStyle = {
     "&,& *,& *:hover,& *:focus": {
       color: infoColor[2] + "  !important"
     }
+  },
+  listImage: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "216.53px",
+    },
+    height: "17vw",
+    maxHeight: "193.19px",
+    objectFit: "cover"
   }
-};
+});
 
 export default sectionInterestingListsStyle;

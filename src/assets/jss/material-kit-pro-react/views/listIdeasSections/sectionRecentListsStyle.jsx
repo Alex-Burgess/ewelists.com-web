@@ -15,7 +15,11 @@
 
 */
 import {
+  container,
+  mlAuto,
+  mrAuto,
   title,
+  description,
   whiteColor,
   hexToRgb,
   cardTitle
@@ -23,49 +27,49 @@ import {
 
 import tooltipsStyle from "assets/jss/material-kit-pro-react/tooltipsStyle.jsx";
 
-const sectionRecentListsStyle = {
+const sectionRecentListsStyle = theme => ({
   ...tooltipsStyle,
   title,
+  container,
+  mlAuto,
+  mrAuto,
+  cardTitle,
   section: {
     backgroundPosition: "50%",
     backgroundSize: "cover",
     padding: "15px 0"
   },
-  textCenter: {
-    textAlign: "center"
-  },
-  category: {
-    color: "rgba(" + hexToRgb(whiteColor) + ", 0.7) !important",
-    marginTop: "10px"
-  },
-  cardTitle: {
-    ...cardTitle,
-    color: whiteColor + "  !important",
-    fontSize: "1.5625rem",
-    lineHeight: "1.4em",
-    textDecoration: "none"
-  },
-  icons: {
-    width: "1.1rem",
-    height: "1.1rem",
-    position: "relative",
-    display: "inline-block",
-    top: "0",
-    marginTop: "-1em",
-    marginBottom: "-1em",
-    marginRight: "4px",
-    verticalAlign: "middle"
-  },
-  tabSpace: {
-    padding: "20px 0 50px"
-  },
-  link: {
-    fontSize: "12px",
-    textDecoration: "none",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
+  cardCategory: {
+    fontSize: "0.75rem",
+    marginBottom: "0",
+    marginTop: "10px",
+    "& svg,& .fab,& .fas,& .far,& .fal,& .material-icons": {
+      position: "relative",
+      top: "8px",
+      lineHeight: "0"
     }
+  },
+  description1: {
+    ...description,
+    lineHeight: "1.313rem"
+  },
+  listImage: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    },
+    height: "18vw",
+    maxHeight: "202.47px",
+    objectFit: "cover"
+  },
+  listImageMobile: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "230.28px",
+      objectFit: "cover",
+      display: "inline"
+    },
+    display: "none"
   }
-};
+});
 
 export default sectionRecentListsStyle;
