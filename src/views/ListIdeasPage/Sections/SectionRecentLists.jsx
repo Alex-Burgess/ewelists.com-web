@@ -44,7 +44,7 @@ function SectionPills({ ...props }) {
             <GridContainer>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     <img src={beach} className={classes.listImage} alt="..." />
                   </a>
                   <div
@@ -58,17 +58,21 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={7} md={7}>
                 <Info>
-                  <h6 className={classes.cardCategory}>TRAVEL GEAR LIST</h6>
+                  <h6 className={classes.cardCategory}>
+                    <a href="/lists/travelgear">
+                      TRAVEL GEAR LIST
+                    </a>
+                  </h6>
                 </Info>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     Great items to make travelling with your little ones no fuss!
                   </a>
                 </h3>
                 <p className={classes.description1}>
                   The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly
                   moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     {" "}
                     Read More{" "}
                   </a>
@@ -76,7 +80,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     <img src={beach} className={classes.listImageMobile} alt="..." />
                   </a>
                   <div
@@ -95,11 +99,13 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Danger>
                   <h6 className={classes.cardCategory}>
-                    BIRTHING HOSPITAL BAG
+                    <a href="/lists/travelgear">
+                      BIRTHING HOSPITAL BAG
+                    </a>
                   </h6>
                 </Danger>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/hospitalbag" onClick={e => e.preventDefault()}>
+                  <a href="/lists/hospitalbag">
                     6 insights into the French Fashion landscape
                   </a>
                 </h3>
@@ -109,7 +115,7 @@ function SectionPills({ ...props }) {
                   boxed software company selling licenses. Today, it’s
                   moving to a subscription model. Yet its own business model
                   disruption is only part of the story — and…
-                  <a href="#/lists/hospitalbag" onClick={e => e.preventDefault()}>
+                  <a href="#/lists/hospitalbag">
                     {" "}
                     Read More{" "}
                   </a>
@@ -117,7 +123,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="#pablito" onClick={e => e.preventDefault()}>
+                  <a href="#pablito">
                     <img src={office2} alt="..." />
                   </a>
                   <div
@@ -135,7 +141,7 @@ function SectionPills({ ...props }) {
             <GridContainer>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     <img src={beach} className={classes.listImage} alt="..." />
                   </a>
                   <div
@@ -149,17 +155,21 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={7} md={7}>
                 <Info>
-                  <h6 className={classes.cardCategory}>TRAVEL GEAR LIST</h6>
+                  <h6 className={classes.cardCategory}>
+                    <a href="/lists/travelgear">
+                      TRAVEL GEAR LIST
+                    </a>
+                  </h6>
                 </Info>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     Great items to make travelling with your little ones no fuss!
                   </a>
                 </h3>
                 <p className={classes.description1}>
                   The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly
                   moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     {" "}
                     Read More{" "}
                   </a>
@@ -167,7 +177,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear" onClick={e => e.preventDefault()}>
+                  <a href="/lists/travelgear">
                     <img src={beach} className={classes.listImageMobile} alt="..." />
                   </a>
                   <div
@@ -186,11 +196,13 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Danger>
                   <h6 className={classes.cardCategory}>
-                    BIRTHING HOSPITAL BAG
+                    <a href="/lists/travelgear">
+                      BIRTHING HOSPITAL BAG
+                    </a>
                   </h6>
                 </Danger>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/hospitalbag" onClick={e => e.preventDefault()}>
+                  <a href="/lists/hospitalbag">
                     6 insights into the French Fashion landscape
                   </a>
                 </h3>
@@ -200,7 +212,7 @@ function SectionPills({ ...props }) {
                   boxed software company selling licenses. Today, it’s
                   moving to a subscription model. Yet its own business model
                   disruption is only part of the story — and…
-                  <a href="#/lists/hospitalbag" onClick={e => e.preventDefault()}>
+                  <a href="#/lists/hospitalbag">
                     {" "}
                     Read More{" "}
                   </a>
@@ -208,7 +220,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="#pablito" onClick={e => e.preventDefault()}>
+                  <a href="#pablito">
                     <img src={office2} alt="..." />
                   </a>
                   <div
