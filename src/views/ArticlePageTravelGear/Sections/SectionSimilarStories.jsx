@@ -31,9 +31,10 @@ import Info from "components/Typography/Info.jsx";
 import Success from "components/Typography/Success.jsx";
 import Danger from "components/Typography/Danger.jsx";
 
-import blog6 from "assets/img/examples/blog6.jpg";
 import blog8 from "assets/img/examples/blog8.jpg";
 import blog7 from "assets/img/examples/blog7.jpg";
+
+import beach from "assets/img/article/travelgear/bg-beach.jpg";
 
 import sectionSimilarStoriesStyle from "assets/jss/material-kit-pro-react/views/articleSections/sectionSimilarStoriesStyle.jsx";
 
@@ -45,39 +46,36 @@ function SectionSimilarStories({ ...props }) {
         <GridContainer>
           <GridItem md={12}>
             <h2 className={classes.title + " " + classes.textCenter}>
-              Similar Stories
+              Similar Lists
             </h2>
             <br />
             <GridContainer>
               <GridItem xs={12} sm={4} md={4}>
                 <Card blog>
                   <CardHeader image>
-                    <a href="#pablo">
-                      <img src={blog6} alt="..." />
+                    <a href="/lists/travelgear">
+                      <img src={beach} className={classes.listImage} alt="..." />
                     </a>
                     <div
                       className={classes.coloredShadow}
                       style={{
-                        backgroundImage: "url(" + blog6 + ")",
+                        backgroundImage: "url(" + beach + ")",
                         opacity: "1"
                       }}
                     />
                   </CardHeader>
                   <CardBody>
                     <Info>
-                      <h6>ENTERPRISE</h6>
+                      <h6>TRAVEL</h6>
                     </Info>
                     <h4 className={classes.cardTitle}>
-                      <a href="#pablo">
-                        Autodesk looks to future of 3D printing with Project
-                        Escher
+                      <a href="/lists/travelgear">
+                        Travel Gear List
                       </a>
                     </h4>
                     <p className={classes.description}>
-                      Like so many organizations these days, Autodesk is a
-                      company in transition. It was until recently a traditional
-                      boxed software company selling licenses.
-                      <a href="#pablo"> Read More </a>
+                      Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+                      <a href="/lists/travelgear"> Read Article </a>
                     </p>
                   </CardBody>
                 </Card>
@@ -86,7 +84,7 @@ function SectionSimilarStories({ ...props }) {
                 <Card blog>
                   <CardHeader image>
                     <a href="#pablo">
-                      <img src={blog8} alt="..." />
+                      <img src={blog8} className={classes.listImage} alt="..." />
                     </a>
                     <div
                       className={classes.coloredShadow}
@@ -109,7 +107,7 @@ function SectionSimilarStories({ ...props }) {
                       Like so many organizations these days, Autodesk is a
                       company in transition. It was until recently a traditional
                       boxed software company selling licenses.
-                      <a href="#pablo"> Read More </a>
+                      <a href="#pablo"> Read Article </a>
                     </p>
                   </CardBody>
                 </Card>
@@ -118,7 +116,7 @@ function SectionSimilarStories({ ...props }) {
                 <Card blog>
                   <CardHeader image>
                     <a href="#pablo">
-                      <img src={blog7} alt="..." />
+                      <img src={blog7} className={classes.listImage} alt="..." />
                     </a>
                     <div
                       className={classes.coloredShadow}
@@ -143,7 +141,7 @@ function SectionSimilarStories({ ...props }) {
                       Like so many organizations these days, Autodesk is a
                       company in transition. It was until recently a traditional
                       boxed software company selling licenses.
-                      <a href="#pablo"> Read More </a>
+                      <a href="#pablo"> Read Article </a>
                     </p>
                   </CardBody>
                 </Card>
