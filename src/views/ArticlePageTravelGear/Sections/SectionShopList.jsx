@@ -27,15 +27,15 @@ import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import babybjorncot from "assets/img/article/travelgear/babybjorn-travelcot.jpg";
-import babybjorncarrier from "assets/img/article/travelgear/babybjorn-carrier.jpg";
-import micralitecot from "assets/img/article/travelgear/micralite-travelcot.jpg";
-import yoyo from "assets/img/article/travelgear/babyzen-yoyo.jpg";
-import acro from "assets/img/article/travelgear/mamasandpapas-acro.jpg";
-import profold from "assets/img/article/travelgear/micralite-profold.jpg";
-import ranger from "assets/img/article/travelgear/littlelife-rangercarrier.jpg";
-import lobster from "assets/img/article/travelgear/philandteds-lobster.jpg";
-import munchkinseat from "assets/img/article/travelgear/munchkin-travelseat.jpg";
+import babybjorncot from "assets/img/articles/travelgear/babybjorn-travelcot.jpg";
+import babybjorncarrier from "assets/img/articles/travelgear/babybjorn-carrier.jpg";
+import micralitecot from "assets/img/articles/travelgear/micralite-travelcot.jpg";
+import yoyo from "assets/img/articles/travelgear/babyzen-yoyo.jpg";
+import acro from "assets/img/articles/travelgear/mamasandpapas-acro.jpg";
+import profold from "assets/img/articles/travelgear/micralite-profold.jpg";
+import ranger from "assets/img/articles/travelgear/littlelife-rangercarrier.jpg";
+import lobster from "assets/img/articles/travelgear/philandteds-lobster.jpg";
+import munchkinseat from "assets/img/articles/travelgear/munchkin-travelseat.jpg";
 
 import sectionShopListStyle from "assets/jss/material-kit-pro-react/views/articleSections/sectionShopListStyle.jsx";
 

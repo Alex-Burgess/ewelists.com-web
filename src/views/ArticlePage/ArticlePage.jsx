@@ -59,7 +59,7 @@ class ArticlePage extends React.Component {
             color: "info"
           }}
         />
-        <Parallax image={require("assets/img/bg5.jpg")} filter="dark">
+        <Parallax image={require("assets/img/articles/example/bg5.jpg")} filter="dark">
         </Parallax>
         <div className={classes.main}>
           <div className={classes.container}>

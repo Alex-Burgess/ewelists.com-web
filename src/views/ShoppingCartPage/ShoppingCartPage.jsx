@@ -45,9 +45,9 @@ import CardBody from "components/Card/CardBody.jsx";
 
 import shoppingCartStyle from "assets/jss/material-kit-pro-react/views/shoppingCartStyle.jsx";
 
-import product1 from "assets/img/product1.jpg";
-import product2 from "assets/img/product2.jpg";
-import product3 from "assets/img/product3.jpg";
+import product1 from "assets/img/ShoppingCartExample/product1.jpg";
+import product2 from "assets/img/ShoppingCartExample/product2.jpg";
+import product3 from "assets/img/ShoppingCartExample/product3.jpg";
 
 class ShoppingCartPage extends React.Component {
   componentDidMount() {
@@ -70,7 +70,7 @@ class ShoppingCartPage extends React.Component {
         />
 
         <Parallax
-          image={require("assets/img/bg2.jpg")}
+          image={require("assets/img/ShoppingCartExample/bg2.jpg")}
           filter="dark"
           small
         >

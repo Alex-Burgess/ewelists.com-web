@@ -46,8 +46,6 @@ import SectionProduct from "./Sections/SectionProduct.jsx";
 import SectionIdeas from "./Sections/SectionIdeas.jsx";
 import SectionDashboardPlaceholder from "./Sections/SectionDashboardPlaceholder.jsx";
 
-import iphone from "assets/img/iphone.png";
-
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);

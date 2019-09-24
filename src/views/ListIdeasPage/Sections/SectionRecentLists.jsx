@@ -30,7 +30,7 @@ import Danger from "components/Typography/Danger.jsx";
 
 import office2 from "assets/img/examples/office2.jpg";
 
-import beach from "assets/img/article/travelgear/bg-beach.jpg";
+import beach from "assets/img/articles/travelgear/bg-beach.jpg";
 
 import sectionPillsStyle from "assets/jss/material-kit-pro-react/views/listIdeasSections/sectionRecentListsStyle.jsx";
 

@@ -27,11 +27,10 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 
-import bg5 from "assets/img/bg5.jpg";
 import blog5 from "assets/img/examples/blog5.jpg";
 import blog6 from "assets/img/examples/blog6.jpg";
 
-import beach from "assets/img/article/travelgear/bg-beach.jpg";
+import beach from "assets/img/articles/travelgear/bg-beach.jpg";
 
 import sectionInterestingListsStyle from "assets/jss/material-kit-pro-react/views/listIdeasSections/sectionInterestingListsStyle.jsx";
 
@@ -53,7 +52,7 @@ function SectionInterested({ ...props }) {
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: "url(" + bg5 + ")",
+                  backgroundImage: "url(" + beach + ")",
                   opacity: "1"
                 }}
               />

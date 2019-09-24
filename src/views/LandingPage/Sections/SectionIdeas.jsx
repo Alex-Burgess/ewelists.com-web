@@ -31,9 +31,9 @@ import Danger from "components/Typography/Danger.jsx";
 
 import ideasStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/ideasStyle.jsx";
 
-import office2 from "assets/img/office2.jpg";
+import office2 from "assets/img/examples/office2.jpg";
 
-import beach from "assets/img/article/travelgear/bg-beach.jpg";
+import beach from "assets/img/articles/travelgear/bg-beach.jpg";
 
 class SectionIdeas extends React.Component {
   render() {
