@@ -22,7 +22,7 @@ import {
   coloredShadow
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const sectionSimilarStoriesStyle = {
+const sectionSimilarStoriesStyle = theme => ({
   container,
   title,
   cardTitle,
@@ -37,7 +37,16 @@ const sectionSimilarStoriesStyle = {
   },
   description: {
     color: grayColor[0]
+  },
+  listImage: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "211.44px",
+    },
+    height: "16vw",
+    maxHeight: "174.5px",
+    objectFit: "cover"
   }
-};
+});
 
 export default sectionSimilarStoriesStyle;

@@ -22,16 +22,21 @@ import {
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
 
-const sectionTextStyle = {
+const sectionTextStyle = theme => ({
   container,
   title: {
     ...title,
-    textAlign: "Center"
-    // color: whiteColor
+    textAlign: "Center",
+    [theme.breakpoints.down("xs")]: {
+        fontSize: "1.75rem"
+    }
   },
   subtitle: {
-    paddingBottom: "30px"
-    // color: whiteColor
+    paddingBottom: "30px",
+    [theme.breakpoints.down("xs")]: {
+        fontSize: "1.5rem",
+        textAlign: "Center"
+    }
   },
   section: {
     paddingBottom: "0",
@@ -42,13 +47,17 @@ const sectionTextStyle = {
       fontSize: "1.188rem",
       lineHeight: "1.5em",
       color: grayColor[15],
-      marginBottom: "30px"
+      marginBottom: "30px",
+      [theme.breakpoints.down("xs")]: {
+          fontSize: "1.1rem",
+          lineHeight: "1.4em"
+      }
     }
   },
   quoteText: {
     fontSize: "1.5rem !important"
   },
   ...imagesStyles
-};
+});
 
 export default sectionTextStyle;
