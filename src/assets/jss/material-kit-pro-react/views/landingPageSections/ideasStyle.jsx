@@ -67,7 +67,7 @@ const ideasSection = theme => ({
     marginBottom: "60px",
     textAlign: "center"
   },
-  listImage: {
+  leftImage: {
     [theme.breakpoints.down("xs")]: {
       display: "none"
     },
@@ -75,7 +75,7 @@ const ideasSection = theme => ({
     maxHeight: "202.47px",
     objectFit: "cover"
   },
-  listImageMobile: {
+  leftImageMobile: {
     [theme.breakpoints.down("xs")]: {
       height: "60vw",
       maxHeight: "230.28px",
@@ -83,6 +83,17 @@ const ideasSection = theme => ({
       display: "inline"
     },
     display: "none"
+  },
+  rightImage: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "230.28px",
+      objectFit: "cover",
+      display: "inline"
+    },
+    height: "18vw",
+    maxHeight: "202.47px",
+    objectFit: "cover"
   }
 });
 

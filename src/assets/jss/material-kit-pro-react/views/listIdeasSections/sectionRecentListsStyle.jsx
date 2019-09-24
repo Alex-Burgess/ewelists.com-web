@@ -51,7 +51,7 @@ const sectionRecentListsStyle = theme => ({
     ...description,
     lineHeight: "1.313rem"
   },
-  listImage: {
+  leftImage: {
     [theme.breakpoints.down("xs")]: {
       display: "none"
     },
@@ -59,7 +59,7 @@ const sectionRecentListsStyle = theme => ({
     maxHeight: "202.47px",
     objectFit: "cover"
   },
-  listImageMobile: {
+  leftImageMobile: {
     [theme.breakpoints.down("xs")]: {
       height: "60vw",
       maxHeight: "230.28px",
@@ -67,6 +67,17 @@ const sectionRecentListsStyle = theme => ({
       display: "inline"
     },
     display: "none"
+  },
+  rightImage: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "230.28px",
+      objectFit: "cover",
+      display: "inline"
+    },
+    height: "18vw",
+    maxHeight: "202.47px",
+    objectFit: "cover"
   }
 });
 

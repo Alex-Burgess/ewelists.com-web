@@ -31,9 +31,8 @@ import Danger from "components/Typography/Danger.jsx";
 
 import ideasStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/ideasStyle.jsx";
 
-import office2 from "assets/img/examples/office2.jpg";
-
 import beach from "assets/img/articles/travelgear/bg-beach.jpg";
+import hospitalbag from "assets/img/articles/hospitalbag/bg-packing.jpg";
 
 class SectionIdeas extends React.Component {
   render() {
@@ -55,7 +54,7 @@ class SectionIdeas extends React.Component {
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
                       <a href="/lists/travelgear">
-                        <img src={beach} className={classes.listImage} alt="..." />
+                        <img src={beach} className={classes.leftImage} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
@@ -70,7 +69,7 @@ class SectionIdeas extends React.Component {
                     <Info>
                       <h6 className={classes.cardCategory}>
                         <a href="/lists/travelgear">
-                          TRAVEL GEAR LIST
+                          TRAVEL GEAR
                         </a>
                       </h6>
                     </Info>
@@ -91,7 +90,7 @@ class SectionIdeas extends React.Component {
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
                       <a href="/lists/travelgear">
-                        <img src={beach} className={classes.listImageMobile} alt="..." />
+                        <img src={beach} className={classes.leftImageMobile} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
@@ -109,23 +108,20 @@ class SectionIdeas extends React.Component {
                   <GridItem xs={12} sm={7} md={7}>
                     <Danger>
                       <h6 className={classes.cardCategory}>
-                        <a href="/lists/travelgear">
-                          BIRTHING HOSPITAL BAG
+                        <a href="/lists/hospitalbag">
+                          HOSPITAL BAG
                         </a>
                       </h6>
                     </Danger>
                     <h3 className={classes.cardTitle}>
                       <a href="/lists/hospitalbag">
-                        6 insights into the French Fashion landscape
+                        Get set with everything you need for the all important hospital bag.
                       </a>
                     </h3>
                     <p className={classes.description1}>
-                      Like so many organizations these days, Autodesk is a
-                      company in transition. It was until recently a traditional
-                      boxed software company selling licenses. Today, it’s
-                      moving to a subscription model. Yet its own business model
-                      disruption is only part of the story — and…
-                      <a href="#/lists/hospitalbag">
+                    What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags
+                    many weeks out from the birth date. My top tips for what to pack in your bag...
+                      <a href="/lists/hospitalbag">
                         {" "}
                         Read More{" "}
                       </a>
@@ -133,13 +129,13 @@ class SectionIdeas extends React.Component {
                   </GridItem>
                   <GridItem xs={12} sm={5} md={5}>
                     <CardHeader image plain>
-                      <a href="#pablito">
-                        <img src={office2} alt="..." />
+                      <a href="/lists/hospitalbag">
+                        <img src={hospitalbag} className={classes.rightImage} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
                         style={{
-                          backgroundImage: `url(${office2})`,
+                          backgroundImage: `url(${hospitalbag})`,
                           opacity: "1"
                         }}
                       />

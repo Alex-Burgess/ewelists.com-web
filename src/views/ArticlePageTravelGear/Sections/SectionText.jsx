@@ -35,7 +35,7 @@ function SectionText({ ...props }) {
       <GridContainer justify="center">
         <GridItem xs={12} sm={10} md={10}>
           <h1 className={classes.title}>
-            Travel Gear List
+            Travel Gear
           </h1>
           <h2 className={classes.subtitle}>
             Our favourite gear to make travelling with your little ones no fuss!
