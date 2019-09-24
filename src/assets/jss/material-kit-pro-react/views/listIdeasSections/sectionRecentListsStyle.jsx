@@ -20,8 +20,6 @@ import {
   mrAuto,
   title,
   description,
-  whiteColor,
-  hexToRgb,
   cardTitle
 } from "assets/jss/material-kit-pro-react.jsx";
 
