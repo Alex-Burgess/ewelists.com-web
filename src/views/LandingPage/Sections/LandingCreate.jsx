@@ -29,7 +29,7 @@ import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSect
 
 import sheeptoy from "assets/img/sheep-toy1.jpg";
 
-class SectionCreate extends React.Component {
+class LandingCreate extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -65,8 +65,8 @@ class SectionCreate extends React.Component {
   }
 }
 
-SectionCreate.propTypes = {
+LandingCreate.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(createStyle)(SectionCreate);
+export default withStyles(createStyle)(LandingCreate);

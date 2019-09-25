@@ -27,7 +27,6 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 
-import blog5 from "assets/img/examples/blog5.jpg";
 import blog6 from "assets/img/examples/blog6.jpg";
 
 import beach from "assets/img/articles/travelgear/bg-beach.jpg";

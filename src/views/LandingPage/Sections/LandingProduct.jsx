@@ -31,7 +31,7 @@ import InfoArea from "components/InfoArea/InfoArea.jsx";
 
 import productStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/productStyle.jsx";
 
-class SectionProduct extends React.Component {
+class LandingProduct extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -82,8 +82,8 @@ class SectionProduct extends React.Component {
   }
 }
 
-SectionProduct.propTypes = {
+LandingProduct.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(productStyle)(SectionProduct);
+export default withStyles(productStyle)(LandingProduct);

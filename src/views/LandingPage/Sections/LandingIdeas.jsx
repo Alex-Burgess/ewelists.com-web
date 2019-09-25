@@ -34,7 +34,7 @@ import ideasStyle from "assets/jss/material-kit-pro-react/views/landingPageSecti
 import beach from "assets/img/articles/travelgear/bg-beach.jpg";
 import hospitalbag from "assets/img/articles/hospitalbag/bg-packing.jpg";
 
-class SectionIdeas extends React.Component {
+class LandingIdeas extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -151,8 +151,8 @@ class SectionIdeas extends React.Component {
   }
 }
 
-SectionIdeas.propTypes = {
+LandingIdeas.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(ideasStyle)(SectionIdeas);
+export default withStyles(ideasStyle)(LandingIdeas);

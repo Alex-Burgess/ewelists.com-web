@@ -41,10 +41,11 @@ import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
 
 // Sections for this page
-import SectionCreate from "./Sections/SectionCreate.jsx";
-import SectionProduct from "./Sections/SectionProduct.jsx";
-import SectionIdeas from "./Sections/SectionIdeas.jsx";
-import SectionDashboardPlaceholder from "./Sections/SectionDashboardPlaceholder.jsx";
+import LandingCreate from "./Sections/LandingCreate.jsx";
+import LandingProduct from "./Sections/LandingProduct.jsx";
+import LandingIdeas from "./Sections/LandingIdeas.jsx";
+import DashboardLists from "./Sections/DashboardLists.jsx";
+import DashboardInvited from "./Sections/DashboardInvited.jsx";
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -76,7 +77,8 @@ class LandingPage extends React.Component {
           {...rest}
         />
         <div className={classes.main}>
-          <SectionDashboardPlaceholder />
+          <DashboardLists />
+          <DashboardInvited />
         </div>
       </div>
     );
@@ -94,9 +96,9 @@ class LandingPage extends React.Component {
           {...rest}
         />
         <div className={classes.main}>
-          <SectionCreate />
-          <SectionProduct />
-          <SectionIdeas />
+          <LandingCreate />
+          <LandingProduct />
+          <LandingIdeas />
         </div>
         <FooterLarge />
       </div>
