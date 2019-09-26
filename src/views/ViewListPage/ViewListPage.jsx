@@ -54,11 +54,11 @@ class ArticlePage extends React.Component {
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 300,
+            height: 200,
             color: "info"
           }}
         />
-        <Parallax image={require("assets/img/articles/travelgear/bg-beach.jpg")} filter="dark" className={classes.articleBg}>
+        <Parallax image={require("assets/img/examples/oscar-christmas.jpg")} filter="dark" className={classes.articleBg}>
         </Parallax>
         <div className={classes.main}>
           <div className={classes.container}>

@@ -56,7 +56,7 @@ const styles = theme => ({
   },
   section: {
     ...section,
-    padding: "70px 0px"
+    padding: "20px 0px"
   },
   priceContainer: {
     display: "inline-flex"
@@ -84,7 +84,10 @@ const styles = theme => ({
   },
   cardBodyRefine: {
     paddingLeft: "15px",
-    paddingRight: "15px"
+    paddingRight: "15px",
+    // [theme.breakpoints.down("xs")]: {
+    //   display: "none"
+    // }
   },
   textLeft: {
     textAlign: "left"

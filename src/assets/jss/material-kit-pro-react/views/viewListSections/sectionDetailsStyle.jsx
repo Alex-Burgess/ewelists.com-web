@@ -17,7 +17,8 @@
 import {
   grayColor,
   container,
-  title
+  title,
+  primaryColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
@@ -26,21 +27,19 @@ const sectionDetailsStyle = theme => ({
   container,
   title: {
     ...title,
-    textAlign: "Center",
+    textAlign: "Left",
     [theme.breakpoints.down("xs")]: {
+        textAlign: "Center",
         fontSize: "1.75rem"
-    }
+    },
+    marginBottom: "10px"
   },
-  subtitle: {
-    paddingBottom: "30px",
-    [theme.breakpoints.down("xs")]: {
-        fontSize: "1.5rem",
-        textAlign: "Center"
-    }
+  description: {
+    paddingBottom: "0px",
   },
   section: {
-    paddingBottom: "0",
-    paddingTop: "20px",
+    paddingBottom: "40",
+    paddingTop: "0px",
     backgroundPosition: "50%",
     backgroundSize: "cover",
     "& p": {
@@ -56,6 +55,19 @@ const sectionDetailsStyle = theme => ({
   },
   quoteText: {
     fontSize: "1.5rem !important"
+  },
+  date: {
+    paddingBottom: "20px",
+    paddingTop: "0px",
+    "& svg": {
+      position: "relative",
+      top: "8px"
+    },
+    fontSize: "16px",
+    color: grayColor[22],
+    [theme.breakpoints.down("xs")]: {
+        textAlign: "Center"
+    },
   },
   ...imagesStyles
 });

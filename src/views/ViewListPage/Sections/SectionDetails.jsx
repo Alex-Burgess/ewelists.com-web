@@ -22,9 +22,10 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
+import Today from "@material-ui/icons/Today";
+// core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-// core components
 
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/viewListSections/sectionDetailsStyle.jsx";
 
@@ -33,17 +34,17 @@ function SectionDetails({ ...props }) {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={10} md={10}>
+        <GridItem xs={12} sm={11} md={11}>
           <h1 className={classes.title}>
-            Birthday List
+            Oscar's Birthday List
           </h1>
-          <h3 className={classes.subtitle}>
+          <h5 className={classes.date}>
+            <Today /> Date: 31/10/2019
+          </h5>
+          <p className={classes.description}>
             Oscar's second birthday is coming up, so we've put a list together of a few things that he needs.
             He's growing out of quite a bit of his everyday clothing, so need to some basics for him to wear at nursery.
             He is also really enjoying some more educational toys, like duplo bricks as well as trains.
-          </h3>
-          <p>
-            Date: 31st October 2019
           </p>
         </GridItem>
       </GridContainer>

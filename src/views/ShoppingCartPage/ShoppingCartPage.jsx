@@ -64,7 +64,7 @@ class ShoppingCartPage extends React.Component {
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 300,
+            height: 200,
             color: "info"
           }}
         />
