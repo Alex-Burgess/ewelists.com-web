@@ -15,28 +15,36 @@
 
 */
 import {
-  grayColor,
-  title,
   section,
   container,
   cardTitle,
+  mlAuto,
+  mrAuto,
+  grayColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const SectionShopListStyle = theme => ({
-  title: {
-    ...title,
-    textAlign: "Center"
-    // color: whiteColor
+import customCheckboxRadioSwitch from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.jsx";
+
+import tooltipsStyle from "assets/jss/material-kit-pro-react/tooltipsStyle.jsx";
+
+const styles = theme => ({
+  ...customCheckboxRadioSwitch,
+  ...tooltipsStyle,
+  checkRoot: {
+    padding: "14px",
+    "&:hover": {
+      backgroundColor: "unset"
+    }
+  },
+  mlAuto,
+  mrAuto,
+  cardTitle: {
+    ...cardTitle,
+    textAlign: "center",
+    marginBottom: "0px !important"
   },
   container: {
     ...container
-  },
-  section: {
-    ...section,
-    paddingTop: "0",
-    paddingBottom: "0",
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
   },
   description: {
     color: grayColor[0],
@@ -46,29 +54,48 @@ const SectionShopListStyle = theme => ({
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
   },
-  cardTitle: {
-    ...cardTitle,
-    textAlign: "center",
-    marginBottom: "0px !important"
-  },
-  cardDescription: {
-    color: grayColor[0],
-    textAlign: "center"
+  section: {
+    ...section,
+    padding: "70px 0px"
   },
   priceContainer: {
     display: "inline-flex"
   },
   price: {
-    fontSize: "18px",
+    fontSize: "16px",
     color: grayColor[22]
+  },
+  pullRight: {
+    float: "right"
+  },
+  justifyContentBetween: {
+    WebkitBoxPack: "justify!important",
+    justifyContent: "space-between !important"
+  },
+  customExpandPanel: {
+    maxHeight: "273px",
+    overflowY: "scroll",
+    "&  label": {
+      display: "block"
+    }
+  },
+  refineButton: {
+    margin: "-3px 0"
+  },
+  cardBodyRefine: {
+    paddingLeft: "15px",
+    paddingRight: "15px"
+  },
+  textLeft: {
+    textAlign: "left"
   },
   productImage: {
     [theme.breakpoints.down("xs")]: {
       height: "82vw",
-      maxHeight: "308px",
+      maxHeight: "276.59px",
     },
     height: "18vw",
-    maxHeight: "268px",
+    maxHeight: "180.05px",
     objectFit: "contain",
   },
   productDetails: {
@@ -76,4 +103,4 @@ const SectionShopListStyle = theme => ({
   }
 });
 
-export default SectionShopListStyle;
+export default styles;

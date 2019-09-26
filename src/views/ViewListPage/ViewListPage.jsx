@@ -27,17 +27,17 @@ import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import FooterLarge from "components/Footer/FooterLarge.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 // sections for this page
-import SectionText from "./Sections/SectionText.jsx";
-import SectionShopList from "./Sections/SectionShopList.jsx";
+import SectionDetails from "./Sections/SectionDetails.jsx";
+import SectionList from "./Sections/SectionList.jsx";
 
-import articlePageStyle from "assets/jss/material-kit-pro-react/views/articlePageStyle.jsx";
+import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewListPageStyle.jsx";
 
 class ArticlePage extends React.Component {
   componentDidMount() {
@@ -50,7 +50,7 @@ class ArticlePage extends React.Component {
       <div>
         <Header
           brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="info" />}
+          links={<HeaderLinksAuth dropdownHoverColor="info" />}
           fixed
           color="transparent"
           changeColorOnScroll={{
@@ -62,9 +62,11 @@ class ArticlePage extends React.Component {
         </Parallax>
         <div className={classes.main}>
           <div className={classes.container}>
-            <SectionText />
-            <SectionShopList />
+            <SectionDetails />
+            <SectionList />
           </div>
+        </div>
+        <div className={classes.spacer}>
         </div>
         <FooterLarge />
       </div>

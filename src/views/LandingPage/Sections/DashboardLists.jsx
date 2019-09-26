@@ -77,12 +77,16 @@ class SectionLists extends React.Component {
                       profile
                       className={classes.justifyContentCenter}
                     >
-                      <Button round justIcon color="info">
-                        <Subject />
-                      </Button>
-                      <Button round justIcon color="success">
-                        <Icon>mode_edit</Icon>
-                      </Button>
+                      <a href="/lists/viewexample">
+                        <Button round justIcon color="info">
+                          <Subject />
+                        </Button>
+                      </a>
+                      <a href="/lists/viewexample">
+                        <Button round justIcon color="success">
+                          <Icon>mode_edit</Icon>
+                        </Button>
+                      </a>
                     </CardFooter>
                   </Card>
                 </GridItem>
@@ -114,12 +118,16 @@ class SectionLists extends React.Component {
                       profile
                       className={classes.justifyContentCenter}
                     >
-                      <Button round justIcon color="info">
-                        <Subject />
-                      </Button>
-                      <Button round justIcon color="success">
-                        <Icon>mode_edit</Icon>
-                      </Button>
+                      <a href="/lists/viewexample">
+                        <Button round justIcon color="info">
+                          <Subject />
+                        </Button>
+                      </a>
+                      <a href="/lists/viewexample">
+                        <Button round justIcon color="success">
+                          <Icon>mode_edit</Icon>
+                        </Button>
+                      </a>
                     </CardFooter>
                   </Card>
                 </GridItem>

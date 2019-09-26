@@ -26,6 +26,7 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
+import CardFooter from "components/Card/CardFooter.jsx";
 
 import babybjorncot from "assets/img/articles/travelgear/babybjorn-travelcot.jpg";
 import babybjorncarrier from "assets/img/articles/travelgear/babybjorn-carrier.jpg";
@@ -55,17 +56,19 @@ function SectionShopList({ ...props }) {
                     <img src={babybjorncot} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B01H24LM58">
                     <h4 className={classes.cardTitle}>BABYBJ&#0214;RN</h4>
                   </a>
                   <p className={classes.description}>
-                    Travel Cot Easy Go, Anthracite, with transport bag
+                    Travel Cot Easy Go, Anthracite, with transport bag.
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £219.99</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -75,17 +78,19 @@ function SectionShopList({ ...props }) {
                     <img src={micralitecot} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B07PN49Q4S">
                     <h4 className={classes.cardTitle}>Micralite</h4>
                   </a>
                   <p className={classes.description}>
-                    Travel Cot 3 in 1 Sleep & Go Portable Travel Cot - Carbon/Grey.
+                    Travel Cot 3 in 1 Sleep & Go - Carbon/Grey.
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £175</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -95,17 +100,19 @@ function SectionShopList({ ...props }) {
                     <img src={yoyo} className={classes.productImage}  alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291">
                     <h4 className={classes.cardTitle}>BABYZEN</h4>
                   </a>
                   <p className={classes.description}>
                     YOYO+ Puschair, Black with Aqua
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £389</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -115,17 +122,19 @@ function SectionShopList({ ...props }) {
                     <img src={acro} className={classes.productImage}  alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B07FBYHY7L">
                     <h4 className={classes.cardTitle}>Mamas & Papas</h4>
                   </a>
                   <p className={classes.description}>
                     Acro Compact Buggy, Black
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £189</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -135,17 +144,19 @@ function SectionShopList({ ...props }) {
                     <img src={profold} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B07PM6ZD1C">
                     <h4 className={classes.cardTitle}>Micralite</h4>
                   </a>
                   <p className={classes.description}>
                     ProFold Compact Stroller - Carbon
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £175</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -155,17 +166,19 @@ function SectionShopList({ ...props }) {
                     <img src={babybjorncarrier} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B07937WXKD">
                     <h4 className={classes.cardTitle}>BABYBJ&#0214;RN</h4>
                   </a>
                   <p className={classes.description}>
-                    Baby Carrier One Air, 3D Mesh, Navy Blue
+                    Baby Carrier One Air, 3D Mesh, Navy Blue.
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £159.99</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -175,17 +188,19 @@ function SectionShopList({ ...props }) {
                     <img src={ranger} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B0792Y5L7K">
                     <h4 className={classes.cardTitle}>LittleLife</h4>
                   </a>
                   <p className={classes.description}>
                     Ranger S2 Child Carrier
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £99.99</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -195,17 +210,19 @@ function SectionShopList({ ...props }) {
                     <img src={lobster} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B0019AC8GE">
                     <h4 className={classes.cardTitle}>Phil and Teds</h4>
                   </a>
                   <p className={classes.description}>
                     Lobster Highchair - Red
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £69.95</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
             <GridItem md={4} sm={4}>
@@ -215,17 +232,19 @@ function SectionShopList({ ...props }) {
                     <img src={munchkinseat} className={classes.productImage} alt=".." />
                   </a>
                 </CardHeader>
-                <CardBody plain>
+                <CardBody plain className={classes.productDetails}>
                   <a href="https://www.amazon.co.uk/dp/B01M6XGKV1">
                     <h4 className={classes.cardTitle}>Munchkin</h4>
                   </a>
                   <p className={classes.description}>
                     Portable Travel Child Booster Seat - Blue/Grey
                   </p>
+                </CardBody>
+                <CardFooter plain className={classes.justifyContentBetween}>
                   <div className={classes.priceContainer}>
                     <span className={classes.price}> £20.90</span>
                   </div>
-                </CardBody>
+                </CardFooter>
               </Card>
             </GridItem>
           </GridContainer>
