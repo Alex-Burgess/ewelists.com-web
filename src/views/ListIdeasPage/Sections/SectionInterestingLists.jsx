@@ -46,7 +46,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader image plain>
-              <a href="/lists/travelgear">
+              <a href="/listideas/travelgear">
                 <img src={beach} className={classes.listImage} alt="..." />
               </a>
               <div
@@ -59,13 +59,13 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="/lists/travelgear">
+                <a href="/listideas/travelgear">
                   Travel Gear
                 </a>
               </h4>
               <p className={classes.description}>
                 Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
-                <a href="/lists/travelgear" className={classes.link}> Read Article </a>
+                <a href="/listideas/travelgear" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>
@@ -73,7 +73,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader plain image>
-              <a href="/lists/hospitalbag">
+              <a href="/listideas/hospitalbag">
                 <img src={hospitalbag} alt="..." />
               </a>
               <div
@@ -86,13 +86,13 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="/lists/hospitalbag">
+                <a href="/listideas/hospitalbag">
                   Hospital Bag
                 </a>
               </h4>
               <p className={classes.description}>
                 Make sure you're all set with everything you need for the all important hospital bag.
-                <a href="/lists/hospitalbag" className={classes.link}> Read Article </a>
+                <a href="/listideas/hospitalbag" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>
@@ -100,7 +100,7 @@ function SectionInterested({ ...props }) {
         <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
           <Card plain blog>
             <CardHeader plain image>
-              <a href="/lists/nursery">
+              <a href="/listideas/nursery">
                 <img src={blog6} alt="..." />
               </a>
               <div
@@ -113,7 +113,7 @@ function SectionInterested({ ...props }) {
             </CardHeader>
             <CardBody plain>
               <h4 className={classes.cardTitle}>
-                <a href="/lists/nursery">
+                <a href="/listideas/nursery">
                   6 insights into the French Fashion landscape
                 </a>
               </h4>
@@ -121,7 +121,7 @@ function SectionInterested({ ...props }) {
                 Like so many organizations these days, Autodesk is a company in
                 transition. It was until recently a traditional boxed software
                 company selling licenses.
-                <a href="/lists/nursery" className={classes.link}> Read Article </a>
+                <a href="/listideas/nursery" className={classes.link}> Read Article </a>
               </p>
             </CardBody>
           </Card>

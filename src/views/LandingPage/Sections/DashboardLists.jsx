@@ -52,7 +52,7 @@ class SectionLists extends React.Component {
                 <GridItem xs={12} sm={4} md={4}>
                   <Card profile>
                     <CardHeader image>
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
+                      <a href="/lists/viewexample">
                         <img src={oscar1} className={classes.listImage} alt="..." />
                       </a>
                       <div
@@ -65,7 +65,9 @@ class SectionLists extends React.Component {
                     </CardHeader>
                     <CardBody>
                       <Info>
-                        <h6 className={classes.cardCategory}>Oscar's Birthday</h6>
+                        <a href="/lists/viewexample">
+                          <h6 className={classes.cardCategory}>Oscar's Birthday</h6>
+                        </a>
                       </Info>
                       <p className={classes.cardDescription}>
                         Oscar's second birthday wish list.
@@ -87,7 +89,7 @@ class SectionLists extends React.Component {
                 <GridItem xs={12} sm={4} md={4}>
                   <Card profile>
                     <CardHeader image>
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
+                      <a href="/lists/viewexample">
                         <img src={oscar2} className={classes.listImage} alt="..." />
                       </a>
                       <div
@@ -100,7 +102,9 @@ class SectionLists extends React.Component {
                     </CardHeader>
                     <CardBody>
                       <Info>
-                        <h6 className={classes.cardCategory}>Oscar's Christmas</h6>
+                        <a href="/lists/viewexample">
+                          <h6 className={classes.cardCategory}>Oscar's Christmas</h6>
+                        </a>
                       </Info>
                       <p className={classes.cardDescription}>
                         Oscar's second Christmas wish list.

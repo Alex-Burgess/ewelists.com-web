@@ -53,7 +53,7 @@ function SectionSimilarStories({ ...props }) {
               <GridItem xs={12} sm={4} md={4}>
                 <Card blog>
                   <CardHeader image>
-                    <a href="/lists/travelgear">
+                    <a href="/listideas/travelgear">
                       <img src={beach} className={classes.listImage} alt="..." />
                     </a>
                     <div
@@ -69,13 +69,13 @@ function SectionSimilarStories({ ...props }) {
                       <h6>TRAVEL</h6>
                     </Info>
                     <h4 className={classes.cardTitle}>
-                      <a href="/lists/travelgear">
+                      <a href="/listideas/travelgear">
                         Travel Gear
                       </a>
                     </h4>
                     <p className={classes.description}>
                       Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
-                      <a href="/lists/travelgear"> Read Article </a>
+                      <a href="/listideas/travelgear"> Read Article </a>
                     </p>
                   </CardBody>
                 </Card>
@@ -83,7 +83,7 @@ function SectionSimilarStories({ ...props }) {
               <GridItem xs={12} sm={4} md={4}>
                 <Card blog>
                   <CardHeader image>
-                    <a href="/lists/hospitalbag">
+                    <a href="/listideas/hospitalbag">
                       <img src={hospitalbag} className={classes.listImage} alt="..." />
                     </a>
                     <div
@@ -99,13 +99,13 @@ function SectionSimilarStories({ ...props }) {
                       <h6>MATERNITY</h6>
                     </Success>
                     <h4 className={classes.cardTitle}>
-                      <a href="/lists/hospitalbag">
+                      <a href="/listideas/hospitalbag">
                         Hospital Bag
                       </a>
                     </h4>
                     <p className={classes.description}>
                       Make sure you're all set with everything you need for the all important hospital bag.
-                      <a href="/lists/hospitalbag"> Read Article </a>
+                      <a href="/listideas/hospitalbag"> Read Article </a>
                     </p>
                   </CardBody>
                 </Card>

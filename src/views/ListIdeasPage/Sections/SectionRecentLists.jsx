@@ -45,7 +45,7 @@ function SectionPills({ ...props }) {
             <GridContainer>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     <img src={beach} className={classes.leftImage} alt="..." />
                   </a>
                   <div
@@ -60,20 +60,20 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Info>
                   <h6 className={classes.cardCategory}>
-                    <a href="/lists/travelgear">
+                    <a href="/listideas/travelgear">
                       TRAVEL GEAR
                     </a>
                   </h6>
                 </Info>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     Great items to make travelling with your little ones no fuss!
                   </a>
                 </h3>
                 <p className={classes.description1}>
                   The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly
                   moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     {" "}
                     Read More{" "}
                   </a>
@@ -81,7 +81,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     <img src={beach} className={classes.leftImageMobile} alt="..." />
                   </a>
                   <div
@@ -100,20 +100,20 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Danger>
                   <h6 className={classes.cardCategory}>
-                    <a href="/lists/hospitalbag">
+                    <a href="/listideas/hospitalbag">
                       HOSPITAL BAG
                     </a>
                   </h6>
                 </Danger>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     Get set with everything you need for the all important hospital bag.
                   </a>
                 </h3>
                 <p className={classes.description1}>
                 What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags
                 many weeks out from the birth date. My top tips for what to pack in your bag...
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     {" "}
                     Read More{" "}
                   </a>
@@ -121,7 +121,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     <img src={hospitalbag} className={classes.rightImage} alt="..." />
                   </a>
                   <div
@@ -139,7 +139,7 @@ function SectionPills({ ...props }) {
             <GridContainer>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     <img src={beach} className={classes.leftImage} alt="..." />
                   </a>
                   <div
@@ -154,20 +154,20 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Info>
                   <h6 className={classes.cardCategory}>
-                    <a href="/lists/travelgear">
+                    <a href="/listideas/travelgear">
                       TRAVEL GEAR
                     </a>
                   </h6>
                 </Info>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     Great items to make travelling with your little ones no fuss!
                   </a>
                 </h3>
                 <p className={classes.description1}>
                   The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly
                   moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     {" "}
                     Read More{" "}
                   </a>
@@ -175,7 +175,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/travelgear">
+                  <a href="/listideas/travelgear">
                     <img src={beach} className={classes.leftImageMobile} alt="..." />
                   </a>
                   <div
@@ -194,13 +194,13 @@ function SectionPills({ ...props }) {
               <GridItem xs={12} sm={7} md={7}>
                 <Danger>
                   <h6 className={classes.cardCategory}>
-                    <a href="/lists/travelgear">
+                    <a href="/listideas/travelgear">
                       BIRTHING HOSPITAL BAG
                     </a>
                   </h6>
                 </Danger>
                 <h3 className={classes.cardTitle}>
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     6 insights into the French Fashion landscape
                   </a>
                 </h3>
@@ -210,7 +210,7 @@ function SectionPills({ ...props }) {
                   boxed software company selling licenses. Today, it’s
                   moving to a subscription model. Yet its own business model
                   disruption is only part of the story — and…
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     {" "}
                     Read More{" "}
                   </a>
@@ -218,7 +218,7 @@ function SectionPills({ ...props }) {
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
                 <CardHeader image plain>
-                  <a href="/lists/hospitalbag">
+                  <a href="/listideas/hospitalbag">
                     <img src={office2} className={classes.rightImage} alt="..." />
                   </a>
                   <div

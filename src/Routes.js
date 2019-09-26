@@ -12,6 +12,7 @@ import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
 import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
 import ArticlePageTravelGear from "views/ArticlePageTravelGear/ArticlePageTravelGear.jsx";
 import ArticlePageHospitalBag from "views/ArticlePageHospitalBag/ArticlePageHospitalBag.jsx";
+import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 
 import AppliedRoute from "./components/Routes/AppliedRoute";
@@ -24,13 +25,14 @@ export default ({childProps}) =>
     <AppliedRoute path="/terms" exact component={TermsPage} props={childProps} />
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
-    <AppliedRoute path="/lists" exact component={ListIdeasPage} props={childProps} />
-    <AppliedRoute path="/lists/travelgear" exact component={ArticlePageTravelGear} props={childProps} />
-    <AppliedRoute path="/lists/hospitalbag" exact component={ArticlePageHospitalBag} props={childProps} />
+    <AppliedRoute path="/listideas" exact component={ListIdeasPage} props={childProps} />
+    <AppliedRoute path="/listideas/travelgear" exact component={ArticlePageTravelGear} props={childProps} />
+    <AppliedRoute path="/listideas/hospitalbag" exact component={ArticlePageHospitalBag} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
+    <AuthenticatedRoute path="/lists/viewexample" exact component={ViewListPage} props={childProps} />
     <AuthenticatedRoute path="/create" exact component={ShoppingCartPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={ErrorPage} />
