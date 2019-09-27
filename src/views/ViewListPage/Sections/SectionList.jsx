@@ -395,9 +395,14 @@ class SectionProducts extends React.Component {
                         Travel Cot Easy Go, Anthracite, with transport bag.
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £219.99</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="default" size="" className={classes.reserveButton} disabled="true">
+                          Reserved
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -417,9 +422,14 @@ class SectionProducts extends React.Component {
                         Travel Cot 3 in 1 Sleep & Go - Carbon/Grey.
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £175</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -439,9 +449,14 @@ class SectionProducts extends React.Component {
                         YOYO+ Puschair, Black with Aqua
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £389</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -461,9 +476,14 @@ class SectionProducts extends React.Component {
                         Acro Compact Buggy, Black
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £189</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -483,9 +503,14 @@ class SectionProducts extends React.Component {
                         ProFold Compact Stroller - Carbon
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £175</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -505,9 +530,14 @@ class SectionProducts extends React.Component {
                         Baby Carrier One Air, 3D Mesh, Navy Blue.
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £159.99</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -527,9 +557,14 @@ class SectionProducts extends React.Component {
                         Ranger S2 Child Carrier
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £99.99</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -549,9 +584,14 @@ class SectionProducts extends React.Component {
                         Lobster Highchair - Red
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £69.95</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>
@@ -571,9 +611,14 @@ class SectionProducts extends React.Component {
                         Portable Travel Child Booster Seat - Blue/Grey
                       </p>
                     </CardBody>
-                    <CardFooter plain className={classes.justifyContentBetween}>
-                      <div className={classes.priceContainer}>
+                    <CardFooter plain className={classes.footer}>
+                      <div>
                         <span className={classes.price}> £20.90</span>
+                      </div>
+                      <div className={classes.textCenter}>
+                        <Button default color="primary" size="" className={classes.reserveButton}>
+                          Reserve Gift
+                        </Button>
                       </div>
                     </CardFooter>
                   </Card>

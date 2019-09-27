@@ -41,7 +41,10 @@ const styles = theme => ({
   cardTitle: {
     ...cardTitle,
     textAlign: "center",
-    marginBottom: "0px !important"
+    marginBottom: "0px !important",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+    }
   },
   container: {
     ...container
@@ -115,6 +118,25 @@ const styles = theme => ({
   filterCard: {
     marginBottom: "0px",
     marginTop: "0px"
+  },
+  footer: {
+    display: "block"
+  },
+  textCenter: {
+    textAlign: "center"
+  },
+  reserveButton: {
+    minWidth: "192px",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      minWidth: "123px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      minWidth: "285px",
+      width: "100%",
+      marginBottom: "30px"
+    }
   }
 });
 
