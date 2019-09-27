@@ -85,9 +85,6 @@ const styles = theme => ({
   cardBodyRefine: {
     paddingLeft: "15px",
     paddingRight: "15px",
-    // [theme.breakpoints.down("xs")]: {
-    //   display: "none"
-    // }
   },
   textLeft: {
     textAlign: "left"
@@ -103,6 +100,21 @@ const styles = theme => ({
   },
   productDetails: {
     height: "110px",
+  },
+  filterButtonContainer: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  },
+  filterButton: {
+    width: "280px"
+  },
+  filterCard: {
+    marginBottom: "0px",
+    marginTop: "0px"
   }
 });
 

@@ -54,7 +54,34 @@ class SectionProducts extends React.Component {
   state = {
     checked: [],
     selectedEnabled: "a",
+    showFilter: false,
+    width: window.innerWidth,
+    height: window.innerHeight,
   };
+
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  };
+  componentWillMount() {
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
 
   handleChangeEnabled = event => {
     this.setState({ selectedEnabled: event.target.value });
@@ -76,6 +103,19 @@ class SectionProducts extends React.Component {
     });
   }
 
+  toggleFilter = () => {
+    const { showFilter } = this.state;
+    var newValue;
+
+    if (showFilter === false){
+      newValue = true;
+    } else {
+      newValue = false;
+    }
+
+    this.setState({ showFilter: newValue });
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -83,247 +123,262 @@ class SectionProducts extends React.Component {
       <div className={classes.section}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem md={3} sm={3}>
-              <Card plain>
+            <GridItem md={3} sm={4}>
+              <Card plain className={classes.filterCard}>
                 <CardBody className={classes.cardBodyRefine}>
-                  <h4 className={classes.cardTitle + " " + classes.textLeft}>
-                    Filter
-                    <Tooltip
-                      id="tooltip-top"
-                      title="Reset Filter"
-                      placement="top"
-                      classes={{ tooltip: classes.tooltip }}
-                    >
-                      <Button
-                        link
-                        justIcon
-                        size="sm"
-                        className={
-                          classes.pullRight + " " + classes.refineButton
-                        }
-                      >
-                        <Cached />
-                      </Button>
-                    </Tooltip>
-                    <Clearfix />
-                  </h4>
-                  <Accordion
-                    active={[0, 1]}
-                    activeColor="rose"
-                    collapses={[
+                  <div className={classes.textCenter} className={classes.filterButtonContainer}>
+                    <Button default color="default" onClick={this.toggleFilter} className={classes.filterButton}>
                       {
-                        title: "Availability",
-                        content: (
-                          <div className={classes.customExpandPanel}>
-                            <div
-                              className={
-                                classes.checkboxAndRadio +
-                                " " +
-                                classes.checkboxAndRadioHorizontal
-                              }
-                            >
-                              <FormControlLabel
-                                control={
-                                  <Radio
-                                    checked={this.state.selectedEnabled === "a"}
-                                    onChange={this.handleChangeEnabled}
-                                    value="a"
-                                    name="radio button enabled"
-                                    aria-label="A"
-                                    icon={
-                                      <FiberManualRecord
-                                        className={classes.radioUnchecked}
-                                      />
-                                    }
-                                    checkedIcon={
-                                      <FiberManualRecord className={classes.radioChecked} />
-                                    }
-                                    classes={{
-                                      checked: classes.radio,
-                                      root: classes.radioRoot
-                                    }}
-                                  />
-                                }
-                                classes={{
-                                  label: classes.label,
-                                  root: classes.labelRoot
-                                }}
-                                label="All Items"
-                              />
-                              <FormControlLabel
-                                control={
-                                  <Radio
-                                    checked={this.state.selectedEnabled === "b"}
-                                    onChange={this.handleChangeEnabled}
-                                    value="b"
-                                    name="radio button enabled"
-                                    aria-label="B"
-                                    icon={
-                                      <FiberManualRecord
-                                        className={classes.radioUnchecked}
-                                      />
-                                    }
-                                    checkedIcon={
-                                      <FiberManualRecord className={classes.radioChecked} />
-                                    }
-                                    classes={{
-                                      checked: classes.radio,
-                                      root: classes.radioRoot
-                                    }}
-                                  />
-                                }
-                                classes={{
-                                  label: classes.label,
-                                  root: classes.labelRoot
-                                }}
-                                label="Available Items"
-                              />
-                              <FormControlLabel
-                                control={
-                                  <Radio
-                                    checked={this.state.selectedEnabled === "c"}
-                                    onChange={this.handleChangeEnabled}
-                                    value="c"
-                                    name="radio button enabled"
-                                    aria-label="C"
-                                    icon={
-                                      <FiberManualRecord
-                                        className={classes.radioUnchecked}
-                                      />
-                                    }
-                                    checkedIcon={
-                                      <FiberManualRecord className={classes.radioChecked} />
-                                    }
-                                    classes={{
-                                      checked: classes.radio,
-                                      root: classes.radioRoot
-                                    }}
-                                  />
-                                }
-                                classes={{
-                                  label: classes.label,
-                                  root: classes.labelRoot
-                                }}
-                                label="Purchased Items"
-                              />
-                            </div>
-                          </div>
-                        )
-                      },
-                      {
-                        title: "Price",
-                        content: (
-                          <div className={classes.customExpandPanel}>
-                            <div
-                              className={
-                                classes.checkboxAndRadio +
-                                " " +
-                                classes.checkboxAndRadioHorizontal
-                              }
-                            >
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    tabIndex={-1}
-                                    onClick={() => this.handleToggle(1)}
-                                    checked={
-                                      this.state.checked.indexOf(1) !== -1
-                                        ? true
-                                        : false
-                                    }
-                                    checkedIcon={
-                                      <Check className={classes.checkedIcon} />
-                                    }
-                                    icon={
-                                      <Check
-                                        className={classes.uncheckedIcon}
-                                      />
-                                    }
-                                    classes={{
-                                      checked: classes.checked,
-                                      root: classes.checkRoot
-                                    }}
-                                  />
-                                }
-                                classes={{ label: classes.label }}
-                                label="Less than £50"
-                              />
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    tabIndex={-1}
-                                    onClick={() => this.handleToggle(2)}
-                                    checkedIcon={
-                                      <Check className={classes.checkedIcon} />
-                                    }
-                                    icon={
-                                      <Check
-                                        className={classes.uncheckedIcon}
-                                      />
-                                    }
-                                    classes={{
-                                      checked: classes.checked,
-                                      root: classes.checkRoot
-                                    }}
-                                  />
-                                }
-                                classes={{ label: classes.label }}
-                                label="£50 - £100"
-                              />
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    tabIndex={-1}
-                                    onClick={() => this.handleToggle(3)}
-                                    checkedIcon={
-                                      <Check className={classes.checkedIcon} />
-                                    }
-                                    icon={
-                                      <Check
-                                        className={classes.uncheckedIcon}
-                                      />
-                                    }
-                                    classes={{
-                                      checked: classes.checked,
-                                      root: classes.checkRoot
-                                    }}
-                                  />
-                                }
-                                classes={{ label: classes.label }}
-                                label="£100 - £150"
-                              />
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    tabIndex={-1}
-                                    onClick={() => this.handleToggle(4)}
-                                    checkedIcon={
-                                      <Check className={classes.checkedIcon} />
-                                    }
-                                    icon={
-                                      <Check
-                                        className={classes.uncheckedIcon}
-                                      />
-                                    }
-                                    classes={{
-                                      checked: classes.checked,
-                                      root: classes.checkRoot
-                                    }}
-                                  />
-                                }
-                                classes={{ label: classes.label }}
-                                label="£150 and more"
-                              />
-                            </div>
-                          </div>
-                        )
+                        this.state.desktop || this.state.showFilter
+                        ? <span>Hide Filter</span>
+                        : <span>Show Filter</span>
                       }
-                    ]}
-                  />
+                    </Button>
+                  </div>
+                  {
+                    this.state.desktop || this.state.showFilter
+                    ?  <div>
+                        <h4 className={classes.cardTitle + " " + classes.textLeft}>
+                          Filter
+                          <Tooltip
+                            id="tooltip-top"
+                            title="Reset Filter"
+                            placement="top"
+                            classes={{ tooltip: classes.tooltip }}
+                          >
+                            <Button
+                              link
+                              justIcon
+                              size="sm"
+                              className={
+                                classes.pullRight + " " + classes.refineButton
+                              }
+                            >
+                              <Cached />
+                            </Button>
+                          </Tooltip>
+                          <Clearfix />
+                        </h4>
+                        <Accordion
+                          active={[0, 1]}
+                          activeColor="rose"
+                          collapses={[
+                            {
+                              title: "Availability",
+                              content: (
+                                <div className={classes.customExpandPanel}>
+                                  <div
+                                    className={
+                                      classes.checkboxAndRadio +
+                                      " " +
+                                      classes.checkboxAndRadioHorizontal
+                                    }
+                                  >
+                                    <FormControlLabel
+                                      control={
+                                        <Radio
+                                          checked={this.state.selectedEnabled === "a"}
+                                          onChange={this.handleChangeEnabled}
+                                          value="a"
+                                          name="radio button enabled"
+                                          aria-label="A"
+                                          icon={
+                                            <FiberManualRecord
+                                              className={classes.radioUnchecked}
+                                            />
+                                          }
+                                          checkedIcon={
+                                            <FiberManualRecord className={classes.radioChecked} />
+                                          }
+                                          classes={{
+                                            checked: classes.radio,
+                                            root: classes.radioRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{
+                                        label: classes.label,
+                                        root: classes.labelRoot
+                                      }}
+                                      label="All Items"
+                                    />
+                                    <FormControlLabel
+                                      control={
+                                        <Radio
+                                          checked={this.state.selectedEnabled === "b"}
+                                          onChange={this.handleChangeEnabled}
+                                          value="b"
+                                          name="radio button enabled"
+                                          aria-label="B"
+                                          icon={
+                                            <FiberManualRecord
+                                              className={classes.radioUnchecked}
+                                            />
+                                          }
+                                          checkedIcon={
+                                            <FiberManualRecord className={classes.radioChecked} />
+                                          }
+                                          classes={{
+                                            checked: classes.radio,
+                                            root: classes.radioRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{
+                                        label: classes.label,
+                                        root: classes.labelRoot
+                                      }}
+                                      label="Available Items"
+                                    />
+                                    <FormControlLabel
+                                      control={
+                                        <Radio
+                                          checked={this.state.selectedEnabled === "c"}
+                                          onChange={this.handleChangeEnabled}
+                                          value="c"
+                                          name="radio button enabled"
+                                          aria-label="C"
+                                          icon={
+                                            <FiberManualRecord
+                                              className={classes.radioUnchecked}
+                                            />
+                                          }
+                                          checkedIcon={
+                                            <FiberManualRecord className={classes.radioChecked} />
+                                          }
+                                          classes={{
+                                            checked: classes.radio,
+                                            root: classes.radioRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{
+                                        label: classes.label,
+                                        root: classes.labelRoot
+                                      }}
+                                      label="Purchased Items"
+                                    />
+                                  </div>
+                                </div>
+                              )
+                            },
+                            {
+                              title: "Price",
+                              content: (
+                                <div className={classes.customExpandPanel}>
+                                  <div
+                                    className={
+                                      classes.checkboxAndRadio +
+                                      " " +
+                                      classes.checkboxAndRadioHorizontal
+                                    }
+                                  >
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          tabIndex={-1}
+                                          onClick={() => this.handleToggle(1)}
+                                          checked={
+                                            this.state.checked.indexOf(1) !== -1
+                                              ? true
+                                              : false
+                                          }
+                                          checkedIcon={
+                                            <Check className={classes.checkedIcon} />
+                                          }
+                                          icon={
+                                            <Check
+                                              className={classes.uncheckedIcon}
+                                            />
+                                          }
+                                          classes={{
+                                            checked: classes.checked,
+                                            root: classes.checkRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{ label: classes.label }}
+                                      label="Less than £50"
+                                    />
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          tabIndex={-1}
+                                          onClick={() => this.handleToggle(2)}
+                                          checkedIcon={
+                                            <Check className={classes.checkedIcon} />
+                                          }
+                                          icon={
+                                            <Check
+                                              className={classes.uncheckedIcon}
+                                            />
+                                          }
+                                          classes={{
+                                            checked: classes.checked,
+                                            root: classes.checkRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{ label: classes.label }}
+                                      label="£50 - £100"
+                                    />
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          tabIndex={-1}
+                                          onClick={() => this.handleToggle(3)}
+                                          checkedIcon={
+                                            <Check className={classes.checkedIcon} />
+                                          }
+                                          icon={
+                                            <Check
+                                              className={classes.uncheckedIcon}
+                                            />
+                                          }
+                                          classes={{
+                                            checked: classes.checked,
+                                            root: classes.checkRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{ label: classes.label }}
+                                      label="£100 - £150"
+                                    />
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          tabIndex={-1}
+                                          onClick={() => this.handleToggle(4)}
+                                          checkedIcon={
+                                            <Check className={classes.checkedIcon} />
+                                          }
+                                          icon={
+                                            <Check
+                                              className={classes.uncheckedIcon}
+                                            />
+                                          }
+                                          classes={{
+                                            checked: classes.checked,
+                                            root: classes.checkRoot
+                                          }}
+                                        />
+                                      }
+                                      classes={{ label: classes.label }}
+                                      label="£150 and more"
+                                    />
+                                  </div>
+                                </div>
+                              )
+                            }
+                          ]}
+                        />
+                      </div>
+                    : null
+                  }
                 </CardBody>
               </Card>
             </GridItem>
-            <GridItem md={9} sm={9}>
+            <GridItem md={9} sm={8}>
               <GridContainer>
                 <GridItem md={4} sm={4}>
                   <Card plain product>

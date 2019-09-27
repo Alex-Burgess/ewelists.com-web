@@ -17,8 +17,7 @@
 import {
   grayColor,
   container,
-  title,
-  primaryColor
+  title
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
@@ -40,6 +39,7 @@ const sectionDetailsStyle = theme => ({
   section: {
     paddingBottom: "40",
     paddingTop: "0px",
+    paddingLeft: "10px",
     backgroundPosition: "50%",
     backgroundSize: "cover",
     "& p": {

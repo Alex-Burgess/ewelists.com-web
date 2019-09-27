@@ -34,7 +34,7 @@ function SectionDetails({ ...props }) {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={11} md={11}>
+        <GridItem xs={12} sm={12} md={12}>
           <h1 className={classes.title}>
             Oscar's Birthday List
           </h1>
