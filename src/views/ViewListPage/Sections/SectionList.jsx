@@ -126,7 +126,7 @@ class SectionProducts extends React.Component {
             <GridItem md={3} sm={4}>
               <Card plain className={classes.filterCard}>
                 <CardBody className={classes.cardBodyRefine}>
-                  <div className={classes.textCenter} className={classes.filterButtonContainer}>
+                  <div className={classes.textCenter + " " + classes.filterButtonContainer}>
                     <Button default color="default" onClick={this.toggleFilter} className={classes.filterButton}>
                       {
                         this.state.desktop || this.state.showFilter

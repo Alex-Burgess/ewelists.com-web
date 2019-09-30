@@ -57,26 +57,6 @@ const blogPostPageStyle = {
     padding: "0px",
     width: "auto"
   },
-  list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
-  },
-  left: {
-    float: "left!important",
-    display: "block"
-  },
-  right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right"
-  },
-  icon: {
-    width: "18px",
-    height: "18px",
-    top: "3px",
-    position: "relative"
-  },
   articleBg: {
     height: "40vh"
   },

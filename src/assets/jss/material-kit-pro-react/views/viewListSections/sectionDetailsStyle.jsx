@@ -53,9 +53,6 @@ const sectionDetailsStyle = theme => ({
       }
     }
   },
-  quoteText: {
-    fontSize: "1.5rem !important"
-  },
   date: {
     paddingBottom: "20px",
     paddingTop: "0px",

@@ -20,19 +20,12 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
-import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
-import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import FooterLarge from "components/Footer/FooterLarge.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
 // sections for this page
 import SectionDetails from "./Sections/SectionDetails.jsx";
 import SectionList from "./Sections/SectionList.jsx";
@@ -49,7 +42,7 @@ class ArticlePage extends React.Component {
     return (
       <div>
         <Header
-          brand="Material Kit PRO React"
+          brand="ewelists"
           links={<HeaderLinksAuth dropdownHoverColor="info" />}
           fixed
           color="transparent"
