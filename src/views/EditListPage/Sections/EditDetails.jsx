@@ -28,15 +28,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 // @material-ui/icons
-import Today from "@material-ui/icons/Today";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import Info from "components/Typography/Info.jsx";
 
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/editListSections/editDetailsStyle.jsx";
 
