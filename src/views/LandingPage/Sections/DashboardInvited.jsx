@@ -32,6 +32,7 @@ import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSect
 
 import oscar1 from "assets/img/examples/oscar-birthday.jpg";
 import oscar2 from "assets/img/examples/oscar-christmas.jpg";
+import christmasCard from "assets/img/examples/christmas-card.jpg";
 
 class SectionInvited extends React.Component {
   render() {
@@ -48,12 +49,12 @@ class SectionInvited extends React.Component {
                   <Card profile>
                     <CardHeader image>
                       <a href="/lists/viewexample">
-                        <img src={oscar1} className={classes.listImage} alt="..." />
+                        <img src={christmasCard} className={classes.listImage} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
                         style={{
-                          backgroundImage: `url(${oscar1})`,
+                          backgroundImage: `url(${christmasCard})`,
                           opacity: "1"
                         }}
                       />
@@ -74,12 +75,12 @@ class SectionInvited extends React.Component {
                   <Card profile>
                     <CardHeader image>
                       <a href="/lists/viewexample">
-                        <img src={oscar2} className={classes.listImage} alt="..." />
+                        <img src={christmasCard} className={classes.listImage} alt="..." />
                       </a>
                       <div
                         className={classes.coloredShadow}
                         style={{
-                          backgroundImage: `url(${oscar2})`,
+                          backgroundImage: `url(${christmasCard})`,
                           opacity: "1"
                         }}
                       />

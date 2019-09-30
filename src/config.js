@@ -10,7 +10,7 @@ const test = {
     IDENTITY_POOL_ID: "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
     DOMAIN: "test-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
-    REDIRECTSIGNIN: "http://localhost:3000/create",
+    REDIRECTSIGNIN: "http://localhost:3000",
     REDIRECTSIGNOUT: "http://localhost:3000/login",
     RESPONSETYPE: 'code',
   }
@@ -28,7 +28,7 @@ const staging = {
     IDENTITY_POOL_ID: "eu-west-1:704a4a75-e23e-4b9f-b7b1-ad7113e9c28d",
     DOMAIN: "staging-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
-    REDIRECTSIGNIN: "https://staging.ewelists.com/create",
+    REDIRECTSIGNIN: "https://staging.ewelists.com",
     REDIRECTSIGNOUT: "https://staging.ewelists.com/login",
     RESPONSETYPE: 'code',
   }
@@ -46,7 +46,7 @@ const prod = {
     IDENTITY_POOL_ID: "eu-west-1:f983160e-926c-47a7-a9a8-6dbceb68edbb",
     DOMAIN: "ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
-    REDIRECTSIGNIN: "https://ewelists.com/create",
+    REDIRECTSIGNIN: "https://ewelists.com",
     REDIRECTSIGNOUT: "https://ewelists.com/login",
     RESPONSETYPE: 'code',
   }

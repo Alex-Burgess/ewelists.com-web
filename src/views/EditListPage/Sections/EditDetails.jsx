@@ -41,7 +41,6 @@ import Info from "components/Typography/Info.jsx";
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/editListSections/editDetailsStyle.jsx";
 
 import christmasCard from "assets/img/examples/christmas-card.jpg";
-// import christmasCard from "assets/img/examples/card-profile4.jpg";
 
 class SectionDetails extends React.Component {
   constructor(props) {

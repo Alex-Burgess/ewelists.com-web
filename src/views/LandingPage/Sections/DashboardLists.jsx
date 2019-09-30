@@ -82,7 +82,7 @@ class SectionLists extends React.Component {
                           <Subject />
                         </Button>
                       </a>
-                      <a href="/lists/viewexample">
+                      <a href="/edit/editexample">
                         <Button round justIcon color="success">
                           <Icon>mode_edit</Icon>
                         </Button>
@@ -123,7 +123,7 @@ class SectionLists extends React.Component {
                           <Subject />
                         </Button>
                       </a>
-                      <a href="/lists/viewexample">
+                      <a href="/edit/editexample">
                         <Button round justIcon color="success">
                           <Icon>mode_edit</Icon>
                         </Button>
