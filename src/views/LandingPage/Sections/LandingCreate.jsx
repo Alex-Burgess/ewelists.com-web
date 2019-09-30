@@ -47,7 +47,7 @@ class LandingCreate extends React.Component {
               <Button
                 color="danger"
                 size="lg"
-                href="/create"
+                href="/signup"
                 target="_blank"
               >
                 Create Your List - It's Free!
