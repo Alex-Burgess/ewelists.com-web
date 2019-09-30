@@ -78,8 +78,10 @@ const customInputStyle = {
     pointerEvents: "none"
   },
   formControl: {
+    // margin: "0 0 17px 0",
+    // paddingTop: "27px",
     margin: "0 0 17px 0",
-    paddingTop: "27px",
+    paddingTop: "10px",
     position: "relative",
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
       color: grayColor[13]
@@ -115,7 +117,7 @@ const customInputStyle = {
   },
   title: {
     "&,&::placeholder": {
-      fontSize: "3.3125rem"
+      fontSize: "2.5rem"
     }
   },
   description: {

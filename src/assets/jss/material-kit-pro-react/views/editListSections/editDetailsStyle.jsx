@@ -21,9 +21,12 @@ import {
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
+import customSelectStyle from "assets/jss/material-kit-pro-react/customSelectStyle.jsx";
 
 const sectionDetailsStyle = theme => ({
   container,
+  ...customSelectStyle,
+  ...imagesStyles,
   title: {
     ...title,
     textAlign: "Left",
@@ -51,14 +54,17 @@ const sectionDetailsStyle = theme => ({
       }
     }
   },
-  date: {
-    paddingBottom: "27px",
-  },
-  ...imagesStyles,
   label: {
     paddingTop: "30px",
     color: grayColor[12],
-  }
+  },
+  dateField: {
+    marginTop: "10px"
+  },
+  listImage: {
+    maxHeight: "233.188px",
+    objectFit: "cover"
+  },
 });
 
 export default sectionDetailsStyle;
