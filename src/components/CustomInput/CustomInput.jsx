@@ -43,7 +43,9 @@ function CustomInput({ ...props }) {
     error,
     white,
     inputRootCustomClasses,
-    success
+    success,
+    title,
+    description
   } = props;
 
   const labelClasses = classNames({
@@ -61,7 +63,9 @@ function CustomInput({ ...props }) {
   });
   const inputClasses = classNames({
     [classes.input]: true,
-    [classes.whiteInput]: white
+    [classes.whiteInput]: white,
+    [classes.title]: title,
+    [classes.description]: description
   });
   var formControlClasses;
   if (formControlProps !== undefined) {
@@ -112,7 +116,9 @@ CustomInput.propTypes = {
   inputRootCustomClasses: PropTypes.string,
   error: PropTypes.bool,
   success: PropTypes.bool,
-  white: PropTypes.bool
+  white: PropTypes.bool,
+  title: PropTypes.bool,
+  description: PropTypes.bool
 };
 
 export default withStyles(customInputStyle)(CustomInput);

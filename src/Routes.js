@@ -13,6 +13,7 @@ import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
 import ArticlePageTravelGear from "views/ArticlePageTravelGear/ArticlePageTravelGear.jsx";
 import ArticlePageHospitalBag from "views/ArticlePageHospitalBag/ArticlePageHospitalBag.jsx";
 import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
+import EditListPage from "views/EditListPage/EditListPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 
 import AppliedRoute from "./components/Routes/AppliedRoute";
@@ -33,6 +34,7 @@ export default ({childProps}) =>
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
     <AuthenticatedRoute path="/lists/viewexample" exact component={ViewListPage} props={childProps} />
+    <AuthenticatedRoute path="/edit/editexample" exact component={EditListPage} props={childProps} />
     <AuthenticatedRoute path="/create" exact component={ShoppingCartPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={ErrorPage} />

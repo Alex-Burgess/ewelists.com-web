@@ -112,6 +112,16 @@ const customInputStyle = {
       color: whiteColor,
       opacity: "1"
     }
+  },
+  title: {
+    "&,&::placeholder": {
+      fontSize: "3.3125rem"
+    }
+  },
+  description: {
+    "&,&::placeholder": {
+      fontSize: "1.188rem"
+    }
   }
 };
 
