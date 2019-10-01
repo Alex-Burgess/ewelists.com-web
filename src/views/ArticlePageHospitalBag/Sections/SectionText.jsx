@@ -41,84 +41,72 @@ function SectionText({ ...props }) {
             Make sure you're all set with everything you need for the all important hospital bag.
           </h2>
           <p>
-            What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags
-            many weeks out from the birth date. But even if that level of planning isn’t for you, I hope that you’ll get some use out of my top tips for what to pack in
-            your bag, or if you want to go full out planning then check out my full list here (insert link)
+            What do you pack in that all important hospital bag. Whether you like to be super organised or you are just looking for some ideas, here are some top tips
+            on what to pack in your bag.
           </p>
           <p>
-            I mentioned that I had two bags, the reason for this is because some of the hospital wards or rooms are quite small and there isn’t the room to have a big
-            suitcase. One bag can have the essentials for the birth and immediately afterwards and a second bag can have all the extra items you might need such as
-            additional clothes for baby, you and your birth partner. If you’re travelling by car you can keep this bag in the boot until it’s needed. Even if you’re
-            having a home birth its good to have the bag packed in case you need to make a trip to the hospital. This insert bag from John Lewis is the perfect size
-            for your hospital stay and most importantly it can be your babies holdall for any overnight trips you take later on in life. My other top tip is to use
-            large zip lock sandwich bags to put together sets of clothes for your little ones or a parcel of nappies and wipes for changing, it helps enormously when
-            trying to find things in your bag.
+            First things first, if you’re travelling by car then you can have two bags. The first bag can contain everything you need for the main event such as snacks,
+            entertainment, toiletries and something to put your little one in once they arrive. The second bag can be kept in the car and contain things you might need
+            after the birth such as extra clothes, nappies and of course the cute going home outfit. This
+            <a href="https://www.amazon.co.uk/dp/B07FBYHY7L"> John Lewis & Partners </a> holdall is the perfect size for your hospital stay and most importantly it can
+            be your babies holdall for any overnight trips you take later on in life. If you like to be really organised you can use large zip lock sandwich bags to
+            compartmentalise your bag, such as sets of baby clothes, underwear, snacks etc. And don’t forget your maternity notes and birth plan.
           </p>
           <p>
-            The first thing you should pack is your maternity notes and birth plan. Chat through these with your birth partner well in advance and make sure they
-            understand your wishes. When the time comes you will be caught up in the moment and probably will go along with whatever you are told to do. If there are
-            things that are important to you, such as going in the pool or trying hypnobirthing, you need to be firm on your wishes and your birth partner is the best
-            person to be your voice for this.
+            Go prepared with things to occupy yourselves with such as something to watch and read and also to have lots of snacks and drinks.   ADD MORE STORY.... then lists.
           </p>
           <p>
-            Right now you probably don’t know how long you will be hanging around the hospital for. It’s good to go prepared with things to occupy yourselves with such
-            as something to watch and read and also to have lots of snacks and drinks, for you and your birth partner. Having a drink bottle with a straw (insert drink
-            bottle link) makes life a lot easier and a good lip balm (insert lip balm) is essential, especially if you use the gas and air. I also found it handy to
-            have a fan (insert fan), which I used lots commuting through the summer, and a face cloth that could be used to keep my head cool.
+
           </p>
           <p>
-            I knew that I wanted to try breast feeding and hoped that I would get lots of help at the hospital, which I did. But I also wanted to have an option to be
-            able to feed my baby if the breast feeding didn’t work out. I packed a couple of ready made bottles of milk (Insert Formula and bottles) which turned out to be
-            a great idea when, 1) I discovered I had a very hungry baby, and 2) the breast feeding didn’t work out for me, despite all the help (and man handling) from the
-            midwives. And in case you’ve heard any negative press about you being looked down on if you don’t try the breast feeding, I had none of this and only have
-            positive things to say. Regardless if the feeding works out, you will want to have some nursing pads and a maternity bra. I used these natural bamboo nursing
-            pads (insert link) which are environmentally friendly and you can put in the wash.
+
           </p>
           <p>
-            For you:
+            Essentials:
             <ul>
-              <li>2 x Nightdress - great to wear before, during and after the birth.</li>
-              <li>Baggy Clothes - Your bump looses all its shape, so loose is better than stretchy.</li>
-              <li>Socks - warm hospitals actually have cold floors.</li>
-              <li>Slippers - feel more comfortable in and around the ward.</li>
-              <li>Dressing gown - feel more comfortable in and around the ward.</li>
-              <li>Toiletries - all your favourites and a hairband.</li>
-              <li>Underwear - have spares.</li>
-              <li>Breast pads - have spares.</li>
-            </ul>
-          </p>
-          <p>
-            For your birthing partner:
-            <ul>
-              <li>shorts and t-shirts - birthing hospitals are always hot.</li>
-              <li>Refreshments - plenty of snacks and drinks.</li>
-              <li>Entertainment - iPad, magazines, etc.</li>
+              <li className={classes.listSpacing}>Car seat: <a href="https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431"> Cybex Cloud 0+ Baby Car Seat</a> with <a href="https://www.johnlewis.com/cybex-car-seat-base-z/p3843037"> Cybex Car Seat Base Z </a> which is great for carrying baby to and from the car, with super installation in the car and the modular system is good forward planning when you need the next size up seat.</li>
+              <li className={classes.listSpacing}>Holdall: <a href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"> John Lewis & Partners Holdall </a> combines style with good size.</li>
+              <li className={classes.listSpacing}>Water bottle with straw: <a href="https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ"> CamelBak </a> makes drinking more comfortable</li>
+              <li className={classes.listSpacing}>Lip balm: <a href="https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN"> Burt's Bees </a> is my favourite.</li>
+              <li className={classes.listSpacing}>Fan: <a href="https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C"> EasyAcc Handheld Fan </a> is small enough to pack, but with enough battery life to last.</li>
+              <li className={classes.listSpacing}>Ready made formula: <a href="https://www.mothercare.com/starter-sets/aptamil-1-first-baby-milk-formula-starter-pack-from-birth-6x70ml/607514.html"> Aptamil First Infant Starter Pack </a> are pre-sterilised, so you're ready to feed immediately if you're bottle or combination feeding.</li>
+              <li className={classes.listSpacing}>Disposable bottles: ???</li>
+              <li className={classes.listSpacing}>Refreshments: Remember to bring plenty of snacks and drinks.</li>
+              <li className={classes.listSpacing}>Entertainment: A selection of movies, tv programs, magazines, or a good book will ensure you have something to occupy yourself when you feel like it.</li>
             </ul>
           </p>
           <p>
             For baby:
             <ul>
-              <li>baby grows - with built in mittens. Have spares.</li>
-              <li>vests - newborn and 0-3 months sizes .</li>
-              <li>Cardigan - one that is easy to get on and off.</li>
-              <li>Hat</li>
-              <li>Swaddle - aka sleeping bag (Insert gro baby sleep bags)</li>
-              <li>blanket</li>
-              <li>Muslins</li>
-              <li>Nappies - 12 should get you through 2 days in hospital.</li>
-              <li>Cotton wool</li>
-              <li>Wipes - water wipes are nice and kind to newborn skin.</li>
+              <li className={classes.listSpacing}>baby grows: <a href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145"> John Lewis & Partners Giraffe Sleepsuit </a> what about built in mittens??</li>
+              <li className={classes.listSpacing}>5 vests: <a href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382"> John Lewis & Partners Short Sleeve Bodysuits </a> are ???.</li>
+              <li className={classes.listSpacing}>Cardigan: <a href="https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774"> M & S Chunky Knit Cardigan </a> is one that is easy to get on and off.</li>
+              <li className={classes.listSpacing}>Hat</li>
+              <li className={classes.listSpacing}>Swaddle: <a href="https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657"> Grobag Swaddle Blanket </a></li>
+              <li className={classes.listSpacing}>blanket: </li>
+              <li className={classes.listSpacing}>Muslins: </li>
+              <li className={classes.listSpacing}>Nappies - 12 should get you through 2 days in hospital.</li>
+              <li className={classes.listSpacing}>Cotton wool</li>
+              <li className={classes.listSpacing}>Wipes - water wipes are nice and kind to newborn skin.</li>
             </ul>
           </p>
           <p>
-            General:
+            For you:
             <ul>
-              <li>Car seat</li>
-              <li>Drink bottle with straw</li>
-              <li>Lip balm</li>
-              <li>Fan</li>
-              <li>Ready made formula</li>
-              <li>Disposable bottles</li>
+              <li className={classes.listSpacing}>2 x Nightdress - great to wear before, during and after the birth.</li>
+              <li className={classes.listSpacing}>Baggy Clothes - Your bump looses all its shape, so loose is better than stretchy.</li>
+              <li className={classes.listSpacing}>Socks - warm hospitals actually have cold floors.</li>
+              <li className={classes.listSpacing}>Slippers - feel more comfortable in and around the ward.</li>
+              <li className={classes.listSpacing}>Dressing gown - feel more comfortable in and around the ward.</li>
+              <li className={classes.listSpacing}>Toiletries - all your favourites and a hairband.</li>
+              <li className={classes.listSpacing}>Underwear - have spares.</li>
+              <li className={classes.listSpacing}>Nursing pads: <a href="https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS"> Organic Bamboo Nursing Pads </a> are washable, re-usable and comfortable.</li>
+            </ul>
+          </p>
+          <p>
+            For your birthing partner:
+            <ul>
+              <li className={classes.listSpacing}>shorts and t-shirts - birthing hospitals are always hot.</li>
             </ul>
           </p>
         </GridItem>

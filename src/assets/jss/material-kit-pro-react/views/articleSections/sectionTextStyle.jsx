@@ -57,7 +57,10 @@ const sectionTextStyle = theme => ({
   quoteText: {
     fontSize: "1.5rem !important"
   },
-  ...imagesStyles
+  ...imagesStyles,
+  listSpacing: {
+    margin: "0 0 10px 0",
+  }
 });
 
 export default sectionTextStyle;
