@@ -30,8 +30,8 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "list",
-        endpoint: config.apiGateway.LIST,
+        name: "lists",
+        endpoint: config.apiGateway.LISTS,
         region: config.apiGateway.REGION
       }
     ]

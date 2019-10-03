@@ -15,6 +15,7 @@
 
 */
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -39,6 +40,15 @@ import oscar1 from "assets/img/examples/oscar-birthday.jpg";
 import oscar2 from "assets/img/examples/oscar-christmas.jpg";
 
 class SectionLists extends React.Component {
+  createList = async event => {
+    const response = await this.createListRequest();
+    alert("Created list")
+  }
+
+  createListRequest() {
+    return API.post("lists", "/");
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -135,7 +145,7 @@ class SectionLists extends React.Component {
                   <div className={classes.addList}>
                     <div>
                       <div className={classes.centerButton}>
-                        <Button round justIcon color="info" size="lg">
+                        <Button round justIcon color="info" size="lg" onClick={this.createList}>
                           <Playlist />
                         </Button>
                       </div>

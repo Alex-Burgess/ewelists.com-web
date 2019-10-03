@@ -1,7 +1,7 @@
 const test = {
   apiGateway: {
     REGION: "eu-west-1",
-    LIST: ""
+    LISTS: "https://4sdcvv0n2e.execute-api.eu-west-1.amazonaws.com/test/lists"
   },
   cognito: {
     REGION: "eu-west-1",
