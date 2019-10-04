@@ -45,12 +45,69 @@ class SectionLists extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: false,
+      isCreating: false,
+      isLoading: true,
+      lists: []
     };
   }
 
+  async componentDidMount() {
+    const response = await this.getLists();
+    this.setState({ lists: response.lists });
+    this.setState({ isLoading: false });
+  }
+
+  renderYourLists(classes, lists: Lists[]) {
+    let allLists: Lists[] = [];
+
+    return allLists.concat(lists).map (
+      (list, i) =>
+        <GridItem xs={12} sm={4} md={4}>
+          <Card profile>
+            <CardHeader image>
+              <a href="/lists/viewexample">
+                <img src={oscar1} className={classes.listImage} alt="..." />
+              </a>
+              <div
+                className={classes.coloredShadow}
+                style={{
+                  backgroundImage: `url(${oscar1})`,
+                  opacity: "1"
+                }}
+              />
+            </CardHeader>
+            <CardBody>
+              <Info>
+                <a href="/lists/viewexample">
+                  <h6 className={classes.cardCategory}>Oscar's Birthday</h6>
+                </a>
+              </Info>
+              <p className={classes.cardDescription}>
+                Oscar's second birthday wish list.
+              </p>
+            </CardBody>
+            <CardFooter
+              profile
+              className={classes.justifyContentCenter}
+            >
+              <a href="/lists/viewexample">
+                <Button round justIcon color="info">
+                  <Subject />
+                </Button>
+              </a>
+              <a href={"/edit/" + list.listId}>
+                <Button round justIcon color="success">
+                  <Icon>mode_edit</Icon>
+                </Button>
+              </a>
+            </CardFooter>
+          </Card>
+        </GridItem>
+    )
+  }
+
   createList = async event => {
-    this.setState({ isLoading: true });
+    this.setState({ isCreating: true });
 
     const response = await this.createListRequest();
 
@@ -58,6 +115,10 @@ class SectionLists extends React.Component {
     console.log("List was created with ID (" + listId + "), redirecting to edit page for list.")
 
     this.props.history.push('/edit/' + listId);
+  }
+
+  getLists() {
+    return API.get("lists", "/");
   }
 
   createListRequest() {
@@ -74,93 +135,12 @@ class SectionLists extends React.Component {
               <h1 className={classes.title}>Your lists</h1>
               <br />
               <GridContainer>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Card profile>
-                    <CardHeader image>
-                      <a href="/lists/viewexample">
-                        <img src={oscar1} className={classes.listImage} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${oscar1})`,
-                          opacity: "1"
-                        }}
-                      />
-                    </CardHeader>
-                    <CardBody>
-                      <Info>
-                        <a href="/lists/viewexample">
-                          <h6 className={classes.cardCategory}>Oscar's Birthday</h6>
-                        </a>
-                      </Info>
-                      <p className={classes.cardDescription}>
-                        Oscar's second birthday wish list.
-                      </p>
-                    </CardBody>
-                    <CardFooter
-                      profile
-                      className={classes.justifyContentCenter}
-                    >
-                      <a href="/lists/viewexample">
-                        <Button round justIcon color="info">
-                          <Subject />
-                        </Button>
-                      </a>
-                      <a href="/edit/editexample">
-                        <Button round justIcon color="success">
-                          <Icon>mode_edit</Icon>
-                        </Button>
-                      </a>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Card profile>
-                    <CardHeader image>
-                      <a href="/lists/viewexample">
-                        <img src={oscar2} className={classes.listImage} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${oscar2})`,
-                          opacity: "1"
-                        }}
-                      />
-                    </CardHeader>
-                    <CardBody>
-                      <Info>
-                        <a href="/lists/viewexample">
-                          <h6 className={classes.cardCategory}>Oscar's Christmas</h6>
-                        </a>
-                      </Info>
-                      <p className={classes.cardDescription}>
-                        Oscar's second Christmas wish list.
-                      </p>
-                    </CardBody>
-                    <CardFooter
-                      profile
-                      className={classes.justifyContentCenter}
-                    >
-                      <a href="/lists/viewexample">
-                        <Button round justIcon color="info">
-                          <Subject />
-                        </Button>
-                      </a>
-                      <a href="/edit/editexample">
-                        <Button round justIcon color="success">
-                          <Icon>mode_edit</Icon>
-                        </Button>
-                      </a>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
+                {!this.state.isLoading && this.renderYourLists(classes, this.state.lists)}
                 <GridItem xs={12} sm={4} md={4}>
                   <CreateButton
                     text="Create a New List"
                     onClick={this.createList}
-                    isLoading={this.state.isLoading}
+                    isCreating={this.state.isCreating}
                   />
                 </GridItem>
               </GridContainer>

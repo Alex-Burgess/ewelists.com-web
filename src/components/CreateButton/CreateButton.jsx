@@ -16,12 +16,12 @@ import createButtonStyle from "assets/jss/material-kit-pro-react/components/crea
 
 class CreateButton extends React.Component {
   render() {
-    const { classes, text, isLoading, ...rest } = this.props;
+    const { classes, text, isCreating, ...rest } = this.props;
 
     return (
         <div className={classes.addList}>
           <div>
-          {!isLoading
+          {!isCreating
             ? <div>
                 <div className={classes.centerButton}>
                   <Button {...rest} round justIcon color="info" size="lg">
@@ -53,7 +53,7 @@ class CreateButton extends React.Component {
 CreateButton.propTypes = {
   classes: PropTypes.object,
   text: PropTypes.object,
-  isLoading: PropTypes.object
+  isCreating: PropTypes.object
 };
 
 export default withStyles(createButtonStyle)(CreateButton);
