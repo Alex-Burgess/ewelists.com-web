@@ -28,7 +28,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import Info from "components/Typography/Info.jsx";
 
-import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/dashboardInvitedStyle.jsx";
+import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/viewOthersListsStyle.jsx";
 
 import oscar1 from "assets/img/examples/oscar-birthday.jpg";
 import oscar2 from "assets/img/examples/oscar-christmas.jpg";

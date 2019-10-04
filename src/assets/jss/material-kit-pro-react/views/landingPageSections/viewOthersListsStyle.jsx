@@ -24,7 +24,7 @@ import {
   description,
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const createStyle = theme => ({
+const sectionStyle = theme => ({
   coloredShadow,
   container: {
     color: whiteColor,
@@ -76,4 +76,4 @@ const createStyle = theme => ({
   }
 });
 
-export default createStyle;
+export default sectionStyle;

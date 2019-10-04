@@ -44,8 +44,8 @@ import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPag
 import LandingCreate from "./Sections/LandingCreate.jsx";
 import LandingProduct from "./Sections/LandingProduct.jsx";
 import LandingIdeas from "./Sections/LandingIdeas.jsx";
-import DashboardLists from "./Sections/DashboardLists.jsx";
-import DashboardInvited from "./Sections/DashboardInvited.jsx";
+import YourLists from "./Sections/YourLists.jsx";
+import ViewOthersLists from "./Sections/ViewOthersLists.jsx";
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -77,8 +77,8 @@ class LandingPage extends React.Component {
           {...rest}
         />
         <div className={classes.main}>
-          <DashboardLists />
-          <DashboardInvited />
+          <YourLists />
+          <ViewOthersLists />
         </div>
       </div>
     );

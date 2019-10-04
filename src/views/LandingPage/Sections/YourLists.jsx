@@ -34,7 +34,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import Info from "components/Typography/Info.jsx";
 
-import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/dashboardListsStyle.jsx";
+import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/yourListsStyle.jsx";
 
 import oscar1 from "assets/img/examples/oscar-birthday.jpg";
 import oscar2 from "assets/img/examples/oscar-christmas.jpg";
