@@ -34,6 +34,7 @@ export default ({childProps}) =>
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
     <AuthenticatedRoute path="/lists/viewexample" exact component={ViewListPage} props={childProps} />
     <AuthenticatedRoute path="/edit/editexample" exact component={EditListPage} props={childProps} />
+    <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={ErrorPage} />
   </Switch>;

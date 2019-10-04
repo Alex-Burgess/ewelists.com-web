@@ -73,21 +73,6 @@ const sectionStyle = theme => ({
     height: "16vw",
     maxHeight: "174.5px",
     objectFit: "cover"
-  },
-  addList: {
-    width: "100%",
-    height: "330px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  centerButton: {
-    // width: "100%",
-    // height: "330px",
-    // border: "1px solid black",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   }
 });
 

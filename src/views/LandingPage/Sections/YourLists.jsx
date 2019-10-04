@@ -16,6 +16,7 @@
 */
 import React from "react";
 import { API } from "aws-amplify";
+import { withRouter } from 'react-router-dom'
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -23,11 +24,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Subject from "@material-ui/icons/Subject";
-import Playlist from "@material-ui/icons/PlaylistAdd";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
+import CreateButton from "components/CreateButton/CreateButton.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
@@ -40,9 +41,23 @@ import oscar1 from "assets/img/examples/oscar-birthday.jpg";
 import oscar2 from "assets/img/examples/oscar-christmas.jpg";
 
 class SectionLists extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false,
+    };
+  }
+
   createList = async event => {
+    this.setState({ isLoading: true });
+
     const response = await this.createListRequest();
-    alert("Created list")
+
+    const listId = response.listId;
+    console.log("List was created with ID (" + listId + "), redirecting to edit page for list.")
+
+    this.props.history.push('/edit/' + listId);
   }
 
   createListRequest() {
@@ -142,18 +157,11 @@ class SectionLists extends React.Component {
                   </Card>
                 </GridItem>
                 <GridItem xs={12} sm={4} md={4}>
-                  <div className={classes.addList}>
-                    <div>
-                      <div className={classes.centerButton}>
-                        <Button round justIcon color="info" size="lg" onClick={this.createList}>
-                          <Playlist />
-                        </Button>
-                      </div>
-                      <p className={classes.cardDescription}>
-                        Create a New List
-                      </p>
-                    </div>
-                  </div>
+                  <CreateButton
+                    text="Create a New List"
+                    onClick={this.createList}
+                    isLoading={this.state.isLoading}
+                  />
                 </GridItem>
               </GridContainer>
             </GridItem>
@@ -168,4 +176,4 @@ SectionLists.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(createStyle)(SectionLists);
+export default withRouter(withStyles(createStyle)(SectionLists));
