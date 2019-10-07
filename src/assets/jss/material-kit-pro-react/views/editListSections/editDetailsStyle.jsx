@@ -16,17 +16,20 @@
 */
 import {
   grayColor,
+  dangerColor,
   container,
   title
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
 import customSelectStyle from "assets/jss/material-kit-pro-react/customSelectStyle.jsx";
+import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.jsx";
 
 const sectionDetailsStyle = theme => ({
   container,
   ...customSelectStyle,
   ...imagesStyles,
+  ...modalStyle(theme),
   title: {
     ...title,
     textAlign: "Left",
@@ -65,6 +68,19 @@ const sectionDetailsStyle = theme => ({
     maxHeight: "233.188px",
     objectFit: "cover"
   },
+  deleteButton: {
+    float: "right",
+  },
+  deleteContainer: {
+    paddingTop: "30px",
+    minHeight: "100px"
+  },
+  centerText: {
+    textAlign: "Center",
+  },
+  error: {
+    color: dangerColor[1]
+  }
 });
 
 export default sectionDetailsStyle;

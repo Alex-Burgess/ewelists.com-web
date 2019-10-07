@@ -34,7 +34,7 @@ class CreateButton extends React.Component {
               </div>
           : <div>
               <div className={classes.centerButton}>
-                <Button {...rest} round justIcon color="info" size="lg" disabled="true">
+                <Button {...rest} round justIcon color="info" size="lg" disabled>
                   <Playlist />
                 </Button>
                 <CircularProgress className={classes.progress} size={72}/>
@@ -52,8 +52,8 @@ class CreateButton extends React.Component {
 
 CreateButton.propTypes = {
   classes: PropTypes.object,
-  text: PropTypes.object,
-  isCreating: PropTypes.object
+  text: PropTypes.string,
+  isCreating: PropTypes.bool
 };
 
 export default withStyles(createButtonStyle)(CreateButton);

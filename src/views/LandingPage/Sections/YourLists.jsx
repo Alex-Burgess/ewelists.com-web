@@ -38,7 +38,7 @@ import Info from "components/Typography/Info.jsx";
 import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/yourListsStyle.jsx";
 
 import oscar1 from "assets/img/examples/oscar-birthday.jpg";
-import oscar2 from "assets/img/examples/oscar-christmas.jpg";
+// import oscar2 from "assets/img/examples/oscar-christmas.jpg";
 
 class SectionLists extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class SectionLists extends React.Component {
 
     return allLists.concat(lists).map (
       (list, i) =>
-        <GridItem xs={12} sm={4} md={4}>
+        <GridItem xs={12} sm={4} md={4} key={list}>
           <Card profile>
             <CardHeader image>
               <a href="/lists/viewexample">
