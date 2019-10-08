@@ -22,9 +22,10 @@ import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
 import Datetime from "react-datetime";
 // nodejs library that concatenates classes
+import withStyles from "@material-ui/core/styles/withStyles";
+import Icon from "@material-ui/core/Icon";
 // import classNames from "classnames";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -62,7 +63,11 @@ class SectionDetails extends React.Component {
       simpleSelect: "",
       smallModal: false,
       deleteError: false,
-      deleteErrorMessage: null
+      deleteErrorMessage: null,
+      isEdit: false,
+      updateError: false,
+      updateErrorMessage: null,
+      title: "Title When Created"
     };
   }
 
@@ -104,8 +109,69 @@ class SectionDetails extends React.Component {
     }
   }
 
+  saveDetails = async event => {
+    try {
+      var requestBody = {
+        "attribute_name": "title",
+        "attribute_value": "My new title hardcoded"
+      };
+      const response = await this.updateListRequest(requestBody);
+      console.log("update response: " + response.title.S);
+
+      this.setState({ title: response.title.S });
+      this.setState({ isEdit: false });
+    } catch (e) {
+      console.log('Unexpected error occurred when updating list: ' + e.response.data.error);
+      this.setState({
+        updateError: true,
+        updateErrorMessage: 'Unexpected error occurred when updating list.  Please try again.'
+      })
+    }
+  }
+
+  editDetails = event => {
+    this.setState({ isEdit: true });
+  }
+
+  updateListRequest(updateItem) {
+    return API.put("lists", "/" + this.props.match.params.id, {
+      body: updateItem
+    });
+  }
+
   deleteListRequest() {
     return API.del("lists", "/" + this.props.match.params.id);
+  }
+
+  renderTitle(classes){
+    return (
+      <div>
+      { this.state.isEdit
+        ? <div>
+            <InputLabel className={classes.label}>
+              Title:
+            </InputLabel>
+              <CustomInput
+                id="title"
+                title
+                inputProps={{
+                  placeholder: "Enter your title here...",
+                  defaultValue: this.state.title,
+                }}
+                formControlProps={{
+                  fullWidth: true
+                }}
+              />
+          </div>
+        : <div>
+            <InputLabel className={classes.label}>
+              Title:
+            </InputLabel>
+            <h1>{this.state.title}</h1>
+          </div>
+      }
+      </div>
+    )
   }
 
   render() {
@@ -115,26 +181,24 @@ class SectionDetails extends React.Component {
         <div className={classes.container}>
           <GridContainer >
             <GridItem xs={12} sm={12} md={8}>
-              <InputLabel className={classes.label}>
-                Title:
-              </InputLabel>
-              <CustomInput
-                id="title"
-                title
-                inputProps={{
-                  placeholder: "Add your title here...",
-                }}
-                formControlProps={{
-                  fullWidth: true,
-                }}
-              />
+              {this.renderTitle(classes)}
             </GridItem>
             <GridItem xs={12} sm={12} md={4}>
-              <div className={classes.deleteContainer}>
-                <Button round justIcon color="default" className={classes.deleteButton} onClick={() => this.handleClickOpen("smallModal")}>
-                  <Delete />
-                </Button>
-              </div>
+            { this.state.isEdit
+              ? <div className={classes.deleteContainer}>
+                  <Button round justIcon color="success" onClick={this.saveDetails}>
+                    <Icon>save_alt</Icon>
+                  </Button>
+                </div>
+              : <div className={classes.deleteContainer}>
+                  <Button round justIcon color="info" onClick={this.editDetails}>
+                    <Icon>mode_edit</Icon>
+                  </Button>
+                  <Button round justIcon color="default" onClick={() => this.handleClickOpen("smallModal")}>
+                    <Delete />
+                  </Button>
+                </div>
+            }
               {/* SMALL MODAL START */}
               <Dialog
                 classes={{

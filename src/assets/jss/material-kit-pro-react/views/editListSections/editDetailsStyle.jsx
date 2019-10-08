@@ -68,12 +68,10 @@ const sectionDetailsStyle = theme => ({
     maxHeight: "233.188px",
     objectFit: "cover"
   },
-  deleteButton: {
-    float: "right",
-  },
   deleteContainer: {
     paddingTop: "30px",
-    minHeight: "100px"
+    minHeight: "100px",
+    float: "right",
   },
   centerText: {
     textAlign: "Center",

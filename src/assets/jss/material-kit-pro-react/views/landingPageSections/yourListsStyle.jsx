@@ -17,15 +17,26 @@
 import {
   container,
   title,
+  cardTitle,
   whiteColor,
   blackColor,
   grayColor,
   coloredShadow,
   description,
+  mlAuto,
+  mrAuto,
 } from "assets/jss/material-kit-pro-react.jsx";
+
+import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.jsx";
+import customSelectStyle from "assets/jss/material-kit-pro-react/customSelectStyle.jsx";
 
 const sectionStyle = theme => ({
   coloredShadow,
+  mlAuto,
+  mrAuto,
+  cardTitle,
+  ...modalStyle(theme),
+  ...customSelectStyle,
   container: {
     color: whiteColor,
     ...container,
@@ -73,7 +84,14 @@ const sectionStyle = theme => ({
     height: "16vw",
     maxHeight: "174.5px",
     objectFit: "cover"
-  }
+  },
+  textCenter: {
+    textAlign: "Center",
+  },
+  label: {
+    paddingTop: "30px",
+    color: grayColor[12],
+  },
 });
 
 export default sectionStyle;

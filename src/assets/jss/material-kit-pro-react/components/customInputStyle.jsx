@@ -120,9 +120,19 @@ const customInputStyle = {
       fontSize: "2.5rem"
     }
   },
+  smallTitle: {
+    "&,&::placeholder": {
+      fontSize: "1.5rem"
+    }
+  },
   description: {
     "&,&::placeholder": {
       fontSize: "1.188rem"
+    }
+  },
+  smallDescription: {
+    "&,&::placeholder": {
+      fontSize: "0.9rem"
     }
   }
 };
