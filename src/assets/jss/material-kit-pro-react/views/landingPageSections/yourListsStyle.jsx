@@ -21,6 +21,7 @@ import {
   whiteColor,
   blackColor,
   grayColor,
+  successColor,
   coloredShadow,
   description,
   mlAuto,
@@ -91,6 +92,41 @@ const sectionStyle = theme => ({
   label: {
     paddingTop: "30px",
     color: grayColor[12],
+  },
+  progress: {
+    color: successColor[1],
+    marginLeft: -66,
+  },
+  centerButton: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addList: {
+    margin: theme.spacing(1),
+    position: 'relative',
+  },
+  root: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  wrapper: {
+    position: 'relative',
+    margin: "0 auto"
+  },
+  buttonSuccess: {
+    backgroundColor: successColor[500],
+    '&:hover': {
+      backgroundColor: successColor[700],
+    },
+  },
+  buttonProgress: {
+    color: successColor[500],
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
   },
 });
 

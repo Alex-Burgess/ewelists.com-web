@@ -44,6 +44,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import Info from "components/Typography/Info.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/yourListsStyle.jsx";
 
@@ -352,10 +353,19 @@ class SectionLists extends React.Component {
                                 </MenuItem>
                               </Select>
                             </FormControl>
-                            <div className={classes.textCenter}>
-                              <Button round color="primary" onClick={this.createList}>
-                                Create
-                              </Button>
+                            <div className={classes.root}>
+                              <div className={classes.wrapper}>
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  className={classes.buttonSuccess}
+                                  disabled={this.state.isCreating}
+                                  onClick={this.createList}
+                                >
+                                  Create
+                                </Button>
+                                {this.state.isCreating && <CircularProgress size={24} className={classes.buttonProgress} />}
+                              </div>
                             </div>
                           </form>
                         </GridItem>
