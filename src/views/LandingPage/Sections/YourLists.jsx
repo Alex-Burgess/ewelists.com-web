@@ -108,7 +108,7 @@ class SectionLists extends React.Component {
   createList = async event => {
     this.setState({ isCreating: true });
 
-    console.log("Creating list with values: " + this.state.title + " " + this.state.description + " " + this.state.occasion);
+    console.log("Creating list with values: title: " + this.state.title + ", description: " + this.state.description + ", occasion: " + this.state.occasion);
 
     var createList = {
       "title": this.state.title,
