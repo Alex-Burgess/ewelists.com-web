@@ -112,11 +112,13 @@ class SectionDetails extends React.Component {
   saveDetails = async event => {
     try {
       var requestBody = {
-        "attribute_name": "title",
-        "attribute_value": "My new title hardcoded"
+        "title": "My new title hardcoded2",
+        "description": "My new description hardcoded",
+        "occasion": "Birthday"
       };
       const response = await this.updateListRequest(requestBody);
-      console.log("update response: " + response.title.S);
+      console.log("update response title: " + response.title.S);
+      console.log("update response description: " + response.description.S);
 
       this.setState({ title: response.title.S });
       this.setState({ isEdit: false });

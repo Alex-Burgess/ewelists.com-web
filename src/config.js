@@ -19,7 +19,7 @@ const test = {
 const staging = {
   apiGateway: {
     REGION: "eu-west-1",
-    LIST: ""
+    LIST: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists"
   },
   cognito: {
     REGION: "eu-west-1",
