@@ -400,7 +400,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £219.99</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="default" size="" className={classes.reserveButton} disabled="true">
+                        <Button default color="default" className={classes.reserveButton} disabled>
                           Reserved
                         </Button>
                       </div>
@@ -427,7 +427,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £175</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -454,7 +454,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £389</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -481,7 +481,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £189</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -508,7 +508,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £175</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -535,7 +535,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £159.99</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -562,7 +562,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £99.99</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -589,7 +589,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £69.95</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>
@@ -616,7 +616,7 @@ class SectionProducts extends React.Component {
                         <span className={classes.price}> £20.90</span>
                       </div>
                       <div className={classes.textCenter}>
-                        <Button default color="primary" size="" className={classes.reserveButton}>
+                        <Button default color="primary" className={classes.reserveButton}>
                           Reserve Gift
                         </Button>
                       </div>

@@ -15,6 +15,8 @@
 
 */
 import React from "react";
+import { API } from "aws-amplify";
+import { withRouter } from 'react-router-dom'
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // nodejs library that concatenates classes
@@ -29,31 +31,63 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/viewListSections/sectionDetailsStyle.jsx";
 
-function SectionDetails({ ...props }) {
-  const { classes } = props;
-  return (
-    <div className={classes.section}>
-      <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={12}>
-          <h1 className={classes.title}>
-            Oscar's Birthday List
-          </h1>
-          <h5 className={classes.date}>
-            <Today /> Date: 31/10/2019
-          </h5>
-          <p className={classes.description}>
-            Oscar's second birthday is coming up, so we've put a list together of a few things that he needs.
-            He's growing out of quite a bit of his everyday clothing, so need to some basics for him to wear at nursery.
-            He is also really enjoying some more educational toys, like duplo bricks as well as trains.
-          </p>
-        </GridItem>
-      </GridContainer>
-    </div>
-  );
+class SectionDetails extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      title: '',
+      description: '',
+      occasion: ''
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await this.getList();
+      this.setState({
+        title: response.title.S,
+        description: response.description.S,
+        occasion: response.occasion.S
+      });
+      this.setState({ isLoading: false });
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      this.props.history.push('/error/' + this.props.match.params.id);
+    }
+  }
+
+  getList() {
+    return API.get("lists", "/" + this.props.match.params.id);
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+        <div className={classes.section}>
+        {!this.state.isLoading &&
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={12}>
+              <h1 className={classes.title}>
+                {this.state.title}
+              </h1>
+              <h5 className={classes.date}>
+                <Today /> Date: 31/10/2019
+              </h5>
+              <p className={classes.description}>
+                {this.state.description}
+              </p>
+            </GridItem>
+          </GridContainer>
+        }
+      </div>
+    );
+  }
 }
 
 SectionDetails.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(sectionDetailsStyle)(SectionDetails);
+export default withRouter(withStyles(sectionDetailsStyle)(SectionDetails));
