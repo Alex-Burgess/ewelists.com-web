@@ -37,6 +37,7 @@ const sectionDetailsStyle = theme => ({
         textAlign: "Center",
         fontSize: "1.75rem"
     },
+    marginTop: "20px",
     marginBottom: "10px"
   },
   description: {

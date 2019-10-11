@@ -60,15 +60,36 @@ class SectionDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      simpleSelect: "",
+      occasionSelect: "",
       smallModal: false,
       deleteError: false,
       deleteErrorMessage: null,
       isEdit: false,
       updateError: false,
       updateErrorMessage: null,
-      title: "Title When Created"
+      isLoading: true,
+      title: '',
+      description: '',
     };
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await this.getList();
+      this.setState({
+        title: response.title.S,
+        description: response.description.S,
+        occasionSelect: response.occasion.S
+      });
+      this.setState({ isLoading: false });
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      this.props.history.push('/error/' + this.props.match.params.id);
+    }
+  }
+
+  getList() {
+    return API.get("lists", "/" + this.props.match.params.id);
   }
 
   handleClickOpen(modal) {
@@ -112,16 +133,19 @@ class SectionDetails extends React.Component {
   saveDetails = async event => {
     try {
       var requestBody = {
-        "title": "My new title hardcoded2",
-        "description": "My new description hardcoded",
+        "title": this.state.title,
+        "description": this.state.description,
         "occasion": "Birthday"
       };
       const response = await this.updateListRequest(requestBody);
       console.log("update response title: " + response.title.S);
       console.log("update response description: " + response.description.S);
 
-      this.setState({ title: response.title.S });
-      this.setState({ isEdit: false });
+      this.setState({
+        title: response.title.S,
+        description: response.description.S,
+        isEdit: false
+       });
     } catch (e) {
       console.log('Unexpected error occurred when updating list: ' + e.response.data.error);
       this.setState({
@@ -145,6 +169,12 @@ class SectionDetails extends React.Component {
     return API.del("lists", "/" + this.props.match.params.id);
   }
 
+  handleChange = event => {
+    var updateObj = {};
+    updateObj[event.target.id] = event.target.value;
+    this.setState( updateObj );
+  }
+
   renderTitle(classes){
     return (
       <div>
@@ -159,6 +189,7 @@ class SectionDetails extends React.Component {
                 inputProps={{
                   placeholder: "Enter your title here...",
                   defaultValue: this.state.title,
+                  onChange: this.handleChange
                 }}
                 formControlProps={{
                   fullWidth: true
@@ -169,7 +200,41 @@ class SectionDetails extends React.Component {
             <InputLabel className={classes.label}>
               Title:
             </InputLabel>
-            <h1>{this.state.title}</h1>
+            <h1 className={classes.title}>{this.state.title}</h1>
+          </div>
+      }
+      </div>
+    )
+  }
+
+  renderDescription(classes){
+    return (
+      <div>
+      { this.state.isEdit
+        ? <div>
+            <InputLabel className={classes.label}>
+              Description:
+            </InputLabel>
+              <CustomInput
+                id="description"
+                description
+                formControlProps={{
+                  fullWidth: true
+                }}
+                inputProps={{
+                  placeholder: "Add your description here...",
+                  defaultValue: this.state.description,
+                  multiline: true,
+                  rows: 5,
+                  onChange: this.handleChange
+                }}
+              />
+          </div>
+        : <div>
+            <InputLabel className={classes.label}>
+              Description:
+            </InputLabel>
+            <p>{this.state.description}</p>
           </div>
       }
       </div>
@@ -312,10 +377,10 @@ class SectionDetails extends React.Component {
                       classes={{
                         select: classes.select
                       }}
-                      value={this.state.simpleSelect}
+                      value={this.state.occasionSelect}
                       onChange={this.handleSimple}
                       inputProps={{
-                        name: "simpleSelect",
+                        name: "occasionSelect",
                         id: "simple-select"
                       }}
                     >
@@ -332,7 +397,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="2"
+                        value="Baby Shower"
                       >
                         Baby Shower
                       </MenuItem>
@@ -341,7 +406,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="3"
+                        value="Birthday"
                       >
                         Birthday
                       </MenuItem>
@@ -350,7 +415,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="4"
+                        value="Christmas"
                       >
                         Christmas
                       </MenuItem>
@@ -359,7 +424,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="5"
+                        value="Baptism"
                       >
                         Baptism
                       </MenuItem>
@@ -368,7 +433,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="6"
+                        value="Christening"
                       >
                         Christening
                       </MenuItem>
@@ -377,7 +442,7 @@ class SectionDetails extends React.Component {
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
                         }}
-                        value="7"
+                        value="Other"
                       >
                         Other
                       </MenuItem>
@@ -385,21 +450,7 @@ class SectionDetails extends React.Component {
                   </FormControl>
                 </GridItem>
               </GridContainer>
-              <InputLabel className={classes.label}>
-                Description:
-              </InputLabel>
-              <CustomInput
-                id="textarea-input"
-                description
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  placeholder: "Add your description here...",
-                  multiline: true,
-                  rows: 5
-                }}
-              />
+              {this.renderDescription(classes)}
             </GridItem>
             <GridItem xs={12} sm={12} md={4}>
               <InputLabel className={classes.label}>
