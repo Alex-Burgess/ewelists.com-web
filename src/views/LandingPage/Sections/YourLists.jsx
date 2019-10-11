@@ -138,7 +138,7 @@ class SectionLists extends React.Component {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <a href="/lists/viewexample">
+              <a href={"/lists/" + list.listId}>
                 <img src={oscar1} className={classes.listImage} alt="..." />
               </a>
               <div
@@ -151,19 +151,19 @@ class SectionLists extends React.Component {
             </CardHeader>
             <CardBody>
               <Info>
-                <a href="/lists/viewexample">
+                <a href={"/lists/" + list.listId}>
                   <h6 className={classes.cardCategory}>{list.title}</h6>
                 </a>
               </Info>
               <p className={classes.cardDescription}>
-                {list.description}
+                {list.occasion}
               </p>
             </CardBody>
             <CardFooter
               profile
               className={classes.justifyContentCenter}
             >
-              <a href="/lists/viewexample">
+              <a href={"/lists/" + list.listId}>
                 <Button round justIcon color="info">
                   <Subject />
                 </Button>
