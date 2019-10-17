@@ -45,7 +45,6 @@ import LandingCreate from "./Sections/LandingCreate.jsx";
 import LandingProduct from "./Sections/LandingProduct.jsx";
 import LandingIdeas from "./Sections/LandingIdeas.jsx";
 import YourLists from "./Sections/YourLists.jsx";
-import ViewOthersLists from "./Sections/ViewOthersLists.jsx";
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -78,7 +77,6 @@ class LandingPage extends React.Component {
         />
         <div className={classes.main}>
           <YourLists />
-          <ViewOthersLists />
         </div>
       </div>
     );

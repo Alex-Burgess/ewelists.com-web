@@ -64,7 +64,8 @@ class SectionLists extends React.Component {
     this.state = {
       isCreating: false,
       isLoading: true,
-      lists: [],
+      ownedLists: [],
+      shareLists: [],
       createModal: false,
       title: '',
       description: '',
@@ -74,7 +75,8 @@ class SectionLists extends React.Component {
 
   async componentDidMount() {
     const response = await this.getLists();
-    this.setState({ lists: response.lists });
+    this.setState({ ownedLists: response.owned });
+    this.setState({ sharedLists: response.shared });
     this.setState({ isLoading: false });
   }
 
@@ -189,7 +191,7 @@ class SectionLists extends React.Component {
               <h1 className={classes.title}>Your lists</h1>
               <br />
               <GridContainer>
-                {!this.state.isLoading && this.renderYourLists(classes, this.state.lists)}
+                {!this.state.isLoading && this.renderYourLists(classes, this.state.ownedLists)}
                 <GridItem xs={12} sm={4} md={4}>
                   <CreateButton
                     text="Create a New List"
@@ -374,6 +376,13 @@ class SectionLists extends React.Component {
                   </Dialog>
                   {/* CREATE MODAL END */}
                 </GridItem>
+              </GridContainer>
+            </GridItem>
+            <GridItem xs={12} sm={12} md={12}>
+              <h1 className={classes.title}>View Lists Shared With You</h1>
+              <br />
+              <GridContainer>
+                {!this.state.isLoading && this.renderYourLists(classes, this.state.sharedLists)}
               </GridContainer>
             </GridItem>
           </GridContainer>
