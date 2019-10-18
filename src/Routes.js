@@ -12,6 +12,8 @@ import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
 import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
 import ArticlePageTravelGear from "views/ArticlePageTravelGear/ArticlePageTravelGear.jsx";
 import ArticlePageHospitalBag from "views/ArticlePageHospitalBag/ArticlePageHospitalBag.jsx";
+import ArticlePageNursery from "views/ArticlePageNursery/ArticlePageNursery.jsx";
+import ArticlePageBathTime from "views/ArticlePageBathTime/ArticlePageBathTime.jsx";
 import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
 import EditListPage from "views/EditListPage/EditListPage.jsx";
 
@@ -28,6 +30,8 @@ export default ({childProps}) =>
     <AppliedRoute path="/listideas" exact component={ListIdeasPage} props={childProps} />
     <AppliedRoute path="/listideas/travelgear" exact component={ArticlePageTravelGear} props={childProps} />
     <AppliedRoute path="/listideas/hospitalbag" exact component={ArticlePageHospitalBag} props={childProps} />
+    <AppliedRoute path="/listideas/nursery" exact component={ArticlePageNursery} props={childProps} />
+    <AppliedRoute path="/listideas/bathtime" exact component={ArticlePageBathTime} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />

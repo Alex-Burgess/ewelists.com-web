@@ -18,11 +18,11 @@ import {
   container,
   title,
   main,
-  whiteColor,
+  grayColor,
   mainRaised
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const blogPostPageStyle = {
+const blogPostPageStyle = theme => ({
   container: {
     ...container,
     zIndex: "2"
@@ -32,10 +32,17 @@ const blogPostPageStyle = {
   },
   title: {
     ...title,
-    color: whiteColor
+    textAlign: "Center",
+    [theme.breakpoints.down("xs")]: {
+        fontSize: "1.75rem"
+    }
   },
   subtitle: {
-    color: whiteColor
+    paddingBottom: "30px",
+    [theme.breakpoints.down("xs")]: {
+        fontSize: "1.5rem",
+        textAlign: "Center"
+    }
   },
   main: {
     ...main,
@@ -79,7 +86,19 @@ const blogPostPageStyle = {
   },
   articleBg: {
     height: "40vh"
+  },
+  content: {
+    "& p": {
+      fontSize: "1.188rem",
+      lineHeight: "1.5em",
+      color: grayColor[15],
+      marginBottom: "30px",
+      [theme.breakpoints.down("xs")]: {
+          fontSize: "1.1rem",
+          lineHeight: "1.4em"
+      }
+    }
   }
-};
+});
 
 export default blogPostPageStyle;

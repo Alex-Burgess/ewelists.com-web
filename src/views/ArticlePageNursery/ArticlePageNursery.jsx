@@ -34,17 +34,27 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 // sections for this page
-import SectionText from "./Sections/SectionText.jsx";
+import SectionContent from "./Sections/Content.jsx";
 import SectionShopList from "./Sections/SectionShopList.jsx";
-import SectionSimilarStories from "./Sections/SectionSimilarStories.jsx";
+import SectionSimilarLists from "./Sections/SimilarLists.jsx";
 
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/articlePageStyle.jsx";
 
 class ArticlePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: 'The Nursery List',
+      subtitle: 'What to buy for your baby’s bedroom.',
+    };
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+
   render() {
     const { classes } = this.props;
     return (
@@ -59,15 +69,29 @@ class ArticlePage extends React.Component {
             color: "info"
           }}
         />
-        <Parallax image={require("assets/img/articles/example/bg5.jpg")} filter="dark">
+        <Parallax image={require("assets/img/articles/travelgear/bg-beach.jpg")} filter="dark" className={classes.articleBg}>
         </Parallax>
         <div className={classes.main}>
           <div className={classes.container}>
-            <SectionText />
+            <div className={classes.section}>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={10} md={10}>
+                  <h1 className={classes.title}>
+                    {this.state.title}
+                  </h1>
+                  <h2 className={classes.subtitle}>
+                    {this.state.subtitle}
+                  </h2>
+                  <div className={classes.content}>
+                    <SectionContent />
+                  </div>
+                </GridItem>
+              </GridContainer>
+            </div>
             <SectionShopList />
           </div>
         </div>
-        <SectionSimilarStories />
+        <SectionSimilarLists />
         <FooterLarge />
       </div>
     );

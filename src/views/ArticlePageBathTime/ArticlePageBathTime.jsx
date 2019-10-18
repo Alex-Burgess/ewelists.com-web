@@ -45,8 +45,8 @@ class ArticlePage extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Hospital Bag',
-      subtitle: "Make sure you're all set with everything you need for the all important hospital bag.",
+      title: 'Bath Time',
+      subtitle: 'What to buy for your bathing your baby.',
     };
   }
 
