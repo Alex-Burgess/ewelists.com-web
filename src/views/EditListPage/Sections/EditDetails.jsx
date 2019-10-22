@@ -77,9 +77,9 @@ class SectionDetails extends React.Component {
     try {
       const response = await this.getList();
       this.setState({
-        title: response.title.S,
-        description: response.description.S,
-        occasionSelect: response.occasion.S
+        title: response.list.title,
+        description: response.list.description,
+        occasionSelect: response.list.occasion
       });
       this.setState({ isLoading: false });
     } catch (e) {
