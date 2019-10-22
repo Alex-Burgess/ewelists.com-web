@@ -56,7 +56,7 @@ class ArticlePage extends React.Component {
         description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
         {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
         description_short: "Everything you need when bathing your baby."},
-        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'travelgear.jpg',
+        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
         description_short: "What to buy for your baby’s bedroom."}
       ],
       shopTheStory: [

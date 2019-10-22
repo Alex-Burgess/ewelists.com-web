@@ -50,7 +50,7 @@ class ArticlePage extends React.Component {
     this.state = {
       title: 'The Nursery List',
       subtitle: 'What to buy for your baby’s bedroom.',
-      backgroundImg: 'bathtime.jpg',
+      backgroundImg: 'nurserylist.jpg',
       similarArticles: [
         {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
         description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},

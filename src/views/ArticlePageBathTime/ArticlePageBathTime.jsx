@@ -56,7 +56,7 @@ class ArticlePage extends React.Component {
         description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
         {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
         description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'travelgear.jpg',
+        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
         description_short: "What to buy for your baby’s bedroom."}
       ],
       shopTheStory: [

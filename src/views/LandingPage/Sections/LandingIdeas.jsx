@@ -24,17 +24,42 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import Info from "components/Typography/Info.jsx";
-import Danger from "components/Typography/Danger.jsx";
+import RecentList from "components/RecentList/RecentList.jsx";
 
 import ideasStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/ideasStyle.jsx";
 
-import beach from "assets/img/articles/travelgear/bg-beach.jpg";
-import hospitalbag from "assets/img/articles/hospitalbag/bg-packing.jpg";
-
 class LandingIdeas extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      recentArticles: [
+        {title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg', img_position_left: true,
+        description_short: "Great items to make travelling with your little ones no fuss!",
+        beginning_content: "The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car..."},
+        {title: "Nursery List", url: "/listideas/nurserylist", img: 'nurserylist.jpg', img_position_left: false,
+        description_short: "All the items you need for your baby’s bedroom",
+        beginning_content: "Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy..."}
+      ]
+    };
+  }
+
+  renderRecentArticles(classes, articles: Articles[]){
+    let allArticles: Articles[] = [];
+
+    return allArticles.concat(articles).map (
+      (article, i) =>
+        <RecentList
+          title={article.title}
+          url={article.url}
+          img={require('assets/img/articles/' + article.img)}
+          img_position_left={article.img_position_left}
+          description_short={article.description_short}
+          beginning_content={article.beginning_content}
+        />
+    )
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -48,101 +73,7 @@ class LandingIdeas extends React.Component {
               className={classes.mlAuto + " " + classes.mrAuto}
             >
               <h2 className={classes.title}>Gift List Ideas</h2>
-              <br />
-              <Card plain blog className={classes.card}>
-                <GridContainer>
-                  <GridItem xs={12} sm={5} md={5}>
-                    <CardHeader image plain>
-                      <a href="/listideas/travelgear">
-                        <img src={beach} className={classes.leftImage} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${beach})`,
-                          opacity: "1"
-                        }}
-                      />
-                    </CardHeader>
-                  </GridItem>
-                  <GridItem xs={12} sm={7} md={7}>
-                    <Info>
-                      <h6 className={classes.cardCategory}>
-                        <a href="/listideas/travelgear">
-                          TRAVEL GEAR
-                        </a>
-                      </h6>
-                    </Info>
-                    <h3 className={classes.cardTitle}>
-                      <a href="/listideas/travelgear">
-                        Great items to make travelling with your little ones no fuss!
-                      </a>
-                    </h3>
-                    <p className={classes.description1}>
-                      The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly
-                      moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
-                      <a href="/listideas/travelgear">
-                        {" "}
-                        Read More{" "}
-                      </a>
-                    </p>
-                  </GridItem>
-                  <GridItem xs={12} sm={5} md={5}>
-                    <CardHeader image plain>
-                      <a href="/listideas/travelgear">
-                        <img src={beach} className={classes.leftImageMobile} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${beach})`,
-                          opacity: "1"
-                        }}
-                      />
-                    </CardHeader>
-                  </GridItem>
-                </GridContainer>
-              </Card>
-              <Card plain blog className={classes.card}>
-                <GridContainer>
-                  <GridItem xs={12} sm={7} md={7}>
-                    <Danger>
-                      <h6 className={classes.cardCategory}>
-                        <a href="/listideas/hospitalbag">
-                          HOSPITAL BAG
-                        </a>
-                      </h6>
-                    </Danger>
-                    <h3 className={classes.cardTitle}>
-                      <a href="/listideas/hospitalbag">
-                        Get set with everything you need for the all important hospital bag.
-                      </a>
-                    </h3>
-                    <p className={classes.description1}>
-                    What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags
-                    many weeks out from the birth date. My top tips for what to pack in your bag...
-                      <a href="/listideas/hospitalbag">
-                        {" "}
-                        Read More{" "}
-                      </a>
-                    </p>
-                  </GridItem>
-                  <GridItem xs={12} sm={5} md={5}>
-                    <CardHeader image plain>
-                      <a href="/listideas/hospitalbag">
-                        <img src={hospitalbag} className={classes.rightImage} alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage: `url(${hospitalbag})`,
-                          opacity: "1"
-                        }}
-                      />
-                    </CardHeader>
-                  </GridItem>
-                </GridContainer>
-              </Card>
+              {this.renderRecentArticles(classes, this.state.recentArticles)}
             </GridItem>
           </GridContainer>
         </div>

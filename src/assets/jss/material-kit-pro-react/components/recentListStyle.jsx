@@ -15,28 +15,12 @@
 
 */
 import {
-  container,
-  mlAuto,
-  mrAuto,
-  title,
   description,
   cardTitle
 } from "assets/jss/material-kit-pro-react.jsx";
 
-import tooltipsStyle from "assets/jss/material-kit-pro-react/tooltipsStyle.jsx";
-
 const sectionRecentListsStyle = theme => ({
-  ...tooltipsStyle,
-  title,
-  container,
-  mlAuto,
-  mrAuto,
   cardTitle,
-  section: {
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
-    padding: "15px 0"
-  },
   cardCategory: {
     fontSize: "0.75rem",
     marginBottom: "0",

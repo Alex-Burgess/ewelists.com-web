@@ -16,17 +16,30 @@
 */
 import {
   container,
+  mlAuto,
+  mrAuto,
   title,
+  cardTitle,
   main,
   whiteColor,
-  mainRaised
+  mainRaised,
+  grayColor,
+  infoColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const blogPostsPageStyle = {
+const blogPostsPageStyle = theme => ({
+  mlAuto,
+  mrAuto,
+  cardTitle,
   container: {
     ...container,
     zIndex: "2",
     position: "relative"
+  },
+  section: {
+    backgroundPosition: "50%",
+    backgroundSize: "cover",
+    padding: "15px 0"
   },
   textCenter: {
     textAlign: "center"
@@ -36,6 +49,9 @@ const blogPostsPageStyle = {
     color: whiteColor,
     fontSize: "2.25rem",
     lineHeight: "1.5em"
+  },
+  sectionTitle: {
+    ...title
   },
   main: {
     ...main,
@@ -76,7 +92,26 @@ const blogPostsPageStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  description: {
+    color: grayColor[0]
+  },
+  link: {
+    fontSize: "13px",
+    textDecoration: "none",
+    "&,& *,& *:hover,& *:focus": {
+      color: infoColor[2] + "  !important"
+    }
+  },
+  listImage: {
+    [theme.breakpoints.down("xs")]: {
+      height: "60vw",
+      maxHeight: "216.53px",
+    },
+    height: "17vw",
+    maxHeight: "193.19px",
+    objectFit: "cover"
   }
-};
+});
 
 export default blogPostsPageStyle;

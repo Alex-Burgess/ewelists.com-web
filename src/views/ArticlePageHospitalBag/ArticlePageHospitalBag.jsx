@@ -54,7 +54,7 @@ class ArticlePage extends React.Component {
       similarArticles: [
         {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
         description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'travelgear.jpg',
+        {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
         description_short: "What to buy for your baby’s bedroom."},
         {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
         description_short: "Everything you need when bathing your baby."}

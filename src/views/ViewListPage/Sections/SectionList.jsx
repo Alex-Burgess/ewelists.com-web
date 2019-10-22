@@ -38,16 +38,6 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 
-import babybjorncot from "assets/img/articles/travelgear/babybjorn-travelcot.jpg";
-import babybjorncarrier from "assets/img/articles/travelgear/babybjorn-carrier.jpg";
-import micralitecot from "assets/img/articles/travelgear/micralite-travelcot.jpg";
-import yoyo from "assets/img/articles/travelgear/babyzen-yoyo.jpg";
-import acro from "assets/img/articles/travelgear/mamasandpapas-acro.jpg";
-import profold from "assets/img/articles/travelgear/micralite-profold.jpg";
-import ranger from "assets/img/articles/travelgear/littlelife-rangercarrier.jpg";
-import lobster from "assets/img/articles/travelgear/philandteds-lobster.jpg";
-import munchkinseat from "assets/img/articles/travelgear/munchkin-travelseat.jpg";
-
 import styles from "assets/jss/material-kit-pro-react/views/viewListSections/sectionListStyle.jsx";
 
 class SectionProducts extends React.Component {
@@ -384,7 +374,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B01H24LM58">
-                        <img src={babybjorncot} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -411,7 +401,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B07PN49Q4S">
-                        <img src={micralitecot} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -438,7 +428,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291">
-                        <img src={yoyo} className={classes.productImage}  alt=".." />
+                        <img src={'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'} className={classes.productImage}  alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -465,7 +455,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B07FBYHY7L">
-                        <img src={acro} className={classes.productImage}  alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'} className={classes.productImage}  alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -492,7 +482,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B07PM6ZD1C">
-                        <img src={profold} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/71hqy17iYuL._SY550_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -519,7 +509,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B07937WXKD">
-                        <img src={babybjorncarrier} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/91hX32oi5LL._SX355_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -546,7 +536,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B0792Y5L7K">
-                        <img src={ranger} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81KydgdpFmL._SY679_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -573,7 +563,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B0019AC8GE">
-                        <img src={lobster} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/91SA-D7wIUL._SX355_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
@@ -600,7 +590,7 @@ class SectionProducts extends React.Component {
                   <Card plain product>
                     <CardHeader noShadow image>
                       <a href="https://www.amazon.co.uk/dp/B01M6XGKV1">
-                        <img src={munchkinseat} className={classes.productImage} alt=".." />
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/7178PGluPOL._SY355_.jpg'} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
