@@ -379,7 +379,7 @@ class SectionProducts extends React.Component {
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
                       <a href="https://www.amazon.co.uk/dp/B01H24LM58">
-                        <h4 className={classes.cardTitle}>BABYBJ&#0214;RN</h4>
+                        <h4 className={classes.cardTitle}>BABYBJÖRN</h4>
                       </a>
                       <p className={classes.description}>
                         Travel Cot Easy Go, Anthracite, with transport bag.
@@ -514,7 +514,7 @@ class SectionProducts extends React.Component {
                     </CardHeader>
                     <CardBody plain className={classes.productDetails}>
                       <a href="https://www.amazon.co.uk/dp/B07937WXKD">
-                        <h4 className={classes.cardTitle}>BABYBJ&#0214;RN</h4>
+                        <h4 className={classes.cardTitle}>BABYBJÖRN</h4>
                       </a>
                       <p className={classes.description}>
                         Baby Carrier One Air, 3D Mesh, Navy Blue.

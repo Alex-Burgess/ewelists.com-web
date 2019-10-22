@@ -60,12 +60,12 @@ class ArticlePage extends React.Component {
         description_short: "What to buy for your baby’s bedroom."}
       ],
       shopTheStory: [
-        {brand: "BABYBJ&#0214;RN", url: 'https://www.amazon.co.uk/dp/B01H24LM58', price: '£189.99', description: 'Travel Cot Easy Go, Anthracite, with transport bag.', img: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
+        {brand: 'BABYBJÖRN', url: 'https://www.amazon.co.uk/dp/B01H24LM58', price: '£189.99', description: 'Travel Cot Easy Go, Anthracite, with transport bag.', img: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
         {brand: 'Micralite', url: 'https://www.amazon.co.uk/dp/B07PN49Q4S', price: '£175.00', description: 'Micralite Travel Cot 3 in 1 Sleep & Go Portable Travel Cot - Carbon/Grey.', img: 'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'},
         {brand: 'BABYZEN', url: 'https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291', price: '£389.00', description: 'BABYZEN YOYO+ Pushchair, Grey/Black.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'},
         {brand: 'Mamas & Papas', url: 'https://www.amazon.co.uk/dp/B07FBYHY7L', price: '£189.00', description: 'Acro Compact Buggy, Black.', img: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'},
         {brand: 'Micralite', url: 'https://www.amazon.co.uk/dp/B07PM6ZD1C', price: '£175.00', description: 'Micralite ProFold Compact Lightweight Carbon Stroller.', img: 'https://images-na.ssl-images-amazon.com/images/I/71hqy17iYuL._SY550_.jpg'},
-        {brand: 'BABYBJ&#0214;RN', url: 'https://www.amazon.co.uk/dp/B07937WXKD', price: '£119.99', description: 'BABYBJÖRN Baby Carrier One Air, 3D Mesh, Navy Blue, 2018 Edition.', img: 'https://images-na.ssl-images-amazon.com/images/I/91hX32oi5LL._SX355_.jpg'},
+        {brand: 'BABYBJÖRN', url: 'https://www.amazon.co.uk/dp/B07937WXKD', price: '£119.99', description: 'BABYBJÖRN Baby Carrier One Air, 3D Mesh, Navy Blue, 2018 Edition.', img: 'https://images-na.ssl-images-amazon.com/images/I/91hX32oi5LL._SX355_.jpg'},
         {brand: 'LittleLife', url: 'https://www.amazon.co.uk/dp/B0792Y5L7K', price: '£79.00', description: 'LittleLife Ranger S2 Child Carrier.', img: 'https://images-na.ssl-images-amazon.com/images/I/81KydgdpFmL._SY679_.jpg'},
         {brand: 'Phil and Teds', url: 'https://www.amazon.co.uk/dp/B0019AC8GE', price: '69.95', description: 'Phil and Teds Lobster Highchair Red.', img: 'https://images-na.ssl-images-amazon.com/images/I/91SA-D7wIUL._SX355_.jpg'},
         {brand: 'Munchkin', url: 'https://www.amazon.co.uk/dp/B01M6XGKV1', price: '£20.83', description: 'Munchkin Portable Travel Child Booster Seat, (Blue/Grey).', img: 'https://images-na.ssl-images-amazon.com/images/I/7178PGluPOL._SY355_.jpg'}
