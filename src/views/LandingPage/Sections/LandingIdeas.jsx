@@ -37,7 +37,7 @@ class LandingIdeas extends React.Component {
         {title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg', img_position_left: true,
         description_short: "Great items to make travelling with your little ones no fuss!",
         beginning_content: "The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car..."},
-        {title: "Nursery List", url: "/listideas/nurserylist", img: 'nurserylist.jpg', img_position_left: false,
+        {title: "Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg', img_position_left: false,
         description_short: "All the items you need for your baby’s bedroom",
         beginning_content: "Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy..."}
       ]

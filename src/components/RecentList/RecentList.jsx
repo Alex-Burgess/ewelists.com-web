@@ -94,19 +94,19 @@ function SimilarList({ ...props }) {
             <GridItem xs={12} sm={7} md={7}>
               <Danger>
                 <h6 className={classes.cardCategory}>
-                  <a href={img}>
+                  <a href={url}>
                     {title}
                   </a>
                 </h6>
               </Danger>
               <h3 className={classes.cardTitle}>
-                <a href={img}>
+                <a href={url}>
                   {description_short}
                 </a>
               </h3>
               <p className={classes.description1}>
               {beginning_content}
-                <a href={img}>
+                <a href={url}>
                   {" "}
                   Read More{" "}
                 </a>
@@ -114,7 +114,7 @@ function SimilarList({ ...props }) {
             </GridItem>
             <GridItem xs={12} sm={5} md={5}>
               <CardHeader image plain>
-                <a href={img}>
+                <a href={url}>
                   <img src={img} className={classes.rightImage} alt="..." />
                 </a>
                 <div

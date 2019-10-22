@@ -62,7 +62,7 @@ class ListIdeasPage extends React.Component {
         {title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg', img_position_left: false,
         description_short: "Get set with everything you need for the all important hospital bag.",
         beginning_content: "What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags many weeks out from the birth date. My top tips for what to pack in your bag..."},
-        {title: "Nursery List", url: "/listideas/nurserylist", img: 'nurserylist.jpg', img_position_left: true,
+        {title: "Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg', img_position_left: true,
         description_short: "All the items you need for your baby’s bedroom",
         beginning_content: "Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy..."},
         {title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg', img_position_left: false,
