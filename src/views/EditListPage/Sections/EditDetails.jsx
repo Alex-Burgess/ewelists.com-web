@@ -135,15 +135,17 @@ class SectionDetails extends React.Component {
       var requestBody = {
         "title": this.state.title,
         "description": this.state.description,
-        "occasion": "Birthday"
+        "occasion": this.state.occasionSelect
       };
       const response = await this.updateListRequest(requestBody);
-      console.log("update response title: " + response.title.S);
-      console.log("update response description: " + response.description.S);
+      console.log("update response title: " + response[0].updates.title);
+      console.log("update response description: " + response[0].updates.description);
+      console.log("update response description: " + response[0].updates.occasion);
 
       this.setState({
-        title: response.title.S,
-        description: response.description.S,
+        title: response[0].updates.title,
+        description: response[0].updates.description,
+        occasionSelect: response[0].updates.occasion,
         isEdit: false
        });
     } catch (e) {
