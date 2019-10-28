@@ -32,6 +32,11 @@ class App extends React.Component {
               break;
             default:
               console.log("Unexpected auth event: " + event);
+              console.log("Unexpected auth event data: " + data);
+              if (data.message === "Cannot read property 'accessToken' of undefined") {
+                console.log("There was an unexpected signin or signup event, redirecting to signup page.");
+                this.props.history.push("/signup");
+              }
               this.setState({ user: null });
               break;
           }
