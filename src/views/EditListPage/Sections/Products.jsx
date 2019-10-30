@@ -28,11 +28,34 @@ import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
+// Sections
+import SectionAdd from "./AddProductPopOut.jsx";
+import SectionEdit from "./EditProductPopOut.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/productsStyle.jsx";
 
 
 class SectionProducts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModal: false,
+      editModal: false
+    };
+  }
+
+  handleClose(modal) {
+    var x = [];
+    x[modal] = false;
+    this.setState(x);
+  }
+
+  handleClickOpen(modal) {
+    var x = [];
+    x[modal] = true;
+    this.setState(x);
+  }
+
   renderProduct(classes, img, brand, details, price, quantity, reserved) {
     return (
       [
@@ -60,11 +83,11 @@ class SectionProducts extends React.Component {
       <Tooltip
         key={1}
         id="close1"
-        title="Remove item"
+        title="Edit item"
         placement="left"
         classes={{ tooltip: classes.tooltip }}
       >
-        <Button link className={classes.actionButton}>
+        <Button link className={classes.actionButton} onClick={() => this.handleClickOpen("editModal")}>
           <Edit />
         </Button>
       </Tooltip>
@@ -85,7 +108,7 @@ class SectionProducts extends React.Component {
         col: {
           colspan: 3,
           text: (
-            <Button color="info" round>
+            <Button color="info" round onClick={() => this.handleClickOpen("addModal")}>
               Add New Item <KeyboardArrowRight />
             </Button>
           )
@@ -105,7 +128,6 @@ class SectionProducts extends React.Component {
         <div className={classes.container}>
           <Card plain>
             <CardBody plain>
-              <h3 className={classes.cardTitle}>Add items to your list below:</h3>
               <Table
                 tableHead={[
                   "",
@@ -137,6 +159,8 @@ class SectionProducts extends React.Component {
               />
             </CardBody>
           </Card>
+          <SectionAdd open={this.state.addModal} handleClose={this.handleClose.bind(this)} />
+          <SectionEdit open={this.state.editModal} handleClose={this.handleClose.bind(this)} />
         </div>
       </div>
     );

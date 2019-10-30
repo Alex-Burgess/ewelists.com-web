@@ -20,10 +20,11 @@ import {
   successColor,
   whiteColor,
   grayColor,
+  title,
   defaultFont
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const customInputStyle = {
+const customInputStyle = theme => ({
   disabled: {
     "&:before": {
       backgroundColor: "transparent !important"
@@ -78,10 +79,19 @@ const customInputStyle = {
     pointerEvents: "none"
   },
   formControl: {
-    // margin: "0 0 17px 0",
-    // paddingTop: "27px",
     margin: "0 0 17px 0",
     paddingTop: "10px",
+    // edit list
+    // margin: "0 0 0px 0",
+    // paddingTop: "0px",
+    position: "relative",
+    "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
+      color: grayColor[13]
+    }
+  },
+  titleFormControl: {
+    margin: "0 0 0px 0",
+    paddingTop: "0px",
     position: "relative",
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
       color: grayColor[13]
@@ -116,8 +126,19 @@ const customInputStyle = {
     }
   },
   title: {
+    ...title,
     "&,&::placeholder": {
-      fontSize: "2.5rem"
+      paddingTop: "0px",
+      paddingBottom: "5px",
+      marginBottom: "0px",
+      fontSize: "2.8rem",
+      [theme.breakpoints.down("sm")]: {
+          fontSize: "2rem"
+      },
+      [theme.breakpoints.down("xs")]: {
+          textAlign: "Center",
+          fontSize: "1.75rem"
+      }
     }
   },
   smallTitle: {
@@ -127,7 +148,8 @@ const customInputStyle = {
   },
   description: {
     "&,&::placeholder": {
-      fontSize: "1.188rem"
+      // fontSize: "1.188rem"
+      fontSize: "1rem"
     }
   },
   smallDescription: {
@@ -135,6 +157,6 @@ const customInputStyle = {
       fontSize: "0.9rem"
     }
   }
-};
+});
 
 export default customInputStyle;

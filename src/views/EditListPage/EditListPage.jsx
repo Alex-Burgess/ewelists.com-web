@@ -178,7 +178,7 @@ class ArticlePage extends React.Component {
               color="primary"
               tabs={[
                 {
-                  tabButton: "List",
+                  tabButton: "Add Items",
                   tabIcon: List,
                   tabContent: (
                     <div>

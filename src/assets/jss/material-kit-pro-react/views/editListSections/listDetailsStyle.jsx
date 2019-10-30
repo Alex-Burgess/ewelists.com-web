@@ -30,15 +30,20 @@ const sectionDetailsStyle = theme => ({
   title: {
     ...title,
     textAlign: "Left",
+    marginTop: "30px",
+    marginBottom: "10px",
+    fontSize: "2.8rem",
+    [theme.breakpoints.down("sm")]: {
+        fontSize: "2rem"
+    },
     [theme.breakpoints.down("xs")]: {
         textAlign: "Center",
         fontSize: "1.75rem"
-    },
-    marginTop: "20px",
-    marginBottom: "10px"
+    }
   },
   description: {
     paddingBottom: "0px",
+    minHeight: "48px"
   },
   section: {
     paddingBottom: "40",
@@ -56,7 +61,13 @@ const sectionDetailsStyle = theme => ({
     }
   },
   label: {
-    paddingTop: "30px",
+    paddingTop: "25px",
+    paddingBottom: "5px",
+    color: grayColor[12],
+  },
+  labelEdit: {
+    paddingTop: "20px",
+    paddingBottom: "5px",
     color: grayColor[12],
   },
   dateField: {
@@ -64,10 +75,18 @@ const sectionDetailsStyle = theme => ({
   },
   listImage: {
     maxHeight: "233.188px",
-    objectFit: "cover"
+    maxWidth: "380px",
+    objectFit: "cover",
+    [theme.breakpoints.down("sm")]: {
+      maxHeight: "200px",
+    }
+
   },
   centerText: {
     textAlign: "Center",
+  },
+  editButtons: {
+    paddingTop: "25px"
   }
 });
 

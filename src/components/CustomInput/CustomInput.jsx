@@ -72,10 +72,16 @@ function CustomInput({ ...props }) {
     [classes.smallDescription]: smallDescription
   });
   var formControlClasses;
-  if (formControlProps !== undefined) {
+  if (title || description) {
     formControlClasses = classNames(
       formControlProps.className,
-      classes.formControl
+      classes.titleFormControl,
+    );
+  }
+  else if (formControlProps !== undefined) {
+    formControlClasses = classNames(
+      formControlProps.className,
+      classes.formControl,
     );
   } else {
     formControlClasses = classes.formControl;

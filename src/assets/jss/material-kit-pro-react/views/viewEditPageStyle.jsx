@@ -57,7 +57,7 @@ const pageStyle = {
     width: "auto"
   },
   profileTabs: {
-    marginTop: "4.284rem"
+    marginTop: "2rem"
   },
 };
 

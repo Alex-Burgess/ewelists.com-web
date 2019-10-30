@@ -24,6 +24,7 @@ import Datetime from "react-datetime";
 // nodejs library that concatenates classes
 import withStyles from "@material-ui/core/styles/withStyles";
 import Icon from "@material-ui/core/Icon";
+import Edit from "@material-ui/icons/Edit";
 // import classNames from "classnames";
 // @material-ui/core components
 import FormControl from "@material-ui/core/FormControl";
@@ -117,45 +118,42 @@ class SectionDetails extends React.Component {
     return (
       <div className={classes.container}>
         <GridContainer >
-          <GridItem xs={12} sm={12} md={12}>
+          <GridItem xs={12} sm={7} md={7}>
+            <h1 className={classes.title}>
+              {title}
+            </h1>
             <InputLabel className={classes.label}>
-              Title:
+              Description:
             </InputLabel>
-            <h1 className={classes.title}>{title}</h1>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={7}>
+            <div className={classes.description}>
+              {description}
+            </div>
             <GridContainer >
-              <GridItem xs={12} sm={12} md={6}>
-                <InputLabel className={classes.label + " " + classes.date}>
+              <GridItem xs={4} sm={4} md={4}>
+                <InputLabel className={classes.label}>
                   Date:
                 </InputLabel>
                 <p>31/10/2019</p>
               </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <InputLabel className={classes.label + " " + classes.date}>
+              <GridItem xs={4} sm={4} md={4}>
+                <InputLabel className={classes.label}>
                   Occasion:
                 </InputLabel>
                 <p>{occasion}</p>
               </GridItem>
+              <GridItem xs={4} sm={4} md={4}>
+                <div className={classes.editButtons}>
+                  <Button round justIcon color="info" onClick={this.props.editDetails}>
+                    <Icon>mode_edit</Icon>
+                  </Button>
+                  <Button round justIcon color="default" onClick={() => this.handleClickOpen("smallModal")}>
+                    <Delete />
+                  </Button>
+                </div>
+              </GridItem>
             </GridContainer>
-            <InputLabel className={classes.label}>
-              Description:
-            </InputLabel>
-            <p>{description}</p>
-            <InputLabel className={classes.label}>
-              Manage List:
-            </InputLabel>
-            <Button round justIcon color="info" onClick={this.props.editDetails}>
-              <Icon>mode_edit</Icon>
-            </Button>
-            <Button round justIcon color="default" onClick={() => this.handleClickOpen("smallModal")}>
-              <Delete />
-            </Button>
           </GridItem>
-          <GridItem xs={12} sm={12} md={5}>
-            <InputLabel className={classes.label}>
-              Image:
-            </InputLabel>
+          <GridItem xs={12} sm={5} md={5}>
             <Card profile plain>
               <CardHeader image plain>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
@@ -180,10 +178,7 @@ class SectionDetails extends React.Component {
     return (
       <div className={classes.container}>
         <GridContainer >
-          <GridItem xs={12} sm={12} md={12}>
-            <InputLabel className={classes.label}>
-              Title:
-            </InputLabel>
+          <GridItem xs={12} sm={7} md={7}>
             <CustomInput
               id="title"
               title
@@ -196,11 +191,26 @@ class SectionDetails extends React.Component {
                 fullWidth: true
               }}
             />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={7}>
+            <InputLabel className={classes.labelEdit}>
+              Description:
+            </InputLabel>
+            <CustomInput
+              id="description"
+              description
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                placeholder: "Add your description here...",
+                defaultValue: description,
+                multiline: true,
+                rows: 2,
+                onChange: this.props.handleChange
+              }}
+            />
             <GridContainer >
-              <GridItem xs={12} sm={12} md={6}>
-                <InputLabel className={classes.label + " " + classes.date}>
+              <GridItem xs={4} sm={4} md={4}>
+                <InputLabel className={classes.labelEdit}>
                   Date:
                 </InputLabel>
                 <FormControl fullWidth>
@@ -212,8 +222,8 @@ class SectionDetails extends React.Component {
                   />
                 </FormControl>
               </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <InputLabel className={classes.label + " " + classes.date}>
+              <GridItem xs={4} sm={4} md={4}>
+                <InputLabel className={classes.labelEdit}>
                   Occasion:
                 </InputLabel>
                 <FormControl fullWidth className={classes.selectFormControl}>
@@ -248,35 +258,16 @@ class SectionDetails extends React.Component {
                   </Select>
                 </FormControl>
               </GridItem>
+              <GridItem xs={4} sm={4} md={4}>
+                <div className={classes.editButtons}>
+                  <Button round justIcon color="success" onClick={this.props.saveDetails}>
+                    <Icon>save_alt</Icon>
+                  </Button>
+                </div>
+              </GridItem>
             </GridContainer>
-            <InputLabel className={classes.label}>
-              Description:
-            </InputLabel>
-            <CustomInput
-              id="description"
-              description
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                placeholder: "Add your description here...",
-                defaultValue: description,
-                multiline: true,
-                rows: 2,
-                onChange: this.props.handleChange
-              }}
-            />
-            <InputLabel className={classes.label}>
-              Manage List:
-            </InputLabel>
-            <Button round justIcon color="success" onClick={this.props.saveDetails}>
-              <Icon>save_alt</Icon>
-            </Button>
           </GridItem>
-          <GridItem xs={12} sm={12} md={5}>
-            <InputLabel className={classes.label}>
-              Image:
-            </InputLabel>
+          <GridItem xs={12} sm={5} md={5}>
             <Card profile plain>
               <CardHeader image plain>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
