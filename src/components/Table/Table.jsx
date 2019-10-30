@@ -141,6 +141,22 @@ function CustomTable({ ...props }) {
                 </TableRow>
               );
             }
+            if (prop.addnew) {
+              return (
+                <TableRow key={key} hover={hover} className={tableRowClasses}>
+                  <TableCell
+                    className={classes.tableCell}
+                    colSpan={prop.colspan}
+                  />
+                  <TableCell
+                    className={classes.tableCell + " " + classes.right}
+                    colSpan={prop.col.colspan}
+                  >
+                    {prop.col.text}
+                  </TableCell>
+                </TableRow>
+              );
+            }
             return (
               <TableRow
                 key={key}

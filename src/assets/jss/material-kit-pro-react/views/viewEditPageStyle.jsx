@@ -55,7 +55,10 @@ const pageStyle = {
     display: "inline-block",
     padding: "0px",
     width: "auto"
-  }
+  },
+  profileTabs: {
+    marginTop: "4.284rem"
+  },
 };
 
 export default pageStyle;

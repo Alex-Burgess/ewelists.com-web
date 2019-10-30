@@ -21,30 +21,18 @@ import { API } from "aws-amplify";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Icon from "@material-ui/core/Icon";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
-import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
-import Favorite from "@material-ui/icons/Favorite";
-import Delete from "@material-ui/icons/DeleteOutline";
-import Close from "@material-ui/icons/Close";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
+import Palette from "@material-ui/icons/Palette";
+import People from "@material-ui/icons/People";
+import List from "@material-ui/icons/List";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
 import FooterLarge from "components/Footer/FooterLarge.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import InputLabel from "@material-ui/core/InputLabel";
+import NavPills from "components/NavPills/NavPills.jsx";
 // sections for this page
 import SectionListDetails from "./Sections/ListDetails.jsx";
+import SectionProducts from "./Sections/Products.jsx";
 
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
 
@@ -56,6 +44,35 @@ class ArticlePage extends React.Component {
       description: '',
       occasion: '',
       isEdit: false,
+      products: [
+        {
+          productId: 'PRODUCT#1009',
+          quantity: 1,
+          reserved: 1,
+          brand: 'BABYBJÖRN',
+          details: 'Travel Cot Easy Go, Anthracite, with transport bag',
+          price: '219.99',
+          img: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'
+        },
+        {
+          productId: 'PRODUCT#1008',
+          quantity: 2,
+          reserved: 0,
+          brand: 'BABYZEN',
+          details: 'YOYO+ Puschair, Black with Aqua',
+          price: '389',
+          img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'
+        },
+        {
+          productId: 'PRODUCT#1007',
+          quantity: 1,
+          reserved: 0,
+          brand: 'Micralite',
+          details: 'Travel Cot 3 in 1 Sleep & Go - Carbon/Grey',
+          price: '175',
+          img: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'
+        }
+      ]
     };
   }
 
@@ -139,10 +156,10 @@ class ArticlePage extends React.Component {
         brand="ewelists"
           links={<HeaderLinksAuth dropdownHoverColor="info" />}
           fixed
-          changeColorOnScroll={{
-            height: 200,
-            color: "info"
-          }}
+          // changeColorOnScroll={{
+          //   height: 200,
+          //   color: "transparent"
+          // }}
         />
         <div className={classes.main}>
           <SectionListDetails
@@ -155,6 +172,32 @@ class ArticlePage extends React.Component {
             handleChange={this.handleChange.bind(this)}
             handleOccasionSelect={this.handleOccasionSelect.bind(this)}
           />
+          <div className={classes.profileTabs}>
+            <NavPills
+              alignCenter
+              color="primary"
+              tabs={[
+                {
+                  tabButton: "List",
+                  tabIcon: List,
+                  tabContent: (
+                    <div>
+                      <SectionProducts products={this.state.products} />
+                    </div>
+                  )
+                },
+                {
+                  tabButton: "Share",
+                  tabIcon: People,
+                  tabContent: (
+                    <div>
+                      Users who the list has been shared with.
+                    </div>
+                  )
+                }
+              ]}
+            />
+          </div>
         </div>
         <FooterLarge />
       </div>
