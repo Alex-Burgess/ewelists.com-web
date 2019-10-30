@@ -11,12 +11,20 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Slide from "@material-ui/core/Slide";
+import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
+import Remove from "@material-ui/icons/Remove";
+import Add from "@material-ui/icons/Add";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
+import GridContainer from "components/Grid/GridContainer.jsx";
+import GridItem from "components/Grid/GridItem.jsx";
+import Card from "components/Card/Card.jsx";
+import CardHeader from "components/Card/CardHeader.jsx";
+import CardBody from "components/Card/CardBody.jsx";
 
-import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/deletePopOutStyle.jsx";
+import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/editProductPopOutStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -41,7 +49,7 @@ class SectionDetails extends React.Component {
         <Dialog
           classes={{
             root: classes.modalRoot,
-            paper: classes.modal
+            paper: classes.modal + " " + classes.modalSignup
           }}
           open={open}
           TransitionComponent={Transition}
@@ -50,48 +58,63 @@ class SectionDetails extends React.Component {
           aria-labelledby="notice-modal-slide-title"
           aria-describedby="notice-modal-slide-description"
         >
-          <DialogTitle
-            id="notice-modal-slide-title"
-            disableTypography
-            className={classes.modalHeader}
-          >
-            <Button
-              simple
-              className={classes.modalCloseButton}
-              key="close"
-              aria-label="Close"
-              onClick={() => this.props.handleClose("editModal")}
+          <Card plain className={classes.modalSignupCard}>
+            <DialogContent
+              id="notice-modal-slide-description"
+              className={classes.modalBody}
             >
-              {" "}
-              <Close className={classes.modalClose} />
-            </Button>
-            <h4 className={classes.modalTitle}>
-              How Do You Become an Affiliate?
-            </h4>
-          </DialogTitle>
-          <DialogContent
-            id="notice-modal-slide-description"
-            className={classes.modalBody}
-          >
-            <p>
-              If you have more questions, don{"'"}t hesitate to
-              contact us or send us a tweet @creativetim. We{"'"}re
-              here to help!
-            </p>
-          </DialogContent>
-          <DialogActions
-            className={
-              classes.modalFooter + " " + classes.modalFooterCenter
-            }
-          >
-            <Button
-              onClick={() => this.props.handleClose("editModal")}
-              color="info"
-              round
-            >
-              Sounds Good
-            </Button>
-          </DialogActions>
+              <Button
+                simple
+                className={classes.modalCloseButton}
+                key="close"
+                aria-label="Close"
+                onClick={() => this.props.handleClose("editModal")}
+              >
+                {" "}
+                <Close className={classes.modalClose} />
+              </Button>
+              <GridContainer>
+                <GridItem md={6} sm={6}>
+                  <Card plain product>
+                    <CardHeader noShadow image>
+                      <a href="https://www.amazon.co.uk/dp/B01H24LM58">
+                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} className={classes.productImage} alt=".." />
+                      </a>
+                    </CardHeader>
+                  </Card>
+                </GridItem>
+                <GridItem md={6} sm={6}>
+                  <h2 className={classes.title}>BABYBJÖRN</h2>
+                  <p>Travel Cot Easy Go, Anthracite, with transport bag.</p>
+                  <h3 className={classes.mainPrice}> $335 </h3>
+                  <InputLabel className={classes.label}>
+                    Quantity: 1
+                  </InputLabel>
+                  <div className={classes.buttonGroup}>
+                    <Button
+                      color="info"
+                      size="sm"
+                      round
+                      className={classes.firstButton}
+                    >
+                      <Remove />
+                    </Button>
+                    <Button
+                      color="info"
+                      size="sm"
+                      round
+                      className={classes.lastButton}
+                    >
+                      <Add />
+                    </Button>
+                  </div>
+                  <InputLabel className={classes.label}>
+                    Reserved: 0
+                  </InputLabel>
+                </GridItem>
+              </GridContainer>
+            </DialogContent>
+          </Card>
         </Dialog>
         {/* NOTICE MODAL END */}
       </div>

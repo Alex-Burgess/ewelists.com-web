@@ -24,7 +24,6 @@ import Datetime from "react-datetime";
 // nodejs library that concatenates classes
 import withStyles from "@material-ui/core/styles/withStyles";
 import Icon from "@material-ui/core/Icon";
-import Edit from "@material-ui/icons/Edit";
 // import classNames from "classnames";
 // @material-ui/core components
 import FormControl from "@material-ui/core/FormControl";

@@ -20,7 +20,7 @@ import Add from "@material-ui/icons/Add";
 import Button from "components/CustomButtons/Button.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 
-import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/deletePopOutStyle.jsx";
+import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/addProductPopOutStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
