@@ -22,14 +22,12 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 // core components
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 // Sections
-import SectionAdd from "./AddProductPopOut.jsx";
 import SectionEdit from "./EditProductPopOut.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/productsStyle.jsx";
@@ -39,9 +37,16 @@ class SectionProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addModal: false,
-      editModal: false
+      editModal: false,
     };
+  }
+
+  componentWillMount() {
+    const { products } = this.props;
+
+    for (let product of products) {
+      this.setState({ [product['productId']]: false });
+    }
   }
 
   handleClose(modal) {
@@ -51,12 +56,13 @@ class SectionProducts extends React.Component {
   }
 
   handleClickOpen(modal) {
+    console.log("Opening product id: " + modal)
     var x = [];
     x[modal] = true;
     this.setState(x);
   }
 
-  renderProduct(classes, img, brand, details, price, quantity, reserved) {
+  renderProduct(classes, productId, img, brand, details, price, quantity, reserved) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -87,7 +93,7 @@ class SectionProducts extends React.Component {
         placement="left"
         classes={{ tooltip: classes.tooltip }}
       >
-        <Button link className={classes.actionButton} onClick={() => this.handleClickOpen("editModal")}>
+        <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
           <Edit />
         </Button>
       </Tooltip>
@@ -98,7 +104,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderProduct(classes, product['img'], product['brand'], product['details'], product['price'], product['quantity'], product['reserved'])
+            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['price'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -107,17 +113,30 @@ class SectionProducts extends React.Component {
         colspan: "3",
         col: {
           colspan: 3,
-          text: (
-            <Button color="info" round onClick={() => this.handleClickOpen("addModal")}>
-              Add New Item <KeyboardArrowRight />
-            </Button>
-          )
         }
       }
 
     return allproducts
   }
 
+
+  renderEditPopOuts(classes, products: Products[]) {
+    return products.map(
+      (product, i) =>
+          <SectionEdit
+            open={this.state[product['productId']] }
+            productId={product['productId']}
+            brand={product['brand']}
+            description={product['details']}
+            price={product['price']}
+            quantity={product['quantity']}
+            url={product['url']}
+            img={product['img']}
+            handleClose={this.handleClose.bind(this)}
+            key={i}
+          />
+    )
+  }
 
 
   render() {
@@ -159,8 +178,7 @@ class SectionProducts extends React.Component {
               />
             </CardBody>
           </Card>
-          <SectionAdd open={this.state.addModal} handleClose={this.handleClose.bind(this)} />
-          <SectionEdit open={this.state.editModal} handleClose={this.handleClose.bind(this)} />
+          {this.renderEditPopOuts(classes, products)}
         </div>
       </div>
     );

@@ -7,22 +7,17 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // import classNames from "classnames";
 // @material-ui/core components
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
 import Slide from "@material-ui/core/Slide";
 import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
-import Remove from "@material-ui/icons/Remove";
-import Add from "@material-ui/icons/Add";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
 
 import sectionStyle from "assets/jss/material-kit-pro-react/views/viewListSections/reservePopOutStyle.jsx";
 
@@ -33,14 +28,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 Transition.displayName = "Transition";
 
 class SectionDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deleteError: false,
-      deleteErrorMessage: null,
-    };
-  }
-
   render() {
     const { classes, open, productId, brand, description, price, quantity, url, img } = this.props;
     return (

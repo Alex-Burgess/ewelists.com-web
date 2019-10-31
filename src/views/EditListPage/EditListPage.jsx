@@ -25,6 +25,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Palette from "@material-ui/icons/Palette";
 import People from "@material-ui/icons/People";
 import List from "@material-ui/icons/List";
+import Search from "@material-ui/icons/Search";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
@@ -33,6 +34,7 @@ import NavPills from "components/NavPills/NavPills.jsx";
 // sections for this page
 import SectionListDetails from "./Sections/ListDetails.jsx";
 import SectionProducts from "./Sections/Products.jsx";
+import SectionAddGifts from "./Sections/AddGifts.jsx";
 
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
 
@@ -46,7 +48,8 @@ class ArticlePage extends React.Component {
       isEdit: false,
       products: [
         {
-          productId: 'PRODUCT#1009',
+          // productId: 'PRODUCT#1009',
+          productId: 'PRODUCT1009',
           quantity: 1,
           reserved: 1,
           brand: 'BABYBJÖRN',
@@ -55,7 +58,7 @@ class ArticlePage extends React.Component {
           img: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'
         },
         {
-          productId: 'PRODUCT#1008',
+          productId: 'PRODUCT1008',
           quantity: 2,
           reserved: 0,
           brand: 'BABYZEN',
@@ -64,7 +67,7 @@ class ArticlePage extends React.Component {
           img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'
         },
         {
-          productId: 'PRODUCT#1007',
+          productId: 'PRODUCT1007',
           quantity: 1,
           reserved: 0,
           brand: 'Micralite',
@@ -178,11 +181,20 @@ class ArticlePage extends React.Component {
               color="primary"
               tabs={[
                 {
-                  tabButton: "Add Items",
+                  tabButton: "Manage List",
                   tabIcon: List,
                   tabContent: (
                     <div>
                       <SectionProducts products={this.state.products} />
+                    </div>
+                  )
+                },
+                {
+                  tabButton: "Add Gifts",
+                  tabIcon: Search,
+                  tabContent: (
+                    <div>
+                      <SectionAddGifts />
                     </div>
                   )
                 },

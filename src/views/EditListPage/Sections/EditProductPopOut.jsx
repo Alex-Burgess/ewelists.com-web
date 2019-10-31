@@ -7,9 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // import classNames from "classnames";
 // @material-ui/core components
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
 import Slide from "@material-ui/core/Slide";
 import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
@@ -22,7 +20,6 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
 
 import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/editProductPopOutStyle.jsx";
 
@@ -33,16 +30,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 Transition.displayName = "Transition";
 
 class SectionDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deleteError: false,
-      deleteErrorMessage: null,
-    };
-  }
-
   render() {
-    const { classes, open, deleteError } = this.props;
+    const { classes, open, productId, brand, description, price, quantity, url, img } = this.props;
     return (
       <div className={classes.section}>
         {/* NOTICE MODAL START */}
@@ -54,7 +43,7 @@ class SectionDetails extends React.Component {
           open={open}
           TransitionComponent={Transition}
           keepMounted
-          onClose={() => this.props.handleClose("editModal")}
+          onClose={() => this.props.handleClose(productId)}
           aria-labelledby="notice-modal-slide-title"
           aria-describedby="notice-modal-slide-description"
         >
@@ -68,7 +57,7 @@ class SectionDetails extends React.Component {
                 className={classes.modalCloseButton}
                 key="close"
                 aria-label="Close"
-                onClick={() => this.props.handleClose("editModal")}
+                onClick={() => this.props.handleClose(productId)}
               >
                 {" "}
                 <Close className={classes.modalClose} />
@@ -77,37 +66,37 @@ class SectionDetails extends React.Component {
                 <GridItem md={6} sm={6}>
                   <Card plain product>
                     <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B01H24LM58">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} className={classes.productImage} alt=".." />
+                      <a href={url}>
+                        <img src={img} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
                   </Card>
                 </GridItem>
                 <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>BABYBJÖRN</h2>
-                  <p>Travel Cot Easy Go, Anthracite, with transport bag.</p>
-                  <h3 className={classes.mainPrice}> $335 </h3>
+                  <h2 className={classes.title}>{brand}</h2>
+                  <p>{description}</p>
+                  <h3 className={classes.mainPrice}> £ {price} </h3>
                   <InputLabel className={classes.label}>
-                    Quantity: 1
+                    Quantity: {quantity}{` `}
+                    <div className={classes.buttonGroup}>
+                      <Button
+                        color="info"
+                        size="sm"
+                        round
+                        className={classes.firstButton}
+                      >
+                        <Remove />
+                      </Button>
+                      <Button
+                        color="info"
+                        size="sm"
+                        round
+                        className={classes.lastButton}
+                      >
+                        <Add />
+                      </Button>
+                    </div>
                   </InputLabel>
-                  <div className={classes.buttonGroup}>
-                    <Button
-                      color="info"
-                      size="sm"
-                      round
-                      className={classes.firstButton}
-                    >
-                      <Remove />
-                    </Button>
-                    <Button
-                      color="info"
-                      size="sm"
-                      round
-                      className={classes.lastButton}
-                    >
-                      <Add />
-                    </Button>
-                  </div>
                   <InputLabel className={classes.label}>
                     Reserved: 0
                   </InputLabel>
@@ -125,7 +114,13 @@ class SectionDetails extends React.Component {
 SectionDetails.propTypes = {
   classes: PropTypes.object,
   open: PropTypes.bool,
-  deleteError: PropTypes.string
+  productId: PropTypes.string,
+  brand: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string,
+  quanity: PropTypes.number,
+  url: PropTypes.string,
+  img: PropTypes.string
 };
 
 export default withStyles(sectionStyle)(SectionDetails);

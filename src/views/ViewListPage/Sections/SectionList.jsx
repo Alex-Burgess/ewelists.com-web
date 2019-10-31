@@ -53,20 +53,32 @@ class SectionProducts extends React.Component {
       showFilter: false,
       width: window.innerWidth,
       height: window.innerHeight,
-      two: false
+      two: false,
+      product1: false,
+      product2: false,
+      product3: false,
+      product4: false,
+      product5: false,
+      product6: false,
+      product7: false,
+      product8: false,
+      product9: false
     };
   }
+
+  // Required when products passed in from parent component
+  // componentWillMount() {
+  //   const { products } = this.props;
+  //
+  //   for (let product of products) {
+  //     this.setState({ [product['productId']]: false });
+  //   }
+  // }
 
   handleClose(modal) {
     var x = [];
     x[modal] = false;
     this.setState(x);
-  }
-
-  modalState(id) {
-    var state = this.state[{id}]
-    console.log("stage of modal: " + state)
-    return false
   }
 
   handleClickOpen(modal) {

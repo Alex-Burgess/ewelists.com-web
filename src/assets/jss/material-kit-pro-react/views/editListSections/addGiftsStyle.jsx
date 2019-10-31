@@ -15,29 +15,20 @@
 
 */
 import {
-  dangerColor,
-  title
+  container,
 } from "assets/jss/material-kit-pro-react.jsx";
 
-import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.jsx";
-import buttonGroup from "assets/jss/material-kit-pro-react/buttonGroupStyle.jsx";
-
-const sectionStyle = theme => ({
-  ...modalStyle(theme),
-  ...buttonGroup,
-  centerText: {
-    textAlign: "Center",
-  },
-  error: {
-    color: dangerColor[1]
-  },
-  title: {
-    ...title,
-    marginBottom: 0
-  },
-  mainPrice: {
-    margin: "10px 0px 25px"
-  },
+const sectionDetailsStyle = theme => ({
+  container,
+  imgContainer: {
+    width: "120px",
+    maxHeight: "160px",
+    overflow: "hidden",
+    display: "block",
+    "& img": {
+      width: "100%"
+    }
+  }
 });
 
-export default sectionStyle;
+export default sectionDetailsStyle;
