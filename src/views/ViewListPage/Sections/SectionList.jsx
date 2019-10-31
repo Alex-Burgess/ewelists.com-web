@@ -38,16 +38,43 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 
+// Sections
+import SectionReserve from "./ReservePopOut.jsx";
+
 import styles from "assets/jss/material-kit-pro-react/views/viewListSections/sectionListStyle.jsx";
 
 class SectionProducts extends React.Component {
-  state = {
-    checked: [],
-    selectedEnabled: "a",
-    showFilter: false,
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      reserveModal: false,
+      checked: [],
+      selectedEnabled: "a",
+      showFilter: false,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      two: false
+    };
+  }
+
+  handleClose(modal) {
+    var x = [];
+    x[modal] = false;
+    this.setState(x);
+  }
+
+  modalState(id) {
+    var state = this.state[{id}]
+    console.log("stage of modal: " + state)
+    return false
+  }
+
+  handleClickOpen(modal) {
+    console.log("Opening product id: " + modal)
+    var x = [];
+    x[modal] = true;
+    this.setState(x);
+  }
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -104,6 +131,54 @@ class SectionProducts extends React.Component {
     }
 
     this.setState({ showFilter: newValue });
+  }
+
+  renderProduct(classes, id, brand, description, price, quantity, url, img, reserved) {
+    return (
+      <GridItem md={4} sm={4}>
+        <Card plain product>
+          <CardHeader noShadow image>
+            <a href={url}>
+              <img src={img} className={classes.productImage} alt=".." />
+            </a>
+          </CardHeader>
+          <CardBody plain className={classes.productDetails}>
+            <a href={url}>
+              <h4 className={classes.cardTitle}>{brand}</h4>
+            </a>
+            <p className={classes.description}>
+              {description}
+            </p>
+          </CardBody>
+          <CardFooter plain className={classes.footer}>
+            <div>
+              <span className={classes.price}> £ {price}</span>
+            </div>
+            <div className={classes.textCenter}>
+              {reserved
+                ? <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(id)}>
+                    Reserved
+                  </Button>
+                : <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(id)}>
+                    Reserve Gift
+                  </Button>
+              }
+            </div>
+          </CardFooter>
+        </Card>
+        <SectionReserve
+          open={this.state[id]}
+          productId={id}
+          brand={brand}
+          description={description}
+          price={price}
+          quantity={quantity}
+          url={url}
+          img={img}
+          handleClose={this.handleClose.bind(this)}
+        />
+      </GridItem>
+    )
   }
 
   render() {
@@ -370,249 +445,105 @@ class SectionProducts extends React.Component {
             </GridItem>
             <GridItem md={9} sm={8}>
               <GridContainer>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B01H24LM58">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B01H24LM58">
-                        <h4 className={classes.cardTitle}>BABYBJÖRN</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Travel Cot Easy Go, Anthracite, with transport bag.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £219.99</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="default" className={classes.reserveButton} disabled>
-                          Reserved
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B07PN49Q4S">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B07PN49Q4S">
-                        <h4 className={classes.cardTitle}>Micralite</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Travel Cot 3 in 1 Sleep & Go - Carbon/Grey.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £175</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291">
-                        <img src={'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'} className={classes.productImage}  alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291">
-                        <h4 className={classes.cardTitle}>BABYZEN</h4>
-                      </a>
-                      <p className={classes.description}>
-                        YOYO+ Puschair, Black with Aqua
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £389</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B07FBYHY7L">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'} className={classes.productImage}  alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B07FBYHY7L">
-                        <h4 className={classes.cardTitle}>Mamas & Papas</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Acro Compact Buggy, Black
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £189</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B07PM6ZD1C">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/71hqy17iYuL._SY550_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B07PM6ZD1C">
-                        <h4 className={classes.cardTitle}>Micralite</h4>
-                      </a>
-                      <p className={classes.description}>
-                        ProFold Compact Stroller - Carbon
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £175</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B07937WXKD">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/91hX32oi5LL._SX355_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B07937WXKD">
-                        <h4 className={classes.cardTitle}>BABYBJÖRN</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Baby Carrier One Air, 3D Mesh, Navy Blue.
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £159.99</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B0792Y5L7K">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/81KydgdpFmL._SY679_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B0792Y5L7K">
-                        <h4 className={classes.cardTitle}>LittleLife</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Ranger S2 Child Carrier
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £99.99</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B0019AC8GE">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/91SA-D7wIUL._SX355_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B0019AC8GE">
-                        <h4 className={classes.cardTitle}>Phil and Teds</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Lobster Highchair - Red
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £69.95</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem md={4} sm={4}>
-                  <Card plain product>
-                    <CardHeader noShadow image>
-                      <a href="https://www.amazon.co.uk/dp/B01M6XGKV1">
-                        <img src={'https://images-na.ssl-images-amazon.com/images/I/7178PGluPOL._SY355_.jpg'} className={classes.productImage} alt=".." />
-                      </a>
-                    </CardHeader>
-                    <CardBody plain className={classes.productDetails}>
-                      <a href="https://www.amazon.co.uk/dp/B01M6XGKV1">
-                        <h4 className={classes.cardTitle}>Munchkin</h4>
-                      </a>
-                      <p className={classes.description}>
-                        Portable Travel Child Booster Seat - Blue/Grey
-                      </p>
-                    </CardBody>
-                    <CardFooter plain className={classes.footer}>
-                      <div>
-                        <span className={classes.price}> £20.90</span>
-                      </div>
-                      <div className={classes.textCenter}>
-                        <Button default color="primary" className={classes.reserveButton}>
-                          Reserve Gift
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
+                {this.renderProduct(
+                  classes,
+                  "product1",
+                  "BABYBJÖRN",
+                  "Travel Cot Easy Go, Anthracite, with transport bag",
+                  "219.99",
+                  1,
+                  "https://www.amazon.co.uk/dp/B01H24LM58",
+                  'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg',
+                  true
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product2",
+                  "Micralite",
+                  "Travel Cot 3 in 1 Sleep & Go - Carbon/Grey",
+                  "175",
+                  2,
+                  "https://www.amazon.co.uk/dp/B07PN49Q4S",
+                  'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product3",
+                  "BABYZEN",
+                  "YOYO+ Puschair, Black with Aqua",
+                  "389",
+                  1,
+                  "https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291",
+                  'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product4",
+                  "Mamas & Papas",
+                  "Acro Compact Buggy, Black",
+                  "189",
+                  1,
+                  "https://www.amazon.co.uk/dp/B07FBYHY7L",
+                  'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product5",
+                  "Micralite",
+                  "ProFold Compact Stroller - Carbon",
+                  "175",
+                  1,
+                  "https://www.amazon.co.uk/dp/B07PM6ZD1C",
+                  'https://images-na.ssl-images-amazon.com/images/I/71hqy17iYuL._SY550_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product6",
+                  "BABYBJÖRN",
+                  "Baby Carrier One Air, 3D Mesh, Navy Blue",
+                  "159.99",
+                  1,
+                  "https://www.amazon.co.uk/dp/B07937WXKD",
+                  'https://images-na.ssl-images-amazon.com/images/I/91hX32oi5LL._SX355_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product7",
+                  "LittleLife",
+                  "Ranger S2 Child Carrier",
+                  "99.99",
+                  1,
+                  "https://www.amazon.co.uk/dp/B0792Y5L7K",
+                  'https://images-na.ssl-images-amazon.com/images/I/81KydgdpFmL._SY679_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product8",
+                  "Phil and Teds",
+                  "Lobster Highchair - Red",
+                  "69.95",
+                  1,
+                  "https://www.amazon.co.uk/dp/B0019AC8GE",
+                  'https://images-na.ssl-images-amazon.com/images/I/91SA-D7wIUL._SX355_.jpg',
+                  false
+                )}
+                {this.renderProduct(
+                  classes,
+                  "product9",
+                  "Munchkin",
+                  "Portable Travel Child Booster Seat - Blue/Grey",
+                  "20.90",
+                  1,
+                  "https://www.amazon.co.uk/dp/B01M6XGKV1",
+                  'https://images-na.ssl-images-amazon.com/images/I/7178PGluPOL._SY355_.jpg',
+                  false
+                )}
               </GridContainer>
             </GridItem>
           </GridContainer>
