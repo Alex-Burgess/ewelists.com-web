@@ -16,10 +16,14 @@
 */
 import {
   container,
+  mrAuto,
+  mlAuto,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const sectionDetailsStyle = theme => ({
   container,
+  mrAuto,
+  mlAuto,
   imgContainer: {
     width: "120px",
     maxHeight: "160px",
@@ -28,6 +32,10 @@ const sectionDetailsStyle = theme => ({
     "& img": {
       width: "100%"
     }
+  },
+  customFormControl: {
+    paddingTop: "14px",
+    minWidth: "440px"
   }
 });
 

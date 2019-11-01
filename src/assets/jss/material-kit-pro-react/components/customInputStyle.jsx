@@ -80,10 +80,8 @@ const customInputStyle = theme => ({
   },
   formControl: {
     margin: "0 0 17px 0",
-    paddingTop: "10px",
-    // edit list
-    // margin: "0 0 0px 0",
-    // paddingTop: "0px",
+    // paddingTop: "10px",
+    paddingTop: "27px",
     position: "relative",
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
       color: grayColor[13]
