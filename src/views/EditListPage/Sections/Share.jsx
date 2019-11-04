@@ -30,7 +30,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/addGiftsStyle.jsx";
+import styles from "assets/jss/material-kit-pro-react/views/editListSections/shareStyle.jsx";
 
 
 class SectionAddGifts extends React.Component {
