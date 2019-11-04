@@ -97,7 +97,7 @@ class SectionDetails extends React.Component {
   }
 
   deleteListRequest() {
-    return API.del("lists", "/" + this.props.match.params.id + "no");
+    return API.del("lists", "/" + this.props.match.params.id);
   }
 
   render() {
