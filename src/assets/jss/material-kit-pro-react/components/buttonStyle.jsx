@@ -595,6 +595,7 @@ const buttonStyle = {
     }
   },
   simple: {
+    padding: "!0px",
     "&,&:focus,&:hover": {
       color: whiteColor,
       background: "transparent",
@@ -716,8 +717,12 @@ const buttonStyle = {
   sm: {
     "&$justIcon": {
       "& .fab,& .fas,& .far,& .fal,& svg,& .material-icons": {
-        marginTop: "1px"
+        marginTop: "1px",
+        padding: "0px"
       }
+    },
+    "&$simple": {
+      padding: "5px"
     },
     padding: "0.40625rem 1.25rem",
     fontSize: "0.6875rem",

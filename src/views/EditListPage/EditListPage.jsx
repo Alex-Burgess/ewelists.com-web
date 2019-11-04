@@ -35,6 +35,7 @@ import NavPills from "components/NavPills/NavPills.jsx";
 import SectionListDetails from "./Sections/ListDetails.jsx";
 import SectionProducts from "./Sections/Products.jsx";
 import SectionAddGifts from "./Sections/AddGifts.jsx";
+import SectionShare from "./Sections/Share.jsx";
 
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
 
@@ -203,7 +204,7 @@ class ArticlePage extends React.Component {
                   tabIcon: People,
                   tabContent: (
                     <div>
-                      Users who the list has been shared with.
+                      <SectionShare />
                     </div>
                   )
                 }

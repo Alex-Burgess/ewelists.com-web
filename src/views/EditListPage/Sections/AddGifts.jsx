@@ -19,13 +19,10 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
 // @material-ui icons
 import Search from "@material-ui/icons/Search";
 import Add from "@material-ui/icons/Add";
-import Face from "@material-ui/icons/Face";
-import Email from "@material-ui/icons/Email";
+import Remove from "@material-ui/icons/Remove";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -42,43 +39,51 @@ class SectionAddGifts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResult: '',
+      searchResult: 'test',
     };
   }
 
   renderManualAdd(classes) {
     return (
-      <Card plain>
-        <CardBody plain>
-          <GridContainer>
-            <GridItem xs={12} sm={4} md={9} lg={4}
-              className={classes.mrAuto + " " + classes.mlAuto}
-            >
-              <form className={classes.form}>
-                <CustomInput
-                  labelText="Brand"
-                  id="brand"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
-                <CustomInput
-                  labelText="Details"
-                  id="details"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
-                <div className={classes.textCenter}>
-                  <Button round color="info" type="submit">
-                    Add Item
-                  </Button>
-                </div>
-              </form>
-            </GridItem>
-          </GridContainer>
-        </CardBody>
-      </Card>
+      <GridContainer>
+        <GridItem xs={12} sm={7} md={7} lg={7}
+          className={classes.mrAuto + " " + classes.mlAuto}
+        >
+          <h5>
+            We don't currently have any details for this product. Add the item with some basic details below and we'll update the item a.s.a.p.
+          </h5>
+          <form className={classes.form}>
+            <CustomInput
+              labelText="Brand"
+              id="brand"
+              formControlProps={{
+                fullWidth: true
+              }}
+            />
+            <CustomInput
+              labelText="Details"
+              id="details"
+              formControlProps={{
+                fullWidth: true
+              }}
+            />
+            <div className={classes.textCenter}>
+              <Button color="primary" size="sm" simple>
+                <Remove />
+              </Button>
+              {` `}2{` `}
+              <Button color="primary" size="sm" simple>
+                <Add />
+              </Button>
+            </div>
+            <div className={classes.textCenter}>
+              <Button round color="primary" type="submit">
+                Add to list
+              </Button>
+            </div>
+          </form>
+        </GridItem>
+      </GridContainer>
     )
   }
 
@@ -88,7 +93,8 @@ class SectionAddGifts extends React.Component {
         <CardBody plain>
           <Table
             tableHead={[
-              "PRODUCT FOUND",
+              "",
+              "",
               "",
               ""
             ]}
@@ -106,6 +112,15 @@ class SectionAddGifts extends React.Component {
                     Travel Cot Easy Go, Anthracite, with transport bag
                   </small>
                 </span>,
+                <span>
+                  <Button color="primary" size="sm" simple>
+                    <Remove />
+                  </Button>
+                  {` `}2{` `}
+                  <Button color="primary" size="sm" simple>
+                    <Add />
+                  </Button>
+                </span>,
                 <Button default color="primary" className={classes.reserveButton}>
                   Add to list
                 </Button>
@@ -114,7 +129,7 @@ class SectionAddGifts extends React.Component {
                 addnew: true,
                 colspan: "2",
                 col: {
-                  colspan: 1,
+                  colspan: 2,
                 }
               }
             ]
@@ -141,28 +156,24 @@ class SectionAddGifts extends React.Component {
       <div className={classes.section}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={4} md={9} lg={4}
+            <GridItem xs={12} sm={12} md={10} lg={9}
               className={classes.mrAuto + " " + classes.mlAuto}
             >
-              <GridContainer>
-                <GridItem xs={12} sm={4} md={9} lg={4}
-                  className={classes.mrAuto + " " + classes.mlAuto}
-                >
-                  <CustomInput
-                    id="material"
-                    formControlProps={{
-                      fullWidth: false,
-                      className: classes.customFormControl
-                    }}
-                    inputProps={{
-                      placeholder: "Enter url..."
-                    }}
-                  />
-                  <Button color="primary" justIcon>
-                    <Search />
-                  </Button>
-                </GridItem>
-              </GridContainer>
+              <div className={classes.textCenter}>
+                <CustomInput
+                  id="material"
+                  formControlProps={{
+                    fullWidth: false,
+                    className: classes.customFormControl
+                  }}
+                  inputProps={{
+                    placeholder: "Enter url..."
+                  }}
+                />
+                <Button color="primary" justIcon>
+                  <Search />
+                </Button>
+              </div>
               {this.state.searchResult
                 ? this.renderSearchResultTable(classes)
                 : this.renderManualAdd(classes)

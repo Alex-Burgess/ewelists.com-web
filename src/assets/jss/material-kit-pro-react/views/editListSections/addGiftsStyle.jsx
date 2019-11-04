@@ -35,7 +35,16 @@ const sectionDetailsStyle = theme => ({
   },
   customFormControl: {
     paddingTop: "14px",
-    minWidth: "440px"
+    minWidth: "500px",
+  },
+  customQuanityFormControl: {
+    width: "80px"
+  },
+  textCenter: {
+    textAlign: "center !important"
+  },
+  rightText: {
+    textAlign: "Right",
   }
 });
 
