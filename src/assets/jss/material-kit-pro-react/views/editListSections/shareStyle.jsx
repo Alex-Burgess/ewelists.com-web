@@ -26,6 +26,7 @@ const sectionDetailsStyle = theme => ({
   mlAuto,
   customFormControl: {
     paddingTop: "14px",
+    minWidth: "400px",
     [theme.breakpoints.down("xs")]: {
       minWidth: "270px",
     }
@@ -40,7 +41,7 @@ const sectionDetailsStyle = theme => ({
     textAlign: "Right",
   },
   actionButton: {
-    padding: "0px"
+    padding: "12px 10px"
   }
 });
 
