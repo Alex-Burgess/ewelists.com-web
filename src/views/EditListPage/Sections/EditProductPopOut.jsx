@@ -31,7 +31,7 @@ Transition.displayName = "Transition";
 
 class SectionDetails extends React.Component {
   render() {
-    const { classes, open, productId, brand, description, price, quantity, url, img } = this.props;
+    const { classes, open, productId, brand, description, quantity, url, img } = this.props;
     return (
       <div className={classes.section}>
         {/* NOTICE MODAL START */}
@@ -75,7 +75,6 @@ class SectionDetails extends React.Component {
                 <GridItem md={6} sm={6}>
                   <h2 className={classes.title}>{brand}</h2>
                   <p>{description}</p>
-                  <h3 className={classes.mainPrice}> £ {price} </h3>
                   <InputLabel className={classes.label}>
                     Quantity: {quantity}{` `}
                     <div className={classes.buttonGroup}>
@@ -117,7 +116,6 @@ SectionDetails.propTypes = {
   productId: PropTypes.string,
   brand: PropTypes.string,
   description: PropTypes.string,
-  price: PropTypes.string,
   quanity: PropTypes.number,
   url: PropTypes.string,
   img: PropTypes.string

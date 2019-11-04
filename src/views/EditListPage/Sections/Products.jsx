@@ -22,6 +22,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
+import Assignment from "@material-ui/icons/AssignmentInd";
 // core components
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -62,7 +63,7 @@ class SectionProducts extends React.Component {
     this.setState(x);
   }
 
-  renderProduct(classes, productId, img, brand, details, price, quantity, reserved) {
+  renderProduct(classes, productId, img, brand, details, quantity, reserved) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -78,25 +79,35 @@ class SectionProducts extends React.Component {
         </small>
       </span>,
       <span key={1}>
-        <small className={classes.tdNumberSmall}>£</small> {price}
-      </span>,
-      <span key={1}>
         {quantity}
       </span>,
       <span key={1}>
         {reserved}
       </span>,
-      <Tooltip
-        key={1}
-        id="close1"
-        title="Edit item"
-        placement="left"
-        classes={{ tooltip: classes.tooltip }}
-      >
-        <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
-          <Edit />
-        </Button>
-      </Tooltip>
+      <span>
+        <Tooltip
+          key={1}
+          id="reserved"
+          title="See reserved details"
+          placement="left"
+          classes={{ tooltip: classes.tooltip }}
+        >
+          <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+            <Assignment />
+          </Button>
+        </Tooltip>
+        <Tooltip
+          key={1}
+          id="edit"
+          title="Edit item"
+          placement="left"
+          classes={{ tooltip: classes.tooltip }}
+        >
+          <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+            <Edit />
+          </Button>
+        </Tooltip>
+      </span>
       ]
     )
   }
@@ -104,7 +115,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['price'], product['quantity'], product['reserved'])
+            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -128,7 +139,6 @@ class SectionProducts extends React.Component {
             productId={product['productId']}
             brand={product['brand']}
             description={product['details']}
-            price={product['price']}
             quantity={product['quantity']}
             url={product['url']}
             img={product['img']}
@@ -151,7 +161,6 @@ class SectionProducts extends React.Component {
                 tableHead={[
                   "",
                   "PRODUCT",
-                  "PRICE",
                   "QTY",
                   "RESERVED",
                   ""
