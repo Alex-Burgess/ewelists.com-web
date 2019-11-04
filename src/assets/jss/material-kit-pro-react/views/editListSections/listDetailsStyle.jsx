@@ -75,10 +75,15 @@ const sectionDetailsStyle = theme => ({
   },
   listImage: {
     maxHeight: "233.188px",
-    maxWidth: "380px",
+    maxWidth: "340px",
     objectFit: "cover",
     [theme.breakpoints.down("sm")]: {
-      maxHeight: "200px",
+      maxWidth: "270px",
+      maxHeight: "210px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "320px",
+      maxHeight: "230px",
     }
 
   },
@@ -87,6 +92,14 @@ const sectionDetailsStyle = theme => ({
   },
   editButtons: {
     paddingTop: "25px"
+  },
+  detailsPadding: {
+    paddingLeft: "8px",
+    paddingRight: "8px",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "15px",
+      paddingRight: "15px",
+    }
   }
 });
 

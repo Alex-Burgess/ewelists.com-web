@@ -46,6 +46,7 @@ class ArticlePage extends React.Component {
       title: '',
       description: '',
       occasion: '',
+      date: '',
       isEdit: false,
       products: [
         {
@@ -83,16 +84,27 @@ class ArticlePage extends React.Component {
   async componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
+    await this.getListDetails();
+  }
 
+  async getListDetails(){
     try {
       console.log("Calling list API ")
       const response = await this.getList();
       console.log("Got details for list " + response.list.title)
+
       this.setState({
         title: response.list.title,
         description: response.list.description,
         occasion: response.list.occasion
       });
+
+      if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
+        this.setState({
+          date: response.list.eventDate
+        });
+      }
+
       this.setState({ isLoading: false });
     } catch (e) {
       console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
@@ -109,14 +121,7 @@ class ArticlePage extends React.Component {
   }
 
   cancelEdit = async event => {
-    console.log("Calling list API ")
-    const response = await this.getList();
-    console.log("Got details for list " + response.list.title)
-    this.setState({
-      title: response.list.title,
-      description: response.list.description,
-      occasion: response.list.occasion
-    });
+    await this.getListDetails();
 
     this.setState({ isEdit: false });
   }
@@ -126,16 +131,25 @@ class ArticlePage extends React.Component {
       var requestBody = {
         "title": this.state.title,
         "description": this.state.description,
+        "eventDate": this.state.date,
         "occasion": this.state.occasion
       };
       const response = await this.updateListRequest(requestBody);
       console.log("update response title: " + response[0].updates.title);
       console.log("update response description: " + response[0].updates.description);
-      console.log("update response description: " + response[0].updates.occasion);
+      console.log("update response date: " + response[0].updates.eventDate);
+      console.log("update response occasion: " + response[0].updates.occasion);
+
+      if (('eventDate' in response[0].updates) && (response[0].updates.eventDate !== 'None')) {
+        this.setState({
+          date: response[0].updates.eventDate
+        });
+      }
 
       this.setState({
         title: response[0].updates.title,
         description: response[0].updates.description,
+        // date: response[0].updates.eventDate,
         occasionSelect: response[0].updates.occasion,
         isEdit: false
        });
@@ -164,6 +178,10 @@ class ArticlePage extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  changeDate(date) {
+    this.setState({ date: date.format('DD MMMM YYYY')});
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -183,12 +201,14 @@ class ArticlePage extends React.Component {
             title={this.state.title}
             description={this.state.description}
             occasion={this.state.occasion}
+            date={this.state.date}
             isEdit={this.state.isEdit}
             saveDetails={this.saveDetails.bind(this)}
             editDetails={this.editDetails.bind(this)}
             cancelEdit={this.cancelEdit.bind(this)}
             handleChange={this.handleChange.bind(this)}
             handleOccasionSelect={this.handleOccasionSelect.bind(this)}
+            changeDate={this.changeDate.bind(this)}
           />
           <div className={classes.profileTabs}>
             <NavPills

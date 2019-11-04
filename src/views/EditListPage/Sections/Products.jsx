@@ -86,7 +86,6 @@ class SectionProducts extends React.Component {
       </span>,
       <span>
         <Tooltip
-          key={1}
           id="reserved"
           title="See reserved details"
           placement="left"
@@ -97,7 +96,6 @@ class SectionProducts extends React.Component {
           </Button>
         </Tooltip>
         <Tooltip
-          key={1}
           id="edit"
           title="Edit item"
           placement="left"

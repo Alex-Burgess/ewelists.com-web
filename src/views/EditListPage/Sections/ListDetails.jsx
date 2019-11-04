@@ -58,7 +58,6 @@ class SectionDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '31/10/2019',
       smallModal: false,
       deleteErrorMessage: null
     };
@@ -102,19 +101,19 @@ class SectionDetails extends React.Component {
   }
 
   render() {
-    const { classes, title, description, occasion, isEdit } = this.props;
+    const { classes, title, description, occasion, date, isEdit } = this.props;
     return (
       <div className={classes.section}>
         { isEdit
-          ? this.renderEdit(classes, title, description, occasion)
-          : this.renderView(classes, title, description, occasion)
+          ? this.renderEdit(classes, title, description, occasion, date)
+          : this.renderView(classes, title, description, occasion, date)
         }
         <SectionDelete open={this.state.smallModal} handleClose={this.handleClose.bind(this)} deleteList={this.deleteList.bind(this)} deleteError={this.state.deleteErrorMessage}/>
       </div>
     )
   }
 
-  renderView(classes, title, description, occasion){
+  renderView(classes, title, description, occasion, date){
     return (
       <div className={classes.container}>
         <GridContainer >
@@ -129,19 +128,19 @@ class SectionDetails extends React.Component {
               {description}
             </div>
             <GridContainer >
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={12} sm={5} md={5}>
                 <InputLabel className={classes.label}>
                   Date:
                 </InputLabel>
-                <p>31/10/2019</p>
+                {date}
               </GridItem>
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={7} sm={4} md={4} className={classes.detailsPadding}>
                 <InputLabel className={classes.label}>
                   Occasion:
                 </InputLabel>
-                <p>{occasion}</p>
+                {occasion}
               </GridItem>
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
                 <div className={classes.editButtons}>
                   <Button round justIcon color="info" onClick={this.props.editDetails}>
                     <Icon>mode_edit</Icon>
@@ -153,10 +152,10 @@ class SectionDetails extends React.Component {
               </GridItem>
             </GridContainer>
           </GridItem>
-          <GridItem xs={12} sm={5} md={5}>
+          <GridItem xs={12} sm={5} md={5} className={classes.detailsPadding}>
             <Card profile plain>
               <CardHeader image plain>
-                <a href="#" onClick={e => e.preventDefault()}>
+                <a href="#img" onClick={e => e.preventDefault()}>
                   <img src={christmasCard} className={classes.listImage} alt="..." />
                 </a>
                 <div
@@ -174,7 +173,7 @@ class SectionDetails extends React.Component {
     )
   }
 
-  renderEdit(classes, title, description, occasion){
+  renderEdit(classes, title, description, occasion, date){
     return (
       <div className={classes.container}>
         <GridContainer >
@@ -209,20 +208,22 @@ class SectionDetails extends React.Component {
               }}
             />
             <GridContainer >
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={12} sm={5} md={5} className={classes.detailsPadding}>
                 <InputLabel className={classes.labelEdit}>
                   Date:
                 </InputLabel>
                 <FormControl fullWidth>
                   <Datetime
                     className={classes.dateField}
-                    dateFormat="DD/MM/YYYY"
+                    dateFormat="DD MMMM YYYY"
                     timeFormat={false}
                     inputProps={{ placeholder: "Select a date" }}
+                    value={date}
+                    onChange={this.props.changeDate}
                   />
                 </FormControl>
               </GridItem>
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={7} sm={4} md={4} className={classes.detailsPadding}>
                 <InputLabel className={classes.labelEdit}>
                   Occasion:
                 </InputLabel>
@@ -258,7 +259,7 @@ class SectionDetails extends React.Component {
                   </Select>
                 </FormControl>
               </GridItem>
-              <GridItem xs={4} sm={4} md={4}>
+              <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
                 <div className={classes.editButtons}>
                   <Button round justIcon color="success" onClick={this.props.saveDetails}>
                     <Icon>save_alt</Icon>
@@ -273,7 +274,7 @@ class SectionDetails extends React.Component {
           <GridItem xs={12} sm={5} md={5}>
             <Card profile plain>
               <CardHeader image plain>
-                <a href="#" onClick={e => e.preventDefault()}>
+                <a href="#img" onClick={e => e.preventDefault()}>
                   <img src={christmasCard} className={classes.listImage} alt="..." />
                 </a>
                 <div
@@ -297,6 +298,7 @@ SectionDetails.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   occasion: PropTypes.string,
+  date: PropTypes.string,
   isEdit: PropTypes.bool
 };
 
