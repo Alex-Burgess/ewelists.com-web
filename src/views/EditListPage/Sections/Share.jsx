@@ -21,18 +21,14 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
-import Search from "@material-ui/icons/Search";
 import Add from "@material-ui/icons/Add";
 import Close from "@material-ui/icons/Close";
-import Remove from "@material-ui/icons/Remove";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/addGiftsStyle.jsx";
 

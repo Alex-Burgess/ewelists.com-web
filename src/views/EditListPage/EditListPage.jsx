@@ -108,6 +108,19 @@ class ArticlePage extends React.Component {
     this.setState({ isEdit: true });
   }
 
+  cancelEdit = async event => {
+    console.log("Calling list API ")
+    const response = await this.getList();
+    console.log("Got details for list " + response.list.title)
+    this.setState({
+      title: response.list.title,
+      description: response.list.description,
+      occasion: response.list.occasion
+    });
+
+    this.setState({ isEdit: false });
+  }
+
   saveDetails = async event => {
     try {
       var requestBody = {
@@ -173,6 +186,7 @@ class ArticlePage extends React.Component {
             isEdit={this.state.isEdit}
             saveDetails={this.saveDetails.bind(this)}
             editDetails={this.editDetails.bind(this)}
+            cancelEdit={this.cancelEdit.bind(this)}
             handleChange={this.handleChange.bind(this)}
             handleOccasionSelect={this.handleOccasionSelect.bind(this)}
           />

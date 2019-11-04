@@ -33,6 +33,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Delete from "@material-ui/icons/DeleteOutline";
+import Close from "@material-ui/icons/Close";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -155,7 +156,7 @@ class SectionDetails extends React.Component {
           <GridItem xs={12} sm={5} md={5}>
             <Card profile plain>
               <CardHeader image plain>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
+                <a href="#" onClick={e => e.preventDefault()}>
                   <img src={christmasCard} className={classes.listImage} alt="..." />
                 </a>
                 <div
@@ -262,6 +263,9 @@ class SectionDetails extends React.Component {
                   <Button round justIcon color="success" onClick={this.props.saveDetails}>
                     <Icon>save_alt</Icon>
                   </Button>
+                  <Button round justIcon color="default" onClick={this.props.cancelEdit}>
+                    <Close />
+                  </Button>
                 </div>
               </GridItem>
             </GridContainer>
@@ -269,7 +273,7 @@ class SectionDetails extends React.Component {
           <GridItem xs={12} sm={5} md={5}>
             <Card profile plain>
               <CardHeader image plain>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
+                <a href="#" onClick={e => e.preventDefault()}>
                   <img src={christmasCard} className={classes.listImage} alt="..." />
                 </a>
                 <div
