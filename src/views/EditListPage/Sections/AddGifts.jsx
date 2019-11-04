@@ -40,7 +40,33 @@ class SectionAddGifts extends React.Component {
     super(props);
     this.state = {
       searchResult: 'test',
+      width: window.innerWidth,
+      height: window.innerHeight
     };
+  }
+
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  };
+  componentWillMount() {
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   renderManualAdd(classes) {
@@ -90,8 +116,10 @@ class SectionAddGifts extends React.Component {
   renderSearchResultTable(classes) {
     return (
       <Card plain>
-        <CardBody plain>
-          <Table
+          <CardBody plain>
+      {
+        this.state.desktop
+        ? <Table
             tableHead={[
               "",
               "",
@@ -144,8 +172,63 @@ class SectionAddGifts extends React.Component {
             ]}
             customClassesForCells={[1]}
           />
-        </CardBody>
-      </Card>
+        : <Table
+            tableHead={[
+              "",
+              ""
+            ]}
+            tableData={[
+              [
+                <div className={classes.textCenter}>
+                  <div className={classes.imgContainer}>
+                    <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
+                  </div>
+                  <a href="#jacket" className={classes.tdNameAnchor}>
+                    BABYBJÖRN
+                  </a>
+                  <br />
+                  <small className={classes.tdNameSmall}>
+                    Travel Cot Easy Go, Anthracite, with transport bag
+                  </small>
+                </div>,
+                <div className={classes.textCenter}>
+                <span>
+                  <Button color="primary" size="sm" simple>
+                    <Remove />
+                  </Button>
+                  {` `}2{` `}
+                  <Button color="primary" size="sm" simple>
+                    <Add />
+                  </Button>
+                </span>
+                <Button default color="primary" className={classes.reserveButton}>
+                  Add to list
+                </Button>
+                </div>
+
+              ],
+              {
+                addnew: true,
+                colspan: "1",
+                col: {
+                  colspan: 1,
+                }
+              }
+            ]
+            }
+            tableShopping
+            customHeadCellClasses={[
+              classes.textCenter
+            ]}
+            customHeadClassesForCells={[2]}
+            customCellClasses={[
+              classes.tdName
+            ]}
+            customClassesForCells={[1]}
+          />
+      }
+      </CardBody>
+    </Card>
     )
   }
 

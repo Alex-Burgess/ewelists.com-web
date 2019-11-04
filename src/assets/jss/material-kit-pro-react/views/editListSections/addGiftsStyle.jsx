@@ -30,12 +30,18 @@ const sectionDetailsStyle = theme => ({
     overflow: "hidden",
     display: "block",
     "& img": {
-      width: "100%"
+      width: "140px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "160px"
     }
   },
   customFormControl: {
     paddingTop: "14px",
     minWidth: "500px",
+    [theme.breakpoints.down("xs")]: {
+      minWidth: "270px",
+    }
   },
   customQuanityFormControl: {
     width: "80px"
