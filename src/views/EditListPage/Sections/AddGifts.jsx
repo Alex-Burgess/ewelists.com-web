@@ -39,9 +39,10 @@ class SectionAddGifts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResult: 'test',
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      searchResult: 'test',
+      addQuantity: 1
     };
   }
 
@@ -67,6 +68,22 @@ class SectionAddGifts extends React.Component {
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  increaseQuantity(){
+    var quantity = this.state.addQuantity;
+    quantity = quantity + 1;
+    this.setState({ addQuantity: quantity})
+  }
+
+  decreaseQuantity(){
+    var quantity = this.state.addQuantity;
+
+    if (quantity > 1) {
+      quantity = quantity - 1;
+    }
+
+    this.setState({ addQuantity: quantity})
   }
 
   renderManualAdd(classes) {
@@ -139,7 +156,7 @@ class SectionAddGifts extends React.Component {
                 <Button color="primary" size="sm" simple>
                   <Remove />
                 </Button>
-                {` `}2{` `}
+                {` `}{this.state.addQuantity}{` `}
                 <Button color="primary" size="sm" simple>
                   <Add />
                 </Button>
@@ -196,11 +213,11 @@ class SectionAddGifts extends React.Component {
                 </small>
               </span>,
               <span>
-                <Button color="primary" size="sm" simple>
+                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
                   <Remove />
                 </Button>
-                {` `}2{` `}
-                <Button color="primary" size="sm" simple>
+                {` `}{this.state.addQuantity}{` `}
+                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
                   <Add />
                 </Button>
               </span>,
