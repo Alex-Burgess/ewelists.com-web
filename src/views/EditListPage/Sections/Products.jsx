@@ -39,15 +39,39 @@ class SectionProducts extends React.Component {
     super(props);
     this.state = {
       editModal: false,
+      width: window.innerWidth,
+      height: window.innerHeight
     };
   }
 
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  };
   componentWillMount() {
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+
     const { products } = this.props;
 
     for (let product of products) {
       this.setState({ [product['productId']]: false });
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   handleClose(modal) {
@@ -61,6 +85,89 @@ class SectionProducts extends React.Component {
     var x = [];
     x[modal] = true;
     this.setState(x);
+  }
+
+  renderDesktopProductView(classes, products) {
+    return (
+      <Table
+        tableHead={[
+          "",
+          "PRODUCT",
+          "QTY",
+          "RESERVED",
+          ""
+        ]}
+        tableData={
+          this.renderProducts(classes, products)
+        }
+        tableShopping
+        customHeadCellClasses={[
+          classes.textCenter,
+          classes.textCenter,
+          classes.textCenter,
+
+        ]}
+        customHeadClassesForCells={[2, 3, 4]}
+        customCellClasses={[
+          classes.tdName,
+          classes.tdNumber + " " + classes.textCenter,
+          classes.tdNumber + " " + classes.textCenter,
+          classes.tdNumber + " " + classes.textCenter,
+          classes.textCenter,
+        ]}
+        customClassesForCells={[1, 2, 3, 4, 5]}
+      />
+    )
+  }
+
+  renderMobileProductView(classes, products) {
+    return (
+      <Table
+        tableHead={[
+          ""
+        ]}
+        tableData={
+          this.renderMobileProducts(classes, products)
+        }
+        tableShopping
+      />
+    )
+  }
+
+  renderProducts(classes, products: Products[]) {
+    const allproducts = products.map(
+      (product, i) =>
+            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
+    )
+
+    allproducts[products.length] =
+      {
+        addnew: true,
+        colspan: "3",
+        col: {
+          colspan: 3,
+        }
+      }
+
+    return allproducts
+  }
+
+  renderMobileProducts(classes, products: Products[]) {
+    const allproducts = products.map(
+      (product, i) =>
+            this.renderMobileProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
+    )
+
+    allproducts[products.length] =
+      {
+        addnew: true,
+        colspan: "3",
+        col: {
+          colspan: 3,
+        }
+      }
+
+    return allproducts
   }
 
   renderProduct(classes, productId, img, brand, details, quantity, reserved) {
@@ -110,24 +217,50 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderProducts(classes, products: Products[]) {
-    const allproducts = products.map(
-      (product, i) =>
-            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
+  renderMobileProduct(classes, productId, img, brand, details, quantity, reserved) {
+    return (
+      [
+          <div className={classes.textCenter}>
+            <div className={classes.imgContainer} key={1}>
+              <img src={img} alt="..." className={classes.img} />
+            </div>
+            <h4 className={classes.cardTitle}>{brand}</h4>
+            <small className={classes.mobileDescription}>
+              {details}
+            </small>
+            <br />
+            <small className={classes.quantities}>
+              Quantity: {quantity}
+            </small>
+            <br />
+            <small className={classes.quantities}>
+              Reserved: {reserved}
+            </small>
+            <br />
+            <Tooltip
+              id="reserved"
+              title="See reserved details"
+              placement="left"
+              classes={{ tooltip: classes.tooltip }}
+            >
+              <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+                <Assignment />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              id="edit"
+              title="Edit item"
+              placement="left"
+              classes={{ tooltip: classes.tooltip }}
+            >
+              <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+                <Edit />
+              </Button>
+            </Tooltip>
+          </div>
+      ]
     )
-
-    allproducts[products.length] =
-      {
-        addnew: true,
-        colspan: "3",
-        col: {
-          colspan: 3,
-        }
-      }
-
-    return allproducts
   }
-
 
   renderEditPopOuts(classes, products: Products[]) {
     return products.map(
@@ -146,7 +279,6 @@ class SectionProducts extends React.Component {
     )
   }
 
-
   render() {
     const { classes, products } = this.props;
 
@@ -155,34 +287,12 @@ class SectionProducts extends React.Component {
         <div className={classes.container}>
           <Card plain>
             <CardBody plain>
-              <Table
-                tableHead={[
-                  "",
-                  "PRODUCT",
-                  "QTY",
-                  "RESERVED",
-                  ""
-                ]}
-                tableData={
-                  this.renderProducts(classes, products)
-                }
-                tableShopping
-                customHeadCellClasses={[
-                  classes.textCenter,
-                  classes.textCenter,
-                  classes.textCenter,
+              {
+                this.state.desktop
+                ? this.renderDesktopProductView(classes, products)
+                : this.renderMobileProductView(classes, products)
+              }
 
-                ]}
-                customHeadClassesForCells={[2, 3, 4]}
-                customCellClasses={[
-                  classes.tdName,
-                  classes.tdNumber + " " + classes.textCenter,
-                  classes.tdNumber + " " + classes.textCenter,
-                  classes.tdNumber + " " + classes.textCenter,
-                  classes.textCenter,
-                ]}
-                customClassesForCells={[1, 2, 3, 4, 5]}
-              />
             </CardBody>
           </Card>
           {this.renderEditPopOuts(classes, products)}

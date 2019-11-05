@@ -18,6 +18,7 @@ import {
   container,
   mrAuto,
   mlAuto,
+  grayColor,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const sectionDetailsStyle = theme => ({
@@ -51,6 +52,14 @@ const sectionDetailsStyle = theme => ({
   },
   rightText: {
     textAlign: "Right",
+  },
+  tdNameAnchor: {
+    color: grayColor[1]
+  },
+  tdNameSmall: {
+    color: grayColor[0],
+    fontSize: "0.75em",
+    fontWeight: "300"
   }
 });
 

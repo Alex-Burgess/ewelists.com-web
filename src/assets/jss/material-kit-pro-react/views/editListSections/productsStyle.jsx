@@ -22,14 +22,23 @@ import {
 
 const sectionDetailsStyle = theme => ({
   container,
-  cardTitle,
+  cardTitle: {
+    ...cardTitle,
+    textAlign: "center",
+    marginBottom: "0px !important",
+  },
   imgContainer: {
     width: "120px",
     maxHeight: "160px",
     overflow: "hidden",
     display: "block",
+    margin: "auto",
     "& img": {
       width: "100%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "200px",
+      maxHeight: "100%",
     }
   },
   textCenter: {
@@ -66,6 +75,15 @@ const sectionDetailsStyle = theme => ({
   actionButton: {
     margin: "0px",
     padding: "5px"
+  },
+  mobileDescription: {
+    fontSize: "1.1em",
+    fontWeight: "300"
+  },
+  quantities: {
+    fontSize: "1.1em",
+    fontWeight: "300",
+    lineHeight: "2.2em"
   }
 });
 

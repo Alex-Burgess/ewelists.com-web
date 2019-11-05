@@ -103,6 +103,10 @@ class ArticlePage extends React.Component {
         this.setState({
           date: response.list.eventDate
         });
+      } else {
+        this.setState({
+          date: ''
+        });
       }
 
       this.setState({ isLoading: false });

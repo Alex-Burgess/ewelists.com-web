@@ -113,119 +113,131 @@ class SectionAddGifts extends React.Component {
     )
   }
 
+  renderMobileSearchResultTable(classes){
+    return (
+      <Table
+          tableHead={[
+            "",
+            ""
+          ]}
+          tableData={[
+            [
+              <div className={classes.textCenter}>
+                <div className={classes.imgContainer}>
+                  <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
+                </div>
+                <a href="#jacket" className={classes.tdNameAnchor}>
+                  BABYBJÖRN
+                </a>
+                <br />
+                <small className={classes.tdNameSmall}>
+                  Travel Cot Easy Go, Anthracite, with transport bag
+                </small>
+              </div>,
+              <div className={classes.textCenter}>
+              <span>
+                <Button color="primary" size="sm" simple>
+                  <Remove />
+                </Button>
+                {` `}2{` `}
+                <Button color="primary" size="sm" simple>
+                  <Add />
+                </Button>
+              </span>
+              <Button default size="sm" color="primary" className={classes.reserveButton}>
+                Add to list
+              </Button>
+              </div>
+
+            ],
+            {
+              addnew: true,
+              colspan: "1",
+              col: {
+                colspan: 1,
+              }
+            }
+          ]
+          }
+          tableShopping
+          customHeadCellClasses={[
+            classes.textCenter
+          ]}
+          customHeadClassesForCells={[2]}
+          customCellClasses={[
+            classes.tdName
+          ]}
+          customClassesForCells={[1]}
+        />
+    )
+  }
+
+  renderDesktopSearchResultTable(classes){
+    return (
+      <Table
+          tableHead={[
+            "",
+            "",
+            "",
+            ""
+          ]}
+          tableData={[
+            [
+              <div className={classes.imgContainer}>
+                <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
+              </div>,
+              <span key={1}>
+                <a href="#jacket" className={classes.tdNameAnchor}>
+                  BABYBJÖRN
+                </a>
+                <br />
+                <small className={classes.tdNameSmall}>
+                  Travel Cot Easy Go, Anthracite, with transport bag
+                </small>
+              </span>,
+              <span>
+                <Button color="primary" size="sm" simple>
+                  <Remove />
+                </Button>
+                {` `}2{` `}
+                <Button color="primary" size="sm" simple>
+                  <Add />
+                </Button>
+              </span>,
+              <Button default color="primary" className={classes.reserveButton}>
+                Add to list
+              </Button>
+            ],
+            {
+              addnew: true,
+              colspan: "2",
+              col: {
+                colspan: 2,
+              }
+            }
+          ]
+          }
+          tableShopping
+          customHeadCellClasses={[
+            classes.textCenter
+          ]}
+          customHeadClassesForCells={[2]}
+          customCellClasses={[
+            classes.tdName
+          ]}
+          customClassesForCells={[1]}
+        />
+    )
+  }
+
   renderSearchResultTable(classes) {
     return (
       <Card plain>
           <CardBody plain>
       {
         this.state.desktop
-        ? <Table
-            tableHead={[
-              "",
-              "",
-              "",
-              ""
-            ]}
-            tableData={[
-              [
-                <div className={classes.imgContainer}>
-                  <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
-                </div>,
-                <span key={1}>
-                  <a href="#jacket" className={classes.tdNameAnchor}>
-                    BABYBJÖRN
-                  </a>
-                  <br />
-                  <small className={classes.tdNameSmall}>
-                    Travel Cot Easy Go, Anthracite, with transport bag
-                  </small>
-                </span>,
-                <span>
-                  <Button color="primary" size="sm" simple>
-                    <Remove />
-                  </Button>
-                  {` `}2{` `}
-                  <Button color="primary" size="sm" simple>
-                    <Add />
-                  </Button>
-                </span>,
-                <Button default color="primary" className={classes.reserveButton}>
-                  Add to list
-                </Button>
-              ],
-              {
-                addnew: true,
-                colspan: "2",
-                col: {
-                  colspan: 2,
-                }
-              }
-            ]
-            }
-            tableShopping
-            customHeadCellClasses={[
-              classes.textCenter
-            ]}
-            customHeadClassesForCells={[2]}
-            customCellClasses={[
-              classes.tdName
-            ]}
-            customClassesForCells={[1]}
-          />
-        : <Table
-            tableHead={[
-              "",
-              ""
-            ]}
-            tableData={[
-              [
-                <div className={classes.textCenter}>
-                  <div className={classes.imgContainer}>
-                    <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
-                  </div>
-                  <a href="#jacket" className={classes.tdNameAnchor}>
-                    BABYBJÖRN
-                  </a>
-                  <br />
-                  <small className={classes.tdNameSmall}>
-                    Travel Cot Easy Go, Anthracite, with transport bag
-                  </small>
-                </div>,
-                <div className={classes.textCenter}>
-                <span>
-                  <Button color="primary" size="sm" simple>
-                    <Remove />
-                  </Button>
-                  {` `}2{` `}
-                  <Button color="primary" size="sm" simple>
-                    <Add />
-                  </Button>
-                </span>
-                <Button default color="primary" className={classes.reserveButton}>
-                  Add to list
-                </Button>
-                </div>
-
-              ],
-              {
-                addnew: true,
-                colspan: "1",
-                col: {
-                  colspan: 1,
-                }
-              }
-            ]
-            }
-            tableShopping
-            customHeadCellClasses={[
-              classes.textCenter
-            ]}
-            customHeadClassesForCells={[2]}
-            customCellClasses={[
-              classes.tdName
-            ]}
-            customClassesForCells={[1]}
-          />
+        ? this.renderDesktopSearchResultTable(classes)
+        : this.renderMobileSearchResultTable(classes)
       }
       </CardBody>
     </Card>
