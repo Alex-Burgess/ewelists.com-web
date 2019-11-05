@@ -30,6 +30,7 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 // Sections
 import SectionEdit from "./EditProductPopOut.jsx";
+import SectionReserve from "./ReserveDetailsPopOut.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/productsStyle.jsx";
 
@@ -38,7 +39,8 @@ class SectionProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editModal: false,
+      edit: {},
+      reserve: {},
       width: window.innerWidth,
       height: window.innerHeight
     };
@@ -62,9 +64,16 @@ class SectionProducts extends React.Component {
 
     const { products } = this.props;
 
+    let editStateObj = {}
+    let reserveStateObj = {}
+
     for (let product of products) {
-      this.setState({ [product['productId']]: false });
+      editStateObj[product['productId']] = false
+      reserveStateObj[product['productId']] = false
     }
+
+    this.setState({ edit: editStateObj });
+    this.setState({ reserve: reserveStateObj });
   }
 
   componentDidMount() {
@@ -74,17 +83,30 @@ class SectionProducts extends React.Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  handleClose(modal) {
+  handleEditClose(modal) {
     var x = [];
     x[modal] = false;
-    this.setState(x);
+    this.setState({ edit: x });
   }
 
-  handleClickOpen(modal) {
+  handleEditClickOpen(modal) {
     console.log("Opening product id: " + modal)
     var x = [];
     x[modal] = true;
-    this.setState(x);
+    this.setState({ edit: x });
+  }
+
+  handleReserveClickOpen(modal) {
+    console.log("Opening product id: " + modal)
+    var x = [];
+    x[modal] = true;
+    this.setState({ reserve: x });
+  }
+
+  handleReserveClose(modal) {
+    var x = [];
+    x[modal] = false;
+    this.setState({ reserve: x });
   }
 
   renderDesktopProductView(classes, products) {
@@ -198,7 +220,7 @@ class SectionProducts extends React.Component {
           placement="left"
           classes={{ tooltip: classes.tooltip }}
         >
-          <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+          <Button link className={classes.actionButton} onClick={() => this.handleReserveClickOpen(productId)}>
             <Assignment />
           </Button>
         </Tooltip>
@@ -208,7 +230,7 @@ class SectionProducts extends React.Component {
           placement="left"
           classes={{ tooltip: classes.tooltip }}
         >
-          <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+          <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
             <Edit />
           </Button>
         </Tooltip>
@@ -243,7 +265,7 @@ class SectionProducts extends React.Component {
               placement="left"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+              <Button link className={classes.actionButton} onClick={() => this.handleReserveClickOpen(productId)}>
                 <Assignment />
               </Button>
             </Tooltip>
@@ -253,7 +275,7 @@ class SectionProducts extends React.Component {
               placement="left"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button link className={classes.actionButton} onClick={() => this.handleClickOpen(productId)}>
+              <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
                 <Edit />
               </Button>
             </Tooltip>
@@ -266,14 +288,31 @@ class SectionProducts extends React.Component {
     return products.map(
       (product, i) =>
           <SectionEdit
-            open={this.state[product['productId']] }
+            open={this.state.edit[product['productId']] }
             productId={product['productId']}
             brand={product['brand']}
             description={product['details']}
             quantity={product['quantity']}
             url={product['url']}
             img={product['img']}
-            handleClose={this.handleClose.bind(this)}
+            handleClose={this.handleEditClose.bind(this)}
+            key={i}
+          />
+    )
+  }
+
+  renderReservePopOuts(classes, products: Products[]) {
+    return products.map(
+      (product, i) =>
+          <SectionReserve
+            open={this.state.reserve[product['productId']] }
+            productId={product['productId']}
+            brand={product['brand']}
+            description={product['details']}
+            quantity={product['quantity']}
+            url={product['url']}
+            img={product['img']}
+            handleClose={this.handleReserveClose.bind(this)}
             key={i}
           />
     )
@@ -296,6 +335,7 @@ class SectionProducts extends React.Component {
             </CardBody>
           </Card>
           {this.renderEditPopOuts(classes, products)}
+          {this.renderReservePopOuts(classes, products)}
         </div>
       </div>
     );

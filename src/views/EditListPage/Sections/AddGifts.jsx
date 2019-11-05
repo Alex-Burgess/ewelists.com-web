@@ -111,11 +111,11 @@ class SectionAddGifts extends React.Component {
               }}
             />
             <div className={classes.textCenter}>
-              <Button color="primary" size="sm" simple>
+              <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
                 <Remove />
               </Button>
-              {` `}2{` `}
-              <Button color="primary" size="sm" simple>
+              {` `}{this.state.addQuantity}{` `}
+              <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
                 <Add />
               </Button>
             </div>
@@ -153,11 +153,11 @@ class SectionAddGifts extends React.Component {
               </div>,
               <div className={classes.textCenter}>
               <span>
-                <Button color="primary" size="sm" simple>
+                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
                   <Remove />
                 </Button>
                 {` `}{this.state.addQuantity}{` `}
-                <Button color="primary" size="sm" simple>
+                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
                   <Add />
                 </Button>
               </span>

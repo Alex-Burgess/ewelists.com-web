@@ -9,18 +9,15 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
-import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
-import Remove from "@material-ui/icons/Remove";
-import Add from "@material-ui/icons/Add";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/editProductPopOutStyle.jsx";
+import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/reserveDetailsPopOutStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -97,25 +94,13 @@ class SectionDetails extends React.Component {
                   {description}
                 </p>
                 <p className={classes.description}>
+                  Quantity: {quantity}
+                </p>
+                <p className={classes.description}>
                   Reserved: 0
                 </p>
                 <div className={classes.textCenter}>
-                  <InputLabel className={classes.label}>
-                    Quantity:
-                    <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
-                      <Remove />
-                    </Button>
-                    {` `}{this.state.addQuantity}{` `}
-                    <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
-                      <Add />
-                    </Button>
-                  </InputLabel>
-                  <Button round color="default" type="submit">
-                    Delete
-                  </Button>
-                  <Button round color="primary" type="submit">
-                    Update
-                  </Button>
+
                 </div>
               </CardBody>
             </Card>
