@@ -61,19 +61,6 @@ class SectionProducts extends React.Component {
     } else {
       this.setState({ desktop: true });
     }
-
-    const { products } = this.props;
-
-    let editStateObj = {}
-    let reserveStateObj = {}
-
-    for (let product of products) {
-      editStateObj[product['productId']] = false
-      reserveStateObj[product['productId']] = false
-    }
-
-    this.setState({ edit: editStateObj });
-    this.setState({ reserve: reserveStateObj });
   }
 
   componentDidMount() {
@@ -288,7 +275,9 @@ class SectionProducts extends React.Component {
     return products.map(
       (product, i) =>
           <SectionEdit
-            open={this.state.edit[product['productId']] }
+            open={this.state.edit[product['productId']]
+              ? this.state.edit[product['productId']]
+              : false }
             productId={product['productId']}
             brand={product['brand']}
             description={product['details']}
@@ -305,7 +294,9 @@ class SectionProducts extends React.Component {
     return products.map(
       (product, i) =>
           <SectionReserve
-            open={this.state.reserve[product['productId']] }
+            open={this.state.reserve[product['productId']]
+              ? this.state.reserve[product['productId']]
+              : false}
             productId={product['productId']}
             brand={product['brand']}
             description={product['details']}

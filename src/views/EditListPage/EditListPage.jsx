@@ -48,6 +48,12 @@ class ArticlePage extends React.Component {
       occasion: '',
       date: '',
       isEdit: false,
+      notfound: {
+        quantity: 1,
+        brand: '',
+        details: '',
+        url: ''
+      },
       products: [
         {
           // productId: 'PRODUCT#1009',
@@ -56,7 +62,6 @@ class ArticlePage extends React.Component {
           reserved: 1,
           brand: 'BABYBJÖRN',
           details: 'Travel Cot Easy Go, Anthracite, with transport bag',
-          price: '219.99',
           img: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'
         },
         {
@@ -65,7 +70,6 @@ class ArticlePage extends React.Component {
           reserved: 0,
           brand: 'BABYZEN',
           details: 'YOYO+ Puschair, Black with Aqua',
-          price: '389',
           img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'
         },
         {
@@ -74,7 +78,6 @@ class ArticlePage extends React.Component {
           reserved: 0,
           brand: 'Micralite',
           details: 'Travel Cot 3 in 1 Sleep & Go - Carbon/Grey',
-          price: '175',
           img: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'
         }
       ]
@@ -153,7 +156,6 @@ class ArticlePage extends React.Component {
       this.setState({
         title: response[0].updates.title,
         description: response[0].updates.description,
-        // date: response[0].updates.eventDate,
         occasionSelect: response[0].updates.occasion,
         isEdit: false
        });
@@ -185,6 +187,99 @@ class ArticlePage extends React.Component {
   changeDate(date) {
     this.setState({ date: date.format('DD MMMM YYYY')});
   }
+
+  // AddGifts Functions
+  createProduct = async event => {
+    let response;
+    let requestBody = {
+      "brand": this.state.notfound.brand,
+      "details": this.state.notfound.details,
+      "url": this.state.notfound.url,
+    };
+
+    try {
+      response = await API.post("notfound", "/", { body: requestBody });
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e.response.data.error);
+      return false
+    }
+
+    console.log("created product: " + response.productId);
+
+    var product = {
+      productId: response.productId,
+      brand: this.state.notfound.brand,
+      details: this.state.notfound.details,
+      url: this.state.notfound.url,
+      img: '',
+      quantity: this.state.notfound.quantity,
+      reserved: 0
+    }
+
+    var updatedProducts = this.state.products.concat(product);
+    this.setState({ products: updatedProducts })
+  }
+
+  increaseQuantity(){
+    var quantity = this.state.notfound.quantity;
+
+    this.setState(prevState => ({
+      notfound: {
+        ...prevState.notfound,
+        quantity: quantity + 1
+      }
+    }))
+  }
+
+  decreaseQuantity(){
+    var quantity = this.state.notfound.quantity;
+
+    if (quantity > 1) {
+      quantity = quantity - 1;
+    }
+
+    this.setState(prevState => ({
+      notfound: {
+        ...prevState.notfound,
+        quantity: quantity
+      }
+    }))
+  }
+
+  handleAddGiftChange = event => {
+    const id = event.target.id;
+    const val = event.target.value;
+
+    this.setState(prevState => ({
+      notfound: {
+        ...prevState.notfound,
+        [id]: val
+      }
+    }))
+
+    console.log("Brand: " + this.state.notfound.brand);
+    console.log("Details: " + this.state.notfound.details);
+    console.log("Url: " + this.state.notfound.url);
+    console.log("Quantity: " + this.state.notfound.quantity);
+  }
+
+  validateNotFoundForm(){
+    return (
+      this.state.notfound.brand.length > 0 &&
+      this.state.notfound.details.length > 0 &&
+      this.state.notfound.url.length > 0 &&
+      this.validateUrl(this.state.notfound.url)
+    );
+  }
+
+  validateUrl(url){
+    if (url.startsWith("http")) {
+      return true
+    }
+    return false
+  }
+
+  // End of AddGifts Functions
 
   render() {
     const { classes } = this.props;
@@ -233,7 +328,14 @@ class ArticlePage extends React.Component {
                   tabIcon: Search,
                   tabContent: (
                     <div>
-                      <SectionAddGifts />
+                      <SectionAddGifts
+                        createProduct={this.createProduct.bind(this)}
+                        quantity={this.state.notfound.quantity}
+                        decreaseQuantity={this.decreaseQuantity.bind(this)}
+                        increaseQuantity={this.increaseQuantity.bind(this)}
+                        handleAddGiftChange={this.handleAddGiftChange.bind(this)}
+                        validateNotFoundForm={this.validateNotFoundForm.bind(this)}
+                      />
                     </div>
                   )
                 },

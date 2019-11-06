@@ -41,7 +41,7 @@ class SectionAddGifts extends React.Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
-      searchResult: 'test',
+      searchResult: '',
       addQuantity: 1
     };
   }
@@ -70,23 +70,23 @@ class SectionAddGifts extends React.Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  increaseQuantity(){
-    var quantity = this.state.addQuantity;
-    quantity = quantity + 1;
-    this.setState({ addQuantity: quantity})
-  }
+  // increaseQuantity(){
+  //   var quantity = this.state.addQuantity;
+  //   quantity = quantity + 1;
+  //   this.setState({ addQuantity: quantity})
+  // }
+  //
+  // decreaseQuantity(){
+  //   var quantity = this.state.addQuantity;
+  //
+  //   if (quantity > 1) {
+  //     quantity = quantity - 1;
+  //   }
+  //
+  //   this.setState({ addQuantity: quantity})
+  // }
 
-  decreaseQuantity(){
-    var quantity = this.state.addQuantity;
-
-    if (quantity > 1) {
-      quantity = quantity - 1;
-    }
-
-    this.setState({ addQuantity: quantity})
-  }
-
-  renderManualAdd(classes) {
+  renderManualAdd(classes, quantity) {
     return (
       <GridContainer>
         <GridItem xs={12} sm={7} md={7} lg={7}
@@ -102,6 +102,9 @@ class SectionAddGifts extends React.Component {
               formControlProps={{
                 fullWidth: true
               }}
+              inputProps={{
+                onChange: this.props.handleAddGiftChange
+              }}
             />
             <CustomInput
               labelText="Details"
@@ -109,18 +112,31 @@ class SectionAddGifts extends React.Component {
               formControlProps={{
                 fullWidth: true
               }}
+              inputProps={{
+                onChange: this.props.handleAddGiftChange
+              }}
+            />
+            <CustomInput
+              labelText="Link"
+              id="url"
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                onChange: this.props.handleAddGiftChange
+              }}
             />
             <div className={classes.textCenter}>
-              <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
+              <Button color="primary" size="sm" simple onClick={() => this.props.decreaseQuantity()}>
                 <Remove />
               </Button>
-              {` `}{this.state.addQuantity}{` `}
-              <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
+              {` `}{quantity}{` `}
+              <Button color="primary" size="sm" simple onClick={() => this.props.increaseQuantity()}>
                 <Add />
               </Button>
             </div>
             <div className={classes.textCenter}>
-              <Button round color="primary" type="submit">
+              <Button round color="primary" onClick={() => this.props.createProduct()} disabled={!this.props.validateNotFoundForm()}>
                 Add to list
               </Button>
             </div>
@@ -262,7 +278,7 @@ class SectionAddGifts extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, quantity } = this.props;
 
     return (
       <div className={classes.section}>
@@ -288,7 +304,7 @@ class SectionAddGifts extends React.Component {
               </div>
               {this.state.searchResult
                 ? this.renderSearchResultTable(classes)
-                : this.renderManualAdd(classes)
+                : this.renderManualAdd(classes, quantity)
               }
             </GridItem>
           </GridContainer>
@@ -300,6 +316,7 @@ class SectionAddGifts extends React.Component {
 
 SectionAddGifts.propTypes = {
   classes: PropTypes.object,
+  quantity: PropTypes.number
 };
 
 export default withStyles(styles)(SectionAddGifts);
