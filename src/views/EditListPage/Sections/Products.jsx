@@ -285,6 +285,7 @@ class SectionProducts extends React.Component {
             url={product['url']}
             img={product['img']}
             handleClose={this.handleEditClose.bind(this)}
+            deleteProduct={this.props.deleteProduct.bind(this)}
             key={i}
           />
     )

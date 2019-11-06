@@ -188,6 +188,24 @@ class ArticlePage extends React.Component {
     this.setState({ date: date.format('DD MMMM YYYY')});
   }
 
+  deleteProduct(id) {
+    console.log("Deleting product from list: " + id);
+
+    let index;
+    let count = 0;
+    for (let product of this.state.products) {
+      if (product['productId'] == id) {
+        index = count;
+      }
+      count = count + 1;
+    }
+
+    const filteredArray = this.state.products.filter((_, i) => i !== index);
+    this.setState({
+      products: filteredArray
+    });
+  }
+
   // AddGifts Functions
   createProduct = async event => {
     let response;
@@ -256,11 +274,6 @@ class ArticlePage extends React.Component {
         [id]: val
       }
     }))
-
-    console.log("Brand: " + this.state.notfound.brand);
-    console.log("Details: " + this.state.notfound.details);
-    console.log("Url: " + this.state.notfound.url);
-    console.log("Quantity: " + this.state.notfound.quantity);
   }
 
   validateNotFoundForm(){
@@ -318,7 +331,10 @@ class ArticlePage extends React.Component {
                   tabIcon: List,
                   tabContent: (
                     <div>
-                      <SectionProducts products={this.state.products} />
+                      <SectionProducts
+                        products={this.state.products}
+                        deleteProduct={this.deleteProduct.bind(this)}
+                      />
                     </div>
                   )
                 },
