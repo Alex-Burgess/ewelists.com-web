@@ -278,7 +278,6 @@ class ArticlePage extends React.Component {
     }
     return false
   }
-
   // End of AddGifts Functions
 
   render() {

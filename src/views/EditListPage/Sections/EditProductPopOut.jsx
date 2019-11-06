@@ -1,4 +1,5 @@
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
@@ -50,6 +51,25 @@ class SectionDetails extends React.Component {
     }
 
     this.setState({ addQuantity: quantity})
+  }
+
+  deleteProduct = async event => {
+    let response;
+    let productId = this.props.productId;
+    console.log("Deleting product ID: " + productId);
+
+    try {
+      response = await API.del("notfound", "/" + productId);
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e.response.data.error);
+      return false
+    }
+
+    console.log("created product: " + response.productId);
+
+    this.props.handleClose(productId)
+    // Remove product from list
+    // Print error if not deleted
   }
 
   render() {
@@ -110,7 +130,7 @@ class SectionDetails extends React.Component {
                       <Add />
                     </Button>
                   </InputLabel>
-                  <Button round color="default" type="submit">
+                  <Button round color="default" type="submit" onClick={() => this.deleteProduct()}>
                     Delete
                   </Button>
                   <Button round color="primary" type="submit">
