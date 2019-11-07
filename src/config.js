@@ -2,7 +2,8 @@ const test = {
   apiGateway: {
     REGION: "eu-west-1",
     LISTS: "https://4sdcvv0n2e.execute-api.eu-west-1.amazonaws.com/test/lists",
-    NOTFOUND: "https://pff49212ai.execute-api.eu-west-1.amazonaws.com/test/notfound"
+    NOTFOUND: "https://pff49212ai.execute-api.eu-west-1.amazonaws.com/test/notfound",
+    PRODUCTS: "https://4cu83a3xga.execute-api.eu-west-1.amazonaws.com/test/products"
   },
   cognito: {
     REGION: "eu-west-1",

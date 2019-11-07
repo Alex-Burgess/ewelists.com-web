@@ -15,6 +15,7 @@
 
 */
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -42,7 +43,9 @@ class SectionAddGifts extends React.Component {
       width: window.innerWidth,
       height: window.innerHeight,
       searchResult: '',
-      addQuantity: 1
+      productFound: '',
+      addQuantity: 1,
+      searchUrl: ''
     };
   }
 
@@ -85,6 +88,52 @@ class SectionAddGifts extends React.Component {
   //
   //   this.setState({ addQuantity: quantity})
   // }
+
+  searchProduct = async event => {
+    let response;
+
+    try {
+      response = await API.get("products", "/url/" + encodeURIComponent(this.state.searchUrl));
+    } catch (e) {
+      console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
+      this.setState({ deleteError: 'Product could not be deleted.'});
+      return false
+    }
+
+    if (response.product.productId) {
+      console.log("Retrieved product: " + response.product.productId);
+      let product = {
+        productId: response.product.productId,
+        brand: response.product.brand,
+        details: response.product.details,
+        imageUrl: response.product.imageUrl,
+      }
+      this.setState({
+        searchResult: true,
+        productFound: true,
+        product: product
+      })
+    } else {
+      console.log("No product found.");
+      this.setState({
+        searchResult: true,
+        productFound: false
+      })
+    }
+  }
+
+  handleSearchChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  validateSearchForm(){
+    return (
+      this.state.searchUrl.length > 0 &&
+      this.state.searchUrl.startsWith("http")
+    );
+  }
 
   renderManualAdd(classes, quantity) {
     return (
@@ -217,15 +266,15 @@ class SectionAddGifts extends React.Component {
           tableData={[
             [
               <div className={classes.imgContainer}>
-                <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
+                <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
               </div>,
               <span key={1}>
                 <a href="#jacket" className={classes.tdNameAnchor}>
-                  BABYBJÖRN
+                  {this.state.product.brand}
                 </a>
                 <br />
                 <small className={classes.tdNameSmall}>
-                  Travel Cot Easy Go, Anthracite, with transport bag
+                  {this.state.product.details}
                 </small>
               </span>,
               <span>
@@ -289,22 +338,25 @@ class SectionAddGifts extends React.Component {
             >
               <div className={classes.textCenter}>
                 <CustomInput
-                  id="material"
+                  id="searchUrl"
                   formControlProps={{
                     fullWidth: false,
                     className: classes.customFormControl
                   }}
                   inputProps={{
-                    placeholder: "Enter url..."
+                    placeholder: "Enter url...",
+                    onChange: this.handleSearchChange
                   }}
                 />
-                <Button color="primary" justIcon>
+                <Button color="primary" justIcon onClick={() => this.searchProduct()} disabled={!this.validateSearchForm()}>
                   <Search />
                 </Button>
               </div>
               {this.state.searchResult
-                ? this.renderSearchResultTable(classes)
-                : this.renderManualAdd(classes, quantity)
+                ? this.state.productFound
+                  ? this.renderSearchResultTable(classes)
+                  : this.renderManualAdd(classes, quantity)
+                : null
               }
             </GridItem>
           </GridContainer>

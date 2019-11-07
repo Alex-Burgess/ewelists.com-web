@@ -281,15 +281,8 @@ class ArticlePage extends React.Component {
       this.state.notfound.brand.length > 0 &&
       this.state.notfound.details.length > 0 &&
       this.state.notfound.url.length > 0 &&
-      this.validateUrl(this.state.notfound.url)
+      this.state.notfound.url.startsWith("http")
     );
-  }
-
-  validateUrl(url){
-    if (url.startsWith("http")) {
-      return true
-    }
-    return false
   }
   // End of AddGifts Functions
 

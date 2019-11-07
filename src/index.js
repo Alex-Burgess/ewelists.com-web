@@ -38,6 +38,11 @@ Amplify.configure({
         name: "notfound",
         endpoint: config.apiGateway.NOTFOUND,
         region: config.apiGateway.REGION
+      },
+      {
+        name: "products",
+        endpoint: config.apiGateway.PRODUCTS,
+        region: config.apiGateway.REGION
       }
     ]
   }
