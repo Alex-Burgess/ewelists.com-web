@@ -33,7 +33,8 @@ class SectionDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addQuantity: 1
+      addQuantity: 1,
+      deleteError: ''
     };
   }
 
@@ -61,7 +62,8 @@ class SectionDetails extends React.Component {
     try {
       response = await API.del("notfound", "/" + productId);
     } catch (e) {
-      console.log('Unexpected error occurred when creating product: ' + e.response.data.error);
+      console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
+      this.setState({ deleteError: 'Product could not be deleted.'});
       return false
     }
 
@@ -138,6 +140,13 @@ class SectionDetails extends React.Component {
                     Update
                   </Button>
                 </div>
+                {this.state.deleteError
+                  ?
+                    <div className={classes.errorContainer + " " + classes.centerText + " " + classes.error}>
+                      {this.state.deleteError}
+                    </div>
+                  : null
+                }
               </CardBody>
             </Card>
           </DialogContent>

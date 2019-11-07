@@ -69,6 +69,10 @@ const sectionStyle = theme => ({
   textCenter: {
     textAlign: "center !important"
   },
+  errorContainer: {
+    paddingTop: "20px",
+    fontSize: "14px"
+  }
 });
 
 export default sectionStyle;
