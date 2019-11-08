@@ -19,6 +19,8 @@ import {
   mrAuto,
   mlAuto,
   grayColor,
+  dangerColor,
+  successColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const sectionDetailsStyle = theme => ({
@@ -60,6 +62,14 @@ const sectionDetailsStyle = theme => ({
     color: grayColor[0],
     fontSize: "0.75em",
     fontWeight: "300"
+  },
+  errorContainer: {
+    color: dangerColor[1],
+    textAlign: "center !important"
+  },
+  messageContainer: {
+    color: successColor[1],
+    textAlign: "center !important"
   }
 });
 

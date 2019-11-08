@@ -146,7 +146,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
+            this.renderProduct(classes, product['productId'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -164,7 +164,7 @@ class SectionProducts extends React.Component {
   renderMobileProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderMobileProduct(classes, product['productId'], product['img'], product['brand'], product['details'], product['quantity'], product['reserved'])
+            this.renderMobileProduct(classes, product['productId'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -179,11 +179,11 @@ class SectionProducts extends React.Component {
     return allproducts
   }
 
-  renderProduct(classes, productId, img, brand, details, quantity, reserved) {
+  renderProduct(classes, productId, imageUrl, brand, details, quantity, reserved) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
-        <img src={img} alt="..." className={classes.img} />
+        <img src={imageUrl} alt="..." className={classes.img} />
       </div>,
       <span key={1}>
         <a href="#jacket" className={classes.tdNameAnchor}>
@@ -226,12 +226,12 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileProduct(classes, productId, img, brand, details, quantity, reserved) {
+  renderMobileProduct(classes, productId, imageUrl, brand, details, quantity, reserved) {
     return (
       [
           <div className={classes.textCenter}>
             <div className={classes.imgContainer} key={1}>
-              <img src={img} alt="..." className={classes.img} />
+              <img src={imageUrl} alt="..." className={classes.img} />
             </div>
             <h4 className={classes.cardTitle}>{brand}</h4>
             <small className={classes.mobileDescription}>
@@ -283,7 +283,7 @@ class SectionProducts extends React.Component {
             description={product['details']}
             quantity={product['quantity']}
             url={product['url']}
-            img={product['img']}
+            img={product['imageUrl']}
             handleClose={this.handleEditClose.bind(this)}
             deleteProduct={this.props.deleteProduct.bind(this)}
             key={i}
@@ -303,7 +303,7 @@ class SectionProducts extends React.Component {
             description={product['details']}
             quantity={product['quantity']}
             url={product['url']}
-            img={product['img']}
+            img={product['imageUrl']}
             handleClose={this.handleReserveClose.bind(this)}
             key={i}
           />

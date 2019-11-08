@@ -42,22 +42,22 @@ class SectionAddGifts extends React.Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
+      searchUrl: '',
       searchResult: '',
       productFound: '',
-      addQuantity: 1,
-      searchUrl: ''
+      foundQuantity: 1,
+      notfoundQuantity: 1,
+      notfound: {
+        quantity: 1,
+        brand: '',
+        details: '',
+        url: ''
+      },
+      errorMessage: '',
+      message: ''
     };
   }
 
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  };
   componentWillMount() {
     if (window.innerWidth < 600){
       this.setState({ desktop: false });
@@ -73,21 +73,31 @@ class SectionAddGifts extends React.Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  // increaseQuantity(){
-  //   var quantity = this.state.addQuantity;
-  //   quantity = quantity + 1;
-  //   this.setState({ addQuantity: quantity})
-  // }
-  //
-  // decreaseQuantity(){
-  //   var quantity = this.state.addQuantity;
-  //
-  //   if (quantity > 1) {
-  //     quantity = quantity - 1;
-  //   }
-  //
-  //   this.setState({ addQuantity: quantity})
-  // }
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+
+    if (window.innerWidth < 600){
+      this.setState({ desktop: false });
+    } else {
+      this.setState({ desktop: true });
+    }
+  };
+
+  increaseQuantity(type){
+    var quantity = this.state[type];
+    quantity = quantity + 1;
+    this.setState({ [type]: quantity})
+  }
+
+  decreaseQuantity(type){
+    var quantity = this.state[type];
+
+    if (quantity > 1) {
+      quantity = quantity - 1;
+    }
+
+    this.setState({ [type]: quantity})
+  }
 
   searchProduct = async event => {
     let response;
@@ -106,7 +116,8 @@ class SectionAddGifts extends React.Component {
         productId: response.product.productId,
         brand: response.product.brand,
         details: response.product.details,
-        imageUrl: response.product.imageUrl,
+        productUrl: response.product.productUrl,
+        imageUrl: response.product.imageUrl
       }
       this.setState({
         searchResult: true,
@@ -122,6 +133,97 @@ class SectionAddGifts extends React.Component {
     }
   }
 
+  addProductToList = async event => {
+    let list_id = this.props.getListId()
+    console.log("adding product (" + this.state.product.productId + ") to list: (" + list_id + ")");
+
+    let addDetails = {
+      "quantity": this.state.foundQuantity,
+      "productType": "products"
+    };
+
+    let response;
+
+    try {
+      response = await API.post("lists", "/" + list_id + "/product/" +  this.state.product.productId, {
+        body: addDetails
+      });
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e);
+      this.setState({ errorMessage: 'Product could not be added to your list.'});
+      return false
+    }
+
+    console.log("Add response: " + response.message);
+
+    let product = {
+      productId: this.state.product.productId,
+      quantity: this.state.foundQuantity,
+      reserved: 0,
+      brand: this.state.product.brand,
+      details: this.state.product.details,
+      productUrl: this.state.product.productUrl,
+      imageUrl: this.state.product.imageUrl
+    }
+
+    this.props.addProductToState(product)
+    this.setState({ message: 'Product was added to your list.'});
+  }
+
+  createProduct = async event => {
+    let createResponse;
+    let requestBody = {
+      "brand": this.state.notfound.brand,
+      "details": this.state.notfound.details,
+      "url": this.state.notfound.url,
+    };
+
+    try {
+      createResponse = await API.post("notfound", "/", { body: requestBody });
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e);
+      this.setState({ errorMessage: 'Product could not be added to your list.'});
+      return false
+    }
+
+    console.log("created product: " + createResponse.productId);
+
+    // Update list with new product id
+    let list_id = this.props.getListId()
+    let addDetails = {
+      "quantity": this.state.notfoundQuantity,
+      "productType": "notfound"
+    };
+
+    let updateListResponse;
+
+    try {
+      updateListResponse = await API.post("lists", "/" + list_id + "/product/" +  createResponse.productId, {
+        body: addDetails
+      });
+    } catch (e) {
+      console.log('Unexpected error occurred when adding product to list: ' + e.updateListResponse.data.error);
+      this.setState({ errorMessage: 'Product could not be added to your list.'});
+      return false
+    }
+
+    console.log("Add response: " + updateListResponse.message);
+
+    // Update state
+    var product = {
+      productId: createResponse.productId,
+      brand: this.state.notfound.brand,
+      details: this.state.notfound.details,
+      url: this.state.notfound.url,
+      imageUrl: '',
+      quantity: this.state.notfoundQuantity,
+      reserved: 0
+    }
+
+    this.props.addProductToState(product)
+    this.setState({ message: 'Product was added to your list.'});
+  }
+
   handleSearchChange = event => {
     this.setState({
       [event.target.id]: event.target.value
@@ -135,7 +237,28 @@ class SectionAddGifts extends React.Component {
     );
   }
 
-  renderManualAdd(classes, quantity) {
+  handleAddGiftChange = event => {
+    const id = event.target.id;
+    const val = event.target.value;
+
+    this.setState(prevState => ({
+      notfound: {
+        ...prevState.notfound,
+        [id]: val
+      }
+    }))
+  }
+
+  validateNotFoundForm(){
+    return (
+      this.state.notfound.brand.length > 0 &&
+      this.state.notfound.details.length > 0 &&
+      this.state.notfound.url.length > 0 &&
+      this.state.notfound.url.startsWith("http")
+    );
+  }
+
+  renderManualAdd(classes) {
     return (
       <GridContainer>
         <GridItem xs={12} sm={7} md={7} lg={7}
@@ -152,7 +275,7 @@ class SectionAddGifts extends React.Component {
                 fullWidth: true
               }}
               inputProps={{
-                onChange: this.props.handleAddGiftChange
+                onChange: this.handleAddGiftChange
               }}
             />
             <CustomInput
@@ -162,7 +285,7 @@ class SectionAddGifts extends React.Component {
                 fullWidth: true
               }}
               inputProps={{
-                onChange: this.props.handleAddGiftChange
+                onChange: this.handleAddGiftChange
               }}
             />
             <CustomInput
@@ -172,20 +295,20 @@ class SectionAddGifts extends React.Component {
                 fullWidth: true
               }}
               inputProps={{
-                onChange: this.props.handleAddGiftChange
+                onChange: this.handleAddGiftChange
               }}
             />
             <div className={classes.textCenter}>
-              <Button color="primary" size="sm" simple onClick={() => this.props.decreaseQuantity()}>
+              <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity("notfoundQuantity")}>
                 <Remove />
               </Button>
-              {` `}{quantity}{` `}
-              <Button color="primary" size="sm" simple onClick={() => this.props.increaseQuantity()}>
+              {` `}{this.state.notfoundQuantity}{` `}
+              <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity("notfoundQuantity")}>
                 <Add />
               </Button>
             </div>
             <div className={classes.textCenter}>
-              <Button round color="primary" onClick={() => this.props.createProduct()} disabled={!this.props.validateNotFoundForm()}>
+              <Button round color="primary" onClick={() => this.createProduct()} disabled={!this.validateNotFoundForm()}>
                 Add to list
               </Button>
             </div>
@@ -206,23 +329,23 @@ class SectionAddGifts extends React.Component {
             [
               <div className={classes.textCenter}>
                 <div className={classes.imgContainer}>
-                  <img src={'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'} alt="..." className={classes.img} />
+                  <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
                 </div>
                 <a href="#jacket" className={classes.tdNameAnchor}>
-                  BABYBJÖRN
+                  {this.state.product.brand}
                 </a>
                 <br />
                 <small className={classes.tdNameSmall}>
-                  Travel Cot Easy Go, Anthracite, with transport bag
+                  {this.state.product.details}
                 </small>
               </div>,
               <div className={classes.textCenter}>
               <span>
-                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
+                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity("foundQuantity")}>
                   <Remove />
                 </Button>
-                {` `}{this.state.addQuantity}{` `}
-                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
+                {` `}{this.state.foundQuantity}{` `}
+                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity("foundQuantity")}>
                   <Add />
                 </Button>
               </span>
@@ -278,15 +401,15 @@ class SectionAddGifts extends React.Component {
                 </small>
               </span>,
               <span>
-                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
+                <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity("foundQuantity")}>
                   <Remove />
                 </Button>
-                {` `}{this.state.addQuantity}{` `}
-                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
+                {` `}{this.state.foundQuantity}{` `}
+                <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity("foundQuantity")}>
                   <Add />
                 </Button>
               </span>,
-              <Button default color="primary" className={classes.reserveButton}>
+              <Button default color="primary" className={classes.reserveButton} onClick={() => this.addProductToList()}>
                 Add to list
               </Button>
             ],
@@ -327,7 +450,7 @@ class SectionAddGifts extends React.Component {
   }
 
   render() {
-    const { classes, quantity } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.section}>
@@ -355,7 +478,21 @@ class SectionAddGifts extends React.Component {
               {this.state.searchResult
                 ? this.state.productFound
                   ? this.renderSearchResultTable(classes)
-                  : this.renderManualAdd(classes, quantity)
+                  : this.renderManualAdd(classes)
+                : null
+              }
+              {this.state.errorMessage
+                ?
+                  <div className={classes.errorContainer}>
+                    {this.state.errorMessage}
+                  </div>
+                : null
+              }
+              {this.state.message
+                ?
+                  <div className={classes.messageContainer}>
+                    {this.state.message}
+                  </div>
                 : null
               }
             </GridItem>
@@ -367,8 +504,7 @@ class SectionAddGifts extends React.Component {
 }
 
 SectionAddGifts.propTypes = {
-  classes: PropTypes.object,
-  quantity: PropTypes.number
+  classes: PropTypes.object
 };
 
 export default withStyles(styles)(SectionAddGifts);
