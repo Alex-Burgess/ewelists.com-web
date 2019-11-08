@@ -48,33 +48,7 @@ class ArticlePage extends React.Component {
       occasion: '',
       date: '',
       isEdit: false,
-      products: [
-        {
-          // productId: 'PRODUCT#1009',
-          productId: 'PRODUCT1009',
-          quantity: 1,
-          reserved: 1,
-          brand: 'BABYBJÖRN',
-          details: 'Travel Cot Easy Go, Anthracite, with transport bag',
-          imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'
-        },
-        {
-          productId: 'PRODUCT1008',
-          quantity: 2,
-          reserved: 0,
-          brand: 'BABYZEN',
-          details: 'YOYO+ Puschair, Black with Aqua',
-          imageUrl: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'
-        },
-        {
-          productId: 'PRODUCT1007',
-          quantity: 1,
-          reserved: 0,
-          brand: 'Micralite',
-          details: 'Travel Cot 3 in 1 Sleep & Go - Carbon/Grey',
-          imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'
-        }
-      ]
+      products: []
     };
   }
 
@@ -82,40 +56,88 @@ class ArticlePage extends React.Component {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
     await this.getListDetails();
+    await this.getProductDetails();
+
+    this.setState({ isLoading: false });
   }
 
   getListId(){
     return this.props.match.params.id
   }
 
-  async getListDetails(){
-    try {
-      console.log("Calling list API ")
-      const response = await API.get("lists", "/" + this.props.match.params.id);
-      console.log("Got details for list " + response.list.title)
-
-      this.setState({
-        title: response.list.title,
-        description: response.list.description,
-        occasion: response.list.occasion
-      });
-
-      if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
-        this.setState({
-          date: response.list.eventDate
-        });
-      } else {
-        this.setState({
-          date: ''
-        });
+  // Need to get type from list product
+  async getProductDetails() {
+    let updated_products = [];
+    for (let product of this.state.products) {
+      let response;
+      try {
+        console.log("Getting product: " + product.productId);
+        response = await API.get("products", "/" + product.productId);
+      } catch (e) {
+        console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
       }
 
-      this.setState({ isLoading: false });
+      product['brand'] = response.brand;
+      product['details'] = response.details;
+      product['imageUrl'] = response.imageUrl;
+
+      updated_products.push(product)
+    }
+
+    this.setState({
+      products: updated_products
+    })
+  }
+
+  async getListDetails() {
+    let response;
+    try {
+      console.log("Calling list API ")
+      response = await API.get("lists", "/" + this.props.match.params.id);
+      console.log("Got details for list " + response.list.title)
     } catch (e) {
       console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
       this.props.history.push('/error/' + this.props.match.params.id);
     }
+
+    // Update list details
+    this.setState({
+      title: response.list.title,
+      description: response.list.description,
+      occasion: response.list.occasion
+    });
+
+    if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
+      this.setState({
+        date: response.list.eventDate
+      });
+    } else {
+      this.setState({
+        date: ''
+      });
+    }
+
+    // Update product details
+    console.log("Product: " + response.products[0].productId);
+
+    for (let product of response.products) {
+      let product_obj = {
+        productId: product.productId,
+        quantity: product.quantity,
+        reserved: product.reserved,
+        brand: 'Test',
+        details: 'Test',
+        imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'
+      };
+
+      this.setState({
+        products: this.state.products.concat(product_obj)
+      })
+
+    }
   }
+
+
 
   setEditState = event => {
     this.setState({ isEdit: true });
