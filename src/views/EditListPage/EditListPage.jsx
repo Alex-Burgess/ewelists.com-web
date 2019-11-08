@@ -91,7 +91,7 @@ class ArticlePage extends React.Component {
   async getListDetails(){
     try {
       console.log("Calling list API ")
-      const response = await this.getList();
+      const response = await API.get("lists", "/" + this.props.match.params.id);
       console.log("Got details for list " + response.list.title)
 
       this.setState({
@@ -117,17 +117,12 @@ class ArticlePage extends React.Component {
     }
   }
 
-  getList() {
-    return API.get("lists", "/" + this.props.match.params.id);
-  }
-
-  editDetails = event => {
+  setEditState = event => {
     this.setState({ isEdit: true });
   }
 
   cancelEdit = async event => {
     await this.getListDetails();
-
     this.setState({ isEdit: false });
   }
 
@@ -139,11 +134,9 @@ class ArticlePage extends React.Component {
         "eventDate": this.state.date,
         "occasion": this.state.occasion
       };
-      const response = await this.updateListRequest(requestBody);
-      console.log("update response title: " + response[0].updates.title);
-      console.log("update response description: " + response[0].updates.description);
-      console.log("update response date: " + response[0].updates.eventDate);
-      console.log("update response occasion: " + response[0].updates.occasion);
+      const response = await API.put("lists", "/" + this.props.match.params.id, {
+        body: requestBody
+      });
 
       if (('eventDate' in response[0].updates) && (response[0].updates.eventDate !== 'None')) {
         this.setState({
@@ -166,12 +159,6 @@ class ArticlePage extends React.Component {
     }
   }
 
-  updateListRequest(updateItem) {
-    return API.put("lists", "/" + this.props.match.params.id, {
-      body: updateItem
-    });
-  }
-
   handleChange = event => {
     var updateObj = {};
     updateObj[event.target.id] = event.target.value;
@@ -186,7 +173,7 @@ class ArticlePage extends React.Component {
     this.setState({ date: date.format('DD MMMM YYYY')});
   }
 
-  deleteProduct(id) {
+  deleteProductFromState(id) {
     console.log("Deleting product from list: " + id);
 
     let index;
@@ -231,7 +218,7 @@ class ArticlePage extends React.Component {
             date={this.state.date}
             isEdit={this.state.isEdit}
             saveDetails={this.saveDetails.bind(this)}
-            editDetails={this.editDetails.bind(this)}
+            setEditState={this.setEditState.bind(this)}
             cancelEdit={this.cancelEdit.bind(this)}
             handleChange={this.handleChange.bind(this)}
             handleOccasionSelect={this.handleOccasionSelect.bind(this)}
@@ -249,7 +236,7 @@ class ArticlePage extends React.Component {
                     <div>
                       <SectionProducts
                         products={this.state.products}
-                        deleteProduct={this.deleteProduct.bind(this)}
+                        deleteProductFromState={this.deleteProductFromState.bind(this)}
                       />
                     </div>
                   )

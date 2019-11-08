@@ -69,7 +69,7 @@ class SectionDetails extends React.Component {
 
     console.log("created product: " + response.productId);
 
-    this.props.deleteProduct(productId);
+    this.props.deleteProductFromState(productId);
 
     this.props.handleClose(productId);
     // Print error if not deleted

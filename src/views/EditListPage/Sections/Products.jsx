@@ -55,6 +55,7 @@ class SectionProducts extends React.Component {
       this.setState({ desktop: true });
     }
   };
+
   componentWillMount() {
     if (window.innerWidth < 600){
       this.setState({ desktop: false });
@@ -66,6 +67,7 @@ class SectionProducts extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
   }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
   }
@@ -285,7 +287,7 @@ class SectionProducts extends React.Component {
             url={product['url']}
             img={product['imageUrl']}
             handleClose={this.handleEditClose.bind(this)}
-            deleteProduct={this.props.deleteProduct.bind(this)}
+            deleteProductFromState={this.props.deleteProductFromState.bind(this)}
             key={i}
           />
     )

@@ -77,7 +77,8 @@ class SectionDetails extends React.Component {
 
   deleteList = async event => {
     try {
-      const response = await this.deleteListRequest();
+      const response = await API.del("lists", "/" + this.props.match.params.id);
+
       console.log(response.message);
       this.props.history.push('/');
     } catch (e) {
@@ -94,10 +95,6 @@ class SectionDetails extends React.Component {
         })
       }
     }
-  }
-
-  deleteListRequest() {
-    return API.del("lists", "/" + this.props.match.params.id);
   }
 
   render() {
@@ -142,7 +139,7 @@ class SectionDetails extends React.Component {
               </GridItem>
               <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
                 <div className={classes.editButtons}>
-                  <Button round justIcon color="info" onClick={this.props.editDetails}>
+                  <Button round justIcon color="info" onClick={this.props.setEditState}>
                     <Icon>mode_edit</Icon>
                   </Button>
                   <Button round justIcon color="default" onClick={() => this.handleClickOpen("smallModal")}>
