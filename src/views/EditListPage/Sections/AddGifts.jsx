@@ -151,7 +151,7 @@ class SectionAddGifts extends React.Component {
     } catch (e) {
       console.log('Error message: ' + e.response.data.error);
 
-      if (e.response.data.error == 'Product already exists in list.') {
+      if (e.response.data.error === 'Product already exists in list.') {
         this.setState({ errorMessage: 'Product already exists in your list.  If you wanted to change the quantity for this product, you can do this in Manage List.'});
       } else {
         this.setState({ errorMessage: 'Product could not be added to your list.'});

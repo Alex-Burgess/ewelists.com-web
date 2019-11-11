@@ -15,42 +15,47 @@
 
 */
 import {
-  grayColor,
   container,
-  title
+  title,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
 
 const sectionDetailsStyle = theme => ({
   container,
+  ...imagesStyles,
+  profile: {
+    textAlign: "center",
+    "& img": {
+      maxWidth: "380px",
+      maxHeight: "260px",
+      objectFit: "cover",
+      width: "100%",
+      margin: "0 auto",
+      transform: "translate3d(0, -50%, 0)",
+      [theme.breakpoints.down("xs")]: {
+        maxWidth: "320px",
+        maxHeight: "230px",
+      }
+    }
+  },
+  name: {
+    marginTop: "-140px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-120px"
+    }
+  },
   title: {
     ...title,
-    textAlign: "Left",
+    marginTop: "30px",
+    marginBottom: "10px",
+    fontSize: "2.2rem",
+    [theme.breakpoints.down("sm")]: {
+        fontSize: "2rem"
+    },
     [theme.breakpoints.down("xs")]: {
         textAlign: "Center",
         fontSize: "1.75rem"
-    },
-    marginBottom: "10px"
-  },
-  description: {
-    paddingBottom: "0px",
-  },
-  section: {
-    paddingBottom: "40",
-    paddingTop: "0px",
-    paddingLeft: "10px",
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
-    "& p": {
-      fontSize: "1.188rem",
-      lineHeight: "1.5em",
-      color: grayColor[15],
-      marginBottom: "30px",
-      [theme.breakpoints.down("xs")]: {
-          fontSize: "1.1rem",
-          lineHeight: "1.4em"
-      }
     }
   },
   date: {
@@ -59,14 +64,8 @@ const sectionDetailsStyle = theme => ({
     "& svg": {
       position: "relative",
       top: "8px"
-    },
-    fontSize: "16px",
-    color: grayColor[22],
-    [theme.breakpoints.down("xs")]: {
-        textAlign: "Center"
-    },
+    }
   },
-  ...imagesStyles
 });
 
 export default sectionDetailsStyle;

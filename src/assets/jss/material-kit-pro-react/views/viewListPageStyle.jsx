@@ -15,50 +15,35 @@
 
 */
 import {
-  container,
-  title,
   main,
-  whiteColor,
-  mainRaised
+  mainRaised,
+  infoColor,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const blogPostPageStyle = {
-  container: {
-    ...container,
-    zIndex: "2"
-  },
-  textCenter: {
-    textAlign: "center"
-  },
-  title: {
-    ...title,
-    color: whiteColor
-  },
-  subtitle: {
-    color: whiteColor
-  },
   main: {
     ...main,
     ...mainRaised
   },
-  block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
-  },
-  inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
-  },
   articleBg: {
-    height: "40vh"
+    maxHeight: "320px",
+    "&:before": {
+      background: "0"
+    },
+    "&:after": {
+      background: "0"
+    },
+    backgroundColor: infoColor[0],
+    "&:after,&:before": {
+      position: "absolute",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      display: "block",
+      left: "0",
+      top: "0",
+      content: "''"
+    }
   },
   spacer: {
     height: "30px"
