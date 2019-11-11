@@ -280,8 +280,10 @@ class SectionProducts extends React.Component {
             open={this.state.edit[product['productId']]
               ? this.state.edit[product['productId']]
               : false }
+            listId={this.props.getListId()}
             productId={product['productId']}
             brand={product['brand']}
+            type={product['type']}
             description={product['details']}
             quantity={product['quantity']}
             url={product['url']}

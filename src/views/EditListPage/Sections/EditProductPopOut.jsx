@@ -55,19 +55,33 @@ class SectionDetails extends React.Component {
   }
 
   deleteProduct = async event => {
-    let response;
     let productId = this.props.productId;
-    console.log("Deleting product ID: " + productId);
+    let type = this.props.type;
+    let list_id = this.props.listId;
+    console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + list_id + ").");
 
     try {
-      response = await API.del("notfound", "/" + productId);
+      const response = await API.del("lists", "/" + list_id + "/product/" +  productId);
     } catch (e) {
-      console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
-      this.setState({ deleteError: 'Product could not be deleted.'});
+      console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
+      this.setState({ errorMessage: 'Product could not be added to your list.'});
       return false
     }
 
-    console.log("created product: " + response.productId);
+    console.log("Deleted product from list: " + productId);
+
+    if (type == 'notfound'){
+      // Delete product from table
+      try {
+        const response = await API.del("notfound", "/" + productId);
+      } catch (e) {
+        console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
+        this.setState({ deleteError: 'Product could not be deleted.'});
+        return false
+      }
+
+      console.log("Deleted product from notfound table: " + productId);
+    }
 
     this.props.deleteProductFromState(productId);
 
@@ -163,7 +177,7 @@ SectionDetails.propTypes = {
   productId: PropTypes.string,
   brand: PropTypes.string,
   description: PropTypes.string,
-  quanity: PropTypes.number,
+  quantity: PropTypes.number,
   url: PropTypes.string,
   img: PropTypes.string
 };

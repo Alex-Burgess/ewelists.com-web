@@ -70,17 +70,25 @@ class ArticlePage extends React.Component {
     let updated_products = [];
     for (let product of this.state.products) {
       if (product.type == 'products') {
-        const response = await this.getProductFromProducts(product);
-        product['brand'] = response.brand;
-        product['details'] = response.details;
-        product['imageUrl'] = response.imageUrl;
-        updated_products.push(product)
+        try {
+          const response = await this.getProductFromProducts(product);
+          product['brand'] = response.brand;
+          product['details'] = response.details;
+          product['imageUrl'] = response.imageUrl;
+          updated_products.push(product)
+        } catch (e) {
+          console.log("Could not find a product in the products table for Id: " + product.productId)
+        }
       } else if (product.type == 'notfound'){
-        const response = await this.getProductFromNotFound(product);
-        product['brand'] = response.brand;
-        product['details'] = response.details;
-        product['imageUrl'] = response.imageUrl;
-        updated_products.push(product)
+        try {
+          const response = await this.getProductFromNotFound(product);
+          product['brand'] = response.brand;
+          product['details'] = response.details;
+          product['imageUrl'] = response.imageUrl;
+          updated_products.push(product)
+        } catch (e) {
+          console.log("Could not find a product in the notfound table for Id: " + product.productId)
+        }
       } else {
         console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
       }
@@ -221,7 +229,7 @@ class ArticlePage extends React.Component {
   }
 
   deleteProductFromState(id) {
-    console.log("Deleting product from list: " + id);
+    console.log("Deleting product from list state: " + id);
 
     let index;
     let count = 0;
@@ -284,6 +292,7 @@ class ArticlePage extends React.Component {
                       <SectionProducts
                         products={this.state.products}
                         deleteProductFromState={this.deleteProductFromState.bind(this)}
+                        getListId={this.getListId.bind(this)}
                       />
                     </div>
                   )

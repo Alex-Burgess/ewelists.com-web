@@ -162,6 +162,7 @@ class SectionAddGifts extends React.Component {
       reserved: 0,
       brand: this.state.product.brand,
       details: this.state.product.details,
+      type: this.state.product.type,
       productUrl: this.state.product.productUrl,
       imageUrl: this.state.product.imageUrl
     }
@@ -214,6 +215,7 @@ class SectionAddGifts extends React.Component {
       productId: createResponse.productId,
       brand: this.state.notfound.brand,
       details: this.state.notfound.details,
+      type: this.state.notfound.type,
       url: this.state.notfound.url,
       imageUrl: '',
       quantity: this.state.notfoundQuantity,
