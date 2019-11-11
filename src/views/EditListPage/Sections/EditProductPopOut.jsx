@@ -34,7 +34,7 @@ class SectionDetails extends React.Component {
     super(props);
     this.state = {
       newQuantity: this.props.product['quantity'],
-      deleteError: ''
+      editError: ''
     };
   }
 
@@ -69,7 +69,7 @@ class SectionDetails extends React.Component {
       await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
       console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
-      this.setState({ errorMessage: 'Product could not be added to your list.'});
+      this.setState({ editError: 'Product could not be added to your list.'});
       return false
     }
 
@@ -81,7 +81,7 @@ class SectionDetails extends React.Component {
         await API.del("notfound", "/" + productId);
       } catch (e) {
         console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
-        this.setState({ deleteError: 'Product could not be deleted.'});
+        this.setState({ editError: 'Product could not be deleted.'});
         return false
       }
 
@@ -89,9 +89,7 @@ class SectionDetails extends React.Component {
     }
 
     this.props.deleteProductFromState(productId);
-
     this.props.handleClose(productId);
-    // Print error if not deleted
   }
 
   updateProduct = async event => {
@@ -101,6 +99,7 @@ class SectionDetails extends React.Component {
 
     if (quantity === this.state.newQuantity) {
       console.log("There are no updates to this item.");
+      this.setState({ editError: 'There are no updates to this item.'});
       return false;
     }
 
@@ -113,7 +112,7 @@ class SectionDetails extends React.Component {
       });
     } catch (e) {
       console.log('Unexpected error occurred when creating product: ' + e);
-      this.setState({ errorMessage: 'Product could not be updated.'});
+      this.setState({ editError: 'Product could not be updated.'});
       return false
     }
 
@@ -200,10 +199,10 @@ class SectionDetails extends React.Component {
                     Update
                   </Button>
                 </div>
-                {this.state.deleteError
+                {this.state.editError
                   ?
                     <div className={classes.errorContainer + " " + classes.centerText + " " + classes.error}>
-                      {this.state.deleteError}
+                      {this.state.editError}
                     </div>
                   : null
                 }
