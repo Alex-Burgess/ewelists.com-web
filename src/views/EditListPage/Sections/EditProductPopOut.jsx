@@ -167,7 +167,7 @@ class SectionDetails extends React.Component {
               <Close className={classes.modalClose} />
             </Button>
             <Card plain product>
-              <CardHeader noShadow image>
+              <CardHeader noShadow productTable>
                 <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
                   <img src={product['imageUrl']} className={classes.productImage} alt=".." />
                 </a>
