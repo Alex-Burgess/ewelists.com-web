@@ -338,9 +338,11 @@ class SectionAddGifts extends React.Component {
             [
               <div className={classes.textCenter}>
                 <div className={classes.imgContainer}>
-                  <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
+                  <a href={this.state.product.productUrl} target="_blank" rel="noopener noreferrer">
+                    <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
+                  </a>
                 </div>
-                <a href="#jacket" className={classes.tdNameAnchor}>
+                <a href={this.state.product.productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
                   {this.state.product.brand}
                 </a>
                 <br />
@@ -398,10 +400,12 @@ class SectionAddGifts extends React.Component {
           tableData={[
             [
               <div className={classes.imgContainer}>
-                <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
+                <a href={this.state.product.productUrl} target="_blank" rel="noopener noreferrer">
+                  <img src={this.state.product.imageUrl} alt="..." className={classes.img} />
+                </a>
               </div>,
               <span key={1}>
-                <a href="#jacket" className={classes.tdNameAnchor}>
+                <a href={this.state.product.productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
                   {this.state.product.brand}
                 </a>
                 <br />
