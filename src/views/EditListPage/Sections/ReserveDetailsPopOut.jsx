@@ -50,7 +50,7 @@ class SectionDetails extends React.Component {
   }
 
   render() {
-    const { classes, open, productId, brand, description, quantity, url, img } = this.props;
+    const { classes, open, product } = this.props;
     return (
       <div className={classes.section}>
         {/* NOTICE MODAL START */}
@@ -62,7 +62,7 @@ class SectionDetails extends React.Component {
           open={open}
           TransitionComponent={Transition}
           keepMounted
-          onClose={() => this.props.handleClose(productId)}
+          onClose={() => this.props.handleClose(product['productId'])}
           aria-labelledby="notice-modal-slide-title"
           aria-describedby="notice-modal-slide-description"
         >
@@ -75,29 +75,29 @@ class SectionDetails extends React.Component {
               className={classes.modalCloseButton}
               key="close"
               aria-label="Close"
-              onClick={() => this.props.handleClose(productId)}
+              onClick={() => this.props.handleClose(product['productId'])}
             >
               {" "}
               <Close className={classes.modalClose} />
             </Button>
             <Card plain product>
               <CardHeader noShadow image>
-                <a href={url}>
-                  <img src={img} className={classes.productImage} alt=".." />
+                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                  <img src={product['imageUrl']} className={classes.productImage} alt=".." />
                 </a>
               </CardHeader>
               <CardBody plain className={classes.productDetails}>
-                <a href={url}>
-                  <h4 className={classes.cardTitle}>{brand}</h4>
+                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                  <h4 className={classes.cardTitle}>{product['brand']}</h4>
                 </a>
                 <p className={classes.description}>
-                  {description}
+                  {product['description']}
                 </p>
                 <p className={classes.description}>
-                  Quantity: {quantity}
+                  Quantity: {product['quantity']}
                 </p>
                 <p className={classes.description}>
-                  Reserved: 0
+                  Reserved: {product['reserved']}
                 </p>
                 <div className={classes.textCenter}>
 
@@ -115,12 +115,7 @@ class SectionDetails extends React.Component {
 SectionDetails.propTypes = {
   classes: PropTypes.object,
   open: PropTypes.bool,
-  productId: PropTypes.string,
-  brand: PropTypes.string,
-  description: PropTypes.string,
-  quanity: PropTypes.number,
-  url: PropTypes.string,
-  img: PropTypes.string
+  product: PropTypes.object
 };
 
 export default withStyles(sectionStyle)(SectionDetails);

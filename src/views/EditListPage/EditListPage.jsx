@@ -16,6 +16,7 @@
 */
 /*eslint-disable*/
 import React from "react";
+import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -75,6 +76,7 @@ class ArticlePage extends React.Component {
           product['brand'] = response.brand;
           product['details'] = response.details;
           product['imageUrl'] = response.imageUrl;
+          product['productUrl'] = response.productUrl;
           updated_products.push(product)
         } catch (e) {
           console.log("Could not find a product in the products table for Id: " + product.productId)
@@ -85,6 +87,7 @@ class ArticlePage extends React.Component {
           product['brand'] = response.brand;
           product['details'] = response.details;
           product['imageUrl'] = response.imageUrl;
+          product['productUrl'] = response.productUrl;
           updated_products.push(product)
         } catch (e) {
           console.log("Could not find a product in the notfound table for Id: " + product.productId)
@@ -251,6 +254,22 @@ class ArticlePage extends React.Component {
     this.setState({ products: updatedProducts })
   }
 
+  updateProductToState(updateProduct) {
+    console.log("Updating state for product");
+
+    let count = 0;
+    for (let product of this.state.products) {
+      if (product['productId'] == updateProduct['productId']) {
+        console.log("Updating quantity (" + updateProduct['quantity'] + ")for product array obj (" + count + ")");
+        this.setState({
+          products: update(this.state.products, {[count]: {quantity: {$set: updateProduct['quantity']}}})
+        })
+
+      }
+      count = count + 1;
+    }
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -292,6 +311,7 @@ class ArticlePage extends React.Component {
                       <SectionProducts
                         products={this.state.products}
                         deleteProductFromState={this.deleteProductFromState.bind(this)}
+                        updateProductToState={this.updateProductToState.bind(this)}
                         getListId={this.getListId.bind(this)}
                       />
                     </div>

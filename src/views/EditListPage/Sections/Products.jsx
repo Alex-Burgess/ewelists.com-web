@@ -148,7 +148,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderProduct(classes, product['productId'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+            this.renderProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -166,7 +166,7 @@ class SectionProducts extends React.Component {
   renderMobileProducts(classes, products: Products[]) {
     const allproducts = products.map(
       (product, i) =>
-            this.renderMobileProduct(classes, product['productId'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+            this.renderMobileProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
     allproducts[products.length] =
@@ -181,14 +181,16 @@ class SectionProducts extends React.Component {
     return allproducts
   }
 
-  renderProduct(classes, productId, imageUrl, brand, details, quantity, reserved) {
+  renderProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
-        <img src={imageUrl} alt="..." className={classes.img} />
+        <a href={productUrl} target="_blank" rel="noopener noreferrer">
+          <img src={imageUrl} alt="..." className={classes.img} />
+        </a>
       </div>,
       <span key={1}>
-        <a href="#jacket" className={classes.tdNameAnchor}>
+        <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
           {brand}
         </a>
         <br />
@@ -228,14 +230,20 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileProduct(classes, productId, imageUrl, brand, details, quantity, reserved) {
+  renderMobileProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
     return (
       [
           <div className={classes.textCenter}>
             <div className={classes.imgContainer} key={1}>
-              <img src={imageUrl} alt="..." className={classes.img} />
+              <a href={productUrl} target="_blank" rel="noopener noreferrer">
+                <img src={imageUrl} alt="..." className={classes.img} />
+              </a>
             </div>
-            <h4 className={classes.cardTitle}>{brand}</h4>
+            <h4 className={classes.cardTitle}>
+              <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+                {brand}
+              </a>
+            </h4>
             <small className={classes.mobileDescription}>
               {details}
             </small>
@@ -280,16 +288,11 @@ class SectionProducts extends React.Component {
             open={this.state.edit[product['productId']]
               ? this.state.edit[product['productId']]
               : false }
-            listId={this.props.getListId()}
-            productId={product['productId']}
-            brand={product['brand']}
-            type={product['type']}
-            description={product['details']}
-            quantity={product['quantity']}
-            url={product['url']}
-            img={product['imageUrl']}
+            product={product}
             handleClose={this.handleEditClose.bind(this)}
             deleteProductFromState={this.props.deleteProductFromState.bind(this)}
+            updateProductToState={this.props.updateProductToState.bind(this)}
+            getListId={this.props.getListId.bind(this)}
             key={i}
           />
     )
@@ -302,12 +305,7 @@ class SectionProducts extends React.Component {
             open={this.state.reserve[product['productId']]
               ? this.state.reserve[product['productId']]
               : false}
-            productId={product['productId']}
-            brand={product['brand']}
-            description={product['details']}
-            quantity={product['quantity']}
-            url={product['url']}
-            img={product['imageUrl']}
+            product={product}
             handleClose={this.handleReserveClose.bind(this)}
             key={i}
           />

@@ -33,35 +33,40 @@ class SectionDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addQuantity: 1,
+      newQuantity: this.props.product['quantity'],
       deleteError: ''
     };
   }
 
   increaseQuantity(){
-    var quantity = this.state.addQuantity;
+    var quantity = this.state.newQuantity;
     quantity = quantity + 1;
-    this.setState({ addQuantity: quantity})
+    this.setState({ newQuantity: quantity})
   }
 
   decreaseQuantity(){
-    var quantity = this.state.addQuantity;
+    var quantity = this.state.newQuantity;
 
     if (quantity > 1) {
       quantity = quantity - 1;
     }
 
-    this.setState({ addQuantity: quantity})
+    this.setState({ newQuantity: quantity})
+  }
+
+  closeEditPopOut(){
+    this.setState({newQuantity: this.props.product['quantity']});
+    this.props.handleClose(this.props.product['productId']);
   }
 
   deleteProduct = async event => {
-    let productId = this.props.productId;
-    let type = this.props.type;
-    let list_id = this.props.listId;
-    console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + list_id + ").");
+    let productId = this.props.product['productId'];
+    let type = this.props.product['type'];
+    let listId = this.props.getListId();
+    console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
 
     try {
-      const response = await API.del("lists", "/" + list_id + "/product/" +  productId);
+      await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
       console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
       this.setState({ errorMessage: 'Product could not be added to your list.'});
@@ -70,10 +75,10 @@ class SectionDetails extends React.Component {
 
     console.log("Deleted product from list: " + productId);
 
-    if (type == 'notfound'){
+    if (type === 'notfound'){
       // Delete product from table
       try {
-        const response = await API.del("notfound", "/" + productId);
+        await API.del("notfound", "/" + productId);
       } catch (e) {
         console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
         this.setState({ deleteError: 'Product could not be deleted.'});
@@ -89,8 +94,49 @@ class SectionDetails extends React.Component {
     // Print error if not deleted
   }
 
+  updateProduct = async event => {
+    let productId = this.props.product['productId'];
+    let listId = this.props.getListId()
+    let quantity = this.props.product['quantity'];
+
+    if (quantity === this.state.newQuantity) {
+      console.log("There are no updates to this item.");
+      return false;
+    }
+
+    console.log("Updating product (" + productId + ") for list (" + listId + ")");
+
+
+    try {
+      await API.put("lists", "/" + listId + "/product/" +  productId, {
+        body: { "quantity": this.state.newQuantity }
+      });
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e);
+      this.setState({ errorMessage: 'Product could not be updated.'});
+      return false
+    }
+
+    let product = {
+      productId: productId,
+      quantity: this.state.newQuantity,
+      reserved: this.props.product['reserved'],
+      brand: this.props.product['brand'],
+      details: this.props.product['details'],
+      type: this.props.product['type'],
+      productUrl: this.props.product['productUrl'],
+      imageUrl: this.props.product['imageUrl']
+    }
+
+    this.props.updateProductToState(product)
+    this.setState({ message: 'Product was added to your list.'});
+
+    this.props.handleClose(productId);
+  }
+
   render() {
-    const { classes, open, productId, brand, description, quantity, url, img } = this.props;
+    // const { classes, open, brand, description, url, img } = this.props;
+    const { classes, open, product } = this.props;
     return (
       <div className={classes.section}>
         {/* NOTICE MODAL START */}
@@ -102,7 +148,7 @@ class SectionDetails extends React.Component {
           open={open}
           TransitionComponent={Transition}
           keepMounted
-          onClose={() => this.props.handleClose(productId)}
+          onClose={() => this.closeEditPopOut()}
           aria-labelledby="notice-modal-slide-title"
           aria-describedby="notice-modal-slide-description"
         >
@@ -115,26 +161,26 @@ class SectionDetails extends React.Component {
               className={classes.modalCloseButton}
               key="close"
               aria-label="Close"
-              onClick={() => this.props.handleClose(productId)}
+              onClick={() => this.closeEditPopOut()}
             >
               {" "}
               <Close className={classes.modalClose} />
             </Button>
             <Card plain product>
               <CardHeader noShadow image>
-                <a href={url}>
-                  <img src={img} className={classes.productImage} alt=".." />
+                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                  <img src={product['imageUrl']} className={classes.productImage} alt=".." />
                 </a>
               </CardHeader>
               <CardBody plain className={classes.productDetails}>
-                <a href={url}>
-                  <h4 className={classes.cardTitle}>{brand}</h4>
+                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                  <h4 className={classes.cardTitle}>{product['brand']}</h4>
                 </a>
                 <p className={classes.description}>
-                  {description}
+                  {product['description']}
                 </p>
                 <p className={classes.description}>
-                  Reserved: 0
+                  Reserved: {product['reserved']}
                 </p>
                 <div className={classes.textCenter}>
                   <InputLabel className={classes.label}>
@@ -142,7 +188,7 @@ class SectionDetails extends React.Component {
                     <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
                       <Remove />
                     </Button>
-                    {` `}{this.state.addQuantity}{` `}
+                    {` `}{this.state.newQuantity}{` `}
                     <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
                       <Add />
                     </Button>
@@ -150,7 +196,7 @@ class SectionDetails extends React.Component {
                   <Button round color="default" type="submit" onClick={() => this.deleteProduct()}>
                     Delete
                   </Button>
-                  <Button round color="primary" type="submit">
+                  <Button round color="primary" type="submit" onClick={() => this.updateProduct()}>
                     Update
                   </Button>
                 </div>
@@ -174,12 +220,7 @@ class SectionDetails extends React.Component {
 SectionDetails.propTypes = {
   classes: PropTypes.object,
   open: PropTypes.bool,
-  productId: PropTypes.string,
-  brand: PropTypes.string,
-  description: PropTypes.string,
-  quantity: PropTypes.number,
-  url: PropTypes.string,
-  img: PropTypes.string
+  product: PropTypes.object
 };
 
 export default withStyles(sectionStyle)(SectionDetails);
