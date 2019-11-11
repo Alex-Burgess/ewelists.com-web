@@ -279,10 +279,6 @@ class ArticlePage extends React.Component {
         brand="ewelists"
           links={<HeaderLinksAuth dropdownHoverColor="info" />}
           fixed
-          // changeColorOnScroll={{
-          //   height: 200,
-          //   color: "transparent"
-          // }}
         />
         <div className={classes.main}>
           <SectionListDetails

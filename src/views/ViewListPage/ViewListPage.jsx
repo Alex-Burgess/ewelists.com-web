@@ -191,7 +191,9 @@ class ArticlePage extends React.Component {
             occasion={this.state.occasion}
             date={this.state.date}
           />
-          <SectionList />
+          <SectionList
+            products={this.state.products}
+          />
         </div>
         <div className={classes.spacer}>
         </div>

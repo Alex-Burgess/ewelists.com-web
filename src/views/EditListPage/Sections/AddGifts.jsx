@@ -122,13 +122,17 @@ class SectionAddGifts extends React.Component {
       this.setState({
         searchResult: true,
         productFound: true,
-        product: product
+        product: product,
+        deleteError: 'Product could not be deleted.',
+        message: ''
       })
     } else {
       console.log("No product found.");
       this.setState({
         searchResult: true,
-        productFound: false
+        productFound: false,
+        deleteError: '',
+        message: ''
       })
     }
   }
