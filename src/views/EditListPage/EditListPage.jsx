@@ -69,24 +69,50 @@ class ArticlePage extends React.Component {
   async getProductDetails() {
     let updated_products = [];
     for (let product of this.state.products) {
-      let response;
-      try {
-        console.log("Getting product: " + product.productId);
-        response = await API.get("products", "/" + product.productId);
-      } catch (e) {
-        console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      if (product.type == 'products') {
+        const response = await this.getProductFromProducts(product);
+        product['brand'] = response.brand;
+        product['details'] = response.details;
+        product['imageUrl'] = response.imageUrl;
+        updated_products.push(product)
+      } else if (product.type == 'notfound'){
+        const response = await this.getProductFromNotFound(product);
+        product['brand'] = response.brand;
+        product['details'] = response.details;
+        product['imageUrl'] = response.imageUrl;
+        updated_products.push(product)
+      } else {
+        console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
       }
-
-      product['brand'] = response.brand;
-      product['details'] = response.details;
-      product['imageUrl'] = response.imageUrl;
-
-      updated_products.push(product)
     }
 
     this.setState({
       products: updated_products
     })
+  }
+
+  async getProductFromProducts(product) {
+    let response;
+    try {
+      console.log("Getting product: " + product.productId);
+      response = await API.get("products", "/" + product.productId);
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+    }
+
+    return response
+  }
+
+  async getProductFromNotFound(product) {
+    let response;
+    try {
+      console.log("Getting product: " + product.productId);
+      response = await API.get("notfound", "/" + product.productId);
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+    }
+
+    return response
   }
 
   async getListDetails() {
@@ -125,9 +151,10 @@ class ArticlePage extends React.Component {
         productId: product.productId,
         quantity: product.quantity,
         reserved: product.reserved,
-        brand: 'Test',
-        details: 'Test',
-        imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81LJ-0%2BSKVL._SY450_.jpg'
+        type: product.type,
+        brand: '',
+        details: '',
+        imageUrl: ''
       };
 
       this.setState({
@@ -136,8 +163,6 @@ class ArticlePage extends React.Component {
 
     }
   }
-
-
 
   setEditState = event => {
     this.setState({ isEdit: true });
