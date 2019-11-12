@@ -46,8 +46,6 @@ import SectionDelete from "./DeletePopOut.jsx";
 
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/editListSections/listDetailsStyle.jsx";
 
-import christmasCard from "assets/img/examples/christmas-card.jpg";
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -98,19 +96,19 @@ class SectionDetails extends React.Component {
   }
 
   render() {
-    const { classes, title, description, occasion, date, isEdit } = this.props;
+    const { classes, title, description, occasion, date, imageUrl, isEdit } = this.props;
     return (
       <div className={classes.section}>
         { isEdit
-          ? this.renderEdit(classes, title, description, occasion, date)
-          : this.renderView(classes, title, description, occasion, date)
+          ? this.renderEdit(classes, title, description, occasion, date, imageUrl)
+          : this.renderView(classes, title, description, occasion, date, imageUrl)
         }
         <SectionDelete open={this.state.smallModal} handleClose={this.handleClose.bind(this)} deleteList={this.deleteList.bind(this)} deleteError={this.state.deleteErrorMessage}/>
       </div>
     )
   }
 
-  renderView(classes, title, description, occasion, date){
+  renderView(classes, title, description, occasion, date, imageUrl){
     return (
       <div className={classes.container}>
         <GridContainer >
@@ -153,12 +151,12 @@ class SectionDetails extends React.Component {
             <Card profile plain>
               <CardHeader image plain>
                 <a href="#img" onClick={e => e.preventDefault()}>
-                  <img src={christmasCard} className={classes.listImage} alt="..." />
+                  <img src={imageUrl} className={classes.listImage} alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: `url(${christmasCard})`,
+                    backgroundImage: `url(${imageUrl})`,
                     opacity: "1"
                   }}
                 />
@@ -170,7 +168,7 @@ class SectionDetails extends React.Component {
     )
   }
 
-  renderEdit(classes, title, description, occasion, date){
+  renderEdit(classes, title, description, occasion, date, imageUrl){
     return (
       <div className={classes.container}>
         <GridContainer >
@@ -272,12 +270,12 @@ class SectionDetails extends React.Component {
             <Card profile plain>
               <CardHeader image plain>
                 <a href="#img" onClick={e => e.preventDefault()}>
-                  <img src={christmasCard} className={classes.listImage} alt="..." />
+                  <img src={imageUrl} className={classes.listImage} alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: `url(${christmasCard})`,
+                    backgroundImage: `url(${imageUrl})`,
                     opacity: "1"
                   }}
                 />
@@ -296,6 +294,7 @@ SectionDetails.propTypes = {
   description: PropTypes.string,
   occasion: PropTypes.string,
   date: PropTypes.string,
+  imageUrl: PropTypes.string,
   isEdit: PropTypes.bool
 };
 

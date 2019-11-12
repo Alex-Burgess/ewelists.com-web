@@ -134,7 +134,6 @@ class SectionDetails extends React.Component {
   }
 
   render() {
-    // const { classes, open, brand, description, url, img } = this.props;
     const { classes, open, product } = this.props;
     return (
       <div className={classes.section}>

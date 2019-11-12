@@ -19,13 +19,11 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Checkbox from "@material-ui/core/Checkbox";
 import Radio from "@material-ui/core/Radio";
 import Tooltip from "@material-ui/core/Tooltip";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // @material-ui icons
 import Cached from "@material-ui/icons/Cached";
-import Check from "@material-ui/icons/Check";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 // core components
 import Accordion from "components/Accordion/Accordion.jsx";
@@ -126,9 +124,9 @@ class SectionProducts extends React.Component {
     this.setState({ showFilter: newValue });
   }
 
-  renderProduct(classes, product, reserved) {
+  renderProduct(classes, product, reserved, i) {
     return (
-      <GridItem md={4} sm={4}>
+      <GridItem md={4} sm={4} key={i}>
         <Card plain product>
           <CardHeader noShadow image>
             <a href={product['productUrl']}>
@@ -160,7 +158,9 @@ class SectionProducts extends React.Component {
           </CardFooter>
         </Card>
         <SectionReserve
-          open={this.state[product['productId']]}
+          open={this.state[product['productId']]
+            ? this.state[product['productId']]
+            : false }
           productId={product['productId']}
           brand={product['brand']}
           description={product['description']}
@@ -177,7 +177,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     return (
       products.map( (product, i) =>
-            this.renderProduct(classes, product, false)
+            this.renderProduct(classes, product, false, i)
       )
     )
   }
@@ -339,7 +339,7 @@ class SectionProducts extends React.Component {
 
 SectionProducts.propTypes = {
   classes: PropTypes.object,
-  products: PropTypes.object
+  products: PropTypes.array
 };
 
 export default withStyles(styles)(SectionProducts);

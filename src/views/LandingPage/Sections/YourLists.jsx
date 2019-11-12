@@ -47,9 +47,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/yourListsStyle.jsx";
-
-import oscar1 from "assets/img/examples/oscar-birthday.jpg";
-// import oscar2 from "assets/img/examples/oscar-christmas.jpg";
+import config from 'config.js';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -69,7 +67,8 @@ class SectionLists extends React.Component {
       createModal: false,
       title: '',
       description: '',
-      occasion: ''
+      occasion: '',
+      imageUrl: config.imagePrefix + '/images/celebration-default.jpg'
     };
   }
 
@@ -110,12 +109,13 @@ class SectionLists extends React.Component {
   createList = async event => {
     this.setState({ isCreating: true });
 
-    console.log("Creating list with values: title: " + this.state.title + ", description: " + this.state.description + ", occasion: " + this.state.occasion);
+    console.log("Creating list with values: title: " + this.state.title + ", description: " + this.state.description + ", occasion: " + this.state.occasion + ", imageUrl: " + this.state.imageUrl);
 
     var createList = {
       "title": this.state.title,
       "description": this.state.description,
-      "occasion": this.state.occasion
+      "occasion": this.state.occasion,
+      "imageUrl": this.state.imageUrl
     }
 
     const response = await this.createListRequest(createList);
@@ -141,12 +141,12 @@ class SectionLists extends React.Component {
           <Card profile>
             <CardHeader image>
               <a href={"/lists/" + list.listId}>
-                <img src={oscar1} className={classes.listImage} alt="..." />
+                <img src={list.imageUrl} className={classes.listImage} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: `url(${oscar1})`,
+                  backgroundImage: `url(${list.imageUrl})`,
                   opacity: "1"
                 }}
               />

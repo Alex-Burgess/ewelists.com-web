@@ -49,6 +49,7 @@ class ArticlePage extends React.Component {
       description: '',
       occasion: '',
       date: '',
+      imageUrl: '',
       isEdit: false,
       products: []
     };
@@ -142,7 +143,8 @@ class ArticlePage extends React.Component {
     this.setState({
       title: response.list.title,
       description: response.list.description,
-      occasion: response.list.occasion
+      occasion: response.list.occasion,
+      imageUrl: response.list.imageUrl,
     });
 
     if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
@@ -156,8 +158,6 @@ class ArticlePage extends React.Component {
     }
 
     // Update product details
-    console.log("Product: " + response.products[0].productId);
-
     for (let product of response.products) {
       let product_obj = {
         productId: product.productId,
@@ -191,7 +191,8 @@ class ArticlePage extends React.Component {
         "title": this.state.title,
         "description": this.state.description,
         "eventDate": this.state.date,
-        "occasion": this.state.occasion
+        "occasion": this.state.occasion,
+        "imageUrl":  this.state.imageUrl,
       };
       const response = await API.put("lists", "/" + this.props.match.params.id, {
         body: requestBody
@@ -287,6 +288,7 @@ class ArticlePage extends React.Component {
             description={this.state.description}
             occasion={this.state.occasion}
             date={this.state.date}
+            imageUrl={this.state.imageUrl}
             isEdit={this.state.isEdit}
             saveDetails={this.saveDetails.bind(this)}
             setEditState={this.setEditState.bind(this)}

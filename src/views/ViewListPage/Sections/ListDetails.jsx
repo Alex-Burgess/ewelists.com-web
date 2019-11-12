@@ -31,8 +31,6 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/viewListSections/listDetailsStyle.jsx";
 
-import christmasCard from "assets/img/examples/christmas-card.jpg";
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -41,7 +39,7 @@ Transition.displayName = "Transition";
 
 class SectionDetails extends React.Component {
   render() {
-    const { classes, title, description, date } = this.props;
+    const { classes, title, description, date, imageUrl } = this.props;
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
@@ -53,7 +51,7 @@ class SectionDetails extends React.Component {
           <GridItem xs={12} sm={12} md={6}>
             <div className={classes.profile}>
               <div>
-                <img src={christmasCard} alt="..." className={imageClasses} />
+                <img src={imageUrl} alt="..." className={imageClasses} />
               </div>
               <div className={classes.name}>
                 <h1 className={classes.title}>
@@ -62,9 +60,12 @@ class SectionDetails extends React.Component {
                   <p>
                     {description}
                   </p>
-                <h6 className={classes.date}>
-                  <Today /> {date}
-                </h6>
+                { date
+                  ? <h6 className={classes.date}>
+                      <Today /> {date}
+                    </h6>
+                  : null
+                }
               </div>
             </div>
           </GridItem>
@@ -78,7 +79,8 @@ SectionDetails.propTypes = {
   classes: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
-  date: PropTypes.string
+  date: PropTypes.string,
+  imageUrl: PropTypes.string
 };
 
 export default withRouter(withStyles(sectionDetailsStyle)(SectionDetails));
