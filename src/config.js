@@ -15,7 +15,8 @@ const test = {
     REDIRECTSIGNIN: "http://localhost:3000",
     REDIRECTSIGNOUT: "http://localhost:3000/login",
     RESPONSETYPE: 'code',
-  }
+  },
+  imagePrefix: "https://test.ewelists.com"
 };
 
 const staging = {
@@ -33,7 +34,8 @@ const staging = {
     REDIRECTSIGNIN: "https://staging.ewelists.com",
     REDIRECTSIGNOUT: "https://staging.ewelists.com/login",
     RESPONSETYPE: 'code',
-  }
+  },
+  imagePrefix: ""
 };
 
 const prod = {
@@ -51,7 +53,8 @@ const prod = {
     REDIRECTSIGNIN: "https://ewelists.com",
     REDIRECTSIGNOUT: "https://ewelists.com/login",
     RESPONSETYPE: 'code',
-  }
+  },
+  imagePrefix: ""
 };
 
 const environment = process.env.REACT_APP_STAGE;

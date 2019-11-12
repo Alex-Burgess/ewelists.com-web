@@ -38,6 +38,7 @@ import SectionProducts from "./Sections/Products.jsx";
 import SectionAddGifts from "./Sections/AddGifts.jsx";
 import SectionShare from "./Sections/Share.jsx";
 
+import config from 'config.js';
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
 
 class ArticlePage extends React.Component {
@@ -86,7 +87,7 @@ class ArticlePage extends React.Component {
           const response = await this.getProductFromNotFound(product);
           product['brand'] = response.brand;
           product['details'] = response.details;
-          product['imageUrl'] = response.imageUrl;
+          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
           product['productUrl'] = response.productUrl;
           updated_products.push(product)
         } catch (e) {
