@@ -22,7 +22,9 @@ const test = {
 const staging = {
   apiGateway: {
     REGION: "eu-west-1",
-    LISTS: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists"
+    LISTS: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists",
+    NOTFOUND: "https://jnbwllwjwl.execute-api.eu-west-1.amazonaws.com/test/notfound",
+    PRODUCTS: "https://p0ugkk400f.execute-api.eu-west-1.amazonaws.com/test/products"
   },
   cognito: {
     REGION: "eu-west-1",
@@ -41,7 +43,9 @@ const staging = {
 const prod = {
   apiGateway: {
     REGION: "eu-west-1",
-    LISTS: ""
+    LISTS: "",
+    NOTFOUND: "",
+    PRODUCTS: ""
   },
   cognito: {
     REGION: "eu-west-1",
