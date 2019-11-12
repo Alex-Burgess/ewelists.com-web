@@ -227,6 +227,17 @@ class ArticlePage extends React.Component {
 
   handleOccasionSelect = event => {
     this.setState({ [event.target.name]: event.target.value });
+
+    // Change the image url based on the target value
+    let occasion = event.target.value;
+    let imageUrl;
+    if (occasion === 'Christmas') {
+      imageUrl = config.imagePrefix + '/images/christmas-default.jpg';
+    } else {
+      imageUrl = config.imagePrefix + '/images/celebration-default.jpg';
+    }
+
+    this.setState({ imageUrl: imageUrl });
   };
 
   changeDate(date) {
