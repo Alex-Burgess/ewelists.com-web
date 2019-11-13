@@ -129,12 +129,12 @@ class SectionProducts extends React.Component {
       <GridItem md={4} sm={4} key={i}>
         <Card plain product>
           <CardHeader noShadow image>
-            <a href={product['productUrl']}>
+            <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
               <img src={product['imageUrl']} className={classes.productImage} alt=".." />
             </a>
           </CardHeader>
           <CardBody plain className={classes.productDetails}>
-            <a href={product['productUrl']}>
+            <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
               <h4 className={classes.cardTitle}>{product['brand']}</h4>
             </a>
             <p className={classes.description}>
