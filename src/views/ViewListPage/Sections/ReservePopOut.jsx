@@ -96,7 +96,7 @@ class SectionDetails extends React.Component {
                 <GridItem md={6} sm={6} xs={12}>
                   <Card plain product className={classes.productCard}>
                     <CardHeader noShadow image>
-                      <a href={product['productUrl']}>
+                      <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
                         <img src={product['imageUrl']} className={classes.productImage} alt=".." />
                       </a>
                     </CardHeader>
@@ -155,7 +155,9 @@ class SectionDetails extends React.Component {
                       </InputLabel>
                     </div>
                     <Button default color="primary" className={classes.reserveButton}>
-                      Purchase Gift
+                      <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" className={classes.buttonLink}>
+                        Purchase Gift
+                      </a>
                     </Button>
                   </div>
                 </GridItem>

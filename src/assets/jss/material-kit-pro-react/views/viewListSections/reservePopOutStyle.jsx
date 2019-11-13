@@ -18,7 +18,8 @@ import {
   dangerColor,
   title,
   cardTitle,
-  grayColor
+  grayColor,
+  whiteColor,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.jsx";
@@ -126,6 +127,12 @@ const sectionStyle = theme => ({
   mobileCenter: {
     [theme.breakpoints.down("xs")]: {
       textAlign: "center",
+    }
+  },
+  buttonLink: {
+    color: whiteColor,
+    "&:hover": {
+      color: whiteColor,
     }
   }
 });
