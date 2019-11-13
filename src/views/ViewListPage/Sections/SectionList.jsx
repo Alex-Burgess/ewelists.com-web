@@ -124,7 +124,7 @@ class SectionProducts extends React.Component {
     this.setState({ showFilter: newValue });
   }
 
-  renderProduct(classes, product, reserved, i) {
+  renderProduct(classes, product, i) {
     return (
       <GridItem md={4} sm={4} key={i}>
         <Card plain product>
@@ -146,12 +146,12 @@ class SectionProducts extends React.Component {
               <span className={classes.description}> Quantity: {product['quantity']}</span>
             </div>
             <div className={classes.textCenter}>
-              {reserved
-                ? <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
-                    Reserved
-                  </Button>
-                : <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+              {product['reserved'] < product['quantity']
+                ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
                     Reserve Gift
+                  </Button>
+                : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
+                    Reserved
                   </Button>
               }
             </div>
@@ -161,13 +161,7 @@ class SectionProducts extends React.Component {
           open={this.state[product['productId']]
             ? this.state[product['productId']]
             : false }
-          productId={product['productId']}
-          brand={product['brand']}
-          description={product['description']}
-          price="29"
-          quantity={product['quantity']}
-          url={product['productUrl']}
-          img={product['imageUrl']}
+          product={product}
           handleClose={this.handleClose.bind(this)}
         />
       </GridItem>
@@ -177,7 +171,7 @@ class SectionProducts extends React.Component {
   renderProducts(classes, products: Products[]) {
     return (
       products.map( (product, i) =>
-            this.renderProduct(classes, product, false, i)
+            this.renderProduct(classes, product, i)
       )
     )
   }
