@@ -1,4 +1,5 @@
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
@@ -42,7 +43,13 @@ class SectionDetails extends React.Component {
 
   increaseQuantity(){
     var quantity = this.state.reserveQuantity;
-    quantity = quantity + 1;
+
+    const remaining = this.props.product['quantity'] - this.props.product['reserved'];
+
+    if (quantity < remaining){
+      quantity = quantity + 1;
+    }
+
     this.setState({ reserveQuantity: quantity})
   }
 
@@ -54,6 +61,25 @@ class SectionDetails extends React.Component {
     }
 
     this.setState({ reserveQuantity: quantity})
+  }
+
+  reserveProduct = async event => {
+    let productId = this.props.product['productId'];
+    let listId = this.props.getListId()
+    console.log("Reserving product (" + productId + ") for list (" + listId + ").  Quantity (" + this.state.reserveQuantity + ")");
+
+    try {
+      await API.post("lists", "/" + listId + "/reserve/" +  productId, {
+        body: { "quantity": this.state.reserveQuantity, "message": 'A test message' }
+      });
+    } catch (e) {
+      console.log('Unexpected error occurred when creating product: ' + e);
+      this.setState({ reserveError: 'Product could not be reserved.'});
+      return false
+    }
+
+    this.props.updateReservedQuantity(this.state.reserveQuantity, this.props.product);
+
   }
 
   render() {
@@ -143,9 +169,14 @@ class SectionDetails extends React.Component {
                         </Button>
                       </InputLabel>
                     </div>
-                    <Button default color="primary" className={classes.reserveButton}>
-                      Reserve Gift
-                    </Button>
+                    {product['reserved'] < product['quantity']
+                      ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
+                          Reserve Gift
+                        </Button>
+                      : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.reserveProduct()}>
+                          Reserved
+                        </Button>
+                    }
                   </div>
                   <h3 className={classes.title}>Step 2: Purchase Item</h3>
                   <div className={classes.mobileCenter}>

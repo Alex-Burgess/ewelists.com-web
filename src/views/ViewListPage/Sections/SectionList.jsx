@@ -163,6 +163,8 @@ class SectionProducts extends React.Component {
             : false }
           product={product}
           handleClose={this.handleClose.bind(this)}
+          getListId={this.props.getListId.bind(this)}
+          updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}
         />
       </GridItem>
     )

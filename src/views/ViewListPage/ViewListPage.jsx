@@ -16,6 +16,7 @@
 */
 /*eslint-disable*/
 import React from "react";
+import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -168,6 +169,22 @@ class ArticlePage extends React.Component {
     }
   }
 
+  updateReservedQuantity(reservedQuantity, updateProduct) {
+    let count = 0;
+    for (let product of this.state.products) {
+      if (product['productId'] == updateProduct['productId']) {
+        const new_reserved_quantity = product['reserved'] + reservedQuantity;
+        console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
+
+        this.setState({
+          products: update(this.state.products, {[count]: {reserved: {$set: new_reserved_quantity}}})
+        })
+
+      }
+      count = count + 1;
+    }
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -194,6 +211,8 @@ class ArticlePage extends React.Component {
           />
           <SectionList
             products={this.state.products}
+            getListId={this.getListId.bind(this)}
+            updateReservedQuantity={this.updateReservedQuantity.bind(this)}
           />
         </div>
         <div className={classes.spacer}>
