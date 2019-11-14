@@ -67,7 +67,13 @@ const navPillsStyle = theme => ({
     lineHeight: "24px",
     textTransform: "uppercase",
     fontSize: "12px",
-    fontWeight: "500"
+    fontWeight: "500",
+    // Styles for mobile edit nav bar
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "70px",
+      minWidth: "70px",
+      maxHeight: "100px"
+    }
   },
   pillsWithIcons: {
     borderRadius: "4px"

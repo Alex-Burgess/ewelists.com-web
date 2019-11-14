@@ -27,6 +27,7 @@ import Palette from "@material-ui/icons/Palette";
 import People from "@material-ui/icons/People";
 import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
+import Redeem from "@material-ui/icons/Redeem";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
@@ -37,6 +38,7 @@ import SectionListDetails from "./Sections/ListDetails.jsx";
 import SectionProducts from "./Sections/Products.jsx";
 import SectionAddGifts from "./Sections/AddGifts.jsx";
 import SectionShare from "./Sections/Share.jsx";
+import SectionReserved from "./Sections/Reserved.jsx";
 
 import config from 'config.js';
 import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
@@ -51,7 +53,12 @@ class ArticlePage extends React.Component {
       date: '',
       imageUrl: '',
       isEdit: false,
-      products: []
+      products: [],
+      reserved: [
+        {productId: "12345678", quantity: 1, userName: "Andrew Mike", message: "Happy birthday!", productUrl: 'https://www.amazon.co.uk/dp/B01H24LM58', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
+        {productId: "abcdefg", quantity: 1, userName: "Test User", message: "Hope you have a great day.", productUrl: 'https://www.amazon.co.uk/dp/B07PN49Q4S', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'},
+        {productId: "987654321", quantity: 1, userName: "Joe Smith", message: "Happy 2nd birthday. I hope you get great use for this, just like we did with our 8 children.", productUrl: 'https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291', imageUrl: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'}
+      ]
     };
   }
 
@@ -314,7 +321,7 @@ class ArticlePage extends React.Component {
               color="primary"
               tabs={[
                 {
-                  tabButton: "Manage List",
+                  tabButton: "Manage",
                   tabIcon: List,
                   tabContent: (
                     <div>
@@ -345,6 +352,17 @@ class ArticlePage extends React.Component {
                   tabContent: (
                     <div>
                       <SectionShare />
+                    </div>
+                  )
+                },
+                {
+                  tabButton: "Reserved",
+                  tabIcon: Redeem,
+                  tabContent: (
+                    <div>
+                      <SectionReserved
+                        reserved={this.state.reserved}
+                      />
                     </div>
                   )
                 }

@@ -30,7 +30,7 @@ import CardBody from "components/Card/CardBody.jsx";
 // Sections
 import SectionEdit from "./EditProductPopOut.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/productsStyle.jsx";
+import styles from "assets/jss/material-kit-pro-react/views/editListSections/reservedStyle.jsx";
 
 
 class SectionProducts extends React.Component {
@@ -82,90 +82,84 @@ class SectionProducts extends React.Component {
     this.setState({ edit: x });
   }
 
-  renderDesktopProductView(classes, products) {
+  renderDesktopView(classes, reserved) {
     return (
       <Table
         tableHead={[
           "",
-          "PRODUCT",
+          "NAME",
           "QTY",
-          "RESERVED",
-          ""
+          "MESSAGE"
         ]}
         tableData={
-          this.renderProducts(classes, products)
+          this.renderDesktopTable(classes, reserved)
         }
         tableShopping
         customHeadCellClasses={[
           classes.textCenter,
           classes.textCenter,
-          classes.textCenter,
-
         ]}
-        customHeadClassesForCells={[2, 3, 4]}
+        customHeadClassesForCells={[2, 3]}
         customCellClasses={[
-          classes.tdName,
           classes.tdNumber + " " + classes.textCenter,
-          classes.tdNumber + " " + classes.textCenter,
-          classes.tdNumber + " " + classes.textCenter,
-          classes.textCenter,
+          classes.textCenter + " " + classes.tdMessage
         ]}
-        customClassesForCells={[1, 2, 3, 4, 5]}
+        customClassesForCells={[2, 3]}
       />
     )
   }
 
-  renderMobileProductView(classes, products) {
+  renderMobileView(classes, reserved) {
     return (
       <Table
         tableHead={[
-          ""
+          "", ""
         ]}
         tableData={
-          this.renderMobileProducts(classes, products)
+          this.renderMobileTable(classes, reserved)
         }
         tableShopping
       />
     )
   }
 
-  renderProducts(classes, products: Products[]) {
-    const allproducts = products.map(
-      (product, i) =>
-            this.renderProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+  renderDesktopTable(classes, reserved: Reserved[]) {
+    const allRows = reserved.map(
+      (row, i) =>
+            this.renderDesktopRow(classes, row['productUrl'], row['imageUrl'], row['userName'], row['message'], row['quantity'])
     )
 
-    allproducts[products.length] =
+    allRows[reserved.length] =
       {
         addnew: true,
-        colspan: "3",
+        colspan: "1",
         col: {
           colspan: 3,
         }
       }
 
-    return allproducts
+    return allRows
   }
 
-  renderMobileProducts(classes, products: Products[]) {
-    const allproducts = products.map(
-      (product, i) =>
-            this.renderMobileProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+  renderMobileTable(classes, reserved: Reserved[]) {
+    const allRows = reserved.map(
+      (row, i) =>
+            this.renderMobileRow(classes, row['productUrl'], row['imageUrl'], row['userName'], row['message'], row['quantity'])
     )
 
-    allproducts[products.length] =
+    allRows[reserved.length] =
       {
         addnew: true,
-        colspan: "3",
+        colspan: "1",
         col: {
-          colspan: 3,
+          colspan: 1,
         }
       }
 
-    return allproducts
+    return allRows
   }
 
-  renderProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
+  renderDesktopRow(classes, productUrl, imageUrl, userName, message, quantity) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -173,38 +167,20 @@ class SectionProducts extends React.Component {
           <img src={imageUrl} alt="..." className={classes.img} />
         </a>
       </div>,
-      <span key={1}>
-        <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
-          {brand}
-        </a>
-        <br />
-        <small className={classes.tdNameSmall}>
-          {details}
-        </small>
-      </span>,
-      <span key={1}>
-        {quantity}
-      </span>,
-      <span key={1}>
-        {reserved}
+      <span>
+        {userName}
       </span>,
       <span>
-        <Tooltip
-          id="edit"
-          title="Edit item"
-          placement="left"
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
-            <Edit />
-          </Button>
-        </Tooltip>
+        {quantity}
+      </span>,
+      <span>
+        {message}
       </span>
       ]
     )
   }
 
-  renderMobileProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
+  renderMobileRow(classes, productUrl, imageUrl, userName, message, quantity) {
     return (
       [
           <div className={classes.textCenter}>
@@ -213,57 +189,24 @@ class SectionProducts extends React.Component {
                 <img src={imageUrl} alt="..." className={classes.img} />
               </a>
             </div>
-            <h4 className={classes.cardTitle}>
-              <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
-                {brand}
-              </a>
-            </h4>
-            <small className={classes.mobileDescription}>
-              {details}
-            </small>
-            <br />
             <small className={classes.quantities}>
               Quantity: {quantity}
             </small>
-            <br />
-            <small className={classes.quantities}>
-              Reserved: {reserved}
+          </div>,
+          <div className={classes.textCenter}>
+            <h4 className={classes.cardTitle}>
+              {userName}
+            </h4>
+            <small className={classes.mobileDescription}>
+              {message}
             </small>
-            <br />
-            <Tooltip
-              id="edit"
-              title="Edit item"
-              placement="left"
-              classes={{ tooltip: classes.tooltip }}
-            >
-              <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
-                <Edit />
-              </Button>
-            </Tooltip>
           </div>
       ]
     )
   }
 
-  renderEditPopOuts(classes, products: Products[]) {
-    return products.map(
-      (product, i) =>
-          <SectionEdit
-            open={this.state.edit[product['productId']]
-              ? this.state.edit[product['productId']]
-              : false }
-            product={product}
-            handleClose={this.handleEditClose.bind(this)}
-            deleteProductFromState={this.props.deleteProductFromState.bind(this)}
-            updateProductToState={this.props.updateProductToState.bind(this)}
-            getListId={this.props.getListId.bind(this)}
-            key={i}
-          />
-    )
-  }
-
   render() {
-    const { classes, products } = this.props;
+    const { classes, reserved } = this.props;
 
     return (
       <div className={classes.section}>
@@ -272,13 +215,11 @@ class SectionProducts extends React.Component {
             <CardBody plain>
               {
                 this.state.desktop
-                ? this.renderDesktopProductView(classes, products)
-                : this.renderMobileProductView(classes, products)
+                ? this.renderDesktopView(classes, reserved)
+                : this.renderMobileView(classes, reserved)
               }
-
             </CardBody>
           </Card>
-          {this.renderEditPopOuts(classes, products)}
         </div>
       </div>
     );
@@ -287,7 +228,7 @@ class SectionProducts extends React.Component {
 
 SectionProducts.propTypes = {
   classes: PropTypes.object,
-  products: PropTypes.array
+  reserved: PropTypes.array
 };
 
 export default withStyles(styles)(SectionProducts);
