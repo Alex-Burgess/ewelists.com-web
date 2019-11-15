@@ -138,14 +138,10 @@ class ArticlePage extends React.Component {
       });
     }
 
-    // Update list details
     this.setState({
-      products: response.products
-    })
-
-    // Update reserved details
-    this.setState({
-      reserved: response.reserved
+      products: response.products,
+      reserved: response.reserved,
+      shared: response.shared
     })
   }
 
@@ -396,7 +392,9 @@ class ArticlePage extends React.Component {
                         tabIcon: People,
                         tabContent: (
                           <div>
-                            <SectionShare />
+                            <SectionShare
+                              shared={this.state.shared}
+                            />
                           </div>
                         )
                       },

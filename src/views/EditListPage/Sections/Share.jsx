@@ -32,10 +32,49 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/shareStyle.jsx";
 
-
 class SectionAddGifts extends React.Component {
+  renderRows(classes, shared) {
+    const allrows = Object.entries(shared).map(
+      ([key, user]) =>
+            this.renderRow(classes, user['name'], user['email'])
+    )
+
+    allrows[shared.length] =
+      {
+        addnew: true,
+        colspan: "2",
+        col: {
+          colspan: 1,
+        }
+      }
+
+    return allrows
+  }
+
+  renderRow(classes, name, email) {
+    return ([
+      <span>
+        {name}
+      </span>,
+      <span>
+        {email}
+      </span>,
+      <Tooltip
+        key={8756431234}
+        id="close1"
+        title="Remove user"
+        placement="left"
+        classes={{ tooltip: classes.tooltip }}
+      >
+        <Button link className={classes.actionButton}>
+          <Close />
+        </Button>
+      </Tooltip>
+    ])
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, shared } = this.props;
 
     return (
       <div className={classes.section}>
@@ -69,83 +108,9 @@ class SectionAddGifts extends React.Component {
                       "Email",
                       "Action"
                     ]}
-                    tableData={[
-                      [
-                        "Andrew Mike",
-                        "andrew.mike@gmail.com",
-                        <Tooltip
-                          key={8756431234}
-                          id="close1"
-                          title="Remove user"
-                          placement="left"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button link className={classes.actionButton}>
-                            <Close />
-                          </Button>
-                        </Tooltip>
-                      ],
-                      [
-                        "John Doe",
-                        "j.doe1345@gmail.com",
-                        <Tooltip
-                          key={8756431234}
-                          id="close1"
-                          title="Remove user"
-                          placement="left"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button link className={classes.actionButton}>
-                            <Close />
-                          </Button>
-                        </Tooltip>
-                      ],
-                      [
-                        "Alex Mike",
-                        "alex.mike@hotmail.com",
-                        <Tooltip
-                          key={8756431234}
-                          id="close1"
-                          title="Remove user"
-                          placement="left"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button link className={classes.actionButton}>
-                            <Close />
-                          </Button>
-                        </Tooltip>
-                      ],
-                      [
-                        "Mike Monday",
-                        "mike.monday@hotmail.com",
-                        <Tooltip
-                          key={8756431234}
-                          id="close1"
-                          title="Remove user"
-                          placement="left"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button link className={classes.actionButton}>
-                            <Close />
-                          </Button>
-                        </Tooltip>
-                      ],
-                      [
-                        "Paul Dickens",
-                        "p.dickens@gmail.com",
-                        <Tooltip
-                          key={8756431234}
-                          id="close1"
-                          title="Remove user"
-                          placement="left"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <Button link className={classes.actionButton}>
-                            <Close />
-                          </Button>
-                        </Tooltip>
-                      ]
-                    ]}
+                    tableData={
+                      this.renderRows(classes, shared)
+                    }
                     customCellClasses={[
                       classes.textCenter,
                     ]}
@@ -167,6 +132,7 @@ class SectionAddGifts extends React.Component {
 
 SectionAddGifts.propTypes = {
   classes: PropTypes.object,
+  shared: PropTypes.object
 };
 
 export default withStyles(styles)(SectionAddGifts);
