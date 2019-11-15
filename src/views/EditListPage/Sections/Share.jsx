@@ -34,19 +34,17 @@ import styles from "assets/jss/material-kit-pro-react/views/editListSections/sha
 
 class SectionAddGifts extends React.Component {
   renderRows(classes, shared) {
-    const allrows = Object.entries(shared).map(
-      ([key, user]) =>
-            this.renderRow(classes, user['name'], user['email'])
-    )
+    let allrows = [];
+    if (shared) {
+      allrows = Object.entries(shared).map(
+        ([key, user]) =>
+              this.renderRow(classes, user['name'], user['email'])
+      )
 
-    allrows[shared.length] =
-      {
-        addnew: true,
-        colspan: "2",
-        col: {
-          colspan: 1,
-        }
-      }
+      allrows[shared.length] = { addnew: true, colspan: "2", col: {colspan: 1} }
+    } else {
+      allrows[1] = { addnew: true, colspan: "2", col: {colspan: 1} }
+    }
 
     return allrows
   }

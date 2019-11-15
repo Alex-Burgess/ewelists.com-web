@@ -53,12 +53,7 @@ class ArticlePage extends React.Component {
       occasion: '',
       date: '',
       imageUrl: '',
-      isEdit: false,
-      // reserved: [
-      //   {productId: "12345678", quantity: 1, userName: "Andrew Mike", message: "Happy birthday!", productUrl: 'https://www.amazon.co.uk/dp/B01H24LM58', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
-      //   {productId: "abcdefg", quantity: 1, userName: "Test User", message: "Hope you have a great day.", productUrl: 'https://www.amazon.co.uk/dp/B07PN49Q4S', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'},
-      //   {productId: "987654321", quantity: 1, userName: "Joe Smith", message: "Happy 2nd birthday. I hope you get great use for this, just like we did with our 8 children.", productUrl: 'https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291', imageUrl: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'}
-      // ]
+      isEdit: false
     };
   }
 
@@ -72,52 +67,14 @@ class ArticlePage extends React.Component {
   }
 
   async getListDetails() {
-    // let response;
-    // try {
-    //   console.log("Calling list API ")
-    //   response = await API.get("lists", "/" + this.props.match.params.id);
-    //   console.log("Got details for list " + response.list.title)
-    // } catch (e) {
-    //   console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-    //   this.props.history.push('/error/' + this.props.match.params.id);
-    // }
-
-    let response = {
-        "list": {
-          "listId":"17fba9e4-a75d-4275-931f-85555c5e581b",
-          "title":"My First List",
-          "description":"A description",
-          "occasion":"Christmas",
-          "imageUrl":"https://test.ewelists.com/images/christmas-default.jpg",
-          "eventDate":"06 November 2019"
-        },
-        "products":{
-          "12345678-prod-0001-1234-abcdefghijkl": {"productId":"12345678-prod-0001-1234-abcdefghijkl","quantity":1,"reserved":0,"type":"products"},
-          "12345678-prod-0002-1234-abcdefghijkl": {"productId":"12345678-prod-0002-1234-abcdefghijkl","quantity":3,"reserved":3,"type":"products"},
-          "12345678-prod-0003-1234-abcdefghijkl": {"productId":"12345678-prod-0003-1234-abcdefghijkl","quantity":1,"reserved":1,"type":"products"}
-        },
-        "reserved": [
-            {
-              "productId": "12345678-prod-0002-1234-abcdefghijkl",
-              "message":	"A test message",
-              "name":	"Alex Burgess",
-              "reserved":	3,
-              "reservedAt":	1573739584,
-              "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
-            },
-            {
-              "productId": "12345678-prod-0003-1234-abcdefghijkl",
-              "message":	"A test message",
-              "name":	"Alex Burgess",
-              "reserved":	1,
-              "reservedAt":	1573739584,
-              "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
-            }
-        ],
-        "shared": {
-          "6086f845-7f05-42e2-bd23-c97faf909055": {"name": "Alex Burgess","email": "burgess.alexander@gmail.com"},
-          "12345678-user-0004-1234-abcdefghijkl": {"name": "Test User2","email": "burgess.alexander+test2@gmail.com"}
-        }
+    let response;
+    try {
+      console.log("Calling list API ")
+      response = await API.get("lists", "/" + this.props.match.params.id);
+      console.log("Got details for list " + response.list.title)
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      this.props.history.push('/error/' + this.props.match.params.id);
     }
 
     // Update list details
@@ -146,76 +103,40 @@ class ArticlePage extends React.Component {
   }
 
   async getProductDetails() {
-
     let products = this.state.products;
     for (var key in products) {
-      console.log('key name: ', key);
-
       let product = products[key];
-      console.log('Quantity: ', product.quantity )
+      let response;
+      let imageUrl = config.imagePrefix + '/images/product-default.jpg'
 
       if (product.type == 'products') {
         try {
-          const response = await this.getProductFromProducts(product);
-
-          this.setState({
-            products: update(this.state.products, {
-              [key]: {
-                brand: {$set: response.brand},
-                details: {$set: response.details},
-                imageUrl: {$set: response.imageUrl},
-                productUrl: {$set: response.productUrl}
-              }
-            })
-          })
+          response = await API.get("products", "/" + product.productId);
+          imageUrl = response.imageUrl;
         } catch (e) {
           console.log("Could not find a product in the products table for Id: " + product.productId)
         }
       } else if (product.type == 'notfound'){
         try {
-          const response = await this.getProductFromNotFound(product);
-
-          this.setState({
-            products: update(this.state.products, {
-              [key]: {
-                brand: {$set: response.brand},
-                details: {$set: response.details},
-                imageUrl: {$set: config.imagePrefix + '/images/product-default.jpg'},
-                productUrl: {$set: response.productUrl}
-              }
-            })
-          })
+          const response = await API.get("notfound", "/" + product.productId);
         } catch (e) {
           console.log("Could not find a product in the notfound table for Id: " + product.productId)
         }
       } else {
         console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
       }
+
+      this.setState({
+        products: update(this.state.products, {
+          [key]: {
+            brand: {$set: response.brand},
+            details: {$set: response.details},
+            imageUrl: {$set: imageUrl},
+            productUrl: {$set: response.productUrl}
+          }
+        })
+      })
     }
-  }
-
-  async getProductFromProducts(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("products", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-    }
-
-    return response
-  }
-
-  async getProductFromNotFound(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("notfound", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-    }
-
-    return response
   }
 
   setEditState = event => {
@@ -289,40 +210,30 @@ class ArticlePage extends React.Component {
   deleteProductFromState(id) {
     console.log("Deleting product from list state: " + id);
 
-    let index;
-    let count = 0;
-    for (let product of this.state.products) {
-      if (product['productId'] == id) {
-        index = count;
-      }
-      count = count + 1;
-    }
-
-    const filteredArray = this.state.products.filter((_, i) => i !== index);
     this.setState({
-      products: filteredArray
-    });
+      products: update(this.state.products, { $unset: [id] })
+    })
   }
 
   addProductToState(product) {
-    var updatedProducts = this.state.products.concat(product);
-    this.setState({ products: updatedProducts })
+    this.setState({
+      products: {
+         ...this.state.products,
+         [product['productId']]: product
+      }
+    });
   }
 
-  updateProductToState(updateProduct) {
+  updateProductToState(product) {
     console.log("Updating state for product");
 
-    let count = 0;
-    for (let product of this.state.products) {
-      if (product['productId'] == updateProduct['productId']) {
-        console.log("Updating quantity (" + updateProduct['quantity'] + ")for product array obj (" + count + ")");
-        this.setState({
-          products: update(this.state.products, {[count]: {quantity: {$set: updateProduct['quantity']}}})
-        })
-
-      }
-      count = count + 1;
-    }
+    this.setState({
+      products: update(this.state.products, {
+        [product['productId']]: {
+          quantity: {$set: product['quantity']}
+        }
+      })
+    })
   }
 
   getListId(){

@@ -121,7 +121,7 @@ class SectionProducts extends React.Component {
   renderDesktopTable(classes, reserved: Reserved[]) {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderDesktopRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['reserved'])
+            this.renderDesktopRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
@@ -139,7 +139,7 @@ class SectionProducts extends React.Component {
   renderMobileTable(classes, reserved: Reserved[]) {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderMobileRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['reserved'])
+            this.renderMobileRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
