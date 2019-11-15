@@ -130,8 +130,8 @@ class SectionProducts extends React.Component {
   }
 
   renderProducts(classes, products: Products[]) {
-    const allproducts = products.map(
-      (product, i) =>
+    const allproducts = Object.entries(products).map(
+      ([key, product]) =>
             this.renderProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
@@ -148,8 +148,8 @@ class SectionProducts extends React.Component {
   }
 
   renderMobileProducts(classes, products: Products[]) {
-    const allproducts = products.map(
-      (product, i) =>
+    const allproducts = Object.entries(products).map(
+      ([key, product]) =>
             this.renderMobileProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
     )
 
@@ -246,8 +246,8 @@ class SectionProducts extends React.Component {
   }
 
   renderEditPopOuts(classes, products: Products[]) {
-    return products.map(
-      (product, i) =>
+    return Object.entries(products).map(
+      ([key, product]) =>
           <SectionEdit
             open={this.state.edit[product['productId']]
               ? this.state.edit[product['productId']]
@@ -257,7 +257,7 @@ class SectionProducts extends React.Component {
             deleteProductFromState={this.props.deleteProductFromState.bind(this)}
             updateProductToState={this.props.updateProductToState.bind(this)}
             getListId={this.props.getListId.bind(this)}
-            key={i}
+            key={key}
           />
     )
   }
@@ -287,7 +287,7 @@ class SectionProducts extends React.Component {
 
 SectionProducts.propTypes = {
   classes: PropTypes.object,
-  products: PropTypes.array
+  products: PropTypes.object
 };
 
 export default withStyles(styles)(SectionProducts);

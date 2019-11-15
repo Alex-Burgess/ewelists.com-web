@@ -47,18 +47,18 @@ class ArticlePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loaded: false,
       title: '',
       description: '',
       occasion: '',
       date: '',
       imageUrl: '',
       isEdit: false,
-      products: [],
-      reserved: [
-        {productId: "12345678", quantity: 1, userName: "Andrew Mike", message: "Happy birthday!", productUrl: 'https://www.amazon.co.uk/dp/B01H24LM58', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
-        {productId: "abcdefg", quantity: 1, userName: "Test User", message: "Hope you have a great day.", productUrl: 'https://www.amazon.co.uk/dp/B07PN49Q4S', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'},
-        {productId: "987654321", quantity: 1, userName: "Joe Smith", message: "Happy 2nd birthday. I hope you get great use for this, just like we did with our 8 children.", productUrl: 'https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291', imageUrl: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'}
-      ]
+      // reserved: [
+      //   {productId: "12345678", quantity: 1, userName: "Andrew Mike", message: "Happy birthday!", productUrl: 'https://www.amazon.co.uk/dp/B01H24LM58', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81qYpf1Sm2L._SX679_.jpg'},
+      //   {productId: "abcdefg", quantity: 1, userName: "Test User", message: "Hope you have a great day.", productUrl: 'https://www.amazon.co.uk/dp/B07PN49Q4S', imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51oQcQG0CKL._SX355_.jpg'},
+      //   {productId: "987654321", quantity: 1, userName: "Joe Smith", message: "Happy 2nd birthday. I hope you get great use for this, just like we did with our 8 children.", productUrl: 'https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291', imageUrl: 'https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$'}
+      // ]
     };
   }
 
@@ -68,36 +68,127 @@ class ArticlePage extends React.Component {
     await this.getListDetails();
     await this.getProductDetails();
 
-    this.setState({ isLoading: false });
+    this.setState({ loaded: true });
   }
 
-  getListId(){
-    return this.props.match.params.id
+  async getListDetails() {
+    // let response;
+    // try {
+    //   console.log("Calling list API ")
+    //   response = await API.get("lists", "/" + this.props.match.params.id);
+    //   console.log("Got details for list " + response.list.title)
+    // } catch (e) {
+    //   console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+    //   this.props.history.push('/error/' + this.props.match.params.id);
+    // }
+
+    let response = {
+        "list": {
+          "listId":"17fba9e4-a75d-4275-931f-85555c5e581b",
+          "title":"My First List",
+          "description":"A description",
+          "occasion":"Christmas",
+          "imageUrl":"https://test.ewelists.com/images/christmas-default.jpg",
+          "eventDate":"06 November 2019"
+        },
+        "products":{
+          "12345678-prod-0001-1234-abcdefghijkl": {"productId":"12345678-prod-0001-1234-abcdefghijkl","quantity":1,"reserved":0,"type":"products"},
+          "12345678-prod-0002-1234-abcdefghijkl": {"productId":"12345678-prod-0002-1234-abcdefghijkl","quantity":3,"reserved":3,"type":"products"},
+          "12345678-prod-0003-1234-abcdefghijkl": {"productId":"12345678-prod-0003-1234-abcdefghijkl","quantity":1,"reserved":1,"type":"products"}
+        },
+        "reserved": [
+            {
+              "productId": "12345678-prod-0002-1234-abcdefghijkl",
+              "message":	"A test message",
+              "name":	"Alex Burgess",
+              "reserved":	3,
+              "reservedAt":	1573739584,
+              "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
+            },
+            {
+              "productId": "12345678-prod-0003-1234-abcdefghijkl",
+              "message":	"A test message",
+              "name":	"Alex Burgess",
+              "reserved":	1,
+              "reservedAt":	1573739584,
+              "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
+            }
+        ],
+        "shared": {
+          "6086f845-7f05-42e2-bd23-c97faf909055": {"name": "Alex Burgess","email": "burgess.alexander@gmail.com"},
+          "12345678-user-0004-1234-abcdefghijkl": {"name": "Test User2","email": "burgess.alexander+test2@gmail.com"}
+        }
+    }
+
+    // Update list details
+    this.setState({
+      title: response.list.title,
+      description: response.list.description,
+      occasion: response.list.occasion,
+      imageUrl: response.list.imageUrl,
+    });
+
+    if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
+      this.setState({
+        date: response.list.eventDate
+      });
+    } else {
+      this.setState({
+        date: ''
+      });
+    }
+
+    // Update list details
+    this.setState({
+      products: response.products
+    })
+
+    // Update reserved details
+    this.setState({
+      reserved: response.reserved
+    })
   }
 
-  // Need to get type from list product
   async getProductDetails() {
-    let updated_products = [];
-    for (let product of this.state.products) {
+
+    let products = this.state.products;
+    for (var key in products) {
+      console.log('key name: ', key);
+
+      let product = products[key];
+      console.log('Quantity: ', product.quantity )
+
       if (product.type == 'products') {
         try {
           const response = await this.getProductFromProducts(product);
-          product['brand'] = response.brand;
-          product['details'] = response.details;
-          product['imageUrl'] = response.imageUrl;
-          product['productUrl'] = response.productUrl;
-          updated_products.push(product)
+
+          this.setState({
+            products: update(this.state.products, {
+              [key]: {
+                brand: {$set: response.brand},
+                details: {$set: response.details},
+                imageUrl: {$set: response.imageUrl},
+                productUrl: {$set: response.productUrl}
+              }
+            })
+          })
         } catch (e) {
           console.log("Could not find a product in the products table for Id: " + product.productId)
         }
       } else if (product.type == 'notfound'){
         try {
           const response = await this.getProductFromNotFound(product);
-          product['brand'] = response.brand;
-          product['details'] = response.details;
-          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-          product['productUrl'] = response.productUrl;
-          updated_products.push(product)
+
+          this.setState({
+            products: update(this.state.products, {
+              [key]: {
+                brand: {$set: response.brand},
+                details: {$set: response.details},
+                imageUrl: {$set: config.imagePrefix + '/images/product-default.jpg'},
+                productUrl: {$set: response.productUrl}
+              }
+            })
+          })
         } catch (e) {
           console.log("Could not find a product in the notfound table for Id: " + product.productId)
         }
@@ -105,10 +196,6 @@ class ArticlePage extends React.Component {
         console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
       }
     }
-
-    this.setState({
-      products: updated_products
-    })
   }
 
   async getProductFromProducts(product) {
@@ -133,54 +220,6 @@ class ArticlePage extends React.Component {
     }
 
     return response
-  }
-
-  async getListDetails() {
-    let response;
-    try {
-      console.log("Calling list API ")
-      response = await API.get("lists", "/" + this.props.match.params.id);
-      console.log("Got details for list " + response.list.title)
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-      this.props.history.push('/error/' + this.props.match.params.id);
-    }
-
-    // Update list details
-    this.setState({
-      title: response.list.title,
-      description: response.list.description,
-      occasion: response.list.occasion,
-      imageUrl: response.list.imageUrl,
-    });
-
-    if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
-      this.setState({
-        date: response.list.eventDate
-      });
-    } else {
-      this.setState({
-        date: ''
-      });
-    }
-
-    // Update product details
-    for (let product of response.products) {
-      let product_obj = {
-        productId: product.productId,
-        quantity: product.quantity,
-        reserved: product.reserved,
-        type: product.type,
-        brand: '',
-        details: '',
-        imageUrl: ''
-      };
-
-      this.setState({
-        products: this.state.products.concat(product_obj)
-      })
-
-    }
   }
 
   setEditState = event => {
@@ -290,87 +329,97 @@ class ArticlePage extends React.Component {
     }
   }
 
+  getListId(){
+    return this.props.match.params.id
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-        color="info"
-        brand="ewelists"
-          links={<HeaderLinksAuth dropdownHoverColor="info" />}
-          fixed
-        />
-        <div className={classes.main}>
-          <SectionListDetails
-            title={this.state.title}
-            description={this.state.description}
-            occasion={this.state.occasion}
-            date={this.state.date}
-            imageUrl={this.state.imageUrl}
-            isEdit={this.state.isEdit}
-            saveDetails={this.saveDetails.bind(this)}
-            setEditState={this.setEditState.bind(this)}
-            cancelEdit={this.cancelEdit.bind(this)}
-            handleChange={this.handleChange.bind(this)}
-            handleOccasionSelect={this.handleOccasionSelect.bind(this)}
-            changeDate={this.changeDate.bind(this)}
-          />
-          <div className={classes.profileTabs}>
-            <NavPills
-              alignCenter
-              color="primary"
-              tabs={[
-                {
-                  tabButton: "Manage",
-                  tabIcon: List,
-                  tabContent: (
-                    <div>
-                      <SectionProducts
-                        products={this.state.products}
-                        deleteProductFromState={this.deleteProductFromState.bind(this)}
-                        updateProductToState={this.updateProductToState.bind(this)}
-                        getListId={this.getListId.bind(this)}
-                      />
-                    </div>
-                  )
-                },
-                {
-                  tabButton: "Add Gifts",
-                  tabIcon: Search,
-                  tabContent: (
-                    <div>
-                      <SectionAddGifts
-                        getListId={this.getListId.bind(this)}
-                        addProductToState={this.addProductToState.bind(this)}
-                      />
-                    </div>
-                  )
-                },
-                {
-                  tabButton: "Share",
-                  tabIcon: People,
-                  tabContent: (
-                    <div>
-                      <SectionShare />
-                    </div>
-                  )
-                },
-                {
-                  tabButton: "Reserved",
-                  tabIcon: Redeem,
-                  tabContent: (
-                    <div>
-                      <SectionReserved
-                        reserved={this.state.reserved}
-                      />
-                    </div>
-                  )
-                }
-              ]}
-            />
-          </div>
-        </div>
-        <FooterLarge />
+        {this.state.loaded
+          ? <div>
+              <Header
+              color="info"
+              brand="ewelists"
+                links={<HeaderLinksAuth dropdownHoverColor="info" />}
+                fixed
+              />
+              <div className={classes.main}>
+                <SectionListDetails
+                  title={this.state.title}
+                  description={this.state.description}
+                  occasion={this.state.occasion}
+                  date={this.state.date}
+                  imageUrl={this.state.imageUrl}
+                  isEdit={this.state.isEdit}
+                  saveDetails={this.saveDetails.bind(this)}
+                  setEditState={this.setEditState.bind(this)}
+                  cancelEdit={this.cancelEdit.bind(this)}
+                  handleChange={this.handleChange.bind(this)}
+                  handleOccasionSelect={this.handleOccasionSelect.bind(this)}
+                  changeDate={this.changeDate.bind(this)}
+                />
+                <div className={classes.profileTabs}>
+                  <NavPills
+                    alignCenter
+                    color="primary"
+                    tabs={[
+                      {
+                        tabButton: "Manage",
+                        tabIcon: List,
+                        tabContent: (
+                          <div>
+                            <SectionProducts
+                              products={this.state.products}
+                              deleteProductFromState={this.deleteProductFromState.bind(this)}
+                              updateProductToState={this.updateProductToState.bind(this)}
+                              getListId={this.getListId.bind(this)}
+                            />
+                          </div>
+                        )
+                      },
+                      {
+                        tabButton: "Add Gifts",
+                        tabIcon: Search,
+                        tabContent: (
+                          <div>
+                            <SectionAddGifts
+                              getListId={this.getListId.bind(this)}
+                              addProductToState={this.addProductToState.bind(this)}
+                            />
+                          </div>
+                        )
+                      },
+                      {
+                        tabButton: "Share",
+                        tabIcon: People,
+                        tabContent: (
+                          <div>
+                            <SectionShare />
+                          </div>
+                        )
+                      },
+                      {
+                        tabButton: "Reserved",
+                        tabIcon: Redeem,
+                        tabContent: (
+                          <div>
+                            <SectionReserved
+                              reserved={this.state.reserved}
+                              products={this.state.products}
+                            />
+                          </div>
+                        )
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <FooterLarge />
+            </div>
+          : null
+        }
       </div>
     );
   }

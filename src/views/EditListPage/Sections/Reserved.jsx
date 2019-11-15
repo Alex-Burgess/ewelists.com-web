@@ -19,16 +19,11 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
-import Edit from "@material-ui/icons/Edit";
 // core components
 import Table from "components/Table/Table.jsx";
-import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-// Sections
-import SectionEdit from "./EditProductPopOut.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/reservedStyle.jsx";
 
@@ -126,7 +121,7 @@ class SectionProducts extends React.Component {
   renderDesktopTable(classes, reserved: Reserved[]) {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderDesktopRow(classes, row['productUrl'], row['imageUrl'], row['userName'], row['message'], row['quantity'])
+            this.renderDesktopRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['reserved'])
     )
 
     allRows[reserved.length] =
@@ -144,7 +139,7 @@ class SectionProducts extends React.Component {
   renderMobileTable(classes, reserved: Reserved[]) {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderMobileRow(classes, row['productUrl'], row['imageUrl'], row['userName'], row['message'], row['quantity'])
+            this.renderMobileRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['reserved'])
     )
 
     allRows[reserved.length] =
@@ -228,7 +223,8 @@ class SectionProducts extends React.Component {
 
 SectionProducts.propTypes = {
   classes: PropTypes.object,
-  reserved: PropTypes.array
+  reserved: PropTypes.array,
+  products: PropTypes.object
 };
 
 export default withStyles(styles)(SectionProducts);
