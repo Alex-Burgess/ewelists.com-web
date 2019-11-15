@@ -39,12 +39,12 @@ class ArticlePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loaded: false,
       title: '',
       description: '',
       occasion: '',
       date: '',
-      imageUrl: '',
-      products: []
+      imageUrl: ''
     };
   }
 
@@ -54,71 +54,7 @@ class ArticlePage extends React.Component {
     await this.getListDetails();
     await this.getProductDetails();
 
-    this.setState({ isLoading: false });
-  }
-
-  getListId(){
-    return this.props.match.params.id
-  }
-
-  // Need to get type from list product
-  async getProductDetails() {
-    let updated_products = [];
-    for (let product of this.state.products) {
-      if (product.type == 'products') {
-        try {
-          const response = await this.getProductFromProducts(product);
-          product['brand'] = response.brand;
-          product['details'] = response.details;
-          product['imageUrl'] = response.imageUrl;
-          product['productUrl'] = response.productUrl;
-          updated_products.push(product)
-        } catch (e) {
-          console.log("Could not find a product in the products table for Id: " + product.productId)
-        }
-      } else if (product.type == 'notfound'){
-        try {
-          const response = await this.getProductFromNotFound(product);
-          product['brand'] = response.brand;
-          product['details'] = response.details;
-          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-          product['productUrl'] = response.productUrl;
-          updated_products.push(product)
-        } catch (e) {
-          console.log("Could not find a product in the notfound table for Id: " + product.productId)
-        }
-      } else {
-        console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
-      }
-    }
-
-    this.setState({
-      products: updated_products
-    })
-  }
-
-  async getProductFromProducts(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("products", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-    }
-
-    return response
-  }
-
-  async getProductFromNotFound(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("notfound", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-    }
-
-    return response
+    this.setState({ loaded: true });
   }
 
   async getListDetails() {
@@ -150,74 +86,202 @@ class ArticlePage extends React.Component {
       });
     }
 
-    // Update product details
-    for (let product of response.products) {
-      let product_obj = {
-        productId: product.productId,
-        quantity: product.quantity,
-        reserved: product.reserved,
-        type: product.type,
-        brand: '',
-        details: '',
-        imageUrl: ''
-      };
+    // // Update product details
+    // let products = this.state.products;
+    // for (var key in products) {
+    //   let product = products[key];
+    // // for (let product of response.products) {
+    //   let product_obj = {
+    //     productId: product.productId,
+    //     quantity: product.quantity,
+    //     reserved: product.reserved,
+    //     type: product.type,
+    //     brand: '',
+    //     details: '',
+    //     imageUrl: ''
+    //   };
+    //
+    //   this.setState({
+    //     products: this.state.products.concat(product_obj)
+    //   })
+    //
+    // }
+    this.setState({
+      products: response.products,
+      // reserved: response.reserved,
+      // shared: response.shared
+    })
+  }
+
+  // Need to get type from list product
+  async getProductDetails() {
+    // let updated_products = [];
+    // let products = this.state.products;
+    // for (var key in products) {
+    //   let product = products[key];
+    //
+    // // for (let product of this.state.products) {
+    //   if (product.type == 'products') {
+    //     try {
+    //       const response = await this.getProductFromProducts(product);
+    //       product['brand'] = response.brand;
+    //       product['details'] = response.details;
+    //       product['imageUrl'] = response.imageUrl;
+    //       product['productUrl'] = response.productUrl;
+    //       updated_products.push(product)
+    //     } catch (e) {
+    //       console.log("Could not find a product in the products table for Id: " + product.productId)
+    //     }
+    //   } else if (product.type == 'notfound'){
+    //     try {
+    //       const response = await this.getProductFromNotFound(product);
+    //       product['brand'] = response.brand;
+    //       product['details'] = response.details;
+    //       product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
+    //       product['productUrl'] = response.productUrl;
+    //       updated_products.push(product)
+    //     } catch (e) {
+    //       console.log("Could not find a product in the notfound table for Id: " + product.productId)
+    //     }
+    //   } else {
+    //     console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
+    //   }
+    // }
+    //
+    // this.setState({
+    //   products: updated_products
+    // })
+    let products = this.state.products;
+    for (var key in products) {
+      let product = products[key];
+      let response;
+      let imageUrl = config.imagePrefix + '/images/product-default.jpg'
+
+      if (product.type == 'products') {
+        try {
+          response = await API.get("products", "/" + product.productId);
+          imageUrl = response.imageUrl;
+        } catch (e) {
+          console.log("Could not find a product in the products table for Id: " + product.productId)
+        }
+      } else if (product.type == 'notfound'){
+        try {
+          const response = await API.get("notfound", "/" + product.productId);
+        } catch (e) {
+          console.log("Could not find a product in the notfound table for Id: " + product.productId)
+        }
+      } else {
+        console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
+      }
 
       this.setState({
-        products: this.state.products.concat(product_obj)
+        products: update(this.state.products, {
+          [key]: {
+            brand: {$set: response.brand},
+            details: {$set: response.details},
+            imageUrl: {$set: imageUrl},
+            productUrl: {$set: response.productUrl}
+          }
+        })
       })
-
     }
   }
 
-  updateReservedQuantity(reservedQuantity, updateProduct) {
-    let count = 0;
-    for (let product of this.state.products) {
-      if (product['productId'] == updateProduct['productId']) {
-        const new_reserved_quantity = product['reserved'] + reservedQuantity;
-        console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
-
-        this.setState({
-          products: update(this.state.products, {[count]: {reserved: {$set: new_reserved_quantity}}})
-        })
-
-      }
-      count = count + 1;
+  async getProductFromProducts(product) {
+    let response;
+    try {
+      console.log("Getting product: " + product.productId);
+      response = await API.get("products", "/" + product.productId);
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
     }
+
+    return response
+  }
+
+  async getProductFromNotFound(product) {
+    let response;
+    try {
+      console.log("Getting product: " + product.productId);
+      response = await API.get("notfound", "/" + product.productId);
+    } catch (e) {
+      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+    }
+
+    return response
+  }
+
+  updateReservedQuantity(reservedQuantity, product) {
+    // let count = 0;
+    // for (let product of this.state.products) {
+    //   if (product['productId'] == updateProduct['productId']) {
+    //     const new_reserved_quantity = product['reserved'] + reservedQuantity;
+    //     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
+    //
+    //     this.setState({
+    //       products: update(this.state.products, {[count]: {reserved: {$set: new_reserved_quantity}}})
+    //     })
+    //
+    //   }
+    //   count = count + 1;
+    // }
+
+    let products = this.state.products;
+    let productId = product['productId'];
+    const new_reserved_quantity = products[productId].reserved + reservedQuantity;
+    console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
+
+    this.setState({
+      products: update(this.state.products, {
+        [product['productId']]: {
+          quantity: {$set: product['quantity']}
+        }
+      })
+    })
+  }
+
+  getListId(){
+    return this.props.match.params.id
   }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-          brand="ewelists"
-          links={<HeaderLinksAuth dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-           changeColorOnScroll={{
-             height: 200,
-             color: "info"
-           }}
-        />
-        <Parallax verySmall filter="info" className={classes.articleBg}>
-        </Parallax>
-        <div className={classes.main}>
-          <SectionListDetails
-            title={this.state.title}
-            description={this.state.description}
-            occasion={this.state.occasion}
-            date={this.state.date}
-            imageUrl={this.state.imageUrl}
-          />
-          <SectionList
-            products={this.state.products}
-            getListId={this.getListId.bind(this)}
-            updateReservedQuantity={this.updateReservedQuantity.bind(this)}
-          />
-        </div>
-        <div className={classes.spacer}>
-        </div>
-        <FooterLarge />
+        {this.state.loaded
+          ? <div>
+              <Header
+                brand="ewelists"
+                links={<HeaderLinksAuth dropdownHoverColor="info" />}
+                fixed
+                color="transparent"
+                 changeColorOnScroll={{
+                   height: 200,
+                   color: "info"
+                 }}
+              />
+              <Parallax verySmall filter="info" className={classes.articleBg}>
+              </Parallax>
+              <div className={classes.main}>
+                <SectionListDetails
+                  title={this.state.title}
+                  description={this.state.description}
+                  occasion={this.state.occasion}
+                  date={this.state.date}
+                  imageUrl={this.state.imageUrl}
+                />
+                <SectionList
+                  products={this.state.products}
+                  getListId={this.getListId.bind(this)}
+                  updateReservedQuantity={this.updateReservedQuantity.bind(this)}
+                />
+              </div>
+              <div className={classes.spacer}>
+              </div>
+              <FooterLarge />
+            </div>
+          : null
+        }
       </div>
     );
   }

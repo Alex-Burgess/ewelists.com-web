@@ -41,7 +41,7 @@ import SectionReserve from "./ReservePopOut.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/viewListSections/sectionListStyle.jsx";
 
-class SectionProducts extends React.Component {
+class SectionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -172,8 +172,13 @@ class SectionProducts extends React.Component {
 
   renderProducts(classes, products: Products[]) {
     return (
-      products.map( (product, i) =>
-            this.renderProduct(classes, product, i)
+      // products.map( (product, i) =>
+      //       this.renderProduct(classes, product, i)
+      // )
+
+      Object.entries(products).map(
+        ([key, product]) =>
+          this.renderProduct(classes, product, key)
       )
     )
   }
@@ -333,9 +338,9 @@ class SectionProducts extends React.Component {
   }
 }
 
-SectionProducts.propTypes = {
+SectionList.propTypes = {
   classes: PropTypes.object,
-  products: PropTypes.array
+  products: PropTypes.object
 };
 
-export default withStyles(styles)(SectionProducts);
+export default withStyles(styles)(SectionList);
