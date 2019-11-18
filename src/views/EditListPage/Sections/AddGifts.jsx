@@ -34,7 +34,7 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/addGiftsStyle.jsx";
-
+import config from 'config.js';
 
 class SectionAddGifts extends React.Component {
   constructor(props) {
@@ -228,7 +228,7 @@ class SectionAddGifts extends React.Component {
       details: this.state.notfound.details,
       type: this.state.notfound.type,
       url: this.state.notfound.url,
-      imageUrl: '',
+      imageUrl: config.imagePrefix + '/images/product-default.jpg',
       quantity: this.state.notfoundQuantity,
       reserved: 0
     }
