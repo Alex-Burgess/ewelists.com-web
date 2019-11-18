@@ -79,6 +79,7 @@ class SectionDetails extends React.Component {
     }
 
     this.props.updateReservedQuantity(this.state.reserveQuantity, this.props.product);
+    this.setState({ reserveError: 'Product was reserved.'});
 
   }
 
@@ -176,6 +177,13 @@ class SectionDetails extends React.Component {
                       : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.reserveProduct()}>
                           Reserved
                         </Button>
+                    }
+                    {this.state.reserveError
+                      ?
+                        <div className={classes.errorContainer}>
+                          {this.state.reserveError}
+                        </div>
+                      : null
                     }
                   </div>
                   <h3 className={classes.title}>Step 2: Purchase Item</h3>

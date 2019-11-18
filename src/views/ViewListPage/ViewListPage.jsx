@@ -115,42 +115,6 @@ class ArticlePage extends React.Component {
 
   // Need to get type from list product
   async getProductDetails() {
-    // let updated_products = [];
-    // let products = this.state.products;
-    // for (var key in products) {
-    //   let product = products[key];
-    //
-    // // for (let product of this.state.products) {
-    //   if (product.type == 'products') {
-    //     try {
-    //       const response = await this.getProductFromProducts(product);
-    //       product['brand'] = response.brand;
-    //       product['details'] = response.details;
-    //       product['imageUrl'] = response.imageUrl;
-    //       product['productUrl'] = response.productUrl;
-    //       updated_products.push(product)
-    //     } catch (e) {
-    //       console.log("Could not find a product in the products table for Id: " + product.productId)
-    //     }
-    //   } else if (product.type == 'notfound'){
-    //     try {
-    //       const response = await this.getProductFromNotFound(product);
-    //       product['brand'] = response.brand;
-    //       product['details'] = response.details;
-    //       product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-    //       product['productUrl'] = response.productUrl;
-    //       updated_products.push(product)
-    //     } catch (e) {
-    //       console.log("Could not find a product in the notfound table for Id: " + product.productId)
-    //     }
-    //   } else {
-    //     console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
-    //   }
-    // }
-    //
-    // this.setState({
-    //   products: updated_products
-    // })
     let products = this.state.products;
     for (var key in products) {
       let product = products[key];
@@ -212,20 +176,6 @@ class ArticlePage extends React.Component {
   }
 
   updateReservedQuantity(reservedQuantity, product) {
-    // let count = 0;
-    // for (let product of this.state.products) {
-    //   if (product['productId'] == updateProduct['productId']) {
-    //     const new_reserved_quantity = product['reserved'] + reservedQuantity;
-    //     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
-    //
-    //     this.setState({
-    //       products: update(this.state.products, {[count]: {reserved: {$set: new_reserved_quantity}}})
-    //     })
-    //
-    //   }
-    //   count = count + 1;
-    // }
-
     let products = this.state.products;
     let productId = product['productId'];
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
@@ -234,7 +184,7 @@ class ArticlePage extends React.Component {
     this.setState({
       products: update(this.state.products, {
         [product['productId']]: {
-          quantity: {$set: product['quantity']}
+          reserved: {$set: reservedQuantity}
         }
       })
     })
