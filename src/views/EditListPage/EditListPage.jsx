@@ -118,7 +118,7 @@ class ArticlePage extends React.Component {
         }
       } else if (product.type == 'notfound'){
         try {
-          const response = await API.get("notfound", "/" + product.productId);
+          response = await API.get("notfound", "/" + product.productId);
         } catch (e) {
           console.log("Could not find a product in the notfound table for Id: " + product.productId)
         }

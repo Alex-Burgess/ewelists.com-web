@@ -105,7 +105,7 @@ class SectionAddGifts extends React.Component {
     try {
       response = await API.get("products", "/url/" + encodeURIComponent(this.state.searchUrl));
     } catch (e) {
-      console.log('Unexpected error occurred when searching for product: ' + e.response.data.error);
+      console.log('Unexpected error occurred when searching for product: ' + e);
       this.setState({ errorMessage: 'Product could not be found.'});
       return false
     }
