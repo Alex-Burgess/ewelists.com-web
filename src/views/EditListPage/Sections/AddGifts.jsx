@@ -105,8 +105,8 @@ class SectionAddGifts extends React.Component {
     try {
       response = await API.get("products", "/url/" + encodeURIComponent(this.state.searchUrl));
     } catch (e) {
-      console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
-      this.setState({ deleteError: 'Product could not be deleted.'});
+      console.log('Unexpected error occurred when searching for product: ' + e.response.data.error);
+      this.setState({ errorMessage: 'Product could not be found.'});
       return false
     }
 
@@ -117,13 +117,13 @@ class SectionAddGifts extends React.Component {
         brand: response.product.brand,
         details: response.product.details,
         productUrl: response.product.productUrl,
-        imageUrl: response.product.imageUrl
+        imageUrl: response.product.imageUrl,
       }
       this.setState({
         searchResult: true,
         productFound: true,
         product: product,
-        deleteError: 'Product could not be deleted.',
+        errorMessage: '',
         message: ''
       })
     } else {
@@ -131,7 +131,7 @@ class SectionAddGifts extends React.Component {
       this.setState({
         searchResult: true,
         productFound: false,
-        deleteError: '',
+        errorMessage: '',
         message: ''
       })
     }
