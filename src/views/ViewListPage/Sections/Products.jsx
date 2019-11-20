@@ -125,7 +125,7 @@ class SectionList extends React.Component {
   }
 
   userReservedItem(productId, reserved) {
-    console.log("Checking if user " + this.props.userId + " reserved product id: " + productId)
+    // console.log("Checking if user " + this.props.userId + " reserved product id: " + productId)
     let userId = this.props.userId;
 
     if (! (productId in reserved)) {
@@ -137,6 +137,20 @@ class SectionList extends React.Component {
     }
 
     return true
+  }
+
+  getUserReservedDetails(productId, reserved) {
+    let userId = this.props.userId;
+
+    if (! (productId in reserved)) {
+      return false
+    }
+
+    if (! (userId in reserved[productId])) {
+      return false
+    }
+
+    return reserved[productId][userId]
   }
 
   renderProduct(classes, product, i, reserved) {
@@ -181,6 +195,9 @@ class SectionList extends React.Component {
             ? this.state[product['productId']]
             : false }
           product={product}
+          reservedDetails={this.getUserReservedDetails(product['productId'], reserved)
+            ? this.getUserReservedDetails(product['productId'], reserved)
+            : null }
           handleClose={this.handleClose.bind(this)}
           getListId={this.props.getListId.bind(this)}
           updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}

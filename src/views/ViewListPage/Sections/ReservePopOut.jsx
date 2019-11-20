@@ -84,7 +84,7 @@ class SectionDetails extends React.Component {
   }
 
   render() {
-    const { classes, open, product } = this.props;
+    const { classes, open, product, reservedDetails } = this.props;
     return (
       <div className={classes.section}>
         {/* NOTICE MODAL START */}
@@ -134,11 +134,6 @@ class SectionDetails extends React.Component {
                       <p className={classes.description}>
                         {product['details']}
                       </p>
-                      <p className={classes.remaining}>
-                        <InputLabel className={classes.label}>
-                          Remaining: {product['quantity'] - product['reserved']}
-                        </InputLabel>
-                      </p>
                     </CardBody>
                   </Card>
                 </GridItem>
@@ -160,6 +155,9 @@ class SectionDetails extends React.Component {
                   <div className={classes.mobileCenter}>
                     <div className={classes.quantity}>
                       <InputLabel className={classes.label}>
+                        Remaining: {product['quantity'] - product['reserved']}
+                      </InputLabel>
+                      <InputLabel className={classes.label}>
                         Quantity:
                         <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
                           <Remove />
@@ -170,13 +168,19 @@ class SectionDetails extends React.Component {
                         </Button>
                       </InputLabel>
                     </div>
-                    {product['reserved'] < product['quantity']
-                      ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
-                          Reserve Gift
-                        </Button>
-                      : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.reserveProduct()}>
-                          Reserved
-                        </Button>
+                    {reservedDetails
+                      ? <div>
+                          <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
+                            Update
+                          </Button>
+                        </div>
+                      : product['reserved'] < product['quantity']
+                        ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
+                            Reserve Gift
+                          </Button>
+                        : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.reserveProduct()}>
+                            Reserved
+                          </Button>
                     }
                     {this.state.reserveError
                       ?
@@ -213,7 +217,8 @@ class SectionDetails extends React.Component {
 SectionDetails.propTypes = {
   classes: PropTypes.object,
   open: PropTypes.bool,
-  products: PropTypes.array
+  product: PropTypes.object,
+  reservedDetails: PropTypes.object
 };
 
 export default withStyles(sectionStyle)(SectionDetails);
