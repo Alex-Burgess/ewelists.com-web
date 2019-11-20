@@ -61,7 +61,7 @@ class ArticlePage extends React.Component {
     let response;
     try {
       console.log("Calling list API ")
-      response = await API.get("lists", "/" + this.props.match.params.id);
+      response = await API.get("lists", "/" + this.props.match.params.id + "/shared");
       console.log("Got details for list " + response.list.title)
     } catch (e) {
       console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
@@ -86,22 +86,8 @@ class ArticlePage extends React.Component {
       });
     }
 
-    // let reserved = {
-    //   '12345678-prod-0001-1234-abcdefghijkl': {
-    //       '6086f845-7f05-42e2-bd23-c97faf909055': {
-    //         "productId": "12345678-prod-0001-1234-abcdefghijkl",
-    //         "message":    "A test message",
-    //         "name":    "Alex Burgess",
-    //         "quantity":    1,
-    //         "reservedAt":    1573739584,
-    //         "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
-    //       }
-    //   }
-    // }
-
     this.setState({
       products: response.products,
-      // reserved: reserved,
       reserved: response.reserved
     })
   }
@@ -168,32 +154,37 @@ class ArticlePage extends React.Component {
     return response
   }
 
-  updateReservedQuantity(reservedQuantity, product) {
+  async updateReservedQuantity(reservedQuantity, product) {
     let products = this.state.products;
     let productId = product['productId'];
     let userId = this.props.userSub;
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
 
-    this.setState({
-      products: update(this.state.products, {
-        [productId]: {
-          reserved: {$set: reservedQuantity}
-        }
+    let userReservedObject = {
+      [userId] : {
+        productId: productId,
+        quantity: reservedQuantity,
+        userId: userId,
+        // message:    "A test message",
+        // name:    "Alex Burgess",
+      }
+    }
+
+    await this.setState({
+      reserved: update(this.state.reserved, {
+        [productId]: {$set: userReservedObject}
       })
     })
 
-    this.setState({
-      reserved: update(this.state.reserved, {
+    console.log("reserved state: " + JSON.stringify(this.state.reserved));
+
+    console.log("Updated product Id with user reserved details")
+
+    await this.setState({
+      products: update(this.state.products, {
         [productId]: {
-          [userId] : {
-            productId: productId,
-            // message:    "A test message",
-            // name:    "Alex Burgess",
-            quantity: reservedQuantity,
-            // reservedAt:    1573739584,
-            userId: userId
-          }
+          reserved: {$set: reservedQuantity}
         }
       })
     })

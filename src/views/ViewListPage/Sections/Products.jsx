@@ -51,7 +51,6 @@ class SectionList extends React.Component {
       showFilter: false,
       width: window.innerWidth,
       height: window.innerHeight,
-      reserved: this.props.reserved
     };
   }
 
@@ -125,21 +124,22 @@ class SectionList extends React.Component {
     this.setState({ showFilter: newValue });
   }
 
-  userReservedItem(productId) {
+  userReservedItem(productId, reserved) {
+    console.log("Checking if user " + this.props.userId + " reserved product id: " + productId)
     let userId = this.props.userId;
-    console.log("UserId: " + this.props.userId)
 
-    let reservationsForProduct = this.state.reserved[productId];
-    let reservationsForUser = reservationsForProduct[userId];
-
-    if (reservationsForUser) {
-      return true
+    if (! (productId in reserved)) {
+      return false
     }
 
-    return false
+    if (! (userId in reserved[productId])) {
+      return false
+    }
+
+    return true
   }
 
-  renderProduct(classes, product, i) {
+  renderProduct(classes, product, i, reserved) {
     return (
       <GridItem md={4} sm={4} key={i}>
         <Card plain product>
@@ -161,13 +161,13 @@ class SectionList extends React.Component {
               <span className={classes.description}> Quantity: {product['quantity']}</span>
             </div>
             <div className={classes.textCenter}>
-              {product['reserved'] < product['quantity']
-                ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
-                    Reserve Gift
+              {this.userReservedItem(product['productId'], reserved)
+                ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                    Update
                   </Button>
-                : this.userReservedItem(product['productId'])
-                  ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
-                      Update
+                : product['reserved'] < product['quantity']
+                  ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                      Reserve Gift
                     </Button>
                   : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
                       Reserved
@@ -189,17 +189,17 @@ class SectionList extends React.Component {
     )
   }
 
-  renderProducts(classes, products: Products[]) {
+  renderProducts(classes, products: Products[], reserved) {
     return (
       Object.entries(products).map(
         ([key, product]) =>
-          this.renderProduct(classes, product, key)
+          this.renderProduct(classes, product, key, reserved)
       )
     )
   }
 
   render() {
-    const { classes, products } = this.props;
+    const { classes, products, reserved } = this.props;
 
     return (
       <div className={classes.section}>
@@ -342,7 +342,7 @@ class SectionList extends React.Component {
             </GridItem>
             <GridItem md={9} sm={8}>
               <GridContainer>
-                {this.renderProducts(classes, products)}
+                {this.renderProducts(classes, products, reserved)}
               </GridContainer>
             </GridItem>
           </GridContainer>
