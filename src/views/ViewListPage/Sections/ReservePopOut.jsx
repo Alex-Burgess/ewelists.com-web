@@ -73,7 +73,7 @@ class SectionDetails extends React.Component {
         body: { "quantity": this.state.reserveQuantity, "message": 'A test message' }
       });
     } catch (e) {
-      console.log('Unexpected error occurred when creating product: ' + e);
+      console.log('Unexpected error occurred when reserving product: ' + e);
       this.setState({ reserveError: 'Product could not be reserved.'});
       return false
     }

@@ -50,7 +50,8 @@ class SectionList extends React.Component {
       selectedEnabled: "a",
       showFilter: false,
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      reserved: this.props.reserved
     };
   }
 
@@ -124,6 +125,20 @@ class SectionList extends React.Component {
     this.setState({ showFilter: newValue });
   }
 
+  userReservedItem(productId) {
+    let userId = this.props.userId;
+    console.log("UserId: " + this.props.userId)
+
+    let reservationsForProduct = this.state.reserved[productId];
+    let reservationsForUser = reservationsForProduct[userId];
+
+    if (reservationsForUser) {
+      return true
+    }
+
+    return false
+  }
+
   renderProduct(classes, product, i) {
     return (
       <GridItem md={4} sm={4} key={i}>
@@ -150,9 +165,13 @@ class SectionList extends React.Component {
                 ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
                     Reserve Gift
                   </Button>
-                : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
-                    Reserved
-                  </Button>
+                : this.userReservedItem(product['productId'])
+                  ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                      Update
+                    </Button>
+                  : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
+                      Reserved
+                    </Button>
               }
             </div>
           </CardFooter>
@@ -172,10 +191,6 @@ class SectionList extends React.Component {
 
   renderProducts(classes, products: Products[]) {
     return (
-      // products.map( (product, i) =>
-      //       this.renderProduct(classes, product, i)
-      // )
-
       Object.entries(products).map(
         ([key, product]) =>
           this.renderProduct(classes, product, key)
@@ -340,7 +355,9 @@ class SectionList extends React.Component {
 
 SectionList.propTypes = {
   classes: PropTypes.object,
-  products: PropTypes.object
+  products: PropTypes.object,
+  reserved: PropTypes.object,
+  userId: PropTypes.string
 };
 
 export default withStyles(styles)(SectionList);

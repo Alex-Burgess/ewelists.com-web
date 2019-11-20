@@ -29,7 +29,7 @@ import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import FooterLarge from "components/Footer/FooterLarge.jsx";
 // sections for this page
-import SectionList from "./Sections/SectionList.jsx";
+import SectionProducts from "./Sections/Products.jsx";
 import SectionListDetails from "./Sections/ListDetails.jsx";
 
 import config from 'config.js';
@@ -44,7 +44,7 @@ class ArticlePage extends React.Component {
       description: '',
       occasion: '',
       date: '',
-      imageUrl: ''
+      imageUrl:  ''
     };
   }
 
@@ -86,30 +86,23 @@ class ArticlePage extends React.Component {
       });
     }
 
-    // // Update product details
-    // let products = this.state.products;
-    // for (var key in products) {
-    //   let product = products[key];
-    // // for (let product of response.products) {
-    //   let product_obj = {
-    //     productId: product.productId,
-    //     quantity: product.quantity,
-    //     reserved: product.reserved,
-    //     type: product.type,
-    //     brand: '',
-    //     details: '',
-    //     imageUrl: ''
-    //   };
-    //
-    //   this.setState({
-    //     products: this.state.products.concat(product_obj)
-    //   })
-    //
+    // let reserved = {
+    //   '12345678-prod-0001-1234-abcdefghijkl': {
+    //       '6086f845-7f05-42e2-bd23-c97faf909055': {
+    //         "productId": "12345678-prod-0001-1234-abcdefghijkl",
+    //         "message":    "A test message",
+    //         "name":    "Alex Burgess",
+    //         "quantity":    1,
+    //         "reservedAt":    1573739584,
+    //         "userId": "6086f845-7f05-42e2-bd23-c97faf909055"
+    //       }
+    //   }
     // }
+
     this.setState({
       products: response.products,
-      // reserved: response.reserved,
-      // shared: response.shared
+      // reserved: reserved,
+      reserved: response.reserved
     })
   }
 
@@ -178,13 +171,29 @@ class ArticlePage extends React.Component {
   updateReservedQuantity(reservedQuantity, product) {
     let products = this.state.products;
     let productId = product['productId'];
+    let userId = this.props.userSub;
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
 
     this.setState({
       products: update(this.state.products, {
-        [product['productId']]: {
+        [productId]: {
           reserved: {$set: reservedQuantity}
+        }
+      })
+    })
+
+    this.setState({
+      reserved: update(this.state.reserved, {
+        [productId]: {
+          [userId] : {
+            productId: productId,
+            // message:    "A test message",
+            // name:    "Alex Burgess",
+            quantity: reservedQuantity,
+            // reservedAt:    1573739584,
+            userId: userId
+          }
         }
       })
     })
@@ -196,6 +205,7 @@ class ArticlePage extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         {this.state.loaded
@@ -220,8 +230,10 @@ class ArticlePage extends React.Component {
                   date={this.state.date}
                   imageUrl={this.state.imageUrl}
                 />
-                <SectionList
+                <SectionProducts
                   products={this.state.products}
+                  reserved={this.state.reserved}
+                  userId={this.props.userSub}
                   getListId={this.getListId.bind(this)}
                   updateReservedQuantity={this.updateReservedQuantity.bind(this)}
                 />

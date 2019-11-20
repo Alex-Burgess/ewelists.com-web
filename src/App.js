@@ -71,12 +71,19 @@ class App extends React.Component {
     console.log("Getting email address");
     let user = await Auth.currentAuthenticatedUser();
     const { attributes } = user;
-    console.log("User email: " + attributes['email']);
-    this.setState({ email: attributes['email'] });
+    console.log("User id (sub): " + attributes['sub'] + " User email: " + attributes['email']);
+    this.setState({
+      email: attributes['email'],
+      sub: attributes['sub']
+    });
   }
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
+  }
+
+  getUserEmail() {
+    return this.state.email
   }
 
   setTitle() {
@@ -98,7 +105,8 @@ class App extends React.Component {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated,
-      email: this.state.email
+      userEmail: this.state.email,
+      userSub: this.state.sub
     };
 
     return (
