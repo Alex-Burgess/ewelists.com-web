@@ -47,7 +47,7 @@ class SectionList extends React.Component {
     this.state = {
       reserveModal: false,
       checked: [],
-      selectedEnabled: "a",
+      selectedEnabled: "all",
       showFilter: false,
       width: window.innerWidth,
       height: window.innerHeight,
@@ -93,7 +93,11 @@ class SectionList extends React.Component {
 
   handleChangeEnabled = event => {
     this.setState({ selectedEnabled: event.target.value });
-  };
+  }
+
+  resetFilter() {
+    this.setState({ selectedEnabled: "all" });
+  }
 
   handleToggle(value) {
     const { checked } = this.state;
@@ -154,56 +158,62 @@ class SectionList extends React.Component {
   }
 
   renderProduct(classes, product, i, reserved) {
-    return (
-      <GridItem md={4} sm={4} key={i}>
-        <Card plain product>
-          <CardHeader noShadow image>
-            <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
-              <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-            </a>
-          </CardHeader>
-          <CardBody plain className={classes.productDetails}>
-            <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
-              <h4 className={classes.cardTitle}>{product['brand']}</h4>
-            </a>
-            <p className={classes.description}>
-              {product['details']}
-            </p>
-          </CardBody>
-          <CardFooter plain className={classes.footer}>
-            <div>
-              <span className={classes.description}> Quantity: {product['quantity']}</span>
-            </div>
-            <div className={classes.textCenter}>
-              {this.userReservedItem(product['productId'], reserved)
-                ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
-                    Update
-                  </Button>
-                : product['reserved'] < product['quantity']
-                  ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
-                      Reserve Gift
+    if ((this.state.selectedEnabled === "purchased") && (product['reserved'] < product['quantity'])) {
+        return (null)
+    } else if ((this.state.selectedEnabled === "available") && (product['reserved'] >= product['quantity'])) {
+      return (null)
+    } else {
+      return (
+        <GridItem md={4} sm={4} key={i}>
+          <Card plain product>
+            <CardHeader noShadow image>
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                <img src={product['imageUrl']} className={classes.productImage} alt=".." />
+              </a>
+            </CardHeader>
+            <CardBody plain className={classes.productDetails}>
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                <h4 className={classes.cardTitle}>{product['brand']}</h4>
+              </a>
+              <p className={classes.description}>
+                {product['details']}
+              </p>
+            </CardBody>
+            <CardFooter plain className={classes.footer}>
+              <div>
+                <span className={classes.description}> Quantity: {product['quantity']}</span>
+              </div>
+              <div className={classes.textCenter}>
+                {this.userReservedItem(product['productId'], reserved)
+                  ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                      Update
                     </Button>
-                  : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
-                      Reserved
-                    </Button>
-              }
-            </div>
-          </CardFooter>
-        </Card>
-        <SectionReserve
-          open={this.state[product['productId']]
-            ? this.state[product['productId']]
-            : false }
-          product={product}
-          reservedDetails={this.getUserReservedDetails(product['productId'], reserved)
-            ? this.getUserReservedDetails(product['productId'], reserved)
-            : null }
-          handleClose={this.handleClose.bind(this)}
-          getListId={this.props.getListId.bind(this)}
-          updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}
-        />
-      </GridItem>
-    )
+                  : product['reserved'] < product['quantity']
+                    ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                        Reserve Gift
+                      </Button>
+                    : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
+                        Reserved
+                      </Button>
+                }
+              </div>
+            </CardFooter>
+          </Card>
+          <SectionReserve
+            open={this.state[product['productId']]
+              ? this.state[product['productId']]
+              : false }
+            product={product}
+            reservedDetails={this.getUserReservedDetails(product['productId'], reserved)
+              ? this.getUserReservedDetails(product['productId'], reserved)
+              : null }
+            handleClose={this.handleClose.bind(this)}
+            getListId={this.props.getListId.bind(this)}
+            updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}
+          />
+        </GridItem>
+      )
+    }
   }
 
   renderProducts(classes, products: Products[], reserved) {
@@ -240,7 +250,7 @@ class SectionList extends React.Component {
                         <h4 className={classes.cardTitle + " " + classes.textLeft}>
                           Filter
                           <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
-                            <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton}>
+                            <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton} onClick={this.resetFilter.bind(this)}>
                               <Cached />
                             </Button>
                           </Tooltip>
@@ -264,9 +274,9 @@ class SectionList extends React.Component {
                                     <FormControlLabel
                                       control={
                                         <Radio
-                                          checked={this.state.selectedEnabled === "a"}
+                                          checked={this.state.selectedEnabled === "all"}
                                           onChange={this.handleChangeEnabled}
-                                          value="a"
+                                          value="all"
                                           name="radio button enabled"
                                           aria-label="A"
                                           icon={
@@ -292,9 +302,9 @@ class SectionList extends React.Component {
                                     <FormControlLabel
                                       control={
                                         <Radio
-                                          checked={this.state.selectedEnabled === "b"}
+                                          checked={this.state.selectedEnabled === "available"}
                                           onChange={this.handleChangeEnabled}
-                                          value="b"
+                                          value="available"
                                           name="radio button enabled"
                                           aria-label="B"
                                           icon={
@@ -320,9 +330,9 @@ class SectionList extends React.Component {
                                     <FormControlLabel
                                       control={
                                         <Radio
-                                          checked={this.state.selectedEnabled === "c"}
+                                          checked={this.state.selectedEnabled === "purchased"}
                                           onChange={this.handleChangeEnabled}
-                                          value="c"
+                                          value="purchased"
                                           name="radio button enabled"
                                           aria-label="C"
                                           icon={
