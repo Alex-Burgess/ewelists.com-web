@@ -68,7 +68,7 @@ class SectionLists extends React.Component {
       title: '',
       description: '',
       occasion: '',
-      imageUrl: config.imagePrefix + '/images/celebration-default.jpg'
+      occasionList: ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christening', 'Other']
     };
   }
 
@@ -109,13 +109,16 @@ class SectionLists extends React.Component {
   createList = async event => {
     this.setState({ isCreating: true });
 
-    console.log("Creating list with values: title: " + this.state.title + ", description: " + this.state.description + ", occasion: " + this.state.occasion + ", imageUrl: " + this.state.imageUrl);
+    const occasion_parsed = this.state.occasion.toLowerCase().replace(/\s/g,'');
+    const new_image_url = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
+
+    console.log("Creating list with values: title: " + this.state.title + ", description: " + this.state.description + ", occasion: " + this.state.occasion + ", imageUrl: " + new_image_url);
 
     var createList = {
       "title": this.state.title,
       "description": this.state.description,
       "occasion": this.state.occasion,
-      "imageUrl": this.state.imageUrl
+      "imageUrl": new_image_url
     }
 
     const response = await this.createListRequest(createList);
@@ -180,6 +183,35 @@ class SectionLists extends React.Component {
         </GridItem>
     )
   }
+
+  renderOccasionSelect(classes) {
+    return (
+      <FormControl fullWidth className={classes.selectFormControl}>
+        <Select
+          MenuProps={{className: classes.selectMenu}}
+          classes={{select: classes.select}}
+          value={this.state.occasion}
+          onChange={this.handleSimple}
+          inputProps={{name: "occasion", id: "simple-select"}}
+        >
+          <MenuItem disabled classes={{root: classes.selectMenuItem}}>
+            Select Type
+          </MenuItem>
+          {this.renderMenuItems(classes, this.state.occasionList)}
+        </Select>
+      </FormControl>
+    )
+  }
+
+  renderMenuItems(classes, occasionList: Occasions[]) {
+    return occasionList.map(
+      (label, i) =>
+          <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value={label} key={i}>
+            {label}
+          </MenuItem>
+    )
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -276,85 +308,7 @@ class SectionLists extends React.Component {
                             <InputLabel className={classes.label + " " + classes.date}>
                               Occasion:
                             </InputLabel>
-                            <FormControl fullWidth className={classes.selectFormControl}>
-                              <Select
-                                MenuProps={{
-                                  className: classes.selectMenu
-                                }}
-                                classes={{
-                                  select: classes.select
-                                }}
-                                value={this.state.occasion}
-                                onChange={this.handleSimple}
-                                inputProps={{
-                                  name: "occasion",
-                                  id: "simple-select"
-                                }}
-                              >
-                                <MenuItem
-                                  disabled
-                                  classes={{
-                                    root: classes.selectMenuItem
-                                  }}
-                                >
-                                  Select Type
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Baby Shower"
-                                >
-                                  Baby Shower
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Birthday"
-                                >
-                                  Birthday
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Christmas"
-                                >
-                                  Christmas
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Baptism"
-                                >
-                                  Baptism
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Christening"
-                                >
-                                  Christening
-                                </MenuItem>
-                                <MenuItem
-                                  classes={{
-                                    root: classes.selectMenuItem,
-                                    selected: classes.selectMenuItemSelected
-                                  }}
-                                  value="Other"
-                                >
-                                  Other
-                                </MenuItem>
-                              </Select>
-                            </FormControl>
+                            {this.renderOccasionSelect(classes)}
                             <div className={classes.root}>
                               <div className={classes.wrapper}>
                                 <Button

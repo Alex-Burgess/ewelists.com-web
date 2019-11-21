@@ -57,7 +57,8 @@ class SectionDetails extends React.Component {
     super(props);
     this.state = {
       smallModal: false,
-      deleteErrorMessage: null
+      deleteErrorMessage: null,
+      occasionList: ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christening', 'Other']
     };
   }
 
@@ -93,6 +94,34 @@ class SectionDetails extends React.Component {
         })
       }
     }
+  }
+
+  renderOccasionSelect(classes, occasion) {
+    return (
+      <FormControl fullWidth className={classes.selectFormControl}>
+        <Select
+          MenuProps={{className: classes.selectMenu}}
+          classes={{select: classes.select}}
+          value={occasion}
+          onChange={this.props.handleOccasionSelect}
+          inputProps={{name: "occasion", id: "simple-select"}}
+        >
+          <MenuItem disabled classes={{root: classes.selectMenuItem}}>
+            Select Type
+          </MenuItem>
+          {this.renderMenuItems(classes, this.state.occasionList)}
+        </Select>
+      </FormControl>
+    )
+  }
+
+  renderMenuItems(classes, occasionList: Occasions[]) {
+    return occasionList.map(
+      (label, i) =>
+          <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value={label} key={i}>
+            {label}
+          </MenuItem>
+    )
   }
 
   render() {
@@ -222,37 +251,7 @@ class SectionDetails extends React.Component {
                 <InputLabel className={classes.labelEdit}>
                   Occasion:
                 </InputLabel>
-                <FormControl fullWidth className={classes.selectFormControl}>
-                  <Select
-                    MenuProps={{className: classes.selectMenu}}
-                    classes={{select: classes.select}}
-                    value={occasion}
-                    onChange={this.props.handleOccasionSelect}
-                    inputProps={{name: "occasion", id: "simple-select"}}
-                  >
-                    <MenuItem disabled classes={{root: classes.selectMenuItem}}>
-                      Select Type
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Baby Shower">
-                      Baby Shower
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Birthday">
-                      Birthday
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Christmas">
-                      Christmas
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Baptism">
-                      Baptism
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Christening">
-                      Christening
-                    </MenuItem>
-                    <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value="Other">
-                      Other
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+                {this.renderOccasionSelect(classes, occasion)}
               </GridItem>
               <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
                 <div className={classes.editButtons}>

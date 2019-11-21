@@ -193,12 +193,18 @@ class ArticlePage extends React.Component {
 
     // Change the image url based on the target value
     let occasion = event.target.value;
-    let imageUrl;
-    if (occasion === 'Christmas') {
-      imageUrl = config.imagePrefix + '/images/christmas-default.jpg';
-    } else {
-      imageUrl = config.imagePrefix + '/images/celebration-default.jpg';
-    }
+
+    console.log("Setting occasion to: " + occasion)
+
+    const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
+    let imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
+
+    // let imageUrl;
+    // if (occasion === 'Christmas') {
+    //   imageUrl = config.imagePrefix + '/images/christmas-default.jpg';
+    // } else {
+    //   imageUrl = config.imagePrefix + '/images/celebration-default.jpg';
+    // }
 
     this.setState({ imageUrl: imageUrl });
   };
