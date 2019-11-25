@@ -18,6 +18,7 @@ import {
   container,
   mrAuto,
   mlAuto,
+  dangerColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const sectionDetailsStyle = theme => ({
@@ -42,7 +43,12 @@ const sectionDetailsStyle = theme => ({
   },
   actionButton: {
     padding: "12px 10px"
-  }
+  },
+  errorContainer: {
+    color: dangerColor[1],
+    textAlign: "center !important",
+    minHeight: "40px"
+  },
 });
 
 export default sectionDetailsStyle;

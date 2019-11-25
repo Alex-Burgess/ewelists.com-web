@@ -51,10 +51,12 @@ class ArticlePage extends React.Component {
   async componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-    await this.getListDetails();
-    await this.getProductDetails();
+    const gotList = await this.getListDetails();
 
-    this.setState({ loaded: true });
+    if (gotList){
+        await this.getProductDetails();
+        this.setState({ loaded: true });
+    }
   }
 
   async getListDetails() {
@@ -66,6 +68,7 @@ class ArticlePage extends React.Component {
     } catch (e) {
       console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
       this.props.history.push('/error/' + this.props.match.params.id);
+      return false
     }
 
     // Update list details
@@ -90,6 +93,8 @@ class ArticlePage extends React.Component {
       products: response.products,
       reserved: response.reserved
     })
+
+    return true
   }
 
   // Need to get type from list product

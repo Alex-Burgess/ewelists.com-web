@@ -15,6 +15,7 @@
 
 */
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -30,15 +31,81 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
+import SectionUnsharePopout from "./UnsharePopOut.jsx";
+
 import styles from "assets/jss/material-kit-pro-react/views/editListSections/shareStyle.jsx";
 
-class SectionAddGifts extends React.Component {
+class SectionShare extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newEmail: '',
+      errorMessage: '',
+      message: '',
+      popout: {},
+    };
+  }
+
+  handleEmailChange = event => {
+    this.setState({
+      newEmail: event.target.value
+    });
+  }
+
+  handleClose(modal) {
+    var x = [];
+    x[modal] = false;
+    this.setState({ popout: x });
+  }
+
+  handleOpen(modal) {
+    var x = [];
+    x[modal] = true;
+    this.setState({ popout: x });
+  }
+
+  validateEmail(){
+    const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return (
+      this.state.newEmail.length > 0 && regexp.test(this.state.newEmail)
+    );
+  }
+
+  clearErrorState() {
+    this.setState({ errorMessage: ''});
+  }
+
+  shareListWithUser = async event => {
+    this.setState({ errorMessage: ''});
+
+    let list_id = this.props.getListId();
+    let email = this.state.newEmail;
+
+    let response;
+
+    try {
+      response = await API.post("lists", "/" + list_id + "/share/" +  email);
+    } catch (e) {
+      console.log('Error message: ' + e.response.data.error);
+
+      if (e.response.data.error === 'User already exists in list.') {
+        this.setState({ errorMessage: 'User already exists in your list.'});
+      } else {
+        this.setState({ errorMessage: 'User could not be added to your list due to an unexpected error.'});
+      }
+      return false
+    }
+
+    this.props.addUserToSharedState(response.user)
+  }
+
+
   renderRows(classes, shared) {
     let allrows = [];
     if (shared) {
       allrows = Object.entries(shared).map(
         ([key, user]) =>
-              this.renderRow(classes, user['name'], user['email'])
+              this.renderRow(classes, user)
       )
 
       allrows[shared.length] = { addnew: true, colspan: "2", col: {colspan: 1} }
@@ -49,13 +116,13 @@ class SectionAddGifts extends React.Component {
     return allrows
   }
 
-  renderRow(classes, name, email) {
+  renderRow(classes, user) {
     return ([
       <span>
-        {name}
+        {user['name']}
       </span>,
       <span>
-        {email}
+        {user['email']}
       </span>,
       <Tooltip
         key={8756431234}
@@ -64,11 +131,28 @@ class SectionAddGifts extends React.Component {
         placement="left"
         classes={{ tooltip: classes.tooltip }}
       >
-        <Button link className={classes.actionButton}>
+        <Button link className={classes.actionButton} onClick={() => this.handleOpen(user['email'])}>
           <Close />
         </Button>
       </Tooltip>
     ])
+  }
+
+  renderUnsharePopOuts(classes, shared) {
+    return Object.entries(shared).map(
+      ([key, user]) =>
+            <SectionUnsharePopout
+              open={this.state.popout[user['email']]
+                ? this.state.popout[user['email']]
+                : false }
+              user={user}
+              handleClose={this.handleClose.bind(this)}
+              removeUserFromSharedState={this.props.removeUserFromSharedState.bind(this)}
+              getListId={this.props.getListId.bind(this)}
+              clearErrorState={this.clearErrorState.bind(this)}
+              key={key}
+            />
+    )
   }
 
   render() {
@@ -83,18 +167,28 @@ class SectionAddGifts extends React.Component {
             >
               <div className={classes.textCenter}>
                 <CustomInput
-                  id="material"
+                  id="newEmail"
                   formControlProps={{
                     fullWidth: false,
                     className: classes.customFormControl
                   }}
                   inputProps={{
-                    placeholder: "Enter email..."
+                    placeholder: "Enter email...",
+                    onChange: this.handleEmailChange
                   }}
                 />
-                <Button color="primary" justIcon>
+                <Button color="primary" justIcon onClick={() => this.shareListWithUser()} disabled={!this.validateEmail()}>
                   <Add />
                 </Button>
+              </div>
+              <div className={classes.errorContainer}>
+                {this.state.errorMessage
+                  ?
+                    <div>
+                      {this.state.errorMessage}
+                    </div>
+                  : null
+                }
               </div>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8} lg={8}
@@ -123,14 +217,15 @@ class SectionAddGifts extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
+        {this.renderUnsharePopOuts(classes, shared)}
       </div>
     );
   }
 }
 
-SectionAddGifts.propTypes = {
+SectionShare.propTypes = {
   classes: PropTypes.object,
   shared: PropTypes.object
 };
 
-export default withStyles(styles)(SectionAddGifts);
+export default withStyles(styles)(SectionShare);

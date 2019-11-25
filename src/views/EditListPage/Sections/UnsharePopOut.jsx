@@ -1,4 +1,5 @@
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
@@ -24,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 Transition.displayName = "Transition";
 
-class SectionDeletePopout extends React.Component {
+class SectionUnsharePopout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,8 +34,39 @@ class SectionDeletePopout extends React.Component {
     };
   }
 
+  deleteUser = async user => {
+    this.props.clearErrorState();
+
+    let list_id = this.props.getListId();
+    let user_val;
+
+    if (user['type'] === "PENDING") {
+      user_val = encodeURIComponent(user['email'])
+    } else if (user['type'] === "SHARED") {
+      user_val = user['userId']
+    } else {
+      this.setState({ errorMessage: 'User could not be removed from your list due to an unexpected error.'});
+      return false
+    }
+
+    try {
+      await API.del("lists", "/" + list_id + "/share/" +  user_val, {
+        body: {
+          "share_type": user['type']
+        }
+      });
+    } catch (e) {
+      console.log('Error message: ' + e.response.data.error);
+      this.setState({ errorMessage: 'User could not be removed from your list due to an unexpected error.'});
+      return false
+    }
+
+    this.props.removeUserFromSharedState(user);
+    this.props.handleClose(user['email']);
+  }
+
   render() {
-    const { classes, open, deleteError } = this.props;
+    const { classes, open, deleteError, user } = this.props;
     return (
       <div className={classes.section}>
         {/* SMALL MODAL START */}
@@ -72,8 +104,8 @@ class SectionDeletePopout extends React.Component {
               classes.modalBody + " " + classes.modalSmallBody + " " + classes.centerText
             }
           >
-            <h5><b>Are you sure you want to delete this list?</b></h5>
-            <h5>This cannot be undone.</h5>
+            <h5><b>Are you sure you want to remove {user['name']}?</b></h5>
+            <h5>They may have bought gifts on your list.</h5>
           </DialogContent>
           <DialogActions
             className={
@@ -90,7 +122,7 @@ class SectionDeletePopout extends React.Component {
               No
             </Button>
             <Button
-              onClick={this.props.deleteList}
+              onClick={() => this.deleteUser(user)}
               color="default"
               block
               round
@@ -125,10 +157,11 @@ class SectionDeletePopout extends React.Component {
   }
 }
 
-SectionDeletePopout.propTypes = {
+SectionUnsharePopout.propTypes = {
   classes: PropTypes.object,
+  user: PropTypes.object,
   open: PropTypes.bool,
   deleteError: PropTypes.string
 };
 
-export default withStyles(sectionStyle)(SectionDeletePopout);
+export default withStyles(sectionStyle)(SectionUnsharePopout);

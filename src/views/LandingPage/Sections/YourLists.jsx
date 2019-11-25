@@ -135,7 +135,7 @@ class SectionLists extends React.Component {
     });
   }
 
-  renderYourLists(classes, lists: Lists[]) {
+  renderYourLists(classes, lists: Lists[], shared) {
     let allLists: Lists[] = [];
 
     return allLists.concat(lists).map (
@@ -164,21 +164,27 @@ class SectionLists extends React.Component {
                 {list.occasion}
               </p>
             </CardBody>
-            <CardFooter
-              profile
-              className={classes.justifyContentCenter}
-            >
-              <a href={"/lists/" + list.listId}>
-                <Button round justIcon color="info">
-                  <Subject />
-                </Button>
-              </a>
-              <a href={"/edit/" + list.listId}>
-                <Button round justIcon color="success">
-                  <Icon>mode_edit</Icon>
-                </Button>
-              </a>
-            </CardFooter>
+            {shared
+              ? <CardFooter profile className={classes.justifyContentCenter}>
+                  <a href={"/lists/" + list.listId}>
+                    <Button round color="info" className={classes.reserveButton2}>
+                      Shop List
+                    </Button>
+                  </a>
+                </CardFooter>
+              : <CardFooter profile className={classes.justifyContentCenter}>
+                  <a href={"/lists/" + list.listId}>
+                    <Button round justIcon color="info">
+                      <Subject />
+                    </Button>
+                  </a>
+                  <a href={"/edit/" + list.listId}>
+                    <Button round justIcon color="success">
+                      <Icon>mode_edit</Icon>
+                    </Button>
+                  </a>
+                </CardFooter>
+            }
           </Card>
         </GridItem>
     )
@@ -212,6 +218,109 @@ class SectionLists extends React.Component {
     )
   }
 
+  renderCreatePopOut(classes){
+    return (
+      <Dialog
+        classes={{
+          root: classes.modalRoot,
+          paper: classes.modal + " " + classes.modalClassic
+        }}
+        open={this.state.createModal}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => this.handleClose("createModal")}
+        aria-labelledby="classic-modal-slide-title"
+        aria-describedby="classic-modal-slide-description"
+      >
+        <DialogTitle
+          id="classic-modal-slide-title"
+          disableTypography
+          className={classes.modalHeader}
+        >
+          <Button
+            simple
+            className={classes.modalCloseButton}
+            key="close"
+            aria-label="Close"
+            onClick={() => this.handleClose("createModal")}
+          >
+            {" "}
+            <Close className={classes.modalClose} />
+          </Button>
+          <h3
+            className={
+              classes.cardTitle + " " + classes.modalTitle + " " + classes.textCenter
+            }
+          >
+            Create New List
+          </h3>
+        </DialogTitle>
+        <DialogContent
+          id="classic-modal-slide-description"
+          className={classes.modalBody}
+        >
+          <GridContainer>
+            <GridItem
+              xs={12}
+              sm={12}
+              md={12}
+              className={classes.mrAuto}
+            >
+              <form className={classes.form}>
+                <InputLabel className={classes.label}>
+                  Title:
+                </InputLabel>
+                <CustomInput
+                  id="title"
+                  smallTitle
+                  inputProps={{
+                    placeholder: "Enter your title here...",
+                    onChange: this.changeHandler
+                  }}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+                <InputLabel className={classes.label}>
+                  Description:
+                </InputLabel>
+                <CustomInput
+                  id="description"
+                  smallDescription
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    placeholder: "Add your description here...",
+                    onChange: this.changeHandler
+                  }}
+                />
+                <InputLabel className={classes.label + " " + classes.date}>
+                  Occasion:
+                </InputLabel>
+                {this.renderOccasionSelect(classes)}
+                <div className={classes.root}>
+                  <div className={classes.wrapper}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.buttonSuccess}
+                      disabled={this.state.isCreating}
+                      onClick={this.createList}
+                    >
+                      Create
+                    </Button>
+                    {this.state.isCreating && <CircularProgress size={24} className={classes.buttonProgress} />}
+                  </div>
+                </div>
+              </form>
+            </GridItem>
+          </GridContainer>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -223,120 +332,21 @@ class SectionLists extends React.Component {
               <h1 className={classes.title}>Your lists</h1>
               <br />
               <GridContainer>
-                {!this.state.isLoading && this.renderYourLists(classes, this.state.ownedLists)}
+                {!this.state.isLoading && this.renderYourLists(classes, this.state.ownedLists, false)}
                 <GridItem xs={12} sm={4} md={4}>
                   <CreateButton
                     text="Create a New List"
                     onClick={() => this.handleClickOpen("createModal")}
                   />
-                  {/* CREATE MODAL START */}
-                  <Dialog
-                    classes={{
-                      root: classes.modalRoot,
-                      paper: classes.modal + " " + classes.modalClassic
-                    }}
-                    open={this.state.createModal}
-                    TransitionComponent={Transition}
-                    keepMounted
-                    onClose={() => this.handleClose("createModal")}
-                    aria-labelledby="classic-modal-slide-title"
-                    aria-describedby="classic-modal-slide-description"
-                  >
-                    <DialogTitle
-                      id="classic-modal-slide-title"
-                      disableTypography
-                      className={classes.modalHeader}
-                    >
-                      <Button
-                        simple
-                        className={classes.modalCloseButton}
-                        key="close"
-                        aria-label="Close"
-                        onClick={() => this.handleClose("createModal")}
-                      >
-                        {" "}
-                        <Close className={classes.modalClose} />
-                      </Button>
-                      <h3
-                        className={
-                          classes.cardTitle + " " + classes.modalTitle + " " + classes.textCenter
-                        }
-                      >
-                        Create New List
-                      </h3>
-                    </DialogTitle>
-                    <DialogContent
-                      id="classic-modal-slide-description"
-                      className={classes.modalBody}
-                    >
-                      <GridContainer>
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={12}
-                          className={classes.mrAuto}
-                        >
-                          <form className={classes.form}>
-                            <InputLabel className={classes.label}>
-                              Title:
-                            </InputLabel>
-                            <CustomInput
-                              id="title"
-                              smallTitle
-                              inputProps={{
-                                placeholder: "Enter your title here...",
-                                onChange: this.changeHandler
-                              }}
-                              formControlProps={{
-                                fullWidth: true
-                              }}
-                            />
-                            <InputLabel className={classes.label}>
-                              Description:
-                            </InputLabel>
-                            <CustomInput
-                              id="description"
-                              smallDescription
-                              formControlProps={{
-                                fullWidth: true
-                              }}
-                              inputProps={{
-                                placeholder: "Add your description here...",
-                                onChange: this.changeHandler
-                              }}
-                            />
-                            <InputLabel className={classes.label + " " + classes.date}>
-                              Occasion:
-                            </InputLabel>
-                            {this.renderOccasionSelect(classes)}
-                            <div className={classes.root}>
-                              <div className={classes.wrapper}>
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  className={classes.buttonSuccess}
-                                  disabled={this.state.isCreating}
-                                  onClick={this.createList}
-                                >
-                                  Create
-                                </Button>
-                                {this.state.isCreating && <CircularProgress size={24} className={classes.buttonProgress} />}
-                              </div>
-                            </div>
-                          </form>
-                        </GridItem>
-                      </GridContainer>
-                    </DialogContent>
-                  </Dialog>
-                  {/* CREATE MODAL END */}
+                  {this.renderCreatePopOut(classes)}
                 </GridItem>
               </GridContainer>
             </GridItem>
             <GridItem xs={12} sm={12} md={12}>
-              <h1 className={classes.title}>View Lists Shared With You</h1>
+              <h1 className={classes.title}>Lists Shared With You</h1>
               <br />
               <GridContainer>
-                {!this.state.isLoading && this.renderYourLists(classes, this.state.sharedLists)}
+                {!this.state.isLoading && this.renderYourLists(classes, this.state.sharedLists, true)}
               </GridContainer>
             </GridItem>
           </GridContainer>

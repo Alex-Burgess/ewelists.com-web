@@ -60,10 +60,13 @@ class ArticlePage extends React.Component {
   async componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-    await this.getListDetails();
-    await this.getProductDetails();
 
-    this.setState({ loaded: true });
+    const gotList = await this.getListDetails();
+
+    if (gotList){
+        await this.getProductDetails();
+        this.setState({ loaded: true });
+    }
   }
 
   async getListDetails() {
@@ -75,6 +78,7 @@ class ArticlePage extends React.Component {
     } catch (e) {
       console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
       this.props.history.push('/error/' + this.props.match.params.id);
+      return false
     }
 
     // Update list details
@@ -100,6 +104,8 @@ class ArticlePage extends React.Component {
       reserved: response.reserved,
       shared: response.shared
     })
+
+    return true
   }
 
   async getProductDetails() {
@@ -190,21 +196,11 @@ class ArticlePage extends React.Component {
 
   handleOccasionSelect = event => {
     this.setState({ [event.target.name]: event.target.value });
-
-    // Change the image url based on the target value
     let occasion = event.target.value;
-
     console.log("Setting occasion to: " + occasion)
 
     const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
     let imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
-
-    // let imageUrl;
-    // if (occasion === 'Christmas') {
-    //   imageUrl = config.imagePrefix + '/images/christmas-default.jpg';
-    // } else {
-    //   imageUrl = config.imagePrefix + '/images/celebration-default.jpg';
-    // }
 
     this.setState({ imageUrl: imageUrl });
   };
@@ -239,6 +235,21 @@ class ArticlePage extends React.Component {
           quantity: {$set: product['quantity']}
         }
       })
+    })
+  }
+
+  addUserToSharedState(user) {
+    this.setState({
+      shared: {
+         ...this.state.shared,
+         [user['email']]: user
+      }
+    });
+  }
+
+  removeUserFromSharedState(user) {
+    this.setState({
+      shared: update(this.state.shared, { $unset: [user['email']] })
     })
   }
 
@@ -311,6 +322,9 @@ class ArticlePage extends React.Component {
                           <div>
                             <SectionShare
                               shared={this.state.shared}
+                              getListId={this.getListId.bind(this)}
+                              addUserToSharedState={this.addUserToSharedState.bind(this)}
+                              removeUserFromSharedState={this.removeUserFromSharedState.bind(this)}
                             />
                           </div>
                         )
