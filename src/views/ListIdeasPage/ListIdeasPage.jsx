@@ -27,6 +27,7 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import FooterDark from "components/Footer/FooterDark.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -132,16 +133,28 @@ class ListIdeasPage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 200,
-            color: "info"
-          }}
-        />
+        {this.props.isAuthenticated
+          ? <Header
+              brand="Material Kit PRO React"
+              links={<HeaderLinksAuth dropdownHoverColor="info" />}
+              fixed
+              color="transparent"
+              changeColorOnScroll={{
+                height: 200,
+                color: "info"
+              }}
+            />
+          : <Header
+              brand="Material Kit PRO React"
+              links={<HeaderLinks dropdownHoverColor="info" />}
+              fixed
+              color="transparent"
+              changeColorOnScroll={{
+                height: 200,
+                color: "info"
+              }}
+            />
+        }
         <Parallax filter="infoBanner" verySmall>
           <div className={classes.container}>
             <GridContainer justify="center">

@@ -28,6 +28,7 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import FooterLarge from "components/Footer/FooterLarge.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -142,16 +143,28 @@ class ArticlePage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="info" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 200,
-            color: "info"
-          }}
-        />
+        {this.props.isAuthenticated
+          ? <Header
+              brand="ewelists"
+              links={<HeaderLinksAuth dropdownHoverColor="info" />}
+              fixed
+              color="transparent"
+              changeColorOnScroll={{
+                height: 200,
+                color: "info"
+              }}
+            />
+          : <Header
+              brand="ewelists"
+              links={<HeaderLinks dropdownHoverColor="info" />}
+              fixed
+              color="transparent"
+              changeColorOnScroll={{
+                height: 200,
+                color: "info"
+              }}
+            />
+        }
         <Parallax image={require('assets/img/articles/' + this.state.backgroundImg)} filter="dark" className={classes.articleBg}>
         </Parallax>
         <div className={classes.main}>

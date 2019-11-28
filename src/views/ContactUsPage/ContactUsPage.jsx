@@ -30,6 +30,7 @@ import BusinessCenter from "@material-ui/icons/BusinessCenter";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import InfoArea from "components/InfoArea/InfoArea.jsx";
@@ -49,12 +50,20 @@ class ContactUsPage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header
-          brand="Material Kit PRO React"
-          links={<HeaderLinks dropdownHoverColor="dark" />}
-          fixed
-          color="info"
-        />
+        {this.props.isAuthenticated
+          ? <Header
+              brand="ewelists"
+              links={<HeaderLinksAuth dropdownHoverColor="info" />}
+              fixed
+              color="info"
+            />
+          : <Header
+              brand="ewelists"
+              links={<HeaderLinks dropdownHoverColor="info" />}
+              fixed
+              color="info"
+            />
+        }
         <Parallax image={require("assets/img/sheep-with-shoes.jpg")} className={classes.parallax}>
           <div className={classes.container}>
             <GridContainer justify="center">
@@ -93,13 +102,6 @@ class ContactUsPage extends React.Component {
                     />
                     <CustomInput
                       labelText="Email address"
-                      id="float"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Phone"
                       id="float"
                       formControlProps={{
                         fullWidth: true
