@@ -8,7 +8,7 @@ const test = {
   cognito: {
     REGION: "eu-west-1",
     USER_POOL_ID: "eu-west-1_vqox9Z8q7",
-    APP_CLIENT_ID: "61pt55apuqgj2jgbsfjmj1efn8",
+    APP_CLIENT_ID: "2effvksije4gnnrlefivcv246t",
     IDENTITY_POOL_ID: "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
     DOMAIN: "test-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
@@ -29,7 +29,7 @@ const staging = {
   cognito: {
     REGION: "eu-west-1",
     USER_POOL_ID: "eu-west-1_Le825O3Pt",
-    APP_CLIENT_ID: "g25ievgqbf4qtds8rik01i4md",
+    APP_CLIENT_ID: "5tmme79b0m94mp3i87e300piqp",
     IDENTITY_POOL_ID: "eu-west-1:704a4a75-e23e-4b9f-b7b1-ad7113e9c28d",
     DOMAIN: "staging-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
@@ -50,7 +50,7 @@ const prod = {
   cognito: {
     REGION: "eu-west-1",
     USER_POOL_ID: "eu-west-1_8aOIk3Jcv",
-    APP_CLIENT_ID: "251cvv5788hrieja107ciik223",
+    APP_CLIENT_ID: "332d51kavmed0afpk2li1plv19",
     IDENTITY_POOL_ID: "eu-west-1:f983160e-926c-47a7-a9a8-6dbceb68edbb",
     DOMAIN: "ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
