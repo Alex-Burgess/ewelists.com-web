@@ -16,6 +16,7 @@
 */
 /*eslint-disable*/
 import React from "react";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // nodejs library that concatenates classes
@@ -42,10 +43,107 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import contactUsStyle from "assets/jss/material-kit-pro-react/views/contactUsStyle.jsx";
 
 class ContactUsPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      email: '',
+      message: '',
+      submit: false
+    };
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+
+  sendMail = async event => {
+    let details = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message
+    }
+    const response = await API.post("contact", "/", {
+      body: details
+    });
+
+    console.log("response: " + JSON.stringify(response))
+    this.setState({
+      submit: true
+    });
+  }
+
+  changeHandler = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
+  validateForm() {
+    return (
+      this.state.name.length > 0 &&
+      this.state.email.length > 0 &&
+      this.state.message.length > 0
+    );
+  }
+
+
+  renderForm(classes){
+    return (
+      <form>
+        <CustomInput
+          labelText="Your Name"
+          id="name"
+          formControlProps={{
+            fullWidth: true
+          }}
+          inputProps={{
+            onChange: this.changeHandler
+          }}
+        />
+        <CustomInput
+          labelText="Email address"
+          id="email"
+          formControlProps={{
+            fullWidth: true
+          }}
+          inputProps={{
+            onChange: this.changeHandler
+          }}
+        />
+        <CustomInput
+          labelText="Your message"
+          id="message"
+          formControlProps={{
+            fullWidth: true
+          }}
+          inputProps={{
+            multiline: true,
+            rows: 6,
+            onChange: this.changeHandler
+          }}
+        />
+        <div className={classes.textCenter}>
+          <Button color="primary" round onClick={() => this.sendMail()} disabled={!this.validateForm()}>
+            Contact us
+          </Button>
+        </div>
+      </form>
+    )
+  }
+
+  renderSent(classes){
+    return (
+      <div className={classes.sent}>
+        <p>
+          Thank you for your message {this.state.name}.  We will get back to you by email.
+        </p>
+      </div>
+    )
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -92,38 +190,10 @@ class ContactUsPage extends React.Component {
                     <br />
                     <br />
                   </p>
-                  <form>
-                    <CustomInput
-                      labelText="Your Name"
-                      id="float"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Email address"
-                      id="float"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Your message"
-                      id="float"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        multiline: true,
-                        rows: 6
-                      }}
-                    />
-                    <div className={classes.textCenter}>
-                      <Button color="primary" round>
-                        Contact us
-                      </Button>
-                    </div>
-                  </form>
+                  {this.state.submit
+                    ? this.renderSent(classes)
+                    : this.renderForm(classes)
+                  }
                 </GridItem>
               </GridContainer>
             </div>

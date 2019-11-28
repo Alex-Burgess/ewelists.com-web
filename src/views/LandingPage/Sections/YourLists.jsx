@@ -106,6 +106,14 @@ class SectionLists extends React.Component {
     });
   }
 
+  validateForm() {
+    return (
+      this.state.title.length > 0 &&
+      this.state.description.length > 0 &&
+      this.state.occasion.length > 0
+    );
+  }
+
   createList = async event => {
     this.setState({ isCreating: true });
 
@@ -305,7 +313,7 @@ class SectionLists extends React.Component {
                       variant="contained"
                       color="primary"
                       className={classes.buttonSuccess}
-                      disabled={this.state.isCreating}
+                      disabled={!this.validateForm() || this.state.isCreating}
                       onClick={this.createList}
                     >
                       Create

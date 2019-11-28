@@ -43,6 +43,11 @@ Amplify.configure({
         name: "products",
         endpoint: config.apiGateway.PRODUCTS,
         region: config.apiGateway.REGION
+      },
+      {
+        name: "contact",
+        endpoint: config.apiGateway.CONTACT,
+        region: config.apiGateway.REGION
       }
     ]
   }

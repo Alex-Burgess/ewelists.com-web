@@ -3,7 +3,8 @@ const test = {
     REGION: "eu-west-1",
     LISTS: "https://4sdcvv0n2e.execute-api.eu-west-1.amazonaws.com/test/lists",
     NOTFOUND: "https://pff49212ai.execute-api.eu-west-1.amazonaws.com/test/notfound",
-    PRODUCTS: "https://4cu83a3xga.execute-api.eu-west-1.amazonaws.com/test/products"
+    PRODUCTS: "https://4cu83a3xga.execute-api.eu-west-1.amazonaws.com/test/products",
+    CONTACT: "https://dond3owxm5.execute-api.eu-west-1.amazonaws.com/test/contact"
   },
   cognito: {
     REGION: "eu-west-1",
@@ -24,7 +25,8 @@ const staging = {
     REGION: "eu-west-1",
     LISTS: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists",
     NOTFOUND: "https://jnbwllwjwl.execute-api.eu-west-1.amazonaws.com/staging/notfound",
-    PRODUCTS: "https://p0ugkk400f.execute-api.eu-west-1.amazonaws.com/staging/products"
+    PRODUCTS: "https://p0ugkk400f.execute-api.eu-west-1.amazonaws.com/staging/products",
+    CONTACT: ""
   },
   cognito: {
     REGION: "eu-west-1",
@@ -45,7 +47,8 @@ const prod = {
     REGION: "eu-west-1",
     LISTS: "",
     NOTFOUND: "",
-    PRODUCTS: ""
+    PRODUCTS: "",
+    CONTACT: ""
   },
   cognito: {
     REGION: "eu-west-1",
