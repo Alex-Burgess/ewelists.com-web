@@ -26,7 +26,7 @@ const staging = {
     LISTS: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists",
     NOTFOUND: "https://jnbwllwjwl.execute-api.eu-west-1.amazonaws.com/staging/notfound",
     PRODUCTS: "https://p0ugkk400f.execute-api.eu-west-1.amazonaws.com/staging/products",
-    CONTACT: ""
+    CONTACT: "https://gwwqb70lka.execute-api.eu-west-1.amazonaws.com/staging/contact"
   },
   cognito: {
     REGION: "eu-west-1",
