@@ -71,68 +71,142 @@ class PrivacyPage extends React.Component {
 
               <div className={classes.textContent}>
                 <h3 className={classes.title}>
-                  Information gathering and usage
+                  Privacy Policy
                 </h3>
                 <p>
-                  This is the paragraph where you can write more details about your
-                  product. Keep you user engaged by providing meaningful information.
-                  Remember that by this time, the user is curious, otherwise he wouldn
-                  {"'"}t scroll to get here. Add a button if you want the user to see
-                  more. We are here to make life better.
-                  <br />
-                  <br />
-                  And now I look and look around and there’s so many Kanyes I{"'"}ve
-                  been trying to figure out the bed design for the master bedroom at
-                  our Hidden Hills compound... and thank you for turning my personal
-                  jean jacket into a couture piece.
+                  The internet site <u>ewelists.com</u> <b>("Site")</b> is provided by Ewelists Ltd <b>(“Ewelists”)</b>.
+                  Ewelists is committed to protecting your privacy and security. This <b>Privacy Policy</b>, together with
+                  the terms of service <b>(“Terms”)</b>, sets out the basis on which any personal data Ewelists collects
+                  from you, or that you provide to Ewelists, via the Site will be processed. Please read this Privacy
+                  Policy and the Terms carefully to understand Ewelists views and practices regarding your personal data
+                  and how Ewelists will ensure your data remains secure.
                 </p>
-
+                <p>
+                  By using the Site you accept the Terms and this Privacy Policy and you agree to comply with them.
+                  Ewelists may make changes to this Privacy Policy without notice to you. Please ensure that you review
+                  this Privacy Policy regularly as you will be deemed to have accepted any variation if you continue to
+                  use the Site after it has been posted.
+                </p>
+                <p>
+                  For the purpose of the Data Protection Act 2018, the controller is Ewe Lists Ltd and  Our registered
+                  office is Lytchett House 13 Freeland Park, Wareham Road, Poole, Dorset, United Kingdom, BH16 6FA. 
+                </p>
+                <p>
+                  If you have any requests concerning your personal data or any queries with regard to the practices
+                  laid out below please contact us <u>contact@ewelists.com</u>.
+                </p>
                 <h3 className={classes.title}>
-                  Your data
+                  Information We Collect
                 </h3>
                 <p>
-                  This is the paragraph where you can write more details about your
-                  product. Keep you user engaged by providing meaningful information.
-                  Remember that by this time, the user is curious, otherwise he wouldn
-                  {"'"}t scroll to get here. Add a button if you want the user to see
-                  more. We are here to make life better.
-                  <br />
-                  <br />
-                  And now I look and look around and there’s so many Kanyes I{"'"}ve
-                  been trying to figure out the bed design for the master bedroom at
-                  our Hidden Hills compound... and thank you for turning my personal
-                  jean jacket into a couture piece.
+                  All the data we collect from you as a gift list holder, purchaser or website user is for the provision
+                  of the Services we offer. The data we collect about you may include your name, postal address, e-mail
+                  address or telephone number. We collect this personal data in a number of different ways, namely when
+                  you register on this Site, create a gift list on the Site or report a problem with the Site.
                 </p>
-
                 <h3 className={classes.title}>
-                  The Rest
+                  How We Use Your Information
                 </h3>
                 <p>
-                  We are here to make life better. And now I look and look around and
-                  there’s so many Kanyes I{"'"}ve been trying to figure out the bed
-                  design for the master bedroom at our Hidden Hills compound... and
-                  thank you for turning my personal jean jacket into a couture piece.
-                  <br />I speak yell scream directly at the old guard on behalf of the
-                  future. daytime All respect prayers and love to Phife’s family Thank
-                  you for so much inspiration.
+                  We may use your Personal Information for a variety of reasons to provide the Services, including:
+                  <ul>
+                    <li>
+                      To present the Site and its contents to you.
+                    </li>
+                    <li>
+                      To provide you with information, products or services that you request from us.
+                    </li>
+                    <li>
+                      To allow you to participate in the creation and sharing of gift lists
+                    </li>
+                    <li>
+                      To contact you and deliver administrative notices and communications relevant to your use of the
+                      Service, such as security or support and maintenance advisories.
+                    </li>
+                    <li>
+                      To conduct system administration and system troubleshooting and to diagnose or fix technology
+                      problems.
+                    </li>
+                    <li>
+                      To enforce our Terms of Service or other policies or agreements.
+                    </li>
+                    <li>
+                      To operate the Service, monitor the effectiveness of the Service, to improve the content of the
+                      Service, and layout and design.
+                    </li>
+                    <li>
+                      To monitor, analyse and describe usage patterns and performance of the Service, including
+                      aggregate metrics such as total number of visitors, traffic, and demographic patterns.
+                    </li>
+                    <li>
+                      To send promotional communications and/or newsletters to you and for other marketing purposes of
+                      Ewelists or its Affiliates or Partners.
+                    </li>
+                    <li>
+                      For distribution to Service Providers that provide services to Ewelists and Partners of Ewelists.
+                    </li>
+                    <li>
+                      As otherwise set forth in this Privacy Policy.
+                    </li>
+                  </ul>
+                </p>
+                <h3 className={classes.title}>
+                  How We Store Your Personal Data
+                </h3>
+                <p>
+                  Any personal data you give to Ewelists is held in accordance with the provisions of the  Data
+                  Protection Act 2018. Ewelists stores this data on secure servers within the  EEA. On registration to
+                  the Site you are required to choose a member ID and password. You are responsible for keeping these
+                  confidential. You should not share them with anyone.
                 </p>
                 <p>
-                  Thank you Anna for the invite thank you to the whole Vogue team And
-                  I love you like Kanye loves Kanye Pand Pand Panda I{"'"}ve been
-                  trying to figure out the bed design for the master bedroom at our
-                  Hidden Hills compound...The Pablo pop up was almost a pop up of
-                  influence. All respect prayers and love to Phife’s family Thank you
-                  for so much inspiration daytime I love this new Ferg album! The Life
-                  of Pablo is now available for purchase I have a dream. Thank you to
-                  everybody who made The Life of Pablo the number 1 album in the
-                  world! I{"'"}m so proud of the nr #1 song in the country. Panda!
-                  Good music 2016!
+                  We will only keep your personal details for a maximum of 2 years or for as long as you continue to use
+                  the Site. The terms of the Data Protection Act 2018  states that your consent is valid for 2 years
+                  unless you choose to withdraw it within this time period. As previously explained you can withdraw
+                  your consent at any time.
+                </p>
+                <h3 className={classes.title}>
+                  Links To Other Sites
+                </h3>
+                <p>
+                  The Site may include links to other internet sites. Please note that these internet sites have their
+                  own privacy policies and that Ewelists does not accept any responsibility or liability for these
+                  policies. Please check these policies before you submit any personal data to these internet sites.
+                </p>
+                <h3 className={classes.title}>
+                  Disclosure Of You Personal Information
+                </h3>
+                <p>
+                  We may share your personal information with any member of our group or with selected relevant third
+                  parties including:
+                  <ul>
+                    <li>
+                      Business partners, suppliers, sub-contractors and other service providers (such as mapping and
+                        location services), if required for the performance of the services we provide to you or a
+                        product requested by you.
+                    </li>
+                    <li>
+                      Analytics and search engine providers that assist us in the improvement and optimisation of Our
+                      Site.
+                    </li>
+                  </ul>
                 </p>
                 <p>
-                  I love this new Ferg album! The Life of Pablo is now available for
-                  purchase I have a dream. Thank you to everybody who made The Life of
-                  Pablo the number 1 album in the world! I{"'"}m so proud of the nr #1
-                  song in the country. Panda! Good music 2016!
+                  We may disclose your personal information to third parties in the event that we sell or buy any
+                  business or assets, in which case we may disclose your personal data to the prospective seller or
+                  buyer of such business or assets. If Ewelists or substantially all of its assets are acquired by a
+                  third party, in which case personal data held by us about our customers will be one of the transferred
+                  ssets. If we are under a duty to disclose or share your personal data in order to comply with any
+                  legal obligation, or in order to enforce or apply our terms and conditions or other policies at
+                  Ewelists and other agreements; or to protect the rights, property, or safety of Ewelists, our
+                  customers, or others.
+                </p>
+                <h3 className={classes.title}>
+                  Accessing And Correcting Your Personal Information
+                </h3>
+                <p>
+                  You can send an e-mail to <u>contact@ewelists.com</u> to request access to, correct or delete any personal
+                  data that you have provided.
                 </p>
               </div>
             </div>
