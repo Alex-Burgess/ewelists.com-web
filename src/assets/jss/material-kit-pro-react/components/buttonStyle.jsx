@@ -359,22 +359,22 @@ const buttonStyle = {
     color: whiteColor,
     boxShadow:
       "0 2px 2px 0 rgba(" +
-      hexToRgb(googleColor) +
+      hexToRgb("#FF9900") +
       ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(googleColor) +
+      hexToRgb("#FF9900") +
       ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(googleColor) +
+      hexToRgb("#FF9900") +
       ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: googleColor,
+      backgroundColor: "#FF9900",
       color: whiteColor,
       boxShadow:
         "0 14px 26px -12px rgba(" +
-        hexToRgb(googleColor) +
+        hexToRgb("#FF9900") +
         ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
+        hexToRgb("#FF9900") +
         ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(googleColor) +
+        hexToRgb("#FF9900") +
         ", 0.2)"
     }
   },
