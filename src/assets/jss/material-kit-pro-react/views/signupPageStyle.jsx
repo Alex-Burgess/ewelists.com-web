@@ -26,8 +26,10 @@ import {
 } from "assets/jss/material-kit-pro-react.jsx";
 
 import customCheckboxRadioSwitchStyle from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.jsx";
+import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.jsx";
 
 const signupPageStyle = theme => ({
+  ...modalStyle(theme),
   container: {
     ...container,
     zIndex: "2",

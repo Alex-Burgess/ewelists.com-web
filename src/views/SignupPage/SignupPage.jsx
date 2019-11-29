@@ -26,12 +26,19 @@ import Icon from "@material-ui/core/Icon";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Favorite from "@material-ui/icons/Favorite";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import InputLabel from "@material-ui/core/InputLabel";
+import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
 import ListIcon from "@material-ui/icons/List";
 import Perm from "@material-ui/icons/PermIdentity";
+import Close from "@material-ui/icons/Close";
 // core components
 import Footer from "components/Footer/Footer.jsx";
 import Header from "components/Header/Header.jsx";
@@ -48,6 +55,12 @@ import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageS
 
 import image from "assets/img/sheep-with-shoes.jpg";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
+Transition.displayName = "Transition";
+
 class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
@@ -62,9 +75,16 @@ class SignUpPage extends React.Component {
       error: "",
       showError: false,
       confirmationError: "",
-      showConfirmationError: false
+      showConfirmationError: false,
+      popoutModal: false,
+      socialType: ''
     };
     this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
   }
 
   validateForm() {
@@ -147,9 +167,80 @@ class SignUpPage extends React.Component {
       checked: newChecked
     });
   }
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
+
+  openNotification(type) {
+    this.setState({
+      socialType: type,
+      popoutModal: true
+    });
+  }
+
+  handleClose(modal) {
+    this.setState({
+      popoutModal: false
+    });
+  }
+
+  renderNotifyPopOut(classes){
+    return (
+      <Dialog
+        classes={{
+          root: classes.modalRoot,
+          paper: classes.modal + " " + classes.modalSmall
+        }}
+        open={this.state.popoutModal}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => this.handleClose("popoutModal")}
+        aria-labelledby="small-modal-slide-title"
+        aria-describedby="small-modal-slide-description"
+      >
+        <DialogTitle
+          id="small-modal-slide-title"
+          disableTypography
+          className={classes.modalHeader}
+        >
+          <Button
+            simple
+            className={classes.modalCloseButton}
+            key="close"
+            aria-label="Close"
+            onClick={() => this.handleClose("popoutModal")}
+          >
+            {" "}
+            <Close className={classes.modalClose} />
+          </Button>
+        </DialogTitle>
+        <DialogContent
+          id="small-modal-slide-description"
+          className={
+            classes.modalBody + " " + classes.modalSmallBody + " " + classes.centerText
+          }
+        >
+          <h5>If this is your first time signing in with your <b>{this.state.socialType}</b> account, you might find you are redirected to
+            our login page.  If this happens, just click on the <b>{this.state.socialType}</b> icon and you'll be logged in as normal from then on.</h5>
+        </DialogContent>
+        <DialogActions
+          className={
+            classes.modalFooter + " " + classes.modalFooterCenter
+          }
+        >
+          <Button
+            onClick={() => Auth.federatedSignIn({provider: this.state.socialType})}
+            color="default"
+            block
+            round
+            className={
+              classes.modalSmallFooterFirstButton +
+              " " +
+              classes.modalSmallFooterSecondButton
+            }
+          >
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
   }
 
   renderForm() {
@@ -180,19 +271,19 @@ class SignUpPage extends React.Component {
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <Button justIcon round color="amazon" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
+                          <Button justIcon round color="amazon" onClick={() => this.openNotification('LoginWithAmazon')}>
                             <i
                               className={classes.socials + " fab fa-amazon"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})}>
+                          <Button justIcon round color="google" onClick={() => this.openNotification('Google')}>
                             <i
                               className={classes.socials + " fab fa-google"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>
+                          <Button justIcon round color="facebook" onClick={() => this.openNotification('Facebook')}>
                             <i
                               className={classes.socials + " fab fa-facebook-f"}
                             />
@@ -573,6 +664,7 @@ class SignUpPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
+        {this.renderNotifyPopOut(classes)}
         {this.state.newUser === null
           ? this.renderForm()
           : this.renderConfirmationForm()}
