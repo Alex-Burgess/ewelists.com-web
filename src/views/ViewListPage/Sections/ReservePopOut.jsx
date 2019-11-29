@@ -22,7 +22,6 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import sectionStyle from "assets/jss/material-kit-pro-react/views/viewListSections/reservePopOutStyle.jsx";
 
@@ -37,9 +36,22 @@ class SectionDetails extends React.Component {
     super(props);
     this.state = {
       reserveQuantity: 1,
-      reserveError: ''
+      reserveError: '',
+      updateUserQuantity: 0
     };
   }
+
+  componentWillMount(props){
+    if (this.props.reservedDetails) {
+        this.setState({updateUserQuantity: this.props.reservedDetails['quantity']});
+    }
+  }
+
+  // componentDidUpdate(props) {
+  //   if (this.props.reservedDetails) {
+  //       this.setState({updateUserQuantity: this.props.reservedDetails['quantity']});
+  //   }
+  // }
 
   increaseQuantity(){
     var quantity = this.state.reserveQuantity;
@@ -63,6 +75,28 @@ class SectionDetails extends React.Component {
     this.setState({ reserveQuantity: quantity})
   }
 
+  updateReservedQuantity(){
+    var quantity = this.state.updateUserQuantity;
+
+    const remaining = this.props.product['quantity'] - this.props.product['reserved'];
+
+    if (quantity <= remaining){
+      quantity = quantity + 1;
+    }
+
+    this.setState({ updateUserQuantity: quantity})
+  }
+
+  decreaseReservedQuantity(){
+    var quantity = this.state.updateUserQuantity;
+
+    if (quantity >= 1) {
+      quantity = quantity - 1;
+    }
+
+    this.setState({ updateUserQuantity: quantity})
+  }
+
   reserveProduct = async event => {
     let productId = this.props.product['productId'];
     let listId = this.props.getListId()
@@ -79,8 +113,27 @@ class SectionDetails extends React.Component {
     }
 
     this.props.updateReservedQuantity(this.state.reserveQuantity, this.props.product);
-    this.setState({ reserveError: 'Product was reserved.'});
 
+    this.setState({updateUserQuantity: this.state.reserveQuantity});
+  }
+
+  updateReservation = async event => {
+    let productId = this.props.product['productId'];
+    let listId = this.props.getListId()
+    let newQuantity = this.state.updateUserQuantity;
+
+    if (newQuantity === 0) {
+      console.log("Unreserving product (" + productId + ") for list (" + listId + ") for user.  Quantity (" + this.state.updateUserQuantity + ")");
+      try {
+        await API.del("lists", "/" + listId + "/reserve/" +  productId);
+      } catch (e) {
+        console.log('Unexpected error occurred when unreserving product: ' + e);
+        this.setState({ reserveError: 'Product could not be unreserved.'});
+        return false
+      }
+    } else {
+      console.log("Updating number of product (" + productId + ") for list (" + listId + ") reserved by user.  Quantity (" + this.state.updateUserQuantity + ")");
+    }
   }
 
   render() {
@@ -139,38 +192,54 @@ class SectionDetails extends React.Component {
                 </GridItem>
                 <GridItem md={6} sm={6} xs={12}>
                   <h3 className={classes.title + " " + classes.stepOne}>Step 1: Reserve Item</h3>
-                  <CustomInput
-                    id="message"
-                    description
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      placeholder: "Add a message here (optional)...",
-                      multiline: true,
-                      rows: 2,
-                      onChange: this.changeHandler
-                    }}
-                  />
                   <div className={classes.mobileCenter}>
                     <div className={classes.quantity}>
                       <InputLabel className={classes.label}>
-                        Remaining: {product['quantity'] - product['reserved']}
+                        Remaining items: {product['quantity'] - product['reserved']}
                       </InputLabel>
                       <InputLabel className={classes.label}>
-                        Quantity:
-                        <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
-                          <Remove />
-                        </Button>
-                        {` `}{this.state.reserveQuantity}{` `}
-                        <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
-                          <Add />
-                        </Button>
+                        Reserved by you: {reservedDetails ? reservedDetails['quantity'] : 0 }
                       </InputLabel>
+                      {product['reserved'] > 0
+                        ? <div>
+                            <InputLabel className={classes.labelQuantity}>
+                              Update how many you have reserved below:
+                            </InputLabel>
+                            <InputLabel>
+                              Quantity:
+                              <Button color="primary" size="sm" simple onClick={() => this.decreaseReservedQuantity()}>
+                                <Remove />
+                              </Button>
+                              {` `}
+                              {this.state.updateUserQuantity}
+                              {` `}
+                              <Button color="primary" size="sm" simple onClick={() => this.updateReservedQuantity()}>
+                                <Add />
+                              </Button>
+                            </InputLabel>
+                          </div>
+                        : <div>
+                            <InputLabel className={classes.labelQuantity}>
+                              How many items would you like to reserve?
+                            </InputLabel>
+                            <InputLabel>
+                              Quantity:
+                              <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
+                                <Remove />
+                              </Button>
+                              {` `}{this.state.reserveQuantity}{` `}
+                              <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
+                                <Add />
+                              </Button>
+                            </InputLabel>
+                          </div>
+                      }
+
+
                     </div>
                     {reservedDetails
                       ? <div>
-                          <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
+                          <Button default color="primary" className={classes.reserveButton} onClick={() => this.updateReservation()}>
                             Update
                           </Button>
                         </div>
@@ -178,7 +247,7 @@ class SectionDetails extends React.Component {
                         ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.reserveProduct()}>
                             Reserve Gift
                           </Button>
-                        : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.reserveProduct()}>
+                        : <Button default color="default" className={classes.reserveButton} disabled>
                             Reserved
                           </Button>
                     }

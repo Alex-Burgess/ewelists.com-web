@@ -66,10 +66,6 @@ const sectionStyle = theme => ({
     WebkitBoxOrient: "vertical",
     textAlign: "center"
   },
-  remaining: {
-    textAlign: "center",
-    paddingTop: "20px"
-  },
   purchase: {
     paddingTop: "10px",
     paddingBottom: "10px"
@@ -134,6 +130,13 @@ const sectionStyle = theme => ({
     "&:hover": {
       color: whiteColor,
     }
+  },
+  label: {
+    paddingTop: "10px",
+    paddingBottom: "10px"
+  },
+  labelQuantity: {
+    paddingTop: "10px",
   }
 });
 

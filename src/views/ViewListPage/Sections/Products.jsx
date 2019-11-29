@@ -181,7 +181,7 @@ class SectionList extends React.Component {
             </CardBody>
             <CardFooter plain className={classes.footer}>
               <div>
-                <span className={classes.description}> Quantity: {product['quantity']}</span>
+                <span className={classes.description}> Remaining: {product['quantity'] - product['reserved']}</span>
               </div>
               <div className={classes.textCenter}>
                 {this.userReservedItem(product['productId'], reserved)
