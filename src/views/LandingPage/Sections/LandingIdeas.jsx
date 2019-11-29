@@ -56,6 +56,7 @@ class LandingIdeas extends React.Component {
           img_position_left={article.img_position_left}
           description_short={article.description_short}
           beginning_content={article.beginning_content}
+          key={i}
         />
     )
   }
