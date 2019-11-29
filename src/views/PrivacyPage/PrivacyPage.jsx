@@ -75,52 +75,52 @@ class PrivacyPage extends React.Component {
                 </h3>
                 <p>
                   The internet site <u>ewelists.com</u> <b>("Site")</b> is provided by Ewelists Ltd <b>(“Ewelists”)</b>.
-                  Ewelists is committed to protecting your privacy and security. This <b>Privacy Policy</b>, together with
+                  Ewelists is committed to protecting Your privacy and security. This <b>Privacy Policy</b>, together with
                   the terms of service <b>(“Terms”)</b>, sets out the basis on which any personal data Ewelists collects
-                  from you, or that you provide to Ewelists, via the Site will be processed. Please read this Privacy
-                  Policy and the Terms carefully to understand Ewelists views and practices regarding your personal data
-                  and how Ewelists will ensure your data remains secure.
+                  from You, or that You provide to Ewelists, via the Site will be processed. Please read this Privacy
+                  Policy and the Terms carefully to understand Ewelists views and practices regarding Your personal data
+                  and how Ewelists will ensure Your data remains secure.
                 </p>
                 <p>
-                  By using the Site you accept the Terms and this Privacy Policy and you agree to comply with them.
-                  Ewelists may make changes to this Privacy Policy without notice to you. Please ensure that you review
-                  this Privacy Policy regularly as you will be deemed to have accepted any variation if you continue to
+                  By using the Site You accept the Terms and this Privacy Policy and You agree to comply with them.
+                  Ewelists may make changes to this Privacy Policy without notice to You. Please ensure that You review
+                  this Privacy Policy regularly as You will be deemed to have accepted any variation if You continue to
                   use the Site after it has been posted.
                 </p>
                 <p>
-                  For the purpose of the Data Protection Act 2018, the controller is Ewe Lists Ltd and  Our registered
+                  For the purpose of the Data Protection Act 2018, the controller is Ewelists Ltd and  Our registered
                   office is Lytchett House 13 Freeland Park, Wareham Road, Poole, Dorset, United Kingdom, BH16 6FA. 
                 </p>
                 <p>
-                  If you have any requests concerning your personal data or any queries with regard to the practices
+                  If You have any requests concerning Your personal data or any queries with regard to the practices
                   laid out below please contact us <u>contact@ewelists.com</u>.
                 </p>
                 <h3 className={classes.title}>
                   Information We Collect
                 </h3>
                 <p>
-                  All the data we collect from you as a gift list holder, purchaser or website user is for the provision
-                  of the Services we offer. The data we collect about you may include your name, postal address, e-mail
+                  All the data We collect from You as a gift list holder, purchaser or website user is for the provision
+                  of the Services We offer. The data We collect about You may include Your name, postal address, e-mail
                   address or telephone number. We collect this personal data in a number of different ways, namely when
-                  you register on this Site, create a gift list on the Site or report a problem with the Site.
+                  You register on this Site, create a gift list on the Site or report a problem with the Site.
                 </p>
                 <h3 className={classes.title}>
                   How We Use Your Information
                 </h3>
                 <p>
-                  We may use your Personal Information for a variety of reasons to provide the Services, including:
+                  We may use Your Personal Information for a variety of reasons to provide the Services, including:
                   <ul>
                     <li>
-                      To present the Site and its contents to you.
+                      To present the Site and its contents to You.
                     </li>
                     <li>
-                      To provide you with information, products or services that you request from us.
+                      To provide You with information, products or services that You request from Us.
                     </li>
                     <li>
-                      To allow you to participate in the creation and sharing of gift lists
+                      To allow You to participate in the creation and sharing of gift lists
                     </li>
                     <li>
-                      To contact you and deliver administrative notices and communications relevant to your use of the
+                      To contact You and deliver administrative notices and communications relevant to Your use of the
                       Service, such as security or support and maintenance advisories.
                     </li>
                     <li>
@@ -128,18 +128,18 @@ class PrivacyPage extends React.Component {
                       problems.
                     </li>
                     <li>
-                      To enforce our Terms of Service or other policies or agreements.
+                      To enforce Our Terms of Service or other policies or agreements.
                     </li>
                     <li>
                       To operate the Service, monitor the effectiveness of the Service, to improve the content of the
-                      Service, and layout and design.
+                      Service, and laYout and design.
                     </li>
                     <li>
                       To monitor, analyse and describe usage patterns and performance of the Service, including
                       aggregate metrics such as total number of visitors, traffic, and demographic patterns.
                     </li>
                     <li>
-                      To send promotional communications and/or newsletters to you and for other marketing purposes of
+                      To send promotional communications and/or newsletters to You and for other marketing purposes of
                       Ewelists or its Affiliates or Partners.
                     </li>
                     <li>
@@ -154,16 +154,16 @@ class PrivacyPage extends React.Component {
                   How We Store Your Personal Data
                 </h3>
                 <p>
-                  Any personal data you give to Ewelists is held in accordance with the provisions of the  Data
+                  Any personal data You give to Ewelists is held in accordance with the provisions of the  Data
                   Protection Act 2018. Ewelists stores this data on secure servers within the  EEA. On registration to
-                  the Site you are required to choose a member ID and password. You are responsible for keeping these
+                  the Site You are required to choose a member ID and password. You are responsible for keeping these
                   confidential. You should not share them with anyone.
                 </p>
                 <p>
-                  We will only keep your personal details for a maximum of 2 years or for as long as you continue to use
-                  the Site. The terms of the Data Protection Act 2018  states that your consent is valid for 2 years
-                  unless you choose to withdraw it within this time period. As previously explained you can withdraw
-                  your consent at any time.
+                  We will only keep Your personal details for a maximum of 2 years or for as long as You continue to use
+                  the Site. The terms of the Data Protection Act 2018  states that Your consent is valid for 2 years
+                  unless You choose to withdraw it within this time period. As previously explained You can withdraw
+                  Your consent at any time.
                 </p>
                 <h3 className={classes.title}>
                   Links To Other Sites
@@ -171,34 +171,34 @@ class PrivacyPage extends React.Component {
                 <p>
                   The Site may include links to other internet sites. Please note that these internet sites have their
                   own privacy policies and that Ewelists does not accept any responsibility or liability for these
-                  policies. Please check these policies before you submit any personal data to these internet sites.
+                  policies. Please check these policies before You submit any personal data to these internet sites.
                 </p>
                 <h3 className={classes.title}>
                   Disclosure Of You Personal Information
                 </h3>
                 <p>
-                  We may share your personal information with any member of our group or with selected relevant third
+                  We may share Your personal information with any member of Our group or with selected relevant third
                   parties including:
                   <ul>
                     <li>
                       Business partners, suppliers, sub-contractors and other service providers (such as mapping and
-                        location services), if required for the performance of the services we provide to you or a
-                        product requested by you.
+                      location services), if required for the performance of the services We provide to You or a
+                      product requested by You.
                     </li>
                     <li>
-                      Analytics and search engine providers that assist us in the improvement and optimisation of Our
+                      Analytics and search engine providers that assist Us in the improvement and optimisation of Our
                       Site.
                     </li>
                   </ul>
                 </p>
                 <p>
-                  We may disclose your personal information to third parties in the event that we sell or buy any
-                  business or assets, in which case we may disclose your personal data to the prospective seller or
+                  We may disclose Your personal information to third parties in the event that We sell or buy any
+                  business or assets, in which case We may disclose Your personal data to the prospective seller or
                   buyer of such business or assets. If Ewelists or substantially all of its assets are acquired by a
-                  third party, in which case personal data held by us about our customers will be one of the transferred
-                  ssets. If we are under a duty to disclose or share your personal data in order to comply with any
-                  legal obligation, or in order to enforce or apply our terms and conditions or other policies at
-                  Ewelists and other agreements; or to protect the rights, property, or safety of Ewelists, our
+                  third party, in which case personal data held by Us about Our customers will be one of the transferred
+                  assets. If We are under a duty to disclose or share Your personal data in order to comply with any
+                  legal obligation, or in order to enforce or apply Our terms and conditions or other policies at
+                  Ewelists and other agreements; or to protect the rights, property, or safety of Ewelists, Our
                   customers, or others.
                 </p>
                 <h3 className={classes.title}>
@@ -206,7 +206,7 @@ class PrivacyPage extends React.Component {
                 </h3>
                 <p>
                   You can send an e-mail to <u>contact@ewelists.com</u> to request access to, correct or delete any personal
-                  data that you have provided.
+                  data that You have provided.
                 </p>
               </div>
             </div>
