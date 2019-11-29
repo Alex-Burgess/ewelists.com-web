@@ -77,7 +77,7 @@ class TermsPage extends React.Component {
                 <p>
                   The internet site <u>ewelists.com</u> <b>("Site")</b> is provided by Ewelists Ltd <b>("Ewelists")</b>.
                   The Site provides Users with access to information and gift ideas, and provides a free service to
-                  create and exchange gift ideas <b>("Services")</b> These terms of service <b>("Terms")</b> and the
+                  create and exchange gift ideas <b>("Services")</b>. These terms of service <b>("Terms")</b> and the
                   Privacy Policy <b>("Privacy Policy")</b> apply to the use of those Services provided to You by Ewelists.
                 </p>
                 <p>
@@ -87,7 +87,7 @@ class TermsPage extends React.Component {
                 <p>
                   We may update the Terms from time to time without notice to You. Please ensure that You
                   review the Terms regularly as You will be deemed to have accepted any variation if You
-                  continue to use the Service after it has been posted.
+                  continue to use the Services after it has been posted.
                 </p>
                 <h3 className={classes.title}>
                   Information about Ewelists Ltd
@@ -122,7 +122,7 @@ class TermsPage extends React.Component {
                   Provision of Services
                 </h3>
                 <p>
-                  To use the Service, You must register and create an account with Ewelists and comply with any applicable
+                  To use the Services, You must register and create an account with Ewelists and comply with any applicable
                   guidelines set out in the Site.  By creating an account, You represent that (i) You are over the age of 18,
                   (ii) You are responsible for maintaining the confidentiality of Your account and password, and (iii) You
                   accept responsibility for all activities that occur under Your account, password and any logins associated
@@ -139,7 +139,7 @@ class TermsPage extends React.Component {
                 </p>
                 <p>
                   Subject to these Terms, Ewelists agrees to provide the Services to You free of charge. Ewelists may include
-                  affiliate links on the Site to vendor's websites and in return Ewelists may receive money from such vendor's
+                  affiliate links on the Site to merchants{"'"} websites and in return Ewelists may receive money from such merchants
                   for purchases made by You, Your family or friends after clicking through the affiliate links.
                 </p>
                 <p>
@@ -230,7 +230,7 @@ class TermsPage extends React.Component {
                   No Reliance
                 </h3>
                 <p>
-                  The Content on this Site is provided for general information educational purposes only and it is not
+                  The Content on this Site is provided for general information and educational purposes only and it is not
                   intended to amount to advice on which You should rely. Although We make reasonable efforts to update
                   the information on this Site, it makes no representations, warranties or guarantees, whether express
                   or implied, that the Content on this Site is accurate, complete or up-to-date.
@@ -268,19 +268,19 @@ class TermsPage extends React.Component {
                 </h3>
                 <p>
                   The Services are protected under patent, copyright, trademark, and/or other laws. Subject to Your
-                  compliance with the Terms, Ewelists Ltd and/or its licensors provide You with a limited, non-exclusive,
+                  compliance with the Terms, Ewelists and/or its licensors provide You with a limited, non-exclusive,
                   non-transferable, non-sublicensable license to access and make personal and non-commercial use of the
                   Services. The Services and all Content, including, without limitation, any User Content, remain the
-                  property of Ewelists Ltd or its licensors and We do not transfer title to any portion of the Services to
+                  property of Ewelists or its licensors and We do not transfer title to any portion of the Services to
                   You. The compilation, collection, arrangement, or assembly of all Content is the exclusive property of
-                  Ewelists Ltd and protected as well. Any code or software code that Ewelists Ltd creates, generates or
+                  Ewelists and protected as well. Any code or software code that Ewelists creates, generates or
                   displays in the Services is also protected and You may not copy or adapt such code.
                 </p>
                 <p>
                   Unauthorised use of the Services may violate applicable laws and is strictly prohibited. You may not
-                  copy the Services or any part thereof without Ewelists Ltd prior written authorisation. Any code or
-                  software code that Ewelists Ltd creates to generate or display the Services are also protected by
-                  Ewelists Ltd copyrights, and You may not copy or adapt such code.
+                  copy the Services or any part thereof without Ewelists prior written authorisation. Any code or
+                  software code that Ewelists creates to generate or display the Services are also protected by
+                  Ewelists copyrights, and You may not copy or adapt such code.
                 </p>
                 <h3 className={classes.title}>
                   Limitation of Liability
@@ -302,7 +302,7 @@ class TermsPage extends React.Component {
                   Indemnity
                 </h3>
                 <p>
-                  You agree to indemnify and hold harmless Ewelists Ltd  its affiliates and suppliers from any liability,
+                  You agree to indemnify and hold harmless Ewelists  its affiliates and suppliers from any liability,
                   loss, claim and expense (including reasonable legal fees) made by a third party directly or indirectly
                   related to Your breach of the Terms or any other use by You of the Site or the Services.
                 </p>
