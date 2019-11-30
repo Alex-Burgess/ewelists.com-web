@@ -45,10 +45,10 @@ const staging = {
 const prod = {
   apiGateway: {
     REGION: "eu-west-1",
-    LISTS: "",
-    NOTFOUND: "",
-    PRODUCTS: "",
-    CONTACT: ""
+    LISTS: "https://0q9l8rzjga.execute-api.eu-west-1.amazonaws.com/prod/lists",
+    NOTFOUND: "https://lnsfi2fo7i.execute-api.eu-west-1.amazonaws.com/prod/notfound",
+    PRODUCTS: "https://rd7ynfvepb.execute-api.eu-west-1.amazonaws.com/prod/products",
+    CONTACT: "https://i3dvu042be.execute-api.eu-west-1.amazonaws.com/prod/contact"
   },
   cognito: {
     REGION: "eu-west-1",
