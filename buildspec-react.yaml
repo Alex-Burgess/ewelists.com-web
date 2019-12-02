@@ -13,6 +13,7 @@ phases:
     commands:
       - REACT_APP_STAGE=${ENVIRONMENT} npm run build
       - mv build/${ENVIRONMENT}.robots.txt build/robots.txt;
+      - mv build/sitemap.xml build/sitemap.xml;
   post_build:
     commands:
       - echo Uploaded to ${WEB_BUCKET}
