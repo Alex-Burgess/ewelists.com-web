@@ -13,6 +13,12 @@ phases:
     commands:
       - REACT_APP_STAGE=${ENVIRONMENT} npm run build
       - mv build/${ENVIRONMENT}.robots.txt build/robots.txt;
+      - |
+         if expr "${ENVIRONMENT}" : "prod" >/dev/null; then
+           rm build/staging.robots.txt
+         else
+           rm build/prod.robots.txt;
+         fi
   post_build:
     commands:
       - echo Uploaded to ${WEB_BUCKET}
