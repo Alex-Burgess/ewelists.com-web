@@ -54,7 +54,7 @@ class SectionAddGifts extends React.Component {
         url: ''
       },
       errorMessage: '',
-      message: ''
+      productAdded: false
     };
   }
 
@@ -124,7 +124,7 @@ class SectionAddGifts extends React.Component {
         productFound: true,
         product: product,
         errorMessage: '',
-        message: ''
+        productAdded: false
       })
     } else {
       console.log("No product found.");
@@ -132,8 +132,15 @@ class SectionAddGifts extends React.Component {
         searchResult: true,
         productFound: false,
         errorMessage: '',
-        message: ''
+        productAdded: false
       })
+
+      this.setState(prevState => ({
+        notfound: {
+          ...prevState.notfound,
+          url: this.state.searchUrl
+        }
+      }))
     }
   }
 
@@ -179,7 +186,7 @@ class SectionAddGifts extends React.Component {
     }
 
     this.props.addProductToState(product)
-    this.setState({ message: 'Product was added to your list.'});
+    this.setState({ productAdded: true});
   }
 
   createProduct = async event => {
@@ -234,7 +241,7 @@ class SectionAddGifts extends React.Component {
     }
 
     this.props.addProductToState(product)
-    this.setState({ message: 'Product was added to your list.'});
+    this.setState({ productAdded: true});
   }
 
   handleSearchChange = event => {
@@ -308,7 +315,8 @@ class SectionAddGifts extends React.Component {
                 fullWidth: true
               }}
               inputProps={{
-                onChange: this.handleAddGiftChange
+                onChange: this.handleAddGiftChange,
+                defaultValue: this.state.searchUrl
               }}
             />
             <div className={classes.textCenter}>
@@ -466,6 +474,26 @@ class SectionAddGifts extends React.Component {
     )
   }
 
+  renderAddMessage(classes) {
+    return (
+      <GridContainer>
+        <GridItem xs={12} sm={7} md={7} lg={7}
+          className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}
+        >
+          <h5>
+            Product was added to your list.
+          </h5>
+          <h5>
+            To add more items to your list, just search for a new product link.
+          </h5>
+          <h5>
+            Hit manage to view your list.
+          </h5>
+        </GridItem>
+      </GridContainer>
+    )
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -492,23 +520,20 @@ class SectionAddGifts extends React.Component {
                   <Search />
                 </Button>
               </div>
-              {this.state.searchResult
-                ? this.state.productFound
-                  ? this.renderSearchResultTable(classes)
-                  : this.renderManualAdd(classes)
-                : null
-              }
+              <div className={classes.results}>
+                {this.state.productAdded
+                  ? this.renderAddMessage(classes)
+                  : this.state.searchResult
+                    ? this.state.productFound
+                      ? this.renderSearchResultTable(classes)
+                      : this.renderManualAdd(classes)
+                    : null
+                }
+              </div>
               {this.state.errorMessage
                 ?
                   <div className={classes.errorContainer}>
                     {this.state.errorMessage}
-                  </div>
-                : null
-              }
-              {this.state.message
-                ?
-                  <div className={classes.messageContainer}>
-                    {this.state.message}
                   </div>
                 : null
               }

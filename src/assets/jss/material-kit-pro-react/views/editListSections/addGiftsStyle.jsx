@@ -70,6 +70,10 @@ const sectionDetailsStyle = theme => ({
   messageContainer: {
     color: successColor[1],
     textAlign: "center !important"
+  },
+  results: {
+    minHeight: "440px",
+    marginTop: "30px"
   }
 });
 
