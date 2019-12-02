@@ -171,8 +171,6 @@ class ArticlePage extends React.Component {
         productId: productId,
         quantity: reservedQuantity,
         userId: userId,
-        // message:    "A test message",
-        // name:    "Alex Burgess",
       }
     }
 

@@ -104,7 +104,8 @@ class SectionDetails extends React.Component {
 
     try {
       await API.post("lists", "/" + listId + "/reserve/" +  productId, {
-        body: { "quantity": this.state.reserveQuantity, "message": 'A test message' }
+        body: { "quantity": this.state.reserveQuantity }
+        // body: { "quantity": this.state.reserveQuantity, "message": 'A test message' }
       });
     } catch (e) {
       console.log('Unexpected error occurred when reserving product: ' + e);
