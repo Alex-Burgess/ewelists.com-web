@@ -210,6 +210,8 @@ class SectionList extends React.Component {
             handleClose={this.handleClose.bind(this)}
             getListId={this.props.getListId.bind(this)}
             updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}
+            unreserveProduct={this.props.unreserveProduct.bind(this)}
+            updateUserReservation={this.props.updateUserReservation.bind(this)}
           />
         </GridItem>
       )

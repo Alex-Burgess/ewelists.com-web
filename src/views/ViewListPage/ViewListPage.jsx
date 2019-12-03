@@ -94,6 +94,8 @@ class ArticlePage extends React.Component {
       reserved: response.reserved
     })
 
+    // console.log("reserved: " + JSON.stringify(response.reserved))
+
     return true
   }
 
@@ -180,7 +182,7 @@ class ArticlePage extends React.Component {
       })
     })
 
-    console.log("reserved state: " + JSON.stringify(this.state.reserved));
+    // console.log("reserved state: " + JSON.stringify(this.state.reserved));
 
     console.log("Updated product Id with user reserved details")
 
@@ -192,6 +194,69 @@ class ArticlePage extends React.Component {
       })
     })
   }
+
+  async unreserveProduct(product) {
+    let userId = this.props.userSub;
+    let productId = product['productId'];
+    console.log("Unreserving product (" + productId + ") for user (" + userId + ")");
+    // console.log("reserved state: " + JSON.stringify(this.state.reserved));
+
+    let userReservedQuantity = this.state.reserved[productId][userId].quantity;
+    let productTotalReservedQuantity = this.state.products[productId].reserved;
+    const reservedQuantity = productTotalReservedQuantity - userReservedQuantity;
+    console.log("New product reserved quantity: " + reservedQuantity)
+
+    // Remove reserved entry for product : user.
+    await this.setState({
+      reserved: update(this.state.reserved, {
+        [productId]: {$unset: [userId]}
+      })
+    })
+
+    // Update product total reserved quantity
+    await this.setState({
+      products: update(this.state.products, {
+        [productId]: {
+          reserved: {$set: reservedQuantity}
+        }
+      })
+    })
+  }
+
+  async updateUserReservation(newUserQuantity, product) {
+    let userId = this.props.userSub;
+    let productId = product['productId'];
+
+    let userOldReservedQuantity = this.state.reserved[productId][userId].quantity;
+    const quantityChange = newUserQuantity - userOldReservedQuantity
+    console.log("Updating product (" + productId + ") reservation for user (" + userId + ") to " + newUserQuantity);
+
+    let productOldReservedQuantity = this.state.products[productId].reserved;
+    const productNewReservedQuantity = productOldReservedQuantity + quantityChange
+    console.log("Updating product (" + productId + ") total reservered to (" + productNewReservedQuantity + ")");
+
+    // Update reserved quantity for product : user.
+    await this.setState({
+      reserved: update(this.state.reserved, {
+        [productId]: {
+          [userId]: {$merge: {
+              quantity: newUserQuantity
+            }
+          }
+        }
+      })
+    })
+
+    // Update product total reserved quantity
+    await this.setState({
+      products: update(this.state.products, {
+        [productId]: {
+          reserved: {$set: productNewReservedQuantity}
+        }
+      })
+    })
+  }
+
 
   getListId(){
     return this.props.match.params.id
@@ -230,6 +295,8 @@ class ArticlePage extends React.Component {
                   userId={this.props.userSub}
                   getListId={this.getListId.bind(this)}
                   updateReservedQuantity={this.updateReservedQuantity.bind(this)}
+                  unreserveProduct={this.unreserveProduct.bind(this)}
+                  updateUserReservation={this.updateUserReservation.bind(this)}
                 />
               </div>
               <div className={classes.spacer}>

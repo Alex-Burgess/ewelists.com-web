@@ -37,21 +37,17 @@ class SectionDetails extends React.Component {
     this.state = {
       reserveQuantity: 1,
       reserveError: '',
-      updateUserQuantity: 0
+      updateUserQuantity: 0,
+      updateProductReserved: 0
     };
   }
 
   componentWillMount(props){
     if (this.props.reservedDetails) {
         this.setState({updateUserQuantity: this.props.reservedDetails['quantity']});
+        this.setState({updateProductReserved: this.props.product['reserved']});
     }
   }
-
-  // componentDidUpdate(props) {
-  //   if (this.props.reservedDetails) {
-  //       this.setState({updateUserQuantity: this.props.reservedDetails['quantity']});
-  //   }
-  // }
 
   increaseQuantity(){
     var quantity = this.state.reserveQuantity;
@@ -76,25 +72,27 @@ class SectionDetails extends React.Component {
   }
 
   updateReservedQuantity(){
-    var quantity = this.state.updateUserQuantity;
+    var userQuantity = this.state.updateUserQuantity;
+    var productReserved= this.state.updateProductReserved;
 
-    const remaining = this.props.product['quantity'] - this.props.product['reserved'];
-
-    if (quantity <= remaining){
-      quantity = quantity + 1;
+    if (productReserved < this.props.product['quantity']){
+      userQuantity = userQuantity + 1;
+      productReserved = productReserved + 1;
+      this.setState({ updateUserQuantity: userQuantity})
+      this.setState({ updateProductReserved: productReserved})
     }
-
-    this.setState({ updateUserQuantity: quantity})
   }
 
   decreaseReservedQuantity(){
-    var quantity = this.state.updateUserQuantity;
+    var userQuantity = this.state.updateUserQuantity;
+    var productReserved= this.state.updateProductReserved;
 
-    if (quantity >= 1) {
-      quantity = quantity - 1;
+    if (userQuantity >= 1) {
+      userQuantity = userQuantity - 1;
+      productReserved = productReserved - 1;
+      this.setState({ updateUserQuantity: userQuantity})
+      this.setState({ updateProductReserved: productReserved})
     }
-
-    this.setState({ updateUserQuantity: quantity})
   }
 
   reserveProduct = async event => {
@@ -132,8 +130,25 @@ class SectionDetails extends React.Component {
         this.setState({ reserveError: 'Product could not be unreserved.'});
         return false
       }
+
+      // Update reserved state
+      this.props.unreserveProduct(this.props.product);
+
     } else {
       console.log("Updating number of product (" + productId + ") for list (" + listId + ") reserved by user.  Quantity (" + this.state.updateUserQuantity + ")");
+
+      try {
+        await API.put("lists", "/" + listId + "/reserve/" +  productId, {
+          body: { "quantity": newQuantity }
+        });
+      } catch (e) {
+        console.log('Unexpected error occurred when updating product reservation item: ' + e);
+        this.setState({ reserveError: 'Product could not be updated.'});
+        return false
+      }
+
+      // Update reserved state
+      this.props.updateUserReservation(newQuantity, this.props.product);
     }
   }
 
