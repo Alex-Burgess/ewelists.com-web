@@ -189,7 +189,7 @@ class ArticlePage extends React.Component {
     await this.setState({
       products: update(this.state.products, {
         [productId]: {
-          reserved: {$set: reservedQuantity}
+          reserved: {$set: new_reserved_quantity}
         }
       })
     })

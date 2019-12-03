@@ -54,11 +54,12 @@ class SectionDetails extends React.Component {
 
     const remaining = this.props.product['quantity'] - this.props.product['reserved'];
 
+    console.log("Remaining: " + remaining + ". User quantity: " + quantity);
+
     if (quantity < remaining){
       quantity = quantity + 1;
+      this.setState({ reserveQuantity: quantity});
     }
-
-    this.setState({ reserveQuantity: quantity})
   }
 
   decreaseQuantity(){
@@ -74,6 +75,9 @@ class SectionDetails extends React.Component {
   updateReservedQuantity(){
     var userQuantity = this.state.updateUserQuantity;
     var productReserved= this.state.updateProductReserved;
+
+    console.log("user quantity: " + userQuantity)
+    console.log("reserved quantity: " + productReserved)
 
     if (productReserved < this.props.product['quantity']){
       userQuantity = userQuantity + 1;
@@ -114,6 +118,8 @@ class SectionDetails extends React.Component {
     this.props.updateReservedQuantity(this.state.reserveQuantity, this.props.product);
 
     this.setState({updateUserQuantity: this.state.reserveQuantity});
+    let productReserved = this.props.product['reserved'] + 1;
+    this.setState({ updateProductReserved: productReserved})
   }
 
   updateReservation = async event => {
@@ -216,7 +222,8 @@ class SectionDetails extends React.Component {
                       <InputLabel className={classes.label}>
                         Reserved by you: {reservedDetails ? reservedDetails['quantity'] : 0 }
                       </InputLabel>
-                      {product['reserved'] > 0
+                      {console.log("Reserved details: " + JSON.stringify(reservedDetails))}
+                      {reservedDetails
                         ? <div>
                             <InputLabel className={classes.extraPadding}>
                               Update how many you have reserved below:
