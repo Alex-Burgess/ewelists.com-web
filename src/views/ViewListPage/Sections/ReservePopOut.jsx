@@ -218,36 +218,42 @@ class SectionDetails extends React.Component {
                       </InputLabel>
                       {product['reserved'] > 0
                         ? <div>
-                            <InputLabel className={classes.labelQuantity}>
+                            <InputLabel className={classes.extraPadding}>
                               Update how many you have reserved below:
                             </InputLabel>
-                            <InputLabel>
-                              Quantity:
-                              <Button color="primary" size="sm" simple onClick={() => this.decreaseReservedQuantity()}>
-                                <Remove />
-                              </Button>
-                              {` `}
-                              {this.state.updateUserQuantity}
-                              {` `}
-                              <Button color="primary" size="sm" simple onClick={() => this.updateReservedQuantity()}>
-                                <Add />
-                              </Button>
-                            </InputLabel>
+                            <div className={classes.labelQuantity}>
+                              <span>
+                                  Quantity:
+                              </span>
+                              <span>
+                                <Button id="reserve" color="primary" size="sm" simple onClick={() => this.decreaseReservedQuantity()}>
+                                  <Remove />
+                                </Button>
+                                {this.state.updateUserQuantity}
+                                <Button id="add" color="primary" size="sm" simple onClick={() => this.updateReservedQuantity()}>
+                                  <Add />
+                                </Button>
+                              </span>
+                            </div>
                           </div>
                         : <div>
-                            <InputLabel className={classes.labelQuantity}>
+                            <InputLabel className={classes.extraPadding}>
                               How many items would you like to reserve?
                             </InputLabel>
-                            <InputLabel>
-                              Quantity:
-                              <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
-                                <Remove />
-                              </Button>
-                              {` `}{this.state.reserveQuantity}{` `}
-                              <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
-                                <Add />
-                              </Button>
-                            </InputLabel>
+                            <div className={classes.labelQuantity}>
+                              <span>
+                                  Quantity:
+                              </span>
+                              <span>
+                                <Button id="reserve" color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
+                                  <Remove />
+                                </Button>
+                                {this.state.reserveQuantity}
+                                <Button id="add" color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
+                                  <Add />
+                                </Button>
+                              </span>
+                            </div>
                           </div>
                       }
 

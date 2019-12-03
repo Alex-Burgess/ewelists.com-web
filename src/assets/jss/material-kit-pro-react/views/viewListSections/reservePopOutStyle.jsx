@@ -135,8 +135,14 @@ const sectionStyle = theme => ({
     paddingTop: "10px",
     paddingBottom: "10px"
   },
-  labelQuantity: {
+  extraPadding: {
     paddingTop: "10px",
+  },
+  labelQuantity: {
+    fontSize: "16px",
+    color: "rgba(0, 0, 0, 0.541176)",
+    fontWeight: "normal",
+    paddingTop: "10px"
   }
 });
 
