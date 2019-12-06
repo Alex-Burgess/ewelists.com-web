@@ -66,11 +66,21 @@ class LoginPage extends React.Component {
     });
   }
 
+  checkGoogleEmail(email) {
+    if (email.includes('@googlemail.com')) {
+      var fields = email.split('@');
+      email = fields[0] + "@gmail.com"
+    }
+    return email
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
 
+    let email = this.checkGoogleEmail(this.state.email)
+
     try {
-      await Auth.signIn(this.state.email, this.state.password);
+      await Auth.signIn(email, this.state.password);
       this.props.userHasAuthenticated(true);
     } catch (e) {
       this.setState({

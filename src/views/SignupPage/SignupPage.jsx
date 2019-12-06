@@ -121,12 +121,22 @@ class SignUpPage extends React.Component {
     });
   }
 
+  checkGoogleEmail(email) {
+    if (email.includes('@googlemail.com')) {
+      var fields = email.split('@');
+      email = fields[0] + "@gmail.com"
+    }
+    return email
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
 
+    let email = this.checkGoogleEmail(this.state.email);
+
     try {
       const newUser = await Auth.signUp({
-        username: this.state.email,
+        username: email,
         password: this.state.password,
         attributes: {
           name: this.state.name
@@ -146,9 +156,11 @@ class SignUpPage extends React.Component {
   handleConfirmationSubmit = async event => {
     event.preventDefault();
 
+    let email = this.checkGoogleEmail(this.state.email);
+
     try {
-      await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
-      await Auth.signIn(this.state.email, this.state.password);
+      await Auth.confirmSignUp(email, this.state.confirmationCode);
+      await Auth.signIn(email, this.state.password);
 
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
