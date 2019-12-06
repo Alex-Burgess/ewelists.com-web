@@ -23,6 +23,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui icons
 import Search from "@material-ui/icons/Search";
 import Add from "@material-ui/icons/Add";
+import Clear from "@material-ui/icons/Clear";
 import Remove from "@material-ui/icons/Remove";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -97,6 +98,10 @@ class SectionAddGifts extends React.Component {
     }
 
     this.setState({ [type]: quantity})
+  }
+
+  clearSearch(){
+    this.setState({searchUrl: ''});
   }
 
   searchProduct = async event => {
@@ -525,6 +530,9 @@ class SectionAddGifts extends React.Component {
                 />
                 <Button color="primary" justIcon onClick={() => this.searchProduct()} disabled={!this.validateSearchForm()}>
                   <Search />
+                </Button>
+                <Button color="default" justIcon onClick={() => this.clearSearch()}>
+                  <Clear />
                 </Button>
               </div>
               <div className={classes.results}>
