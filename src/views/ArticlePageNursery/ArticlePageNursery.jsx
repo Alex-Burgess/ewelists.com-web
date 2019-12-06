@@ -102,12 +102,12 @@ class ArticlePage extends React.Component {
         <GridItem md={4} sm={4} key={i}>
           <Card plain product>
             <CardHeader noShadow image>
-              <a href={product.url}>
+              <a href={product.url} target="_blank" rel="noopener noreferrer">
                 <img src={product.img} className={classes.productImage} alt=".." />
               </a>
             </CardHeader>
             <CardBody plain>
-              <a href={product.url}>
+              <a href={product.url} target="_blank" rel="noopener noreferrer">
                 <h4 className={classes.cardTitle}>{product.brand}</h4>
               </a>
               <p className={classes.description}>
