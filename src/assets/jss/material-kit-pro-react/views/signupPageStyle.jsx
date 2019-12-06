@@ -34,8 +34,8 @@ const signupPageStyle = theme => ({
     ...container,
     zIndex: "2",
     position: "relative",
-    paddingTop: "20vh",
-    color: whiteColor
+    paddingTop: "10vh",
+    color: whiteColor,
   },
   pageHeader: {
     minHeight: "100vh",
@@ -79,7 +79,7 @@ const signupPageStyle = theme => ({
       hexToRgb(blackColor) +
       ", 0.2);",
     marginBottom: "100px",
-    padding: "40px 0px"
+    padding: "20px 0px"
   },
   cardTitle: {
     ...cardTitle,
@@ -113,7 +113,7 @@ const signupPageStyle = theme => ({
     margin: "0"
   },
   infoArea: {
-    padding: "0px 10px 20px !important"
+    padding: "0px 10px 10px !important"
   },
   block: {
     color: "inherit",
@@ -190,8 +190,18 @@ const signupPageStyle = theme => ({
   },
   terms: {
     color: "#999",
-    padding: "15px 0",
+    paddingTop: "10px",
     fontSize: "13px"
+  },
+  passwordRules: {
+    color: "#999",
+    paddingBottom: "15px",
+    fontSize: "13px"
+  },
+  orEmail: {
+    color: "#999",
+    paddingTop: "10px",
+    fontSize: "15px"
   },
   signUpError: {
     color: dangerColor[1]

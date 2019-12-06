@@ -92,8 +92,16 @@ class SignUpPage extends React.Component {
       this.state.name.length > 0 &&
       this.state.email.length > 0 &&
       this.validateEmail() &&
-      this.state.password.length > 5
+      this.state.password.length > 7 &&
+      this.validatePassword()
     );
+  }
+
+  validatePassword() {
+    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/.test(this.state.password)) {
+      return true
+    }
+    return false
   }
 
   validateEmail() {
@@ -289,9 +297,9 @@ class SignUpPage extends React.Component {
                             />
                           </Button>
                           {` `}
-                          <h4 className={classes.socialTitle}>
+                          <div className={classes.orEmail}>
                             or sign up with your email address
-                          </h4>
+                          </div>
                         </div>
                         <form className={classes.form} onSubmit={this.handleSubmit}>
                           <CustomInput
@@ -362,22 +370,18 @@ class SignUpPage extends React.Component {
                               placeholder: "Password..."
                             }}
                           />
+                          <div className={classes.passwordRules}>
+                            Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
+                          </div>
                           { this.state.showError
                             ? <div className={classes.signUpError}>
                                 <p>{this.state.error}</p>
                               </div>
                             : null
                           }
-                          <div className={classes.terms}>
-                            <span>
-                              By signing up to Ewelists, you agree to the{" "}
-                              <a href="/terms" target="_blank" className={classes.link}>terms of service</a>. View
-                              our <a href="/privacy" target="_blank" className={classes.link}>privacy policy</a>.
-                            </span>
-                          </div>
                           <div className={classes.textCenter}>
                             <Button round color="info" type="submit" disabled={!this.validateForm()}>
-                              Get started
+                              Sign Up
                             </Button>
                           </div>
                         </form>
@@ -406,6 +410,13 @@ class SignUpPage extends React.Component {
                         />
                       </GridItem>
                     </GridContainer>
+                    <div className={classes.terms + " " + classes.textCenter}>
+                      <span>
+                        By signing up to Ewelists, you agree to the{" "}
+                        <a href="/terms" target="_blank" className={classes.link}>terms of service</a>. View
+                        our <a href="/privacy" target="_blank" className={classes.link}>privacy policy</a>.
+                      </span>
+                    </div>
                   </CardBody>
                 </Card>
               </GridItem>
