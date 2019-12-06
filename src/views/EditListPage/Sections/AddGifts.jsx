@@ -186,7 +186,10 @@ class SectionAddGifts extends React.Component {
     }
 
     this.props.addProductToState(product)
-    this.setState({ productAdded: true});
+    this.setState({
+      productAdded: true,
+      searchUrl: ''
+    });
   }
 
   createProduct = async event => {
@@ -241,7 +244,10 @@ class SectionAddGifts extends React.Component {
     }
 
     this.props.addProductToState(product)
-    this.setState({ productAdded: true});
+    this.setState({
+      productAdded: true,
+      searchUrl: ''
+    });
   }
 
   handleSearchChange = event => {
@@ -513,7 +519,8 @@ class SectionAddGifts extends React.Component {
                   }}
                   inputProps={{
                     placeholder: "Enter url...",
-                    onChange: this.handleSearchChange
+                    onChange: this.handleSearchChange,
+                    value: this.state.searchUrl
                   }}
                 />
                 <Button color="primary" justIcon onClick={() => this.searchProduct()} disabled={!this.validateSearchForm()}>

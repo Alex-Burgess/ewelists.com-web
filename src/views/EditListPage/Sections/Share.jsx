@@ -104,7 +104,8 @@ class SectionShare extends React.Component {
       return false
     }
 
-    this.props.addUserToSharedState(response.user)
+    this.setState({ newEmail: '' });
+    this.props.addUserToSharedState(response.user);
   }
 
 
@@ -182,7 +183,8 @@ class SectionShare extends React.Component {
                   }}
                   inputProps={{
                     placeholder: "Enter email...",
-                    onChange: this.handleEmailChange
+                    onChange: this.handleEmailChange,
+                    value: this.state.newEmail,
                   }}
                 />
                 <Button color="primary" justIcon onClick={() => this.shareListWithUser()} disabled={!this.validateEmail()}>
