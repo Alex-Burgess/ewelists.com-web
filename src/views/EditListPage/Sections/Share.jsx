@@ -46,9 +46,17 @@ class SectionShare extends React.Component {
     };
   }
 
+  parseEmail(email) {
+    email = email.trim();
+    email = email.toLowerCase();
+    return email
+  }
+
   handleEmailChange = event => {
+    let email = this.parseEmail(event.target.value)
+
     this.setState({
-      newEmail: event.target.value
+      newEmail: email
     });
   }
 
