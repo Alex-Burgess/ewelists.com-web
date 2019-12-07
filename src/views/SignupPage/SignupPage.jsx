@@ -92,17 +92,16 @@ class SignUpPage extends React.Component {
       this.state.name.length > 0 &&
       this.state.email.length > 0 &&
       this.validateEmail() &&
-      this.state.password.length > 7 &&
-      this.validatePassword()
+      this.state.password.length > 7
     );
   }
 
-  validatePassword() {
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/.test(this.state.password)) {
-      return true
-    }
-    return false
-  }
+  // validatePassword() {
+  //   if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/.test(this.state.password)) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   validateEmail() {
     if (/^[a-zA-Z0-9.+]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
@@ -129,10 +128,41 @@ class SignUpPage extends React.Component {
     return email
   }
 
+  checkPassword(password){
+    if (!(/(?=.*[a-z])/.test(password))) {
+      return "Password does not contain any lower case letters."
+    }
+
+    if (!(/(?=.*[A-Z])/.test(password))) {
+      return "Password does not contain any upper case letters."
+    }
+
+    if (!(/(?=.*\d)/.test(password))) {
+      return "Password does not contain any numbers."
+    }
+
+    if (!(/(?=.*[-+_!@#$%^&*.,?£])/.test(password))) {
+      return "Password does not contain any symbols."
+    }
+
+    return null
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
 
     let email = this.checkGoogleEmail(this.state.email);
+
+    let passwordError = this.checkPassword(this.state.password);
+    if (passwordError) {
+      this.setState({
+        showError: true,
+        error: passwordError
+      });
+
+      return false
+    }
+
 
     try {
       const newUser = await Auth.signUp({
