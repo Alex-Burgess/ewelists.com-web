@@ -141,7 +141,7 @@ class SignUpPage extends React.Component {
       return "Password does not contain any numbers."
     }
 
-    if (!(/(?=.*[-+_!@#$%^&*.,?£])/.test(password))) {
+    if (!(/(?=.*[-+_!@#$%^&*.,?])/.test(password))) {
       return "Password does not contain any symbols."
     }
 
