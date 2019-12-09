@@ -36,32 +36,10 @@ import errorPageStyle from "assets/jss/material-kit-pro-react/views/errorPageSty
 import image from "assets/img/sheep-with-shoes.jpg";
 
 class ErrorPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: [1]
-    };
-    this.handleToggle = this.handleToggle.bind(this);
+  returnChecked() {
+    return true;
   }
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked
-    });
-  }
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-  }
   render() {
     const { classes, ...rest } = this.props;
     return (

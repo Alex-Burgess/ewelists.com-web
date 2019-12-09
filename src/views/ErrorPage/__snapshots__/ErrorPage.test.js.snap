@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders error page 1`] = `
+<div>
+  <header
+    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed Header-appBar-14 Header-transparent-26 Header-absolute-15 MuiAppBar-colorPrimary mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular Header-container-17 MuiToolbar-gutters"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          alt="logo"
+          className="Header-logo-33"
+          src="logo-white.png"
+        />
+      </a>
+      <div
+        className="Header-hidden-30 PrivateHiddenCss-smDown-79"
+      >
+        <div
+          className="Header-collapse-31"
+        >
+          <ul
+            className="MuiList-root HeaderLinks-list-89 HeaderLinks-mlAuto-105 MuiList-padding"
+          >
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/listideas"
+                onClick={[Function]}
+              >
+                Gift List Ideas
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/login"
+                onClick={[Function]}
+              >
+                Log In
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/signup"
+                onClick={[Function]}
+              >
+                Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    className="ErrorPage-pageHeader-5"
+    style={
+      Object {
+        "backgroundImage": "url(sheep-with-shoes.jpg)",
+        "backgroundPosition": "top center",
+        "backgroundSize": "cover",
+      }
+    }
+  >
+    <div
+      className="ErrorPage-contentCenter-1"
+    >
+      <div
+        className="MuiGrid-root GridContainer-grid-121  MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root GridItem-grid-225  MuiGrid-item MuiGrid-grid-md-12"
+        >
+          <h1
+            className="ErrorPage-title-2"
+          >
+            Page not found
+          </h1>
+          <h2
+            className="ErrorPage-subTitle-3"
+          >
+            The page you are looking for does not exist.
+          </h2>
+          <a
+            href="/"
+          >
+            Click to go back to the home page.
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="Footer-footer-229 ErrorPage-footer-13"
+  >
+    <div
+      className="Footer-container-235"
+    >
+       
+      <div>
+        <div
+          className="ErrorPage-left-9"
+        >
+          <ul
+            className="MuiList-root ErrorPage-list-8 MuiList-padding"
+          >
+            <li
+              className="MuiListItem-root ErrorPage-inlineBlock-7 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="ErrorPage-block-6"
+                href="/"
+              >
+                © 
+                2019
+                 ewelists
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root ErrorPage-inlineBlock-7 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="ErrorPage-block-6"
+                href="/contact"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root ErrorPage-inlineBlock-7 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="ErrorPage-block-6"
+                href="/#about"
+              >
+                About us
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root ErrorPage-inlineBlock-7 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="ErrorPage-block-6"
+                href="/privacy"
+              >
+                Privacy
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root ErrorPage-inlineBlock-7 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="ErrorPage-block-6"
+                href="/terms"
+              >
+                Terms
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          className="ErrorPage-rightLinks-11"
+        >
+          <ul>
+            <li>
+              <a
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiButton-root ForwardRef-button-246 ForwardRef-simple-269 ForwardRef-justIcon-277 MuiButton-text"
+                href="https://www.facebook.com/ewelists"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+                target="_blank"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  <i
+                    className="fab fa-facebook"
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiButton-root ForwardRef-button-246 ForwardRef-simple-269 ForwardRef-justIcon-277 MuiButton-text"
+                href="https://twitter.com/ewelists"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+                target="_blank"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  <i
+                    className="fab fa-twitter"
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiButton-root ForwardRef-button-246 ForwardRef-simple-269 ForwardRef-justIcon-277 MuiButton-text"
+                href="https://www.instagram.com/ewelists/"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                tabIndex={0}
+                target="_blank"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  <i
+                    className="fab fa-instagram"
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        className="Footer-clearFix-245"
+      />
+    </div>
+  </footer>
+</div>
+`;

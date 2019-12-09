@@ -1,9 +1,9 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
-import './App.css';
 import Routes from "./Routes";
+import { withRouter } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Helmet } from 'react-helmet';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,7 +49,8 @@ class App extends React.Component {
     }
     catch(e) {
       if (e !== 'No current user') {
-        alert(e);
+        // alert(e);
+        console.log(e);
       }
     }
 
@@ -59,7 +60,8 @@ class App extends React.Component {
       }
       catch(e) {
         if (e !== 'No current user') {
-          alert(e);
+          // alert(e);
+          console.log(e);
         }
       }
     }
@@ -121,5 +123,4 @@ class App extends React.Component {
   }
 }
 
-// export default App;
 export default withRouter(App);

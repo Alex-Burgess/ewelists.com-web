@@ -1,0 +1,423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for App renders contact us page 1`] = `
+<div>
+  <header
+    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed Header-appBar-14 Header-info-21 Header-fixed-16 MuiAppBar-colorPrimary mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular Header-container-17 MuiToolbar-gutters"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          alt="logo"
+          className="Header-logo-33"
+          src="logo-white.png"
+        />
+      </a>
+      <div
+        className="Header-hidden-30 PrivateHiddenCss-smDown-79"
+      >
+        <div
+          className="Header-collapse-31"
+        >
+          <ul
+            className="MuiList-root HeaderLinks-list-89 HeaderLinks-mlAuto-105 MuiList-padding"
+          >
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/listideas"
+                onClick={[Function]}
+              >
+                Gift List Ideas
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/login"
+                onClick={[Function]}
+              >
+                Log In
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root HeaderLinks-listItem-90 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="HeaderLinks-navLink-92"
+                href="/signup"
+                onClick={[Function]}
+              >
+                Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    className="Parallax-parallax-121 ContactUsPage-parallax-7"
+    style={
+      Object {
+        "backgroundImage": "url(sheep-with-shoes.jpg)",
+        "transform": "translate3d(0,0px,0)",
+      }
+    }
+  >
+    <div
+      className="ContactUsPage-container-5"
+    >
+      <div
+        className="MuiGrid-root GridContainer-grid-133  MuiGrid-container MuiGrid-justify-xs-center"
+      >
+        <div
+          className="MuiGrid-root GridItem-grid-237 ContactUsPage-mlAuto-3 ContactUsPage-textCenter-11 MuiGrid-item MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ContactUsPage-main-1 ContactUsPage-mainRaised-2"
+  >
+    <div
+      className="ContactUsPage-contactContent-6"
+    >
+      <div
+        className="ContactUsPage-container-5"
+      >
+        <h2
+          className="ContactUsPage-title-8"
+        >
+          Send us a message
+        </h2>
+        <div
+          className="MuiGrid-root GridContainer-grid-133  MuiGrid-container"
+        >
+          <div
+            className="MuiGrid-root GridItem-grid-237  MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+          >
+            <p
+              className="ContactUsPage-subHeading-9"
+            >
+              You can contact us with anything related to Ewelists. We
+              '
+              ll get in touch with you as soon as possible.
+              <br />
+              <br />
+            </p>
+            <form>
+              <div
+                className="MuiFormControl-root CustomInput-formControl-246 MuiFormControl-fullWidth"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root CustomInput-labelRoot-242  MuiInputLabel-formControl MuiInputLabel-animated"
+                  data-shrink={false}
+                  htmlFor="name"
+                >
+                  Your Name
+                </label>
+                <div
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline CustomInput-underline-239 MuiInputBase-formControl MuiInput-formControl"
+                  onClick={[Function]}
+                >
+                  <input
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiInput-input CustomInput-input-249"
+                    disabled={false}
+                    id="name"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiFormControl-root CustomInput-formControl-246 MuiFormControl-fullWidth"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root CustomInput-labelRoot-242  MuiInputLabel-formControl MuiInputLabel-animated"
+                  data-shrink={false}
+                  htmlFor="email"
+                >
+                  Email address
+                </label>
+                <div
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline CustomInput-underline-239 MuiInputBase-formControl MuiInput-formControl"
+                  onClick={[Function]}
+                >
+                  <input
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiInput-input CustomInput-input-249"
+                    disabled={false}
+                    id="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiFormControl-root CustomInput-formControl-246 MuiFormControl-fullWidth"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root CustomInput-labelRoot-242  MuiInputLabel-formControl MuiInputLabel-animated"
+                  data-shrink={false}
+                  htmlFor="message"
+                >
+                  Your message
+                </label>
+                <div
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline CustomInput-underline-239 MuiInputBase-formControl MuiInput-formControl MuiInputBase-multiline MuiInput-multiline"
+                  onClick={[Function]}
+                >
+                  <textarea
+                    aria-invalid={false}
+                    className="MuiInputBase-input MuiInput-input CustomInput-input-249 MuiInputBase-inputMultiline MuiInput-inputMultiline"
+                    disabled={false}
+                    id="message"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    rows={6}
+                  />
+                </div>
+              </div>
+              <div
+                className="ContactUsPage-textCenter-11"
+              >
+                <button
+                  className="MuiButtonBase-root MuiButton-root ForwardRef-button-306 ForwardRef-primary-308 ForwardRef-round-334 ForwardRef-disabled-331 MuiButton-text"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    Contact us
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="FooterDark-spacer-366"
+    />
+    <footer
+      className="Footer-footer-371 FooterDark-footer-365"
+    >
+      <div
+        className="Footer-container-377"
+      >
+         
+        <div>
+          <div
+            className="FooterDark-left-362"
+          >
+            <ul
+              className="MuiList-root FooterDark-list-361 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root FooterDark-inlineBlock-360 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="FooterDark-block-359"
+                  href="/"
+                >
+                  © 
+                  2019
+                   ewelists
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root FooterDark-inlineBlock-360 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="FooterDark-block-359"
+                  href="/contact"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root FooterDark-inlineBlock-360 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="FooterDark-block-359"
+                  href="/#about"
+                >
+                  About us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root FooterDark-inlineBlock-360 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="FooterDark-block-359"
+                  href="/privacy"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root FooterDark-inlineBlock-360 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="FooterDark-block-359"
+                  href="/terms"
+                >
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="FooterDark-rightLinks-367"
+          >
+            <ul>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root ForwardRef-button-306 ForwardRef-facebook-317 ForwardRef-simple-329 ForwardRef-justIcon-337 MuiButton-text"
+                  href="https://www.facebook.com/ewelists"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="button"
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-facebook"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root ForwardRef-button-306 ForwardRef-twitter-316 ForwardRef-simple-329 ForwardRef-justIcon-337 MuiButton-text"
+                  href="https://twitter.com/ewelists"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="button"
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-twitter"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root ForwardRef-button-306 ForwardRef-instagram-328 ForwardRef-simple-329 ForwardRef-justIcon-337 MuiButton-text"
+                  href="https://www.instagram.com/ewelists/"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="button"
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-instagram"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="Footer-clearFix-387"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

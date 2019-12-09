@@ -54,11 +54,6 @@ class ContactUsPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-  }
-
   sendMail = async event => {
     let details = {
       name: this.state.name,
