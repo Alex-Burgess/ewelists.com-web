@@ -96,13 +96,6 @@ class SignUpPage extends React.Component {
     );
   }
 
-  // validatePassword() {
-  //   if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/.test(this.state.password)) {
-  //     return true
-  //   }
-  //   return false
-  // }
-
   validateEmail() {
     if (/^[a-zA-Z0-9.+]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
       return true
@@ -193,7 +186,6 @@ class SignUpPage extends React.Component {
       await Auth.signIn(email, this.state.password);
 
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/");
     } catch (e) {
       this.setState({
         showConfirmationError: true,
