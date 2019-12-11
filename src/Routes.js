@@ -10,10 +10,10 @@ import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
 import TermsPage from "views/TermsPage/TermsPage.jsx";
 import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
 import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
-import ArticlePageTravelGear from "views/ArticlePageTravelGear/ArticlePageTravelGear.jsx";
-import ArticlePageHospitalBag from "views/ArticlePageHospitalBag/ArticlePageHospitalBag.jsx";
-import ArticlePageNursery from "views/ArticlePageNursery/ArticlePageNursery.jsx";
-import ArticlePageBathTime from "views/ArticlePageBathTime/ArticlePageBathTime.jsx";
+import ArticlePageTravelGear from "views/ArticlePages/TravelGear.jsx";
+import ArticlePageHospitalBag from "views/ArticlePages/HospitalBag.jsx";
+import ArticlePageNursery from "views/ArticlePages/Nursery.jsx";
+import ArticlePageBathTime from "views/ArticlePages/BathTime.jsx";
 import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
 import EditListPage from "views/EditListPage/EditListPage.jsx";
 

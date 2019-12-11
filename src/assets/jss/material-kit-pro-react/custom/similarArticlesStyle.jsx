@@ -15,12 +15,33 @@
 
 */
 import {
+  container,
+  title,
   cardTitle,
   grayColor,
   coloredShadow
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const sectionStyle = theme => ({
+const blogPostPageStyle = theme => ({
+  container: {
+    ...container,
+    zIndex: "2"
+  },
+  sectionSimilarLists: {
+    backgroundPosition: "50%",
+    backgroundSize: "cover",
+    padding: "70px 0"
+  },
+  textCenter: {
+    textAlign: "center"
+  },
+  title: {
+    ...title,
+    textAlign: "Center",
+    [theme.breakpoints.down("xs")]: {
+        fontSize: "1.75rem"
+    }
+  },
   cardTitle,
   coloredShadow,
   description: {
@@ -37,4 +58,4 @@ const sectionStyle = theme => ({
   }
 });
 
-export default sectionStyle;
+export default blogPostPageStyle;
