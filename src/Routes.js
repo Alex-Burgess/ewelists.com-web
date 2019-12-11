@@ -10,10 +10,11 @@ import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
 import TermsPage from "views/TermsPage/TermsPage.jsx";
 import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
 import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
-import ArticlePageTravelGear from "views/ArticlePages/TravelGear.jsx";
-import ArticlePageHospitalBag from "views/ArticlePages/HospitalBag.jsx";
-import ArticlePageNursery from "views/ArticlePages/Nursery.jsx";
-import ArticlePageBathTime from "views/ArticlePages/BathTime.jsx";
+import ArticleTravelGear from "views/ArticlePages/TravelGear.jsx";
+import ArticleHospitalBag from "views/ArticlePages/HospitalBag.jsx";
+import ArticleNursery from "views/ArticlePages/Nursery.jsx";
+import ArticleBathTime from "views/ArticlePages/BathTime.jsx";
+import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasForToddlers.jsx";
 import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
 import EditListPage from "views/EditListPage/EditListPage.jsx";
 
@@ -28,10 +29,11 @@ export default ({childProps}) =>
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
     <AppliedRoute path="/listideas" exact component={ListIdeasPage} props={childProps} />
-    <AppliedRoute path="/listideas/travelgear" exact component={ArticlePageTravelGear} props={childProps} />
-    <AppliedRoute path="/listideas/hospitalbag" exact component={ArticlePageHospitalBag} props={childProps} />
-    <AppliedRoute path="/listideas/nursery" exact component={ArticlePageNursery} props={childProps} />
-    <AppliedRoute path="/listideas/bathtime" exact component={ArticlePageBathTime} props={childProps} />
+    <AppliedRoute path="/listideas/travelgear" exact component={ArticleTravelGear} props={childProps} />
+    <AppliedRoute path="/listideas/hospitalbag" exact component={ArticleHospitalBag} props={childProps} />
+    <AppliedRoute path="/listideas/nursery" exact component={ArticleNursery} props={childProps} />
+    <AppliedRoute path="/listideas/bathtime" exact component={ArticleBathTime} props={childProps} />
+    <AppliedRoute path="/listideas/christmasfortoddlers" exact component={ArticleChristmasIdeasForToddlers} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
