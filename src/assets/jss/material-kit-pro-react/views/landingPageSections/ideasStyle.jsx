@@ -16,7 +16,6 @@
 */
 import {
   container,
-  title,
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const ideasSection = theme => ({

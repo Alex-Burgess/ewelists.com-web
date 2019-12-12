@@ -6,7 +6,7 @@ class ArticlePage extends React.Component {
   render() {
     const title = 'Christmas Ideas for Toddlers';
     const subtitle = 'If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas!';
-    const backgroundImg = 'travelgear.jpg';
+    const backgroundImg = 'christmastoddlers.jpg';
 
     const storyProducts = [
       {brand: 'Emma Bridgewater', url: 'https://www.amazon.co.uk/dp/B00XLNNNK2', price: '£ 36.55', description: 'Polka Dot 19 Piece Melamine Tea Set in House Carry Box', img: 'https://images-na.ssl-images-amazon.com/images/I/71AFxUI0ZIL._SX679_.jpg'},
