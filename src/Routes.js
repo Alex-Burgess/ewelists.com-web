@@ -9,7 +9,7 @@ import SignupPage from "views/SignupPage/SignupPage.jsx";
 import PrivacyPage from "views/PrivacyPage/PrivacyPage.jsx";
 import TermsPage from "views/TermsPage/TermsPage.jsx";
 import ContactPage from "views/ContactUsPage/ContactUsPage.jsx";
-import ListIdeasPage from "views/ListIdeasPage/ListIdeasPage.jsx";
+import GiftIdeasMain from "views/ArticlePages/GiftIdeasMain.jsx";
 import ArticleTravelGear from "views/ArticlePages/TravelGear.jsx";
 import ArticleHospitalBag from "views/ArticlePages/HospitalBag.jsx";
 import ArticleNursery from "views/ArticlePages/Nursery.jsx";
@@ -28,7 +28,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/terms" exact component={TermsPage} props={childProps} />
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
-    <AppliedRoute path="/listideas" exact component={ListIdeasPage} props={childProps} />
+    <AppliedRoute path="/listideas" exact component={GiftIdeasMain} props={childProps} />
     <AppliedRoute path="/listideas/travelgear" exact component={ArticleTravelGear} props={childProps} />
     <AppliedRoute path="/listideas/hospitalbag" exact component={ArticleHospitalBag} props={childProps} />
     <AppliedRoute path="/listideas/nursery" exact component={ArticleNursery} props={childProps} />

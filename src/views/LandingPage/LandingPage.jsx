@@ -41,9 +41,9 @@ import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
 
 // Sections for this page
-import LandingCreate from "./Sections/LandingCreate.jsx";
-import LandingProduct from "./Sections/LandingProduct.jsx";
-import LandingIdeas from "./Sections/LandingIdeas.jsx";
+import Create from "./Sections/Create.jsx";
+import Product from "./Sections/Product.jsx";
+import Ideas from "./Sections/Ideas.jsx";
 import YourLists from "./Sections/YourLists.jsx";
 
 class LandingPage extends React.Component {
@@ -94,9 +94,9 @@ class LandingPage extends React.Component {
           {...rest}
         />
         <div className={classes.main}>
-          <LandingCreate />
-          <LandingProduct />
-          <LandingIdeas />
+          <Create />
+          <Product />
+          <Ideas />
         </div>
         <FooterLarge />
       </div>

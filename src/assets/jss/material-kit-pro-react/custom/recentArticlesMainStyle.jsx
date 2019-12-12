@@ -16,10 +16,19 @@
 */
 import {
   description,
-  cardTitle
+  cardTitle,
+  mlAuto,
+  mrAuto,
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const sectionRecentListsStyle = theme => ({
+const blogPostPageStyle = theme => ({
+  mlAuto,
+  mrAuto,
+  section: {
+    backgroundPosition: "50%",
+    backgroundSize: "cover",
+    padding: "15px 0"
+  },
   cardTitle,
   cardCategory: {
     fontSize: "0.75rem",
@@ -65,4 +74,4 @@ const sectionRecentListsStyle = theme => ({
   }
 });
 
-export default sectionRecentListsStyle;
+export default blogPostPageStyle;

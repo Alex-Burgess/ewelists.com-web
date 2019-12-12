@@ -17,13 +17,30 @@
 import {
   container,
   title,
+  main,
+  whiteColor,
+  mainRaised
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const ideasSection = theme => ({
-  container,
-  section: {
-    padding: "50px 0"
+const blogPostsPageStyle = theme => ({
+  container: {
+    ...container,
+    zIndex: "2",
+    position: "relative"
   },
+  textCenter: {
+    textAlign: "center"
+  },
+  title: {
+    ...title,
+    color: whiteColor,
+    fontSize: "2.25rem",
+    lineHeight: "1.5em"
+  },
+  main: {
+    ...main,
+    ...mainRaised
+  }
 });
 
-export default ideasSection;
+export default blogPostsPageStyle;
