@@ -25,7 +25,7 @@ import Table from "components/Table/Table.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/reservedStyle.jsx";
+import styles from "assets/jss/custom/views/editListPage/reservedStyle.jsx";
 
 
 class SectionProducts extends React.Component {

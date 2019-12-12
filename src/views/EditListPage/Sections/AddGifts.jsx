@@ -34,7 +34,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/addGiftsStyle.jsx";
+import styles from "assets/jss/custom/views/editListPage/addGiftsStyle.jsx";
 import config from 'config.js';
 
 class SectionAddGifts extends React.Component {

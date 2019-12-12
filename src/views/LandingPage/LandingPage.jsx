@@ -30,13 +30,11 @@ import Extension from "@material-ui/icons/Extension";
 import ChildFriendly from "@material-ui/icons/ChildFriendly";
 import WatchLater from "@material-ui/icons/WatchLater";
 // core components
-import Header from "components/Header/Header.jsx";
-import FooterLarge from "components/Footer/FooterLarge.jsx";
+import FooterDark from "custom/Footer/FooterDark.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
+import HeaderFixed from "custom/Header/HeaderFixed.jsx";
 
 import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.jsx";
 
@@ -68,13 +66,7 @@ class LandingPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        <Header
-          color="info"
-          brand="ewelists"
-          links={<HeaderLinksAuth dropdownHoverColor="info" />}
-          fixed
-          {...rest}
-        />
+        <HeaderFixed isAuthenticated={true} />
         <div className={classes.main}>
           <YourLists />
         </div>
@@ -86,19 +78,13 @@ class LandingPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        <Header
-          color="info"
-          brand="ewelists"
-          links={<HeaderLinks dropdownHoverColor="rose" />}
-          fixed
-          {...rest}
-        />
+        <HeaderFixed isAuthenticated={false} />
         <div className={classes.main}>
           <Create />
           <Product />
           <Ideas />
         </div>
-        <FooterLarge />
+        <FooterDark />
       </div>
     );
   }

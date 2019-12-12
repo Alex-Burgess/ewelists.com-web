@@ -25,7 +25,7 @@ import {
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const signupPageStyle = theme => ({
+const loginPageStyle = theme => ({
   description,
   cardTitle: {
     ...cardTitle,
@@ -178,4 +178,4 @@ const signupPageStyle = theme => ({
   }
 });
 
-export default signupPageStyle;
+export default loginPageStyle;

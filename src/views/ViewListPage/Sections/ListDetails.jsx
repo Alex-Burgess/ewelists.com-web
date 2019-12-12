@@ -29,7 +29,7 @@ import Slide from "@material-ui/core/Slide";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 
-import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/viewListSections/listDetailsStyle.jsx";
+import sectionDetailsStyle from "assets/jss/custom/views/viewListPage/listDetailsStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;

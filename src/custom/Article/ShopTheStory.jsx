@@ -10,7 +10,7 @@ import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import shopTheStoryStyle from "assets/jss/material-kit-pro-react/custom/shopTheStoryStyle.jsx";
+import shopTheStoryStyle from "assets/jss/custom/components/shopTheStoryStyle.jsx";
 
 function ShopTheStory(props) {
   const { classes, products } = props;

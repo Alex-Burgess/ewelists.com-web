@@ -29,9 +29,8 @@ import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
 import Redeem from "@material-ui/icons/Redeem";
 // core components
-import Header from "components/Header/Header.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
-import FooterLarge from "components/Footer/FooterLarge.jsx";
+import HeaderFixed from "custom/Header/HeaderFixed.jsx";
+import FooterDark from "custom/Footer/FooterDark.jsx";
 import NavPills from "components/NavPills/NavPills.jsx";
 // sections for this page
 import SectionListDetails from "./Sections/ListDetails.jsx";
@@ -41,7 +40,7 @@ import SectionShare from "./Sections/Share.jsx";
 import SectionReserved from "./Sections/Reserved.jsx";
 
 import config from 'config.js';
-import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewEditPageStyle.jsx";
+import editPageStyle from "assets/jss/custom/views/editListPage/editPageStyle.jsx";
 
 class ArticlePage extends React.Component {
   constructor(props) {
@@ -263,12 +262,7 @@ class ArticlePage extends React.Component {
       <div>
         {this.state.loaded
           ? <div>
-              <Header
-              color="info"
-              brand="ewelists"
-                links={<HeaderLinksAuth dropdownHoverColor="info" />}
-                fixed
-              />
+              <HeaderFixed isAuthenticated={true} />
               <div className={classes.main}>
                 <SectionListDetails
                   title={this.state.title}
@@ -345,7 +339,7 @@ class ArticlePage extends React.Component {
                   />
                 </div>
               </div>
-              <FooterLarge />
+              <FooterDark />
             </div>
           : null
         }
@@ -358,4 +352,4 @@ ArticlePage.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(articlePageStyle)(ArticlePage);
+export default withStyles(editPageStyle)(ArticlePage);

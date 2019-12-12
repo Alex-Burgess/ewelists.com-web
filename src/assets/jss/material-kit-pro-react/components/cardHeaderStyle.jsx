@@ -65,29 +65,6 @@ const cardHeaderStyle = {
       display: "block"
     }
   },
-  cardProductTableImage: {
-    position: "relative",
-    padding: "0",
-    zIndex: "1",
-    marginLeft: "15px",
-    marginRight: "15px",
-    marginTop: "0px",
-    borderRadius: "6px",
-    "& img": {
-      width: "100%",
-      borderRadius: "6px",
-      pointerEvents: "none",
-      boxShadow:
-        "0 5px 15px -8px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.24), 0 8px 10px -5px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.2)"
-    },
-    "& a": {
-      display: "block"
-    }
-  },
   noShadow: {
     "& img": {
       boxShadow: "none !important"

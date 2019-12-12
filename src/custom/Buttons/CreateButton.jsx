@@ -12,7 +12,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 
-import createButtonStyle from "assets/jss/material-kit-pro-react/components/createButtonStyle.jsx";
+import createButtonStyle from "assets/jss/custom/components/createButtonStyle.jsx";
 
 class CreateButton extends React.Component {
   render() {

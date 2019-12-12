@@ -1,7 +1,7 @@
 import React from "react";
 import ListArticle from "custom/Article/ListArticle.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
-import contentStyle from "assets/jss/material-kit-pro-react/views/articlePages/hospitalBagStyle.jsx";
+import contentStyle from "assets/jss/custom/views/articlePages/hospitalBagStyle.jsx";
 
 class ArticlePage extends React.Component {
   render() {

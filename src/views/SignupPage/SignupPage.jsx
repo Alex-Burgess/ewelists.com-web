@@ -40,9 +40,6 @@ import ListIcon from "@material-ui/icons/List";
 import Perm from "@material-ui/icons/PermIdentity";
 import Close from "@material-ui/icons/Close";
 // core components
-import Footer from "components/Footer/Footer.jsx";
-import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -50,8 +47,12 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import InfoArea from "components/InfoArea/InfoArea.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+// Custom components
+import AmazonButton from "custom/Buttons/AmazonButton.jsx";
+import HeaderTransparent from "custom/Header/HeaderTransparent.jsx";
+import FooterTransparent from "custom/Footer/FooterTransparent.jsx";
 
-import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.jsx";
+import signupPageStyle from "assets/jss/custom/views/signupPageStyle.jsx";
 
 import image from "assets/img/sheep-with-shoes.jpg";
 
@@ -289,13 +290,7 @@ class SignUpPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        <Header
-          absolute
-          color="transparent"
-          brand="ewelist"
-          links={<HeaderLinks dropdownHoverColor="rose" />}
-          {...rest}
-        />
+        <HeaderTransparent isAuthenticated={false} />
         <div
           className={classes.pageHeader}
           style={{
@@ -313,11 +308,11 @@ class SignUpPage extends React.Component {
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <Button justIcon round color="amazon" onClick={() => this.openNotification('LoginWithAmazon')}>
+                          <AmazonButton justIcon round color="amazon" onClick={() => this.openNotification('LoginWithAmazon')}>
                             <i
                               className={classes.socials + " fab fa-amazon"}
                             />
-                          </Button>
+                          </AmazonButton>
                           {` `}
                           <Button justIcon round color="google" onClick={() => this.openNotification('Google')}>
                             <i
@@ -456,90 +451,7 @@ class SignUpPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <Footer
-            className={classes.footer}
-            content={
-              <div>
-                <div className={classes.left}>
-                  <List className={classes.list}>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/"
-                        className={classes.block}
-                      >
-                        &copy; {1900 + new Date().getYear()} ewelists
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/contact"
-                        className={classes.block}
-                      >
-                        Contact Us
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/#about"
-                        className={classes.block}
-                      >
-                        About us
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/privacy"
-                        className={classes.block}
-                      >
-                        Privacy
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/terms"
-                        className={classes.block}
-                      >
-                        Terms
-                      </a>
-                    </ListItem>
-                  </List>
-                </div>
-                <div className={classes.rightLinks}>
-                  <ul>
-                    <li>
-                      <Button
-                        href="https://www.facebook.com/ewelists"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-facebook" />
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        href="https://twitter.com/ewelists"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-twitter" />
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        href="https://www.instagram.com/ewelists/"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-instagram" />
-                      </Button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            }
+          <FooterTransparent />
           />
         </div>
       </div>
@@ -615,91 +527,7 @@ class SignUpPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <Footer
-            className={classes.footer}
-            content={
-              <div>
-                <div className={classes.left}>
-                  <List className={classes.list}>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/"
-                        className={classes.block}
-                      >
-                        &copy; {1900 + new Date().getYear()} ewelists
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/contact"
-                        className={classes.block}
-                      >
-                        Contact Us
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/#about"
-                        className={classes.block}
-                      >
-                        About us
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/privacy"
-                        className={classes.block}
-                      >
-                        Privacy
-                      </a>
-                    </ListItem>
-                    <ListItem className={classes.inlineBlock}>
-                      <a
-                        href="/terms"
-                        className={classes.block}
-                      >
-                        Terms
-                      </a>
-                    </ListItem>
-                  </List>
-                </div>
-                <div className={classes.rightLinks}>
-                  <ul>
-                    <li>
-                      <Button
-                        href="https://www.facebook.com/ewelists"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-facebook" />
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        href="https://twitter.com/ewelists"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-twitter" />
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        href="https://www.instagram.com/ewelists/"
-                        target="_blank"
-                        justIcon
-                        simple
-                      >
-                        <i className="fab fa-instagram" />
-                      </Button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            }
-          />
+          <FooterTransparent />
         </div>
       </div>
     );

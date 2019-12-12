@@ -18,11 +18,10 @@ import {
   title,
   whiteColor,
   blackColor,
-  infoColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const errorPageStyles = theme => ({
+const errorPageStyles = {
   contentCenter: {
     position: "absolute",
     top: "50%",
@@ -37,15 +36,15 @@ const errorPageStyles = theme => ({
   },
   title: {
     ...title,
-    fontSize: "4em",
+    fontSize: "13.7em",
     color: whiteColor,
-    // letterSpacing: "14px !important",
+    letterSpacing: "14px !important",
     fontWeight: "700"
   },
   subTitle: {
     fontSize: "2.25rem",
     marginTop: "0",
-    marginBottom: "20px"
+    marginBottom: "8px"
   },
   description: {
     fontSize: "1.125rem",
@@ -62,15 +61,7 @@ const errorPageStyles = theme => ({
     border: "0",
     alignItems: "center",
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.1)"
-    },
-    "&:after": {
-      background:
-        "linear-gradient(60deg,rgba(" +
-        hexToRgb(infoColor[4]) +
-        ",.30),rgba(" +
-        hexToRgb(infoColor[5]) +
-        ",.70))"
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
     "&:before,&:after": {
       position: "absolute",
@@ -86,9 +77,6 @@ const errorPageStyles = theme => ({
   block: {
     color: "inherit",
     padding: "0.9375rem",
-    [theme.breakpoints.down("sm")]: {
-      padding: "0.2rem 0.8rem 0.2rem 0.8rem",
-    },
     fontWeight: "500",
     fontSize: "12px",
     textTransform: "uppercase",
@@ -111,7 +99,7 @@ const errorPageStyles = theme => ({
     float: "left!important",
     display: "block",
     "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
+      color: "inherit !important"
     }
   },
   right: {
@@ -119,27 +107,7 @@ const errorPageStyles = theme => ({
     margin: "0",
     float: "right",
     "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
-  rightLinks: {
-    float: "right!important",
-    "& ul": {
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-      "& li": {
-        display: "inline-block"
-      },
-      "& a": {
-        display: "block"
-      }
-    },
-    "& i": {
-      fontSize: "20px"
-    },
-    [theme.breakpoints.down("sm")]: {
-      display: "none"
+      color: "inherit !important"
     }
   },
   icon: {
@@ -147,15 +115,7 @@ const errorPageStyles = theme => ({
     height: "18px",
     top: "3px",
     position: "relative"
-  },
-  footer: {
-    position: "absolute",
-    width: "100%",
-    background: "transparent",
-    bottom: "0",
-    color: whiteColor,
-    zIndex: "2"
-  },
-});
+  }
+};
 
 export default errorPageStyles;

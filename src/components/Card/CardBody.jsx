@@ -32,7 +32,6 @@ function CardBody({ ...props }) {
     className,
     children,
     background,
-    listsBackground,
     plain,
     formHorizontal,
     pricing,
@@ -43,7 +42,6 @@ function CardBody({ ...props }) {
   const cardBodyClasses = classNames({
     [classes.cardBody]: true,
     [classes.cardBodyBackground]: background,
-    [classes.cardBodyListsBackground]: listsBackground,
     [classes.cardBodyPlain]: plain,
     [classes.cardBodyFormHorizontal]: formHorizontal,
     [classes.cardPricing]: pricing,

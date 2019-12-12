@@ -47,6 +47,9 @@ const productStyle = {
   description: {
     color: grayColor[0],
     fontSize: "16px"
+  },
+  infoArea: {
+    padding: "0px 0 30px"
   }
 };
 

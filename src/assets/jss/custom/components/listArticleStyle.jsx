@@ -20,8 +20,9 @@ import {
   main,
   grayColor,
   mainRaised,
-  cardTitle,
-  section
+  section,
+  hexToRgb,
+  blackColor
 } from "assets/jss/material-kit-pro-react.jsx";
 
 const blogPostPageStyle = theme => ({
@@ -35,14 +36,6 @@ const blogPostPageStyle = theme => ({
     paddingBottom: "0",
     backgroundPosition: "50%",
     backgroundSize: "cover",
-  },
-  sectionSimilarLists: {
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
-    padding: "70px 0"
-  },
-  textCenter: {
-    textAlign: "center"
   },
   title: {
     ...title,
@@ -62,42 +55,6 @@ const blogPostPageStyle = theme => ({
     ...main,
     ...mainRaised
   },
-  block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
-  },
-  inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
-  },
-  list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
-  },
-  left: {
-    float: "left!important",
-    display: "block"
-  },
-  right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right"
-  },
-  icon: {
-    width: "18px",
-    height: "18px",
-    top: "3px",
-    position: "relative"
-  },
   articleBg: {
     height: "40vh"
   },
@@ -113,42 +70,21 @@ const blogPostPageStyle = theme => ({
       }
     }
   },
-  description: {
-    color: grayColor[0],
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    WebkitLineClamp: "2",
-    WebkitBoxOrient: "vertical",
-  },
-  cardTitle: {
-    ...cardTitle,
-    textAlign: "center",
-    marginBottom: "0px !important"
-  },
-  cardDescription: {
-    color: grayColor[0],
-    textAlign: "center"
-  },
-  priceContainer: {
-    display: "inline-flex"
-  },
-  price: {
-    fontSize: "18px",
-    color: grayColor[22]
-  },
-  productImage: {
-    [theme.breakpoints.down("xs")]: {
-      height: "82vw",
-      maxHeight: "308px",
+  darkFilter: {
+    "&:before": {
+      background: "rgba(" + hexToRgb(blackColor) + ", 0.2)"
     },
-    height: "18vw",
-    maxHeight: "268px",
-    objectFit: "contain",
+    "&:after,&:before": {
+      position: "absolute",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      display: "block",
+      left: "0",
+      top: "0",
+      content: "''"
+    }
   },
-  productDetails: {
-    height: "110px",
-  }
 });
 
 export default blogPostPageStyle;

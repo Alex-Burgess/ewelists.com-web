@@ -66,6 +66,15 @@ const sectionStyle = theme => ({
     // maxHeight: "180.05px",
     objectFit: "contain",
   },
+  productImageContainer:{
+    position: "relative",
+    padding: "0",
+    zIndex: "1",
+    "& a": {
+      display: "block"
+    },
+    textAlign: "center !important"
+  },
   textCenter: {
     textAlign: "center !important"
   },

@@ -18,9 +18,9 @@ import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasF
 import ViewListPage from "views/ViewListPage/ViewListPage.jsx";
 import EditListPage from "views/EditListPage/EditListPage.jsx";
 
-import AppliedRoute from "./components/Routes/AppliedRoute";
-import AuthenticatedRoute from "./components/Routes/AuthenticatedRoute";
-import UnauthenticatedRoute from "./components/Routes/UnauthenticatedRoute";
+import AppliedRoute from "./custom/Routes/AppliedRoute";
+import AuthenticatedRoute from "./custom/Routes/AuthenticatedRoute";
+import UnauthenticatedRoute from "./custom/Routes/UnauthenticatedRoute";
 
 export default ({childProps}) =>
   <Switch>

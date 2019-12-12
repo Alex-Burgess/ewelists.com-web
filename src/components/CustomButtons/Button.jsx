@@ -67,7 +67,6 @@ const RegularButton = React.forwardRef((props, ref) => {
 RegularButton.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.oneOf([
-    "default",
     "primary",
     "secondary",
     "info",
@@ -79,7 +78,6 @@ RegularButton.propTypes = {
     "twitter",
     "facebook",
     "google",
-    "amazon",
     "linkedin",
     "pinterest",
     "youtube",

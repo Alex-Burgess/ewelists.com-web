@@ -29,18 +29,16 @@ import PinDrop from "@material-ui/icons/PinDrop";
 import Phone from "@material-ui/icons/Phone";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 // core components
-import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import InfoArea from "components/InfoArea/InfoArea.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import FooterDark from "components/Footer/FooterDark.jsx";
+import FooterGrey from "custom/Footer/FooterGrey.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 
-import contactUsStyle from "assets/jss/material-kit-pro-react/views/contactUsStyle.jsx";
+import HeaderFixed from "custom/Header/HeaderFixed.jsx";
+
+import contactUsStyle from "assets/jss/custom/views/contactUsCustomStyle.jsx";
 
 class ContactUsPage extends React.Component {
   constructor(props) {
@@ -143,20 +141,7 @@ class ContactUsPage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        {this.props.isAuthenticated
-          ? <Header
-              brand="ewelists"
-              links={<HeaderLinksAuth dropdownHoverColor="info" />}
-              fixed
-              color="info"
-            />
-          : <Header
-              brand="ewelists"
-              links={<HeaderLinks dropdownHoverColor="info" />}
-              fixed
-              color="info"
-            />
-        }
+        <HeaderFixed isAuthenticated={this.props.isAuthenticated} />
         <Parallax image={require("assets/img/sheep-with-shoes.jpg")} className={classes.parallax}>
           <div className={classes.container}>
             <GridContainer justify="center">
@@ -194,7 +179,7 @@ class ContactUsPage extends React.Component {
             </div>
           </div>
         </div>
-        <FooterDark />
+        <FooterGrey />
       </div>
     );
   }

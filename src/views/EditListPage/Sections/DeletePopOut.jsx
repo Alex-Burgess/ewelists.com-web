@@ -16,7 +16,7 @@ import Close from "@material-ui/icons/Close";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
 
-import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/popoutStyle.jsx";
+import sectionStyle from "assets/jss/custom/views/editListPage/popoutStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;

@@ -24,16 +24,15 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 // core components
-import Header from "components/Header/Header.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
+import HeaderScroll from "custom/Header/HeaderScroll.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
-import FooterLarge from "components/Footer/FooterLarge.jsx";
+import FooterDark from "custom/Footer/FooterDark.jsx";
 // sections for this page
 import SectionProducts from "./Sections/Products.jsx";
 import SectionListDetails from "./Sections/ListDetails.jsx";
 
 import config from 'config.js';
-import articlePageStyle from "assets/jss/material-kit-pro-react/views/viewListPageStyle.jsx";
+import viewListPageStyle from "assets/jss/custom/views/viewListPage/viewListPageStyle.jsx";
 
 class ArticlePage extends React.Component {
   constructor(props) {
@@ -269,17 +268,8 @@ class ArticlePage extends React.Component {
       <div>
         {this.state.loaded
           ? <div>
-              <Header
-                brand="ewelists"
-                links={<HeaderLinksAuth dropdownHoverColor="info" />}
-                fixed
-                color="transparent"
-                 changeColorOnScroll={{
-                   height: 200,
-                   color: "info"
-                 }}
-              />
-              <Parallax verySmall filter="info" className={classes.articleBg}>
+              <HeaderScroll isAuthenticated={true} />
+              <Parallax filter="info" className={classes.articleBg}>
               </Parallax>
               <div className={classes.main}>
                 <SectionListDetails
@@ -301,7 +291,7 @@ class ArticlePage extends React.Component {
               </div>
               <div className={classes.spacer}>
               </div>
-              <FooterLarge />
+              <FooterDark />
             </div>
           : null
         }
@@ -314,4 +304,4 @@ ArticlePage.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(articlePageStyle)(ArticlePage);
+export default withStyles(viewListPageStyle)(ArticlePage);

@@ -25,7 +25,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/createStyle.jsx";
+import createStyle from "assets/jss/custom/views/landingPage/createStyle.jsx";
 
 import sheeptoy from "assets/img/sheep-toy1.jpg";
 

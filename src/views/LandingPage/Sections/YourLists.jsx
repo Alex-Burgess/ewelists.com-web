@@ -37,7 +37,6 @@ import Close from "@material-ui/icons/Close";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import CreateButton from "components/CreateButton/CreateButton.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
@@ -45,8 +44,11 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import Info from "components/Typography/Info.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import CircularProgress from '@material-ui/core/CircularProgress';
+// Custom Buttons
+import CreateButton from "custom/Buttons/CreateButton.jsx";
 
-import createStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/yourListsStyle.jsx";
+
+import createStyle from "assets/jss/custom/views/landingPage/yourListsStyle.jsx";
 import config from 'config.js';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -280,7 +282,6 @@ class SectionLists extends React.Component {
                 </InputLabel>
                 <CustomInput
                   id="title"
-                  smallTitle
                   inputProps={{
                     placeholder: "Enter your title here...",
                     onChange: this.changeHandler
@@ -294,7 +295,6 @@ class SectionLists extends React.Component {
                 </InputLabel>
                 <CustomInput
                   id="description"
-                  smallDescription
                   formControlProps={{
                     fullWidth: true
                   }}

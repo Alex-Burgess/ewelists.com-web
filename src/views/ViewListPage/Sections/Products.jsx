@@ -39,7 +39,7 @@ import Clearfix from "components/Clearfix/Clearfix.jsx";
 // Sections
 import SectionReserve from "./ReservePopOut.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/viewListSections/sectionListStyle.jsx";
+import styles from "assets/jss/custom/views/viewListPage/sectionListStyle.jsx";
 
 class SectionList extends React.Component {
   constructor(props) {

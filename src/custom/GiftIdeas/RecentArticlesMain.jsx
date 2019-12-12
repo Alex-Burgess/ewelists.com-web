@@ -10,7 +10,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import Info from "components/Typography/Info.jsx";
 import Danger from "components/Typography/Danger.jsx";
 
-import articlesStyle from "assets/jss/material-kit-pro-react/custom/recentArticlesMainStyle.jsx";
+import articlesStyle from "assets/jss/custom/components/recentArticlesMainStyle.jsx";
 
 class RecentArticlesMain extends React.Component {
   renderLeftImg(classes, title, url, img, description_short, beginning_content) {

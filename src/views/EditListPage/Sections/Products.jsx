@@ -30,7 +30,7 @@ import CardBody from "components/Card/CardBody.jsx";
 // Sections
 import SectionEdit from "./EditProductPopOut.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/productsStyle.jsx";
+import styles from "assets/jss/custom/views/editListPage/productsStyle.jsx";
 
 
 class SectionProducts extends React.Component {

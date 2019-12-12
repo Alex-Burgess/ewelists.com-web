@@ -68,7 +68,7 @@ const navPillsStyle = theme => ({
     textTransform: "uppercase",
     fontSize: "12px",
     fontWeight: "500",
-    // Styles for mobile edit nav bar
+    // Custom Style for mobile edit nav bar
     [theme.breakpoints.down("xs")]: {
       maxWidth: "70px",
       minWidth: "70px",

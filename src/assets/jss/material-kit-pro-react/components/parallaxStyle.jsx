@@ -28,7 +28,7 @@ import {
 const parallaxStyle = {
   parallax: {
     height: "100vh",
-    maxHeight: "800px",
+    maxHeight: "1600px",
     overflow: "hidden",
     position: "relative",
     backgroundPosition: "50%",
@@ -88,30 +88,7 @@ const parallaxStyle = {
   },
   darkColor: {
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.2)"
-    },
-    "&:after,&:before": {
-      position: "absolute",
-      zIndex: "1",
-      width: "100%",
-      height: "100%",
-      display: "block",
-      left: "0",
-      top: "0",
-      content: "''"
-    }
-  },
-  infoBannerColor: {
-    "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
-    },
-    "&:after": {
-      background:
-        "linear-gradient(60deg,rgba(" +
-        hexToRgb(infoColor[1]) +
-        ",.56),rgba(" +
-        hexToRgb(infoColor[1]) +
-        ",.95))"
     },
     "&:after,&:before": {
       position: "absolute",
@@ -220,11 +197,6 @@ const parallaxStyle = {
     height: "65vh",
     minHeight: "65vh",
     maxHeight: "650px"
-  },
-  verySmall: {
-    height: "30vh",
-    minHeight: "250px",
-    maxHeight: "450px"
   }
 };
 

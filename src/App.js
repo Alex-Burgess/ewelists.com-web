@@ -3,7 +3,6 @@ import Routes from "./Routes";
 import { withRouter } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Helmet } from 'react-helmet';
-import './App.css';
 
 class App extends React.Component {
   constructor(props) {

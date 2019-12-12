@@ -18,10 +18,9 @@ import Add from "@material-ui/icons/Add";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import sectionStyle from "assets/jss/material-kit-pro-react/views/editListSections/editProductPopOutStyle.jsx";
+import sectionStyle from "assets/jss/custom/views/editListPage/editProductPopOutStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -165,11 +164,11 @@ class SectionDetails extends React.Component {
               <Close className={classes.modalClose} />
             </Button>
             <Card plain product>
-              <CardHeader noShadow productTable>
+              <div className={classes.productImageContainer}>
                 <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
                   <img src={product['imageUrl']} className={classes.productImage} alt=".." />
                 </a>
-              </CardHeader>
+              </div>
               <CardBody plain className={classes.productDetails}>
                 <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
                   <h4 className={classes.cardTitle}>{product['brand']}</h4>

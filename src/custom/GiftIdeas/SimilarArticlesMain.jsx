@@ -9,7 +9,7 @@ import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import articlesStyle from "assets/jss/material-kit-pro-react/custom/similarArticlesMainStyle.jsx";
+import articlesStyle from "assets/jss/custom/components/similarArticlesMainStyle.jsx";
 
 function SimilarArticlesMain(props) {
   const { classes, articles } = props;

@@ -84,7 +84,9 @@ const headerStyle = theme => ({
         color: "inherit",
         background: "transparent"
       }
-    }
+    },
+    // Custom styles to make logo button smaller
+    padding: "0px"
   },
   appResponsive: {
     margin: "20px 10px",
@@ -223,6 +225,7 @@ const headerStyle = theme => ({
     top: "9px",
     zIndex: "1"
   },
+  // Custpm style - Added logo
   logo: {
     height: "40px",
     verticalAlign: "middle"

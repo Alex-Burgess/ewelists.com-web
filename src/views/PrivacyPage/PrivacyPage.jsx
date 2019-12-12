@@ -27,12 +27,10 @@ import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 // core components
-import Header from "components/Header/Header.jsx";
-import FooterDark from "components/Footer/FooterDark.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
+import FooterGrey from "custom/Footer/FooterGrey.jsx";
+import HeaderFixed from "custom/Header/HeaderFixed.jsx";
 
-import privacyPageStyle from "assets/jss/material-kit-pro-react/views/privacyPageStyle.jsx";
+import privacyPageStyle from "assets/jss/custom/views/privacyPageStyle.jsx";
 
 class PrivacyPage extends React.Component {
   constructor(props) {
@@ -48,22 +46,7 @@ class PrivacyPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        {this.props.isAuthenticated
-          ? <Header
-            color="info"
-            brand="ewelists"
-            links={<HeaderLinksAuth dropdownHoverColor="info" />}
-            fixed
-            {...rest}
-          />
-          : <Header
-            color="info"
-            brand="ewelists"
-            links={<HeaderLinks dropdownHoverColor="info" />}
-            fixed
-            {...rest}
-          />
-        }
+        <HeaderFixed isAuthenticated={this.props.isAuthenticated} />
         <div className={classes.main}>
           <div className={classes.privacyContent}>
             <div className={classes.container}>
@@ -212,7 +195,7 @@ class PrivacyPage extends React.Component {
             </div>
           </div>
         </div>
-        <FooterDark />
+        <FooterGrey />
       </div>
     );
   }

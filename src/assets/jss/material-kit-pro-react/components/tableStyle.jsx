@@ -63,7 +63,7 @@ const tableStyle = {
     }
   },
   tableShoppingHead: {
-    // fontSize: "0.75em !important",
+    // Custom change - fontSize: "0.75em !important",
     fontSize: "1em !important",
     textTransform: "uppercase !important"
   },

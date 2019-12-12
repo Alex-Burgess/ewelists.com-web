@@ -37,14 +37,15 @@ import Close from "@material-ui/icons/Close";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import Button from "components/CustomButtons/Button.jsx";
+// Custom components
+import ListsInput from "custom/Inputs/ListsInput.jsx";
 // Sections
 import SectionDelete from "./DeletePopOut.jsx";
 
-import sectionDetailsStyle from "assets/jss/material-kit-pro-react/views/editListSections/listDetailsStyle.jsx";
+import sectionDetailsStyle from "assets/jss/custom/views/editListPage/listDetailsStyle.jsx";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -202,7 +203,7 @@ class SectionDetails extends React.Component {
       <div className={classes.container}>
         <GridContainer >
           <GridItem xs={12} sm={7} md={7}>
-            <CustomInput
+            <ListsInput
               id="title"
               title
               inputProps={{
@@ -217,7 +218,7 @@ class SectionDetails extends React.Component {
             <InputLabel className={classes.labelEdit}>
               Description:
             </InputLabel>
-            <CustomInput
+            <ListsInput
               id="description"
               description
               formControlProps={{

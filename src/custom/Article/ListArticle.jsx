@@ -4,18 +4,16 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import HeaderLinksAuth from "components/Header/HeaderLinksAuth.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
-import FooterLarge from "components/Footer/FooterLarge.jsx";
+import FooterDark from "custom/Footer/FooterDark.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 // Custom components
 import SimilarArticles from "custom/Article/SimilarArticles.jsx";
 import SectionShopTheStory from "custom/Article/ShopTheStory.jsx";
+import HeaderTransparent from "custom/Header/HeaderTransparent.jsx";
 
-import listArticleStyle from "assets/jss/material-kit-pro-react/custom/listArticleStyle.jsx";
+import listArticleStyle from "assets/jss/custom/components/listArticleStyle.jsx";
 
 class ListArticle extends React.Component {
   render() {
@@ -23,29 +21,8 @@ class ListArticle extends React.Component {
 
     return (
       <div>
-        {isAuthenticated
-          ? <Header
-              brand="ewelists"
-              links={<HeaderLinksAuth dropdownHoverColor="info" />}
-              fixed
-              color="transparent"
-              changeColorOnScroll={{
-                height: 200,
-                color: "info"
-              }}
-            />
-          : <Header
-              brand="ewelists"
-              links={<HeaderLinks dropdownHoverColor="info" />}
-              fixed
-              color="transparent"
-              changeColorOnScroll={{
-                height: 200,
-                color: "info"
-              }}
-            />
-        }
-        <Parallax image={require('assets/img/articles/' + backgroundImg)} filter="dark" className={classes.articleBg}>
+        <HeaderTransparent isAuthenticated={isAuthenticated} />
+        <Parallax image={require('assets/img/articles/' + backgroundImg)} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
         </Parallax>
         <div className={classes.main}>
           <div className={classes.container}>
@@ -76,7 +53,7 @@ class ListArticle extends React.Component {
             similarArticles
           }
         />
-        <FooterLarge />
+        <FooterDark />
       </div>
     );
   }

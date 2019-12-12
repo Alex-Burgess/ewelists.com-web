@@ -20,7 +20,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import RecentArticlesMain from "custom/GiftIdeas/RecentArticlesMain.jsx";
 
-import ideasStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/ideasStyle.jsx";
+import ideasStyle from "assets/jss/custom/views/landingPage/ideasStyle.jsx";
 
 class LandingIdeas extends React.Component {
   render() {

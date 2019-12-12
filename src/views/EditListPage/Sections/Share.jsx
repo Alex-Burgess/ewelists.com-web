@@ -33,7 +33,7 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import SectionUnsharePopout from "./UnsharePopOut.jsx";
 
-import styles from "assets/jss/material-kit-pro-react/views/editListSections/shareStyle.jsx";
+import styles from "assets/jss/custom/views/editListPage/shareStyle.jsx";
 
 class SectionShare extends React.Component {
   constructor(props) {

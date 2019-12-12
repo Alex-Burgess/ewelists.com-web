@@ -29,7 +29,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import InfoArea from "components/InfoArea/InfoArea.jsx";
 
-import productStyle from "assets/jss/material-kit-pro-react/views/landingPageSections/productStyle.jsx";
+import productStyle from "assets/jss/custom/views/landingPage/productStyle.jsx";
 
 class LandingProduct extends React.Component {
   render() {
@@ -49,6 +49,7 @@ class LandingProduct extends React.Component {
             <GridContainer>
               <GridItem xs={12} sm={4} md={4}>
                 <InfoArea
+                  className={classes.infoArea}
                   title="Sign Up"
                   description="Sign up using one of your social accounts, or alternatively just an email, to create your first list."
                   icon={Perm}
@@ -58,6 +59,7 @@ class LandingProduct extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={4} md={4}>
                 <InfoArea
+                  className={classes.infoArea}
                   title="Add Items"
                   description="Add items by copying the link to the product, or alternatively use one of our ready made lists if you're looking for inspiration."
                   icon={List}
@@ -67,6 +69,7 @@ class LandingProduct extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={4} md={4}>
                 <InfoArea
+                  className={classes.infoArea}
                   title="Share"
                   description="Share your first ewelist with friends and family."
                   icon={Group}
