@@ -19,9 +19,7 @@ phases:
          else
            rm build/prod.robots.txt;
          fi
-  post_build:
-    commands:
-      - echo Uploaded to ${WEB_BUCKET}
+      - echo Syncing to ${WEB_BUCKET}
       - aws s3 sync build/ s3://${WEB_BUCKET} --delete --exclude 'build/status.html'
       - aws s3 cp build/status.html s3://${WEB_BUCKET}/status.html --cache-control no-cache
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
