@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import update from 'immutability-helper';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import Tooltip from "@material-ui/core/Tooltip";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -19,103 +20,59 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import Button from "components/CustomButtons/Button.js";
 import Clearfix from "components/Clearfix/Clearfix.js";
-
 // Sections
 import SectionReserve from "./ReservePopOut.js";
 
-import styles from "assets/jss/custom/views/viewListPage/sectionListStyle.js";
+import styles from "assets/jss/custom/views/viewListPage/productsStyle.js";
+const useStyles = makeStyles(styles);
 
-class SectionList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reserveModal: false,
-      checked: [],
-      selectedEnabled: "all",
-      showFilter: false,
-      width: window.innerWidth,
-      height: window.innerHeight,
+export default function Products(props) {
+  const classes = useStyles();
+
+  const { listId, userId, products, reserved } = props;
+
+  const [desktop, setDesktop] = useState(true);
+  const [filterItems, setFilterItems] = useState('all');
+  const [showFilter, setShowFilter] = useState(false);
+  const [reservePopouts, setReservePopouts] = useState({});
+
+  useEffect( () => {
+    function updateDimensions() {
+      if (window.innerWidth < 600){
+        setDesktop(false);
+      } else {
+        setDesktop(true);
+      }
     };
+
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+  }, []);
+
+  const closeReservePopout = (id) => {
+    setReservePopouts({
+      reservePopouts: update(reservePopouts, {
+        [id]: {$set: false}
+      })
+    })
   }
 
-  handleClose(modal) {
-    var x = [];
-    x[modal] = false;
-    this.setState(x);
+  const openReservePopout = (id) => {
+    setReservePopouts({
+      ...reservePopouts,
+        [id]: true
+    })
   }
 
-  handleClickOpen(modal) {
-    console.log("Opening product id: " + modal)
-    var x = [];
-    x[modal] = true;
-    this.setState(x);
-  }
-
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  };
-  UNSAFE_componentWillMount() {
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  handleChangeEnabled = event => {
-    this.setState({ selectedEnabled: event.target.value });
-  }
-
-  resetFilter() {
-    this.setState({ selectedEnabled: "all" });
-  }
-
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked
-    });
-  }
-
-  toggleFilter = () => {
-    const { showFilter } = this.state;
-    var newValue;
-
+  const toggleMobileFilter = () => {
     if (showFilter === false){
-      newValue = true;
+      setShowFilter(true);
     } else {
-      newValue = false;
+      setShowFilter(false);
     }
-
-    this.setState({ showFilter: newValue });
   }
 
-  userReservedItem(productId, reserved) {
-    // console.log("Checking if user " + this.props.userId + " reserved product id: " + productId)
-    let userId = this.props.userId;
-
+  const userReservedItem = (productId) => {
     if (! (productId in reserved)) {
       return false
     }
@@ -127,9 +84,7 @@ class SectionList extends React.Component {
     return true
   }
 
-  getUserReservedDetails(productId, reserved) {
-    let userId = this.props.userId;
-
+  const getUserReservedDetails = (productId) => {
     if (! (productId in reserved)) {
       return false
     }
@@ -141,10 +96,10 @@ class SectionList extends React.Component {
     return reserved[productId][userId]
   }
 
-  renderProduct(classes, product, i, reserved) {
-    if ((this.state.selectedEnabled === "purchased") && (product['reserved'] < product['quantity'])) {
+  const renderProduct = (product, i) => {
+    if ((filterItems === "purchased") && (product['reserved'] < product['quantity'])) {
         return (null)
-    } else if ((this.state.selectedEnabled === "available") && (product['reserved'] >= product['quantity'])) {
+    } else if ((filterItems === "available") && (product['reserved'] >= product['quantity'])) {
       return (null)
     } else {
       return (
@@ -168,15 +123,15 @@ class SectionList extends React.Component {
                 <span className={classes.description}> Remaining: {product['quantity'] - product['reserved']}</span>
               </div>
               <div className={classes.textCenter}>
-                {this.userReservedItem(product['productId'], reserved)
-                  ? <Button default color="default" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                {userReservedItem(product['productId'])
+                  ? <Button default className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
                       Update
                     </Button>
                   : product['reserved'] < product['quantity']
-                    ? <Button default color="primary" className={classes.reserveButton} onClick={() => this.handleClickOpen(product['productId'])}>
+                    ? <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
                         Reserve Gift
                       </Button>
-                    : <Button default color="default" className={classes.reserveButton} disabled onClick={() => this.handleClickOpen(product['productId'])}>
+                    : <Button default className={classes.reserveButton} disabled onClick={() => openReservePopout(product['productId'])}>
                         Reserved
                       </Button>
                 }
@@ -184,193 +139,187 @@ class SectionList extends React.Component {
             </CardFooter>
           </Card>
           <SectionReserve
-            open={this.state[product['productId']]
-              ? this.state[product['productId']]
+            open={reservePopouts[product['productId']]
+              ? reservePopouts[product['productId']]
               : false }
             product={product}
-            reservedDetails={this.getUserReservedDetails(product['productId'], reserved)
-              ? this.getUserReservedDetails(product['productId'], reserved)
+            reservedDetails={getUserReservedDetails(product['productId'])
+              ? getUserReservedDetails(product['productId'])
               : null }
-            handleClose={this.handleClose.bind(this)}
-            getListId={this.props.getListId.bind(this)}
-            updateReservedQuantity={this.props.updateReservedQuantity.bind(this)}
-            unreserveProduct={this.props.unreserveProduct.bind(this)}
-            updateUserReservation={this.props.updateUserReservation.bind(this)}
+            closeReservePopout={closeReservePopout}
+            listId={listId}
+            updateReservedQuantity={props.updateReservedQuantity}
+            unreserveProduct={props.unreserveProduct}
+            updateUserReservation={props.updateUserReservation}
           />
         </GridItem>
       )
     }
   }
 
-  renderProducts(classes, products: Products[], reserved) {
+  const renderProducts = () => {
     return (
       Object.entries(products).map(
         ([key, product]) =>
-          this.renderProduct(classes, product, key, reserved)
+          renderProduct(product, key)
       )
     )
   }
 
-  render() {
-    const { classes, products, reserved } = this.props;
-
-    return (
-      <div className={classes.section}>
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem md={3} sm={4}>
-              <Card plain className={classes.filterCard}>
-                <CardBody className={classes.cardBodyRefine}>
-                  <div className={classes.textCenter + " " + classes.filterButtonContainer}>
-                    <Button default color="default" onClick={this.toggleFilter} className={classes.filterButton}>
-                      {
-                        this.state.desktop || this.state.showFilter
-                        ? <span>Hide Filter</span>
-                        : <span>Show Filter</span>
-                      }
-                    </Button>
-                  </div>
-                  {
-                    this.state.desktop || this.state.showFilter
-                    ?  <div>
-                        <h4 className={classes.cardTitle + " " + classes.textLeft}>
-                          Filter
-                          <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
-                            <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton} onClick={this.resetFilter.bind(this)}>
-                              <Cached />
-                            </Button>
-                          </Tooltip>
-                          <Clearfix />
-                        </h4>
-                        <Accordion
-                          active={[0, 1]}
-                          activeColor="rose"
-                          collapses={[
-                            {
-                              title: "Availability",
-                              content: (
-                                <div className={classes.customExpandPanel}>
-                                  <div
-                                    className={
-                                      classes.checkboxAndRadio +
-                                      " " +
-                                      classes.checkboxAndRadioHorizontal
+  return (
+    <div className={classes.section}>
+      <div className={classes.container}>
+        <GridContainer>
+          <GridItem md={3} sm={4}>
+            <Card plain className={classes.filterCard}>
+              <CardBody className={classes.cardBodyRefine}>
+                <div className={classes.textCenter + " " + classes.filterButtonContainer}>
+                  <Button default onClick={toggleMobileFilter} className={classes.filterButton}>
+                    {
+                      desktop || showFilter
+                      ? <span>Hide Filter</span>
+                      : <span>Show Filter</span>
+                    }
+                  </Button>
+                </div>
+                {
+                  desktop || showFilter
+                  ?  <div>
+                      <h4 className={classes.cardTitle + " " + classes.textLeft}>
+                        Filter
+                        <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
+                          <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton} onClick={() => setFilterItems('all')}>
+                            <Cached />
+                          </Button>
+                        </Tooltip>
+                        <Clearfix />
+                      </h4>
+                      <Accordion
+                        active={[0, 1]}
+                        activeColor="rose"
+                        collapses={[
+                          {
+                            title: "Availability",
+                            content: (
+                              <div className={classes.customExpandPanel}>
+                                <div
+                                  className={
+                                    classes.checkboxAndRadio +
+                                    " " +
+                                    classes.checkboxAndRadioHorizontal
+                                  }
+                                >
+                                  <FormControlLabel
+                                    control={
+                                      <Radio
+                                        checked={filterItems === "all"}
+                                        onChange={event => setFilterItems("all")}
+                                        value="all"
+                                        name="radio button enabled"
+                                        aria-label="A"
+                                        icon={
+                                          <FiberManualRecord
+                                            className={classes.radioUnchecked}
+                                          />
+                                        }
+                                        checkedIcon={
+                                          <FiberManualRecord className={classes.radioChecked} />
+                                        }
+                                        classes={{
+                                          checked: classes.radio,
+                                          root: classes.radioRoot
+                                        }}
+                                      />
                                     }
-                                  >
-                                    <FormControlLabel
-                                      control={
-                                        <Radio
-                                          checked={this.state.selectedEnabled === "all"}
-                                          onChange={this.handleChangeEnabled}
-                                          value="all"
-                                          name="radio button enabled"
-                                          aria-label="A"
-                                          icon={
-                                            <FiberManualRecord
-                                              className={classes.radioUnchecked}
-                                            />
-                                          }
-                                          checkedIcon={
-                                            <FiberManualRecord className={classes.radioChecked} />
-                                          }
-                                          classes={{
-                                            checked: classes.radio,
-                                            root: classes.radioRoot
-                                          }}
-                                        />
-                                      }
-                                      classes={{
-                                        label: classes.label,
-                                        root: classes.labelRoot
-                                      }}
-                                      label="All Items"
-                                    />
-                                    <FormControlLabel
-                                      control={
-                                        <Radio
-                                          checked={this.state.selectedEnabled === "available"}
-                                          onChange={this.handleChangeEnabled}
-                                          value="available"
-                                          name="radio button enabled"
-                                          aria-label="B"
-                                          icon={
-                                            <FiberManualRecord
-                                              className={classes.radioUnchecked}
-                                            />
-                                          }
-                                          checkedIcon={
-                                            <FiberManualRecord className={classes.radioChecked} />
-                                          }
-                                          classes={{
-                                            checked: classes.radio,
-                                            root: classes.radioRoot
-                                          }}
-                                        />
-                                      }
-                                      classes={{
-                                        label: classes.label,
-                                        root: classes.labelRoot
-                                      }}
-                                      label="Available Items"
-                                    />
-                                    <FormControlLabel
-                                      control={
-                                        <Radio
-                                          checked={this.state.selectedEnabled === "purchased"}
-                                          onChange={this.handleChangeEnabled}
-                                          value="purchased"
-                                          name="radio button enabled"
-                                          aria-label="C"
-                                          icon={
-                                            <FiberManualRecord
-                                              className={classes.radioUnchecked}
-                                            />
-                                          }
-                                          checkedIcon={
-                                            <FiberManualRecord className={classes.radioChecked} />
-                                          }
-                                          classes={{
-                                            checked: classes.radio,
-                                            root: classes.radioRoot
-                                          }}
-                                        />
-                                      }
-                                      classes={{
-                                        label: classes.label,
-                                        root: classes.labelRoot
-                                      }}
-                                      label="Purchased Items"
-                                    />
-                                  </div>
+                                    classes={{
+                                      label: classes.label,
+                                      root: classes.labelRoot
+                                    }}
+                                    label="All Items"
+                                  />
+                                  <FormControlLabel
+                                    control={
+                                      <Radio
+                                        checked={filterItems === "available"}
+                                        onChange={event => setFilterItems("available")}
+                                        value="available"
+                                        name="radio button enabled"
+                                        aria-label="B"
+                                        icon={
+                                          <FiberManualRecord
+                                            className={classes.radioUnchecked}
+                                          />
+                                        }
+                                        checkedIcon={
+                                          <FiberManualRecord className={classes.radioChecked} />
+                                        }
+                                        classes={{
+                                          checked: classes.radio,
+                                          root: classes.radioRoot
+                                        }}
+                                      />
+                                    }
+                                    classes={{
+                                      label: classes.label,
+                                      root: classes.labelRoot
+                                    }}
+                                    label="Available Items"
+                                  />
+                                  <FormControlLabel
+                                    control={
+                                      <Radio
+                                        checked={filterItems === "purchased"}
+                                        onChange={event => setFilterItems("purchased")}
+                                        value="purchased"
+                                        name="radio button enabled"
+                                        aria-label="C"
+                                        icon={
+                                          <FiberManualRecord
+                                            className={classes.radioUnchecked}
+                                          />
+                                        }
+                                        checkedIcon={
+                                          <FiberManualRecord className={classes.radioChecked} />
+                                        }
+                                        classes={{
+                                          checked: classes.radio,
+                                          root: classes.radioRoot
+                                        }}
+                                      />
+                                    }
+                                    classes={{
+                                      label: classes.label,
+                                      root: classes.labelRoot
+                                    }}
+                                    label="Purchased Items"
+                                  />
                                 </div>
-                              )
-                            }
-                          ]}
-                        />
-                      </div>
-                    : null
-                  }
-                </CardBody>
-              </Card>
-            </GridItem>
-            <GridItem md={9} sm={8}>
-              <GridContainer>
-                {this.renderProducts(classes, products, reserved)}
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-          <br />
-        </div>
+                              </div>
+                            )
+                          }
+                        ]}
+                      />
+                    </div>
+                  : null
+                }
+              </CardBody>
+            </Card>
+          </GridItem>
+          <GridItem md={9} sm={8}>
+            <GridContainer>
+              {renderProducts()}
+            </GridContainer>
+          </GridItem>
+        </GridContainer>
+        <br />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-SectionList.propTypes = {
-  classes: PropTypes.object,
+Products.propTypes = {
   products: PropTypes.object,
   reserved: PropTypes.object,
+  listId: PropTypes.string,
   userId: PropTypes.string
 };
-
-export default withStyles(styles)(SectionList);

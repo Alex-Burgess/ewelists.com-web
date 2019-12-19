@@ -1,33 +1,24 @@
 import React from "react";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
-// nodejs library that concatenates classes
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import FooterDark from "custom/Footer/FooterDark.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
-
-import landingPageStyle from "assets/jss/material-kit-pro-react/views/landingPageStyle.js";
-
 // Sections for this page
-import Create from "./Sections/Create.js";
-import Product from "./Sections/Product.js";
-import Ideas from "./Sections/Ideas.js";
-import YourLists from "./Sections/YourLists.js";
+import Create from "./UnAuthSections/Create.js";
+import Product from "./UnAuthSections/Product.js";
+import Ideas from "./UnAuthSections/Ideas.js";
+import YourLists from "./AuthSections/YourLists.js";
 
-class LandingPage extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.isAuthenticated ? this.renderAuthed() : this.renderUnAuthed()}
-      </div>
-    );
-  }
+import styles from "assets/jss/material-kit-pro-react/views/landingPageStyle.js";
+const useStyles = makeStyles(styles);
 
-  renderAuthed() {
-    const { classes } = this.props;
+
+export default function LandingPage(props) {
+  const classes = useStyles();
+
+  const renderAuthed = () => {
     return (
       <div>
         <HeaderFixed isAuthenticated={true} />
@@ -38,8 +29,7 @@ class LandingPage extends React.Component {
     );
   }
 
-  renderUnAuthed() {
-    const { classes } = this.props;
+  const renderUnAuthed = () => {
     return (
       <div>
         <HeaderFixed isAuthenticated={false} />
@@ -52,10 +42,10 @@ class LandingPage extends React.Component {
       </div>
     );
   }
+
+  return (
+    <div>
+      {props.isAuthenticated ? renderAuthed() : renderUnAuthed()}
+    </div>
+  );
 }
-
-LandingPage.propTypes = {
-  classes: PropTypes.object
-};
-
-export default withStyles(landingPageStyle)(LandingPage);

@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import HeaderScroll from "custom/Header/HeaderScroll.js";
@@ -15,138 +13,105 @@ import SectionProducts from "./Sections/Products.js";
 import SectionListDetails from "./Sections/ListDetails.js";
 
 import config from 'config.js';
-import viewListPageStyle from "assets/jss/custom/views/viewListPage/viewListPageStyle.js";
+import styles from "assets/jss/custom/views/viewListPage/viewListPageStyle.js";
+const useStyles = makeStyles(styles);
 
-class ArticlePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-      title: '',
-      description: '',
-      occasion: '',
-      date: '',
-      imageUrl:  ''
-    };
-  }
+export default function ViewList(props) {
+  const classes = useStyles();
 
-  async componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    const gotList = await this.getListDetails();
+  const listId = props.match.params.id;
 
-    if (gotList){
-        await this.getProductDetails();
-        this.setState({ loaded: true });
-    }
-  }
+  const [loaded, setLoaded] = useState(false);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [occasion, setOccasion] = useState('');
+  const [date, setDate] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [products, setProducts] = useState({});
+  const [reserved, setReserved] = useState({});
 
-  async getListDetails() {
-    let response;
-    try {
-      console.log("Calling list API ")
-      response = await API.get("lists", "/" + this.props.match.params.id + "/shared");
-      console.log("Got details for list " + response.list.title)
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-      this.props.history.push('/error/' + this.props.match.params.id);
-      return false
-    }
-
-    // Update list details
-    this.setState({
-      title: response.list.title,
-      description: response.list.description,
-      occasion: response.list.occasion,
-      imageUrl: response.list.imageUrl
-    });
-
-    if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
-      this.setState({
-        date: response.list.eventDate
-      });
-    } else {
-      this.setState({
-        date: ''
-      });
-    }
-
-    this.setState({
-      products: response.products,
-      reserved: response.reserved
-    })
-
-    // console.log("reserved: " + JSON.stringify(response.reserved))
-
-    return true
-  }
-
-  // Need to get type from list product
-  async getProductDetails() {
-    let products = this.state.products;
-    for (var key in products) {
-      let product = products[key];
+  useEffect( () => {
+    async function getList() {
       let response;
-      let imageUrl = config.imagePrefix + '/images/product-default.jpg'
-
-      if (product.type === 'products') {
-        try {
-          response = await API.get("products", "/" + product.productId);
-          imageUrl = response.imageUrl;
-        } catch (e) {
-          console.log("Could not find a product in the products table for Id: " + product.productId)
-        }
-      } else if (product.type === 'notfound'){
-        try {
-          response = await API.get("notfound", "/" + product.productId);
-        } catch (e) {
-          console.log("Could not find a product in the notfound table for Id: " + product.productId)
-        }
-      } else {
-        console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
+      try {
+        response = await API.get("lists", "/" + listId + "/shared");
+      } catch (e) {
+        console.log("List ID " + listId + " does not exist for the user.")
+        props.history.push('/error/' + listId);
+        return false
       }
 
-      this.setState({
-        products: update(this.state.products, {
-          [key]: {
-            brand: {$set: response.brand},
-            details: {$set: response.details},
-            imageUrl: {$set: imageUrl},
-            productUrl: {$set: response.productUrl}
-          }
-        })
-      })
-    }
-  }
-
-  async getProductFromProducts(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("products", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      return response;
     }
 
-    return response
-  }
+    async function getProduct(product) {
+      let response;
 
-  async getProductFromNotFound(product) {
-    let response;
-    try {
-      console.log("Getting product: " + product.productId);
-      response = await API.get("notfound", "/" + product.productId);
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
+      try {
+        response = await API.get(product.type, "/" + product.productId);
+      } catch (e) {
+        console.log("Could not find a product in the " + product.type + " table for Id: " + product.productId)
+      }
+
+      return response;
     }
 
-    return response
-  }
+    function setListState(response) {
+      setTitle(response.list.title);
+      setDescription(response.list.description);
+      setOccasion(response.list.occasion);
+      setImageUrl(response.list.imageUrl);
+      setReserved(response.reserved);
 
-  async updateReservedQuantity(reservedQuantity, product) {
-    let products = this.state.products;
+      if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
+        setDate(response.list.eventDate);
+      } else {
+        setDate('');
+      }
+    }
+
+    async function getProductDetails(products) {
+      let productDetails = {};
+
+      for (var key in products) {
+        let product = products[key];
+
+        const productResponse = await getProduct(product);
+
+        product['brand'] = productResponse.brand;
+        product['details'] = productResponse.details;
+        product['productUrl'] = productResponse.productUrl;
+
+        if (product.type === 'products') {
+          product['imageUrl'] = productResponse.imageUrl;
+        } else {
+          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
+        }
+
+        productDetails[key] = product;
+      }
+
+      return productDetails;
+    }
+
+    const setEditListDetails = async () => {
+      const response = await getList();
+
+      setListState(response);
+
+      let productDetails = await getProductDetails(response.products);
+      setProducts(
+        productDetails
+      )
+    };
+
+    setEditListDetails();
+    setLoaded(true);
+  }, [listId, props.history]);
+
+  const updateReservedQuantity = async (reservedQuantity, product) => {
     let productId = product['productId'];
-    let userId = this.props.userSub;
+    let userId = props.userSub;
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
 
@@ -158,68 +123,61 @@ class ArticlePage extends React.Component {
       }
     }
 
-    await this.setState({
-      reserved: update(this.state.reserved, {
+    setReserved(
+      update(reserved, {
         [productId]: {$set: userReservedObject}
       })
-    })
+    )
 
-    // console.log("reserved state: " + JSON.stringify(this.state.reserved));
-
-    console.log("Updated product Id with user reserved details")
-
-    await this.setState({
-      products: update(this.state.products, {
+    setProducts(
+      update(products, {
         [productId]: {
           reserved: {$set: new_reserved_quantity}
         }
       })
-    })
+    )
   }
 
-  async unreserveProduct(product) {
-    let userId = this.props.userSub;
+  const unreserveProduct = async (product) => {
+    let userId = props.userSub;
     let productId = product['productId'];
     console.log("Unreserving product (" + productId + ") for user (" + userId + ")");
     // console.log("reserved state: " + JSON.stringify(this.state.reserved));
 
-    let userReservedQuantity = this.state.reserved[productId][userId].quantity;
-    let productTotalReservedQuantity = this.state.products[productId].reserved;
+    let userReservedQuantity = reserved[productId][userId].quantity;
+    let productTotalReservedQuantity = products[productId].reserved;
     const reservedQuantity = productTotalReservedQuantity - userReservedQuantity;
     console.log("New product reserved quantity: " + reservedQuantity)
 
-    // Remove reserved entry for product : user.
-    await this.setState({
-      reserved: update(this.state.reserved, {
+    setReserved(
+      update(reserved, {
         [productId]: {$unset: [userId]}
       })
-    })
+    )
 
-    // Update product total reserved quantity
-    await this.setState({
-      products: update(this.state.products, {
+    setProducts(
+      update(products, {
         [productId]: {
           reserved: {$set: reservedQuantity}
         }
       })
-    })
+    )
   }
 
-  async updateUserReservation(newUserQuantity, product) {
-    let userId = this.props.userSub;
+  const updateUserReservation = async (newUserQuantity, product) => {
+    let userId = props.userSub;
     let productId = product['productId'];
 
-    let userOldReservedQuantity = this.state.reserved[productId][userId].quantity;
+    let userOldReservedQuantity = reserved[productId][userId].quantity;
     const quantityChange = newUserQuantity - userOldReservedQuantity
     console.log("Updating product (" + productId + ") reservation for user (" + userId + ") to " + newUserQuantity);
 
-    let productOldReservedQuantity = this.state.products[productId].reserved;
+    let productOldReservedQuantity = products[productId].reserved;
     const productNewReservedQuantity = productOldReservedQuantity + quantityChange
     console.log("Updating product (" + productId + ") total reservered to (" + productNewReservedQuantity + ")");
 
-    // Update reserved quantity for product : user.
-    await this.setState({
-      reserved: update(this.state.reserved, {
+    setReserved(
+      update(reserved, {
         [productId]: {
           [userId]: {$merge: {
               quantity: newUserQuantity
@@ -227,64 +185,48 @@ class ArticlePage extends React.Component {
           }
         }
       })
-    })
+    )
 
-    // Update product total reserved quantity
-    await this.setState({
-      products: update(this.state.products, {
+    setProducts(
+      update(products, {
         [productId]: {
           reserved: {$set: productNewReservedQuantity}
         }
       })
-    })
+    )
   }
 
-
-  getListId(){
-    return this.props.match.params.id
-  }
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div>
-        {this.state.loaded
-          ? <div>
-              <HeaderScroll isAuthenticated={true} />
-              <Parallax filter="info" className={classes.articleBg}>
-              </Parallax>
-              <div className={classes.main}>
-                <SectionListDetails
-                  title={this.state.title}
-                  description={this.state.description}
-                  occasion={this.state.occasion}
-                  date={this.state.date}
-                  imageUrl={this.state.imageUrl}
-                />
-                <SectionProducts
-                  products={this.state.products}
-                  reserved={this.state.reserved}
-                  userId={this.props.userSub}
-                  getListId={this.getListId.bind(this)}
-                  updateReservedQuantity={this.updateReservedQuantity.bind(this)}
-                  unreserveProduct={this.unreserveProduct.bind(this)}
-                  updateUserReservation={this.updateUserReservation.bind(this)}
-                />
-              </div>
-              <div className={classes.spacer}>
-              </div>
-              <FooterDark />
+  return (
+    <div>
+      {loaded
+        ? <div>
+            <HeaderScroll isAuthenticated={true} />
+            <Parallax filter="info" className={classes.articleBg}>
+            </Parallax>
+            <div className={classes.main}>
+              <SectionListDetails
+                title={title}
+                description={description}
+                occasion={occasion}
+                date={date}
+                imageUrl={imageUrl}
+              />
+              <SectionProducts
+                products={products}
+                reserved={reserved}
+                userId={props.userSub}
+                listId={listId}
+                updateReservedQuantity={updateReservedQuantity}
+                unreserveProduct={unreserveProduct}
+                updateUserReservation={updateUserReservation}
+              />
             </div>
-          : null
-        }
-      </div>
-    );
-  }
+            <div className={classes.spacer}>
+            </div>
+            <FooterDark />
+          </div>
+        : null
+      }
+    </div>
+  );
 }
-
-ArticlePage.propTypes = {
-  classes: PropTypes.object
-};
-
-export default withStyles(viewListPageStyle)(ArticlePage);

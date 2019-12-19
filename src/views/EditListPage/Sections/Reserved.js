@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 // @material-ui icons
 // core components
 import Table from "components/Table/Table.js";
@@ -10,58 +10,27 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
 import styles from "assets/jss/custom/views/editListPage/reservedStyle.js";
+const useStyles = makeStyles(styles);
 
+export default function SectionProducts(props) {
+  const classes = useStyles();
+  const { reserved, products } = props;
+  const [desktop, setDesktop] = useState(true);
 
-class SectionProducts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      edit: {},
-      width: window.innerWidth,
-      height: window.innerHeight
+  useEffect( () => {
+    function updateDimensions() {
+      if (window.innerWidth < 600){
+        setDesktop(false);
+      } else {
+        setDesktop(true);
+      }
     };
-  }
 
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+  }, []);
 
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  };
-
-  UNSAFE_componentWillMount() {
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  handleEditClose(modal) {
-    var x = [];
-    x[modal] = false;
-    this.setState({ edit: x });
-  }
-
-  handleEditClickOpen(modal) {
-    console.log("Opening product id: " + modal)
-    var x = [];
-    x[modal] = true;
-    this.setState({ edit: x });
-  }
-
-  renderDesktopView(classes, reserved) {
+  const renderDesktopView = () => {
     return (
       <Table
         tableHead={[
@@ -71,7 +40,7 @@ class SectionProducts extends React.Component {
           "MESSAGE"
         ]}
         tableData={
-          this.renderDesktopTable(classes, reserved)
+          renderDesktopTable()
         }
         tableShopping
         customHeadCellClasses={[
@@ -88,24 +57,24 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileView(classes, reserved) {
+  const renderMobileView = () => {
     return (
       <Table
         tableHead={[
           "", ""
         ]}
         tableData={
-          this.renderMobileTable(classes, reserved)
+          renderMobileTable()
         }
         tableShopping
       />
     )
   }
 
-  renderDesktopTable(classes, reserved: Reserved[]) {
+  const renderDesktopTable = () => {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderDesktopRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
+            renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
@@ -120,10 +89,10 @@ class SectionProducts extends React.Component {
     return allRows
   }
 
-  renderMobileTable(classes, reserved: Reserved[]) {
+  const renderMobileTable = () => {
     const allRows = reserved.map(
       (row, i) =>
-            this.renderMobileRow(classes, this.props.products[row['productId']].productUrl, this.props.products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
+            renderMobileRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
@@ -138,7 +107,7 @@ class SectionProducts extends React.Component {
     return allRows
   }
 
-  renderDesktopRow(classes, productUrl, imageUrl, userName, message, quantity) {
+  const renderDesktopRow = (productUrl, imageUrl, userName, message, quantity) => {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -159,7 +128,7 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileRow(classes, productUrl, imageUrl, userName, message, quantity) {
+  const renderMobileRow = (productUrl, imageUrl, userName, message, quantity) => {
     return (
       [
           <div className={classes.textCenter}>
@@ -184,31 +153,24 @@ class SectionProducts extends React.Component {
     )
   }
 
-  render() {
-    const { classes, reserved } = this.props;
-
-    return (
-      <div className={classes.section}>
-        <div className={classes.container}>
-          <Card plain>
-            <CardBody plain>
-              {
-                this.state.desktop
-                ? this.renderDesktopView(classes, reserved)
-                : this.renderMobileView(classes, reserved)
-              }
-            </CardBody>
-          </Card>
-        </div>
+  return (
+    <div className={classes.section}>
+      <div className={classes.container}>
+        <Card plain>
+          <CardBody plain>
+            {
+              desktop
+              ? renderDesktopView()
+              : renderMobileView()
+            }
+          </CardBody>
+        </Card>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 SectionProducts.propTypes = {
-  classes: PropTypes.object,
   reserved: PropTypes.array,
   products: PropTypes.object
 };
-
-export default withStyles(styles)(SectionProducts);

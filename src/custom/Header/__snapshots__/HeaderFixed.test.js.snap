@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders HeaderFixed component, when user is authenticated. 1`] = `
+<div>
+  <header
+    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-21 makeStyles-info-28 makeStyles-fixed-23 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular makeStyles-container-24 MuiToolbar-gutters"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-25"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <img
+              alt="logo"
+              className="makeStyles-logo-20"
+              src="logo-white.png"
+            />
+          </a>
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+      <div
+        className="makeStyles-hidden-37 PrivateHiddenCss-smDown-119"
+      >
+        <div
+          className="makeStyles-collapse-38"
+        >
+          <ul
+            className="MuiList-root makeStyles-list-171 makeStyles-mlAuto-187 MuiList-padding"
+          >
+            <li
+              className="MuiListItem-root makeStyles-listItem-172 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-174"
+                href="/"
+                onClick={[Function]}
+              >
+                My Lists
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root makeStyles-listItem-172 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-174"
+                href="/listideas"
+                onClick={[Function]}
+              >
+                Gift List Ideas
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root makeStyles-listItem-172 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-174"
+                href="/logout"
+                onClick={[Function]}
+              >
+                Sign Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`Renders HeaderFixed component, when user is not authenticated. 1`] = `
+<div>
+  <header
+    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-21 makeStyles-info-28 makeStyles-fixed-23 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular makeStyles-container-24 MuiToolbar-gutters"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-25"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <img
+              alt="logo"
+              className="makeStyles-logo-20"
+              src="logo-white.png"
+            />
+          </a>
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+      <div
+        className="makeStyles-hidden-37 PrivateHiddenCss-smDown-119"
+      >
+        <div
+          className="makeStyles-collapse-38"
+        >
+          <ul
+            className="MuiList-root makeStyles-list-129 makeStyles-mlAuto-145 MuiList-padding"
+          >
+            <li
+              className="MuiListItem-root makeStyles-listItem-130 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-132"
+                href="/listideas"
+                onClick={[Function]}
+              >
+                Gift List Ideas
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root makeStyles-listItem-130 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-132"
+                href="/login"
+                onClick={[Function]}
+              >
+                Log In
+              </a>
+            </li>
+            <li
+              className="MuiListItem-root makeStyles-listItem-130 MuiListItem-gutters"
+              disabled={false}
+            >
+              <a
+                className="makeStyles-navLink-132"
+                href="/signup"
+                onClick={[Function]}
+              >
+                Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;

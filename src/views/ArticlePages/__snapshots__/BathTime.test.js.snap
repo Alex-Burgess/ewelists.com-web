@@ -1,0 +1,1390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders BathTime page. 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-29 makeStyles-transparent-41 makeStyles-fixed-31 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+    >
+      <div
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-32 MuiToolbar-gutters"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-33"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              <img
+                alt="logo"
+                className="makeStyles-logo-28"
+                src="logo-white.png"
+              />
+            </a>
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          className="makeStyles-hidden-45 PrivateHiddenCss-smDown-127"
+        >
+          <div
+            className="makeStyles-collapse-46"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-137 makeStyles-mlAuto-153 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-listItem-138 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-140"
+                  href="/listideas"
+                  onClick={[Function]}
+                >
+                  Gift List Ideas
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-138 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-140"
+                  href="/login"
+                  onClick={[Function]}
+                >
+                  Log In
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-138 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-140"
+                  href="/signup"
+                  onClick={[Function]}
+                >
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div
+    className="makeStyles-parallax-169 makeStyles-darkColor-173 makeStyles-articleBg-6 makeStyles-darkFilter-8"
+    style={
+      Object {
+        "backgroundImage": "url(bathtime.jpg)",
+        "transform": "translate3d(0,0px,0)",
+      }
+    }
+  />
+  <div
+    className="makeStyles-main-5"
+  >
+    <div
+      className="makeStyles-container-1"
+    >
+      <div
+        className="makeStyles-section-2"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-179  MuiGrid-container MuiGrid-justify-xs-center"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+          >
+            <h1
+              className="makeStyles-title-3"
+            >
+              Bath Time
+            </h1>
+            <h2
+              className="makeStyles-subtitle-4"
+            >
+              What to buy for your bathing your baby.
+            </h2>
+            <div
+              className="makeStyles-content-7"
+            >
+              <div>
+                <p>
+                  It can be a daunting prospect when it comes to giving your new baby a bath. They are so small and slippery and you worry if they will like it. The first thing to say is that you don’t need to bathe your baby straight away or every day for that matter. It is fine to give your baby a clean with some water and cotton wool for the first week or two, and after that they really only need a bath every few days.
+                </p>
+                <p>
+                  A 
+                  <a
+                    href="https://www.amazon.co.uk/Neat-Nursery-Circular-Tail-Bowl/dp/B00JYD5SEM/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     top and tail bowl 
+                  </a>
+                  is designed to have two separate pools of water, one to be used on the head, neck and hands and one to be used for the nappy area. You simply need some cotton wool and water to gently clean your new baby. Some
+                  <a
+                    href="https://www.amazon.co.uk/Aveeno-Baby-Daily-Care-Cleansing/dp/B01IW7YMDS/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     cleansing lotion 
+                  </a>
+                  can be used with cotton wool if there are areas you want to use more than just water.
+                </p>
+                <p>
+                  When it comes to the first bath you should start by making sure you have everything ready and close by. You can bring a changing mat, hooded towel, clothes and nappy into the bathroom so you can do everything you need in the same room. Make sure the room is nice and warm and that the water temperature is 36/37c by using a thermometer. This 
+                  <a
+                    href="https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     thermometer 
+                  </a>
+                  doubles up as a room thermometer and can be used in baby’s bedroom as well.
+                </p>
+                <p>
+                  Babies are slippery when wet and a support of some sort frees up your hands to wash your baby. For a simple addition to your existing bath, a 
+                  <a
+                    href="https://www.amazon.co.uk/Angelcare-Soft-Touch-Bath-Support/dp/B00AWMV9CY/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    bath support 
+                  </a>
+                   can be used to lie your little one in while they are being washed. Make sure you only fill the water to the water line. Placing a 
+                  <a
+                    href="https://www.amazon.co.uk/Microfibre-Little-Gubbins-Unscented-Multipack/dp/B07CL34YN2/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    flannel 
+                  </a>
+                   over your baby’s tummy can help keep them nice and warm. If you don’t have a bath or if you want to use less water, a 
+                  <a
+                    href="https://www.amazon.co.uk/Mamas-Papas-Bambino-Support-Positions/dp/B00104WAX0/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     baby bath 
+                  </a>
+                   with a built in support is a good option.
+                </p>
+                <p>
+                  Once your little one can sit up they can sit and play in your existing bath. A
+                  <a
+                    href="https://www.amazon.co.uk/Anlass-Cartoon-Resistant-Children-Octopus/dp/B01M0SVFIR/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     slip mat 
+                  </a>
+                   is very handy here because it will help prevent them sliding when they wriggle around. If they are still a bit wobbly when they’re sitting you can use a 
+                  <a
+                    href="https://www.amazon.co.uk/Safety-1st-Swivel-Bath-Primary/dp/B00CMR3H0O"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    bath seat 
+                  </a>
+                   which will give you extra peace of mind that they will be supported.
+                </p>
+                <p>
+                  Some 
+                  <a
+                    href="https://www.amazon.co.uk/BBLIKE-Windmill-Waterwheel-Swimming-Toddlers/dp/B07N1GCJJC/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     toys 
+                  </a>
+                  will give your baby something to look at while they are small and something to play with as they get older.
+                </p>
+                <p>
+                  Babies tend to have very sensitive skin which can dry out quickly. Choosing a bath care product that is specifically designed for dry and sensitive skin can help with looking after their skin. This
+                  <a
+                    href="https://www.amazon.co.uk/Childs-Farm-baby-unfragranced-250ml/dp/B071WJNHTC/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     Farms Child 
+                  </a>
+                   range was is formulated for babies with really dry skin or eczema.
+                </p>
+                <p>
+                  A 
+                  <a
+                    href="https://www.amazon.co.uk/Calypso-31200029-Natural-sponges/dp/B0721K3HR5/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     natural sponge 
+                  </a>
+                   or some small flannels are handy to have to gently wash your baby. You don’t need to wash baby’s hair with soap every time they have a bath either, you can simply splash over with some put water.
+                </p>
+                <p>
+                  A 
+                  <a
+                    href="https://www.johnlewis.com/john-lewis-partners-safari-hooded-towel-and-mitt-white/p3382355"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     hooded towel 
+                  </a>
+                   will help keep your baby nice and warm when you take them out of the bath and prepare them to dress.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="makeStyles-section-284"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-179  MuiGrid-container MuiGrid-justify-xs-center"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+          >
+            <h3
+              className="makeStyles-title-285"
+            >
+              Shop The Story
+            </h3>
+            <div
+              className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-safari-hooded-towel-and-mitt-white/p3382355"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/237170008?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-safari-hooded-towel-and-mitt-white/p3382355"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        John Lewis & Partners
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Safari Hooded Towel and Mitt, White.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £16.50
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Aveeno-Baby-Daily-Care-Cleansing/dp/B01IW7YMDS"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/81rlToC4wtL._SX466_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Aveeno-Baby-Daily-Care-Cleansing/dp/B01IW7YMDS"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Aveeno Baby
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Daily Care Cleansing Milk, 300 ml.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £8.04
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Neat-Nursery-Circular-Tail-Bowl/dp/B00JYD5SEM"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/41pXNAHISzL._SX355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Neat-Nursery-Circular-Tail-Bowl/dp/B00JYD5SEM"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        The Neat Nursery
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Top 'N' Tail Bowl.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £8.93
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71-jBXjqKLL._SY450_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        The Gro Company
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Groegg Colour Changing Room Thermometer.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £13.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Angelcare-Soft-Touch-Bath-Support/dp/B00AWMV9CY"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/618eOZJh3UL._SY355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Angelcare-Soft-Touch-Bath-Support/dp/B00AWMV9CY"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Angelcare
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Soft Touch Bath Support.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £18.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Microfibre-Little-Gubbins-Unscented-Multipack/dp/B07CL34YN2"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/91Kufu2PC3L._SY355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Microfibre-Little-Gubbins-Unscented-Multipack/dp/B07CL34YN2"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Little Gubbins
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      20 x Microfibre Baby Wipes.  Pack of Reusable, Washable, Dry, Unscented Cloths.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £12.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Anlass-Cartoon-Resistant-Children-Octopus/dp/B01M0SVFIR"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/81tok-F7cHL._SY355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Anlass-Cartoon-Resistant-Children-Octopus/dp/B01M0SVFIR"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Anlass
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Kids Cartoon Non Slip Mats Mildew Resistant Non Slip Mats for Children.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £8.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Mamas-Papas-Bambino-Support-Positions/dp/B00104WAX0"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/51Q-eU%2BO7HL._SX355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Mamas-Papas-Bambino-Support-Positions/dp/B00104WAX0"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Mamas & Papas
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Acqua Bambino Two Stage Bath with Safety Support Positions for Newborn to 12 Months, Pearl White.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        27.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Safety-1st-Swivel-Bath-Primary/dp/B00CMR3H0O"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71Odw7SbXgL._SL1500_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Safety-1st-Swivel-Bath-Primary/dp/B00CMR3H0O"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Safety 1st
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Safety 1st Swivel Bath Seat, Primary.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £14.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/BBLIKE-Windmill-Waterwheel-Swimming-Toddlers/dp/B07N1GCJJC"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/7171Lf4QkaL._SX466_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/BBLIKE-Windmill-Waterwheel-Swimming-Toddlers/dp/B07N1GCJJC"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        BBLIKE
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Baby Bath Time Fun Toys, Kids Bath Toys Tub Windmill Waterwheel.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £11.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Childs-Farm-baby-unfragranced-250ml/dp/B071WJNHTC"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71YDUJqEyAL._SX522_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Childs-Farm-baby-unfragranced-250ml/dp/B071WJNHTC"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Childs Farm
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Childs Farm baby wash unfragranced 250ml.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £2.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Childs-Farm-moisturiser-cocoa-butter/dp/B072JSY3SJ"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71v3zBEPpBL._SX466_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Childs-Farm-moisturiser-cocoa-butter/dp/B072JSY3SJ"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Childs Farm
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Childs Farm Baby Moisturiser, 250ml, Shea and Cocoa Butter.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £2.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
+                >
+                  <div
+                    className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308 makeStyles-noShadow-309"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Calypso-31200029-Natural-sponges/dp/B0721K3HR5"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-286"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71C-kkCf%2BmL._SX679_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-318 makeStyles-cardBodyPlain-320"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Calypso-31200029-Natural-sponges/dp/B0721K3HR5"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-287"
+                      >
+                        Calypso
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-288"
+                    >
+                      Naturl Sponges.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-289"
+                    >
+                      <span
+                        className="makeStyles-price-290"
+                      >
+                         
+                        £2.45
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="makeStyles-sectionSimilarLists-326"
+  >
+    <div
+      className="makeStyles-container-325"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-md-12"
+        >
+          <h2
+            className="makeStyles-title-328 makeStyles-textCenter-327"
+          >
+            Similar Articles
+          </h2>
+          <br />
+          <div
+            className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
+          >
+            <div
+              className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-291 makeStyles-cardBlog-294"
+              >
+                <div
+                  className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
+                >
+                  <a
+                    href="/listideas/travelgear"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-332"
+                      src="travelgear.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-330"
+                    style={
+                      Object {
+                        "backgroundImage": "url(travelgear.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-318"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-333 makeStyles-infoText-340"
+                  >
+                    <h6>
+                      TRAVEL
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-329"
+                  >
+                    <a
+                      href="/listideas/travelgear"
+                    >
+                      Travel Gear
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-331"
+                  >
+                    Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+                    <a
+                      href="/listideas/travelgear"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-291 makeStyles-cardBlog-294"
+              >
+                <div
+                  className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
+                >
+                  <a
+                    href="/listideas/hospitalbag"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-332"
+                      src="hospitalbag.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-330"
+                    style={
+                      Object {
+                        "backgroundImage": "url(hospitalbag.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-318"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-333 makeStyles-infoText-340"
+                  >
+                    <h6>
+                      MATERNITY
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-329"
+                  >
+                    <a
+                      href="/listideas/hospitalbag"
+                    >
+                      Hospital Bag
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-331"
+                  >
+                    Make sure you're all set with everything you need for the all important hospital bag.
+                    <a
+                      href="/listideas/hospitalbag"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-291 makeStyles-cardBlog-294"
+              >
+                <div
+                  className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
+                >
+                  <a
+                    href="/listideas/nursery"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-332"
+                      src="nurserylist.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-330"
+                    style={
+                      Object {
+                        "backgroundImage": "url(nurserylist.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-318"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-333 makeStyles-infoText-340"
+                  >
+                    <h6>
+                      NURSERY
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-329"
+                  >
+                    <a
+                      href="/listideas/nursery"
+                    >
+                      The Nursery List
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-331"
+                  >
+                    What to buy for your baby’s bedroom.
+                    <a
+                      href="/listideas/nursery"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <footer
+      className="makeStyles-footer-355 makeStyles-dark-359 makeStyles-big-356"
+    >
+      <div
+        className="makeStyles-container-361"
+      >
+        <div>
+          <div
+            className="makeStyles-content-357"
+          >
+            <div
+              className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+              >
+                <h4
+                  id="about"
+                >
+                  About Us
+                </h4>
+                <p>
+                  Ewelists is an online gift list tool, focused on helping new and expectant parents. Our goal is simple, to make creating a gift list for your little one's special occasion, such as baby shower, first birthday or Christmas faster and easier.
+                   
+                </p>
+                <p>
+                  We started by building the tool we would want to use, but would also love to hear your ideas. If you have any suggestions please contact us!
+                   
+                </p>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <h4>
+                  Follow Us
+                </h4>
+                <ul
+                  className="makeStyles-socialButtons-351"
+                >
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-372 makeStyles-facebook-383 makeStyles-simple-394 makeStyles-justIcon-402"
+                      href="https://www.facebook.com/ewelists"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-facebook-square"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-372 makeStyles-twitter-382 makeStyles-simple-394 makeStyles-justIcon-402"
+                      href="https://twitter.com/ewelists"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-twitter"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-372 makeStyles-instagram-393 makeStyles-simple-394 makeStyles-justIcon-402"
+                      href="https://www.instagram.com/ewelists/"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-instagram"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div>
+          <div
+            className="makeStyles-left-349"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-348 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-347 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-346"
+                  href="/contact"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-347 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-346"
+                  href="/#about"
+                >
+                  About us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-347 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-346"
+                  href="/privacy"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-347 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-346"
+                  href="/terms"
+                >
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="makeStyles-right-350"
+          >
+            © 
+            2020
+             ewelists
+          </div>
+        </div>
+        <div
+          className="makeStyles-clearFix-371"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

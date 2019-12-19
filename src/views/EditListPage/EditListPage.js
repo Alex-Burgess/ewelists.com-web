@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import People from "@material-ui/icons/People";
 import List from "@material-ui/icons/List";
@@ -22,316 +20,220 @@ import SectionShare from "./Sections/Share.js";
 import SectionReserved from "./Sections/Reserved.js";
 
 import config from 'config.js';
-import editPageStyle from "assets/jss/custom/views/editListPage/editPageStyle.js";
 
-class ArticlePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-      title: '',
-      description: '',
-      occasion: '',
-      date: '',
-      imageUrl: '',
-      isEdit: false
-    };
-  }
+import styles from "assets/jss/custom/views/editListPage/editPageStyle.js";
+const useStyles = makeStyles(styles);
 
-  async componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
+export default function EditPage(props) {
+  const classes = useStyles();
 
-    const gotList = await this.getListDetails();
+  const listId = props.match.params.id;
 
-    if (gotList){
-        await this.getProductDetails();
-        this.setState({ loaded: true });
-    }
-  }
+  const [loaded, setLoaded] = useState(false);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [occasion, setOccasion] = useState('');
+  const [date, setDate] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [products, setProducts] = useState({});
+  const [reserved, setReserved] = useState([]);
+  const [shared, setShared] = useState({});
 
-  async getListDetails() {
-    let response;
-    try {
-      console.log("Calling list API ")
-      response = await API.get("lists", "/" + this.props.match.params.id);
-      console.log("Got details for list " + response.list.title)
-    } catch (e) {
-      console.log("List ID " + this.props.match.params.id + " does not exist for the user.")
-      this.props.history.push('/error/' + this.props.match.params.id);
-      return false
-    }
-
-    // Update list details
-    this.setState({
-      title: response.list.title,
-      description: response.list.description,
-      occasion: response.list.occasion,
-      imageUrl: response.list.imageUrl,
-    });
-
-    if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
-      this.setState({
-        date: response.list.eventDate
-      });
-    } else {
-      this.setState({
-        date: ''
-      });
-    }
-
-    this.setState({
-      products: response.products,
-      reserved: response.reserved,
-      shared: response.shared
-    })
-
-    return true
-  }
-
-  async getProductDetails() {
-    let products = this.state.products;
-    for (var key in products) {
-      let product = products[key];
+  useEffect( () => {
+    async function getList() {
       let response;
-      let imageUrl = config.imagePrefix + '/images/product-default.jpg'
+      try {
+        response = await API.get("lists", "/" + listId);
+      } catch (e) {
+        console.log("List ID " + listId + " does not exist for the user.")
+        props.history.push('/error/' + listId);
+        return false
+      }
 
-      if (product.type === 'products') {
-        try {
-          response = await API.get("products", "/" + product.productId);
-          imageUrl = response.imageUrl;
-        } catch (e) {
-          console.log("Could not find a product in the products table for Id: " + product.productId)
-        }
-      } else if (product.type === 'notfound'){
-        try {
-          response = await API.get("notfound", "/" + product.productId);
-        } catch (e) {
-          console.log("Could not find a product in the notfound table for Id: " + product.productId)
-        }
+      return response;
+    }
+
+    async function getProduct(product) {
+      let response;
+
+      try {
+        response = await API.get(product.type, "/" + product.productId);
+      } catch (e) {
+        console.log("Could not find a product in the " + product.type + " table for Id: " + product.productId)
+      }
+
+      return response;
+    }
+
+    function setListState(response) {
+      setTitle(response.list.title);
+      setDescription(response.list.description);
+      setOccasion(response.list.occasion);
+      setImageUrl(response.list.imageUrl);
+      setReserved(response.reserved);
+      setShared(response.shared);
+
+      if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
+        setDate(response.list.eventDate);
       } else {
-        console.log("Product (" + product.productId + ") had an unrecognised type (" + product.type + "), could not get details.");
+        setDate('');
+      }
+    }
+
+    async function getProductDetails(products) {
+      let productDetails = {};
+
+      for (var key in products) {
+        let product = products[key];
+
+        const productResponse = await getProduct(product);
+
+        product['brand'] = productResponse.brand;
+        product['details'] = productResponse.details;
+        product['productUrl'] = productResponse.productUrl;
+
+        if (product.type === 'products') {
+          product['imageUrl'] = productResponse.imageUrl;
+        } else {
+          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
+        }
+
+        productDetails[key] = product;
       }
 
-      this.setState({
-        products: update(this.state.products, {
-          [key]: {
-            brand: {$set: response.brand},
-            details: {$set: response.details},
-            imageUrl: {$set: imageUrl},
-            productUrl: {$set: response.productUrl}
-          }
-        })
-      })
+      return productDetails;
     }
+
+    const setEditListDetails = async () => {
+      const response = await getList();
+
+      let productDetails = await getProductDetails(response.products);
+      setProducts(
+        productDetails
+      )
+      setListState(response);
+    };
+
+    setEditListDetails();
+    setLoaded(true);
+  }, [listId, props.history]);
+
+  const deleteProductFromState = (id) => {
+    setProducts(
+      update(products, { $unset: [id] })
+    )
   }
 
-  setEditState = event => {
-    this.setState({ isEdit: true });
-  }
-
-  cancelEdit = async event => {
-    await this.getListDetails();
-    this.setState({ isEdit: false });
-  }
-
-  saveDetails = async event => {
-    try {
-      var requestBody = {
-        "title": this.state.title,
-        "description": this.state.description,
-        "eventDate": this.state.date,
-        "occasion": this.state.occasion,
-        "imageUrl":  this.state.imageUrl,
-      };
-      const response = await API.put("lists", "/" + this.props.match.params.id, {
-        body: requestBody
-      });
-
-      if (('eventDate' in response[0].updates) && (response[0].updates.eventDate !== 'None')) {
-        this.setState({
-          date: response[0].updates.eventDate
-        });
-      }
-
-      this.setState({
-        title: response[0].updates.title,
-        description: response[0].updates.description,
-        occasionSelect: response[0].updates.occasion,
-        isEdit: false
-       });
-    } catch (e) {
-      console.log('Unexpected error occurred when updating list: ' + e.response.data.error);
-      this.setState({
-        updateError: true,
-        updateErrorMessage: 'Unexpected error occurred when updating list.  Please try again.'
-      })
-    }
-  }
-
-  handleChange = event => {
-    var updateObj = {};
-    updateObj[event.target.id] = event.target.value;
-    this.setState( updateObj );
-  }
-
-  handleOccasionSelect = event => {
-    this.setState({ [event.target.name]: event.target.value });
-    let occasion = event.target.value;
-    console.log("Setting occasion to: " + occasion)
-
-    const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
-    let imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
-
-    this.setState({ imageUrl: imageUrl });
-  };
-
-  changeDate(date) {
-    this.setState({ date: date.format('DD MMMM YYYY')});
-  }
-
-  deleteProductFromState(id) {
-    console.log("Deleting product from list state: " + id);
-
-    this.setState({
-      products: update(this.state.products, { $unset: [id] })
+  const addProductToState = (product) => {
+    setProducts({
+      ...products,
+      [product['productId']]: product
     })
   }
 
-  addProductToState(product) {
-    this.setState({
-      products: {
-         ...this.state.products,
-         [product['productId']]: product
-      }
-    });
-  }
-
-  updateProductToState(product) {
-    console.log("Updating state for product");
-
-    this.setState({
-      products: update(this.state.products, {
+  const updateProductToState = (product) => {
+    setProducts(
+      update(products, {
         [product['productId']]: {
           quantity: {$set: product['quantity']}
         }
       })
+    )
+  }
+
+  const addUserToSharedState = (user) => {
+    setShared({
+      ...shared,
+      [user['email']]: user
     })
   }
 
-  addUserToSharedState(user) {
-    this.setState({
-      shared: {
-         ...this.state.shared,
-         [user['email']]: user
-      }
-    });
+  const removeUserFromSharedState = (email) => {
+    // unset command of immutability helper requires array of keys to be removed.
+    setShared(
+      update(shared, { $unset: [email] })
+    )
   }
 
-  removeUserFromSharedState(user) {
-    this.setState({
-      shared: update(this.state.shared, { $unset: [user['email']] })
-    })
-  }
-
-  getListId(){
-    return this.props.match.params.id
-  }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <div>
-        {this.state.loaded
-          ? <div>
-              <HeaderFixed isAuthenticated={true} />
-              <div className={classes.main}>
-                <SectionListDetails
-                  title={this.state.title}
-                  description={this.state.description}
-                  occasion={this.state.occasion}
-                  date={this.state.date}
-                  imageUrl={this.state.imageUrl}
-                  isEdit={this.state.isEdit}
-                  saveDetails={this.saveDetails.bind(this)}
-                  setEditState={this.setEditState.bind(this)}
-                  cancelEdit={this.cancelEdit.bind(this)}
-                  handleChange={this.handleChange.bind(this)}
-                  handleOccasionSelect={this.handleOccasionSelect.bind(this)}
-                  changeDate={this.changeDate.bind(this)}
+  return (
+    <div>
+      {loaded
+        ? <div>
+            <HeaderFixed isAuthenticated={true} />
+            <div className={classes.main}>
+              <SectionListDetails
+                listId={listId}
+                title={title}
+                description={description}
+                occasion={occasion}
+                date={date}
+                imageUrl={imageUrl}
+              />
+              <div className={classes.profileTabs}>
+                <NavPills
+                  alignCenter
+                  color="primary"
+                  tabs={[
+                    {
+                      tabButton: "Manage",
+                      tabIcon: List,
+                      tabContent: (
+                        <div>
+                          <SectionProducts
+                            products={products}
+                            listId={listId}
+                            deleteProductFromState={deleteProductFromState}
+                            updateProductToState={updateProductToState}
+                          />
+                        </div>
+                      )
+                    },
+                    {
+                      tabButton: "Add Gifts",
+                      tabIcon: Search,
+                      tabContent: (
+                        <div>
+                          <SectionAddGifts
+                            listId={listId}
+                            addProductToState={addProductToState}
+                          />
+                        </div>
+                      )
+                    },
+                    {
+                      tabButton: "Share",
+                      tabIcon: People,
+                      tabContent: (
+                        <div>
+                          <SectionShare
+                            listId={listId}
+                            shared={shared}
+                            addUserToSharedState={addUserToSharedState}
+                            removeUserFromSharedState={removeUserFromSharedState}
+                          />
+                        </div>
+                      )
+                    },
+                    {
+                      tabButton: "Reserved",
+                      tabIcon: Redeem,
+                      tabContent: (
+                        <div>
+                          <SectionReserved
+                            reserved={reserved}
+                            products={products}
+                          />
+                        </div>
+                      )
+                    }
+                  ]}
                 />
-                <div className={classes.profileTabs}>
-                  <NavPills
-                    alignCenter
-                    color="primary"
-                    tabs={[
-                      {
-                        tabButton: "Manage",
-                        tabIcon: List,
-                        tabContent: (
-                          <div>
-                            <SectionProducts
-                              products={this.state.products}
-                              deleteProductFromState={this.deleteProductFromState.bind(this)}
-                              updateProductToState={this.updateProductToState.bind(this)}
-                              getListId={this.getListId.bind(this)}
-                            />
-                          </div>
-                        )
-                      },
-                      {
-                        tabButton: "Add Gifts",
-                        tabIcon: Search,
-                        tabContent: (
-                          <div>
-                            <SectionAddGifts
-                              getListId={this.getListId.bind(this)}
-                              addProductToState={this.addProductToState.bind(this)}
-                            />
-                          </div>
-                        )
-                      },
-                      {
-                        tabButton: "Share",
-                        tabIcon: People,
-                        tabContent: (
-                          <div>
-                            <SectionShare
-                              shared={this.state.shared}
-                              getListId={this.getListId.bind(this)}
-                              addUserToSharedState={this.addUserToSharedState.bind(this)}
-                              removeUserFromSharedState={this.removeUserFromSharedState.bind(this)}
-                            />
-                          </div>
-                        )
-                      },
-                      {
-                        tabButton: "Reserved",
-                        tabIcon: Redeem,
-                        tabContent: (
-                          <div>
-                            <SectionReserved
-                              reserved={this.state.reserved}
-                              products={this.state.products}
-                            />
-                          </div>
-                        )
-                      }
-                    ]}
-                  />
-                </div>
               </div>
-              <FooterDark />
             </div>
-          : null
-        }
-      </div>
-    );
-  }
+            <FooterDark />
+          </div>
+        : null
+      }
+    </div>
+  );
 }
-
-ArticlePage.propTypes = {
-  classes: PropTypes.object
-};
-
-export default withStyles(editPageStyle)(ArticlePage);

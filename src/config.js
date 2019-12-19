@@ -65,7 +65,7 @@ const prod = {
 };
 
 const environment = process.env.REACT_APP_STAGE;
-console.log("Environment: " + environment);
+// console.log("Environment: " + environment);
 var config;
 switch (environment) {
   case "prod":
@@ -77,7 +77,7 @@ switch (environment) {
   config = staging;
     break;
   default:
-    console.log("Config: test");
+    console.log("Config: test (default)");
     config = test;
     break;
 }

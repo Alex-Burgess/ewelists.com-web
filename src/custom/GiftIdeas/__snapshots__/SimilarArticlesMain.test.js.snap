@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders SimilarArticles component. 1`] = `
+<div
+  className="makeStyles-section-1"
+>
+  <h3
+    className="makeStyles-sectionTitle-3 makeStyles-textCenter-2"
+  >
+    You may also be interested in
+  </h3>
+  <br />
+  <div
+    className="MuiGrid-root makeStyles-grid-9  MuiGrid-container"
+  >
+    <div
+      className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+    >
+      <div
+        className="makeStyles-card-114 makeStyles-cardPlain-115 makeStyles-cardBlog-117"
+      >
+        <div
+          className="makeStyles-cardHeader-129 makeStyles-cardHeaderPlain-130 makeStyles-cardHeaderImage-131"
+        >
+          <a
+            href="/listideas/travelgear"
+          >
+            <img
+              alt="..."
+              className="makeStyles-listImage-8"
+              src="travelgear.jpg"
+            />
+          </a>
+          <div
+            className="makeStyles-coloredShadow-6"
+            style={
+              Object {
+                "backgroundImage": "url(assets/img/articles/travelgear.jpg)",
+                "opacity": "1",
+              }
+            }
+          />
+        </div>
+        <div
+          className="makeStyles-cardBody-141 makeStyles-cardBodyPlain-143"
+        >
+          <h4
+            className="makeStyles-cardTitle-5"
+          >
+            <a
+              href="/listideas/travelgear"
+            >
+              Travel Gear
+            </a>
+          </h4>
+          <p
+            className="makeStyles-description-7"
+          >
+            Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+            <a
+              href="/listideas/travelgear"
+            >
+               Read Article 
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+    >
+      <div
+        className="makeStyles-card-114 makeStyles-cardPlain-115 makeStyles-cardBlog-117"
+      >
+        <div
+          className="makeStyles-cardHeader-129 makeStyles-cardHeaderPlain-130 makeStyles-cardHeaderImage-131"
+        >
+          <a
+            href="/listideas/hospitalbag"
+          >
+            <img
+              alt="..."
+              className="makeStyles-listImage-8"
+              src="hospitalbag.jpg"
+            />
+          </a>
+          <div
+            className="makeStyles-coloredShadow-6"
+            style={
+              Object {
+                "backgroundImage": "url(assets/img/articles/hospitalbag.jpg)",
+                "opacity": "1",
+              }
+            }
+          />
+        </div>
+        <div
+          className="makeStyles-cardBody-141 makeStyles-cardBodyPlain-143"
+        >
+          <h4
+            className="makeStyles-cardTitle-5"
+          >
+            <a
+              href="/listideas/hospitalbag"
+            >
+              Hospital Bag
+            </a>
+          </h4>
+          <p
+            className="makeStyles-description-7"
+          >
+            Make sure you're all set with everything you need for the all important hospital bag.
+            <a
+              href="/listideas/hospitalbag"
+            >
+               Read Article 
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -28,14 +28,6 @@ export default function LoginPage(props) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordInput = e => {
-    setPassword(e.target.value)
-  }
-
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
   }
@@ -76,7 +68,6 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={6}>
               <Card className={classes.cardLogin}>
-                <form className={classes.form} onSubmit={handleSubmit}>
                   <CardHeader
                     color="info"
                     signup
@@ -116,12 +107,13 @@ export default function LoginPage(props) {
                     Or log in with email
                   </p>
                   <CardBody signup>
+                    <form className={classes.form} onSubmit={handleSubmit}>
                     <CustomInput
                       id="email"
                       formControlProps={{
                         fullWidth: true,
                         value: email,
-                        onChange: handleEmailInput
+                        onChange: event => setEmail(event.target.value)
                       }}
                       inputProps={{
                         placeholder: "Email...",
@@ -138,7 +130,7 @@ export default function LoginPage(props) {
                       formControlProps={{
                         fullWidth: true,
                         value: email,
-                        onChange: handlePasswordInput
+                        onChange: event => setPassword(event.target.value)
                       }}
                       inputProps={{
                         placeholder: "Password",
@@ -157,18 +149,18 @@ export default function LoginPage(props) {
                       <a href="/login/reset" className={classes.link}>Forgot your password?</a>
                     </div>
                     { error
-                      ? <div className={classes.loginError}>
+                      ? <div id="loginError" className={classes.loginError}>
                           <p>{error}</p>
                         </div>
                       : null
                     }
+                    <div className={classes.textCenter}>
+                      <Button round color="info" type="submit" disabled={!validateForm()}>
+                        Login
+                      </Button>
+                    </div>
+                  </form>
                   </CardBody>
-                  <div className={classes.textCenter}>
-                    <Button round color="info" type="submit" disabled={!validateForm()}>
-                      Login
-                    </Button>
-                  </div>
-                </form>
               </Card>
             </GridItem>
           </GridContainer>

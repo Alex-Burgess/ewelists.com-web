@@ -1,0 +1,620 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders IdeasMain component. 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-26 makeStyles-transparent-38 makeStyles-fixed-28 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+    >
+      <div
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-29 MuiToolbar-gutters"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-30"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              <img
+                alt="logo"
+                className="makeStyles-logo-25"
+                src="logo-white.png"
+              />
+            </a>
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          className="makeStyles-hidden-42 PrivateHiddenCss-smDown-124"
+        >
+          <div
+            className="makeStyles-collapse-43"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-134 makeStyles-mlAuto-150 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-137"
+                  href="/listideas"
+                  onClick={[Function]}
+                >
+                  Gift List Ideas
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-137"
+                  href="/login"
+                  onClick={[Function]}
+                >
+                  Log In
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-137"
+                  href="/signup"
+                  onClick={[Function]}
+                >
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div
+    className="makeStyles-parallax-166 makeStyles-infoColor-171 makeStyles-parallaxSize-5"
+    style={
+      Object {
+        "backgroundImage": "url(undefined)",
+        "transform": "translate3d(0,0px,0)",
+      }
+    }
+  >
+    <div
+      className="makeStyles-container-1"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-176  MuiGrid-container MuiGrid-justify-xs-center"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-280 makeStyles-textCenter-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-8"
+        >
+          <h2
+            className="makeStyles-title-3"
+          >
+            Gift List Ideas
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="makeStyles-main-4"
+  >
+    <div
+      className="makeStyles-container-1"
+    >
+      <div
+        className="makeStyles-section-283"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-280 makeStyles-mlAuto-281 makeStyles-mrAuto-282 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+          >
+            <div>
+              <div
+                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+              >
+                <div
+                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                >
+                  <div
+                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                  >
+                    <div
+                      className="makeStyles-defaultFontStyle-305 makeStyles-dangerText-315"
+                    >
+                      <h6
+                        className="makeStyles-cardCategory-285"
+                      >
+                        <a
+                          href="/listideas/christmasfortoddlers"
+                        >
+                          Christmas Ideas
+                        </a>
+                      </h6>
+                    </div>
+                    <h3
+                      className="makeStyles-cardTitle-284"
+                    >
+                      <a
+                        href="/listideas/christmasfortoddlers"
+                      >
+                        Great Christmas ideas for toddlers and young children.
+                      </a>
+                    </h3>
+                    <p
+                      className="makeStyles-description1-286"
+                    >
+                      If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
+                      <a
+                        href="/listideas/christmasfortoddlers"
+                      >
+                         
+                        Read More
+                         
+                      </a>
+                    </p>
+                  </div>
+                  <div
+                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                  >
+                    <div
+                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                    >
+                      <a
+                        href="/listideas/christmasfortoddlers"
+                      >
+                        <img
+                          alt="..."
+                          className="makeStyles-rightImage-289"
+                          src="christmastoddlers.jpg"
+                        />
+                      </a>
+                      <div
+                        style={
+                          Object {
+                            "backgroundImage": "url(christmastoddlers.jpg)",
+                            "opacity": "1",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+              >
+                <div
+                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                >
+                  <div
+                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                  >
+                    <div
+                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                    >
+                      <a
+                        href="/listideas/travelgear"
+                      >
+                        <img
+                          alt="..."
+                          className="makeStyles-leftImage-287"
+                          src="travelgear.jpg"
+                        />
+                      </a>
+                      <div
+                        style={
+                          Object {
+                            "backgroundImage": "url(travelgear.jpg)",
+                            "opacity": "1",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                  >
+                    <div
+                      className="makeStyles-defaultFontStyle-330 makeStyles-infoText-337"
+                    >
+                      <h6
+                        className="makeStyles-cardCategory-285"
+                      >
+                        <a
+                          href="/listideas/travelgear"
+                        >
+                          Travel Gear
+                        </a>
+                      </h6>
+                    </div>
+                    <h3
+                      className="makeStyles-cardTitle-284"
+                    >
+                      <a
+                        href="/listideas/travelgear"
+                      >
+                        Great items to make travelling with your little ones no fuss!
+                      </a>
+                    </h3>
+                    <p
+                      className="makeStyles-description1-286"
+                    >
+                      The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
+                      <a
+                        href="/listideas/travelgear"
+                      >
+                         
+                        Read More
+                         
+                      </a>
+                    </p>
+                  </div>
+                  <div
+                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                  >
+                    <div
+                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                    >
+                      <a
+                        href="/listideas/travelgear"
+                      >
+                        <img
+                          alt="..."
+                          className="makeStyles-leftImageMobile-288"
+                          src="travelgear.jpg"
+                        />
+                      </a>
+                      <div
+                        style={
+                          Object {
+                            "backgroundImage": "url(travelgear.jpg)",
+                            "opacity": "1",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="makeStyles-section-343"
+      >
+        <h3
+          className="makeStyles-sectionTitle-345 makeStyles-textCenter-344"
+        >
+          You may also be interested in
+        </h3>
+        <br />
+        <div
+          className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+          >
+            <div
+              className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+            >
+              <div
+                className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+              >
+                <a
+                  href="/listideas/travelgear"
+                >
+                  <img
+                    alt="..."
+                    className="makeStyles-listImage-350"
+                    src="travelgear.jpg"
+                  />
+                </a>
+                <div
+                  className="makeStyles-coloredShadow-348"
+                  style={
+                    Object {
+                      "backgroundImage": "url(assets/img/articles/travelgear.jpg)",
+                      "opacity": "1",
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="makeStyles-cardBody-351 makeStyles-cardBodyPlain-353"
+              >
+                <h4
+                  className="makeStyles-cardTitle-347"
+                >
+                  <a
+                    href="/listideas/travelgear"
+                  >
+                    Travel Gear
+                  </a>
+                </h4>
+                <p
+                  className="makeStyles-description-349"
+                >
+                  Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+                  <a
+                    href="/listideas/travelgear"
+                  >
+                     Read Article 
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+          >
+            <div
+              className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+            >
+              <div
+                className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+              >
+                <a
+                  href="/listideas/hospitalbag"
+                >
+                  <img
+                    alt="..."
+                    className="makeStyles-listImage-350"
+                    src="hospitalbag.jpg"
+                  />
+                </a>
+                <div
+                  className="makeStyles-coloredShadow-348"
+                  style={
+                    Object {
+                      "backgroundImage": "url(assets/img/articles/hospitalbag.jpg)",
+                      "opacity": "1",
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="makeStyles-cardBody-351 makeStyles-cardBodyPlain-353"
+              >
+                <h4
+                  className="makeStyles-cardTitle-347"
+                >
+                  <a
+                    href="/listideas/hospitalbag"
+                  >
+                    Hospital Bag
+                  </a>
+                </h4>
+                <p
+                  className="makeStyles-description-349"
+                >
+                  Make sure you're all set with everything you need for the all important hospital bag.
+                  <a
+                    href="/listideas/hospitalbag"
+                  >
+                     Read Article 
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="makeStyles-spacer-365"
+    />
+    <footer
+      className="makeStyles-footer-370 makeStyles-footer-364"
+    >
+      <div
+        className="makeStyles-container-376"
+      >
+         
+        <div>
+          <div
+            className="makeStyles-left-361"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-360 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-358"
+                  href="/"
+                >
+                  © 
+                  2020
+                   ewelists
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-358"
+                  href="/contact"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-358"
+                  href="/#about"
+                >
+                  About us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-358"
+                  href="/privacy"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-358"
+                  href="/terms"
+                >
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="makeStyles-rightLinks-366"
+          >
+            <ul>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-387 makeStyles-facebook-398 makeStyles-simple-409 makeStyles-justIcon-417"
+                  href="https://www.facebook.com/ewelists"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-facebook"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-387 makeStyles-twitter-397 makeStyles-simple-409 makeStyles-justIcon-417"
+                  href="https://twitter.com/ewelists"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-twitter"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-387 makeStyles-instagram-408 makeStyles-simple-409 makeStyles-justIcon-417"
+                  href="https://www.instagram.com/ewelists/"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-instagram"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="makeStyles-clearFix-386"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

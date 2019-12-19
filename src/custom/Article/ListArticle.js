@@ -10,7 +10,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 // Custom components
 import SimilarArticles from "custom/Article/SimilarArticles.js";
-import SectionShopTheStory from "custom/Article/ShopTheStory.js";
+import ShopTheStory from "custom/Article/ShopTheStory.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 
 import styles from "assets/jss/custom/components/listArticleStyle.js";
@@ -43,7 +43,7 @@ export default function ListArticle(props) {
               </GridItem>
             </GridContainer>
           </div>
-          <SectionShopTheStory
+          <ShopTheStory
             products={
               storyProducts
             }
@@ -67,5 +67,5 @@ ListArticle.propTypes = {
   subtitle: PropTypes.string,
   storyProducts: PropTypes.array,
   similarArticles: PropTypes.array,
-  content: PropTypes.string
+  content: PropTypes.object
 };

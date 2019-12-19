@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -12,8 +12,10 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import FooterGrey from "custom/Footer/FooterGrey.js";
 import Parallax from "components/Parallax/Parallax.js";
-
 import HeaderFixed from "custom/Header/HeaderFixed.js";
+import SentMessage from "./Sections/SentMessage.js";
+
+import { contactApiPost } from "./contactApi";
 
 import styles from "assets/jss/custom/views/contactUsCustomStyle.js";
 const useStyles = makeStyles(styles);
@@ -25,18 +27,6 @@ export default function ContactUsPage(props) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleNameInput = e => {
-    setName(e.target.value);
-  };
-
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
-  };
-
-  const handleMessageInput = e => {
-    setMessage(e.target.value);
-  };
-
   const sendMail = async event => {
     let details = {
       name: name,
@@ -46,13 +36,17 @@ export default function ContactUsPage(props) {
 
     console.log("API request body: " + JSON.stringify(details));
 
-    const response = await API.post("contact", "/", {
-      body: details
-    });
+    const response = await contactApiPost(details);
 
     console.log("response: " + JSON.stringify(response))
     setSubmit(true);
   }
+
+  // const contactApiPost = async details => {
+  //   return API.post("contact", "/", {
+  //     body: details
+  //   });
+  // }
 
   const validateForm = () => {
     return (
@@ -73,7 +67,7 @@ export default function ContactUsPage(props) {
             fullWidth: true
           }}
           inputProps={{
-            onChange: handleNameInput
+            onChange: event => setName(event.target.value)
           }}
         />
         <CustomInput
@@ -83,7 +77,7 @@ export default function ContactUsPage(props) {
             fullWidth: true
           }}
           inputProps={{
-            onChange: handleEmailInput
+            onChange: event => setEmail(event.target.value)
           }}
         />
         <CustomInput
@@ -95,7 +89,7 @@ export default function ContactUsPage(props) {
           inputProps={{
             multiline: true,
             rows: 6,
-            onChange: handleMessageInput
+            onChange: event => setMessage(event.target.value)
           }}
         />
         <div className={classes.textCenter}>
@@ -104,16 +98,6 @@ export default function ContactUsPage(props) {
           </Button>
         </div>
       </form>
-    )
-  }
-
-  const renderSent = () => {
-    return (
-      <div className={classes.sent}>
-        <p>
-          Thank you for your message {name}.  We will get back to you by email.
-        </p>
-      </div>
     )
   }
 
@@ -148,10 +132,12 @@ export default function ContactUsPage(props) {
                   <br />
                   <br />
                 </p>
-                {submit
-                  ? renderSent(classes)
-                  : renderForm(classes)
-                }
+                <div id="formWrapper">
+                  {submit
+                    ? <SentMessage name={name} />
+                    : renderForm()
+                  }
+                </div>
               </GridItem>
             </GridContainer>
           </div>

@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for YourLists section. Renders your lists section 1`] = `
+<div
+  className="makeStyles-section-35"
+>
+  <div
+    className="makeStyles-container-33"
+  >
+    <div
+      className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+      >
+        <h1
+          className="makeStyles-title-36"
+        >
+          Your lists
+        </h1>
+        <br />
+        <div
+          className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+          >
+            <div
+              className="makeStyles-card-306 makeStyles-cardProfile-308"
+            >
+              <div
+                className="makeStyles-cardHeader-321 makeStyles-cardHeaderImage-323"
+              >
+                <a
+                  href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
+                >
+                  <img
+                    alt="..."
+                    className="makeStyles-listImage-40"
+                    src="/images/celebration-default.jpg"
+                  />
+                </a>
+                <div
+                  className="makeStyles-coloredShadow-1"
+                  style={
+                    Object {
+                      "backgroundImage": "url(/images/celebration-default.jpg)",
+                      "opacity": "1",
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="makeStyles-cardBody-333"
+              >
+                <div
+                  className="makeStyles-defaultFontStyle-340 makeStyles-infoText-347"
+                >
+                  <a
+                    href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
+                  >
+                    <h6
+                      className="makeStyles-cardCategory-37"
+                    >
+                      My Birthday List
+                    </h6>
+                  </a>
+                </div>
+                <p
+                  className="makeStyles-cardDescription-38"
+                >
+                  Birthday
+                </p>
+              </div>
+              <div
+                className="makeStyles-cardFooter-353 makeStyles-cardFooterProfile-354 makeStyles-justifyContentCenter-39"
+              >
+                <a
+                  href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
+                >
+                  <button
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-info-163 makeStyles-round-186 makeStyles-justIcon-189"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    tabIndex={0}
+                    type="button"
+                  >
+                    <span
+                      className="MuiButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="MuiTouchRipple-root"
+                    />
+                  </button>
+                </a>
+                <a
+                  href="/edit/933c7476-cf0d-4a75-8822-2c011c07ce1d"
+                >
+                  <button
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-success-164 makeStyles-round-186 makeStyles-justIcon-189"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    tabIndex={0}
+                    type="button"
+                  >
+                    <span
+                      className="MuiButton-label"
+                    >
+                      <span
+                        aria-hidden={true}
+                        className="material-icons MuiIcon-root"
+                      >
+                        mode_edit
+                      </span>
+                    </span>
+                    <span
+                      className="MuiTouchRipple-root"
+                    />
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+          >
+            <div
+              className="makeStyles-addList-155"
+            >
+              <div>
+                <div>
+                  <div
+                    className="makeStyles-centerButton-157"
+                  >
+                    <button
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-lg-184 makeStyles-info-163 makeStyles-round-186 makeStyles-justIcon-189"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                  <p
+                    className="makeStyles-cardDescription-156"
+                  >
+                    Create a New List
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+      >
+        <h1
+          className="makeStyles-title-36"
+        >
+          Lists Shared With You
+        </h1>
+        <br />
+        <div
+          className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

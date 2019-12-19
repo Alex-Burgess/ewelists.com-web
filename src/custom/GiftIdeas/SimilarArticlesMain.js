@@ -25,7 +25,7 @@ export default function SimilarArticlesMain(props) {
       <GridContainer>
         {
           articles.map ((article, i) =>
-            <GridItem xs={12} sm={4} md={4} lg={4} xl={4}>
+            <GridItem xs={12} sm={4} md={4} lg={4} xl={4} key={i}>
               <Card plain blog>
                 <CardHeader image plain>
                   <a href={article.url}>

@@ -171,8 +171,16 @@ const resetPasswordPageStyle = theme => ({
     zIndex: "2"
   },
   details: {
-    color: "#999",
-    fontSize: "12px"
+    color: "#999"
+  },
+  confirmMessageSpacing: {
+    fontSize: "16px",
+    marginBottom: "0px"
+  },
+  messageSpacing: {
+    fontSize: "16px",
+    marginTop: "15px",
+    marginBottom: "0px"
   },
   link: {
     textDecoration: "none",

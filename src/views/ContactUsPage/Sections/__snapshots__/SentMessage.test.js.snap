@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for SentMessage section. Renders message for name 1`] = `
+<div
+  className="makeStyles-sent-19"
+>
+  <p>
+    Thank you for your message 
+    Test User
+    .  We will get back to you by email.
+  </p>
+</div>
+`;

@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for Ideas section. Renders ideas section 1`] = `
+<div
+  className="makeStyles-section-2"
+>
+  <div
+    className="makeStyles-container-1"
+  >
+    <div
+      className="makeStyles-section-5"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-12  MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-116 makeStyles-mlAuto-3 makeStyles-mrAuto-4 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+        >
+          <div>
+            <div
+              className="makeStyles-card-117 makeStyles-cardPlain-118 makeStyles-cardBlog-120"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-12  MuiGrid-container"
+              >
+                <div
+                  className="MuiGrid-root makeStyles-grid-116  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                >
+                  <div
+                    className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
+                  >
+                    <a
+                      href="/listideas/christmasfortoddlers"
+                    >
+                      <img
+                        alt="..."
+                        className="makeStyles-leftImage-9"
+                        src="christmastoddlers.jpg"
+                      />
+                    </a>
+                    <div
+                      style={
+                        Object {
+                          "backgroundImage": "url(christmastoddlers.jpg)",
+                          "opacity": "1",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiGrid-root makeStyles-grid-116  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-144 makeStyles-infoText-151"
+                  >
+                    <h6
+                      className="makeStyles-cardCategory-7"
+                    >
+                      <a
+                        href="/listideas/christmasfortoddlers"
+                      >
+                        Christmas Ideas for Toddlers
+                      </a>
+                    </h6>
+                  </div>
+                  <h3
+                    className="makeStyles-cardTitle-6"
+                  >
+                    <a
+                      href="/listideas/christmasfortoddlers"
+                    >
+                      Great Christmas ideas for toddlers and young children
+                    </a>
+                  </h3>
+                  <p
+                    className="makeStyles-description1-8"
+                  >
+                    If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
+                    <a
+                      href="/listideas/christmasfortoddlers"
+                    >
+                       
+                      Read More
+                       
+                    </a>
+                  </p>
+                </div>
+                <div
+                  className="MuiGrid-root makeStyles-grid-116  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                >
+                  <div
+                    className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
+                  >
+                    <a
+                      href="/listideas/christmasfortoddlers"
+                    >
+                      <img
+                        alt="..."
+                        className="makeStyles-leftImageMobile-10"
+                        src="christmastoddlers.jpg"
+                      />
+                    </a>
+                    <div
+                      style={
+                        Object {
+                          "backgroundImage": "url(christmastoddlers.jpg)",
+                          "opacity": "1",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="makeStyles-card-117 makeStyles-cardPlain-118 makeStyles-cardBlog-120"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-12  MuiGrid-container"
+              >
+                <div
+                  className="MuiGrid-root makeStyles-grid-116  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-157 makeStyles-dangerText-167"
+                  >
+                    <h6
+                      className="makeStyles-cardCategory-7"
+                    >
+                      <a
+                        href="/listideas/nursery"
+                      >
+                        Nursery List
+                      </a>
+                    </h6>
+                  </div>
+                  <h3
+                    className="makeStyles-cardTitle-6"
+                  >
+                    <a
+                      href="/listideas/nursery"
+                    >
+                      All the items you need for your baby’s bedroom
+                    </a>
+                  </h3>
+                  <p
+                    className="makeStyles-description1-8"
+                  >
+                    Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy...
+                    <a
+                      href="/listideas/nursery"
+                    >
+                       
+                      Read More
+                       
+                    </a>
+                  </p>
+                </div>
+                <div
+                  className="MuiGrid-root makeStyles-grid-116  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                >
+                  <div
+                    className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
+                  >
+                    <a
+                      href="/listideas/nursery"
+                    >
+                      <img
+                        alt="..."
+                        className="makeStyles-rightImage-11"
+                        src="nurserylist.jpg"
+                      />
+                    </a>
+                    <div
+                      style={
+                        Object {
+                          "backgroundImage": "url(nurserylist.jpg)",
+                          "opacity": "1",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

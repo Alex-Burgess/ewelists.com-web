@@ -1,0 +1,1433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders HospitalBag page. 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-30 makeStyles-transparent-42 makeStyles-fixed-32 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+    >
+      <div
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-33 MuiToolbar-gutters"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-34"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              <img
+                alt="logo"
+                className="makeStyles-logo-29"
+                src="logo-white.png"
+              />
+            </a>
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          className="makeStyles-hidden-46 PrivateHiddenCss-smDown-128"
+        >
+          <div
+            className="makeStyles-collapse-47"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-138 makeStyles-mlAuto-154 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-listItem-139 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-141"
+                  href="/listideas"
+                  onClick={[Function]}
+                >
+                  Gift List Ideas
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-139 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-141"
+                  href="/login"
+                  onClick={[Function]}
+                >
+                  Log In
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-139 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-141"
+                  href="/signup"
+                  onClick={[Function]}
+                >
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div
+    className="makeStyles-parallax-170 makeStyles-darkColor-174 makeStyles-articleBg-7 makeStyles-darkFilter-9"
+    style={
+      Object {
+        "backgroundImage": "url(hospitalbag.jpg)",
+        "transform": "translate3d(0,0px,0)",
+      }
+    }
+  />
+  <div
+    className="makeStyles-main-6"
+  >
+    <div
+      className="makeStyles-container-2"
+    >
+      <div
+        className="makeStyles-section-3"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-180  MuiGrid-container MuiGrid-justify-xs-center"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+          >
+            <h1
+              className="makeStyles-title-4"
+            >
+              Hospital Bag
+            </h1>
+            <h2
+              className="makeStyles-subtitle-5"
+            >
+              Make sure you're all set with everything you need for the all important hospital bag.
+            </h2>
+            <div
+              className="makeStyles-content-8"
+            >
+              <div>
+                <p>
+                  What do you pack in that all important hospital bag. Whether you like to be super organised or you are just looking for some ideas, here are some top tips on what to pack in your bag.
+                </p>
+                <p>
+                  First things first, if you’re travelling by car then you can have two bags. The first bag can contain everything you need for the main event such as snacks, entertainment, toiletries and something to put your little one in once they arrive. The second bag can be kept in the car and contain things you might need after the birth such as extra clothes, nappies and of course the cute going home outfit. This
+                  <a
+                    href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                     John Lewis & Partners 
+                  </a>
+                   holdall is the perfect size for your hospital stay and most importantly it can be your babies holdall for any overnight trips you take later on in life. If you like to be really organised you can use large zip lock sandwich bags to compartmentalise your bag, such as sets of baby clothes, underwear, snacks etc. And don’t forget your maternity notes and birth plan.
+                </p>
+                <p>
+                  Go prepared with things to occupy yourselves with such as something to watch and read and also to have lots of snacks and drinks.   ADD MORE STORY.... then lists.
+                </p>
+                <p>
+                  Essentials:
+                  <ul>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Car seat: 
+                      <a
+                        href="https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Cybex Cloud 0+ Baby Car Seat
+                      </a>
+                       with 
+                      <a
+                        href="https://www.johnlewis.com/cybex-car-seat-base-z/p3843037"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Cybex Car Seat Base Z 
+                      </a>
+                       which is great for carrying baby to and from the car, with super installation in the car and the modular system is good forward planning when you need the next size up seat.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Holdall: 
+                      <a
+                        href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         John Lewis & Partners Holdall 
+                      </a>
+                       combines style with good size.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Water bottle with straw: 
+                      <a
+                        href="https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         CamelBak 
+                      </a>
+                       makes drinking more comfortable
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Lip balm: 
+                      <a
+                        href="https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Burt's Bees 
+                      </a>
+                       is my favourite.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Fan: 
+                      <a
+                        href="https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         EasyAcc Handheld Fan 
+                      </a>
+                       is small enough to pack, but with enough battery life to last.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Ready made formula: 
+                      <a
+                        href="https://www.mothercare.com/starter-sets/aptamil-1-first-baby-milk-formula-starter-pack-from-birth-6x70ml/607514.html"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Aptamil First Infant Starter Pack 
+                      </a>
+                       are pre-sterilised, so you're ready to feed immediately if you're bottle or combination feeding.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Disposable bottles: ???
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Refreshments: Remember to bring plenty of snacks and drinks.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Entertainment: A selection of movies, tv programs, magazines, or a good book will ensure you have something to occupy yourself when you feel like it.
+                    </li>
+                  </ul>
+                </p>
+                <p>
+                  For baby:
+                  <ul>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      baby grows: 
+                      <a
+                        href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         John Lewis & Partners Giraffe Sleepsuit 
+                      </a>
+                       what about built in mittens??
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      5 vests: 
+                      <a
+                        href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         John Lewis & Partners Short Sleeve Bodysuits 
+                      </a>
+                       are ???.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Cardigan: 
+                      <a
+                        href="https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         M & S Chunky Knit Cardigan 
+                      </a>
+                       is one that is easy to get on and off.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Hat
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Swaddle: 
+                      <a
+                        href="https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Grobag Swaddle Blanket 
+                      </a>
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      blanket: 
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Muslins: 
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Nappies - 12 should get you through 2 days in hospital.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Cotton wool
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Wipes - water wipes are nice and kind to newborn skin.
+                    </li>
+                  </ul>
+                </p>
+                <p>
+                  For you:
+                  <ul>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      2 x Nightdress - great to wear before, during and after the birth.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Baggy Clothes - Your bump looses all its shape, so loose is better than stretchy.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Socks - warm hospitals actually have cold floors.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Slippers - feel more comfortable in and around the ward.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Dressing gown - feel more comfortable in and around the ward.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Toiletries - all your favourites and a hairband.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Underwear - have spares.
+                    </li>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      Nursing pads: 
+                      <a
+                        href="https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                         Organic Bamboo Nursing Pads 
+                      </a>
+                       are washable, re-usable and comfortable.
+                    </li>
+                  </ul>
+                </p>
+                <p>
+                  For your birthing partner:
+                  <ul>
+                    <li
+                      className="makeStyles-listSpacing-1"
+                    >
+                      shorts and t-shirts - birthing hospitals are always hot.
+                    </li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="makeStyles-section-285"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-180  MuiGrid-container MuiGrid-justify-xs-center"
+        >
+          <div
+            className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+          >
+            <h3
+              className="makeStyles-title-286"
+            >
+              Shop The Story
+            </h3>
+            <div
+              className="MuiGrid-root makeStyles-grid-180  MuiGrid-container"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/234172546?$rsp-pdp-port-1440$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        John Lewis and Partners
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      John Lewis & Partners Geneva Large Weekend Holdall, Blue.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £75.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://images-na.ssl-images-amazon.com/images/I/71yUvdw8UIL._SX679_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        Burt's Bees
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Burt's Bees 100 Percentage Natural Overnight Intensive Lip Treatment, Ultra-Conditioning Lip Care, 7.08 g.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £6.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://images-na.ssl-images-amazon.com/images/I/61J1m1AOrVL._SY879_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        Camelbak
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      BPA Free Eddy Outdoor Bottle.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £11.95
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/238224245?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        Cybex
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Cybex Cloud Z i-Size Group 0+ Baby Car Seat, Midnight Blue.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £224.95
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://images-na.ssl-images-amazon.com/images/I/61dyJyfbCeL._SY355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        EasyAcc
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      EasyAcc Handheld Electric Mini Portable Outdoor Fan with Rechargeable 2600 mAh Battery Foldable Handle Desktop for Home and Travel-Green.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £11.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Aptamil-First-Infant-Milk-Starter/dp/B07H32RL92"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://images-na.ssl-images-amazon.com/images/I/51PmDv45mDL.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Aptamil-First-Infant-Milk-Starter/dp/B07H32RL92"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        Aptamil
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Aptamil First Infant Milk Starter Pack Pack of 2.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £23.70
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/003943837?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        John Lewis and Partners
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      John Lewis & Partners Baby GOTS Organic Cotton Giraffe Sleepsuit, Pack of 3, Multi.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £14.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/002955086?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        John Lewis and Partners
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      John Lewis & Partners Baby GOTS Organic Cotton Short Sleeve Bodysuits, Pack of 5, White.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £9.00
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://asset1.cxnmarksandspencer.com/is/image/mands/Pure-Cotton-Hooded-Chunky-Knit-Cardigan-2/SD_04_T78_6501T_T1_X_EC_0?$PDP_INT_IMAGEGRID_1_LG$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        M & S
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Pure Cotton Hooded Chunky Knit Cardigan.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £12
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        John Lewis and Partners
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Grobag Swaddle Blanket, Pack of 2, White.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £19.99
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <div
+                  className="makeStyles-card-292 makeStyles-cardPlain-293 makeStyles-cardProduct-300"
+                >
+                  <div
+                    className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309 makeStyles-noShadow-310"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt=".."
+                        className="makeStyles-productImage-287"
+                        src="https://images-na.ssl-images-amazon.com/images/I/719UU55mjEL._SY355_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    className="makeStyles-cardBody-319 makeStyles-cardBodyPlain-321"
+                  >
+                    <a
+                      href="https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h4
+                        className="makeStyles-cardTitle-288"
+                      >
+                        LOONFREE
+                      </h4>
+                    </a>
+                    <p
+                      className="makeStyles-description-289"
+                    >
+                      Nursing Breast Pads - Washable Breast Pads, 14 PCS.
+                    </p>
+                    <div
+                      className="makeStyles-priceContainer-290"
+                    >
+                      <span
+                        className="makeStyles-price-291"
+                      >
+                         
+                        £??
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="makeStyles-sectionSimilarLists-327"
+  >
+    <div
+      className="makeStyles-container-326"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-180  MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-md-12"
+        >
+          <h2
+            className="makeStyles-title-329 makeStyles-textCenter-328"
+          >
+            Similar Articles
+          </h2>
+          <br />
+          <div
+            className="MuiGrid-root makeStyles-grid-180  MuiGrid-container"
+          >
+            <div
+              className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-292 makeStyles-cardBlog-295"
+              >
+                <div
+                  className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309"
+                >
+                  <a
+                    href="/listideas/travelgear"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-333"
+                      src="travelgear.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-331"
+                    style={
+                      Object {
+                        "backgroundImage": "url(travelgear.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-319"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-334 makeStyles-infoText-341"
+                  >
+                    <h6>
+                      TRAVEL
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-330"
+                  >
+                    <a
+                      href="/listideas/travelgear"
+                    >
+                      Travel Gear
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-332"
+                  >
+                    Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
+                    <a
+                      href="/listideas/travelgear"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-292 makeStyles-cardBlog-295"
+              >
+                <div
+                  className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309"
+                >
+                  <a
+                    href="/listideas/nursery"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-333"
+                      src="nurserylist.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-331"
+                    style={
+                      Object {
+                        "backgroundImage": "url(nurserylist.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-319"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-334 makeStyles-infoText-341"
+                  >
+                    <h6>
+                      NURSERY
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-330"
+                  >
+                    <a
+                      href="/listideas/nursery"
+                    >
+                      The Nursery List
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-332"
+                  >
+                    What to buy for your baby’s bedroom.
+                    <a
+                      href="/listideas/nursery"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            >
+              <div
+                className="makeStyles-card-292 makeStyles-cardBlog-295"
+              >
+                <div
+                  className="makeStyles-cardHeader-307 makeStyles-cardHeaderImage-309"
+                >
+                  <a
+                    href="/listideas/bathtime"
+                  >
+                    <img
+                      alt="..."
+                      className="makeStyles-listImage-333"
+                      src="bathtime.jpg"
+                    />
+                  </a>
+                  <div
+                    className="makeStyles-coloredShadow-331"
+                    style={
+                      Object {
+                        "backgroundImage": "url(bathtime.jpg)",
+                        "opacity": "1",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="makeStyles-cardBody-319"
+                >
+                  <div
+                    className="makeStyles-defaultFontStyle-334 makeStyles-infoText-341"
+                  >
+                    <h6>
+                      BABY
+                    </h6>
+                  </div>
+                  <h4
+                    className="makeStyles-cardTitle-330"
+                  >
+                    <a
+                      href="/listideas/bathtime"
+                    >
+                      Bath Time
+                    </a>
+                  </h4>
+                  <p
+                    className="makeStyles-description-332"
+                  >
+                    Everything you need when bathing your baby.
+                    <a
+                      href="/listideas/bathtime"
+                    >
+                       Read Article 
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <footer
+      className="makeStyles-footer-356 makeStyles-dark-360 makeStyles-big-357"
+    >
+      <div
+        className="makeStyles-container-362"
+      >
+        <div>
+          <div
+            className="makeStyles-content-358"
+          >
+            <div
+              className="MuiGrid-root makeStyles-grid-180  MuiGrid-container"
+            >
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+              >
+                <h4
+                  id="about"
+                >
+                  About Us
+                </h4>
+                <p>
+                  Ewelists is an online gift list tool, focused on helping new and expectant parents. Our goal is simple, to make creating a gift list for your little one's special occasion, such as baby shower, first birthday or Christmas faster and easier.
+                   
+                </p>
+                <p>
+                  We started by building the tool we would want to use, but would also love to hear your ideas. If you have any suggestions please contact us!
+                   
+                </p>
+              </div>
+              <div
+                className="MuiGrid-root makeStyles-grid-284  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+              >
+                <h4>
+                  Follow Us
+                </h4>
+                <ul
+                  className="makeStyles-socialButtons-352"
+                >
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-373 makeStyles-facebook-384 makeStyles-simple-395 makeStyles-justIcon-403"
+                      href="https://www.facebook.com/ewelists"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-facebook-square"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-373 makeStyles-twitter-383 makeStyles-simple-395 makeStyles-justIcon-403"
+                      href="https://twitter.com/ewelists"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-twitter"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-373 makeStyles-instagram-394 makeStyles-simple-395 makeStyles-justIcon-403"
+                      href="https://www.instagram.com/ewelists/"
+                      onBlur={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      target="_blank"
+                    >
+                      <span
+                        className="MuiButton-label"
+                      >
+                        <i
+                          className="fab fa-instagram"
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div>
+          <div
+            className="makeStyles-left-350"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-349 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-348 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-347"
+                  href="/contact"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-348 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-347"
+                  href="/#about"
+                >
+                  About us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-348 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-347"
+                  href="/privacy"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-348 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-347"
+                  href="/terms"
+                >
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="makeStyles-right-351"
+          >
+            © 
+            2020
+             ewelists
+          </div>
+        </div>
+        <div
+          className="makeStyles-clearFix-372"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

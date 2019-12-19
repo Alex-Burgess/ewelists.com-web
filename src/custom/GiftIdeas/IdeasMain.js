@@ -23,7 +23,7 @@ export default function GiftIdeasMain(props) {
   return (
     <div>
       <HeaderTransparent isAuthenticated={isAuthenticated} />
-      <Parallax filter="infoBanner" className={classes.parallaxSize}>
+      <Parallax filter="info" className={classes.parallaxSize}>
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>

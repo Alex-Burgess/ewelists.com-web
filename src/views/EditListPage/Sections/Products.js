@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import update from 'immutability-helper';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
@@ -15,58 +16,44 @@ import CardBody from "components/Card/CardBody.js";
 import SectionEdit from "./EditProductPopOut.js";
 
 import styles from "assets/jss/custom/views/editListPage/productsStyle.js";
+const useStyles = makeStyles(styles);
 
+export default function SectionProducts(props) {
+  const classes = useStyles();
+  const { listId, products } = props;
 
-class SectionProducts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      edit: {},
-      width: window.innerWidth,
-      height: window.innerHeight
+  const [desktop, setDesktop] = useState(true);
+  const [editPopouts, setEditPopouts] = useState({});
+
+  useEffect( () => {
+    function updateDimensions() {
+      if (window.innerWidth < 600){
+        setDesktop(false);
+      } else {
+        setDesktop(true);
+      }
     };
+
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+  }, []);
+
+  const handleEditClose = (id) => {
+    setEditPopouts({
+      editPopouts: update(editPopouts, {
+        [id]: {$set: false}
+      })
+    })
   }
 
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
-  };
-
-  UNSAFE_componentWillMount() {
-    if (window.innerWidth < 600){
-      this.setState({ desktop: false });
-    } else {
-      this.setState({ desktop: true });
-    }
+  const handleEditClickOpen = (id) => {
+    setEditPopouts({
+      ...editPopouts,
+        [id]: true
+    })
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  handleEditClose(modal) {
-    var x = [];
-    x[modal] = false;
-    this.setState({ edit: x });
-  }
-
-  handleEditClickOpen(modal) {
-    console.log("Opening product id: " + modal)
-    var x = [];
-    x[modal] = true;
-    this.setState({ edit: x });
-  }
-
-  renderDesktopProductView(classes, products) {
+  const renderDesktopProductView = () => {
     return (
       <Table
         tableHead={[
@@ -77,7 +64,7 @@ class SectionProducts extends React.Component {
           ""
         ]}
         tableData={
-          this.renderProducts(classes, products)
+          renderProducts()
         }
         tableShopping
         customHeadCellClasses={[
@@ -99,24 +86,24 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileProductView(classes, products) {
+  const renderMobileProductView = () => {
     return (
       <Table
         tableHead={[
           ""
         ]}
         tableData={
-          this.renderMobileProducts(classes, products)
+          renderMobileProducts()
         }
         tableShopping
       />
     )
   }
 
-  renderProducts(classes, products: Products[]) {
+  const renderProducts = () => {
     const allproducts = Object.entries(products).map(
-      ([key, product]) =>
-            this.renderProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+      ([key, p]) =>
+            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
     )
 
     allproducts[products.length] =
@@ -131,10 +118,10 @@ class SectionProducts extends React.Component {
     return allproducts
   }
 
-  renderMobileProducts(classes, products: Products[]) {
+  const renderMobileProducts = () => {
     const allproducts = Object.entries(products).map(
-      ([key, product]) =>
-            this.renderMobileProduct(classes, product['productId'], product['productUrl'], product['imageUrl'], product['brand'], product['details'], product['quantity'], product['reserved'])
+      ([key, p]) =>
+            renderMobileProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
     )
 
     allproducts[products.length] =
@@ -149,7 +136,7 @@ class SectionProducts extends React.Component {
     return allproducts
   }
 
-  renderProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
+  const renderProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved) => {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -179,7 +166,7 @@ class SectionProducts extends React.Component {
           placement="left"
           classes={{ tooltip: classes.tooltip }}
         >
-          <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
+          <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)}>
             <Edit />
           </Button>
         </Tooltip>
@@ -188,7 +175,7 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderMobileProduct(classes, productId, productUrl, imageUrl, brand, details, quantity, reserved) {
+  const renderMobileProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved) => {
     return (
       [
           <div className={classes.textCenter}>
@@ -220,7 +207,7 @@ class SectionProducts extends React.Component {
               placement="left"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button link className={classes.actionButton} onClick={() => this.handleEditClickOpen(productId)}>
+              <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)}>
                 <Edit />
               </Button>
             </Tooltip>
@@ -229,49 +216,44 @@ class SectionProducts extends React.Component {
     )
   }
 
-  renderEditPopOuts(classes, products: Products[]) {
+  const renderEditPopOuts = () => {
     return Object.entries(products).map(
       ([key, product]) =>
           <SectionEdit
-            open={this.state.edit[product['productId']]
-              ? this.state.edit[product['productId']]
+            open={editPopouts[product['productId']]
+              ? editPopouts[product['productId']]
               : false }
+            listId={listId}
             product={product}
-            handleClose={this.handleEditClose.bind(this)}
-            deleteProductFromState={this.props.deleteProductFromState.bind(this)}
-            updateProductToState={this.props.updateProductToState.bind(this)}
-            getListId={this.props.getListId.bind(this)}
+            handleClose={handleEditClose}
+            deleteProductFromState={props.deleteProductFromState}
+            updateProductToState={props.updateProductToState}
             key={key}
           />
     )
   }
 
-  render() {
-    const { classes, products } = this.props;
+  return (
+    <div className={classes.section}>
+      <div className={classes.container}>
+        <Card plain>
+          <CardBody plain>
+            {
+              desktop
+              ? renderDesktopProductView()
+              : renderMobileProductView()
+            }
 
-    return (
-      <div className={classes.section}>
-        <div className={classes.container}>
-          <Card plain>
-            <CardBody plain>
-              {
-                this.state.desktop
-                ? this.renderDesktopProductView(classes, products)
-                : this.renderMobileProductView(classes, products)
-              }
-
-            </CardBody>
-          </Card>
-          {this.renderEditPopOuts(classes, products)}
-        </div>
+          </CardBody>
+        </Card>
+        {renderEditPopOuts()}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 SectionProducts.propTypes = {
   classes: PropTypes.object,
+  listId: PropTypes.string,
   products: PropTypes.object
 };
-
-export default withStyles(styles)(SectionProducts);

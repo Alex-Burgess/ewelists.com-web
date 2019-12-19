@@ -17,7 +17,7 @@ export default function RecentArticlesMain(props) {
   const { articles } = props;
   const classes = useStyles();
 
-  const renderLeftImg = (classes, title, url, img, description_short, beginning_content) => {
+  const renderLeftImg = (title, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
         <GridContainer>
@@ -75,7 +75,7 @@ export default function RecentArticlesMain(props) {
     );
   }
 
-  const renderRightImg = (classes, title, url, img, description_short, beginning_content) => {
+  const renderRightImg = (title, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
           <GridContainer>
@@ -125,10 +125,9 @@ export default function RecentArticlesMain(props) {
         <GridItem xs={12} sm={10} md={10} className={classes.mlAuto + " " + classes.mrAuto}>
           {
             articles.map ((article, i) =>
-              <div>
+              <div key={i}>
                 {article.img_position_left
                   ? renderLeftImg(
-                      classes,
                       article.title,
                       article.url,
                       article.img,
@@ -136,7 +135,6 @@ export default function RecentArticlesMain(props) {
                       article.beginning_content
                     )
                   : renderRightImg(
-                      classes,
                       article.title,
                       article.url,
                       article.img,

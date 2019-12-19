@@ -1,0 +1,390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup Page Snapshots Renders empty form of signup page 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-90 makeStyles-transparent-102 makeStyles-fixed-92 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+    >
+      <div
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-93 MuiToolbar-gutters"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-94"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              <img
+                alt="logo"
+                className="makeStyles-logo-89"
+                src="logo-white.png"
+              />
+            </a>
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          className="makeStyles-hidden-106 PrivateHiddenCss-smDown-188"
+        >
+          <div
+            className="makeStyles-collapse-107"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-198 makeStyles-mlAuto-214 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-listItem-199 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-201"
+                  href="/listideas"
+                  onClick={[Function]}
+                >
+                  Gift List Ideas
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-199 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-201"
+                  href="/login"
+                  onClick={[Function]}
+                >
+                  Log In
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-listItem-199 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-navLink-201"
+                  href="/signup"
+                  onClick={[Function]}
+                >
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div
+    className="makeStyles-pageHeader-22"
+    style={
+      Object {
+        "backgroundImage": "url(sheep-with-shoes.jpg)",
+        "backgroundPosition": "top center",
+        "backgroundSize": "cover",
+      }
+    }
+  >
+    <div
+      className="makeStyles-container-21"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-230  MuiGrid-container MuiGrid-justify-xs-center"
+      >
+        <div
+          className="MuiGrid-root makeStyles-grid-334  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-5"
+        >
+          <div
+            className="makeStyles-card-335 makeStyles-cardSignup-23"
+          >
+            <h2
+              className="makeStyles-cardTitle-24"
+            >
+              Confirmation Code
+            </h2>
+            <div
+              className="makeStyles-cardBody-350"
+            >
+              <form
+                className="makeStyles-form-55"
+                onSubmit={[Function]}
+              >
+                <div
+                  id="confirmationMessage"
+                >
+                  <p>
+                    Please check your email for the code.
+                  </p>
+                </div>
+                <div
+                  className="MuiFormControl-root makeStyles-formControl-365 MuiFormControl-fullWidth"
+                  onChange={[Function]}
+                  value=""
+                >
+                  <div
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-358 MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="MuiInputAdornment-root makeStyles-inputAdornment-53 MuiInputAdornment-positionStart"
+                    >
+                      <span
+                        aria-hidden={true}
+                        className="material-icons MuiIcon-root makeStyles-inputAdornmentIcon-54"
+                      >
+                        lock_outline
+                      </span>
+                    </div>
+                    <input
+                      aria-invalid={false}
+                      autoComplete="off"
+                      className="MuiInputBase-input MuiInput-input makeStyles-input-367 MuiInputBase-inputAdornedStart"
+                      disabled={false}
+                      id="confirmationCode"
+                      onAnimationStart={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="Confirmation Code..."
+                      required={false}
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="makeStyles-textCenter-52"
+                >
+                  <button
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-423 makeStyles-info-427 makeStyles-round-450 makeStyles-disabled-447"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    tabIndex={0}
+                    type="submit"
+                  >
+                    <span
+                      className="MuiButton-label"
+                    >
+                      Verify
+                    </span>
+                    <span
+                      className="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      className="makeStyles-footer-467 makeStyles-footer-461"
+    >
+      <div
+        className="makeStyles-container-473"
+      >
+         
+        <div>
+          <div
+            className="makeStyles-left-458"
+          >
+            <ul
+              className="MuiList-root makeStyles-list-457 MuiList-padding"
+            >
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-456 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-455"
+                  href="/"
+                >
+                  © 
+                  2020
+                   ewelists
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-456 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-455"
+                  href="/contact"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-456 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-455"
+                  href="/#about"
+                >
+                  About us
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-456 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-455"
+                  href="/privacy"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li
+                className="MuiListItem-root makeStyles-inlineBlock-456 MuiListItem-gutters"
+                disabled={false}
+              >
+                <a
+                  className="makeStyles-block-455"
+                  href="/terms"
+                >
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="makeStyles-rightLinks-463"
+          >
+            <ul>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-423 makeStyles-simple-445 makeStyles-justIcon-453"
+                  href="https://www.facebook.com/ewelists"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-facebook"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-423 makeStyles-simple-445 makeStyles-justIcon-453"
+                  href="https://twitter.com/ewelists"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-twitter"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-423 makeStyles-simple-445 makeStyles-justIcon-453"
+                  href="https://www.instagram.com/ewelists/"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  target="_blank"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    <i
+                      className="fab fa-instagram"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="makeStyles-clearFix-483"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

@@ -4,18 +4,12 @@ import { Auth } from "aws-amplify";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
-import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
 import ListIcon from "@material-ui/icons/List";
 import Perm from "@material-ui/icons/PermIdentity";
-import Close from "@material-ui/icons/Close";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -28,47 +22,23 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import AmazonButton from "custom/Buttons/AmazonButton.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
+import ConfirmationForm from "./Sections/ConfirmationForm.js";
+import NotifyPopOut from "./Sections/NotifyPopOut.js";
 
 import image from "assets/img/sheep-with-shoes.jpg";
 
 import styles from "assets/jss/custom/views/signupPageStyle.js";
 const useStyles = makeStyles(styles);
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
-
-Transition.displayName = "Transition";
-
-export default function SignUpPage(props) {
+export default function SignupPage(props) {
   const classes = useStyles();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(null);
   const [error, setError] = useState('');
-  const [showError, setShowError] = useState(false);
   const [popoutModal, setPopoutModal] = useState(false);
   const [socialType, setSocialType] = useState('');
-  const [confirmationCode, setConfirmationCode] = useState('');
-  const [confirmationError, setConfirmationError] = useState(false);
-  const [showConfirmationError, setShowConfirmationError] = useState('');
-
-  const handleNameInput = e => {
-    setName(e.target.value);
-  };
-
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordInput = e => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmationCodeInput = e => {
-    setConfirmationCode(e.target.value);
-  };
 
   const validateForm = () => {
     return (
@@ -84,18 +54,6 @@ export default function SignUpPage(props) {
       return true
     }
     return false
-  }
-
-  const validateConfirmationForm = () => {
-    return confirmationCode.length > 0;
-  }
-
-  const checkGoogleEmail = (email) => {
-    if (email.includes('@googlemail.com')) {
-      var fields = email.split('@');
-      email = fields[0] + "@gmail.com"
-    }
-    return email
   }
 
   const checkPassword = (password) => {
@@ -118,6 +76,14 @@ export default function SignUpPage(props) {
     return null
   }
 
+  const checkGoogleEmail = (email) => {
+    if (email.includes('@googlemail.com')) {
+      var fields = email.split('@');
+      email = fields[0] + "@gmail.com"
+    }
+    return email
+  }
+
   const handleSubmit = async event => {
     event.preventDefault();
 
@@ -125,7 +91,6 @@ export default function SignUpPage(props) {
 
     let passwordError = checkPassword(password);
     if (passwordError) {
-      setShowError(true);
       setError(passwordError);
       return false
     }
@@ -141,96 +106,13 @@ export default function SignUpPage(props) {
       });
       setNewUser(newUser);
     } catch (e) {
-      setShowError(true);
       setError(e.message);
-    }
-  }
-
-  const handleConfirmationSubmit = async event => {
-    event.preventDefault();
-
-    let checkedEmail = checkGoogleEmail(email);
-
-    try {
-      await Auth.confirmSignUp(checkedEmail, confirmationCode);
-      await Auth.signIn(checkedEmail, password);
-
-      props.userHasAuthenticated(true);
-    } catch (e) {
-      setShowConfirmationError(true);
-      setConfirmationError(e.message);
     }
   }
 
   const openNotification = (type) => {
     setSocialType(type);
     setPopoutModal(true);
-  }
-
-  const handleClose = (modal) => {
-    setPopoutModal(false);
-  }
-
-  const renderNotifyPopOut = () => {
-    return (
-      <Dialog
-        classes={{
-          root: classes.modalRoot,
-          paper: classes.modal + " " + classes.modalSmall
-        }}
-        open={popoutModal}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={() => handleClose("popoutModal")}
-        aria-labelledby="small-modal-slide-title"
-        aria-describedby="small-modal-slide-description"
-      >
-        <DialogTitle
-          id="small-modal-slide-title"
-          disableTypography
-          className={classes.modalHeader}
-        >
-          <Button
-            simple
-            className={classes.modalCloseButton}
-            key="close"
-            aria-label="Close"
-            onClick={() => handleClose("popoutModal")}
-          >
-            {" "}
-            <Close className={classes.modalClose} />
-          </Button>
-        </DialogTitle>
-        <DialogContent
-          id="small-modal-slide-description"
-          className={
-            classes.modalBody + " " + classes.modalSmallBody + " " + classes.centerText
-          }
-        >
-          <h5>If this is your first time signing in with your <b>{socialType}</b> account, you might find you are redirected to
-            our login page.  If this happens, just click on the <b>{socialType}</b> icon and you'll be logged in as normal from then on.</h5>
-        </DialogContent>
-        <DialogActions
-          className={
-            classes.modalFooter + " " + classes.modalFooterCenter
-          }
-        >
-          <Button
-            onClick={() => Auth.federatedSignIn({provider: socialType})}
-            color="default"
-            block
-            round
-            className={
-              classes.modalSmallFooterFirstButton +
-              " " +
-              classes.modalSmallFooterSecondButton
-            }
-          >
-            OK
-          </Button>
-        </DialogActions>
-      </Dialog>
-    )
   }
 
   const renderForm = () => {
@@ -283,7 +165,7 @@ export default function SignUpPage(props) {
                               fullWidth: true,
                               className: classes.customFormControlClasses,
                               value: name,
-                              onChange: handleNameInput
+                              onChange: event => setName(event.target.value)
                             }}
                             inputProps={{
                               startAdornment: (
@@ -305,7 +187,7 @@ export default function SignUpPage(props) {
                               fullWidth: true,
                               className: classes.customFormControlClasses,
                               value: email,
-                              onChange: handleEmailInput
+                              onChange: event => setEmail(event.target.value)
                             }}
                             inputProps={{
                               startAdornment: (
@@ -327,7 +209,7 @@ export default function SignUpPage(props) {
                               fullWidth: true,
                               className: classes.customFormControlClasses,
                               value: password,
-                              onChange: handlePasswordInput,
+                              onChange: event => setPassword(event.target.value),
                             }}
                             inputProps={{
                               startAdornment: (
@@ -348,8 +230,8 @@ export default function SignUpPage(props) {
                           <div className={classes.passwordRules}>
                             Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
                           </div>
-                          { showError
-                            ? <div className={classes.signUpError}>
+                          { error
+                            ? <div id="signupError" className={classes.signUpError}>
                                 <p>{error}</p>
                               </div>
                             : null
@@ -404,80 +286,12 @@ export default function SignUpPage(props) {
     );
   }
 
-  const renderConfirmationForm = () => {
-    return (
-      <div>
-        <HeaderTransparent isAuthenticated={false} />
-        <div
-          className={classes.pageHeader}
-          style={{
-            backgroundImage: "url(" + image + ")",
-            backgroundSize: "cover",
-            backgroundPosition: "top center"
-          }}
-        >
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={5}>
-                <Card className={classes.cardSignup}>
-                  <h2 className={classes.cardTitle}>Confirmation Code</h2>
-                  <CardBody>
-                    <form className={classes.form} onSubmit={handleConfirmationSubmit}>
-                    <CustomInput
-                        id="confirmationCode"
-                        formControlProps={{
-                          fullWidth: true,
-                          className: classes.customFormControlClasses,
-                          value: confirmationCode,
-                          onChange: handleConfirmationCodeInput
-                        }}
-                        inputProps={{
-                          startAdornment: (
-                            <InputAdornment
-                              position="start"
-                              className={classes.inputAdornment}
-                            >
-                              <Icon className={classes.inputAdornmentIcon}>
-                                lock_outline
-                              </Icon>
-                            </InputAdornment>
-                          ),
-                          autoComplete: "off",
-                          placeholder: "Confirmation Code..."
-                        }}
-                      />
-                      { showConfirmationError
-                        ? <div className={classes.signUpError}>
-                            <p>{confirmationError}</p>
-                          </div>
-                        : null
-                      }
-                      <p>
-                        Please check your email for the code.
-                      </p>
-                      <div className={classes.textCenter}>
-                        <Button round color="info" type="submit" disabled={!validateConfirmationForm()}>
-                          Verify
-                        </Button>
-                      </div>
-                    </form>
-                  </CardBody>
-                </Card>
-              </GridItem>
-            </GridContainer>
-          </div>
-          <FooterTransparent />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div>
-      {renderNotifyPopOut()}
+      {<NotifyPopOut open={popoutModal} socialType={socialType} setPopoutModal={setPopoutModal} />}
       {newUser === null
         ? renderForm()
-        : renderConfirmationForm()}
+        : <ConfirmationForm email={email} password={password} checkGoogleEmail={checkGoogleEmail} />}
     </div>
   );
 }

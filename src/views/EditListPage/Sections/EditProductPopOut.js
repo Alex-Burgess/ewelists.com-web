@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// react plugin for creating date-time-picker
-// nodejs library that concatenates classes
-import withStyles from "@material-ui/core/styles/withStyles";
-// import classNames from "classnames";
 // @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
@@ -20,7 +17,8 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
-import sectionStyle from "assets/jss/custom/views/editListPage/editProductPopOutStyle.js";
+import styles from "assets/jss/custom/views/editListPage/editProductPopOutStyle.js";
+const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -28,47 +26,41 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 Transition.displayName = "Transition";
 
-class SectionDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newQuantity: this.props.product['quantity'],
-      editError: ''
-    };
-  }
+export default function SectionDetails(props) {
+  const classes = useStyles();
+  const { open, listId, product } = props;
+  const [editError, setEditError] = useState('');
+  const [newQuantity, setNewQuantity] = useState('');
 
-  increaseQuantity(){
-    var quantity = this.state.newQuantity;
-    quantity = quantity + 1;
-    this.setState({ newQuantity: quantity})
-  }
+  useEffect(() => {
+    setNewQuantity(product['quantity'])
+  }, [product])
 
-  decreaseQuantity(){
-    var quantity = this.state.newQuantity;
+  const decreaseQuantity = () => {
+    var quantity = newQuantity;
 
     if (quantity > 1) {
       quantity = quantity - 1;
     }
 
-    this.setState({ newQuantity: quantity})
+    setNewQuantity(quantity);
   }
 
-  closeEditPopOut(){
-    this.setState({newQuantity: this.props.product['quantity']});
-    this.props.handleClose(this.props.product['productId']);
+  const closeEditPopOut = () => {
+    setNewQuantity(product['quantity']);
+    props.handleClose(product['productId']);
   }
 
-  deleteProduct = async event => {
-    let productId = this.props.product['productId'];
-    let type = this.props.product['type'];
-    let listId = this.props.getListId();
+  const deleteProduct = async () => {
+    let productId = product['productId'];
+    let type = product['type'];
     console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
 
     try {
       await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
       console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
-      this.setState({ editError: 'Product could not be added to your list.'});
+      setEditError('Product could not be deleted from your list.');
       return false
     }
 
@@ -80,144 +72,124 @@ class SectionDetails extends React.Component {
         await API.del("notfound", "/" + productId);
       } catch (e) {
         console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
-        this.setState({ editError: 'Product could not be deleted.'});
+        setEditError('Product could not be deleted.');
         return false
       }
 
       console.log("Deleted product from notfound table: " + productId);
     }
 
-    this.props.deleteProductFromState(productId);
-    this.props.handleClose(productId);
+    props.deleteProductFromState(productId);
+    props.handleClose(productId);
   }
 
-  updateProduct = async event => {
-    let productId = this.props.product['productId'];
-    let listId = this.props.getListId()
-    let quantity = this.props.product['quantity'];
+  const updateProduct = async () => {
+    let productId = product['productId'];
+    let quantity = product['quantity'];
+    console.log("Updating product (" + productId + ") for list (" + listId + ")");
 
-    if (quantity === this.state.newQuantity) {
-      console.log("There are no updates to this item.");
-      this.setState({ editError: 'There are no updates to this item.'});
+    if (quantity === newQuantity) {
+      setEditError('There are no updates to this item.');
       return false;
     }
 
-    console.log("Updating product (" + productId + ") for list (" + listId + ")");
-
-
     try {
       await API.put("lists", "/" + listId + "/product/" +  productId, {
-        body: { "quantity": this.state.newQuantity }
+        body: { "quantity": newQuantity }
       });
     } catch (e) {
       console.log('Unexpected error occurred when creating product: ' + e);
-      this.setState({ editError: 'Product could not be updated.'});
+      setEditError('Product could not be updated.');
       return false
     }
 
-    let product = {
-      productId: productId,
-      quantity: this.state.newQuantity,
-      reserved: this.props.product['reserved'],
-      brand: this.props.product['brand'],
-      details: this.props.product['details'],
-      type: this.props.product['type'],
-      productUrl: this.props.product['productUrl'],
-      imageUrl: this.props.product['imageUrl']
-    }
+    product['quantity'] =newQuantity
 
-    this.props.updateProductToState(product)
-    this.setState({ message: 'Product was added to your list.'});
-
-    this.props.handleClose(productId);
+    props.updateProductToState(product)
+    props.handleClose(productId);
   }
 
-  render() {
-    const { classes, open, product } = this.props;
-    return (
-      <div className={classes.section}>
-        {/* NOTICE MODAL START */}
-        <Dialog
-          classes={{
-            root: classes.modalRoot,
-            paper: classes.modal
-          }}
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={() => this.closeEditPopOut()}
-          aria-labelledby="notice-modal-slide-title"
-          aria-describedby="notice-modal-slide-description"
+  return (
+    <div className={classes.section}>
+      {/* NOTICE MODAL START */}
+      <Dialog
+        classes={{
+          root: classes.modalRoot,
+          paper: classes.modal
+        }}
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => closeEditPopOut()}
+        aria-labelledby="notice-modal-slide-title"
+        aria-describedby="notice-modal-slide-description"
+      >
+        <DialogContent
+          id="notice-modal-slide-description"
+          className={classes.modalBody}
         >
-          <DialogContent
-            id="notice-modal-slide-description"
-            className={classes.modalBody}
+          <Button
+            simple
+            className={classes.modalCloseButton}
+            key="close"
+            aria-label="Close"
+            onClick={() => closeEditPopOut()}
           >
-            <Button
-              simple
-              className={classes.modalCloseButton}
-              key="close"
-              aria-label="Close"
-              onClick={() => this.closeEditPopOut()}
-            >
-              {" "}
-              <Close className={classes.modalClose} />
-            </Button>
-            <Card plain product>
-              <div className={classes.productImageContainer}>
-                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
-                  <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-                </a>
+            {" "}
+            <Close className={classes.modalClose} />
+          </Button>
+          <Card plain product>
+            <div className={classes.productImageContainer}>
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                <img src={product['imageUrl']} className={classes.productImage} alt=".." />
+              </a>
+            </div>
+            <CardBody plain className={classes.productDetails}>
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+                <h4 className={classes.cardTitle}>{product['brand']}</h4>
+              </a>
+              <p className={classes.description}>
+                {product['description']}
+              </p>
+              <p className={classes.description}>
+                Reserved: {product['reserved']}
+              </p>
+              <div className={classes.textCenter}>
+                <InputLabel className={classes.label}>
+                  Quantity:
+                  <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+                    <Remove />
+                  </Button>
+                  {` `}{newQuantity}{` `}
+                <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+                    <Add />
+                  </Button>
+                </InputLabel>
+                <Button round type="submit" onClick={() => deleteProduct()}>
+                  Delete
+                </Button>
+                <Button round color="primary" type="submit" onClick={() => updateProduct()}>
+                  Update
+                </Button>
               </div>
-              <CardBody plain className={classes.productDetails}>
-                <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
-                  <h4 className={classes.cardTitle}>{product['brand']}</h4>
-                </a>
-                <p className={classes.description}>
-                  {product['description']}
-                </p>
-                <p className={classes.description}>
-                  Reserved: {product['reserved']}
-                </p>
-                <div className={classes.textCenter}>
-                  <InputLabel className={classes.label}>
-                    Quantity:
-                    <Button color="primary" size="sm" simple onClick={() => this.decreaseQuantity()}>
-                      <Remove />
-                    </Button>
-                    {` `}{this.state.newQuantity}{` `}
-                    <Button color="primary" size="sm" simple onClick={() => this.increaseQuantity()}>
-                      <Add />
-                    </Button>
-                  </InputLabel>
-                  <Button round color="default" type="submit" onClick={() => this.deleteProduct()}>
-                    Delete
-                  </Button>
-                  <Button round color="primary" type="submit" onClick={() => this.updateProduct()}>
-                    Update
-                  </Button>
-                </div>
-                {this.state.editError
-                  ?
-                    <div className={classes.errorContainer + " " + classes.centerText + " " + classes.error}>
-                      {this.state.editError}
-                    </div>
-                  : null
-                }
-              </CardBody>
-            </Card>
-          </DialogContent>
-        </Dialog>
-        {/* NOTICE MODAL END */}
-      </div>
-    );
-  }
+              {editError
+                ?
+                  <div className={classes.errorContainer + " " + classes.centerText + " " + classes.error}>
+                    {editError}
+                  </div>
+                : null
+              }
+            </CardBody>
+          </Card>
+        </DialogContent>
+      </Dialog>
+      {/* NOTICE MODAL END */}
+    </div>
+  );
 }
 
 SectionDetails.propTypes = {
-  classes: PropTypes.object,
   open: PropTypes.bool,
+  listId: PropTypes.string,
   product: PropTypes.object
 };
-
-export default withStyles(sectionStyle)(SectionDetails);

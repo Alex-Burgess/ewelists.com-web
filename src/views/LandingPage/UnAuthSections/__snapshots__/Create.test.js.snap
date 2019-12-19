@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for Create section. Renders create section 1`] = `
+<div
+  className="makeStyles-section-3"
+>
+  <div
+    className="makeStyles-container-1"
+  >
+    <div
+      className="MuiGrid-root makeStyles-grid-7  MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root makeStyles-grid-111  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6"
+      >
+        <h1
+          className="makeStyles-title-4"
+        >
+          Create your Baby Gift List
+        </h1>
+        <h4
+          className="makeStyles-description-2"
+        >
+          Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
+        </h4>
+        <br />
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-112 makeStyles-lg-137 makeStyles-danger-119"
+          href="/signup"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          target="_blank"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Create Your List - It's Free!
+          </span>
+        </a>
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-grid-111  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6"
+      >
+        <div
+          className="makeStyles-sheepContainer-5"
+        >
+          <img
+            alt="..."
+            src="sheep-toy1.jpg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
