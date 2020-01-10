@@ -104,6 +104,7 @@ export default function SectionAddGifts(props) {
       setProductUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
+      setSearchSuccess(false);
       setNotFoundUrl(searchUrl);
     }
   }
