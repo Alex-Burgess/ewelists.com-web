@@ -83,18 +83,16 @@ export default function SectionAddGifts(props) {
   const searchProduct = async event => {
     let product;
 
+    let url = parseUrl(searchUrl);
+
     try {
-      const response = await API.get("products", "/url/" + encodeURIComponent(searchUrl));
+      const response = await API.get("products", "/url/" + encodeURIComponent(url));
       product = response.product;
     } catch (e) {
       console.log('Unexpected error occurred when searching for product: ' + e);
       setErrorMessage('Product could not be found.');
       return false
     }
-
-    setSearchResult(true);
-    setListUpdated(false);
-    setErrorMessage('');
 
     if (product.productId) {
       setSearchSuccess(true);
@@ -104,9 +102,14 @@ export default function SectionAddGifts(props) {
       setProductUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
+      console.log("Notfound url: " + url);
+      setNotFoundUrl(url);
       setSearchSuccess(false);
-      setNotFoundUrl(searchUrl);
     }
+
+    setSearchResult(true);
+    setListUpdated(false);
+    setErrorMessage('');
   }
 
   const addProductToList = async event => {
@@ -209,10 +212,16 @@ export default function SectionAddGifts(props) {
     setSearchUrl('');
   }
 
+  const parseUrl = (url) => {
+    let newUrl = /(http.+)/.exec(url)[1];
+
+    return newUrl
+  }
+
   const validateSearchForm = () => {
     return (
       searchUrl.length > 0 &&
-      searchUrl.startsWith("http")
+      (searchUrl.indexOf("http://") !== -1 || searchUrl.indexOf("https://") !== -1)
     );
   }
 
@@ -262,8 +271,8 @@ export default function SectionAddGifts(props) {
                 fullWidth: true
               }}
               inputProps={{
-                onChange: event => setNotFoundUrl(event.target.value),
-                defaultValue: searchUrl
+                value: notFoundUrl,
+                onChange: event => setNotFoundUrl(event.target.value)
               }}
             />
             <div className={classes.textCenter}>
