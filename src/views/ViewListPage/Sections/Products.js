@@ -96,6 +96,35 @@ export default function Products(props) {
     return reserved[productId][userId]
   }
 
+  const renderReservePopouts = () => {
+    return (
+      Object.entries(products).map(
+        ([key, product]) =>
+          renderReservePopout(product, key)
+      )
+    )
+  }
+
+  const renderReservePopout = (product, i) => {
+    return (
+      <SectionReserve
+        open={reservePopouts[product['productId']]
+          ? reservePopouts[product['productId']]
+          : false }
+        product={product}
+        reservedDetails={getUserReservedDetails(product['productId'])
+          ? getUserReservedDetails(product['productId'])
+          : null }
+        closeReservePopout={closeReservePopout}
+        listId={listId}
+        updateReservedQuantity={props.updateReservedQuantity}
+        unreserveProduct={props.unreserveProduct}
+        updateUserReservation={props.updateUserReservation}
+        key={i}
+      />
+    )
+  }
+
   const renderProduct = (product, i) => {
     if ((filterItems === "purchased") && (product['reserved'] < product['quantity'])) {
         return (null)
@@ -138,20 +167,6 @@ export default function Products(props) {
               </div>
             </CardFooter>
           </Card>
-          <SectionReserve
-            open={reservePopouts[product['productId']]
-              ? reservePopouts[product['productId']]
-              : false }
-            product={product}
-            reservedDetails={getUserReservedDetails(product['productId'])
-              ? getUserReservedDetails(product['productId'])
-              : null }
-            closeReservePopout={closeReservePopout}
-            listId={listId}
-            updateReservedQuantity={props.updateReservedQuantity}
-            unreserveProduct={props.unreserveProduct}
-            updateUserReservation={props.updateUserReservation}
-          />
         </GridItem>
       )
     }
@@ -308,6 +323,7 @@ export default function Products(props) {
           <GridItem md={9} sm={8}>
             <GridContainer>
               {renderProducts()}
+              {renderReservePopouts()}
             </GridContainer>
           </GridItem>
         </GridContainer>
