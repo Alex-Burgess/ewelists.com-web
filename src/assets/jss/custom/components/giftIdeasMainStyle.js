@@ -46,6 +46,9 @@ const blogPostsPageStyle = theme => ({
       content: "''"
     }
   },
+  spacer: {
+    minHeight: "20px",
+  }
 });
 
 export default blogPostsPageStyle;

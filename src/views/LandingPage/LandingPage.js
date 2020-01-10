@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import FooterDark from "custom/Footer/FooterDark.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterGrey from "custom/Footer/FooterGrey.js";
 // Sections for this page
 import Create from "./UnAuthSections/Create.js";
 import Product from "./UnAuthSections/Product.js";
@@ -21,9 +22,14 @@ export default function LandingPage(props) {
   const renderAuthed = () => {
     return (
       <div>
-        <HeaderFixed isAuthenticated={true} />
-        <div className={classes.main}>
-          <YourLists />
+        <div className={classes.page}>
+          <HeaderFixed isAuthenticated={true} />
+          <div className={classes.main}>
+            <YourLists />
+          </div>
+          <div className={classes.flexer}>
+          </div>
+          <FooterGrey />
         </div>
       </div>
     );

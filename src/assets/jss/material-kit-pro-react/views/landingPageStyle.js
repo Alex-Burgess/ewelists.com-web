@@ -26,6 +26,15 @@ const landingPageStyle = {
     maxWidth: "500px",
     margin: "10px auto 0"
   },
+  page: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column"
+  },
+  flexer: {
+    background: "white",
+    flexGrow: 1
+  },
   main: {
     ...main
   },

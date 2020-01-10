@@ -43,10 +43,6 @@ const footerDarkStyle = {
   footer: {
     background: grayColor[14]
   },
-  spacer: {
-    height: "4vh",
-    minHeight: "20px",
-  },
   rightLinks: {
     fontSize: "20px",
     float: "right!important",

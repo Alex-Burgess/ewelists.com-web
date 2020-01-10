@@ -48,6 +48,8 @@ export default function GiftIdeasMain(props) {
           />
         </div>
       </div>
+      <div className={classes.spacer}>
+      </div>
       <FooterGrey />
     </div>
   );

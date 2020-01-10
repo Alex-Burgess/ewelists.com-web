@@ -69,6 +69,9 @@ const contactUsStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
+  },
+  spacer: {
+    minHeight: "20px",
   }
 };
 
