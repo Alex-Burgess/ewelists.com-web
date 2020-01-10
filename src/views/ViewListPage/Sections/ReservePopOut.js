@@ -235,9 +235,6 @@ export default function ReservePopout(props) {
                           </div>
                         </div>
                       : <div>
-                          <InputLabel className={classes.extraPadding}>
-                            How many items would you like to reserve?
-                          </InputLabel>
                           <div className={classes.labelQuantity}>
                             <span>
                                 Quantity:
@@ -283,7 +280,7 @@ export default function ReservePopout(props) {
                 <div className={classes.mobileCenter}>
                   <div className={classes.purchase}>
                     <InputLabel className={classes.label}>
-                      Head to the site now to buy the item.
+                      Click below to buy the item.
                     </InputLabel>
                   </div>
                   <Button default color="primary" className={classes.reserveButton}>
