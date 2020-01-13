@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests Reserved component of edit page. Renders desktop reserved table 1`] = `
+<div>
+  <div
+    className="makeStyles-container-1"
+  >
+    <div
+      className="makeStyles-card-16 makeStyles-cardPlain-17"
+    >
+      <div
+        className="makeStyles-cardBody-31 makeStyles-cardBodyPlain-33"
+      >
+        <div
+          className="makeStyles-tableResponsive-52"
+        >
+          <table
+            className="MuiTable-root makeStyles-table-46"
+          >
+            <thead
+              className="MuiTableHead-root makeStyles-gray-44"
+            >
+              <tr
+                className="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  
+                </th>
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  ITEM
+                </th>
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-textCenter-4 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  QTY
+                </th>
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-textCenter-4 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  RESERVED BY
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className="MuiTableBody-root"
+            >
+              <tr
+                className="MuiTableRow-root undefined "
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-imgContainer-3"
+                  >
+                    <a
+                      href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt="..."
+                        src="https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$"
+                      />
+                    </a>
+                  </div>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-tdName-7"
+                >
+                  <span>
+                    <a
+                      className="makeStyles-tdNameAnchor-8"
+                      href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      BABYZEN
+                    </a>
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    >
+                      YOYO+ Puschair, Black with Aqua
+                    </small>
+                  </span>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-tdNumber-10 makeStyles-textCenter-4"
+                >
+                  <span>
+                    1
+                  </span>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-textCenter-4 makeStyles-tdName-7"
+                >
+                  <span>
+                    John Smith
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    />
+                  </span>
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root undefined "
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-imgContainer-3"
+                  >
+                    <a
+                      href="http://alink"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt="..."
+                        src="https://test.ewelists.com/images/product-default.jpg"
+                      />
+                    </a>
+                  </div>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-tdName-7"
+                >
+                  <span>
+                    <a
+                      className="makeStyles-tdNameAnchor-8"
+                      href="http://alink"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Test
+                    </a>
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    >
+                      Some details
+                    </small>
+                  </span>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-tdNumber-10 makeStyles-textCenter-4"
+                >
+                  <span>
+                    2
+                  </span>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-textCenter-4 makeStyles-tdName-7"
+                >
+                  <span>
+                    John Smith
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    />
+                  </span>
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root"
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48"
+                  colSpan="1"
+                />
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-right-45"
+                  colSpan={3}
+                />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tests Reserved component of edit page. Renders mobile reserved table 1`] = `
+<div>
+  <div
+    className="makeStyles-container-1"
+  >
+    <div
+      className="makeStyles-card-16 makeStyles-cardPlain-17"
+    >
+      <div
+        className="makeStyles-cardBody-31 makeStyles-cardBodyPlain-33"
+      >
+        <div
+          className="makeStyles-tableResponsive-52"
+        >
+          <table
+            className="MuiTable-root makeStyles-table-46"
+          >
+            <thead
+              className="MuiTableHead-root makeStyles-gray-44"
+            >
+              <tr
+                className="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  
+                </th>
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
+                  scope="col"
+                >
+                  
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className="MuiTableBody-root"
+            >
+              <tr
+                className="MuiTableRow-root undefined "
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-textCenter-4"
+                  >
+                    <div
+                      className="makeStyles-imgContainer-3"
+                    >
+                      <a
+                        href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          alt="..."
+                          src="https://johnlewis.scene7.com/is/image/JohnLewis/237457570?$rsp-pdp-port-640$"
+                        />
+                      </a>
+                    </div>
+                    <a
+                      className="makeStyles-tdNameAnchor-8"
+                      href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      BABYZEN
+                    </a>
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    >
+                      YOYO+ Puschair, Black with Aqua
+                    </small>
+                  </div>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-textCenter-4"
+                  >
+                    <h4
+                      className="makeStyles-cardTitle-2"
+                    >
+                      John Smith
+                    </h4>
+                    <div
+                      className="makeStyles-messageContainer-15"
+                    >
+                      <small
+                        className="makeStyles-mobileMessage-13"
+                      />
+                    </div>
+                    <small
+                      className="makeStyles-quantities-14"
+                    >
+                      Quantity: 
+                      1
+                    </small>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root undefined "
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-textCenter-4"
+                  >
+                    <div
+                      className="makeStyles-imgContainer-3"
+                    >
+                      <a
+                        href="http://alink"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          alt="..."
+                          src="https://test.ewelists.com/images/product-default.jpg"
+                        />
+                      </a>
+                    </div>
+                    <a
+                      className="makeStyles-tdNameAnchor-8"
+                      href="http://alink"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Test
+                    </a>
+                    <br />
+                    <small
+                      className="makeStyles-tdNameSmall-9"
+                    >
+                      Some details
+                    </small>
+                  </div>
+                </td>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 "
+                >
+                  <div
+                    className="makeStyles-textCenter-4"
+                  >
+                    <h4
+                      className="makeStyles-cardTitle-2"
+                    >
+                      John Smith
+                    </h4>
+                    <div
+                      className="makeStyles-messageContainer-15"
+                    >
+                      <small
+                        className="makeStyles-mobileMessage-13"
+                      />
+                    </div>
+                    <small
+                      className="makeStyles-quantities-14"
+                    >
+                      Quantity: 
+                      2
+                    </small>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root"
+              >
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48"
+                  colSpan="1"
+                />
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-right-45"
+                  colSpan={1}
+                />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

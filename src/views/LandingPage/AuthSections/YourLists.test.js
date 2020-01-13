@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import TestRenderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import {mount} from 'enzyme';
-import Slide from "@material-ui/core/Slide";
 import YourLists from './YourLists';
 
 describe('Tests for YourLists section.', () => {

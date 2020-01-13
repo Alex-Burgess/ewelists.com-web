@@ -132,7 +132,6 @@ export default function SectionProducts(props) {
         {userName}
         <br />
         <small className={classes.tdNameSmall}>
-          Happy birthday! Hope you have a great day.
           {message}
         </small>
       </span>
