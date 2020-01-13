@@ -53,11 +53,6 @@ const sectionDetailsStyle = theme => ({
     fontWeight: "300",
     fontSize: "1.125em !important"
   },
-  tdMessage: {
-    maxWidth: "200px",
-    // fontWeight: "300",
-    // fontSize: "1.125em !important"
-  },
   tdNumberSmall: {
     marginRight: "3px"
   },
@@ -65,20 +60,18 @@ const sectionDetailsStyle = theme => ({
     margin: "0px",
     padding: "5px"
   },
-  mobileDescription: {
+  mobileMessage: {
     fontSize: "1.1em",
     fontWeight: "300"
   },
   quantities: {
     fontSize: "1.1em",
-    fontWeight: "300",
-    lineHeight: "2.2em"
+    fontWeight: "300"
   },
   messageContainer: {
-    width: "100px",
-    maxWidth: "100px",
-    minWidth: "80px"
-  }
+    marginTop: "20px",
+    marginBottom: "20px"
+  },
 });
 
 export default sectionDetailsStyle;

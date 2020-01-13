@@ -35,9 +35,9 @@ export default function SectionProducts(props) {
       <Table
         tableHead={[
           "",
-          "NAME",
+          "ITEM",
           "QTY",
-          "MESSAGE"
+          "RESERVED BY"
         ]}
         tableData={
           renderDesktopTable()
@@ -49,10 +49,11 @@ export default function SectionProducts(props) {
         ]}
         customHeadClassesForCells={[2, 3]}
         customCellClasses={[
+          classes.tdName,
           classes.tdNumber + " " + classes.textCenter,
-          classes.textCenter + " " + classes.tdMessage
+          classes.textCenter + " " + classes.tdName
         ]}
-        customClassesForCells={[2, 3]}
+        customClassesForCells={[1, 2, 3, 4]}
       />
     )
   }
@@ -74,7 +75,7 @@ export default function SectionProducts(props) {
   const renderDesktopTable = () => {
     const allRows = reserved.map(
       (row, i) =>
-            renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
+            renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
@@ -92,7 +93,7 @@ export default function SectionProducts(props) {
   const renderMobileTable = () => {
     const allRows = reserved.map(
       (row, i) =>
-            renderMobileRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, row['name'], row['message'], row['quantity'])
+            renderMobileRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['name'], row['message'], row['quantity'])
     )
 
     allRows[reserved.length] =
@@ -107,7 +108,7 @@ export default function SectionProducts(props) {
     return allRows
   }
 
-  const renderDesktopRow = (productUrl, imageUrl, userName, message, quantity) => {
+  const renderDesktopRow = (productUrl, imageUrl, brand, details, userName, message, quantity) => {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -115,20 +116,31 @@ export default function SectionProducts(props) {
           <img src={imageUrl} alt="..." className={classes.img} />
         </a>
       </div>,
-      <span>
-        {userName}
+      <span key={1}>
+        <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+          {brand}
+        </a>
+        <br />
+        <small className={classes.tdNameSmall}>
+          {details}
+        </small>
       </span>,
       <span>
         {quantity}
       </span>,
       <span>
-        {message}
+        {userName}
+        <br />
+        <small className={classes.tdNameSmall}>
+          Happy birthday! Hope you have a great day.
+          {message}
+        </small>
       </span>
       ]
     )
   }
 
-  const renderMobileRow = (productUrl, imageUrl, userName, message, quantity) => {
+  const renderMobileRow = (productUrl, imageUrl, brand, details, userName, message, quantity) => {
     return (
       [
           <div className={classes.textCenter}>
@@ -137,16 +149,25 @@ export default function SectionProducts(props) {
                 <img src={imageUrl} alt="..." className={classes.img} />
               </a>
             </div>
-            <small className={classes.quantities}>
-              Quantity: {quantity}
+            <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+              {brand}
+            </a>
+            <br />
+            <small className={classes.tdNameSmall}>
+              {details}
             </small>
           </div>,
           <div className={classes.textCenter}>
             <h4 className={classes.cardTitle}>
               {userName}
             </h4>
-            <small className={classes.mobileDescription}>
-              {message}
+            <div className={classes.messageContainer}>
+              <small className={classes.mobileMessage}>
+                {message}
+              </small>
+            </div>
+            <small className={classes.quantities}>
+              Quantity: {quantity}
             </small>
           </div>
       ]
