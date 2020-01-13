@@ -7,7 +7,7 @@ import {
   defaultFont
 } from "assets/jss/material-kit-pro-react.js";
 
-const customInputStyle = {
+const customInputStyle = theme => ({
   disabled: {
     "&:before": {
       backgroundColor: "transparent !important"
@@ -89,6 +89,10 @@ const customInputStyle = {
     },
     "&::placeholder": {
       color: grayColor[12]
+    },
+    // Custom change. Fontsize of 16px on mobiles prevents zoom from occurring on input selection.
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px"
     }
   },
   whiteInput: {
@@ -97,6 +101,6 @@ const customInputStyle = {
       opacity: "1"
     }
   }
-};
+});
 
 export default customInputStyle;
