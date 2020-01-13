@@ -4,13 +4,13 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
 <div>
   <div>
     <header
-      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-40 makeStyles-info-47 makeStyles-fixed-42 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-41 makeStyles-info-48 makeStyles-fixed-43 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
     >
       <div
-        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-43 MuiToolbar-gutters"
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-44 MuiToolbar-gutters"
       >
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-44"
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-45"
           disabled={false}
           onBlur={[Function]}
           onDragLeave={[Function]}
@@ -35,7 +35,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
             >
               <img
                 alt="logo"
-                className="makeStyles-logo-39"
+                className="makeStyles-logo-40"
                 src="logo-white.png"
               />
             </a>
@@ -45,20 +45,20 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
           />
         </button>
         <div
-          className="makeStyles-hidden-56 PrivateHiddenCss-smDown-138"
+          className="makeStyles-hidden-57 PrivateHiddenCss-smDown-139"
         >
           <div
-            className="makeStyles-collapse-57"
+            className="makeStyles-collapse-58"
           >
             <ul
-              className="MuiList-root makeStyles-list-148 makeStyles-mlAuto-164 MuiList-padding"
+              className="MuiList-root makeStyles-list-149 makeStyles-mlAuto-165 MuiList-padding"
             >
               <li
-                className="MuiListItem-root makeStyles-listItem-149 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-150 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-151"
+                  className="makeStyles-navLink-152"
                   href="/listideas"
                   onClick={[Function]}
                 >
@@ -66,11 +66,11 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-listItem-149 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-150 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-151"
+                  className="makeStyles-navLink-152"
                   href="/login"
                   onClick={[Function]}
                 >
@@ -78,11 +78,11 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-listItem-149 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-150 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-151"
+                  className="makeStyles-navLink-152"
                   href="/signup"
                   onClick={[Function]}
                 >
@@ -96,7 +96,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
     </header>
   </div>
   <div
-    className="makeStyles-parallax-180 makeStyles-parallax-17"
+    className="makeStyles-parallax-181 makeStyles-parallax-18"
     style={
       Object {
         "backgroundImage": "url(sheep-with-shoes.jpg)",
@@ -108,10 +108,10 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
       className="makeStyles-container-6"
     >
       <div
-        className="MuiGrid-root makeStyles-grid-190  MuiGrid-container MuiGrid-justify-xs-center"
+        className="MuiGrid-root makeStyles-grid-191  MuiGrid-container MuiGrid-justify-xs-center"
       >
         <div
-          className="MuiGrid-root makeStyles-grid-294 makeStyles-mlAuto-4 makeStyles-textCenter-10 MuiGrid-item MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+          className="MuiGrid-root makeStyles-grid-295 makeStyles-mlAuto-4 makeStyles-textCenter-10 MuiGrid-item MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
         />
       </div>
     </div>
@@ -131,13 +131,13 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
           Send us a message
         </h2>
         <div
-          className="MuiGrid-root makeStyles-grid-190  MuiGrid-container"
+          className="MuiGrid-root makeStyles-grid-191  MuiGrid-container"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-294  MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+            className="MuiGrid-root makeStyles-grid-295  MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
           >
             <p
-              className="makeStyles-subHeading-18"
+              className="makeStyles-subHeading-19"
             >
               You can contact us with anything related to Ewelists. We
               '
@@ -150,22 +150,22 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
             >
               <form>
                 <div
-                  className="MuiFormControl-root makeStyles-formControl-303 MuiFormControl-fullWidth"
+                  className="MuiFormControl-root makeStyles-formControl-304 MuiFormControl-fullWidth"
                 >
                   <label
-                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-299  MuiInputLabel-formControl MuiInputLabel-animated"
+                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-300  MuiInputLabel-formControl MuiInputLabel-animated"
                     data-shrink={false}
                     htmlFor="name"
                   >
                     Your Name
                   </label>
                   <div
-                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-296 MuiInputBase-formControl MuiInput-formControl"
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-297 MuiInputBase-formControl MuiInput-formControl"
                     onClick={[Function]}
                   >
                     <input
                       aria-invalid={false}
-                      className="MuiInputBase-input MuiInput-input makeStyles-input-305"
+                      className="MuiInputBase-input MuiInput-input makeStyles-input-306"
                       disabled={false}
                       id="name"
                       onAnimationStart={[Function]}
@@ -178,22 +178,22 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                   </div>
                 </div>
                 <div
-                  className="MuiFormControl-root makeStyles-formControl-303 MuiFormControl-fullWidth"
+                  className="MuiFormControl-root makeStyles-formControl-304 MuiFormControl-fullWidth"
                 >
                   <label
-                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-299  MuiInputLabel-formControl MuiInputLabel-animated"
+                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-300  MuiInputLabel-formControl MuiInputLabel-animated"
                     data-shrink={false}
                     htmlFor="email"
                   >
                     Email address
                   </label>
                   <div
-                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-296 MuiInputBase-formControl MuiInput-formControl"
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-297 MuiInputBase-formControl MuiInput-formControl"
                     onClick={[Function]}
                   >
                     <input
                       aria-invalid={false}
-                      className="MuiInputBase-input MuiInput-input makeStyles-input-305"
+                      className="MuiInputBase-input MuiInput-input makeStyles-input-306"
                       disabled={false}
                       id="email"
                       onAnimationStart={[Function]}
@@ -206,22 +206,22 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                   </div>
                 </div>
                 <div
-                  className="MuiFormControl-root makeStyles-formControl-303 MuiFormControl-fullWidth"
+                  className="MuiFormControl-root makeStyles-formControl-304 MuiFormControl-fullWidth"
                 >
                   <label
-                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-299  MuiInputLabel-formControl MuiInputLabel-animated"
+                    className="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-300  MuiInputLabel-formControl MuiInputLabel-animated"
                     data-shrink={false}
                     htmlFor="message"
                   >
                     Your message
                   </label>
                   <div
-                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-296 MuiInputBase-formControl MuiInput-formControl MuiInputBase-multiline MuiInput-multiline"
+                    className="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-297 MuiInputBase-formControl MuiInput-formControl MuiInputBase-multiline MuiInput-multiline"
                     onClick={[Function]}
                   >
                     <textarea
                       aria-invalid={false}
-                      className="MuiInputBase-input MuiInput-input makeStyles-input-305 MuiInputBase-inputMultiline MuiInput-inputMultiline"
+                      className="MuiInputBase-input MuiInput-input makeStyles-input-306 MuiInputBase-inputMultiline MuiInput-inputMultiline"
                       disabled={false}
                       id="message"
                       onAnimationStart={[Function]}
@@ -237,7 +237,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                   className="makeStyles-textCenter-10"
                 >
                   <button
-                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-365 makeStyles-primary-367 makeStyles-round-392 makeStyles-disabled-389"
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-366 makeStyles-primary-368 makeStyles-round-393 makeStyles-disabled-390"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -271,12 +271,13 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="makeStyles-spacer-17"
+  />
   <div>
-    <div
-      className="makeStyles-spacer-404"
-    />
+    <div />
     <footer
-      className="makeStyles-footer-409 makeStyles-footer-403"
+      className="makeStyles-footer-409 makeStyles-footer-404"
     >
       <div
         className="makeStyles-container-415"
@@ -284,17 +285,17 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
          
         <div>
           <div
-            className="makeStyles-left-400"
+            className="makeStyles-left-401"
           >
             <ul
-              className="MuiList-root makeStyles-list-399 MuiList-padding"
+              className="MuiList-root makeStyles-list-400 MuiList-padding"
             >
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-398 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-399 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-397"
+                  className="makeStyles-block-398"
                   href="/"
                 >
                   © 
@@ -303,44 +304,44 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-398 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-399 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-397"
+                  className="makeStyles-block-398"
                   href="/contact"
                 >
                   Contact Us
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-398 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-399 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-397"
+                  className="makeStyles-block-398"
                   href="/#about"
                 >
                   About us
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-398 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-399 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-397"
+                  className="makeStyles-block-398"
                   href="/privacy"
                 >
                   Privacy
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-398 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-399 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-397"
+                  className="makeStyles-block-398"
                   href="/terms"
                 >
                   Terms
@@ -355,7 +356,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-365 makeStyles-facebook-376 makeStyles-simple-387 makeStyles-justIcon-395"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-366 makeStyles-facebook-377 makeStyles-simple-388 makeStyles-justIcon-396"
                   href="https://www.facebook.com/ewelists"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -386,7 +387,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-365 makeStyles-twitter-375 makeStyles-simple-387 makeStyles-justIcon-395"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-366 makeStyles-twitter-376 makeStyles-simple-388 makeStyles-justIcon-396"
                   href="https://twitter.com/ewelists"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -417,7 +418,7 @@ exports[`ContactUs Page Snapshots Renders empty form of contact us page 1`] = `
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-365 makeStyles-instagram-386 makeStyles-simple-387 makeStyles-justIcon-395"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-366 makeStyles-instagram-387 makeStyles-simple-388 makeStyles-justIcon-396"
                   href="https://www.instagram.com/ewelists/"
                   onBlur={[Function]}
                   onDragLeave={[Function]}

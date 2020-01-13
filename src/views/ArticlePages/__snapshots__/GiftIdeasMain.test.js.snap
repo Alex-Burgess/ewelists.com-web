@@ -4,13 +4,13 @@ exports[`Renders GiftIdeasMain page. 1`] = `
 <div>
   <div>
     <header
-      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-26 makeStyles-transparent-38 makeStyles-fixed-28 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-27 makeStyles-transparent-39 makeStyles-fixed-29 MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
     >
       <div
-        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-29 MuiToolbar-gutters"
+        className="MuiToolbar-root MuiToolbar-regular makeStyles-container-30 MuiToolbar-gutters"
       >
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-30"
+          className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-title-31"
           disabled={false}
           onBlur={[Function]}
           onDragLeave={[Function]}
@@ -35,7 +35,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             >
               <img
                 alt="logo"
-                className="makeStyles-logo-25"
+                className="makeStyles-logo-26"
                 src="logo-white.png"
               />
             </a>
@@ -45,20 +45,20 @@ exports[`Renders GiftIdeasMain page. 1`] = `
           />
         </button>
         <div
-          className="makeStyles-hidden-42 PrivateHiddenCss-smDown-124"
+          className="makeStyles-hidden-43 PrivateHiddenCss-smDown-125"
         >
           <div
-            className="makeStyles-collapse-43"
+            className="makeStyles-collapse-44"
           >
             <ul
-              className="MuiList-root makeStyles-list-134 makeStyles-mlAuto-150 MuiList-padding"
+              className="MuiList-root makeStyles-list-135 makeStyles-mlAuto-151 MuiList-padding"
             >
               <li
-                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-136 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-137"
+                  className="makeStyles-navLink-138"
                   href="/listideas"
                   onClick={[Function]}
                 >
@@ -66,11 +66,11 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-136 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-137"
+                  className="makeStyles-navLink-138"
                   href="/login"
                   onClick={[Function]}
                 >
@@ -78,11 +78,11 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-listItem-135 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-listItem-136 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-navLink-137"
+                  className="makeStyles-navLink-138"
                   href="/signup"
                   onClick={[Function]}
                 >
@@ -96,7 +96,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
     </header>
   </div>
   <div
-    className="makeStyles-parallax-166 makeStyles-infoColor-171 makeStyles-parallaxSize-5"
+    className="makeStyles-parallax-167 makeStyles-infoColor-172 makeStyles-parallaxSize-5"
     style={
       Object {
         "backgroundImage": "url(undefined)",
@@ -108,10 +108,10 @@ exports[`Renders GiftIdeasMain page. 1`] = `
       className="makeStyles-container-1"
     >
       <div
-        className="MuiGrid-root makeStyles-grid-176  MuiGrid-container MuiGrid-justify-xs-center"
+        className="MuiGrid-root makeStyles-grid-177  MuiGrid-container MuiGrid-justify-xs-center"
       >
         <div
-          className="MuiGrid-root makeStyles-grid-280 makeStyles-textCenter-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-8"
+          className="MuiGrid-root makeStyles-grid-281 makeStyles-textCenter-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-8"
         >
           <h2
             className="makeStyles-title-3"
@@ -129,29 +129,29 @@ exports[`Renders GiftIdeasMain page. 1`] = `
       className="makeStyles-container-1"
     >
       <div
-        className="makeStyles-section-283"
+        className="makeStyles-section-284"
       >
         <div
-          className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+          className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-280 makeStyles-mlAuto-281 makeStyles-mrAuto-282 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+            className="MuiGrid-root makeStyles-grid-281 makeStyles-mlAuto-282 makeStyles-mrAuto-283 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
           >
             <div>
               <div
-                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+                className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                  className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
                 >
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                   >
                     <div
-                      className="makeStyles-defaultFontStyle-305 makeStyles-dangerText-315"
+                      className="makeStyles-defaultFontStyle-306 makeStyles-dangerText-316"
                     >
                       <h6
-                        className="makeStyles-cardCategory-285"
+                        className="makeStyles-cardCategory-286"
                       >
                         <a
                           href="/listideas/christmasfortoddlers"
@@ -161,7 +161,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </h6>
                     </div>
                     <h3
-                      className="makeStyles-cardTitle-284"
+                      className="makeStyles-cardTitle-285"
                     >
                       <a
                         href="/listideas/christmasfortoddlers"
@@ -170,7 +170,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </a>
                     </h3>
                     <p
-                      className="makeStyles-description1-286"
+                      className="makeStyles-description1-287"
                     >
                       If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
                       <a
@@ -183,17 +183,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </p>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/christmasfortoddlers"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-rightImage-289"
+                          className="makeStyles-rightImage-290"
                           src="christmastoddlers.jpg"
                         />
                       </a>
@@ -212,23 +212,23 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
             <div>
               <div
-                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+                className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                  className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
                 >
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/travelgear"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-leftImage-287"
+                          className="makeStyles-leftImage-288"
                           src="travelgear.jpg"
                         />
                       </a>
@@ -243,13 +243,13 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </div>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                   >
                     <div
-                      className="makeStyles-defaultFontStyle-330 makeStyles-infoText-337"
+                      className="makeStyles-defaultFontStyle-331 makeStyles-infoText-338"
                     >
                       <h6
-                        className="makeStyles-cardCategory-285"
+                        className="makeStyles-cardCategory-286"
                       >
                         <a
                           href="/listideas/travelgear"
@@ -259,7 +259,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </h6>
                     </div>
                     <h3
-                      className="makeStyles-cardTitle-284"
+                      className="makeStyles-cardTitle-285"
                     >
                       <a
                         href="/listideas/travelgear"
@@ -268,7 +268,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </a>
                     </h3>
                     <p
-                      className="makeStyles-description1-286"
+                      className="makeStyles-description1-287"
                     >
                       The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
                       <a
@@ -281,17 +281,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </p>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/travelgear"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-leftImageMobile-288"
+                          className="makeStyles-leftImageMobile-289"
                           src="travelgear.jpg"
                         />
                       </a>
@@ -310,19 +310,19 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
             <div>
               <div
-                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+                className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                  className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
                 >
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                   >
                     <div
-                      className="makeStyles-defaultFontStyle-305 makeStyles-dangerText-315"
+                      className="makeStyles-defaultFontStyle-306 makeStyles-dangerText-316"
                     >
                       <h6
-                        className="makeStyles-cardCategory-285"
+                        className="makeStyles-cardCategory-286"
                       >
                         <a
                           href="/listideas/hospitalbag"
@@ -332,7 +332,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </h6>
                     </div>
                     <h3
-                      className="makeStyles-cardTitle-284"
+                      className="makeStyles-cardTitle-285"
                     >
                       <a
                         href="/listideas/hospitalbag"
@@ -341,7 +341,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </a>
                     </h3>
                     <p
-                      className="makeStyles-description1-286"
+                      className="makeStyles-description1-287"
                     >
                       What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags many weeks out from the birth date. My top tips for what to pack in your bag...
                       <a
@@ -354,17 +354,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </p>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/hospitalbag"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-rightImage-289"
+                          className="makeStyles-rightImage-290"
                           src="hospitalbag.jpg"
                         />
                       </a>
@@ -383,23 +383,23 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
             <div>
               <div
-                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+                className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                  className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
                 >
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/nursery"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-leftImage-287"
+                          className="makeStyles-leftImage-288"
                           src="nurserylist.jpg"
                         />
                       </a>
@@ -414,13 +414,13 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </div>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                   >
                     <div
-                      className="makeStyles-defaultFontStyle-330 makeStyles-infoText-337"
+                      className="makeStyles-defaultFontStyle-331 makeStyles-infoText-338"
                     >
                       <h6
-                        className="makeStyles-cardCategory-285"
+                        className="makeStyles-cardCategory-286"
                       >
                         <a
                           href="/listideas/nursery"
@@ -430,7 +430,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </h6>
                     </div>
                     <h3
-                      className="makeStyles-cardTitle-284"
+                      className="makeStyles-cardTitle-285"
                     >
                       <a
                         href="/listideas/nursery"
@@ -439,7 +439,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </a>
                     </h3>
                     <p
-                      className="makeStyles-description1-286"
+                      className="makeStyles-description1-287"
                     >
                       Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy...
                       <a
@@ -452,17 +452,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </p>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/nursery"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-leftImageMobile-288"
+                          className="makeStyles-leftImageMobile-289"
                           src="nurserylist.jpg"
                         />
                       </a>
@@ -481,19 +481,19 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
             <div>
               <div
-                className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+                className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+                  className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
                 >
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                   >
                     <div
-                      className="makeStyles-defaultFontStyle-305 makeStyles-dangerText-315"
+                      className="makeStyles-defaultFontStyle-306 makeStyles-dangerText-316"
                     >
                       <h6
-                        className="makeStyles-cardCategory-285"
+                        className="makeStyles-cardCategory-286"
                       >
                         <a
                           href="/listideas/bathtime"
@@ -503,7 +503,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </h6>
                     </div>
                     <h3
-                      className="makeStyles-cardTitle-284"
+                      className="makeStyles-cardTitle-285"
                     >
                       <a
                         href="/listideas/bathtime"
@@ -512,7 +512,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       </a>
                     </h3>
                     <p
-                      className="makeStyles-description1-286"
+                      className="makeStyles-description1-287"
                     >
                       It can be a daunting prospect when it comes to giving your new baby a bath. They are so small and slippery and you worry if they will like it. The first thing to say is that you don’t need to bathe your baby straight away or every day for that matter...
                       <a
@@ -525,17 +525,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     </p>
                   </div>
                   <div
-                    className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                    className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                   >
                     <div
-                      className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                      className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
                         href="/listideas/bathtime"
                       >
                         <img
                           alt="..."
-                          className="makeStyles-rightImage-289"
+                          className="makeStyles-rightImage-290"
                           src="bathtime.jpg"
                         />
                       </a>
@@ -556,37 +556,37 @@ exports[`Renders GiftIdeasMain page. 1`] = `
         </div>
       </div>
       <div
-        className="makeStyles-section-343"
+        className="makeStyles-section-344"
       >
         <h3
-          className="makeStyles-sectionTitle-345 makeStyles-textCenter-344"
+          className="makeStyles-sectionTitle-346 makeStyles-textCenter-345"
         >
           You may also be interested in
         </h3>
         <br />
         <div
-          className="MuiGrid-root makeStyles-grid-176  MuiGrid-container"
+          className="MuiGrid-root makeStyles-grid-177  MuiGrid-container"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+            className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
           >
             <div
-              className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+              className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
             >
               <div
-                className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
                   href="/listideas/travelgear"
                 >
                   <img
                     alt="..."
-                    className="makeStyles-listImage-350"
+                    className="makeStyles-listImage-351"
                     src="travelgear.jpg"
                   />
                 </a>
                 <div
-                  className="makeStyles-coloredShadow-348"
+                  className="makeStyles-coloredShadow-349"
                   style={
                     Object {
                       "backgroundImage": "url(assets/img/articles/travelgear.jpg)",
@@ -596,10 +596,10 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 />
               </div>
               <div
-                className="makeStyles-cardBody-351 makeStyles-cardBodyPlain-353"
+                className="makeStyles-cardBody-352 makeStyles-cardBodyPlain-354"
               >
                 <h4
-                  className="makeStyles-cardTitle-347"
+                  className="makeStyles-cardTitle-348"
                 >
                   <a
                     href="/listideas/travelgear"
@@ -608,7 +608,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   </a>
                 </h4>
                 <p
-                  className="makeStyles-description-349"
+                  className="makeStyles-description-350"
                 >
                   Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                   <a
@@ -621,25 +621,25 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
           </div>
           <div
-            className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+            className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
           >
             <div
-              className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+              className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
             >
               <div
-                className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
                   href="/listideas/hospitalbag"
                 >
                   <img
                     alt="..."
-                    className="makeStyles-listImage-350"
+                    className="makeStyles-listImage-351"
                     src="hospitalbag.jpg"
                   />
                 </a>
                 <div
-                  className="makeStyles-coloredShadow-348"
+                  className="makeStyles-coloredShadow-349"
                   style={
                     Object {
                       "backgroundImage": "url(assets/img/articles/hospitalbag.jpg)",
@@ -649,10 +649,10 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 />
               </div>
               <div
-                className="makeStyles-cardBody-351 makeStyles-cardBodyPlain-353"
+                className="makeStyles-cardBody-352 makeStyles-cardBodyPlain-354"
               >
                 <h4
-                  className="makeStyles-cardTitle-347"
+                  className="makeStyles-cardTitle-348"
                 >
                   <a
                     href="/listideas/hospitalbag"
@@ -661,7 +661,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   </a>
                 </h4>
                 <p
-                  className="makeStyles-description-349"
+                  className="makeStyles-description-350"
                 >
                   Make sure you're all set with everything you need for the all important hospital bag.
                   <a
@@ -674,25 +674,25 @@ exports[`Renders GiftIdeasMain page. 1`] = `
             </div>
           </div>
           <div
-            className="MuiGrid-root makeStyles-grid-280  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+            className="MuiGrid-root makeStyles-grid-281  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
           >
             <div
-              className="makeStyles-card-290 makeStyles-cardPlain-291 makeStyles-cardBlog-293"
+              className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardBlog-294"
             >
               <div
-                className="makeStyles-cardHeader-318 makeStyles-cardHeaderPlain-319 makeStyles-cardHeaderImage-320"
+                className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
                   href="/listideas/bathtime"
                 >
                   <img
                     alt="..."
-                    className="makeStyles-listImage-350"
+                    className="makeStyles-listImage-351"
                     src="bathtime.jpg"
                   />
                 </a>
                 <div
-                  className="makeStyles-coloredShadow-348"
+                  className="makeStyles-coloredShadow-349"
                   style={
                     Object {
                       "backgroundImage": "url(assets/img/articles/bathtime.jpg)",
@@ -702,10 +702,10 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 />
               </div>
               <div
-                className="makeStyles-cardBody-351 makeStyles-cardBodyPlain-353"
+                className="makeStyles-cardBody-352 makeStyles-cardBodyPlain-354"
               >
                 <h4
-                  className="makeStyles-cardTitle-347"
+                  className="makeStyles-cardTitle-348"
                 >
                   <a
                     href="/listideas/bathtime"
@@ -714,7 +714,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   </a>
                 </h4>
                 <p
-                  className="makeStyles-description-349"
+                  className="makeStyles-description-350"
                 >
                   Everything you need when bathing your baby.
                   <a
@@ -730,12 +730,13 @@ exports[`Renders GiftIdeasMain page. 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="makeStyles-spacer-6"
+  />
   <div>
-    <div
-      className="makeStyles-spacer-365"
-    />
+    <div />
     <footer
-      className="makeStyles-footer-370 makeStyles-footer-364"
+      className="makeStyles-footer-370 makeStyles-footer-365"
     >
       <div
         className="makeStyles-container-376"
@@ -743,17 +744,17 @@ exports[`Renders GiftIdeasMain page. 1`] = `
          
         <div>
           <div
-            className="makeStyles-left-361"
+            className="makeStyles-left-362"
           >
             <ul
-              className="MuiList-root makeStyles-list-360 MuiList-padding"
+              className="MuiList-root makeStyles-list-361 MuiList-padding"
             >
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-360 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-358"
+                  className="makeStyles-block-359"
                   href="/"
                 >
                   © 
@@ -762,44 +763,44 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-360 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-358"
+                  className="makeStyles-block-359"
                   href="/contact"
                 >
                   Contact Us
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-360 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-358"
+                  className="makeStyles-block-359"
                   href="/#about"
                 >
                   About us
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-360 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-358"
+                  className="makeStyles-block-359"
                   href="/privacy"
                 >
                   Privacy
                 </a>
               </li>
               <li
-                className="MuiListItem-root makeStyles-inlineBlock-359 MuiListItem-gutters"
+                className="MuiListItem-root makeStyles-inlineBlock-360 MuiListItem-gutters"
                 disabled={false}
               >
                 <a
-                  className="makeStyles-block-358"
+                  className="makeStyles-block-359"
                   href="/terms"
                 >
                   Terms

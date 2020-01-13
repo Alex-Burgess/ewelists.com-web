@@ -259,14 +259,12 @@ exports[`renders privacy page 1`] = `
     </div>
   </div>
   <div>
-    <div
-      className="makeStyles-spacer-180"
-    />
+    <div />
     <footer
-      className="makeStyles-footer-185 makeStyles-footer-179"
+      className="makeStyles-footer-184 makeStyles-footer-179"
     >
       <div
-        className="makeStyles-container-191"
+        className="makeStyles-container-190"
       >
          
         <div>
@@ -336,13 +334,13 @@ exports[`renders privacy page 1`] = `
             </ul>
           </div>
           <div
-            className="makeStyles-rightLinks-181"
+            className="makeStyles-rightLinks-180"
           >
             <ul>
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-202 makeStyles-facebook-213 makeStyles-simple-224 makeStyles-justIcon-232"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-201 makeStyles-facebook-212 makeStyles-simple-223 makeStyles-justIcon-231"
                   href="https://www.facebook.com/ewelists"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -373,7 +371,7 @@ exports[`renders privacy page 1`] = `
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-202 makeStyles-twitter-212 makeStyles-simple-224 makeStyles-justIcon-232"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-201 makeStyles-twitter-211 makeStyles-simple-223 makeStyles-justIcon-231"
                   href="https://twitter.com/ewelists"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -404,7 +402,7 @@ exports[`renders privacy page 1`] = `
               <li>
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-202 makeStyles-instagram-223 makeStyles-simple-224 makeStyles-justIcon-232"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-201 makeStyles-instagram-222 makeStyles-simple-223 makeStyles-justIcon-231"
                   href="https://www.instagram.com/ewelists/"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -436,7 +434,7 @@ exports[`renders privacy page 1`] = `
           </div>
         </div>
         <div
-          className="makeStyles-clearFix-201"
+          className="makeStyles-clearFix-200"
         />
       </div>
     </footer>

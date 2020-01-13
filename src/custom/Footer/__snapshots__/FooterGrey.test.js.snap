@@ -2,14 +2,12 @@
 
 exports[`Renders FooterGrey component. 1`] = `
 <div>
-  <div
-    className="makeStyles-spacer-8"
-  />
+  <div />
   <footer
-    className="makeStyles-footer-13 makeStyles-footer-7"
+    className="makeStyles-footer-12 makeStyles-footer-7"
   >
     <div
-      className="makeStyles-container-19"
+      className="makeStyles-container-18"
     >
        
       <div>
@@ -79,13 +77,13 @@ exports[`Renders FooterGrey component. 1`] = `
           </ul>
         </div>
         <div
-          className="makeStyles-rightLinks-9"
+          className="makeStyles-rightLinks-8"
         >
           <ul>
             <li>
               <a
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-45 makeStyles-facebook-56 makeStyles-simple-67 makeStyles-justIcon-75"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-44 makeStyles-facebook-55 makeStyles-simple-66 makeStyles-justIcon-74"
                 href="https://www.facebook.com/ewelists"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
@@ -113,7 +111,7 @@ exports[`Renders FooterGrey component. 1`] = `
             <li>
               <a
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-45 makeStyles-twitter-55 makeStyles-simple-67 makeStyles-justIcon-75"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-44 makeStyles-twitter-54 makeStyles-simple-66 makeStyles-justIcon-74"
                 href="https://twitter.com/ewelists"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
@@ -141,7 +139,7 @@ exports[`Renders FooterGrey component. 1`] = `
             <li>
               <a
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-45 makeStyles-instagram-66 makeStyles-simple-67 makeStyles-justIcon-75"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-44 makeStyles-instagram-65 makeStyles-simple-66 makeStyles-justIcon-74"
                 href="https://www.instagram.com/ewelists/"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
@@ -170,7 +168,7 @@ exports[`Renders FooterGrey component. 1`] = `
         </div>
       </div>
       <div
-        className="makeStyles-clearFix-29"
+        className="makeStyles-clearFix-28"
       />
     </div>
   </footer>

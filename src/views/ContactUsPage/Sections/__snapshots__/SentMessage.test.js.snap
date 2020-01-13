@@ -2,7 +2,7 @@
 
 exports[`Tests for SentMessage section. Renders message for name 1`] = `
 <div
-  className="makeStyles-sent-19"
+  className="makeStyles-sent-20"
 >
   <p>
     Thank you for your message 
