@@ -35,6 +35,7 @@ export default function ListIdeasPage(props) {
       isAuthenticated={props.isAuthenticated}
       recentArticles={recentArticles}
       similarArticles={similarArticles}
+      user={props.user}
     />
   );
 }

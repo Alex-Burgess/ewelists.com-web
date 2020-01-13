@@ -17,7 +17,7 @@ export default function ErrorPage(props) {
   const classes = useStyles();
   return (
     <div>
-      <HeaderTransparent isAuthenticated={props.isAuthenticated} />
+      <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user} />
       <div
         className={classes.pageHeader}
         style={{

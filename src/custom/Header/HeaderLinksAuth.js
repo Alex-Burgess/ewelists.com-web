@@ -9,13 +9,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import ExitToApp from "@material-ui/icons/ExitToApp";
+import Settings from "@material-ui/icons/Settings";
 // core components
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 
 import styles from "assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks({ ...props }) {
+export default function HeaderLinks(props) {
   const classes = useStyles();
+  const { dropdownHoverColor, user } = props;
+
   return (
     <List className={classes.list + " " + classes.mlAuto}>
       <ListItem className={classes.listItem}>
@@ -29,9 +35,24 @@ export default function HeaderLinks({ ...props }) {
         </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/logout" className={classes.navLink}>
-          Sign Out
-        </Link>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          hoverColor={dropdownHoverColor}
+          buttonProps={{
+            className: classes.navLink,
+            color: "transparent"
+          }}
+          buttonIcon={Settings}
+          dropdownList={[
+            <Link to="/" className={classes.dropdownLink}>
+              <AccountCircle className={classes.dropdownIcons} /> {user.name}
+            </Link>,
+            <Link to="/logout" className={classes.dropdownLink}>
+              <ExitToApp className={classes.dropdownIcons} /> Sign Out
+            </Link>
+          ]}
+        />
       </ListItem>
     </List>
   );

@@ -13,7 +13,7 @@ import styles from "assets/jss/material-kit-pro-react/components/headerStyle.js"
 const useStyles = makeStyles(styles);
 
 export default function HeaderFixed(props) {
-  const { isAuthenticated } = props;
+  const { isAuthenticated, user } = props;
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ export default function HeaderFixed(props) {
       {isAuthenticated
         ? <Header
             brand={<img className={classes.logo} src={require("assets/img/logo-white.png")} alt="logo"/>}
-            links={<HeaderLinksAuth dropdownHoverColor="info" />}
+            links={<HeaderLinksAuth dropdownHoverColor="info" user={user}/>}
             fixed
             color="info"
           />
@@ -37,5 +37,6 @@ export default function HeaderFixed(props) {
 }
 
 HeaderFixed.propTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  user: PropTypes.object
 };

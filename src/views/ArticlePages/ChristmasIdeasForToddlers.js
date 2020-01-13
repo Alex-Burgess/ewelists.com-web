@@ -95,6 +95,7 @@ export default function ChristmasIdeasForToddlers(props) {
   return (
     <ListArticle
       isAuthenticated={props.isAuthenticated}
+      user={props.user}
       content={ content }
       backgroundImg={backgroundImg}
       title={title}

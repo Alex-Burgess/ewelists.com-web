@@ -23,7 +23,7 @@ export default function LandingPage(props) {
     return (
       <div>
         <div className={classes.page}>
-          <HeaderFixed isAuthenticated={true} />
+          <HeaderFixed isAuthenticated={true} user={props.user} />
           <div className={classes.main}>
             <YourLists />
           </div>

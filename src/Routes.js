@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+// import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
@@ -41,5 +42,5 @@ export default ({childProps}) =>
     <AuthenticatedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
     <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
-    <Route component={ErrorPage} />
+    <AppliedRoute component={ErrorPage} props={childProps}/>
   </Switch>;

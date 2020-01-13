@@ -13,7 +13,7 @@ export default function TermsPage(props) {
   const classes = useStyles();
   return (
     <div>
-      <HeaderFixed isAuthenticated={props.isAuthenticated} />
+      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} />
 
       <div className={classes.main}>
         <div className={classes.termsContent}>

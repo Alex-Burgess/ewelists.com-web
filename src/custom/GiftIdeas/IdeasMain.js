@@ -17,12 +17,12 @@ import styles from "assets/jss/custom/components/giftIdeasMainStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function GiftIdeasMain(props) {
-  const { isAuthenticated, recentArticles, similarArticles } = props;
+  const { isAuthenticated, recentArticles, similarArticles, user } = props;
   const classes = useStyles();
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={isAuthenticated} />
+      <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
       <Parallax filter="info" className={classes.parallaxSize}>
         <div className={classes.container}>
           <GridContainer justify="center">
@@ -57,6 +57,7 @@ export default function GiftIdeasMain(props) {
 
 GiftIdeasMain.propTypes = {
   isAuthenticated: PropTypes.bool,
+  user: PropTypes.object,
   recentArticles: PropTypes.array,
   similarArticles: PropTypes.array
 };

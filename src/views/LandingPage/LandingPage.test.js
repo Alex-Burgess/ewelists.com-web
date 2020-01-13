@@ -5,6 +5,12 @@ import LandingPage from './LandingPage';
 
 const {act} = TestRenderer;
 
+const user = {
+  email: 'test.user@gmail.com',
+  name: 'Test User',
+  sub: '6c9b0a41-1234-abcd-5678-c51f280c557f'
+}
+
 describe('Tests for Non Authenticated Users.', () => {
   test('Renders Landing Page', () => {
     const tree = TestRenderer
@@ -41,7 +47,7 @@ describe('Tests for Authenticated Users.', () => {
     let component;
 
     await act( async () => {
-      component = TestRenderer.create(<Router><LandingPage isAuthenticated={true} /></Router>);
+      component = TestRenderer.create(<Router><LandingPage isAuthenticated={true} user={user} /></Router>);
     })
 
     const tree = component.toJSON();

@@ -19,11 +19,11 @@ const useStyles = makeStyles(styles);
 export default function ListArticle(props) {
   const classes = useStyles();
 
-  const { isAuthenticated, backgroundImg, title, subtitle, storyProducts, similarArticles, content } = props;
+  const { isAuthenticated, backgroundImg, title, subtitle, storyProducts, similarArticles, content, user } = props;
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={isAuthenticated} />
+      <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
       <Parallax image={require('assets/img/articles/' + backgroundImg)} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>

@@ -44,7 +44,7 @@ class App extends React.Component {
     try {
       await Auth.currentSession();
       this.userHasAuthenticated(true);
-      console.log("User was authenticated");
+      console.log("User has current auth session.");
     }
     catch(e) {
       if (e !== 'No current user') {
@@ -69,13 +69,13 @@ class App extends React.Component {
   }
 
   getAttributes = async () => {
-    console.log("Getting email address");
     let user = await Auth.currentAuthenticatedUser();
     const { attributes } = user;
-    console.log("User id (sub): " + attributes['sub'] + " User email: " + attributes['email']);
+    // console.log("User id (sub): " + attributes['sub'] + " User email: " + attributes['email']);
     this.setState({
       email: attributes['email'],
-      sub: attributes['sub']
+      sub: attributes['sub'],
+      name: attributes['name']
     });
   }
 
@@ -103,11 +103,13 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log("User state: " + JSON.stringify(this.state.user));
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated,
       userEmail: this.state.email,
-      userSub: this.state.sub
+      userSub: this.state.sub,
+      user: { email: this.state.email, sub: this.state.sub, name: this.state.name }
     };
 
     return (

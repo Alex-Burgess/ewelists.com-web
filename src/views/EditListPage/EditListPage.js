@@ -159,7 +159,7 @@ export default function EditPage(props) {
     <div>
       {loaded
         ? <div>
-            <HeaderFixed isAuthenticated={true} />
+            <HeaderFixed isAuthenticated={true} user={props.user} />
             <div className={classes.main}>
               <SectionListDetails
                 listId={listId}

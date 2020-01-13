@@ -103,7 +103,7 @@ export default function ContactUsPage(props) {
 
   return (
     <div>
-      <HeaderFixed isAuthenticated={props.isAuthenticated} />
+      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} />
       <Parallax image={require("assets/img/sheep-with-shoes.jpg")} className={classes.parallax}>
         <div className={classes.container}>
           <GridContainer justify="center">

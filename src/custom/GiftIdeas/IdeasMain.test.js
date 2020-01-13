@@ -3,6 +3,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import IdeasMain from './IdeasMain';
 
+const user = {
+  email: 'test.user@gmail.com',
+  name: 'Test User',
+  sub: '6c9b0a41-1234-abcd-5678-c51f280c557f'
+}
+
 test('Renders IdeasMain component.', () => {
   const recentArticles = [
     {title: "Christmas Ideas", url: "/listideas/christmasfortoddlers", img: 'christmastoddlers.jpg', img_position_left: false,
@@ -25,6 +31,7 @@ test('Renders IdeasMain component.', () => {
       <Router>
         <IdeasMain
           isAuthenticated={false}
+          user={user}
           recentArticles={recentArticles}
           similarArticles={similarArticles}
         />
