@@ -46,6 +46,11 @@ export default function ReservePopout(props) {
     }
   }, [product, reservedDetails])
 
+  const closePopout = () => {
+    setReserveError('');
+    props.closeReservePopout(product['productId']);
+  }
+
   const increaseQuantity = () => {
     var quantity = reserveQuantity;
 
@@ -97,6 +102,7 @@ export default function ReservePopout(props) {
   }
 
   const reserveProduct = async () => {
+    setReserveError('');
     let productId = product['productId'];
     console.log("Reserving product (" + productId + ") for list (" + listId + ").  Quantity (" + reserveQuantity + ")");
 
@@ -118,6 +124,7 @@ export default function ReservePopout(props) {
   }
 
   const updateReservation = async () => {
+    setReserveError('');
     let productId = product['productId'];
     let newQuantity = updateUserQuantity;
 
@@ -163,7 +170,7 @@ export default function ReservePopout(props) {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={() => props.closeReservePopout(product['productId'])}
+        onClose={() => closePopout()}
         aria-labelledby="notice-modal-slide-title"
         aria-describedby="notice-modal-slide-description"
       >
@@ -179,7 +186,7 @@ export default function ReservePopout(props) {
                   className={classes.modalCloseButton}
                   key="close"
                   aria-label="Close"
-                  onClick={() => props.closeReservePopout(product['productId'])}
+                  onClick={() => closePopout()}
                 >
                   {" "}
                   <Close className={classes.modalClose} />
