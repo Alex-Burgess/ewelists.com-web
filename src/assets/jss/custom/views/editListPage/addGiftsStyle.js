@@ -27,7 +27,7 @@ const sectionDetailsStyle = theme => ({
     paddingTop: "14px",
     minWidth: "500px",
     [theme.breakpoints.down("xs")]: {
-      minWidth: "270px",
+      minWidth: "310px",
     }
   },
   customQuanityFormControl: {
@@ -53,7 +53,11 @@ const sectionDetailsStyle = theme => ({
     minHeight: "50px",
     width: "60%",
     marginLeft: "Auto",
-    marginRight: "Auto"
+    marginRight: "Auto",
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
+      minHeight: "20px",
+    }
   },
   messageContainer: {
     color: successColor[1],

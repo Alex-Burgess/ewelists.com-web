@@ -679,7 +679,8 @@ const buttonStyle = {
         marginTop: "1px"
       }
     },
-    padding: "0.40625rem 1.25rem",
+    // padding: "0.40625rem 1.25rem",
+    padding: "0.40625rem 0.75rem",
     fontSize: "0.6875rem",
     lineHeight: "1.5",
     borderRadius: "0.2rem"

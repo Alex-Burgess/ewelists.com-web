@@ -231,7 +231,7 @@ export default function SectionProducts(props) {
               : renderMobileProductView()
             }
             <div className={classes.addItemButton}>
-              <Button round color="primary" onClick={() => props.changeTab(1)} >
+              <Button round color="primary" onClick={() => props.setTabId(1)} >
                 <Playlist /> Add Item
               </Button>
             </div>

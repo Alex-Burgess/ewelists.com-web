@@ -156,8 +156,7 @@ export default function EditPage(props) {
     )
   }
 
-  const changeTab = (id) => {
-    console.log("Changing to tab: " + id);
+  const setActive = (id) => {
     setTabId(id);
   }
 
@@ -178,6 +177,7 @@ export default function EditPage(props) {
               <div className={classes.profileTabs}>
                 <NavPills
                   active={tabId}
+                  setActive={setActive}
                   alignCenter
                   color="primary"
                   tabs={[
@@ -191,7 +191,7 @@ export default function EditPage(props) {
                             listId={listId}
                             deleteProductFromState={deleteProductFromState}
                             updateProductToState={updateProductToState}
-                            changeTab={changeTab}
+                            setTabId={setTabId}
                           />
                         </div>
                       )

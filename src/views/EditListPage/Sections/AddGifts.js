@@ -130,7 +130,7 @@ export default function SectionAddGifts(props) {
       console.log('Error message: ' + e.response.data.error);
 
       if (e.response.data.error === 'Product already exists in list.') {
-        setErrorMessage('Product already exists in your list.  If you wanted to change the quantity for this product, you can do this in Manage List.');
+        setErrorMessage('Product already exists in your list.  You can change the quantity in Manage List.');
       } else {
         setErrorMessage('Product could not be added to your list.');
       }
@@ -328,7 +328,7 @@ export default function SectionAddGifts(props) {
                   <Add />
                 </Button>
               </span>
-              <Button default size="sm" color="primary" className={classes.reserveButton}>
+              <Button default size="sm" color="primary" className={classes.reserveButton} onClick={() => addProductToList()}>
                 Add to list
               </Button>
               </div>
@@ -436,6 +436,56 @@ export default function SectionAddGifts(props) {
     )
   }
 
+  const renderDesktopSearchInput = () => {
+    return (
+      <div className={classes.textCenter}>
+        <CustomInput
+          id="searchUrl"
+          formControlProps={{
+            fullWidth: false,
+            className: classes.customFormControl
+          }}
+          inputProps={{
+            placeholder: "Enter url...",
+            onChange: event => setSearchUrl(event.target.value),
+            value: searchUrl
+          }}
+        />
+        <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm()}>
+          <Search />
+        </Button>
+        <Button justIcon onClick={() => setSearchUrl('')}>
+          <Clear />
+        </Button>
+      </div>
+    )
+  }
+
+  const renderMobileSearchInput = () => {
+    return (
+      <div className={classes.textCenter}>
+        <CustomInput
+          id="searchUrl"
+          formControlProps={{
+            fullWidth: false,
+            className: classes.customFormControl
+          }}
+          inputProps={{
+            placeholder: "Enter url...",
+            onChange: event => setSearchUrl(event.target.value),
+            value: searchUrl
+          }}
+        />
+        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm()}>
+          <Search /> Search
+        </Button>
+        <Button onClick={() => setSearchUrl('')}>
+          <Clear /> Clear
+        </Button>
+      </div>
+    )
+  }
+
   return (
     <div className={classes.section}>
       <div className={classes.container}>
@@ -443,26 +493,10 @@ export default function SectionAddGifts(props) {
           <GridItem xs={12} sm={12} md={10} lg={9}
             className={classes.mrAuto + " " + classes.mlAuto}
           >
-            <div className={classes.textCenter}>
-              <CustomInput
-                id="searchUrl"
-                formControlProps={{
-                  fullWidth: false,
-                  className: classes.customFormControl
-                }}
-                inputProps={{
-                  placeholder: "Enter url...",
-                  onChange: event => setSearchUrl(event.target.value),
-                  value: searchUrl
-                }}
-              />
-              <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm()}>
-                <Search />
-              </Button>
-              <Button justIcon onClick={() => setSearchUrl('')}>
-                <Clear />
-              </Button>
-            </div>
+            { desktop
+              ? renderDesktopSearchInput()
+              : renderMobileSearchInput()
+            }
             <div className={classes.errorContainer}>
             {errorMessage
               ? <div>

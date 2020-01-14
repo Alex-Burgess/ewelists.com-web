@@ -20,17 +20,17 @@ const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
   const [active, setActive] = React.useState(props.active);
-
+  
   React.useEffect(() => {
      setActive(props.active);
    }, [props.active])
 
 
   const handleChange = (event, active) => {
-    setActive(active);
+    props.setActive(active);
   };
   const handleChangeIndex = index => {
-    setActive(index);
+    props.setActive(index);
   };
   const { tabs, direction, color, horizontal, alignCenter } = props;
   const classes = useStyles();
