@@ -54,13 +54,21 @@ export default function SectionDetails(props) {
   const deleteProduct = async () => {
     let productId = product['productId'];
     let type = product['type'];
-    console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
+
+    if (product['reserved'] > 0) {
+      console.log("Reserved number: " + product['reserved']);
+      setEditError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
+      return false
+    } else {
+      console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
+    }
+
 
     try {
       await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
       console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
-      setEditError('Product could not be deleted from your list.');
+      setEditError('Item could not be deleted from your list.');
       return false
     }
 
