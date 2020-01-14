@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
-import Subject from "@material-ui/icons/Subject";
+import ViewIcon from "@material-ui/icons/Visibility";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -81,7 +81,7 @@ export default function YourLists(props) {
               : <CardFooter profile className={classes.justifyContentCenter}>
                   <a href={"/lists/" + list.listId}>
                     <Button round color="info">
-                      <Subject /> View
+                      <ViewIcon /> View
                     </Button>
                   </a>
                   <a href={"/edit/" + list.listId}>
