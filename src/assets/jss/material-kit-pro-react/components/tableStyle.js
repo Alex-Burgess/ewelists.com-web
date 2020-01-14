@@ -57,7 +57,8 @@ const tableStyle = {
     padding: "12px 8px!important",
     verticalAlign: "middle",
     fontSize: "0.875rem",
-    borderBottom: "none",
+    // borderBottom: "none",
+    borderBottom: "1px solid " + grayColor[6],
     borderTop: "1px solid " + grayColor[6],
     position: "relative",
     color: grayColor[1]
@@ -67,7 +68,8 @@ const tableStyle = {
     borderBottomWidth: "1px",
     fontWeight: "300",
     color: grayColor[15],
-    borderTopWidth: "0 !important"
+    borderTopWidth: "0 !important",
+    borderBottom: "1px solid " + grayColor[6],
   },
   tableCellTotal: {
     fontWeight: "500",

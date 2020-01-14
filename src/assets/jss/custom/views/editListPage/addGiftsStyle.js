@@ -49,14 +49,18 @@ const sectionDetailsStyle = theme => ({
   },
   errorContainer: {
     color: dangerColor[1],
-    textAlign: "center !important"
+    textAlign: "center !important",
+    minHeight: "50px",
+    width: "60%",
+    marginLeft: "Auto",
+    marginRight: "Auto"
   },
   messageContainer: {
     color: successColor[1],
     textAlign: "center !important"
   },
   results: {
-    minHeight: "440px",
+    minHeight: "390px",
     marginTop: "30px"
   }
 });

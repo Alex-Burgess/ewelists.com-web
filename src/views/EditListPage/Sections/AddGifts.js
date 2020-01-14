@@ -333,14 +333,7 @@ export default function SectionAddGifts(props) {
               </Button>
               </div>
 
-            ],
-            {
-              addnew: true,
-              colspan: "1",
-              col: {
-                colspan: 1,
-              }
-            }
+            ]
           ]
           }
           tableShopping
@@ -393,14 +386,7 @@ export default function SectionAddGifts(props) {
               <Button default color="primary" className={classes.reserveButton} onClick={() => addProductToList()}>
                 Add to list
               </Button>
-            ],
-            {
-              addnew: true,
-              colspan: "2",
-              col: {
-                colspan: 2,
-              }
-            }
+            ]
           ]
           }
           tableShopping
@@ -477,6 +463,14 @@ export default function SectionAddGifts(props) {
                 <Clear />
               </Button>
             </div>
+            <div className={classes.errorContainer}>
+            {errorMessage
+              ? <div>
+                  {errorMessage}
+                </div>
+              : null
+            }
+            </div>
             <div className={classes.results}>
               {listUpdated
                 ? renderAddMessage()
@@ -487,13 +481,6 @@ export default function SectionAddGifts(props) {
                   : null
               }
             </div>
-            {errorMessage
-              ?
-                <div className={classes.errorContainer}>
-                  {errorMessage}
-                </div>
-              : null
-            }
           </GridItem>
         </GridContainer>
       </div>

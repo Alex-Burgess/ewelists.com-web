@@ -62,12 +62,16 @@ export default function SectionProducts(props) {
     return (
       <Table
         tableHead={[
-          "", ""
+          "RESERVED ITEMS"
         ]}
         tableData={
           renderMobileTable()
         }
         tableShopping
+        customHeadCellClasses={[
+          classes.textCenter
+        ]}
+        customHeadClassesForCells={[0]}
       />
     )
   }
@@ -78,15 +82,6 @@ export default function SectionProducts(props) {
             renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['name'], row['message'], row['quantity'])
     )
 
-    allRows[reserved.length] =
-      {
-        addnew: true,
-        colspan: "1",
-        col: {
-          colspan: 3,
-        }
-      }
-
     return allRows
   }
 
@@ -95,15 +90,6 @@ export default function SectionProducts(props) {
       (row, i) =>
             renderMobileRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['name'], row['message'], row['quantity'])
     )
-
-    allRows[reserved.length] =
-      {
-        addnew: true,
-        colspan: "1",
-        col: {
-          colspan: 1,
-        }
-      }
 
     return allRows
   }

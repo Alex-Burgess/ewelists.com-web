@@ -20,6 +20,12 @@ const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
   const [active, setActive] = React.useState(props.active);
+
+  React.useEffect(() => {
+     setActive(props.active);
+   }, [props.active])
+
+
   const handleChange = (event, active) => {
     setActive(active);
   };

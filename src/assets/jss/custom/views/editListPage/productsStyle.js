@@ -68,6 +68,10 @@ const sectionDetailsStyle = theme => ({
     fontSize: "1.1em",
     fontWeight: "300",
     lineHeight: "2.2em"
+  },
+  addItemButton: {
+    textAlign: "center",
+    paddingTop: "20px"
   }
 });
 

@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
+import Playlist from "@material-ui/icons/PlaylistAdd";
 // core components
 import Table from "components/Table/Table.js";
 import Button from "components/CustomButtons/Button.js";
@@ -90,12 +91,16 @@ export default function SectionProducts(props) {
     return (
       <Table
         tableHead={[
-          ""
+          "MANAGE ITEMS"
         ]}
         tableData={
           renderMobileProducts()
         }
         tableShopping
+        customHeadCellClasses={[
+          classes.textCenter
+        ]}
+        customHeadClassesForCells={[0]}
       />
     )
   }
@@ -106,15 +111,6 @@ export default function SectionProducts(props) {
             renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
     )
 
-    allproducts[products.length] =
-      {
-        addnew: true,
-        colspan: "3",
-        col: {
-          colspan: 3,
-        }
-      }
-
     return allproducts
   }
 
@@ -123,15 +119,6 @@ export default function SectionProducts(props) {
       ([key, p]) =>
             renderMobileProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
     )
-
-    allproducts[products.length] =
-      {
-        addnew: true,
-        colspan: "3",
-        col: {
-          colspan: 3,
-        }
-      }
 
     return allproducts
   }
@@ -243,6 +230,11 @@ export default function SectionProducts(props) {
               ? renderDesktopProductView()
               : renderMobileProductView()
             }
+            <div className={classes.addItemButton}>
+              <Button round color="primary" onClick={() => props.changeTab(1)} >
+                <Playlist /> Add Item
+              </Button>
+            </div>
 
           </CardBody>
         </Card>
@@ -253,7 +245,6 @@ export default function SectionProducts(props) {
 }
 
 SectionProducts.propTypes = {
-  classes: PropTypes.object,
   listId: PropTypes.string,
   products: PropTypes.object
 };

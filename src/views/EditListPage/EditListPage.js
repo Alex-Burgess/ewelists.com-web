@@ -38,6 +38,7 @@ export default function EditPage(props) {
   const [products, setProducts] = useState({});
   const [reserved, setReserved] = useState([]);
   const [shared, setShared] = useState({});
+  const [tabId, setTabId] = useState(0);
 
   useEffect( () => {
     async function getList() {
@@ -155,6 +156,11 @@ export default function EditPage(props) {
     )
   }
 
+  const changeTab = (id) => {
+    console.log("Changing to tab: " + id);
+    setTabId(id);
+  }
+
   return (
     <div>
       {loaded
@@ -171,6 +177,7 @@ export default function EditPage(props) {
               />
               <div className={classes.profileTabs}>
                 <NavPills
+                  active={tabId}
                   alignCenter
                   color="primary"
                   tabs={[
@@ -184,12 +191,13 @@ export default function EditPage(props) {
                             listId={listId}
                             deleteProductFromState={deleteProductFromState}
                             updateProductToState={updateProductToState}
+                            changeTab={changeTab}
                           />
                         </div>
                       )
                     },
                     {
-                      tabButton: "Add Gifts",
+                      tabButton: "Add Items",
                       tabIcon: Search,
                       tabContent: (
                         <div>
