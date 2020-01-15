@@ -127,14 +127,14 @@ export default function SectionProducts(props) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
-        <a href={productUrl} target="_blank" rel="noopener noreferrer">
+        <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
           <img src={imageUrl} alt="..." className={classes.img} />
-        </a>
+        </button>
       </div>,
       <span key={1}>
-        <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+        <button onClick={() => handleEditClickOpen(productId)} className={classes.productDescription}>
           {brand}
-        </a>
+        </button>
         <br />
         <small className={classes.tdNameSmall}>
           {details}
@@ -167,15 +167,16 @@ export default function SectionProducts(props) {
       [
           <div className={classes.textCenter}>
             <div className={classes.imgContainer} key={1}>
-              <a href={productUrl} target="_blank" rel="noopener noreferrer">
+              <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
                 <img src={imageUrl} alt="..." className={classes.img} />
-              </a>
+              </button>
             </div>
-            <h4 className={classes.cardTitle}>
-              <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+            <button onClick={() => handleEditClickOpen(productId)}>
+              <h4 className={classes.cardTitle}>
                 {brand}
-              </a>
-            </h4>
+              </h4>
+            </button>
+            <br />
             <small className={classes.mobileDescription}>
               {details}
             </small>

@@ -1,5 +1,6 @@
 import {
   grayColor,
+  primaryColor,
   container,
   cardTitle,
 } from "assets/jss/material-kit-pro-react.js";
@@ -72,6 +73,30 @@ const sectionDetailsStyle = theme => ({
   addItemButton: {
     textAlign: "center",
     paddingTop: "20px"
+  },
+  productDescription: {
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    // textDecoration: "underline",
+    display: "inline",
+    margin: "0",
+    padding: "0",
+    color: grayColor[1],
+    fontWeight: "400",
+    fontSize: "1em",
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    "&:hover, &:focus": {
+      color: primaryColor[2] + "  !important"
+    }
+  },
+  undoButton: {
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    display: "inline",
+    margin: "0",
+    padding: "0",
   }
 });
 

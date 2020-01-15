@@ -26,9 +26,6 @@ const styles = theme => ({
     ...cardTitle,
     textAlign: "center",
     marginBottom: "0px !important",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "15px",
-    }
   },
   container: {
     ...container
@@ -40,6 +37,9 @@ const styles = theme => ({
     display: "-webkit-box",
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center"
+    }
   },
   section: {
     ...section,
@@ -121,6 +121,14 @@ const styles = theme => ({
       width: "100%",
       marginBottom: "30px"
     }
+  },
+  undoButton: {
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    display: "inline",
+    margin: "0",
+    padding: "0",
   }
 });
 

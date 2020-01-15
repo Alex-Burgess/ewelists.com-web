@@ -135,14 +135,16 @@ export default function Products(props) {
         <GridItem md={4} sm={4} key={i}>
           <Card plain product>
             <CardHeader noShadow image>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+              <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
                 <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-              </a>
+              </button>
             </CardHeader>
             <CardBody plain className={classes.productDetails}>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
-                <h4 className={classes.cardTitle}>{product['brand']}</h4>
-              </a>
+              <div className={classes.textCenter}>
+                <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
+                  <h4 className={classes.cardTitle}>{product['brand']}</h4>
+                </button>
+              </div>
               <p className={classes.description}>
                 {product['details']}
               </p>
