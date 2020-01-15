@@ -202,7 +202,7 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                         />
                       </div>
                       <div
-                        className="makeStyles-cardBody-615"
+                        className="makeStyles-cardBody-619"
                       >
                         <div
                           className="makeStyles-defaultFontStyle-386 makeStyles-infoText-393"
@@ -224,7 +224,7 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                         </p>
                       </div>
                       <div
-                        className="makeStyles-cardFooter-622 makeStyles-cardFooterProfile-623 makeStyles-justifyContentCenter-528"
+                        className="makeStyles-cardFooter-626 makeStyles-cardFooterProfile-627 makeStyles-justifyContentCenter-528"
                       >
                         <a
                           href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
@@ -310,12 +310,12 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                     className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
                   >
                     <div
-                      className="makeStyles-addList-539"
+                      className="makeStyles-addList-541"
                     >
                       <div>
                         <div>
                           <div
-                            className="makeStyles-centerButton-541"
+                            className="makeStyles-centerButton-543"
                           >
                             <button
                               className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-286 makeStyles-lg-311 makeStyles-info-290 makeStyles-round-313 makeStyles-justIcon-316"
@@ -356,7 +356,7 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                             </button>
                           </div>
                           <p
-                            className="makeStyles-cardDescription-540"
+                            className="makeStyles-cardDescription-542"
                           >
                             Create a New List
                           </p>
@@ -389,7 +389,7 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
       <div>
         <div />
         <footer
-          className="makeStyles-footer-421 makeStyles-footer-613"
+          className="makeStyles-footer-421 makeStyles-footer-617"
         >
           <div
             className="makeStyles-container-427"
@@ -397,17 +397,17 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
              
             <div>
               <div
-                className="makeStyles-left-610"
+                className="makeStyles-left-614"
               >
                 <ul
-                  className="MuiList-root makeStyles-list-609 MuiList-padding"
+                  className="MuiList-root makeStyles-list-613 MuiList-padding"
                 >
                   <li
-                    className="MuiListItem-root makeStyles-inlineBlock-608 MuiListItem-gutters"
+                    className="MuiListItem-root makeStyles-inlineBlock-612 MuiListItem-gutters"
                     disabled={false}
                   >
                     <a
-                      className="makeStyles-block-607"
+                      className="makeStyles-block-611"
                       href="/"
                     >
                       © 
@@ -416,44 +416,44 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                     </a>
                   </li>
                   <li
-                    className="MuiListItem-root makeStyles-inlineBlock-608 MuiListItem-gutters"
+                    className="MuiListItem-root makeStyles-inlineBlock-612 MuiListItem-gutters"
                     disabled={false}
                   >
                     <a
-                      className="makeStyles-block-607"
+                      className="makeStyles-block-611"
                       href="/contact"
                     >
                       Contact Us
                     </a>
                   </li>
                   <li
-                    className="MuiListItem-root makeStyles-inlineBlock-608 MuiListItem-gutters"
+                    className="MuiListItem-root makeStyles-inlineBlock-612 MuiListItem-gutters"
                     disabled={false}
                   >
                     <a
-                      className="makeStyles-block-607"
+                      className="makeStyles-block-611"
                       href="/#about"
                     >
                       About us
                     </a>
                   </li>
                   <li
-                    className="MuiListItem-root makeStyles-inlineBlock-608 MuiListItem-gutters"
+                    className="MuiListItem-root makeStyles-inlineBlock-612 MuiListItem-gutters"
                     disabled={false}
                   >
                     <a
-                      className="makeStyles-block-607"
+                      className="makeStyles-block-611"
                       href="/privacy"
                     >
                       Privacy
                     </a>
                   </li>
                   <li
-                    className="MuiListItem-root makeStyles-inlineBlock-608 MuiListItem-gutters"
+                    className="MuiListItem-root makeStyles-inlineBlock-612 MuiListItem-gutters"
                     disabled={false}
                   >
                     <a
-                      className="makeStyles-block-607"
+                      className="makeStyles-block-611"
                       href="/terms"
                     >
                       Terms
@@ -462,7 +462,7 @@ exports[`Tests for Authenticated Users. Renders landing page 1`] = `
                 </ul>
               </div>
               <div
-                className="makeStyles-rightLinks-614"
+                className="makeStyles-rightLinks-618"
               >
                 <ul>
                   <li>

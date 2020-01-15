@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+// react plugin for creating date-time-picker
+import Datetime from "react-datetime";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
@@ -38,14 +40,30 @@ function CreatePopOut(props) {
   const classes = useStyles();
   const { open } = props;
   const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [occasion, setOccasion] = useState('');
   const [isCreating, setIsCreating] = useState(false);
+
+  const changeDate = (d) => {
+    if (d) {
+      const t = typeof d;
+      if ( t === 'string') {
+        console.log("Date string: " + d + "(" + t + ")")
+        setDate('');
+      } else {
+        setDate(d.format('DD MMMM YYYY'));
+      }
+    } else {
+      setDate('');
+    }
+  }
 
   const validateForm = () => {
     return (
       title.length > 0 &&
       description.length > 0 &&
+      date.length > 0 &&
       occasion.length > 0
     );
   }
@@ -56,11 +74,12 @@ function CreatePopOut(props) {
     const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
     const new_image_url = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
 
-    console.log("Creating list with values: title: " + title + ", description: " + description + ", occasion: " + occasion + ", imageUrl: " + new_image_url);
+    console.log("Creating list with values: title: " + title + ", description: " + description + ", date: " + date + ", occasion: " + occasion + ", imageUrl: " + new_image_url);
 
     var createList = {
       "title": title,
       "description": description,
+      "eventDate": date,
       "occasion": occasion,
       "imageUrl": new_image_url
     }
@@ -165,7 +184,8 @@ function CreatePopOut(props) {
                   onChange: event => setTitle(event.target.value)
                 }}
                 formControlProps={{
-                  fullWidth: true
+                  fullWidth: true,
+                  className: classes.createFormControl
                 }}
               />
               <InputLabel className={classes.label}>
@@ -174,13 +194,30 @@ function CreatePopOut(props) {
               <CustomInput
                 id="description"
                 formControlProps={{
-                  fullWidth: true
+                  fullWidth: true,
+                  className: classes.createFormControl
                 }}
                 inputProps={{
                   placeholder: "Add your description here...",
-                  onChange: event => setDescription(event.target.value)
+                  onChange: event => setDescription(event.target.value),
+                  multiline: true,
+                  rows: 2,
                 }}
               />
+              <InputLabel className={classes.label}>
+                Date:
+              </InputLabel>
+              <FormControl fullWidth>
+                <Datetime
+                  className={classes.dateField}
+                  dateFormat="DD MMMM YYYY"
+                  timeFormat={false}
+                  inputProps={{name: "date", placeholder: "Select a date" }}
+                  value={date}
+                  onChange={changeDate}
+                  closeOnSelect={true}
+                />
+              </FormControl>
               <InputLabel className={classes.label + " " + classes.date}>
                 Occasion:
               </InputLabel>

@@ -63,7 +63,17 @@ export default function SectionDetails(props) {
   }
 
   const changeDate = (d) => {
-    setNewDate(d.format('DD MMMM YYYY'));
+    if (d) {
+      const t = typeof d;
+      if ( t === 'string') {
+        console.log("Date string: " + d + "(" + t + ")")
+        setNewDate('');
+      } else {
+        setNewDate(d.format('DD MMMM YYYY'));
+      }
+    } else {
+      setNewDate('');
+    }
   }
 
   const changeOccasion = (event) => {
@@ -233,6 +243,7 @@ export default function SectionDetails(props) {
                     inputProps={{ placeholder: "Select a date" }}
                     value={newDate}
                     onChange={changeDate}
+                    closeOnSelect={true}
                   />
                 </FormControl>
               </GridItem>

@@ -21,10 +21,11 @@ describe('Create List Form Validate', () => {
     expect(wrapper.find('form').length).toEqual(1);
   });
 
-  it('Should have 3 inputs, title, description and occasion', () => {
+  it('Should have 4 inputs, title, description, date and occasion', () => {
     expect(wrapper.find('input').length).toEqual(3);
     expect(wrapper.find('input#title').length).toEqual(1);
-    expect(wrapper.find('input#description').length).toEqual(1);
+    expect(wrapper.find('textarea#description').length).toEqual(1);
+    expect(wrapper.find('input[name="date"]').length).toEqual(1);
     expect(wrapper.find('input[name="occasion"]').length).toEqual(1);
   });
 
@@ -41,9 +42,15 @@ describe('Create List Form Validate', () => {
       },
     });
 
-    wrapper.find('input#description').simulate('change', {
+    wrapper.find('textarea#description').simulate('change', {
       target: {
         value: 'Test User',
+      },
+    });
+
+    wrapper.find('input[name="date"]').simulate('change', {
+      target: {
+        value: '06 January 2020',
       },
     });
 

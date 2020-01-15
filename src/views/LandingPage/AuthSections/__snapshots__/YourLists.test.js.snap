@@ -8,10 +8,10 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
     className="makeStyles-container-33"
   >
     <div
-      className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+      className="MuiGrid-root makeStyles-grid-52  MuiGrid-container"
     >
       <div
-        className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+        className="MuiGrid-root makeStyles-grid-156  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
       >
         <h1
           className="makeStyles-title-36"
@@ -20,16 +20,16 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
         </h1>
         <br />
         <div
-          className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+          className="MuiGrid-root makeStyles-grid-52  MuiGrid-container"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            className="MuiGrid-root makeStyles-grid-156  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
           >
             <div
-              className="makeStyles-card-306 makeStyles-cardProfile-308"
+              className="makeStyles-card-310 makeStyles-cardProfile-312"
             >
               <div
-                className="makeStyles-cardHeader-321 makeStyles-cardHeaderImage-323"
+                className="makeStyles-cardHeader-325 makeStyles-cardHeaderImage-327"
               >
                 <a
                   href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
@@ -51,10 +51,10 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
                 />
               </div>
               <div
-                className="makeStyles-cardBody-333"
+                className="makeStyles-cardBody-337"
               >
                 <div
-                  className="makeStyles-defaultFontStyle-340 makeStyles-infoText-347"
+                  className="makeStyles-defaultFontStyle-344 makeStyles-infoText-351"
                 >
                   <a
                     href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
@@ -73,13 +73,13 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
                 </p>
               </div>
               <div
-                className="makeStyles-cardFooter-353 makeStyles-cardFooterProfile-354 makeStyles-justifyContentCenter-39"
+                className="makeStyles-cardFooter-357 makeStyles-cardFooterProfile-358 makeStyles-justifyContentCenter-39"
               >
                 <a
                   href="/lists/933c7476-cf0d-4a75-8822-2c011c07ce1d"
                 >
                   <button
-                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-info-163 makeStyles-round-186"
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-161 makeStyles-info-165 makeStyles-round-188"
                     disabled={false}
                     onBlur={[Function]}
                     onDragLeave={[Function]}
@@ -120,7 +120,7 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
                   href="/edit/933c7476-cf0d-4a75-8822-2c011c07ce1d"
                 >
                   <button
-                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-success-164 makeStyles-round-186"
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-161 makeStyles-success-166 makeStyles-round-188"
                     disabled={false}
                     onBlur={[Function]}
                     onDragLeave={[Function]}
@@ -156,18 +156,18 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
             </div>
           </div>
           <div
-            className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+            className="MuiGrid-root makeStyles-grid-156  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
           >
             <div
-              className="makeStyles-addList-155"
+              className="makeStyles-addList-157"
             >
               <div>
                 <div>
                   <div
-                    className="makeStyles-centerButton-157"
+                    className="makeStyles-centerButton-159"
                   >
                     <button
-                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-159 makeStyles-lg-184 makeStyles-info-163 makeStyles-round-186 makeStyles-justIcon-189"
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-161 makeStyles-lg-186 makeStyles-info-165 makeStyles-round-188 makeStyles-justIcon-191"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -205,7 +205,7 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
                     </button>
                   </div>
                   <p
-                    className="makeStyles-cardDescription-156"
+                    className="makeStyles-cardDescription-158"
                   >
                     Create a New List
                   </p>
@@ -216,7 +216,7 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
         </div>
       </div>
       <div
-        className="MuiGrid-root makeStyles-grid-154  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
+        className="MuiGrid-root makeStyles-grid-156  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12"
       >
         <h1
           className="makeStyles-title-36"
@@ -225,7 +225,7 @@ exports[`Tests for YourLists section. Renders your lists section 1`] = `
         </h1>
         <br />
         <div
-          className="MuiGrid-root makeStyles-grid-50  MuiGrid-container"
+          className="MuiGrid-root makeStyles-grid-52  MuiGrid-container"
         />
       </div>
     </div>

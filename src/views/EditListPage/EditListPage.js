@@ -117,6 +117,7 @@ export default function EditPage(props) {
 
     setEditListDetails();
     setLoaded(true);
+    window.scrollTo(0, 0); // Ensures page is loaded at top after creating list.
   }, [listId, props.history]);
 
   const deleteProductFromState = (id) => {

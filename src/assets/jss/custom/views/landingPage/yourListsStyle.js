@@ -21,6 +21,16 @@ const sectionStyle = theme => ({
   mrAuto,
   cardTitle,
   ...modalStyle(theme),
+  modal: {
+    width: "100%",
+    overflow: "visible",
+    marginTop: "130px !important",
+    maxHeight: "unset",
+    borderRadius: "6px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "0px !important"
+    }
+  },
   ...customSelectStyle,
   container: {
     color: whiteColor,
@@ -112,6 +122,12 @@ const sectionStyle = theme => ({
     marginTop: -12,
     marginLeft: -12,
   },
+  createFormControl: {
+    paddingTop: "10px"
+  },
+  dateField: {
+    paddingTop: "10px"
+  }
 });
 
 export default sectionStyle;
