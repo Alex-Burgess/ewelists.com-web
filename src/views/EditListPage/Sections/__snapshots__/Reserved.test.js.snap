@@ -184,20 +184,6 @@ exports[`Tests Reserved component of edit page. Renders desktop reserved table 1
                   </span>
                 </td>
               </tr>
-              <tr
-                className="MuiTableRow-root"
-              >
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48"
-                  colSpan="1"
-                />
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-right-45"
-                  colSpan={3}
-                />
-              </tr>
             </tbody>
           </table>
         </div>
@@ -232,17 +218,10 @@ exports[`Tests Reserved component of edit page. Renders mobile reserved table 1`
               >
                 <th
                   aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
+                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-textCenter-4 makeStyles-tableShoppingHead-47"
                   scope="col"
                 >
-                  
-                </th>
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-head makeStyles-tableHeadCell-49 makeStyles-tableCell-48 makeStyles-tableShoppingHead-47"
-                  scope="col"
-                >
-                  
+                  RESERVED ITEMS
                 </th>
               </tr>
             </thead>
@@ -384,20 +363,6 @@ exports[`Tests Reserved component of edit page. Renders mobile reserved table 1`
                     </small>
                   </div>
                 </td>
-              </tr>
-              <tr
-                className="MuiTableRow-root"
-              >
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48"
-                  colSpan="1"
-                />
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body makeStyles-tableCell-48 makeStyles-right-45"
-                  colSpan={1}
-                />
               </tr>
             </tbody>
           </table>

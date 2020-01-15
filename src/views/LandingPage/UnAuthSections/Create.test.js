@@ -9,4 +9,13 @@ describe('Tests for Create section.', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  test('Renders create section on mobile device width', () => {
+    global.innerWidth = 375;
+
+    const tree = TestRenderer
+      .create(<Create />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
