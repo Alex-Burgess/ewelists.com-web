@@ -25,7 +25,7 @@ const createStyle = theme => ({
     paddingBottom: "70px",
     textAlign: "left",
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "110px",
+      paddingTop: "70px",
       paddingBottom: "0",
     }
   },
@@ -37,9 +37,9 @@ const createStyle = theme => ({
     minHeight: "32px",
     color: blackColor,
     textDecoration: "none",
-    fontSize: "3rem",
+    fontSize: "1.8rem",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "2.5rem",
+      fontSize: "1.8rem",
       textAlign: "center"
     }
   },
@@ -47,7 +47,11 @@ const createStyle = theme => ({
     "& img": {
       width: "100%"
     },
-    paddingTop: "40px"
+    paddingTop: "40px",
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "20px",
+      paddingBottom: "20px",
+    }
 
   },
   infoArea: {
@@ -57,8 +61,15 @@ const createStyle = theme => ({
   },
   buttonContainer: {
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "50px",
-      paddingBottom: "50px",
+      // paddingTop: "50px",
+      // paddingBottom: "50px",
+      textAlign: "center"
+    }
+  },
+  downButton: {
+    [theme.breakpoints.down("xs")]: {
+      // paddingTop: "50px",
+      paddingBottom: "10px",
       textAlign: "center"
     }
   }

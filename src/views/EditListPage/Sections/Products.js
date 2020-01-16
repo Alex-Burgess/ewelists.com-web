@@ -54,14 +54,6 @@ export default function SectionProducts(props) {
     })
   }
 
-  const changeTab = () => {
-    if (desktop) {
-      props.setActiveWithScroll(1, 0);
-    } else {
-      props.setActiveWithScroll(1, 600);
-    }
-  }
-
   const renderDesktopProductView = () => {
     return (
       <Table
@@ -240,7 +232,7 @@ export default function SectionProducts(props) {
               : renderMobileProductView()
             }
             <div className={classes.addItemButton}>
-              <Button round color="primary" onClick={() => changeTab()} >
+              <Button round color="primary" onClick={() => props.switchToAddProduct(1)} >
                 <Playlist /> Add Item
               </Button>
             </div>

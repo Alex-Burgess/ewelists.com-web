@@ -43,7 +43,10 @@ const styles = theme => ({
   },
   section: {
     ...section,
-    padding: "20px 0px"
+    padding: "20px 0px",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0px 0px",
+    }
   },
   priceContainer: {
     display: "inline-flex"
@@ -129,6 +132,12 @@ const styles = theme => ({
     display: "inline",
     margin: "0",
     padding: "0",
+  },
+  customProduct: {
+    marginTop: "15px",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "0px",
+    }
   }
 });
 

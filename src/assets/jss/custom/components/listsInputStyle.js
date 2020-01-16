@@ -109,8 +109,9 @@ const customInputStyle = theme => ({
           fontSize: "2rem"
       },
       [theme.breakpoints.down("xs")]: {
-          textAlign: "Center",
-          fontSize: "1.75rem"
+        marginTop: "10px",
+        textAlign: "Center",
+        fontSize: "1.75rem"
       }
     }
   },

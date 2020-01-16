@@ -4,7 +4,7 @@ import {
   infoColor,
 } from "assets/jss/material-kit-pro-react.js";
 
-const blogPostPageStyle = {
+const blogPostPageStyle = theme => ({
   main: {
     ...main,
     ...mainRaised
@@ -27,11 +27,14 @@ const blogPostPageStyle = {
       left: "0",
       top: "0",
       content: "''"
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxHeight: "250px",
     }
   },
   spacer: {
     height: "30px"
   }
-};
+});
 
 export default blogPostPageStyle;

@@ -23,7 +23,8 @@ export default function LandingProduct(props) {
           <GridItem xs={12} sm={8} md={8}>
             <h2 className={classes.title}>Get organised with Ewelists</h2>
             <h5 className={classes.description}>
-              Create your first Ewelist with the things you know you want, or just the essentials.
+              Ewelists helps new and expecting parents get the gifts they need for their new arrival.
+              Create a gift list, which you can share with friends and family, for free.
             </h5>
           </GridItem>
         </GridContainer>

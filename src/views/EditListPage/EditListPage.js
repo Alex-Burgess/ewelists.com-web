@@ -29,6 +29,7 @@ export default function EditPage(props) {
 
   const listId = props.match.params.id;
 
+  const [desktop, setDesktop] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -119,6 +120,19 @@ export default function EditPage(props) {
     setLoaded(true);
   }, [listId, props.history]);
 
+  useEffect( () => {
+    function updateDimensions() {
+      if (window.innerWidth < 600){
+        setDesktop(false);
+      } else {
+        setDesktop(true);
+      }
+    };
+
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+  }, []);
+
   const deleteProductFromState = (id) => {
     setProducts(
       update(products, { $unset: [id] })
@@ -156,13 +170,21 @@ export default function EditPage(props) {
     )
   }
 
-  const setActiveWithScroll = (id, height) => {
-    console.log("Changing tab, so scrolling to top");
-    window.scrollTo(0, height);
+  const setActive = (id) => {
+    if (! desktop) {
+      if (window.pageYOffset < 200) {
+        window.scrollTo({ top: 540, behavior: 'smooth' })
+      }
+    }
+
     setTabId(id);
   }
 
-  const setActive = (id) => {
+  const switchToAddProduct = (id) => {
+    if (! desktop) {
+      window.scrollTo({ top: 540, behavior: 'smooth' })
+    }
+
     setTabId(id);
   }
 
@@ -197,7 +219,7 @@ export default function EditPage(props) {
                             listId={listId}
                             deleteProductFromState={deleteProductFromState}
                             updateProductToState={updateProductToState}
-                            setActiveWithScroll={setActiveWithScroll}
+                            switchToAddProduct={switchToAddProduct}
                           />
                         </div>
                       )

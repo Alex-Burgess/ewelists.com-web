@@ -133,7 +133,7 @@ export default function Products(props) {
     } else {
       return (
         <GridItem md={4} sm={4} key={i}>
-          <Card plain product>
+          <Card plain product className={classes.customProduct}>
             <CardHeader noShadow image>
               <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
                 <img src={product['imageUrl']} className={classes.productImage} alt=".." />
@@ -195,7 +195,7 @@ export default function Products(props) {
                     {
                       desktop || showFilter
                       ? <span>Hide Filter</span>
-                      : <span>Show Filter</span>
+                      : <span>Filter Items</span>
                     }
                   </Button>
                 </div>

@@ -88,7 +88,7 @@ export default function SectionDetails(props) {
 
   const renderOccasionSelect = () => {
     return (
-      <FormControl fullWidth className={classes.selectFormControl}>
+      <FormControl fullWidth className={classes.occasionSelect}>
         <Select
           MenuProps={{className: classes.selectMenu}}
           classes={{select: classes.select}}
@@ -144,39 +144,48 @@ export default function SectionDetails(props) {
             <h1 className={classes.title}>
               {newTitle}
             </h1>
-            <InputLabel className={classes.label}>
-              Description:
-            </InputLabel>
             <div className={classes.description}>
               {newDescription}
             </div>
             <GridContainer >
-              <GridItem xs={12} sm={5} md={5}>
-                <InputLabel className={classes.label}>
-                  Date:
-                </InputLabel>
-                {newDate}
+              <GridItem xs={12} sm={4} md={4}>
+                <div className={classes.centerMobileText}>
+                  <div className={classes.labelWrapper}>
+                    <InputLabel className={classes.label}>
+                      Date:
+                    </InputLabel>
+                  </div>
+                  <div className={classes.labelValue}>
+                    {newDate}
+                  </div>
+                </div>
               </GridItem>
-              <GridItem xs={7} sm={4} md={4} className={classes.detailsPadding}>
-                <InputLabel className={classes.label}>
-                  Occasion:
-                </InputLabel>
-                {newOccasion}
+              <GridItem xs={12} sm={2} md={2}>
+                <div className={classes.centerMobileText}>
+                  <div className={classes.labelWrapper}>
+                    <InputLabel className={classes.label}>
+                      Occasion:
+                    </InputLabel>
+                  </div>
+                  <div className={classes.labelValue}>
+                    {newOccasion}
+                  </div>
+                </div>
               </GridItem>
-              <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
-                <div className={classes.editButtons}>
-                  <Button round justIcon color="info" onClick={() => setIsEdit(true)}>
-                    <Icon>mode_edit</Icon>
+              <GridItem xs={12} sm={6} md={6} className={classes.lessGridPadding}>
+                <div className={classes.viewButtons}>
+                  <Button round color="info" onClick={() => setIsEdit(true)} >
+                    <Icon>mode_edit</Icon> Edit
                   </Button>
-                  <Button round justIcon onClick={() => setShowDeletePopOut(true)}>
-                    <Delete />
+                  <Button round onClick={() => setShowDeletePopOut(true)} >
+                    <Delete /> Delete
                   </Button>
                 </div>
               </GridItem>
             </GridContainer>
           </GridItem>
-          <GridItem xs={12} sm={5} md={5} className={classes.detailsPadding}>
-            <Card profile plain>
+          <GridItem xs={12} sm={5} md={5} className={classes.lessGridPadding}>
+            <Card profile plain className={classes.customProfile}>
               <CardHeader image plain>
                 <a href="#img" onClick={e => e.preventDefault()}>
                   <img src={newImageUrl} className={classes.listImage} alt="..." />
@@ -213,60 +222,71 @@ export default function SectionDetails(props) {
                 fullWidth: true
               }}
             />
-            <InputLabel className={classes.labelEdit}>
-              Description:
-            </InputLabel>
-            <ListsInput
-              id="description"
-              description
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                placeholder: "Add your description here...",
-                defaultValue: newDescription,
-                multiline: true,
-                rows: 2,
-                onChange: event => setNewDescription(event.target.value)
-              }}
-            />
+            <div className={classes.descriptionEditWrapper}>
+              <ListsInput
+                id="description"
+                description
+                formControlProps={{
+                  fullWidth: true
+                }}
+                inputProps={{
+                  placeholder: "Add your description here...",
+                  defaultValue: newDescription,
+                  multiline: true,
+                  rows: 2,
+                  onChange: event => setNewDescription(event.target.value)
+                }}
+              />
+          </div>
             <GridContainer >
-              <GridItem xs={12} sm={5} md={5} className={classes.detailsPadding}>
-                <InputLabel className={classes.labelEdit}>
-                  Date:
-                </InputLabel>
-                <FormControl fullWidth>
-                  <Datetime
-                    className={classes.dateField}
-                    dateFormat="DD MMMM YYYY"
-                    timeFormat={false}
-                    inputProps={{ placeholder: "Select a date" }}
-                    value={newDate}
-                    onChange={changeDate}
-                    closeOnSelect={true}
-                  />
-                </FormControl>
+              <GridItem xs={12} sm={4} md={4}>
+                <div className={classes.centerMobileText}>
+                  <div className={classes.labelWrapper}>
+                    <InputLabel className={classes.label}>
+                      Date:
+                    </InputLabel>
+                  </div>
+                  <div className={classes.labelValue}>
+                    <FormControl fullWidth>
+                      <Datetime
+                        className={classes.dateSelect}
+                        dateFormat="DD MMMM YYYY"
+                        timeFormat={false}
+                        inputProps={{ placeholder: "Select a date" }}
+                        value={newDate}
+                        onChange={changeDate}
+                        closeOnSelect={true}
+                      />
+                    </FormControl>
+                  </div>
+                </div>
               </GridItem>
-              <GridItem xs={7} sm={4} md={4} className={classes.detailsPadding}>
-                <InputLabel className={classes.labelEdit}>
-                  Occasion:
-                </InputLabel>
-                {renderOccasionSelect()}
+              <GridItem xs={12} sm={2} md={2}>
+                <div className={classes.centerMobileText}>
+                  <div className={classes.labelWrapper}>
+                    <InputLabel className={classes.label}>
+                      Occasion:
+                    </InputLabel>
+                  </div>
+                  <div className={classes.labelValue}>
+                    {renderOccasionSelect()}
+                  </div>
+                </div>
               </GridItem>
-              <GridItem xs={5} sm={3} md={3} className={classes.detailsPadding}>
+              <GridItem xs={12} sm={6} md={6} className={classes.lessGridPadding}>
                 <div className={classes.editButtons}>
-                  <Button round justIcon color="success" onClick={saveDetails}>
-                    <Icon>save_alt</Icon>
+                  <Button round color="success" onClick={() => saveDetails()} >
+                    <Icon>save_alt</Icon> Save
                   </Button>
-                  <Button round justIcon onClick={cancelEdit}>
-                    <Close />
+                  <Button round onClick={() => cancelEdit()} >
+                    <Close /> Cancel
                   </Button>
                 </div>
               </GridItem>
             </GridContainer>
           </GridItem>
           <GridItem xs={12} sm={5} md={5}>
-            <Card profile plain>
+            <Card profile plain className={classes.customProfile}>
               <CardHeader image plain>
                 <a href="#img" onClick={e => e.preventDefault()}>
                   <img src={newImageUrl} className={classes.listImage} alt="..." />

@@ -12,7 +12,7 @@ import Product from "./UnAuthSections/Product.js";
 import Ideas from "./UnAuthSections/Ideas.js";
 import YourLists from "./AuthSections/YourLists.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/landingPageStyle.js";
+import styles from "assets/jss/custom/views/landingPage/landingPageStyle.js";
 const useStyles = makeStyles(styles);
 
 
