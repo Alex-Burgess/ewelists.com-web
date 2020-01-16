@@ -155,6 +155,7 @@ export default function SectionAddGifts(props) {
     props.addProductToState(product)
     setListUpdated(true);
     setSearchUrl('');
+    props.setActive(0);
   }
 
   const createProduct = async event => {
@@ -210,6 +211,7 @@ export default function SectionAddGifts(props) {
     props.addProductToState(product)
     setListUpdated(true);
     setSearchUrl('');
+    props.setActive(0);
   }
 
   const parseUrl = (url) => {
@@ -416,26 +418,6 @@ export default function SectionAddGifts(props) {
     )
   }
 
-  const renderAddMessage = () => {
-    return (
-      <GridContainer>
-        <GridItem xs={12} sm={7} md={7} lg={7}
-          className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}
-        >
-          <h5>
-            Product was added to your list.
-          </h5>
-          <h5>
-            To add more items to your list, just search for a new product link.
-          </h5>
-          <h5>
-            Hit manage to view your list.
-          </h5>
-        </GridItem>
-      </GridContainer>
-    )
-  }
-
   const renderDesktopSearchInput = () => {
     return (
       <div className={classes.textCenter}>
@@ -507,7 +489,7 @@ export default function SectionAddGifts(props) {
             </div>
             <div className={classes.results}>
               {listUpdated
-                ? renderAddMessage()
+                ? null
                 : searchResult
                   ? searchSuccess
                     ? renderSearchResultTable()

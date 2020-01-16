@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Routes from "./Routes";
 import { withRouter } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Helmet } from 'react-helmet';
+import ScrollToTop from "custom/Scroll/ScrollToTop.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -114,12 +115,13 @@ class App extends React.Component {
 
     return (
       !this.state.isAuthenticating &&
-      <div>
+      <Fragment>
+        <ScrollToTop />
         <Helmet>
           <title>{this.setTitle()}</title>
         </Helmet>
         <Routes childProps={childProps} />
-      </div>
+      </Fragment>
     );
   }
 }

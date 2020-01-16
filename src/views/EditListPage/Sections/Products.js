@@ -54,6 +54,14 @@ export default function SectionProducts(props) {
     })
   }
 
+  const changeTab = () => {
+    if (desktop) {
+      props.setActiveWithScroll(1, 0);
+    } else {
+      props.setActiveWithScroll(1, 600);
+    }
+  }
+
   const renderDesktopProductView = () => {
     return (
       <Table
@@ -171,7 +179,7 @@ export default function SectionProducts(props) {
                 <img src={imageUrl} alt="..." className={classes.img} />
               </button>
             </div>
-            <button onClick={() => handleEditClickOpen(productId)}>
+            <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
               <h4 className={classes.cardTitle}>
                 {brand}
               </h4>
@@ -232,7 +240,7 @@ export default function SectionProducts(props) {
               : renderMobileProductView()
             }
             <div className={classes.addItemButton}>
-              <Button round color="primary" onClick={() => props.setTabId(1)} >
+              <Button round color="primary" onClick={() => changeTab()} >
                 <Playlist /> Add Item
               </Button>
             </div>

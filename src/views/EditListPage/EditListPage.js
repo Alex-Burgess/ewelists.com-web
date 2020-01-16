@@ -117,7 +117,6 @@ export default function EditPage(props) {
 
     setEditListDetails();
     setLoaded(true);
-    window.scrollTo(0, 0); // Ensures page is loaded at top after creating list.
   }, [listId, props.history]);
 
   const deleteProductFromState = (id) => {
@@ -157,6 +156,12 @@ export default function EditPage(props) {
     )
   }
 
+  const setActiveWithScroll = (id, height) => {
+    console.log("Changing tab, so scrolling to top");
+    window.scrollTo(0, height);
+    setTabId(id);
+  }
+
   const setActive = (id) => {
     setTabId(id);
   }
@@ -192,7 +197,7 @@ export default function EditPage(props) {
                             listId={listId}
                             deleteProductFromState={deleteProductFromState}
                             updateProductToState={updateProductToState}
-                            setTabId={setTabId}
+                            setActiveWithScroll={setActiveWithScroll}
                           />
                         </div>
                       )
@@ -205,6 +210,7 @@ export default function EditPage(props) {
                           <SectionAddGifts
                             listId={listId}
                             addProductToState={addProductToState}
+                            setActive={setActive}
                           />
                         </div>
                       )
