@@ -124,11 +124,11 @@ exports[`Renders BathTime page. 1`] = `
             >
               Bath Time
             </h1>
-            <h2
+            <h3
               className="makeStyles-subtitle-4"
             >
               What to buy for your bathing your baby.
-            </h2>
+            </h3>
             <div
               className="makeStyles-content-7"
             >
@@ -279,7 +279,7 @@ exports[`Renders BathTime page. 1`] = `
               className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
             >
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -332,7 +332,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -385,7 +385,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -438,7 +438,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -491,7 +491,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -544,7 +544,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -597,7 +597,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -650,7 +650,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -703,7 +703,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -756,7 +756,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -809,7 +809,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -862,7 +862,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -915,7 +915,7 @@ exports[`Renders BathTime page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"

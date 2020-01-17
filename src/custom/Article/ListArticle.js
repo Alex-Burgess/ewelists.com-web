@@ -13,7 +13,7 @@ import SimilarArticles from "custom/Article/SimilarArticles.js";
 import ShopTheStory from "custom/Article/ShopTheStory.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 
-import styles from "assets/jss/custom/components/listArticleStyle.js";
+import styles from "assets/jss/custom/components/article/listArticleStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ListArticle(props) {
@@ -34,20 +34,19 @@ export default function ListArticle(props) {
                 <h1 className={classes.title}>
                   {title}
                 </h1>
-                <h2 className={classes.subtitle}>
+                <h3 className={classes.subtitle}>
                   {subtitle}
-                </h2>
+                </h3>
                 <div className={classes.content}>
                   {content}
                 </div>
               </GridItem>
             </GridContainer>
           </div>
-          <ShopTheStory
-            products={
-              storyProducts
-            }
-          />
+          {storyProducts.length > 0
+            ? <ShopTheStory products={storyProducts}/>
+            : null
+          }
         </div>
       </div>
       <SimilarArticles

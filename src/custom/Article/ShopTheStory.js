@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-import styles from "assets/jss/custom/components/shopTheStoryStyle.js";
+import styles from "assets/jss/custom/components/article/shopTheStoryStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ShopTheStory(props) {
@@ -27,7 +27,7 @@ export default function ShopTheStory(props) {
             {
               products.map (
                 (product, i) =>
-                  <GridItem md={4} sm={4} key={i}>
+                  <GridItem xs={12} sm={4} md={4} key={i}>
                     <Card plain product>
                       <CardHeader noShadow image>
                         <a href={product.url} target="_blank" rel="noopener noreferrer">

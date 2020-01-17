@@ -1,28 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+// custom components
 import ListArticle from "custom/Article/ListArticle.js";
+import Products from "custom/Article/Products.js";
+import ChecklistCard from "custom/Article/ChecklistCard.js"
+import { GetLists, GetList } from "Apis";
+// styles
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/custom/views/articlePages/hospitalBagStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function HostpitalBag(props) {
   const classes = useStyles();
+  const [lists, setLists] = useState({});
   const title = 'Hospital Bag';
-  const subtitle = "Make sure you're all set with everything you need for the all important hospital bag.";
+  const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
   const backgroundImg = 'hospitalbag.jpg';
-
-  const storyProducts = [
-    {brand: 'John Lewis and Partners', url: 'https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673', price: '£75.00', description: 'John Lewis & Partners Geneva Large Weekend Holdall, Blue.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/234172546?$rsp-pdp-port-1440$'},
-    {brand: "Burt's Bees", url: 'https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN', price: '£6.99', description: "Burt's Bees 100 Percentage Natural Overnight Intensive Lip Treatment, Ultra-Conditioning Lip Care, 7.08 g.", img: 'https://images-na.ssl-images-amazon.com/images/I/71yUvdw8UIL._SX679_.jpg'},
-    {brand: 'Camelbak', url: 'https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ', price: '£11.95', description: 'BPA Free Eddy Outdoor Bottle.', img: 'https://images-na.ssl-images-amazon.com/images/I/61J1m1AOrVL._SY879_.jpg'},
-    {brand: 'Cybex', url: 'https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431', price: '£224.95', description: 'Cybex Cloud Z i-Size Group 0+ Baby Car Seat, Midnight Blue.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/238224245?$rsp-pdp-port-640$'},
-    {brand: 'EasyAcc', url: 'https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C', price: '£11.99', description: 'EasyAcc Handheld Electric Mini Portable Outdoor Fan with Rechargeable 2600 mAh Battery Foldable Handle Desktop for Home and Travel-Green.', img: 'https://images-na.ssl-images-amazon.com/images/I/61dyJyfbCeL._SY355_.jpg'},
-    {brand: 'Aptamil', url: 'https://www.amazon.co.uk/Aptamil-First-Infant-Milk-Starter/dp/B07H32RL92', price: '£23.70', description: 'Aptamil First Infant Milk Starter Pack Pack of 2.', img: 'https://images-na.ssl-images-amazon.com/images/I/51PmDv45mDL.jpg'},
-    {brand: 'John Lewis and Partners', url: 'https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145', price: '£14.00', description: 'John Lewis & Partners Baby GOTS Organic Cotton Giraffe Sleepsuit, Pack of 3, Multi.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/003943837?$rsp-pdp-port-640$'},
-    {brand: 'John Lewis and Partners', url: 'https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382', price: '£9.00', description: 'John Lewis & Partners Baby GOTS Organic Cotton Short Sleeve Bodysuits, Pack of 5, White.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/002955086?$rsp-pdp-port-640$'},
-    {brand: 'M & S', url: 'https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774', price: '£12', description: 'Pure Cotton Hooded Chunky Knit Cardigan.', img: 'https://asset1.cxnmarksandspencer.com/is/image/mands/Pure-Cotton-Hooded-Chunky-Knit-Cardigan-2/SD_04_T78_6501T_T1_X_EC_0?$PDP_INT_IMAGEGRID_1_LG$'},
-    {brand: 'John Lewis and Partners', url: 'https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657', price: '£19.99', description: 'Grobag Swaddle Blanket, Pack of 2, White.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$'},
-    {brand: 'LOONFREE', url: 'https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS', price: '£??', description: 'Nursing Breast Pads - Washable Breast Pads, 14 PCS.', img: 'https://images-na.ssl-images-amazon.com/images/I/719UU55mjEL._SY355_.jpg'}
-  ];
 
   const similarArticles = [
     {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
@@ -35,82 +27,229 @@ export default function HostpitalBag(props) {
 
   const content = (
     <div>
-      <p>
-        What do you pack in that all important hospital bag. Whether you like to be super organised or you are just looking for some ideas, here are some top tips
-        on what to pack in your bag.
-      </p>
-      <p>
-        First things first, if you’re travelling by car then you can have two bags. The first bag can contain everything you need for the main event such as snacks,
-        entertainment, toiletries and something to put your little one in once they arrive. The second bag can be kept in the car and contain things you might need
-        after the birth such as extra clothes, nappies and of course the cute going home outfit. This
-        <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"> John Lewis & Partners </a> holdall is the perfect size for your hospital stay and most importantly it can
-        be your babies holdall for any overnight trips you take later on in life. If you like to be really organised you can use large zip lock sandwich bags to
-        compartmentalise your bag, such as sets of baby clothes, underwear, snacks etc. And don’t forget your maternity notes and birth plan.
-      </p>
-      <p>
-        Go prepared with things to occupy yourselves with such as something to watch and read and also to have lots of snacks and drinks.   ADD MORE STORY.... then lists.
-      </p>
-      <p>
-        Essentials:
+      <div id="intro">
+        <p>
+          Whether you like to be super organised and prepared for anything or you are just looking for some ideas to get
+          you started, these top tips and hospital bag checklists will help you stay ahead of the game. You can pack your
+          bag as early as you like, but it's a good idea to have it ready at least a few weeks in advance of the due date.
+        </p>
+        Skip to section:
         <ul>
-          <li className={classes.listSpacing}>Car seat: <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/cybex-cloud-z-i-size-group-0-baby-car-seat-midnight-blue/p4329431"> Cybex Cloud 0+ Baby Car Seat</a> with <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/cybex-car-seat-base-z/p3843037"> Cybex Car Seat Base Z </a> which is great for carrying baby to and from the car, with super installation in the car and the modular system is good forward planning when you need the next size up seat.</li>
-          <li className={classes.listSpacing}>Holdall: <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/john-lewis-partners-geneva-large-weekend-holdall/blue/p1807673"> John Lewis & Partners Holdall </a> combines style with good size.</li>
-          <li className={classes.listSpacing}>Water bottle with straw: <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Camelbak-53622-CamelBak-eddy-75L/dp/B00NTYIHNQ"> CamelBak </a> makes drinking more comfortable</li>
-          <li className={classes.listSpacing}>Lip balm: <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Burts-Bees-Percentage-Overnight-Ultra-Conditioning/dp/B07C3BLZRN"> Burt's Bees </a> is my favourite.</li>
-          <li className={classes.listSpacing}>Fan: <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/EasyAcc-Handheld-Electric-Rechargeable-Travel-Green/dp/B01NC2TS0C"> EasyAcc Handheld Fan </a> is small enough to pack, but with enough battery life to last.</li>
-          <li className={classes.listSpacing}>Ready made formula: <a target="_blank" rel="noopener noreferrer" href="https://www.mothercare.com/starter-sets/aptamil-1-first-baby-milk-formula-starter-pack-from-birth-6x70ml/607514.html"> Aptamil First Infant Starter Pack </a> are pre-sterilised, so you're ready to feed immediately if you're bottle or combination feeding.</li>
-          <li className={classes.listSpacing}>Disposable bottles: ???</li>
-          <li className={classes.listSpacing}>Refreshments: Remember to bring plenty of snacks and drinks.</li>
-          <li className={classes.listSpacing}>Entertainment: A selection of movies, tv programs, magazines, or a good book will ensure you have something to occupy yourself when you feel like it.</li>
+          <li className={classes.listSpacing}>
+            <a href="#yourlist"> What you need to pack </a>
+          </li>
+          <li className={classes.listSpacing}>
+            <a href="#babieslist"> What to pack for your baby </a>
+          </li>
+          <li className={classes.listSpacing}>
+            <a href="#partnerlist"> What your partner needs to pack </a>
+          </li>
         </ul>
-      </p>
-      <p>
-        For baby:
-        <ul>
-          <li className={classes.listSpacing}>baby grows: <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-giraffe-sleepsuit-pack-of-3-multi/p4255145"> John Lewis & Partners Giraffe Sleepsuit </a> what about built in mittens??</li>
-          <li className={classes.listSpacing}>5 vests: <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/john-lewis-partners-baby-gots-organic-cotton-short-sleeve-bodysuits-pack-of-5-white/p3170382"> John Lewis & Partners Short Sleeve Bodysuits </a> are ???.</li>
-          <li className={classes.listSpacing}>Cardigan: <a target="_blank" rel="noopener noreferrer" href="https://www.marksandspencer.com/pure-cotton-hooded-chunky-knit-cardigan/p/p60164774"> M & S Chunky Knit Cardigan </a> is one that is easy to get on and off.</li>
-          <li className={classes.listSpacing}>Hat</li>
-          <li className={classes.listSpacing}>Swaddle: <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/grobag-swaddle-blanket-pack-of-2-white/p3310657"> Grobag Swaddle Blanket </a></li>
-          <li className={classes.listSpacing}>blanket: </li>
-          <li className={classes.listSpacing}>Muslins: </li>
-          <li className={classes.listSpacing}>Nappies - 12 should get you through 2 days in hospital.</li>
-          <li className={classes.listSpacing}>Cotton wool</li>
-          <li className={classes.listSpacing}>Wipes - water wipes are nice and kind to newborn skin.</li>
-        </ul>
-      </p>
-      <p>
-        For you:
-        <ul>
-          <li className={classes.listSpacing}>2 x Nightdress - great to wear before, during and after the birth.</li>
-          <li className={classes.listSpacing}>Baggy Clothes - Your bump looses all its shape, so loose is better than stretchy.</li>
-          <li className={classes.listSpacing}>Socks - warm hospitals actually have cold floors.</li>
-          <li className={classes.listSpacing}>Slippers - feel more comfortable in and around the ward.</li>
-          <li className={classes.listSpacing}>Dressing gown - feel more comfortable in and around the ward.</li>
-          <li className={classes.listSpacing}>Toiletries - all your favourites and a hairband.</li>
-          <li className={classes.listSpacing}>Underwear - have spares.</li>
-          <li className={classes.listSpacing}>Nursing pads: <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Nursing-Breast-Pads-Washable-Absorbent/dp/B07Q79NTLS"> Organic Bamboo Nursing Pads </a> are washable, re-usable and comfortable.</li>
-        </ul>
-      </p>
-      <p>
-        For your birthing partner:
-        <ul>
-          <li className={classes.listSpacing}>shorts and t-shirts - birthing hospitals are always hot.</li>
-        </ul>
-      </p>
+      </div>
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="yourlist"></span>
+          What do you need to pack in your hospital bag
+        </h3>
+        <p>
+          If you haven’t already done this, you might like to check the website for your hospital to see what facilities
+          they have, such as birthing balls, TENS Machine and birthing pools, and see if they offer a tour of the ward.
+          The NHS website can help you find
+          <a target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/service-search/other-services/Maternity-services/LocationSearch/1802"> maternity services </a>
+          near you and you can find the link to your chosen
+          hospital’s website there.
+        </p>
+        <p>
+          There is quite a lot to think about when packing as you will be packing for you, your baby and your birth
+          partner. To help keep things organised and manageable in size, you might decide to bring two smaller bags with
+          you, one for the birth and one for after the birth which can be kept in the car or brought along later.
+        </p>
+        <p>
+          Don’t forget to pack your hospital notes and birth plan in an easy to reach place. You might also like to
+          separate groups of items into ziplock sandwich bags and then label them, this helps immensely when you need to
+          send someone to find things.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-h001-1234-abcdefghijkl",
+          "12345678-prod-h004-1234-abcdefghijkl",
+          "12345678-prod-h005-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <ChecklistCard items={
+          ['Birth ball', 'Maternity notes and birth plan', 'TENS Machine', 'Plastic bag for dirty clothes', 'Ziplock bags']
+      }/>
+      <div>
+        <p>
+          As you don’t know how long you will be in the hospital for its a good idea to bring drinks and snacks that
+          include some isotonic and high energy options, and entertainment such as an iPad or books. Having a straw to
+          drink from makes life a lot easier and means your birth partner can hold the drink for you.
+        </p>
+        <p>
+          It’s nice to have a few items to help keep you relaxed and comfortable. Lip balm is an essential and massage oil
+          or a reed diffuser can help with your zen vibes. Your own pillow could also be a life-saver as hospital pillows
+          aren’t renowned for being that comfortable. If it’s a particularly hot time of year you might like to bring a
+          fan and a flannel to use with some iced bottles of water.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-h003-1234-abcdefghijkl",
+          "12345678-prod-h002-1234-abcdefghijkl",
+          "12345678-prod-h006-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <ChecklistCard items={
+          ['Drinks and snacks', 'Entertainment', 'Straw or bottle with straw', 'Headphones', 'Lip balm', 'Massage oils',
+            'Pillow', 'Fan, flannel or spritz bottle', 'Toiletries', 'Hairband and headband', 'A towel', 'Eye mask and ear plugs']
+      }/>
+      <div>
+        <p>
+          You will want to have some comfy clothing for walking around the ward and you may even want to bring a dark or
+          patterned dressing gown and some slippers or flip flops. However, be wary about bringing light coloured clothing.
+        </p>
+        <p>
+          For the birth, an old large t-shirt or short night dress will work well, or if you’re planning on using the
+          birthing pool and want to cover up you might like to bring a tankini top. Oddly enough your feet can get quite
+          cold during the birth and a pair of socks can come in handy.
+        </p>
+        <p>
+          Did you know that it can take several weeks for your bump to shrink after the birth, although it does loose its
+          nice firm shape. That means it’s a good idea to have loose fitting clothes to change into after the birth and
+          for your journey home.
+        </p>
+        <p>
+          Don’t forget that whether you’re breastfeeding or not, you will want to have some nursing pads and a maternity
+          or nursing bra. There will be lots of help on hand to guide you through feeding your baby. However, if you
+          already know that you won’t be breastfeeding, you can bring some ready made formula and bottles with you.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-h007-1234-abcdefghijkl",
+          "12345678-prod-h008-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <ChecklistCard items={
+          ['2 x night dresses', 'Dressing Gown', 'Tankini for the pool', 'Loose fitting clothes', '5 x large comfy knickers',
+            'Nursing/maternity bra', 'Socks', 'Nursing pads', 'Slippers or flip flops', '2 x packs of large sanitary pads' ]
+      }/>
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="babieslist"></span>
+          What to pack for your baby
+        </h3>
+        <p>
+          It’s amazing how many sets of clothes your little one will go through in a short space of time which means it’s
+          a good idea to have 4 to 5 sets with you. A sleep suit with built in mittens and booties is perfect for wrapping
+          up your little one nice and cosy. You should also have some vests and a hat. Its actually really difficult to
+          know what size your little one will be but a selection of sizes in newborn and 0-3 months should see you through
+          that first couple of days.
+        </p>
+        <p>
+          The first day with your baby is such an experience and you’ll probably find that you want to take lots of
+          photos. A soft blanket and a cute toy can add a lovely touch to your photos.
+        </p>
+        <p>
+          When it’s finally time to go home you’ll want to make sure you have your car seat ready and something special to
+          put your baby in. The
+          <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/child-car-seats-the-rules"> government website </a>
+          tells you everything you need to know on the child seat law and this buyers guide on
+          <a target="_blank" rel="noopener noreferrer" href="https://www.mumsnet.com/reviews/baby-car-seats/buyers-guide"> mumsnet </a>
+          gives you a great overview on what to look for. In colder weather don’t be tempted to
+          put your baby in a coat or pram suit whilst they are in the car seat because they are too bulky for the harness
+          to do it’s job, a cardigan with a blanket on top will do the trick.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-h014-1234-abcdefghijkl",
+          "12345678-prod-h009-1234-abcdefghijkl",
+          "12345678-prod-h010-1234-abcdefghijkl",
+          "12345678-prod-h011-1234-abcdefghijkl",
+          "12345678-prod-h012-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <ChecklistCard items={
+          ['4 x sleep suits and vests', 'Scratch mittens', 'Booties', 'Cardigan', 'Hat', '2 x muslin squares',
+            '12 x nappies', 'Water wipes', 'Blanket' ,'Cuddly toy', 'Car seat', 'Bottles and formula']
+      }/>
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="partnerlist"></span>
+          What to pack for your birth partner
+        </h3>
+        <p>
+          As hospitals can be hot places your birth partner might like to have some cool clothes to change into and
+          something fresh to put on after the birth. Shorts, t-shirts and loose dresses all work well. It’s also a good
+          idea to give them the responsibility for the camera and any chargers you need. Not all hospitals allow you to
+          plug into their sockets but a chargeable battery pack will solve this issue.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-h013-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <ChecklistCard items={
+          ['Cool comfy clothing', 'Change of clothes', 'Phone', 'Camera', 'Charger', 'Swimwear for the pool']
+      }/>
     </div>
   );
 
+  useEffect( () => {
+    async function getLists(){
+      let lists = {};
+
+      const response = await GetLists();
+
+      let responseLists = response.owned;
+
+      for (var i in responseLists) {
+        const list = responseLists[i];
+
+        const listResponse = await GetList(list.listId);
+
+        let products = [];
+        for (var key in listResponse.products) {
+          products.push(key);
+        }
+
+        lists[list.listId] = {
+          "title": list.title,
+          "products": products
+        }
+      }
+
+      setLists(lists);
+    }
+
+    getLists();
+  }, []);
+
   return (
-    <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
-      content={ content }
-      backgroundImg={backgroundImg}
-      title={title}
-      subtitle={subtitle}
-      storyProducts={storyProducts}
-      similarArticles={similarArticles}
-    />
+    <div>
+      <ListArticle
+        isAuthenticated={props.isAuthenticated}
+        user={props.user}
+        content={ content }
+        backgroundImg={backgroundImg}
+        title={title}
+        subtitle={subtitle}
+        storyProducts={[]}
+        similarArticles={similarArticles}
+      />
+    </div>
   );
 }

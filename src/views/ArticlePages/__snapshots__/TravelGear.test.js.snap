@@ -124,11 +124,11 @@ exports[`Renders TravelGear page. 1`] = `
             >
               Travel Gear
             </h1>
-            <h2
+            <h3
               className="makeStyles-subtitle-4"
             >
               Our favourite gear to make travelling with your little ones no fuss!
-            </h2>
+            </h3>
             <div
               className="makeStyles-content-7"
             >
@@ -248,7 +248,7 @@ exports[`Renders TravelGear page. 1`] = `
               className="MuiGrid-root makeStyles-grid-179  MuiGrid-container"
             >
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -301,7 +301,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -354,7 +354,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -407,7 +407,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -460,7 +460,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -513,7 +513,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -566,7 +566,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -619,7 +619,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"
@@ -672,7 +672,7 @@ exports[`Renders TravelGear page. 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-283  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
                   className="makeStyles-card-291 makeStyles-cardPlain-292 makeStyles-cardProduct-299"

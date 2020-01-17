@@ -12,6 +12,12 @@ const blogPostPageStyle = theme => ({
     paddingBottom: "0",
     backgroundPosition: "50%",
     backgroundSize: "cover",
+    marginLeft: "-80px",
+    marginRight: "-80px",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0",
+      marginRight: "0",
+    }
   },
   title: {
     ...title,
@@ -21,18 +27,20 @@ const blogPostPageStyle = theme => ({
     }
   },
   productImage: {
-    [theme.breakpoints.down("xs")]: {
-      height: "82vw",
-      maxHeight: "308px",
-    },
     height: "18vw",
     maxHeight: "268px",
     objectFit: "contain",
+    [theme.breakpoints.down("xs")]: {
+      height: "82vw",
+      // maxHeight: "308px",
+      maxHeight: "130px",
+    }
   },
   cardTitle: {
     ...cardTitle,
     textAlign: "center",
-    marginBottom: "0px !important"
+    marginBottom: "0px !important",
+    fontSize: "1rem"
   },
   description: {
     color: grayColor[0],
@@ -41,6 +49,11 @@ const blogPostPageStyle = theme => ({
     display: "-webkit-box",
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
+    marginBottom: "5px",
+    height: "50px",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "5px"
+    },
   },
   priceContainer: {
     display: "inline-flex"
@@ -49,6 +62,20 @@ const blogPostPageStyle = theme => ({
     fontSize: "18px",
     color: grayColor[22]
   },
+  customProduct: {
+    marginTop: "30px",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "10px",
+    }
+  },
+  amazonButton: {
+    backgroundColor: "#FF9900",
+    width: "100%"
+  },
+  button: {
+    width: "100%"
+  }
+
 });
 
 export default blogPostPageStyle;

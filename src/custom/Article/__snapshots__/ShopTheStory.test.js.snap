@@ -19,7 +19,7 @@ exports[`Renders SimilarArticles component. 1`] = `
         className="MuiGrid-root makeStyles-grid-8  MuiGrid-container"
       >
         <div
-          className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+          className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
         >
           <div
             className="makeStyles-card-113 makeStyles-cardPlain-114 makeStyles-cardProduct-121"
@@ -72,7 +72,7 @@ exports[`Renders SimilarArticles component. 1`] = `
           </div>
         </div>
         <div
-          className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+          className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
         >
           <div
             className="makeStyles-card-113 makeStyles-cardPlain-114 makeStyles-cardProduct-121"

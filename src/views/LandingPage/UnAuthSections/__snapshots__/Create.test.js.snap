@@ -8,28 +8,23 @@ exports[`Tests for Create section. Renders create section 1`] = `
     className="makeStyles-container-1"
   >
     <div
-      className="MuiGrid-root makeStyles-grid-8  MuiGrid-container"
+      className="MuiGrid-root makeStyles-grid-9  MuiGrid-container"
     >
       <div
-        className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+        className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
       >
         <h1
           className="makeStyles-title-4"
         >
-          Create your Baby Gift List
+          The gift list tool for your new arrivals baby shower, birthday or christmas.
         </h1>
-        <h4
-          className="makeStyles-description-2"
-        >
-          Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
-        </h4>
         <br />
         <div
           className="makeStyles-buttonContainer-7"
         >
           <a
             aria-disabled={false}
-            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-113 makeStyles-lg-138 makeStyles-danger-120"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-114 makeStyles-lg-139 makeStyles-danger-121"
             href="/signup"
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -43,7 +38,6 @@ exports[`Tests for Create section. Renders create section 1`] = `
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             tabIndex={0}
-            target="_blank"
           >
             <span
               className="MuiButton-label"
@@ -51,10 +45,34 @@ exports[`Tests for Create section. Renders create section 1`] = `
               Create Your List - It's Free!
             </span>
           </a>
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-114 makeStyles-lg-139 makeStyles-info-118"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Explore Ewelists
+            </span>
+          </button>
         </div>
       </div>
       <div
-        className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+        className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
       >
         <div
           className="makeStyles-imgContainer-5"
@@ -78,36 +96,23 @@ exports[`Tests for Create section. Renders create section on mobile device width
     className="makeStyles-container-1"
   >
     <div
-      className="MuiGrid-root makeStyles-grid-8  MuiGrid-container"
+      className="MuiGrid-root makeStyles-grid-9  MuiGrid-container"
     >
       <div
-        className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+        className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
       >
         <h1
           className="makeStyles-title-4"
         >
-          Create your Baby Gift List
+          The gift list tool for your new arrivals baby shower, birthday or christmas.
         </h1>
-        <h4
-          className="makeStyles-description-2"
-        >
-          Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
-        </h4>
         <br />
-        <div
-          className="makeStyles-imgContainer-5"
-        >
-          <img
-            alt="..."
-            src="laptop-mockup.png"
-          />
-        </div>
         <div
           className="makeStyles-buttonContainer-7"
         >
           <a
             aria-disabled={false}
-            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-113 makeStyles-lg-138 makeStyles-danger-120"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-114 makeStyles-lg-139 makeStyles-danger-121"
             href="/signup"
             onBlur={[Function]}
             onDragLeave={[Function]}
@@ -121,7 +126,6 @@ exports[`Tests for Create section. Renders create section on mobile device width
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             tabIndex={0}
-            target="_blank"
           >
             <span
               className="MuiButton-label"
@@ -132,11 +136,88 @@ exports[`Tests for Create section. Renders create section on mobile device width
               className="MuiTouchRipple-root"
             />
           </a>
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-114 makeStyles-lg-139 makeStyles-info-118"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Explore Ewelists
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
         </div>
       </div>
       <div
-        className="MuiGrid-root makeStyles-grid-112  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
-      />
+        className="MuiGrid-root makeStyles-grid-113  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+      >
+        <div
+          className="makeStyles-imgContainer-5"
+        >
+          <img
+            alt="..."
+            src="laptop-mockup.png"
+          />
+        </div>
+        <div
+          className="makeStyles-downButton-8"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-114 makeStyles-round-141 makeStyles-justIcon-144"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Info from "components/Typography/Info.js";
 
-import styles from "assets/jss/custom/components/similarArticlesStyle.js";
+import styles from "assets/jss/custom/components/article/similarArticlesStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function SimilarArticles(props) {

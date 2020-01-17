@@ -19,13 +19,23 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
 
+  const checkForCreateParam = () => {
+    console.log("props: " + JSON.stringify(props.location))
+    const search = props.location.search.substr(1);
+    if (search === "create") {
+      return true
+    }
+
+    return false
+  }
+
   const renderAuthed = () => {
     return (
       <div>
         <div className={classes.page}>
           <HeaderFixed isAuthenticated={true} user={props.user} />
           <div className={classes.main}>
-            <YourLists />
+            <YourLists showCreate={checkForCreateParam()} />
           </div>
           <div className={classes.flexer}>
           </div>

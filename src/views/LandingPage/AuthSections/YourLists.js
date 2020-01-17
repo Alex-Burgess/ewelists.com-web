@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
@@ -25,10 +27,12 @@ const useStyles = makeStyles(styles);
 export default function YourLists(props) {
   const classes = useStyles();
 
+  const { showCreate } = props;
+
   const [isLoading, setIsLoading] = useState(true);
   const [ownedLists, setOwnedLists] = useState([]);
   const [sharedLists, setSharedLists] = useState([]);
-  const [createModal, setCreateModal] = useState(false);
+  const [createModal, setCreateModal] = useState(showCreate);
 
   useEffect( () => {
     async function getLists(){
@@ -127,3 +131,7 @@ export default function YourLists(props) {
     </div>
   );
 }
+
+YourLists.propTypes = {
+  showCreate: PropTypes.bool,
+};

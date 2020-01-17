@@ -34,7 +34,7 @@ describe('Tests for YourLists section.', () => {
     const {act} = TestRenderer;
 
     await act( async () => {
-      component = TestRenderer.create(<Router><YourLists /></Router>);
+      component = TestRenderer.create(<Router><YourLists showCreate={false}/></Router>);
     })
 
     const tree = component.toJSON();
@@ -46,7 +46,7 @@ describe('Test Create List Button', () => {
   it('should render create list popout', async () => {
     let wrapper;
     await act( async () => {
-      wrapper = mount(<Router><YourLists /></Router>);
+      wrapper = mount(<Router><YourLists showCreate={false}/></Router>);
     })
 
     const createButton = wrapper.find('CreateButton');

@@ -678,28 +678,23 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
           className="makeStyles-container-174"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+            className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
           >
             <div
-              className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+              className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
             >
               <h1
                 className="makeStyles-title-177"
               >
-                Create your Baby Gift List
+                The gift list tool for your new arrivals baby shower, birthday or christmas.
               </h1>
-              <h4
-                className="makeStyles-description-175"
-              >
-                Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
-              </h4>
               <br />
               <div
                 className="makeStyles-buttonContainer-180"
               >
                 <a
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-286 makeStyles-lg-311 makeStyles-danger-293"
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-287 makeStyles-lg-312 makeStyles-danger-294"
                   href="/signup"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
@@ -713,7 +708,6 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                   onTouchMove={[Function]}
                   onTouchStart={[Function]}
                   tabIndex={0}
-                  target="_blank"
                 >
                   <span
                     className="MuiButton-label"
@@ -724,10 +718,37 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     className="MuiTouchRipple-root"
                   />
                 </a>
+                <button
+                  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-287 makeStyles-lg-312 makeStyles-info-291"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    Explore Ewelists
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </button>
               </div>
             </div>
             <div
-              className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+              className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
             >
               <div
                 className="makeStyles-imgContainer-178"
@@ -742,45 +763,45 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
         </div>
       </div>
       <div
-        className="makeStyles-section-319 makeStyles-sectionGray-320"
+        className="makeStyles-section-320 makeStyles-sectionGray-321"
       >
         <div
-          className="makeStyles-container-318"
+          className="makeStyles-container-319"
         >
           <div
-            className="MuiGrid-root makeStyles-grid-181  MuiGrid-container MuiGrid-justify-xs-center"
+            className="MuiGrid-root makeStyles-grid-182  MuiGrid-container MuiGrid-justify-xs-center"
           >
             <div
-              className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+              className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
             >
               <h2
-                className="makeStyles-title-321"
+                className="makeStyles-title-322"
               >
                 Get organised with Ewelists
               </h2>
               <h5
-                className="makeStyles-description-322"
+                className="makeStyles-description-323"
               >
-                Create your first Ewelist with the things you know you want, or just the essentials.
+                Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
               </h5>
             </div>
           </div>
           <div>
             <div
-              className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+              className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
             >
               <div
-                className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
-                  className="makeStyles-infoArea-324 makeStyles-infoArea-323"
+                  className="makeStyles-infoArea-325 makeStyles-infoArea-324"
                 >
                   <div
-                    className="makeStyles-iconWrapper-325 makeStyles-primary-326 makeStyles-iconWrapperVertical-337"
+                    className="makeStyles-iconWrapper-326 makeStyles-primary-327 makeStyles-iconWrapperVertical-338"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root makeStyles-icon-333 makeStyles-iconVertical-338"
+                      className="MuiSvgIcon-root makeStyles-icon-334 makeStyles-iconVertical-339"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -791,15 +812,15 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     </svg>
                   </div>
                   <div
-                    className="makeStyles-descriptionWrapper-334"
+                    className="makeStyles-descriptionWrapper-335"
                   >
                     <h4
-                      className="makeStyles-title-335"
+                      className="makeStyles-title-336"
                     >
                       Sign Up
                     </h4>
                     <div
-                      className="makeStyles-description-336"
+                      className="makeStyles-description-337"
                     >
                       Sign up using one of your social accounts, or alternatively just an email, to create your first list.
                     </div>
@@ -807,17 +828,17 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
-                  className="makeStyles-infoArea-324 makeStyles-infoArea-323"
+                  className="makeStyles-infoArea-325 makeStyles-infoArea-324"
                 >
                   <div
-                    className="makeStyles-iconWrapper-325 makeStyles-rose-331 makeStyles-iconWrapperVertical-337"
+                    className="makeStyles-iconWrapper-326 makeStyles-rose-332 makeStyles-iconWrapperVertical-338"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root makeStyles-icon-333 makeStyles-iconVertical-338"
+                      className="MuiSvgIcon-root makeStyles-icon-334 makeStyles-iconVertical-339"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -828,15 +849,15 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     </svg>
                   </div>
                   <div
-                    className="makeStyles-descriptionWrapper-334"
+                    className="makeStyles-descriptionWrapper-335"
                   >
                     <h4
-                      className="makeStyles-title-335"
+                      className="makeStyles-title-336"
                     >
                       Add Items
                     </h4>
                     <div
-                      className="makeStyles-description-336"
+                      className="makeStyles-description-337"
                     >
                       Add items by copying the link to the product, or alternatively use one of our ready made lists if you're looking for inspiration.
                     </div>
@@ -844,17 +865,17 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                 </div>
               </div>
               <div
-                className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
               >
                 <div
-                  className="makeStyles-infoArea-324 makeStyles-infoArea-323"
+                  className="makeStyles-infoArea-325 makeStyles-infoArea-324"
                 >
                   <div
-                    className="makeStyles-iconWrapper-325 makeStyles-info-330 makeStyles-iconWrapperVertical-337"
+                    className="makeStyles-iconWrapper-326 makeStyles-info-331 makeStyles-iconWrapperVertical-338"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root makeStyles-icon-333 makeStyles-iconVertical-338"
+                      className="MuiSvgIcon-root makeStyles-icon-334 makeStyles-iconVertical-339"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -865,15 +886,15 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     </svg>
                   </div>
                   <div
-                    className="makeStyles-descriptionWrapper-334"
+                    className="makeStyles-descriptionWrapper-335"
                   >
                     <h4
-                      className="makeStyles-title-335"
+                      className="makeStyles-title-336"
                     >
                       Share
                     </h4>
                     <div
-                      className="makeStyles-description-336"
+                      className="makeStyles-description-337"
                     >
                       Share your first ewelist with friends and family.
                     </div>
@@ -885,39 +906,39 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
         </div>
       </div>
       <div
-        className="makeStyles-section-349"
+        className="makeStyles-section-350"
       >
         <div
-          className="makeStyles-container-348"
+          className="makeStyles-container-349"
         >
           <div
-            className="makeStyles-section-352"
+            className="makeStyles-section-353"
           >
             <div
-              className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+              className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
             >
               <div
-                className="MuiGrid-root makeStyles-grid-285 makeStyles-mlAuto-350 makeStyles-mrAuto-351 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
+                className="MuiGrid-root makeStyles-grid-286 makeStyles-mlAuto-351 makeStyles-mrAuto-352 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-10"
               >
                 <div>
                   <div
-                    className="makeStyles-card-359 makeStyles-cardPlain-360 makeStyles-cardBlog-362"
+                    className="makeStyles-card-360 makeStyles-cardPlain-361 makeStyles-cardBlog-363"
                   >
                     <div
-                      className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+                      className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
                     >
                       <div
-                        className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                        className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                       >
                         <div
-                          className="makeStyles-cardHeader-374 makeStyles-cardHeaderPlain-375 makeStyles-cardHeaderImage-376"
+                          className="makeStyles-cardHeader-375 makeStyles-cardHeaderPlain-376 makeStyles-cardHeaderImage-377"
                         >
                           <a
                             href="/listideas/christmasfortoddlers"
                           >
                             <img
                               alt="..."
-                              className="makeStyles-leftImage-356"
+                              className="makeStyles-leftImage-357"
                               src="christmastoddlers.jpg"
                             />
                           </a>
@@ -932,13 +953,13 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                         </div>
                       </div>
                       <div
-                        className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                        className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                       >
                         <div
-                          className="makeStyles-defaultFontStyle-386 makeStyles-infoText-393"
+                          className="makeStyles-defaultFontStyle-387 makeStyles-infoText-394"
                         >
                           <h6
-                            className="makeStyles-cardCategory-354"
+                            className="makeStyles-cardCategory-355"
                           >
                             <a
                               href="/listideas/christmasfortoddlers"
@@ -948,7 +969,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                           </h6>
                         </div>
                         <h3
-                          className="makeStyles-cardTitle-353"
+                          className="makeStyles-cardTitle-354"
                         >
                           <a
                             href="/listideas/christmasfortoddlers"
@@ -957,7 +978,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                           </a>
                         </h3>
                         <p
-                          className="makeStyles-description1-355"
+                          className="makeStyles-description1-356"
                         >
                           If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
                           <a
@@ -970,17 +991,17 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                         </p>
                       </div>
                       <div
-                        className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                        className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                       >
                         <div
-                          className="makeStyles-cardHeader-374 makeStyles-cardHeaderPlain-375 makeStyles-cardHeaderImage-376"
+                          className="makeStyles-cardHeader-375 makeStyles-cardHeaderPlain-376 makeStyles-cardHeaderImage-377"
                         >
                           <a
                             href="/listideas/christmasfortoddlers"
                           >
                             <img
                               alt="..."
-                              className="makeStyles-leftImageMobile-357"
+                              className="makeStyles-leftImageMobile-358"
                               src="christmastoddlers.jpg"
                             />
                           </a>
@@ -999,19 +1020,19 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                 </div>
                 <div>
                   <div
-                    className="makeStyles-card-359 makeStyles-cardPlain-360 makeStyles-cardBlog-362"
+                    className="makeStyles-card-360 makeStyles-cardPlain-361 makeStyles-cardBlog-363"
                   >
                     <div
-                      className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+                      className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
                     >
                       <div
-                        className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
+                        className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-7 MuiGrid-grid-md-7"
                       >
                         <div
-                          className="makeStyles-defaultFontStyle-399 makeStyles-dangerText-409"
+                          className="makeStyles-defaultFontStyle-400 makeStyles-dangerText-410"
                         >
                           <h6
-                            className="makeStyles-cardCategory-354"
+                            className="makeStyles-cardCategory-355"
                           >
                             <a
                               href="/listideas/nursery"
@@ -1021,7 +1042,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                           </h6>
                         </div>
                         <h3
-                          className="makeStyles-cardTitle-353"
+                          className="makeStyles-cardTitle-354"
                         >
                           <a
                             href="/listideas/nursery"
@@ -1030,7 +1051,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                           </a>
                         </h3>
                         <p
-                          className="makeStyles-description1-355"
+                          className="makeStyles-description1-356"
                         >
                           Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy...
                           <a
@@ -1043,17 +1064,17 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                         </p>
                       </div>
                       <div
-                        className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
+                        className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-5"
                       >
                         <div
-                          className="makeStyles-cardHeader-374 makeStyles-cardHeaderPlain-375 makeStyles-cardHeaderImage-376"
+                          className="makeStyles-cardHeader-375 makeStyles-cardHeaderPlain-376 makeStyles-cardHeaderImage-377"
                         >
                           <a
                             href="/listideas/nursery"
                           >
                             <img
                               alt="..."
-                              className="makeStyles-rightImage-358"
+                              className="makeStyles-rightImage-359"
                               src="nurserylist.jpg"
                             />
                           </a>
@@ -1078,20 +1099,20 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
     </div>
     <div>
       <footer
-        className="makeStyles-footer-421 makeStyles-dark-425 makeStyles-big-422"
+        className="makeStyles-footer-422 makeStyles-dark-426 makeStyles-big-423"
       >
         <div
-          className="makeStyles-container-427"
+          className="makeStyles-container-428"
         >
           <div>
             <div
-              className="makeStyles-content-423"
+              className="makeStyles-content-424"
             >
               <div
-                className="MuiGrid-root makeStyles-grid-181  MuiGrid-container"
+                className="MuiGrid-root makeStyles-grid-182  MuiGrid-container"
               >
                 <div
-                  className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+                  className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
                 >
                   <h4
                     id="about"
@@ -1108,18 +1129,18 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                   </p>
                 </div>
                 <div
-                  className="MuiGrid-root makeStyles-grid-285  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+                  className="MuiGrid-root makeStyles-grid-286  MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
                 >
                   <h4>
                     Follow Us
                   </h4>
                   <ul
-                    className="makeStyles-socialButtons-417"
+                    className="makeStyles-socialButtons-418"
                   >
                     <li>
                       <a
                         aria-disabled={false}
-                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-286 makeStyles-facebook-297 makeStyles-simple-308 makeStyles-justIcon-316"
+                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-287 makeStyles-facebook-298 makeStyles-simple-309 makeStyles-justIcon-317"
                         href="https://www.facebook.com/ewelists"
                         onBlur={[Function]}
                         onDragLeave={[Function]}
@@ -1150,7 +1171,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     <li>
                       <a
                         aria-disabled={false}
-                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-286 makeStyles-twitter-296 makeStyles-simple-308 makeStyles-justIcon-316"
+                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-287 makeStyles-twitter-297 makeStyles-simple-309 makeStyles-justIcon-317"
                         href="https://twitter.com/ewelists"
                         onBlur={[Function]}
                         onDragLeave={[Function]}
@@ -1181,7 +1202,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
                     <li>
                       <a
                         aria-disabled={false}
-                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-286 makeStyles-instagram-307 makeStyles-simple-308 makeStyles-justIcon-316"
+                        className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-287 makeStyles-instagram-308 makeStyles-simple-309 makeStyles-justIcon-317"
                         href="https://www.instagram.com/ewelists/"
                         onBlur={[Function]}
                         onDragLeave={[Function]}
@@ -1217,50 +1238,50 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
           </div>
           <div>
             <div
-              className="makeStyles-left-415"
+              className="makeStyles-left-416"
             >
               <ul
-                className="MuiList-root makeStyles-list-414 MuiList-padding"
+                className="MuiList-root makeStyles-list-415 MuiList-padding"
               >
                 <li
-                  className="MuiListItem-root makeStyles-inlineBlock-413 MuiListItem-gutters"
+                  className="MuiListItem-root makeStyles-inlineBlock-414 MuiListItem-gutters"
                   disabled={false}
                 >
                   <a
-                    className="makeStyles-block-412"
+                    className="makeStyles-block-413"
                     href="/contact"
                   >
                     Contact Us
                   </a>
                 </li>
                 <li
-                  className="MuiListItem-root makeStyles-inlineBlock-413 MuiListItem-gutters"
+                  className="MuiListItem-root makeStyles-inlineBlock-414 MuiListItem-gutters"
                   disabled={false}
                 >
                   <a
-                    className="makeStyles-block-412"
+                    className="makeStyles-block-413"
                     href="/#about"
                   >
                     About us
                   </a>
                 </li>
                 <li
-                  className="MuiListItem-root makeStyles-inlineBlock-413 MuiListItem-gutters"
+                  className="MuiListItem-root makeStyles-inlineBlock-414 MuiListItem-gutters"
                   disabled={false}
                 >
                   <a
-                    className="makeStyles-block-412"
+                    className="makeStyles-block-413"
                     href="/privacy"
                   >
                     Privacy
                   </a>
                 </li>
                 <li
-                  className="MuiListItem-root makeStyles-inlineBlock-413 MuiListItem-gutters"
+                  className="MuiListItem-root makeStyles-inlineBlock-414 MuiListItem-gutters"
                   disabled={false}
                 >
                   <a
-                    className="makeStyles-block-412"
+                    className="makeStyles-block-413"
                     href="/terms"
                   >
                     Terms
@@ -1269,7 +1290,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
               </ul>
             </div>
             <div
-              className="makeStyles-right-416"
+              className="makeStyles-right-417"
             >
               © 
               2020
@@ -1277,7 +1298,7 @@ exports[`Tests for Non Authenticated Users. Renders Landing Page 1`] = `
             </div>
           </div>
           <div
-            className="makeStyles-clearFix-437"
+            className="makeStyles-clearFix-438"
           />
         </div>
       </footer>

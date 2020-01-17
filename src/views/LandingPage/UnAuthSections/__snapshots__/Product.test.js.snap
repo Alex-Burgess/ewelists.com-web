@@ -21,7 +21,7 @@ exports[`Tests for Product section. Renders product section 1`] = `
         <h5
           className="makeStyles-description-5"
         >
-          Create your first Ewelist with the things you know you want, or just the essentials.
+          Ewelists helps new and expecting parents get the gifts they need for their new arrival. Create a gift list, which you can share with friends and family, for free.
         </h5>
       </div>
     </div>

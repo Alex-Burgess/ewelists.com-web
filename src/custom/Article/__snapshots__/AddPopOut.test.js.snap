@@ -1,0 +1,506 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot tests for add pop out Renders pop out with list showing already added. 1`] = `
+<div>
+  <WithStyles(ForwardRef(Dialog))
+    TransitionComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Transition",
+        "render": [Function],
+      }
+    }
+    aria-describedby="notice-modal-slide-description"
+    aria-labelledby="notice-modal-slide-title"
+    classes={
+      Object {
+        "paper": "makeStyles-modal-2",
+        "root": "makeStyles-modalRoot-1",
+      }
+    }
+    keepMounted={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      className="makeStyles-modalHeader-3"
+      disableTypography={true}
+      id="notice-modal-slide-title"
+    >
+      <ForwardRef
+        aria-label="Close"
+        className="makeStyles-modalCloseButton-5"
+        key="close"
+        onClick={[Function]}
+        simple={true}
+      >
+         
+        <CloseIcon
+          className="makeStyles-modalClose-6"
+        />
+      </ForwardRef>
+      <h4
+        className="makeStyles-modalTitle-4"
+      >
+        Add Item to List
+      </h4>
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))
+      className="makeStyles-modalBody-7"
+      id="notice-modal-slide-description"
+    >
+      <div
+        className="makeStyles-productImageContainer-22"
+      >
+        <img
+          alt=".."
+          className="makeStyles-productImage-21"
+          src="https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$"
+        />
+      </div>
+      <div>
+        <h4
+          className="makeStyles-cardTitle-23"
+        >
+          John Lewis and Partners
+        </h4>
+      </div>
+      <div>
+        <p
+          className="makeStyles-description-24"
+        />
+      </div>
+      <CustomTable
+        coloredColls={Array []}
+        colorsColls={Array []}
+        customCellClasses={
+          Array [
+            "makeStyles-listText-26",
+            "makeStyles-buttonCell-30",
+          ]
+        }
+        customClassesForCells={
+          Array [
+            0,
+            1,
+          ]
+        }
+        customHeadCellClasses={Array []}
+        customHeadClassesForCells={Array []}
+        hover={false}
+        striped={false}
+        tableData={
+          Array [
+            Array [
+              <span>
+                <small
+                  className="makeStyles-tdNameSmall-25"
+                >
+                  Test List
+                </small>
+              </span>,
+              <span>
+                <ForwardRef
+                  className="makeStyles-successButton-27"
+                  color="success"
+                  disabled={true}
+                  justIcon={true}
+                  round={true}
+                >
+                  <UNDEFINED />
+                </ForwardRef>
+              </span>,
+            ],
+          ]
+        }
+        tableHeaderColor="gray"
+        tableShopping={true}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Dialog))>
+</div>
+`;
+
+exports[`Snapshot tests for add pop out Renders pop out with multiple lists. 1`] = `
+<div>
+  <WithStyles(ForwardRef(Dialog))
+    TransitionComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Transition",
+        "render": [Function],
+      }
+    }
+    aria-describedby="notice-modal-slide-description"
+    aria-labelledby="notice-modal-slide-title"
+    classes={
+      Object {
+        "paper": "makeStyles-modal-2",
+        "root": "makeStyles-modalRoot-1",
+      }
+    }
+    keepMounted={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      className="makeStyles-modalHeader-3"
+      disableTypography={true}
+      id="notice-modal-slide-title"
+    >
+      <ForwardRef
+        aria-label="Close"
+        className="makeStyles-modalCloseButton-5"
+        key="close"
+        onClick={[Function]}
+        simple={true}
+      >
+         
+        <CloseIcon
+          className="makeStyles-modalClose-6"
+        />
+      </ForwardRef>
+      <h4
+        className="makeStyles-modalTitle-4"
+      >
+        Add Item to List
+      </h4>
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))
+      className="makeStyles-modalBody-7"
+      id="notice-modal-slide-description"
+    >
+      <div
+        className="makeStyles-productImageContainer-22"
+      >
+        <img
+          alt=".."
+          className="makeStyles-productImage-21"
+          src="https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$"
+        />
+      </div>
+      <div>
+        <h4
+          className="makeStyles-cardTitle-23"
+        >
+          John Lewis and Partners
+        </h4>
+      </div>
+      <div>
+        <p
+          className="makeStyles-description-24"
+        />
+      </div>
+      <CustomTable
+        coloredColls={Array []}
+        colorsColls={Array []}
+        customCellClasses={
+          Array [
+            "makeStyles-listText-26",
+            "makeStyles-buttonCell-30",
+          ]
+        }
+        customClassesForCells={
+          Array [
+            0,
+            1,
+          ]
+        }
+        customHeadCellClasses={Array []}
+        customHeadClassesForCells={Array []}
+        hover={false}
+        striped={false}
+        tableData={
+          Array [
+            Array [
+              <span>
+                <small
+                  className="makeStyles-tdNameSmall-25"
+                >
+                  Test List
+                </small>
+              </span>,
+              <span>
+                <ForwardRef
+                  className="makeStyles-successButton-27"
+                  color="success"
+                  disabled={true}
+                  justIcon={true}
+                  round={true}
+                >
+                  <UNDEFINED />
+                </ForwardRef>
+              </span>,
+            ],
+            Array [
+              <span>
+                <small
+                  className="makeStyles-tdNameSmall-25"
+                >
+                  Test List2
+                </small>
+              </span>,
+              <span>
+                <ForwardRef
+                  color="primary"
+                  justIcon={true}
+                  onClick={[Function]}
+                  round={true}
+                >
+                  <UNDEFINED />
+                </ForwardRef>
+              </span>,
+            ],
+          ]
+        }
+        tableHeaderColor="gray"
+        tableShopping={true}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Dialog))>
+</div>
+`;
+
+exports[`Snapshot tests for add pop out Renders pop out with no lists. 1`] = `
+<div>
+  <WithStyles(ForwardRef(Dialog))
+    TransitionComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Transition",
+        "render": [Function],
+      }
+    }
+    aria-describedby="notice-modal-slide-description"
+    aria-labelledby="notice-modal-slide-title"
+    classes={
+      Object {
+        "paper": "makeStyles-modal-2",
+        "root": "makeStyles-modalRoot-1",
+      }
+    }
+    keepMounted={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      className="makeStyles-modalHeader-3"
+      disableTypography={true}
+      id="notice-modal-slide-title"
+    >
+      <ForwardRef
+        aria-label="Close"
+        className="makeStyles-modalCloseButton-5"
+        key="close"
+        onClick={[Function]}
+        simple={true}
+      >
+         
+        <CloseIcon
+          className="makeStyles-modalClose-6"
+        />
+      </ForwardRef>
+      <h4
+        className="makeStyles-modalTitle-4"
+      >
+        Add Item to List
+      </h4>
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))
+      className="makeStyles-modalBody-7"
+      id="notice-modal-slide-description"
+    >
+      <div
+        className="makeStyles-productImageContainer-22"
+      >
+        <img
+          alt=".."
+          className="makeStyles-productImage-21"
+          src="https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$"
+        />
+      </div>
+      <div>
+        <h4
+          className="makeStyles-cardTitle-23"
+        >
+          John Lewis and Partners
+        </h4>
+      </div>
+      <div>
+        <p
+          className="makeStyles-description-24"
+        />
+      </div>
+      <CustomTable
+        coloredColls={Array []}
+        colorsColls={Array []}
+        customCellClasses={
+          Array [
+            "makeStyles-listText-26",
+            "makeStyles-buttonCell-30",
+          ]
+        }
+        customClassesForCells={
+          Array [
+            0,
+            1,
+          ]
+        }
+        customHeadCellClasses={Array []}
+        customHeadClassesForCells={Array []}
+        hover={false}
+        striped={false}
+        tableData={
+          Array [
+            Array [
+              <span>
+                <small
+                  className="makeStyles-tdNameSmall-25"
+                >
+                  You have no lists yet...
+                </small>
+              </span>,
+              <span>
+                <a
+                  href="/?create"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <ForwardRef
+                    color="primary"
+                    round={true}
+                  >
+                    Create a list
+                  </ForwardRef>
+                </a>
+              </span>,
+            ],
+          ]
+        }
+        tableHeaderColor="gray"
+        tableShopping={true}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Dialog))>
+</div>
+`;
+
+exports[`Snapshot tests for add pop out Renders pop out with one list in table. 1`] = `
+<div>
+  <WithStyles(ForwardRef(Dialog))
+    TransitionComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Transition",
+        "render": [Function],
+      }
+    }
+    aria-describedby="notice-modal-slide-description"
+    aria-labelledby="notice-modal-slide-title"
+    classes={
+      Object {
+        "paper": "makeStyles-modal-2",
+        "root": "makeStyles-modalRoot-1",
+      }
+    }
+    keepMounted={true}
+    onClose={[Function]}
+    open={true}
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      className="makeStyles-modalHeader-3"
+      disableTypography={true}
+      id="notice-modal-slide-title"
+    >
+      <ForwardRef
+        aria-label="Close"
+        className="makeStyles-modalCloseButton-5"
+        key="close"
+        onClick={[Function]}
+        simple={true}
+      >
+         
+        <CloseIcon
+          className="makeStyles-modalClose-6"
+        />
+      </ForwardRef>
+      <h4
+        className="makeStyles-modalTitle-4"
+      >
+        Add Item to List
+      </h4>
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))
+      className="makeStyles-modalBody-7"
+      id="notice-modal-slide-description"
+    >
+      <div
+        className="makeStyles-productImageContainer-22"
+      >
+        <img
+          alt=".."
+          className="makeStyles-productImage-21"
+          src="https://johnlewis.scene7.com/is/image/JohnLewis/236972855?$rsp-pdp-port-640$"
+        />
+      </div>
+      <div>
+        <h4
+          className="makeStyles-cardTitle-23"
+        >
+          John Lewis and Partners
+        </h4>
+      </div>
+      <div>
+        <p
+          className="makeStyles-description-24"
+        />
+      </div>
+      <CustomTable
+        coloredColls={Array []}
+        colorsColls={Array []}
+        customCellClasses={
+          Array [
+            "makeStyles-listText-26",
+            "makeStyles-buttonCell-30",
+          ]
+        }
+        customClassesForCells={
+          Array [
+            0,
+            1,
+          ]
+        }
+        customHeadCellClasses={Array []}
+        customHeadClassesForCells={Array []}
+        hover={false}
+        striped={false}
+        tableData={
+          Array [
+            Array [
+              <span>
+                <small
+                  className="makeStyles-tdNameSmall-25"
+                >
+                  Test List
+                </small>
+              </span>,
+              <span>
+                <ForwardRef
+                  color="primary"
+                  justIcon={true}
+                  onClick={[Function]}
+                  round={true}
+                >
+                  <UNDEFINED />
+                </ForwardRef>
+              </span>,
+            ],
+          ]
+        }
+        tableHeaderColor="gray"
+        tableShopping={true}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Dialog))>
+</div>
+`;
