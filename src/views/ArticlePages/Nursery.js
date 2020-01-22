@@ -1,37 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+// custom components
+import { GetLists, GetList } from "Apis";
 import ListArticle from "custom/Article/ListArticle.js";
+import Products from "custom/Article/Products.js";
 
 export default function Nursery(props) {
+  const [lists, setLists] = useState({});
+
   const title = 'The Nursery List';
   const subtitle = 'What to buy for your baby’s bedroom.';
   const backgroundImg = 'nurserylist.jpg';
-
-  const storyProducts = [
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/wicker-moses-basket-welcome-to-the-world/p/770035001', price: '£74.25', description: 'Wicker Moses Basket - Welcome to the World.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/770035000_WTTW_Moses_Basket/Nursery/Nursery+Decor/Decor+Collections/Welcome+To+The+World?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/pram-fitted-sheet-2-pack-white/p/776502702', price: '£15', description: 'Pram Fitted Sheet (2 pack) - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/775502701_Cotbed_Fitted_Sheets_White/Nursery/Nursery+Bedding/Baby+Bedding?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/moses-fitted-sheets-pack-of-2-white/p/775502703', price: '£9', description: 'Moses Fitted Sheets (Pack of 2) - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/775502701_Cotbed_Fitted_Sheets_White/Nursery/Nursery+Bedding/Baby+Bedding?$pdpimagemobile$'},
-    {brand: 'Snuzpod', url: 'https://www.mamasandpapas.com/en-gb/snuzpod-3-bedside-crib-white/p/264402700', price: '£199.95', description: 'Snuzpod 3 Bedside Crib - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/264402700_1/Nursery/Nursery+Furniture/Cots+%26+Cot+Beds?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/crib-fitted-sheets-pack-of-2-white/p/777502702', price: '£11.25', description: 'Crib Fitted Sheets (Pack of 2) - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/775502701_Cotbed_Fitted_Sheets_White/Nursery/Nursery+Bedding/Baby+Bedding?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dover-adjustable-cot-to-toddler-bed-white/p/cbdo02700', price: '£269.10', description: 'Dover Adjustable Cot to Toddler Bed - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/CBDO02700_LS_3/Nursery/Nursery+Furniture/Furniture+Collections/Dover?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/premium-pocket-spring-cotbed-mattress/p/prpsmcb01', price: '£126.65', description: 'Premium Pocket Spring Cotbed Mattress.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/PRPSMMC01_Premium_PLspring/Nursery/Mattresses/All+Mattresses+%26+Covers/Cot+Bed+Mattresses?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dover-adjustable-height-cot-white/p/ctdo02701', price: '£161.10', description: 'Dover Adjustable Height Cot - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/CTDO02701_1/Nursery/Nursery+Furniture/Furniture+Collections/Dover?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/pocket-sprung-premium-cot-mattress/p/prpsmmc00', price: '£69.30', description: 'Pocket Sprung Premium Cot Mattress.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/PRPSMMC00_N/Offers/Clearance/Furniture+Clearance?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/anti-allergy-mattress-protector-cotbed/p/mc0002703', price: '£14.25', description: 'Anti-allergy Mattress Protector (Cotbed).', img: 'https://media.mamasandpapas.com/i/mamasandpapas/MC0002700_baby-bedding_terry_protector/Nursery/Mattresses/Mattress+Protectors+%26+Covers?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dream-upon-a-cloud-nursery-bundle/p/z90936300', price: '£175', description: 'Dream Upon a Cloud Nursery Bundle.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/Z90936300_BUMPER_NEW/Nursery/Nursery+Decor/Decor+Collections/Dream+Upon+A+Cloud?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/millie-boris-nursery-bundle-pink/p/z909h6900', price: '£200', description: 'Millie & Boris Nursery Bundle - Pink.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/Z909H6900_NEW/Nursery/Nursery+Decor/Decor+Collections/Millie+%26+Boris+Girls?$pdpimagemobile$'},
-    {brand: 'The Gro Company', url: 'https://www.amazon.co.uk/Company-Grosnug-Swaddle-Newborn-Grobag/dp/B0114SQOR4', price: '£25.50', description: 'The Gro Company Grey Marl Grosnug 2-in-1 Swaddle and Newborn Grobag, 0-3 Months, Cosy.', img: 'https://images-na.ssl-images-amazon.com/images/I/61FYuA7Y9nL._SY355_.jpg'},
-    {brand: 'John Lewis & Partners', url: 'https://www.johnlewis.com/john-lewis-partners-safari-mobile/p3439165', price: '£30.00', description: 'John Lewis & Partners Safari Mobile.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237244063?$rsp-pdp-port-640$'},
-    {brand: 'Infinity Wall Art Ltd', url: 'https://www.amazon.co.uk/Nursery-Stickers-Sticker-PD267-Direction/dp/B075J3RW4S', price: '£19.99', description: 'Nursery Tree Wall Stickers Animal Monkey Jungle Safari Kids Wall Art Decals Sticker.', img: 'https://images-na.ssl-images-amazon.com/images/I/51nDSDggZKL._SY355_.jpg'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dover-3-drawer-dresser-changer-unit-white/p/dcdo02700', price: '£279.00', description: 'Dover 3 Drawer Dresser & Changer Unit - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/DCDO02700_LS_1/Nursery/Nursery+Furniture/Furniture+Collections/Dover?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dover-2-door-nursery-wardrobe-white/p/wrdo02700', price: '£297.00', description: 'Dover 2 Door Nursery Wardrobe - White.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/WRDO02700_LS_1/Nursery/Nursery+Furniture/Furniture+Collections/Dover?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/dover-3-piece-cot-bed-range-with-dresser-and-wardrobe-grey/p/rado46800', price: '£719.00', description: 'Dover 3 Piece Cot Bed Range with Dresser and Wardrobe - Grey.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/rado46800_dover_cotbed_grey_3_piece/Nursery/Nursery+Furniture/Furniture+Collections/Dover?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/hilston-nursing-chair-duck-egg/p/chnsoa100', price: '£499.00', description: 'Hilston Nursing Chair - Silver.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/CHNSOA100_LS_5/Nursery/Nursery+Furniture?$pdpimagemobile$'},
-    {brand: 'Mamas & Papas', url: 'https://www.mamasandpapas.com/en-gb/hilston-nursery-footstool-sand/p/slnsoa100', price: '£149.00', description: 'Hilston Nursery Footstool - Silver.', img: 'https://media.mamasandpapas.com/i/mamasandpapas/SLNSOA100_LS_2?$pdpimagemobile$'},
-    {brand: 'VAVA', url: 'https://www.amazon.co.uk/VAVA-Charging-Rechargeable-Bedside-Breastfeeding/dp/B07JNHJFVP', price: '£19.99', description: 'VAVA Night Lights for Kids with Stable Charging Pad, Rechargeable Bedside Table Lamp for Breastfeeding.', img: 'https://images-na.ssl-images-amazon.com/images/I/51g9pQ1epjL._SX522_.jpg'},
-    {brand: 'The Gro Company', url: 'https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8', price: '£13.00', description: 'The Gro Company Groegg Colour Changing Room Thermometer.', img: 'https://images-na.ssl-images-amazon.com/images/I/71-jBXjqKLL._SY450_.jpg'},
-    {brand: 'BT', url: 'https://www.amazon.co.uk/dp/B01N9OOA7H', price: '£34.99', description: 'BT Digital Audio Baby Monitor 450 Lightshow', img: 'https://images-na.ssl-images-amazon.com/images/I/51fwG6RjhbL._SX355_.jpg'},
-    {brand: 'HELLO BABY', url: 'https://www.amazon.co.uk/HELLO-BABY-Wireless-Temperature-Monitoring/dp/B071FJPY7G', price: '£89.99', description: 'HELLO BABY Wireless Video Baby Monitor with Digital Camera, Night Vision Temperature Monitoring & 2 Way Talkback System, White', img: 'https://images-na.ssl-images-amazon.com/images/I/71eBwZ%2BSfeL._SY355_.jpg'}
-  ];
 
   const similarArticles = [
     {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
@@ -86,8 +64,68 @@ export default function Nursery(props) {
       <p>
         There are many baby monitors on the market. The simplest type allows you to <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Digital-Audio-Baby-Monitor-400/dp/B01MR3CP9L/"> listen </a> to your baby and arguably that is all you need. However, it can be comforting to look at your baby when you hear a noise or you just want to check on them and for that you can have a <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/HELLO-BABY-Wireless-Temperature-Monitoring/dp/B071FJPY7G"> baby monitor with a camera </a>.
       </p>
+      <Products
+        products={[
+          "12345678-prod-n001-1234-abcdefghijkl",
+          "12345678-prod-n002-1234-abcdefghijkl",
+          "12345678-prod-n003-1234-abcdefghijkl",
+          "12345678-prod-n004-1234-abcdefghijkl",
+          "12345678-prod-n005-1234-abcdefghijkl",
+          "12345678-prod-n006-1234-abcdefghijkl",
+          "12345678-prod-n007-1234-abcdefghijkl",
+          "12345678-prod-n008-1234-abcdefghijkl",
+          "12345678-prod-n009-1234-abcdefghijkl",
+          "12345678-prod-n010-1234-abcdefghijkl",
+          "12345678-prod-n011-1234-abcdefghijkl",
+          "12345678-prod-n012-1234-abcdefghijkl",
+          "12345678-prod-n013-1234-abcdefghijkl",
+          "12345678-prod-n014-1234-abcdefghijkl",
+          "12345678-prod-n015-1234-abcdefghijkl",
+          "12345678-prod-n016-1234-abcdefghijkl",
+          "12345678-prod-n017-1234-abcdefghijkl",
+          "12345678-prod-n018-1234-abcdefghijkl",
+          "12345678-prod-n019-1234-abcdefghijkl",
+          "12345678-prod-n020-1234-abcdefghijkl",
+          "12345678-prod-n021-1234-abcdefghijkl",
+          "12345678-prod-n022-1234-abcdefghijkl",
+          "12345678-prod-n023-1234-abcdefghijkl",
+          "12345678-prod-n024-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
     </div>
   );
+
+  useEffect( () => {
+    async function getLists(){
+      let lists = {};
+
+      const response = await GetLists();
+
+      let responseLists = response.owned;
+
+      for (var i in responseLists) {
+        const list = responseLists[i];
+
+        const listResponse = await GetList(list.listId);
+
+        let products = [];
+        for (var key in listResponse.products) {
+          products.push(key);
+        }
+
+        lists[list.listId] = {
+          "title": list.title,
+          "products": products
+        }
+      }
+
+      setLists(lists);
+    }
+
+    getLists();
+  }, []);
 
   return (
     <ListArticle
@@ -97,7 +135,7 @@ export default function Nursery(props) {
       backgroundImg={backgroundImg}
       title={title}
       subtitle={subtitle}
-      storyProducts={storyProducts}
+      storyProducts={[]}
       similarArticles={similarArticles}
     />
   );
