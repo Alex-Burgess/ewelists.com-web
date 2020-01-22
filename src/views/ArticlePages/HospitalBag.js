@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // custom components
+import { GetLists, GetList } from "Apis";
 import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
 import ChecklistCard from "custom/Article/ChecklistCard.js"
-import { GetLists, GetList } from "Apis";
 // styles
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/custom/views/articlePages/hospitalBagStyle.js";
@@ -12,6 +12,7 @@ const useStyles = makeStyles(styles);
 export default function HostpitalBag(props) {
   const classes = useStyles();
   const [lists, setLists] = useState({});
+
   const title = 'Hospital Bag';
   const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
   const backgroundImg = 'hospitalbag.jpg';
