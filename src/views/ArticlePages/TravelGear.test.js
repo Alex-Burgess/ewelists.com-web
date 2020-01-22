@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import TravelGear from './TravelGear';
 
-test('Renders TravelGear page.', () => {
+test.skip('Renders TravelGear page.', () => {
   const tree = renderer
     .create(
       <Router>

@@ -1,27 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+// custom components
+import { GetLists, GetList } from "Apis";
 import ListArticle from "custom/Article/ListArticle.js";
+import Products from "custom/Article/Products.js";
 
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "assets/jss/custom/views/articlePages/hospitalBagStyle.js";
+const useStyles = makeStyles(styles);
 
 export default function BathTime(props) {
-  const title = 'Bath Time';
-  const subtitle = 'What to buy for your bathing your baby.';
-  const backgroundImg = 'bathtime.jpg';
+  const classes = useStyles();
 
-  const storyProducts = [
-    {brand: 'John Lewis & Partners', url: 'https://www.johnlewis.com/john-lewis-partners-safari-hooded-towel-and-mitt-white/p3382355', price: '£16.50', description: 'Safari Hooded Towel and Mitt, White.', img: 'https://johnlewis.scene7.com/is/image/JohnLewis/237170008?$rsp-pdp-port-640$'},
-    {brand: 'Aveeno Baby', url: 'https://www.amazon.co.uk/Aveeno-Baby-Daily-Care-Cleansing/dp/B01IW7YMDS', price: '£8.04', description: 'Daily Care Cleansing Milk, 300 ml.', img: 'https://images-na.ssl-images-amazon.com/images/I/81rlToC4wtL._SX466_.jpg'},
-    {brand: 'The Neat Nursery', url: 'https://www.amazon.co.uk/Neat-Nursery-Circular-Tail-Bowl/dp/B00JYD5SEM', price: '£8.93', description: 'Top \'N\' Tail Bowl.', img: 'https://images-na.ssl-images-amazon.com/images/I/41pXNAHISzL._SX355_.jpg'},
-    {brand: 'The Gro Company', url: 'https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8', price: '£13.00', description: 'Groegg Colour Changing Room Thermometer.', img: 'https://images-na.ssl-images-amazon.com/images/I/71-jBXjqKLL._SY450_.jpg'},
-    {brand: 'Angelcare', url: 'https://www.amazon.co.uk/Angelcare-Soft-Touch-Bath-Support/dp/B00AWMV9CY', price: '£18.00', description: 'Soft Touch Bath Support.', img: 'https://images-na.ssl-images-amazon.com/images/I/618eOZJh3UL._SY355_.jpg'},
-    {brand: 'Little Gubbins', url: 'https://www.amazon.co.uk/Microfibre-Little-Gubbins-Unscented-Multipack/dp/B07CL34YN2', price: '£12.99', description: '20 x Microfibre Baby Wipes.  Pack of Reusable, Washable, Dry, Unscented Cloths.', img: 'https://images-na.ssl-images-amazon.com/images/I/91Kufu2PC3L._SY355_.jpg'},
-    {brand: 'Anlass', url: 'https://www.amazon.co.uk/Anlass-Cartoon-Resistant-Children-Octopus/dp/B01M0SVFIR', price: '£8.99', description: 'Kids Cartoon Non Slip Mats Mildew Resistant Non Slip Mats for Children.', img: 'https://images-na.ssl-images-amazon.com/images/I/81tok-F7cHL._SY355_.jpg'},
-    {brand: 'Mamas & Papas', url: 'https://www.amazon.co.uk/Mamas-Papas-Bambino-Support-Positions/dp/B00104WAX0', price: '27.00', description: 'Acqua Bambino Two Stage Bath with Safety Support Positions for Newborn to 12 Months, Pearl White.', img: 'https://images-na.ssl-images-amazon.com/images/I/51Q-eU%2BO7HL._SX355_.jpg'},
-    {brand: 'Safety 1st', url: 'https://www.amazon.co.uk/Safety-1st-Swivel-Bath-Primary/dp/B00CMR3H0O', price: '£14.99', description: 'Safety 1st Swivel Bath Seat, Primary.', img: 'https://images-na.ssl-images-amazon.com/images/I/71Odw7SbXgL._SL1500_.jpg'},
-    {brand: 'BBLIKE', url: 'https://www.amazon.co.uk/BBLIKE-Windmill-Waterwheel-Swimming-Toddlers/dp/B07N1GCJJC', price: '£11.99', description: 'Baby Bath Time Fun Toys, Kids Bath Toys Tub Windmill Waterwheel.', img: 'https://images-na.ssl-images-amazon.com/images/I/7171Lf4QkaL._SX466_.jpg'},
-    {brand: 'Childs Farm', url: 'https://www.amazon.co.uk/Childs-Farm-baby-unfragranced-250ml/dp/B071WJNHTC', price: '£2.99', description: 'Childs Farm baby wash unfragranced 250ml.', img: 'https://images-na.ssl-images-amazon.com/images/I/71YDUJqEyAL._SX522_.jpg'},
-    {brand: 'Childs Farm', url: 'https://www.amazon.co.uk/Childs-Farm-moisturiser-cocoa-butter/dp/B072JSY3SJ', price: '£2.99', description: 'Childs Farm Baby Moisturiser, 250ml, Shea and Cocoa Butter.', img: 'https://images-na.ssl-images-amazon.com/images/I/71v3zBEPpBL._SX466_.jpg'},
-    {brand: 'Calypso', url: 'https://www.amazon.co.uk/Calypso-31200029-Natural-sponges/dp/B0721K3HR5', price: '£2.45', description: 'Naturl Sponges.', img: 'https://images-na.ssl-images-amazon.com/images/I/71C-kkCf%2BmL._SX679_.jpg'}
-  ];
+  const [lists, setLists] = useState({});
+
+  const title = 'Bath Time';
+  const subtitle = 'How to give your baby a bath';
+  const backgroundImg = 'bathtime.jpg';
 
   const similarArticles = [
     {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
@@ -34,63 +28,173 @@ export default function BathTime(props) {
 
   const content = (
     <div>
-      <p>
-        It can be a daunting prospect when it comes to giving your new baby a bath. They are so small and slippery and you
-        worry if they will like it. The first thing to say is that you don’t need to bathe your baby straight away or
-        every day for that matter. It is fine to give your baby a clean with some water and cotton wool for the first week
-        or two, and after that they really only need a bath every few days.
-      </p>
-      <p>
-        A <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Neat-Nursery-Circular-Tail-Bowl/dp/B00JYD5SEM/"> top and tail bowl </a>
-        is designed to have two separate pools of water, one to be used on the head, neck and hands and one to be used for
-        the nappy area. You simply need some cotton wool and water to gently clean your new baby. Some
-        <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Aveeno-Baby-Daily-Care-Cleansing/dp/B01IW7YMDS/"> cleansing lotion </a>
-        can be used with cotton wool if there are areas you want to use more than just water.
-      </p>
-      <p>
-        When it comes to the first bath you should start by making sure you have everything ready and close by. You can
-        bring a changing mat, hooded towel, clothes and nappy into the bathroom so you can do everything you need in the
-        same room. Make sure the room is nice and warm and that the water temperature is 36/37c by using a thermometer.
-        This <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Company-Groegg-Colour-Changing-Thermometer/dp/B002B55BN8"> thermometer </a>
-        doubles up as a room thermometer and can be used in baby’s bedroom as well.
-      </p>
-      <p>
-        Babies are slippery when wet and a support of some sort frees up your hands to wash your baby. For a simple
-        addition to your existing bath, a <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Angelcare-Soft-Touch-Bath-Support/dp/B00AWMV9CY/">
-        bath support </a> can be used to lie your little one in while they are being washed. Make sure you only fill the
-        water to the water line. Placing a <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Microfibre-Little-Gubbins-Unscented-Multipack/dp/B07CL34YN2/">
-        flannel </a> over your baby’s tummy can help keep them nice and warm. If you don’t have a bath or if you want to
-        use less water, a <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Mamas-Papas-Bambino-Support-Positions/dp/B00104WAX0/"> baby
-        bath </a> with a built in support is a good option.
-      </p>
-      <p>
-        Once your little one can sit up they can sit and play in your existing bath. A
-        <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Anlass-Cartoon-Resistant-Children-Octopus/dp/B01M0SVFIR/"> slip mat </a> is very
-          handy here because it will help prevent them sliding when they wriggle around. If they are still a bit wobbly
-          when they’re sitting you can use a <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Safety-1st-Swivel-Bath-Primary/dp/B00CMR3H0O">
-          bath seat </a> which will give you extra peace of mind that they will be supported.
-      </p>
-      <p>
-        Some <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/BBLIKE-Windmill-Waterwheel-Swimming-Toddlers/dp/B07N1GCJJC/"> toys </a>
-        will give your baby something to look at while they are small and something to play with as they get older.
-      </p>
-      <p>
-        Babies tend to have very sensitive skin which can dry out quickly. Choosing a bath care product that is
-        specifically designed for dry and sensitive skin can help with looking after their skin. This
-        <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Childs-Farm-baby-unfragranced-250ml/dp/B071WJNHTC/"> Farms Child </a> range was
-          is formulated for babies with really dry skin or eczema.
-      </p>
-      <p>
-        A <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.co.uk/Calypso-31200029-Natural-sponges/dp/B0721K3HR5/"> natural sponge </a> or some
-        small flannels are handy to have to gently wash your baby. You don’t need to wash baby’s hair with soap every time
-        they have a bath either, you can simply splash over with some put water.
-      </p>
-      <p>
-        A <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/john-lewis-partners-safari-hooded-towel-and-mitt-white/p3382355"> hooded
-        towel </a> will help keep your baby nice and warm when you take them out of the bath and prepare them to dress.
-      </p>
+      <div id="intro">
+        <p>
+          It can be a daunting prospect when it comes to giving your new baby a bath. You worry about how you will
+          manage this small and fragile being in the slippery water, and whether they will even like it. However fear
+          not, with our handy guide to bath-time and our list of favourite products, you will be conquering bath-time
+          like a pro.
+        </p>
+        Skip to section:
+        <ul>
+          <li className={classes.listSpacing}>
+            <a href="#essentials"> The essentials to get you started </a>
+          </li>
+          <li className={classes.listSpacing}>
+            <a href="#bath"> Which type of bath to buy </a>
+          </li>
+          <li className={classes.listSpacing}>
+            <a href="#fun"> Making bath-time fun </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="essentials"></span>
+          The essentials to get you started
+        </h3>
+        <p>
+          For the first couple of weeks after your little one has arrived there really is no need to give your baby a
+          bath. It’s fine to give your baby a clean with some water and cotton wool, and a top and tail bowl is designed
+          just for this purpose. It has two separate pools of water, one for the head and body, and one for the nappy
+          area. Some cleansing lotion and cotton wool can be used where there are areas you want to give more attention.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b001-1234-abcdefghijkl",
+          "12345678-prod-b002-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <div>
+        <p>
+          When it comes to the first bath you should start by making sure you have everything ready and close by. You
+          can bring a changing mat, hooded towel, moisturiser, clothes and nappy into the bathroom so you can do
+          everything you need in the same room. Make sure the room is nice and warm and that the water temperature is
+          37c by using a thermometer.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b003-1234-abcdefghijkl",
+          "12345678-prod-b004-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <div>
+        <p>
+          Babies tend to have very sensitive skin which can dry out quickly. Choosing a bath care product that is
+          specifically designed for dry and sensitive skin can help with looking after their skin. This Farms Child
+          range was formulated for babies with really dry skin or eczema. It’s also handy to have a natural sponge or
+          some small flannels to gently wash your baby.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b005-1234-abcdefghijkl",
+          "12345678-prod-b006-1234-abcdefghijkl",
+          "12345678-prod-b007-1234-abcdefghijkl",
+          "12345678-prod-b008-1234-abcdefghijkl",
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="bath"></span>
+          Which type of bath to buy
+        </h3>
+        <p>
+          Babies are slippery when wet but a bath support can free up your hands to wash your baby. For a simple
+          addition to your existing bath, a bath support can be used to lie your little one in while they are being
+          washed. Placing a flannel over your baby’s tummy can help keep them nice and warm. If you don’t have a bath or
+          if you want to use less water, a baby bath with a built in support is a good option. You can also get compact
+          bath tubs that can sit in the kitchen sink or used in a stand to make it easier on your back.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b009-1234-abcdefghijkl",
+          "12345678-prod-b010-1234-abcdefghijkl",
+          "12345678-prod-b011-1234-abcdefghijkl",
+          "12345678-prod-b012-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <div>
+        <p>
+          Once your little one can sit up they can sit and play in your existing bath. A slip mat is very handy here
+          because it will help prevent them sliding when they wriggle around. If they are still a bit wobbly when
+          they’re sitting you can use a bath seat which will give you extra peace of mind that they will be supported.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b013-1234-abcdefghijkl",
+          "12345678-prod-b014-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <div>
+        <h3 className={classes.title}>
+          <span className={classes.anchor} id="fun"></span>
+          Making bath-time fun
+        </h3>
+        <p>
+          You will probably find that bath-time becomes one of the most enjoyable activities for your little one. Having
+          some bath toys will keep your little entertained and help build their confidence in the bath. And if you want
+          to keep your bathroom nice a tidy a bath toy net will help you keep things confined and organised.
+        </p>
+      </div>
+      <Products
+        products={[
+          "12345678-prod-b015-1234-abcdefghijkl",
+          "12345678-prod-b016-1234-abcdefghijkl",
+          "12345678-prod-b017-1234-abcdefghijkl",
+          "12345678-prod-b018-1234-abcdefghijkl",
+          "12345678-prod-b019-1234-abcdefghijkl",
+          "12345678-prod-b020-1234-abcdefghijkl"
+        ]}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
     </div>
   );
+
+  useEffect( () => {
+    async function getLists(){
+      let lists = {};
+
+      const response = await GetLists();
+
+      let responseLists = response.owned;
+
+      for (var i in responseLists) {
+        const list = responseLists[i];
+
+        const listResponse = await GetList(list.listId);
+
+        let products = [];
+        for (var key in listResponse.products) {
+          products.push(key);
+        }
+
+        lists[list.listId] = {
+          "title": list.title,
+          "products": products
+        }
+      }
+
+      setLists(lists);
+    }
+
+    getLists();
+  }, []);
 
   return (
     <ListArticle
@@ -100,7 +204,7 @@ export default function BathTime(props) {
       backgroundImg={backgroundImg}
       title={title}
       subtitle={subtitle}
-      storyProducts={storyProducts}
+      storyProducts={[]}
       similarArticles={similarArticles}
     />
   );

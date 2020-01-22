@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import BathTime from './BathTime';
 
-test('Renders BathTime page.', () => {
+test.skip('Renders BathTime page.', () => {
   const tree = renderer
     .create(
       <Router>

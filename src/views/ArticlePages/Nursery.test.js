@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import Nursery from './Nursery';
 
-test('Renders Nursery page.', () => {
+test.skip('Renders Nursery page.', () => {
   const tree = renderer
     .create(
       <Router>
