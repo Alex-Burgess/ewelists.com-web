@@ -7,13 +7,7 @@ const sectionTextStyle = {
     margin: "0 0 0px 0",
   },
   title: {
-    ...title
-  },
-  anchor: {
-    display: "block",
-    position: "relative",
-    top: "-85px",
-    visibility: "hidden"
+    ...title,
   }
 };
 

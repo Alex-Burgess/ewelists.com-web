@@ -37,19 +37,18 @@ export default function HostpitalBag(props) {
         Skip to section:
         <ul>
           <li className={classes.listSpacing}>
-            <a href="#yourlist"> What you need to pack </a>
+            <a href="#yourlist" onClick={e => {e.preventDefault(); sectionScroll("yourlist");}}> What you need to pack </a>
           </li>
           <li className={classes.listSpacing}>
-            <a href="#babieslist"> What to pack for your baby </a>
+            <a href="#babieslist" onClick={e => {e.preventDefault(); sectionScroll("babieslist");}}> What to pack for your baby </a>
           </li>
           <li className={classes.listSpacing}>
-            <a href="#partnerlist"> What your partner needs to pack </a>
+            <a href="#partnerlist" onClick={e => {e.preventDefault(); sectionScroll("partnerlist");}}> What your partner needs to pack </a>
           </li>
         </ul>
       </div>
       <div>
-        <h3 className={classes.title}>
-          <span className={classes.anchor} id="yourlist"></span>
+        <h3 className={classes.title} id="yourlist">
           What do you need to pack in your hospital bag
         </h3>
         <p>
@@ -143,8 +142,7 @@ export default function HostpitalBag(props) {
             'Nursing/maternity bra', 'Socks', 'Nursing pads', 'Slippers or flip flops', '2 x packs of large sanitary pads' ]
       }/>
       <div>
-        <h3 className={classes.title}>
-          <span className={classes.anchor} id="babieslist"></span>
+        <h3 className={classes.title} id="babieslist">
           What to pack for your baby
         </h3>
         <p>
@@ -185,8 +183,7 @@ export default function HostpitalBag(props) {
             '12 x nappies', 'Water wipes', 'Blanket' ,'Cuddly toy', 'Car seat', 'Bottles and formula']
       }/>
       <div>
-        <h3 className={classes.title}>
-          <span className={classes.anchor} id="partnerlist"></span>
+        <h3 className={classes.title} id="partnerlist">
           What to pack for your birth partner
         </h3>
         <p>
@@ -208,6 +205,14 @@ export default function HostpitalBag(props) {
       }/>
     </div>
   );
+
+  const sectionScroll = target => {
+    var elementHeightInWindow = document.getElementById(target).getBoundingClientRect().top;
+    var viewPortOffset = document.documentElement.scrollTop;
+    var scrollHeight = elementHeightInWindow + viewPortOffset - 85;
+
+    window.scrollTo({ top: scrollHeight, behavior: 'smooth' })
+  };
 
   useEffect( () => {
     async function getLists(){

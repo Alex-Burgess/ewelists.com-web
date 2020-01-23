@@ -20,7 +20,6 @@ export default function LandingPage(props) {
   const classes = useStyles();
 
   const checkForCreateParam = () => {
-    console.log("props: " + JSON.stringify(props.location))
     const search = props.location.search.substr(1);
     if (search === "create") {
       return true

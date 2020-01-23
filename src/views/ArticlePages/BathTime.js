@@ -38,19 +38,18 @@ export default function BathTime(props) {
         Skip to section:
         <ul>
           <li className={classes.listSpacing}>
-            <a href="#essentials"> The essentials to get you started </a>
+            <a href="#essentials" onClick={e => {e.preventDefault(); sectionScroll("essentials");}}> The essentials to get you started </a>
           </li>
           <li className={classes.listSpacing}>
-            <a href="#bath"> Which type of bath to buy </a>
+            <a href="#bath" onClick={e => {e.preventDefault(); sectionScroll("bath");}}> Which type of bath to buy </a>
           </li>
           <li className={classes.listSpacing}>
-            <a href="#fun"> Making bath-time fun </a>
+            <a href="#fun" onClick={e => {e.preventDefault(); sectionScroll("bath");}}> Making bath-time fun </a>
           </li>
         </ul>
       </div>
-      <div>
-        <h3 className={classes.title}>
-          <span className={classes.anchor} id="essentials"></span>
+      <div >
+        <h3 className={classes.title} id="essentials">
           The essentials to get you started
         </h3>
         <p>
@@ -102,9 +101,8 @@ export default function BathTime(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <div>
+      <div id="bath">
         <h3 className={classes.title}>
-          <span className={classes.anchor} id="bath"></span>
           Which type of bath to buy
         </h3>
         <p>
@@ -140,9 +138,8 @@ export default function BathTime(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <div>
+      <div id="fun">
         <h3 className={classes.title}>
-          <span className={classes.anchor} id="fun"></span>
           Making bath-time fun
         </h3>
         <p>
@@ -165,6 +162,14 @@ export default function BathTime(props) {
       />
     </div>
   );
+
+  const sectionScroll = target => {
+    var elementHeightInWindow = document.getElementById(target).getBoundingClientRect().top;
+    var viewPortOffset = document.documentElement.scrollTop;
+    var scrollHeight = elementHeightInWindow + viewPortOffset - 85;
+
+    window.scrollTo({ top: scrollHeight, behavior: 'smooth' })
+  };
 
   useEffect( () => {
     async function getLists(){

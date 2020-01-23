@@ -122,7 +122,7 @@ export default function EditPage(props) {
 
   useEffect( () => {
     function updateDimensions() {
-      if (window.innerWidth < 600){
+      if (window.innerHeight < 1025){
         setDesktop(false);
       } else {
         setDesktop(true);
@@ -173,7 +173,7 @@ export default function EditPage(props) {
   const setActive = (id) => {
     if (! desktop) {
       if (window.pageYOffset < 200) {
-        window.scrollTo({ top: 540, behavior: 'smooth' })
+        window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
       }
     }
 
@@ -182,10 +182,17 @@ export default function EditPage(props) {
 
   const switchToAddProduct = (id) => {
     if (! desktop) {
-      window.scrollTo({ top: 540, behavior: 'smooth' })
+      window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
     }
 
     setTabId(id);
+  }
+
+  const navScrollHeight = () => {
+    var heightInWindow = document.getElementById('navTabContainer').getBoundingClientRect().top;
+    var viewPortOffset = document.documentElement.scrollTop;
+    var scrollHeight = heightInWindow + viewPortOffset - 85;
+    return scrollHeight;
   }
 
   return (
@@ -202,7 +209,7 @@ export default function EditPage(props) {
                 date={date}
                 imageUrl={imageUrl}
               />
-              <div className={classes.profileTabs}>
+            <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills
                   active={tabId}
                   setActive={setActive}
