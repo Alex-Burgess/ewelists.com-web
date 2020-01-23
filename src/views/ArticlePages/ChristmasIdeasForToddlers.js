@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { GetLists, GetList } from "Apis";
+// import { scrollToId } from "custom/Scroll/ScrollToId";
+import { getUsersLists } from "custom/Article/GetUsersLists";
 import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
 
+// Blog Data
+const title = 'Christmas Ideas for Toddlers';
+const subtitle = 'If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas!';
+const backgroundImg = 'christmastoddlers.jpg';
+const productData = require('./Products/ChristmasIdeas.json');
+const similarArticles = [
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
+  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
+  description_short: "Everything you need when bathing your baby."},
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
+  description_short: "What to buy for your baby’s bedroom."}
+];
+
 export default function ChristmasIdeasForToddlers(props) {
   const [lists, setLists] = useState({});
-
-  const title = 'Christmas Ideas for Toddlers';
-  const subtitle = 'If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas!';
-  const backgroundImg = 'christmastoddlers.jpg';
-
-
-
-  const similarArticles = [
-    {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
-    description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-    {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
-    description_short: "Everything you need when bathing your baby."},
-    {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
-    description_short: "What to buy for your baby’s bedroom."}
-  ];
 
   const content = (
     <div>
@@ -48,6 +48,7 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c004-1234-abcdefghijkl",
           "12345678-prod-c005-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -85,6 +86,7 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c008-1234-abcdefghijkl",
           "12345678-prod-c009-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -113,6 +115,7 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c012-1234-abcdefghijkl",
           "12345678-prod-c013-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -121,33 +124,14 @@ export default function ChristmasIdeasForToddlers(props) {
 
   useEffect( () => {
     async function getLists(){
-      let lists = {};
-
-      const response = await GetLists();
-
-      let responseLists = response.owned;
-
-      for (var i in responseLists) {
-        const list = responseLists[i];
-
-        const listResponse = await GetList(list.listId);
-
-        let products = [];
-        for (var key in listResponse.products) {
-          products.push(key);
-        }
-
-        lists[list.listId] = {
-          "title": list.title,
-          "products": products
-        }
-      }
-
+      const lists = await getUsersLists();
       setLists(lists);
     }
 
-    getLists();
-  }, []);
+    if (props.isAuthenticated) {
+      getLists();
+    }
+  }, [props.isAuthenticated]);
 
   return (
     <ListArticle

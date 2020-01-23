@@ -1,56 +1,47 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { GetLists, GetList } from "Apis";
+import { getUsersLists } from "custom/Article/GetUsersLists";
+import SectionHeading from "custom/Article/SectionHeading.js";
+import SectionHeadings from "custom/Article/SectionHeadings.js";
 import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
-import ChecklistCard from "custom/Article/ChecklistCard.js"
-// styles
-import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/custom/views/articlePages/hospitalBagStyle.js";
-const useStyles = makeStyles(styles);
+import ChecklistCard from "custom/Article/ChecklistCard.js";
+
+// Blog Data
+const title = 'Hospital Bag';
+const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
+const backgroundImg = 'hospitalbag.jpg';
+const productData = require('./Products/HospitalBag.json');
+const similarArticles = [
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
+  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
+  description_short: "What to buy for your baby’s bedroom."},
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
+  description_short: "Everything you need when bathing your baby."}
+];
 
 export default function HostpitalBag(props) {
-  const classes = useStyles();
   const [lists, setLists] = useState({});
-
-  const title = 'Hospital Bag';
-  const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
-  const backgroundImg = 'hospitalbag.jpg';
-
-  const similarArticles = [
-    {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
-    description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-    {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
-    description_short: "What to buy for your baby’s bedroom."},
-    {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
-    description_short: "Everything you need when bathing your baby."}
-  ];
 
   const content = (
     <div>
-      <div id="intro">
+      <div>
         <p>
           Whether you like to be super organised and prepared for anything or you are just looking for some ideas to get
           you started, these top tips and hospital bag checklists will help you stay ahead of the game. You can pack your
           bag as early as you like, but it's a good idea to have it ready at least a few weeks in advance of the due date.
         </p>
-        Skip to section:
-        <ul>
-          <li className={classes.listSpacing}>
-            <a href="#yourlist" onClick={e => {e.preventDefault(); sectionScroll("yourlist");}}> What you need to pack </a>
-          </li>
-          <li className={classes.listSpacing}>
-            <a href="#babieslist" onClick={e => {e.preventDefault(); sectionScroll("babieslist");}}> What to pack for your baby </a>
-          </li>
-          <li className={classes.listSpacing}>
-            <a href="#partnerlist" onClick={e => {e.preventDefault(); sectionScroll("partnerlist");}}> What your partner needs to pack </a>
-          </li>
-        </ul>
       </div>
+      <SectionHeadings
+        headings={[
+          {"name": "yourlist", "text": "What you need to pack"},
+          {"name": "babieslist", "text": "What to pack for your baby"},
+          {"name": "partnerlist", "text": "What your partner needs to pack"}
+        ]}
+      />
       <div>
-        <h3 className={classes.title} id="yourlist">
-          What do you need to pack in your hospital bag
-        </h3>
+        <SectionHeading name="yourlist" text="What do you need to pack in your hospital bag" />
         <p>
           If you haven’t already done this, you might like to check the website for your hospital to see what facilities
           they have, such as birthing balls, TENS Machine and birthing pools, and see if they offer a tour of the ward.
@@ -76,6 +67,7 @@ export default function HostpitalBag(props) {
           "12345678-prod-h004-1234-abcdefghijkl",
           "12345678-prod-h005-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -101,6 +93,7 @@ export default function HostpitalBag(props) {
           "12345678-prod-h002-1234-abcdefghijkl",
           "12345678-prod-h006-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -134,6 +127,7 @@ export default function HostpitalBag(props) {
           "12345678-prod-h007-1234-abcdefghijkl",
           "12345678-prod-h008-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -142,9 +136,7 @@ export default function HostpitalBag(props) {
             'Nursing/maternity bra', 'Socks', 'Nursing pads', 'Slippers or flip flops', '2 x packs of large sanitary pads' ]
       }/>
       <div>
-        <h3 className={classes.title} id="babieslist">
-          What to pack for your baby
-        </h3>
+        <SectionHeading name="babieslist" text="What to pack for your baby" />
         <p>
           It’s amazing how many sets of clothes your little one will go through in a short space of time which means it’s
           a good idea to have 4 to 5 sets with you. A sleep suit with built in mittens and booties is perfect for wrapping
@@ -175,6 +167,7 @@ export default function HostpitalBag(props) {
           "12345678-prod-h011-1234-abcdefghijkl",
           "12345678-prod-h012-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -182,10 +175,8 @@ export default function HostpitalBag(props) {
           ['4 x sleep suits and vests', 'Scratch mittens', 'Booties', 'Cardigan', 'Hat', '2 x muslin squares',
             '12 x nappies', 'Water wipes', 'Blanket' ,'Cuddly toy', 'Car seat', 'Bottles and formula']
       }/>
-      <div>
-        <h3 className={classes.title} id="partnerlist">
-          What to pack for your birth partner
-        </h3>
+    <div>
+        <SectionHeading name="partnerlist" text="What to pack for your birth partner" />
         <p>
           As hospitals can be hot places your birth partner might like to have some cool clothes to change into and
           something fresh to put on after the birth. Shorts, t-shirts and loose dresses all work well. It’s also a good
@@ -197,6 +188,7 @@ export default function HostpitalBag(props) {
         products={[
           "12345678-prod-h013-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -206,43 +198,16 @@ export default function HostpitalBag(props) {
     </div>
   );
 
-  const sectionScroll = target => {
-    var elementHeightInWindow = document.getElementById(target).getBoundingClientRect().top;
-    var viewPortOffset = document.documentElement.scrollTop;
-    var scrollHeight = elementHeightInWindow + viewPortOffset - 85;
-
-    window.scrollTo({ top: scrollHeight, behavior: 'smooth' })
-  };
-
   useEffect( () => {
     async function getLists(){
-      let lists = {};
-
-      const response = await GetLists();
-
-      let responseLists = response.owned;
-
-      for (var i in responseLists) {
-        const list = responseLists[i];
-
-        const listResponse = await GetList(list.listId);
-
-        let products = [];
-        for (var key in listResponse.products) {
-          products.push(key);
-        }
-
-        lists[list.listId] = {
-          "title": list.title,
-          "products": products
-        }
-      }
-
+      const lists = await getUsersLists();
       setLists(lists);
     }
 
-    getLists();
-  }, []);
+    if (props.isAuthenticated) {
+      getLists();
+    }
+  }, [props.isAuthenticated]);
 
   return (
     <div>

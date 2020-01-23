@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import update from 'immutability-helper';
-import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -20,43 +19,9 @@ import styles from "assets/jss/custom/components/article/productsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Products(props) {
-  const { products, lists, isAuthenticated } = props;
   const classes = useStyles();
-
-  const [productDetails, setProductsDetails] = useState({});
+  const { products, data, lists, isAuthenticated } = props;
   const [addPopouts, setAddPopouts] = useState({});
-
-  useEffect( () => {
-    async function getProduct(id) {
-      let response;
-
-      try {
-        response = await API.get('products', "/" + id);
-      } catch (e) {
-        console.log("Could not find a product in the products table for id: " + id);
-        return false;
-      }
-
-      return response;
-    }
-
-    async function getProductDetails(products) {
-      let productDetails = {};
-
-      for (var ref in products) {
-        const productResponse = await getProduct(products[ref]);
-        if (productResponse) {
-          productDetails[products[ref]] = productResponse;
-        }
-      }
-
-      setProductsDetails(
-        productDetails
-      )
-    }
-
-    getProductDetails(products);
-  }, [products]);
 
   const handleEditClose = (id) => {
     setAddPopouts({
@@ -74,17 +39,16 @@ export default function Products(props) {
   }
 
   const renderAddPopOuts = () => {
-    return Object.entries(productDetails).map(
-      ([i, product]) =>
-        <AddPopOut
-          open={addPopouts[product['productId']]
-            ? addPopouts[product['productId']]
-            : false }
-          lists={lists}
-          product={product}
-          handleClose={handleEditClose}
-          key={i}
-        />
+    return products.map((id, key) =>
+      <AddPopOut
+        open={addPopouts[id]
+          ? addPopouts[id]
+          : false }
+        lists={lists}
+        product={data[id]}
+        handleClose={handleEditClose}
+        key={key}
+      />
     )
   }
 
@@ -94,47 +58,46 @@ export default function Products(props) {
         <GridItem xs={12} sm={10} md={10}>
           <GridContainer>
             {
-              Object.entries(productDetails).map(
-                ([i, product]) =>
-                  <GridItem xs={12} sm={4} md={4} key={i}>
-                    <Card plain product className={classes.customProduct}>
-                      <CardHeader noShadow image>
-                        <a href={product.url} target="_blank" rel="noopener noreferrer">
-                          <img src={product.imageUrl} className={classes.productImage} alt=".." />
-                        </a>
-                        <a href={product.url} target="_blank" rel="noopener noreferrer">
-                          <h4 className={classes.cardTitle}>{product.brand}</h4>
-                        </a>
-                        <div className={classes.description}>
-                          {product.details}
-                        </div>
-                      </CardHeader>
-                      <CardBody plain>
-                        <a href={product.url} target="_blank" rel="noopener noreferrer">
-                          { product.retailer === 'amazon'
-                          ? <Button className={classes.amazonButton}>
-                              <i className="fab fa-amazon" /> Buy Now
-                            </Button>
-                          : <Button color="primary" className={classes.button}>
-                              Buy Now
-                            </Button>
-                          }
-                        </a>
-                        { isAuthenticated
-                        ? <Button color="info" className={classes.button} onClick={() => handleAddOpen(product.productId)}>
-                             <Playlist /> Add To List
-                           </Button>
-                        : <a href="/signup" target="_blank" rel="noopener noreferrer">
-                            <Button color="info" className={classes.button}>
-                             Sign up to Create List
-                           </Button>
-                         </a>
+              products.map((id, key) =>
+                <GridItem xs={12} sm={4} md={4} key={key}>
+                  <Card plain product className={classes.customProduct}>
+                    <CardHeader noShadow image>
+                      <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
+                        <img src={data[id].imageUrl} className={classes.productImage} alt=".." />
+                      </a>
+                      <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
+                        <h4 className={classes.cardTitle}>{data[id].brand}</h4>
+                      </a>
+                      <div className={classes.description}>
+                        {data[id].details}
+                      </div>
+                    </CardHeader>
+                    <CardBody plain>
+                      <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
+                        { data[id].retailer === 'amazon'
+                        ? <Button className={classes.amazonButton}>
+                            <i className="fab fa-amazon" /> Buy Now
+                          </Button>
+                        : <Button color="primary" className={classes.button}>
+                            Buy Now
+                          </Button>
                         }
-                      </CardBody>
-                    </Card>
-                  </GridItem>
-              )
-            }
+                      </a>
+                      { isAuthenticated
+                      ? <Button color="info" className={classes.button} onClick={() => handleAddOpen(data[id].productId)}>
+                           <Playlist /> Add To List
+                         </Button>
+                      : <a href="/signup" target="_blank" rel="noopener noreferrer">
+                          <Button color="info" className={classes.button}>
+                           Sign up to Create List
+                         </Button>
+                       </a>
+                      }
+                    </CardBody>
+                  </Card>
+                </GridItem>
+            )
+          }
           </GridContainer>
         </GridItem>
       </GridContainer>
@@ -145,6 +108,7 @@ export default function Products(props) {
 
 Products.propTypes = {
   products: PropTypes.array,
+  data: PropTypes.object,
   lists: PropTypes.object,
   isAuthenticated: PropTypes.bool
 };

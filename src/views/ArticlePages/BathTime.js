@@ -1,57 +1,47 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { GetLists, GetList } from "Apis";
+import { getUsersLists } from "custom/Article/GetUsersLists";
+import SectionHeading from "custom/Article/SectionHeading.js";
+import SectionHeadings from "custom/Article/SectionHeadings.js";
 import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
 
-import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/custom/views/articlePages/hospitalBagStyle.js";
-const useStyles = makeStyles(styles);
+// Blog Data
+const title = 'Bath Time';
+const subtitle = 'How to give your baby a bath';
+const backgroundImg = 'bathtime.jpg';
+const productData = require('./Products/BathTime.json');
+const similarArticles = [
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
+  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
+  description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
+  description_short: "What to buy for your baby’s bedroom."}
+];
 
 export default function BathTime(props) {
-  const classes = useStyles();
-
   const [lists, setLists] = useState({});
-
-  const title = 'Bath Time';
-  const subtitle = 'How to give your baby a bath';
-  const backgroundImg = 'bathtime.jpg';
-
-  const similarArticles = [
-    {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
-    description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-    {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
-    description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-    {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
-    description_short: "What to buy for your baby’s bedroom."}
-  ];
 
   const content = (
     <div>
-      <div id="intro">
+      <div>
         <p>
           It can be a daunting prospect when it comes to giving your new baby a bath. You worry about how you will
           manage this small and fragile being in the slippery water, and whether they will even like it. However fear
           not, with our handy guide to bath-time and our list of favourite products, you will be conquering bath-time
           like a pro.
         </p>
-        Skip to section:
-        <ul>
-          <li className={classes.listSpacing}>
-            <a href="#essentials" onClick={e => {e.preventDefault(); sectionScroll("essentials");}}> The essentials to get you started </a>
-          </li>
-          <li className={classes.listSpacing}>
-            <a href="#bath" onClick={e => {e.preventDefault(); sectionScroll("bath");}}> Which type of bath to buy </a>
-          </li>
-          <li className={classes.listSpacing}>
-            <a href="#fun" onClick={e => {e.preventDefault(); sectionScroll("bath");}}> Making bath-time fun </a>
-          </li>
-        </ul>
       </div>
-      <div >
-        <h3 className={classes.title} id="essentials">
-          The essentials to get you started
-        </h3>
+      <SectionHeadings
+        headings={[
+          {"name": "essentials", "text": "The essentials to get you started"},
+          {"name": "bath", "text": "Which type of bath to buy"},
+          {"name": "fun", "text": "Making bath-time fun"}
+        ]}
+      />
+      <div>
+        <SectionHeading name="essentials" text="The essentials to get you started" />
         <p>
           For the first couple of weeks after your little one has arrived there really is no need to give your baby a
           bath. It’s fine to give your baby a clean with some water and cotton wool, and a top and tail bowl is designed
@@ -64,6 +54,7 @@ export default function BathTime(props) {
           "12345678-prod-b001-1234-abcdefghijkl",
           "12345678-prod-b002-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -80,6 +71,7 @@ export default function BathTime(props) {
           "12345678-prod-b003-1234-abcdefghijkl",
           "12345678-prod-b004-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -98,13 +90,12 @@ export default function BathTime(props) {
           "12345678-prod-b007-1234-abcdefghijkl",
           "12345678-prod-b008-1234-abcdefghijkl",
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <div id="bath">
-        <h3 className={classes.title}>
-          Which type of bath to buy
-        </h3>
+      <div>
+        <SectionHeading name="bath" text="Which type of bath to buy" />
         <p>
           Babies are slippery when wet but a bath support can free up your hands to wash your baby. For a simple
           addition to your existing bath, a bath support can be used to lie your little one in while they are being
@@ -120,6 +111,7 @@ export default function BathTime(props) {
           "12345678-prod-b011-1234-abcdefghijkl",
           "12345678-prod-b012-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -135,13 +127,12 @@ export default function BathTime(props) {
           "12345678-prod-b013-1234-abcdefghijkl",
           "12345678-prod-b014-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <div id="fun">
-        <h3 className={classes.title}>
-          Making bath-time fun
-        </h3>
+      <div>
+        <SectionHeading name="fun" text="Making bath-time fun" />
         <p>
           You will probably find that bath-time becomes one of the most enjoyable activities for your little one. Having
           some bath toys will keep your little entertained and help build their confidence in the bath. And if you want
@@ -157,49 +148,23 @@ export default function BathTime(props) {
           "12345678-prod-b019-1234-abcdefghijkl",
           "12345678-prod-b020-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
 
-  const sectionScroll = target => {
-    var elementHeightInWindow = document.getElementById(target).getBoundingClientRect().top;
-    var viewPortOffset = document.documentElement.scrollTop;
-    var scrollHeight = elementHeightInWindow + viewPortOffset - 85;
-
-    window.scrollTo({ top: scrollHeight, behavior: 'smooth' })
-  };
-
   useEffect( () => {
     async function getLists(){
-      let lists = {};
-
-      const response = await GetLists();
-
-      let responseLists = response.owned;
-
-      for (var i in responseLists) {
-        const list = responseLists[i];
-
-        const listResponse = await GetList(list.listId);
-
-        let products = [];
-        for (var key in listResponse.products) {
-          products.push(key);
-        }
-
-        lists[list.listId] = {
-          "title": list.title,
-          "products": products
-        }
-      }
-
+      const lists = await getUsersLists();
       setLists(lists);
     }
 
-    getLists();
-  }, []);
+    if (props.isAuthenticated) {
+      getLists();
+    }
+  }, [props.isAuthenticated]);
 
   return (
     <ListArticle

@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { GetLists, GetList } from "Apis";
+// import { scrollToId } from "custom/Scroll/ScrollToId";
+import { getUsersLists } from "custom/Article/GetUsersLists";
 import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
 
+// Blog Data
+const title = 'Travel Gear';
+const subtitle = 'Our favourite gear to make travelling with your little ones no fuss!';
+const backgroundImg = 'travelgear.jpg';
+const productData = require('./Products/TravelGear.json');
+const similarArticles = [
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
+  description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
+  description_short: "Everything you need when bathing your baby."},
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
+  description_short: "What to buy for your baby’s bedroom."}
+];
 
 export default function TravelGear(props) {
   const [lists, setLists] = useState({});
-
-  const title = 'Travel Gear';
-  const subtitle = 'Our favourite gear to make travelling with your little ones no fuss!';
-  const backgroundImg = 'travelgear.jpg';
-
-  const similarArticles = [
-    {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
-    description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-    {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bathtime.jpg',
-    description_short: "Everything you need when bathing your baby."},
-    {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
-    description_short: "What to buy for your baby’s bedroom."}
-  ];
 
   const content = (
     <div>
@@ -61,41 +62,22 @@ export default function TravelGear(props) {
           "12345678-prod-t008-1234-abcdefghijkl",
           "12345678-prod-t009-1234-abcdefghijkl"
         ]}
+        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
-
   useEffect( () => {
     async function getLists(){
-      let lists = {};
-
-      const response = await GetLists();
-
-      let responseLists = response.owned;
-
-      for (var i in responseLists) {
-        const list = responseLists[i];
-
-        const listResponse = await GetList(list.listId);
-
-        let products = [];
-        for (var key in listResponse.products) {
-          products.push(key);
-        }
-
-        lists[list.listId] = {
-          "title": list.title,
-          "products": products
-        }
-      }
-
+      const lists = await getUsersLists();
       setLists(lists);
     }
 
-    getLists();
-  }, []);
+    if (props.isAuthenticated) {
+      getLists();
+    }
+  }, [props.isAuthenticated]);
 
   return (
     <ListArticle

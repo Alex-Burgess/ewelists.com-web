@@ -10,7 +10,6 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 // Custom components
 import SimilarArticles from "custom/Article/SimilarArticles.js";
-import ShopTheStory from "custom/Article/ShopTheStory.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 
 import styles from "assets/jss/custom/components/article/listArticleStyle.js";
@@ -19,7 +18,7 @@ const useStyles = makeStyles(styles);
 export default function ListArticle(props) {
   const classes = useStyles();
 
-  const { isAuthenticated, backgroundImg, title, subtitle, storyProducts, similarArticles, content, user } = props;
+  const { isAuthenticated, backgroundImg, title, subtitle, similarArticles, content, user } = props;
 
   return (
     <div>
@@ -43,10 +42,6 @@ export default function ListArticle(props) {
               </GridItem>
             </GridContainer>
           </div>
-          {storyProducts.length > 0
-            ? <ShopTheStory products={storyProducts}/>
-            : null
-          }
         </div>
       </div>
       <SimilarArticles
@@ -64,7 +59,6 @@ ListArticle.propTypes = {
   backgroundImg: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  storyProducts: PropTypes.array,
   similarArticles: PropTypes.array,
   content: PropTypes.object
 };
