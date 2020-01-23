@@ -117,7 +117,7 @@ const sectionDetailsStyle = theme => ({
   },
   viewButtons: {
     paddingTop: "20px",
-    paddingLeft: "22px",
+    // paddingLeft: "22px",
     [theme.breakpoints.down("xs")]: {
       paddingTop: "0",
       paddingLeft: "0",
@@ -144,6 +144,11 @@ const sectionDetailsStyle = theme => ({
     paddingTop: "0px",
     [theme.breakpoints.down("xs")]: {
       paddingTop: "5px"
+    }
+  },
+  customButton: {
+    [theme.breakpoints.down("sm")]: {
+      padding: "12px 15px",
     }
   }
 });

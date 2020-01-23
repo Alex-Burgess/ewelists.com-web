@@ -27,7 +27,7 @@ const sectionStyle = theme => ({
   productImage: {
     [theme.breakpoints.down("xs")]: {
       // height: "82vw",
-      maxHeight: "276.59px",
+      maxHeight: "220px",
     },
     // height: "18vw",
     maxHeight: "400px",
@@ -83,6 +83,12 @@ const sectionStyle = theme => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "25px",
       marginBottom: "0px"
+    }
+  },
+  productDetails: {
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "0px",
+      paddingBottom: "0px"
     }
   },
   reservePopout: {

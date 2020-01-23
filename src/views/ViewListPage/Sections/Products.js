@@ -132,7 +132,7 @@ export default function Products(props) {
       return (null)
     } else {
       return (
-        <GridItem md={4} sm={4} key={i}>
+        <GridItem md={4} sm={6} key={i}>
           <Card plain product className={classes.customProduct}>
             <CardHeader noShadow image>
               <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>

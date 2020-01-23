@@ -148,7 +148,7 @@ export default function SectionDetails(props) {
               {newDescription}
             </div>
             <GridContainer >
-              <GridItem xs={12} sm={4} md={4}>
+              <GridItem xs={12} sm={5} md={4}>
                 <div className={classes.centerMobileText}>
                   <div className={classes.labelWrapper}>
                     <InputLabel className={classes.label}>
@@ -160,7 +160,7 @@ export default function SectionDetails(props) {
                   </div>
                 </div>
               </GridItem>
-              <GridItem xs={12} sm={2} md={2}>
+              <GridItem xs={12} sm={4} md={4}>
                 <div className={classes.centerMobileText}>
                   <div className={classes.labelWrapper}>
                     <InputLabel className={classes.label}>
@@ -172,13 +172,10 @@ export default function SectionDetails(props) {
                   </div>
                 </div>
               </GridItem>
-              <GridItem xs={12} sm={6} md={6} className={classes.lessGridPadding}>
+              <GridItem xs={12} sm={3} md={4} className={classes.lessGridPadding}>
                 <div className={classes.viewButtons}>
-                  <Button round color="info" onClick={() => setIsEdit(true)} >
+                  <Button round color="info" onClick={() => setIsEdit(true)} className={classes.customButton}>
                     <Icon>mode_edit</Icon> Edit
-                  </Button>
-                  <Button round onClick={() => setShowDeletePopOut(true)} >
-                    <Delete /> Delete
                   </Button>
                 </div>
               </GridItem>
@@ -261,7 +258,7 @@ export default function SectionDetails(props) {
                   </div>
                 </div>
               </GridItem>
-              <GridItem xs={12} sm={2} md={2}>
+              <GridItem xs={12} sm={3} md={4}>
                 <div className={classes.centerMobileText}>
                   <div className={classes.labelWrapper}>
                     <InputLabel className={classes.label}>
@@ -273,13 +270,16 @@ export default function SectionDetails(props) {
                   </div>
                 </div>
               </GridItem>
-              <GridItem xs={12} sm={6} md={6} className={classes.lessGridPadding}>
+              <GridItem xs={12} sm={5} md={4} className={classes.lessGridPadding}>
                 <div className={classes.editButtons}>
-                  <Button round color="success" onClick={() => saveDetails()} >
-                    <Icon>save_alt</Icon> Save
+                  <Button justIcon round color="success" onClick={() => saveDetails()} >
+                    <Icon>save</Icon>
                   </Button>
-                  <Button round onClick={() => cancelEdit()} >
-                    <Close /> Cancel
+                  <Button justIcon round onClick={() => cancelEdit()} >
+                    <Close />
+                  </Button>
+                  <Button justIcon round onClick={() => setShowDeletePopOut(true)} >
+                    <Delete />
                   </Button>
                 </div>
               </GridItem>

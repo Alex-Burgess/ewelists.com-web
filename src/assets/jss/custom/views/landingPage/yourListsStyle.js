@@ -127,6 +127,9 @@ const sectionStyle = theme => ({
   },
   dateField: {
     paddingTop: "10px"
+  },
+  customButton: {
+    padding: "12px 20px"
   }
 });
 

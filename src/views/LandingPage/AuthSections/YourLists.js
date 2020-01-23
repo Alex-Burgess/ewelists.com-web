@@ -84,12 +84,12 @@ export default function YourLists(props) {
                 </CardFooter>
               : <CardFooter profile className={classes.justifyContentCenter}>
                   <a href={"/lists/" + list.listId}>
-                    <Button round color="info">
+                    <Button round color="info" className={classes.customButton}>
                       <ViewIcon /> View
                     </Button>
                   </a>
                   <a href={"/edit/" + list.listId}>
-                    <Button round color="success">
+                    <Button round color="success" className={classes.customButton}>
                       <Icon>mode_edit</Icon> Edit
                     </Button>
                   </a>

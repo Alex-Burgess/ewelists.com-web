@@ -26,6 +26,12 @@ const styles = theme => ({
     ...cardTitle,
     textAlign: "center",
     marginBottom: "0px !important",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1rem"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.125rem"
+    }
   },
   container: {
     ...container

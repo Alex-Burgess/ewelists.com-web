@@ -181,9 +181,11 @@ export default function EditPage(props) {
   }
 
   const switchToAddProduct = (id) => {
-    if (! desktop) {
-      window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
-    }
+    // if (! desktop) {
+    //   window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
+    // }
+
+    window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
 
     setTabId(id);
   }
