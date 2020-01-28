@@ -35,7 +35,7 @@ const occasionList = ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christ
 export default function SectionDetails(props) {
   const classes = useStyles();
 
-  const { listId, title, description, occasion, date, imageUrl } = props;
+  const { listId, title, description, occasion, date, imageUrl, products } = props;
 
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
@@ -312,7 +312,7 @@ export default function SectionDetails(props) {
         ? renderEdit()
         : renderView()
       }
-      <SectionDelete open={showDeletePopOut} listId={listId} setShowDeletePopOut={setShowDeletePopOut}/>
+      <SectionDelete open={showDeletePopOut} listId={listId} setShowDeletePopOut={setShowDeletePopOut} products={products}/>
     </div>
   )
 }
@@ -323,5 +323,6 @@ SectionDetails.propTypes = {
   description: PropTypes.string,
   occasion: PropTypes.string,
   date: PropTypes.string,
-  imageUrl: PropTypes.string
+  imageUrl: PropTypes.string,
+  products: PropTypes.object
 };

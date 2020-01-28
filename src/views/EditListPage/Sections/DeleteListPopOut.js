@@ -26,19 +26,36 @@ Transition.displayName = "Transition";
 
 function SectionDeletePopout(props) {
   const classes = useStyles();
-  const { open, listId } = props;
+  const { open, listId, products } = props;
   const [deleteError, setDeleteError] = useState('');
 
   const deleteList = async event => {
+    // Delete the list
     try {
       const response = await API.del("lists", "/" + listId);
-
       console.log(response.message);
-      props.history.push('/');
     } catch (e) {
       console.log('Unexpected error occurred when deleting list: ' + JSON.stringify(e));
       setDeleteError('Unexpected error occurred when deleting list. Check that the list still exists.');
+      return false
     }
+
+    // Delete notfound products
+    for (var key in products) {
+      let product = products[key];
+
+      if (product.type === "notfound") {
+        console.log("Deleting product: " + key);
+
+        try {
+          await API.del("notfound", "/" + key);
+        } catch (e) {
+          console.log('Unexpected error occurred when deleting notfound item: ' + JSON.stringify(e));
+        }
+      }
+    }
+
+    props.history.push('/');
   }
 
   return (
@@ -130,7 +147,8 @@ function SectionDeletePopout(props) {
 
 SectionDeletePopout.propTypes = {
   open: PropTypes.bool,
-  listId: PropTypes.string
+  listId: PropTypes.string,
+  products: PropTypes.object
 };
 
 export default withRouter(SectionDeletePopout);

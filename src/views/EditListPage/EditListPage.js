@@ -210,6 +210,7 @@ export default function EditPage(props) {
                 occasion={occasion}
                 date={date}
                 imageUrl={imageUrl}
+                products={products}
               />
             <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills
