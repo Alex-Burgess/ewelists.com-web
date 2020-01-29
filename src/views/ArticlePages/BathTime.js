@@ -9,14 +9,14 @@ import Products from "custom/Article/Products.js";
 // Blog Data
 const title = 'Bath Time';
 const subtitle = 'How to give your baby a bath';
-const backgroundImg = 'bathtime.jpg';
+const backgroundImg = 'https://test.ewelists.com/images/bath-time.jpg';
 const productData = require('./Products/BathTime.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'https://test.ewelists.com/images/travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'https://test.ewelists.com/images/hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'https://test.ewelists.com/images/nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."}
 ];
 

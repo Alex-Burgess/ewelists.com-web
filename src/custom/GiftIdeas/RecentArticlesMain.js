@@ -24,12 +24,12 @@ export default function RecentArticlesMain(props) {
           <GridItem xs={12} sm={5} md={5}>
             <CardHeader image plain>
               <a href={url}>
-                <img src={require('assets/img/articles/' + img)} className={classes.leftImage} alt="..." />
+                <img src={img} className={classes.leftImage} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: `url(${require('assets/img/articles/' + img)})`,
+                  backgroundImage: "url(" + img + ")",
                   opacity: "1"
                 }}
               />
@@ -59,12 +59,12 @@ export default function RecentArticlesMain(props) {
           <GridItem xs={12} sm={5} md={5}>
             <CardHeader image plain>
               <a href={url}>
-                <img src={require('assets/img/articles/' + img)} className={classes.leftImageMobile} alt="..." />
+                <img src={img} className={classes.leftImageMobile} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: `url(${require('assets/img/articles/' + img)})`,
+                  backgroundImage: "url(" + img + ")",
                   opacity: "1"
                 }}
               />
@@ -103,12 +103,12 @@ export default function RecentArticlesMain(props) {
             <GridItem xs={12} sm={5} md={5}>
               <CardHeader image plain>
                 <a href={url}>
-                  <img src={require('assets/img/articles/' + img)} className={classes.rightImage} alt="..." />
+                  <img src={img} className={classes.rightImage} alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: `url(${require('assets/img/articles/' + img)})`,
+                    backgroundImage: "url(" + img + ")",
                     opacity: "1"
                   }}
                 />

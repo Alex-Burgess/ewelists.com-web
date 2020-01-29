@@ -30,6 +30,7 @@ const blogPostPageStyle = theme => ({
   },
   subtitle: {
     paddingBottom: "30px",
+    textAlign: "Center",
     [theme.breakpoints.down("xs")]: {
         fontSize: "1.5rem",
         textAlign: "Center"

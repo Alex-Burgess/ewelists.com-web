@@ -16,6 +16,7 @@ import ArticleHospitalBag from "views/ArticlePages/HospitalBag.js";
 import ArticleNursery from "views/ArticlePages/Nursery.js";
 import ArticleBathTime from "views/ArticlePages/BathTime.js";
 import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasForToddlers.js";
+import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ViewListPage from "views/ViewListPage/ViewListPage.js";
 import EditListPage from "views/EditListPage/EditListPage.js";
 
@@ -35,6 +36,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/listideas/nursery" exact component={ArticleNursery} props={childProps} />
     <AppliedRoute path="/listideas/bathtime" exact component={ArticleBathTime} props={childProps} />
     <AppliedRoute path="/listideas/christmasfortoddlers" exact component={ArticleChristmasIdeasForToddlers} props={childProps} />
+    <AppliedRoute path="/listideas/babyessentials" exact component={ArticleBabyEssentials} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />

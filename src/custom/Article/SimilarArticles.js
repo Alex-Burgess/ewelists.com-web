@@ -33,12 +33,12 @@ export default function SimilarArticles(props) {
                       <Card blog>
                         <CardHeader image>
                           <a href={article.url}>
-                            <img src={require('assets/img/articles/' + article.img)} className={classes.listImage} alt="..." />
+                            <img src={article.img} className={classes.listImage} alt="..." />
                           </a>
                           <div
                             className={classes.coloredShadow}
                             style={{
-                              backgroundImage: "url(" + require('assets/img/articles/' + article.img) + ")",
+                              backgroundImage: "url(" + article.img + ")",
                               opacity: "1"
                             }}
                           />

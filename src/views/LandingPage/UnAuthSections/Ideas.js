@@ -9,12 +9,13 @@ export default function LandingIdeas(props) {
   const classes = useStyles();
 
   const recentArticles = [
-    {title: "Christmas Ideas for Toddlers", url: "/listideas/christmasfortoddlers", img: 'christmastoddlers.jpg', img_position_left: true,
-    description_short: "Great Christmas ideas for toddlers and young children",
-    beginning_content: "If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play..."},
-    {title: "Nursery List", url: "/listideas/nursery", img: 'nurserylist.jpg', img_position_left: false,
-    description_short: "All the items you need for your baby’s bedroom",
-    beginning_content: "Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy..."}
+    {title: "The Essentials Baby List", url: "/listideas/babyessentials", img: 'https://test.ewelists.com/images/baby-essentials.jpg', img_position_left: true,
+    description_short: "What are the basic items that you need for your new arrival?",
+    beginning_content: "There is so much ‘stuff’ out there for babies and deciding which of it you really need can seem like a huge task. The good news is that babies really don’t need that much for the first few months of their life meaning..."},
+    {title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'https://test.ewelists.com/images/hospital-bag.jpg', img_position_left: false,
+    description_short: "Get set with everything you need for the all important hospital bag.",
+    beginning_content: "What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags many weeks out from the birth date. My top tips for what to pack in your bag..."},
+
   ];
 
   return (

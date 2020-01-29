@@ -23,7 +23,7 @@ export default function ListArticle(props) {
   return (
     <div>
       <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
-      <Parallax image={require('assets/img/articles/' + backgroundImg)} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
+      <Parallax image={backgroundImg} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>
