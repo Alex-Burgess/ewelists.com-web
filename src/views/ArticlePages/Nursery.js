@@ -8,14 +8,14 @@ import Products from "custom/Article/Products.js";
 // Blog Data
 const title = 'The Nursery List';
 const subtitle = 'What to buy for your baby’s bedroom.';
-const backgroundImg = 'https://test.ewelists.com/images/nursery-list.jpg';
+const backgroundImg = 'nursery-list.jpg';
 const productData = require('./Products/NurseryList.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'https://test.ewelists.com/images/travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'https://test.ewelists.com/images/hospital-bag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'https://test.ewelists.com/images/bath-time.jpg',
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bath-time.jpg',
   description_short: "Everything you need when bathing your baby."}
 ];
 

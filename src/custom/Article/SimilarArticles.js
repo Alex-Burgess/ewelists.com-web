@@ -9,6 +9,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Info from "components/Typography/Info.js";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/components/article/similarArticlesStyle.js";
 const useStyles = makeStyles(styles);
@@ -33,12 +34,12 @@ export default function SimilarArticles(props) {
                       <Card blog>
                         <CardHeader image>
                           <a href={article.url}>
-                            <img src={article.img} className={classes.listImage} alt="..." />
+                            <img src={config.imagePrefix + '/images/' + article.img} className={classes.listImage} alt="..." />
                           </a>
                           <div
                             className={classes.coloredShadow}
                             style={{
-                              backgroundImage: "url(" + article.img + ")",
+                              backgroundImage: "url(" + config.imagePrefix + '/images/' + article.img + ")",
                               opacity: "1"
                             }}
                           />

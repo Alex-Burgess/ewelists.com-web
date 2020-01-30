@@ -11,6 +11,7 @@ import GridItem from "components/Grid/GridItem.js";
 // Custom components
 import SimilarArticles from "custom/Article/SimilarArticles.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/components/article/listArticleStyle.js";
 const useStyles = makeStyles(styles);
@@ -23,7 +24,7 @@ export default function ListArticle(props) {
   return (
     <div>
       <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
-      <Parallax image={backgroundImg} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
+      <Parallax image={config.imagePrefix + '/images/' + backgroundImg} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>

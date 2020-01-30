@@ -10,14 +10,14 @@ import ChecklistCard from "custom/Article/ChecklistCard.js";
 // Blog Data
 const title = 'The Essentials Baby List';
 const subtitle = 'What are the basic items that you need for your new arrival?';
-const backgroundImg = 'https://test.ewelists.com/images/baby-essentials.jpg';
+const backgroundImg = 'baby-essentials.jpg';
 const productData = require('./Products/BabyEssentials.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'https://test.ewelists.com/images/travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'https://test.ewelists.com/images/hospital-bag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'https://test.ewelists.com/images/nursery-list.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."}
 ];
 

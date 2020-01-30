@@ -8,14 +8,14 @@ import Products from "custom/Article/Products.js";
 // Blog Data
 const title = 'Christmas Ideas for Toddlers';
 const subtitle = 'If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas!';
-const backgroundImg = 'https://test.ewelists.com/images/christmas-toddlers.jpg';
+const backgroundImg = 'christmas-toddlers.jpg';
 const productData = require('./Products/ChristmasIdeas.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'https://test.ewelists.com/images/travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'https://test.ewelists.com/images/bath-time.jpg',
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bath-time.jpg',
   description_short: "Everything you need when bathing your baby."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'https://test.ewelists.com/images/nursery-list.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."}
 ];
 

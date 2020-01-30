@@ -8,6 +8,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/components/similarArticlesMainStyle.js";
 const useStyles = makeStyles(styles);
@@ -29,12 +30,12 @@ export default function SimilarArticlesMain(props) {
               <Card plain blog>
                 <CardHeader image plain>
                   <a href={article.url}>
-                    <img src={article.img} className={classes.listImage} alt="..." />
+                    <img src={config.imagePrefix + '/images/' + article.img} className={classes.listImage} alt="..." />
                   </a>
                   <div
                     className={classes.coloredShadow}
                     style={{
-                      backgroundImage: "url(" + article.img + ")",
+                      backgroundImage: "url(" + config.imagePrefix + '/images/' + article.img + ")",
                       opacity: "1"
                     }}
                   />

@@ -8,14 +8,14 @@ import Products from "custom/Article/Products.js";
 // Blog Data
 const title = 'Travel Gear';
 const subtitle = 'Our favourite gear to make travelling with your little ones no fuss!';
-const backgroundImg = 'https://test.ewelists.com/images/travel-gear.jpg';
+const backgroundImg = 'travel-gear.jpg';
 const productData = require('./Products/TravelGear.json');
 const similarArticles = [
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'https://test.ewelists.com/images/hospital-bag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'https://test.ewelists.com/images/bath-time.jpg',
+  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bath-time.jpg',
   description_short: "Everything you need when bathing your baby."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'https://test.ewelists.com/images/nursery-list.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."}
 ];
 

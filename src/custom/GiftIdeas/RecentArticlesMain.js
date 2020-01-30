@@ -9,6 +9,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Info from "components/Typography/Info.js";
 import Danger from "components/Typography/Danger.js";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/components/recentArticlesMainStyle.js";
 const useStyles = makeStyles(styles);
@@ -24,12 +25,12 @@ export default function RecentArticlesMain(props) {
           <GridItem xs={12} sm={5} md={5}>
             <CardHeader image plain>
               <a href={url}>
-                <img src={img} className={classes.leftImage} alt="..." />
+                <img src={config.imagePrefix + '/images/' + img} className={classes.leftImage} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: "url(" + img + ")",
+                  backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
                   opacity: "1"
                 }}
               />
@@ -59,12 +60,12 @@ export default function RecentArticlesMain(props) {
           <GridItem xs={12} sm={5} md={5}>
             <CardHeader image plain>
               <a href={url}>
-                <img src={img} className={classes.leftImageMobile} alt="..." />
+                <img src={config.imagePrefix + '/images/' + img} className={classes.leftImageMobile} alt="..." />
               </a>
               <div
                 className={classes.coloredShadow}
                 style={{
-                  backgroundImage: "url(" + img + ")",
+                  backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
                   opacity: "1"
                 }}
               />
@@ -103,12 +104,12 @@ export default function RecentArticlesMain(props) {
             <GridItem xs={12} sm={5} md={5}>
               <CardHeader image plain>
                 <a href={url}>
-                  <img src={img} className={classes.rightImage} alt="..." />
+                  <img src={config.imagePrefix + '/images/' + img} className={classes.rightImage} alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: "url(" + img + ")",
+                    backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
                     opacity: "1"
                   }}
                 />
