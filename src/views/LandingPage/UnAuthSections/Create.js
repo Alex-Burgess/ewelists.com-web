@@ -35,6 +35,8 @@ export default function LandingCreate(props) {
   const scrollToExplore = (id) => {
     if (! desktop) {
       window.scrollTo({ top: 620, behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 520, behavior: 'smooth' })
     }
   }
 
