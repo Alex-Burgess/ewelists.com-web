@@ -18,25 +18,33 @@ class App extends React.Component {
 
   async componentDidMount() {
     Hub.listen("auth", ({ payload: { event, data } }) => {
-          console.log("There was an event: " + event)
+          console.log("Auth Event: " + event)
           switch (event) {
             case "signIn":
-              console.log("User was signed in");
               this.setState({ user: data });
               this.userHasAuthenticated(true);
               this.getAttributes();
               break;
             case "signOut":
-              console.log("User was sign out");
               this.setState({ user: null });
               break;
-            default:
-              console.log("Unexpected auth event: " + event);
-              console.log("Unexpected auth event data: " + data);
-              if ((data.message === "Cannot read property 'accessToken' of undefined") || (data.message === "undefined is not an object (evaluating 'a.accessToken')")) {
-                console.log("There was an unexpected signin or signup event, redirecting to login page.");
-                this.props.history.push("/login");
+            case "signIn_failure":
+              if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
+                console.log("Signup actually completed.  Attempt login again.");
+              } else if ((data.message === "Cannot read property 'accessToken' of undefined") || (data.message === "undefined is not an object (evaluating 'a.accessToken')")) {
+                console.log("Got generic aws amplify error, redirecting to login page.");
+              } else {
+                console.log("Unexpected Data message: " + data.message);
               }
+
+              // Redirect back to login page again.
+              this.setState({ user: null });
+              this.props.history.push("/login");
+              break;
+            default:
+              // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
+              console.log("Unexpected auth event data: " + data);
+              this.props.history.push("/login");
               this.setState({ user: null });
               break;
           }
@@ -49,8 +57,7 @@ class App extends React.Component {
     }
     catch(e) {
       if (e !== 'No current user') {
-        // alert(e);
-        console.log(e);
+        console.log("Current session could not be retrieved:" + e);
       }
     }
 
@@ -60,8 +67,7 @@ class App extends React.Component {
       }
       catch(e) {
         if (e !== 'No current user') {
-          // alert(e);
-          console.log(e);
+          console.log("Attributes could not be retrieved: " + e);
         }
       }
     }
