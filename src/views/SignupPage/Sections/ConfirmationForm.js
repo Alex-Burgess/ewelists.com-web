@@ -39,9 +39,8 @@ export default function ConfirmationForm(props) {
 
     try {
       await Auth.confirmSignUp(checkedEmail, confirmationCode);
+      console.log("User confirmed email.");
       await Auth.signIn(checkedEmail, password);
-
-      props.userHasAuthenticated(true);
     } catch (e) {
       setConfirmationError(e.message);
     }

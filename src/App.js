@@ -28,6 +28,12 @@ class App extends React.Component {
             case "signOut":
               this.setState({ user: null });
               break;
+            case "signUp":
+              console.log("Signup event for: " + data.user.username);
+              break;
+            case "forgotPassword":
+              console.log("Forgot password request for: " + data.username);
+              break;
             case "signIn_failure":
               if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
                 console.log("Signup actually completed.  Attempt login again.");
@@ -43,8 +49,7 @@ class App extends React.Component {
               break;
             default:
               // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
-              console.log("Unexpected auth event data: " + data);
-              this.props.history.push("/login");
+              console.log("Default auth event data: " + JSON.stringify(data));
               this.setState({ user: null });
               break;
           }

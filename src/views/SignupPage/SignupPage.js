@@ -280,7 +280,6 @@ export default function SignupPage(props) {
             </GridContainer>
           </div>
           <FooterTransparent />
-          />
         </div>
       </div>
     );
