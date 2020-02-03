@@ -15,15 +15,23 @@ import styles from "assets/jss/custom/components/article/checklistCardStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ChecklistCard(props) {
-  const { items } = props;
+  const { items, packing } = props;
   const classes = useStyles();
+
+  const title = () => {
+    if (packing) {
+        return "Items for your packing list"
+    } else {
+      return "Items for your list"
+    }
+  }
 
   return (
     <Card className={classes.checklistCard}>
       <CardBody color>
         <h5 className={classes.cardCategorySocialWhite}>
           <AssignmentTurnedIn />
-          Items for your packing list
+          {title()}
         </h5>
         <h5 className={classes.cardTitleWhite}>
           <GridContainer >
@@ -54,4 +62,5 @@ export default function ChecklistCard(props) {
 
 ChecklistCard.propTypes = {
   items: PropTypes.array,
+  packing: PropTypes.bool
 };

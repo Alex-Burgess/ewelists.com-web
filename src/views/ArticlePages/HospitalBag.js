@@ -71,7 +71,7 @@ export default function HostpitalBag(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <ChecklistCard items={
+      <ChecklistCard packing items={
           ['Birth ball', 'Maternity notes and birth plan', 'TENS Machine', 'Plastic bag for dirty clothes', 'Ziplock bags']
       }/>
       <div>
@@ -97,7 +97,7 @@ export default function HostpitalBag(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <ChecklistCard items={
+      <ChecklistCard packing items={
           ['Drinks and snacks', 'Entertainment', 'Straw or bottle with straw', 'Headphones', 'Lip balm', 'Massage oils',
             'Pillow', 'Fan, flannel or spritz bottle', 'Toiletries', 'Hairband and headband', 'A towel', 'Eye mask and ear plugs']
       }/>
@@ -131,7 +131,7 @@ export default function HostpitalBag(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <ChecklistCard items={
+      <ChecklistCard packing items={
           ['2 x night dresses', 'Dressing Gown', 'Tankini for the pool', 'Loose fitting clothes', '5 x large comfy knickers',
             'Nursing/maternity bra', 'Socks', 'Nursing pads', 'Slippers or flip flops', '2 x packs of large sanitary pads' ]
       }/>
@@ -171,7 +171,7 @@ export default function HostpitalBag(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <ChecklistCard items={
+      <ChecklistCard packing items={
           ['4 x sleep suits and vests', 'Scratch mittens', 'Booties', 'Cardigan', 'Hat', '2 x muslin squares',
             '12 x nappies', 'Water wipes', 'Blanket' ,'Cuddly toy', 'Car seat', 'Bottles and formula']
       }/>
@@ -192,7 +192,7 @@ export default function HostpitalBag(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <ChecklistCard items={
+      <ChecklistCard packing items={
           ['Cool comfy clothing', 'Change of clothes', 'Phone', 'Camera', 'Charger', 'Swimwear for the pool']
       }/>
     </div>
