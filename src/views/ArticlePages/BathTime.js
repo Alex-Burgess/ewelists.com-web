@@ -27,10 +27,9 @@ export default function BathTime(props) {
     <div>
       <div>
         <p>
-          It can be a daunting prospect when it comes to giving your new baby a bath. You worry about how you will
-          manage this small and fragile being in the slippery water, and whether they will even like it. However fear
-          not, with our handy guide to bath-time and our list of favourite products, you will be conquering bath-time
-          like a pro.
+          It can be a daunting prospect when it comes to bathing your new baby. You worry about how you will manage this
+          small and fragile slippery being in the water, and whether they will even like it. However fear not, with our
+          handy guide to bath-time and our list of favourite products, you will be conquering bath-time like a pro.
         </p>
       </div>
       <SectionHeadings
@@ -43,10 +42,10 @@ export default function BathTime(props) {
       <div>
         <SectionHeading name="essentials" text="The essentials to get you started" />
         <p>
-          For the first couple of weeks after your little one has arrived there really is no need to give your baby a
-          bath. It’s fine to give your baby a clean with some water and cotton wool, and a top and tail bowl is designed
-          just for this purpose. It has two separate pools of water, one for the head and body, and one for the nappy
-          area. Some cleansing lotion and cotton wool can be used where there are areas you want to give more attention.
+          For the first couple of weeks after your little one has arrived there really is no need to bath your baby.
+          It’s fine to give your baby a clean with some water and cotton wool, and a top and tail bowl is designed just
+          for this purpose. It has two separate pools of water, one for the head and body, and one for the nappy area.
+          Some cleansing lotion and cotton wool can be used where there are areas you want to give more attention.
         </p>
       </div>
       <Products
@@ -60,9 +59,9 @@ export default function BathTime(props) {
       />
       <div>
         <p>
-          When it comes to the first bath you should start by making sure you have everything ready and close by. You
-          can bring a changing mat, hooded towel, moisturiser, clothes and nappy into the bathroom so you can do
-          everything you need in the same room. Make sure the room is nice and warm and that the water temperature is
+          When it comes to the first bath, you should start by making sure you have everything ready and close by. You
+          can bring a changing mat, hooded towel, moisturiser, clothes and nappy into the bathroom so you can do e
+          verything you need in the same room. Make sure the bathroom is nice and warm and that the water temperature is
           37c by using a thermometer.
         </p>
       </div>
@@ -79,8 +78,8 @@ export default function BathTime(props) {
         <p>
           Babies tend to have very sensitive skin which can dry out quickly. Choosing a bath care product that is
           specifically designed for dry and sensitive skin can help with looking after their skin. This Farms Child
-          range was formulated for babies with really dry skin or eczema. It’s also handy to have a natural sponge or
-          some small flannels to gently wash your baby.
+          range was formulated for babies with dehydrated skin or eczema. It’s also handy to have a natural sponge or
+          some small flannels to wash your baby gently.
         </p>
       </div>
       <Products
@@ -97,11 +96,11 @@ export default function BathTime(props) {
       <div>
         <SectionHeading name="bath" text="Which type of bath to buy" />
         <p>
-          Babies are slippery when wet but a bath support can free up your hands to wash your baby. For a simple
-          addition to your existing bath, a bath support can be used to lie your little one in while they are being
+          Babies are slippery when wet, but a bath seat or support can free up your hands to wash your baby. For a
+          simple addition to your existing bath, a support can be used to lay your little one in while they are being
           washed. Placing a flannel over your baby’s tummy can help keep them nice and warm. If you don’t have a bath or
-          if you want to use less water, a baby bath with a built in support is a good option. You can also get compact
-          bath tubs that can sit in the kitchen sink or used in a stand to make it easier on your back.
+          if you want to use less water, a baby bath with built-in support is a good option. You can also get compact
+          bathtubs that can sit in the kitchen sink or used in a stand to make it easier on your back.
         </p>
       </div>
       <Products
@@ -117,9 +116,9 @@ export default function BathTime(props) {
       />
       <div>
         <p>
-          Once your little one can sit up they can sit and play in your existing bath. A slip mat is very handy here
-          because it will help prevent them sliding when they wriggle around. If they are still a bit wobbly when
-          they’re sitting you can use a bath seat which will give you extra peace of mind that they will be supported.
+          Once your little one can sit up, they can sit and play in your existing bath. A slipmat is very handy here
+          because it will help prevent them from sliding when they wriggle around. If they are still a bit wobbly when
+          they’re sitting, you can use a bath seat which will give you extra peace of mind that they will be supported.
         </p>
       </div>
       <Products
@@ -136,7 +135,7 @@ export default function BathTime(props) {
         <p>
           You will probably find that bath-time becomes one of the most enjoyable activities for your little one. Having
           some bath toys will keep your little entertained and help build their confidence in the bath. And if you want
-          to keep your bathroom nice a tidy a bath toy net will help you keep things confined and organised.
+          to keep your bathroom tidy a bath toy net will help you keep things confined and organised.
         </p>
       </div>
       <Products
