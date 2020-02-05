@@ -10,7 +10,7 @@ exports[`Renders HeaderLinks component, when user is not authenticated. 1`] = `
   >
     <a
       className="makeStyles-navLink-4"
-      href="/listideas"
+      href="/list-ideas"
       onClick={[Function]}
     >
       Gift List Ideas

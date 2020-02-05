@@ -5,7 +5,7 @@ import {
 const ideasSection = theme => ({
   container,
   section: {
-    padding: "50px 0"
+    padding: "0px"
   },
 });
 

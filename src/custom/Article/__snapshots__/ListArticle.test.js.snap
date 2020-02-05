@@ -59,7 +59,7 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
               >
                 <a
                   className="makeStyles-navLink-140"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas
@@ -302,19 +302,19 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                     <img
                       alt="..."
                       className="makeStyles-listImage-332"
-                      src="travelgear.jpg"
+                      src="baby-travel-gear.jpg"
                     />
                   </a>
                   <div
                     className="makeStyles-coloredShadow-330"
                     style={
                       Object {
-                        "backgroundImage": "url(travelgear.jpg)",
+                        "backgroundImage": "url(baby-travel-gear.jpg)",
                         "opacity": "1",
                       }
                     }
@@ -334,7 +334,7 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/travelgear"
+                      href="/list-ideas/baby-travel-gear"
                     >
                       Travel Gear
                     </a>
@@ -344,7 +344,7 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                   >
                     Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                     <a
-                      href="/listideas/travelgear"
+                      href="/list-ideas/baby-travel-gear"
                     >
                        Read Article 
                     </a>
@@ -362,19 +362,19 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                     <img
                       alt="..."
                       className="makeStyles-listImage-332"
-                      src="hospitalbag.jpg"
+                      src="hospital-bag-checklist.jpg"
                     />
                   </a>
                   <div
                     className="makeStyles-coloredShadow-330"
                     style={
                       Object {
-                        "backgroundImage": "url(hospitalbag.jpg)",
+                        "backgroundImage": "url(hospital-bag-checklist.jpg)",
                         "opacity": "1",
                       }
                     }
@@ -394,7 +394,7 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                       Hospital Bag
                     </a>
@@ -404,7 +404,7 @@ exports[`Renders ListArticle component, when user is not authenticated. 1`] = `
                   >
                     Make sure you're all set with everything you need for the all important hospital bag.
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                        Read Article 
                     </a>
@@ -697,7 +697,7 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
               >
                 <a
                   className="makeStyles-navLink-417"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas
@@ -978,19 +978,19 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                     <img
                       alt="..."
                       className="makeStyles-listImage-332"
-                      src="travelgear.jpg"
+                      src="baby-travel-gear.jpg"
                     />
                   </a>
                   <div
                     className="makeStyles-coloredShadow-330"
                     style={
                       Object {
-                        "backgroundImage": "url(travelgear.jpg)",
+                        "backgroundImage": "url(baby-travel-gear.jpg)",
                         "opacity": "1",
                       }
                     }
@@ -1010,7 +1010,7 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/travelgear"
+                      href="/list-ideas/baby-travel-gear"
                     >
                       Travel Gear
                     </a>
@@ -1020,7 +1020,7 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                   >
                     Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                     <a
-                      href="/listideas/travelgear"
+                      href="/list-ideas/baby-travel-gear"
                     >
                        Read Article 
                     </a>
@@ -1038,19 +1038,19 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                     <img
                       alt="..."
                       className="makeStyles-listImage-332"
-                      src="hospitalbag.jpg"
+                      src="hospital-bag-checklist.jpg"
                     />
                   </a>
                   <div
                     className="makeStyles-coloredShadow-330"
                     style={
                       Object {
-                        "backgroundImage": "url(hospitalbag.jpg)",
+                        "backgroundImage": "url(hospital-bag-checklist.jpg)",
                         "opacity": "1",
                       }
                     }
@@ -1070,7 +1070,7 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                       Hospital Bag
                     </a>
@@ -1080,7 +1080,7 @@ exports[`Renders ListArticle component, when user who has authenticated. 1`] = `
                   >
                     Make sure you're all set with everything you need for the all important hospital bag.
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                        Read Article 
                     </a>

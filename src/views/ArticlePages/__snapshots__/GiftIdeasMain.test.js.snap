@@ -59,7 +59,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
               >
                 <a
                   className="makeStyles-navLink-138"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas
@@ -154,7 +154,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/christmasfortoddlers"
+                          href="/list-ideas/christmas-ideas-for-toddlers"
                         >
                           Christmas Ideas
                         </a>
@@ -164,7 +164,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                         Great Christmas ideas for toddlers and young children.
                       </a>
@@ -174,7 +174,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     >
                       If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                          
                         Read More
@@ -189,7 +189,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                         <img
                           alt="..."
@@ -224,18 +224,18 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         <img
                           alt="..."
                           className="makeStyles-leftImage-288"
-                          src="travelgear.jpg"
+                          src="baby-travel-gear.jpg"
                         />
                       </a>
                       <div
                         style={
                           Object {
-                            "backgroundImage": "url(travelgear.jpg)",
+                            "backgroundImage": "url(baby-travel-gear.jpg)",
                             "opacity": "1",
                           }
                         }
@@ -252,7 +252,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/travelgear"
+                          href="/list-ideas/baby-travel-gear"
                         >
                           Travel Gear
                         </a>
@@ -262,7 +262,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         Great items to make travelling with your little ones no fuss!
                       </a>
@@ -272,7 +272,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     >
                       The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                          
                         Read More
@@ -287,18 +287,18 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         <img
                           alt="..."
                           className="makeStyles-leftImageMobile-289"
-                          src="travelgear.jpg"
+                          src="baby-travel-gear.jpg"
                         />
                       </a>
                       <div
                         style={
                           Object {
-                            "backgroundImage": "url(travelgear.jpg)",
+                            "backgroundImage": "url(baby-travel-gear.jpg)",
                             "opacity": "1",
                           }
                         }
@@ -325,7 +325,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/hospitalbag"
+                          href="/list-ideas/hospital-bag-checklist"
                         >
                           Hospital Bag
                         </a>
@@ -335,7 +335,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/hospitalbag"
+                        href="/list-ideas/hospital-bag-checklist"
                       >
                         Get set with everything you need for the all important hospital bag.
                       </a>
@@ -345,7 +345,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     >
                       What do you pack in that all important hospital bag, or is it bags? I like to be organised and took great pleasure in compartmentalising my two hospital bags many weeks out from the birth date. My top tips for what to pack in your bag...
                       <a
-                        href="/listideas/hospitalbag"
+                        href="/list-ideas/hospital-bag-checklist"
                       >
                          
                         Read More
@@ -360,18 +360,18 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/hospitalbag"
+                        href="/list-ideas/hospital-bag-checklist"
                       >
                         <img
                           alt="..."
                           className="makeStyles-rightImage-290"
-                          src="hospitalbag.jpg"
+                          src="hospital-bag-checklist.jpg"
                         />
                       </a>
                       <div
                         style={
                           Object {
-                            "backgroundImage": "url(hospitalbag.jpg)",
+                            "backgroundImage": "url(hospital-bag-checklist.jpg)",
                             "opacity": "1",
                           }
                         }
@@ -395,7 +395,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/nursery"
+                        href="/list-ideas/nursery-list"
                       >
                         <img
                           alt="..."
@@ -423,7 +423,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/nursery"
+                          href="/list-ideas/nursery-list"
                         >
                           Nursery List
                         </a>
@@ -433,7 +433,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/nursery"
+                        href="/list-ideas/nursery-list"
                       >
                         All the items you need for your baby’s bedroom
                       </a>
@@ -443,7 +443,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     >
                       Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy...
                       <a
-                        href="/listideas/nursery"
+                        href="/list-ideas/nursery-list"
                       >
                          
                         Read More
@@ -458,7 +458,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/nursery"
+                        href="/list-ideas/nursery-list"
                       >
                         <img
                           alt="..."
@@ -496,7 +496,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/bathtime"
+                          href="/list-ideas/baby-bath-time"
                         >
                           Bath Time
                         </a>
@@ -506,7 +506,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/bathtime"
+                        href="/list-ideas/baby-bath-time"
                       >
                         Everyting you need when bathing your baby.
                       </a>
@@ -516,7 +516,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                     >
                       It can be a daunting prospect when it comes to giving your new baby a bath. They are so small and slippery and you worry if they will like it. The first thing to say is that you don’t need to bathe your baby straight away or every day for that matter...
                       <a
-                        href="/listideas/bathtime"
+                        href="/list-ideas/baby-bath-time"
                       >
                          
                         Read More
@@ -531,7 +531,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/bathtime"
+                        href="/list-ideas/baby-bath-time"
                       >
                         <img
                           alt="..."
@@ -577,19 +577,19 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
-                  href="/listideas/travelgear"
+                  href="/list-ideas/baby-travel-gear"
                 >
                   <img
                     alt="..."
                     className="makeStyles-listImage-351"
-                    src="travelgear.jpg"
+                    src="baby-travel-gear.jpg"
                   />
                 </a>
                 <div
                   className="makeStyles-coloredShadow-349"
                   style={
                     Object {
-                      "backgroundImage": "url(assets/img/articles/travelgear.jpg)",
+                      "backgroundImage": "url(assets/img/articles/baby-travel-gear.jpg)",
                       "opacity": "1",
                     }
                   }
@@ -602,7 +602,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   className="makeStyles-cardTitle-348"
                 >
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                     Travel Gear
                   </a>
@@ -612,7 +612,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 >
                   Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                      Read Article 
                   </a>
@@ -630,19 +630,19 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
-                  href="/listideas/hospitalbag"
+                  href="/list-ideas/hospital-bag-checklist"
                 >
                   <img
                     alt="..."
                     className="makeStyles-listImage-351"
-                    src="hospitalbag.jpg"
+                    src="hospital-bag-checklist.jpg"
                   />
                 </a>
                 <div
                   className="makeStyles-coloredShadow-349"
                   style={
                     Object {
-                      "backgroundImage": "url(assets/img/articles/hospitalbag.jpg)",
+                      "backgroundImage": "url(assets/img/articles/hospital-bag-checklist.jpg)",
                       "opacity": "1",
                     }
                   }
@@ -655,7 +655,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   className="makeStyles-cardTitle-348"
                 >
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                     Hospital Bag
                   </a>
@@ -665,7 +665,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 >
                   Make sure you're all set with everything you need for the all important hospital bag.
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                      Read Article 
                   </a>
@@ -683,7 +683,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
-                  href="/listideas/bathtime"
+                  href="/list-ideas/baby-bath-time"
                 >
                   <img
                     alt="..."
@@ -695,7 +695,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   className="makeStyles-coloredShadow-349"
                   style={
                     Object {
-                      "backgroundImage": "url(assets/img/articles/bathtime.jpg)",
+                      "backgroundImage": "url(assets/img/articles/baby-bath-time.jpg)",
                       "opacity": "1",
                     }
                   }
@@ -708,7 +708,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                   className="makeStyles-cardTitle-348"
                 >
                   <a
-                    href="/listideas/bathtime"
+                    href="/list-ideas/baby-bath-time"
                   >
                     Bath Time
                   </a>
@@ -718,7 +718,7 @@ exports[`Renders GiftIdeasMain page. 1`] = `
                 >
                   Everything you need when bathing your baby.
                   <a
-                    href="/listideas/bathtime"
+                    href="/list-ideas/baby-bath-time"
                   >
                      Read Article 
                   </a>

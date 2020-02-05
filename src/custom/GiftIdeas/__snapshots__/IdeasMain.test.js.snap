@@ -59,7 +59,7 @@ exports[`Renders IdeasMain component. 1`] = `
               >
                 <a
                   className="makeStyles-navLink-138"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas
@@ -154,7 +154,7 @@ exports[`Renders IdeasMain component. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/christmasfortoddlers"
+                          href="/list-ideas/christmas-ideas-for-toddlers"
                         >
                           Christmas Ideas
                         </a>
@@ -164,7 +164,7 @@ exports[`Renders IdeasMain component. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                         Great Christmas ideas for toddlers and young children.
                       </a>
@@ -174,7 +174,7 @@ exports[`Renders IdeasMain component. 1`] = `
                     >
                       If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                          
                         Read More
@@ -189,7 +189,7 @@ exports[`Renders IdeasMain component. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                         <img
                           alt="..."
@@ -224,18 +224,18 @@ exports[`Renders IdeasMain component. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         <img
                           alt="..."
                           className="makeStyles-leftImage-288"
-                          src="travelgear.jpg"
+                          src="baby-travel-gear.jpg"
                         />
                       </a>
                       <div
                         style={
                           Object {
-                            "backgroundImage": "url(travelgear.jpg)",
+                            "backgroundImage": "url(baby-travel-gear.jpg)",
                             "opacity": "1",
                           }
                         }
@@ -252,7 +252,7 @@ exports[`Renders IdeasMain component. 1`] = `
                         className="makeStyles-cardCategory-286"
                       >
                         <a
-                          href="/listideas/travelgear"
+                          href="/list-ideas/baby-travel-gear"
                         >
                           Travel Gear
                         </a>
@@ -262,7 +262,7 @@ exports[`Renders IdeasMain component. 1`] = `
                       className="makeStyles-cardTitle-285"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         Great items to make travelling with your little ones no fuss!
                       </a>
@@ -272,7 +272,7 @@ exports[`Renders IdeasMain component. 1`] = `
                     >
                       The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car...
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                          
                         Read More
@@ -287,18 +287,18 @@ exports[`Renders IdeasMain component. 1`] = `
                       className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
                     >
                       <a
-                        href="/listideas/travelgear"
+                        href="/list-ideas/baby-travel-gear"
                       >
                         <img
                           alt="..."
                           className="makeStyles-leftImageMobile-289"
-                          src="travelgear.jpg"
+                          src="baby-travel-gear.jpg"
                         />
                       </a>
                       <div
                         style={
                           Object {
-                            "backgroundImage": "url(travelgear.jpg)",
+                            "backgroundImage": "url(baby-travel-gear.jpg)",
                             "opacity": "1",
                           }
                         }
@@ -333,19 +333,19 @@ exports[`Renders IdeasMain component. 1`] = `
                 className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
-                  href="/listideas/travelgear"
+                  href="/list-ideas/baby-travel-gear"
                 >
                   <img
                     alt="..."
                     className="makeStyles-listImage-351"
-                    src="travelgear.jpg"
+                    src="baby-travel-gear.jpg"
                   />
                 </a>
                 <div
                   className="makeStyles-coloredShadow-349"
                   style={
                     Object {
-                      "backgroundImage": "url(assets/img/articles/travelgear.jpg)",
+                      "backgroundImage": "url(assets/img/articles/baby-travel-gear.jpg)",
                       "opacity": "1",
                     }
                   }
@@ -358,7 +358,7 @@ exports[`Renders IdeasMain component. 1`] = `
                   className="makeStyles-cardTitle-348"
                 >
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                     Travel Gear
                   </a>
@@ -368,7 +368,7 @@ exports[`Renders IdeasMain component. 1`] = `
                 >
                   Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                   <a
-                    href="/listideas/travelgear"
+                    href="/list-ideas/baby-travel-gear"
                   >
                      Read Article 
                   </a>
@@ -386,19 +386,19 @@ exports[`Renders IdeasMain component. 1`] = `
                 className="makeStyles-cardHeader-319 makeStyles-cardHeaderPlain-320 makeStyles-cardHeaderImage-321"
               >
                 <a
-                  href="/listideas/hospitalbag"
+                  href="/list-ideas/hospital-bag-checklist"
                 >
                   <img
                     alt="..."
                     className="makeStyles-listImage-351"
-                    src="hospitalbag.jpg"
+                    src="hospital-bag-checklist.jpg"
                   />
                 </a>
                 <div
                   className="makeStyles-coloredShadow-349"
                   style={
                     Object {
-                      "backgroundImage": "url(assets/img/articles/hospitalbag.jpg)",
+                      "backgroundImage": "url(assets/img/articles/hospital-bag-checklist.jpg)",
                       "opacity": "1",
                     }
                   }
@@ -411,7 +411,7 @@ exports[`Renders IdeasMain component. 1`] = `
                   className="makeStyles-cardTitle-348"
                 >
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                     Hospital Bag
                   </a>
@@ -421,7 +421,7 @@ exports[`Renders IdeasMain component. 1`] = `
                 >
                   Make sure you're all set with everything you need for the all important hospital bag.
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                      Read Article 
                   </a>

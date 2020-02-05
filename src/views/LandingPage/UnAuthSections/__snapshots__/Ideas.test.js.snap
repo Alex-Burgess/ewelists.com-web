@@ -30,7 +30,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                     className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
                   >
                     <a
-                      href="/listideas/christmasfortoddlers"
+                      href="/list-ideas/christmas-ideas-for-toddlers"
                     >
                       <img
                         alt="..."
@@ -58,7 +58,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                       className="makeStyles-cardCategory-7"
                     >
                       <a
-                        href="/listideas/christmasfortoddlers"
+                        href="/list-ideas/christmas-ideas-for-toddlers"
                       >
                         Christmas Ideas for Toddlers
                       </a>
@@ -68,7 +68,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                     className="makeStyles-cardTitle-6"
                   >
                     <a
-                      href="/listideas/christmasfortoddlers"
+                      href="/list-ideas/christmas-ideas-for-toddlers"
                     >
                       Great Christmas ideas for toddlers and young children
                     </a>
@@ -78,7 +78,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                   >
                     If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play...
                     <a
-                      href="/listideas/christmasfortoddlers"
+                      href="/list-ideas/christmas-ideas-for-toddlers"
                     >
                        
                       Read More
@@ -93,7 +93,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                     className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
                   >
                     <a
-                      href="/listideas/christmasfortoddlers"
+                      href="/list-ideas/christmas-ideas-for-toddlers"
                     >
                       <img
                         alt="..."
@@ -131,7 +131,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                       className="makeStyles-cardCategory-7"
                     >
                       <a
-                        href="/listideas/nursery"
+                        href="/list-ideas/nursery-list"
                       >
                         Nursery List
                       </a>
@@ -141,7 +141,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                     className="makeStyles-cardTitle-6"
                   >
                     <a
-                      href="/listideas/nursery"
+                      href="/list-ideas/nursery-list"
                     >
                       All the items you need for your baby’s bedroom
                     </a>
@@ -151,7 +151,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                   >
                     Have you been gushing over the possibilities for the cute little nursery or area you want to create for your baby. The nesting phase is such a special time in the lead up to the arrival of your baby and choosing how to decorate your nursery can bring immense joy...
                     <a
-                      href="/listideas/nursery"
+                      href="/list-ideas/nursery-list"
                     >
                        
                       Read More
@@ -166,7 +166,7 @@ exports[`Tests for Ideas section. Renders ideas section 1`] = `
                     className="makeStyles-cardHeader-132 makeStyles-cardHeaderPlain-133 makeStyles-cardHeaderImage-134"
                   >
                     <a
-                      href="/listideas/nursery"
+                      href="/list-ideas/nursery-list"
                     >
                       <img
                         alt="..."

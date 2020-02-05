@@ -8,16 +8,16 @@ import Products from "custom/Article/Products.js";
 import ChecklistCard from "custom/Article/ChecklistCard.js";
 
 // Blog Data
-const title = 'Hospital Bag';
+const title = 'Hospital Bag Checklist';
 const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
-const backgroundImg = 'hospital-bag.jpg';
+const backgroundImg = 'hospital-bag-checklist.jpg';
 const productData = require('./Products/HospitalBag.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nursery-list.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/list-ideas/nursery-list", img: 'nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."},
-  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bath-time.jpg',
+  {category: "BABY", title: "Bath Time", url: "/list-ideas/baby-bath-time", img: 'bath-time.jpg',
   description_short: "Everything you need when bathing your baby."}
 ];
 

@@ -30,7 +30,7 @@ export default function HeaderLinks(props) {
         </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/listideas" className={classes.navLink}>
+        <Link to="/list-ideas" className={classes.navLink}>
           Gift List Ideas
         </Link>
       </ListItem>

@@ -70,7 +70,7 @@ exports[`Renders HeaderFixed component, when user is authenticated. 1`] = `
             >
               <a
                 className="makeStyles-navLink-174"
-                href="/listideas"
+                href="/list-ideas"
                 onClick={[Function]}
               >
                 Gift List Ideas
@@ -204,7 +204,7 @@ exports[`Renders HeaderTransparent component, when user is not authenticated. 1`
             >
               <a
                 className="makeStyles-navLink-132"
-                href="/listideas"
+                href="/list-ideas"
                 onClick={[Function]}
               >
                 Gift List Ideas

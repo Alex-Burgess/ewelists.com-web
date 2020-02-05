@@ -27,7 +27,7 @@ exports[`Renders mount component. 1`] = `
     <HostpitalBag>
       <div>
         <ListArticle
-          backgroundImg="hospitalbag.jpg"
+          backgroundImg="hospital-bag-checklist.jpg"
           content={
             <div>
               <div
@@ -298,23 +298,23 @@ exports[`Renders mount component. 1`] = `
               Object {
                 "category": "TRAVEL",
                 "description_short": "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.",
-                "img": "travelgear.jpg",
+                "img": "baby-travel-gear.jpg",
                 "title": "Travel Gear",
-                "url": "/listideas/travelgear",
+                "url": "/list-ideas/baby-travel-gear",
               },
               Object {
                 "category": "NURSERY",
                 "description_short": "What to buy for your baby’s bedroom.",
                 "img": "nurserylist.jpg",
                 "title": "The Nursery List",
-                "url": "/listideas/nursery",
+                "url": "/list-ideas/nursery-list",
               },
               Object {
                 "category": "BABY",
                 "description_short": "Everything you need when bathing your baby.",
                 "img": "bathtime.jpg",
                 "title": "Bath Time",
-                "url": "/listideas/bathtime",
+                "url": "/list-ideas/baby-bath-time",
               },
             ]
           }
@@ -644,16 +644,16 @@ exports[`Renders mount component. 1`] = `
                                                           <Link
                                                             className="makeStyles-navLink-143"
                                                             key=".0"
-                                                            to="/listideas"
+                                                            to="/list-ideas"
                                                           >
                                                             <LinkAnchor
                                                               className="makeStyles-navLink-143"
-                                                              href="/listideas"
+                                                              href="/list-ideas"
                                                               navigate={[Function]}
                                                             >
                                                               <a
                                                                 className="makeStyles-navLink-143"
-                                                                href="/listideas"
+                                                                href="/list-ideas"
                                                                 onClick={[Function]}
                                                               >
                                                                 Gift List Ideas
@@ -813,13 +813,13 @@ exports[`Renders mount component. 1`] = `
             <Parallax
               className="makeStyles-articleBg-9 makeStyles-darkFilter-11"
               filter="dark"
-              image="hospitalbag.jpg"
+              image="hospital-bag-checklist.jpg"
             >
               <div
                 className="makeStyles-parallax-172 makeStyles-darkColor-176 makeStyles-articleBg-9 makeStyles-darkFilter-11"
                 style={
                   Object {
-                    "backgroundImage": "url(hospitalbag.jpg)",
+                    "backgroundImage": "url(hospital-bag-checklist.jpg)",
                     "transform": "translate3d(0,0px,0)",
                   }
                 }
@@ -5897,23 +5897,23 @@ exports[`Renders mount component. 1`] = `
                   Object {
                     "category": "TRAVEL",
                     "description_short": "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.",
-                    "img": "travelgear.jpg",
+                    "img": "baby-travel-gear.jpg",
                     "title": "Travel Gear",
-                    "url": "/listideas/travelgear",
+                    "url": "/list-ideas/baby-travel-gear",
                   },
                   Object {
                     "category": "NURSERY",
                     "description_short": "What to buy for your baby’s bedroom.",
                     "img": "nurserylist.jpg",
                     "title": "The Nursery List",
-                    "url": "/listideas/nursery",
+                    "url": "/list-ideas/nursery-list",
                   },
                   Object {
                     "category": "BABY",
                     "description_short": "Everything you need when bathing your baby.",
                     "img": "bathtime.jpg",
                     "title": "Bath Time",
-                    "url": "/listideas/bathtime",
+                    "url": "/list-ideas/baby-bath-time",
                   },
                 ]
               }
@@ -6440,19 +6440,19 @@ exports[`Renders mount component. 1`] = `
                                                           className="makeStyles-cardHeader-342 makeStyles-cardHeaderImage-344"
                                                         >
                                                           <a
-                                                            href="/listideas/travelgear"
+                                                            href="/list-ideas/baby-travel-gear"
                                                           >
                                                             <img
                                                               alt="..."
                                                               className="makeStyles-listImage-341"
-                                                              src="travelgear.jpg"
+                                                              src="baby-travel-gear.jpg"
                                                             />
                                                           </a>
                                                           <div
                                                             className="makeStyles-coloredShadow-339"
                                                             style={
                                                               Object {
-                                                                "backgroundImage": "url(travelgear.jpg)",
+                                                                "backgroundImage": "url(baby-travel-gear.jpg)",
                                                                 "opacity": "1",
                                                               }
                                                             }
@@ -6476,7 +6476,7 @@ exports[`Renders mount component. 1`] = `
                                                             className="makeStyles-cardTitle-338"
                                                           >
                                                             <a
-                                                              href="/listideas/travelgear"
+                                                              href="/list-ideas/baby-travel-gear"
                                                             >
                                                               Travel Gear
                                                             </a>
@@ -6486,7 +6486,7 @@ exports[`Renders mount component. 1`] = `
                                                           >
                                                             Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free.
                                                             <a
-                                                              href="/listideas/travelgear"
+                                                              href="/list-ideas/baby-travel-gear"
                                                             >
                                                                Read Article 
                                                             </a>
@@ -6643,7 +6643,7 @@ exports[`Renders mount component. 1`] = `
                                                           className="makeStyles-cardHeader-342 makeStyles-cardHeaderImage-344"
                                                         >
                                                           <a
-                                                            href="/listideas/nursery"
+                                                            href="/list-ideas/nursery-list"
                                                           >
                                                             <img
                                                               alt="..."
@@ -6679,7 +6679,7 @@ exports[`Renders mount component. 1`] = `
                                                             className="makeStyles-cardTitle-338"
                                                           >
                                                             <a
-                                                              href="/listideas/nursery"
+                                                              href="/list-ideas/nursery-list"
                                                             >
                                                               The Nursery List
                                                             </a>
@@ -6689,7 +6689,7 @@ exports[`Renders mount component. 1`] = `
                                                           >
                                                             What to buy for your baby’s bedroom.
                                                             <a
-                                                              href="/listideas/nursery"
+                                                              href="/list-ideas/nursery-list"
                                                             >
                                                                Read Article 
                                                             </a>
@@ -6846,7 +6846,7 @@ exports[`Renders mount component. 1`] = `
                                                           className="makeStyles-cardHeader-342 makeStyles-cardHeaderImage-344"
                                                         >
                                                           <a
-                                                            href="/listideas/bathtime"
+                                                            href="/list-ideas/baby-bath-time"
                                                           >
                                                             <img
                                                               alt="..."
@@ -6882,7 +6882,7 @@ exports[`Renders mount component. 1`] = `
                                                             className="makeStyles-cardTitle-338"
                                                           >
                                                             <a
-                                                              href="/listideas/bathtime"
+                                                              href="/list-ideas/baby-bath-time"
                                                             >
                                                               Bath Time
                                                             </a>
@@ -6892,7 +6892,7 @@ exports[`Renders mount component. 1`] = `
                                                           >
                                                             Everything you need when bathing your baby.
                                                             <a
-                                                              href="/listideas/bathtime"
+                                                              href="/list-ideas/baby-bath-time"
                                                             >
                                                                Read Article 
                                                             </a>

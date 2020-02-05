@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import TravelGear from './TravelGear';
+import BabyTravelGear from './BabyTravelGear';
 
 test.skip('Renders TravelGear page.', () => {
   const tree = renderer
     .create(
       <Router>
-        <TravelGear />
+        <BabyTravelGear />
       </Router>
     )
     .toJSON();

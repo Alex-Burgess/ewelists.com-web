@@ -13,11 +13,11 @@ const subtitle = 'What to buy for your baby’s bedroom.';
 const backgroundImg = 'nursery-list.jpg';
 const productData = require('./Products/NurseryList.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospital-bag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "BABY", title: "Bath Time", url: "/listideas/bathtime", img: 'bath-time.jpg',
+  {category: "BABY", title: "Bath Time", url: "/list-ideas/baby-bath-time", img: 'bath-time.jpg',
   description_short: "Everything you need when bathing your baby."}
 ];
 
@@ -115,7 +115,7 @@ export default function Nursery(props) {
         Some drawers or a changing table with some storage will help save your back at changing time and will give you
         somewhere to organise all the things you need for changing time. If you have space, you may want to buy a
         wardrobe which can provide you with some hanging space as well as shelves to store blankets and toys. See
-        <a href="/listideas/babyessentials"> The Essentials Baby List </a> for getting started with clothing and other
+        <a href="/list-ideas/newborn-baby-essentials-list"> The Essentials Baby List </a> for getting started with clothing and other
         items in your nursery.
       </p>
       <Products

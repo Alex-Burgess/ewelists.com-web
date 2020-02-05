@@ -59,7 +59,7 @@ exports[`renders error page 1`] = `
               >
                 <a
                   className="makeStyles-navLink-143"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas

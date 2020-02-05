@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ewelists.com</loc>
-    <lastmod>2020-01-29</lastmod>
+    <lastmod>2020-02-06</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -32,44 +32,44 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/travelgear</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/baby-travel-gear</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/hospitalbag</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/hospital-bag-checklist</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/nursery</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/nursery-list</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/bathtime</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/baby-bath-time</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/christmasfortoddlers</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/christmas-ideas-for-toddlers</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ewelists.com/listideas/babyessentials</loc>
-    <lastmod>2020-01-29</lastmod>
+    <loc>https://ewelists.com/list-ideas/newborn-baby-essentials-list</loc>
+    <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

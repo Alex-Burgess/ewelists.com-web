@@ -59,7 +59,7 @@ exports[`Renders TravelGear page. 1`] = `
               >
                 <a
                   className="makeStyles-navLink-140"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas
@@ -99,7 +99,7 @@ exports[`Renders TravelGear page. 1`] = `
     className="makeStyles-parallax-169 makeStyles-darkColor-173 makeStyles-articleBg-6 makeStyles-darkFilter-8"
     style={
       Object {
-        "backgroundImage": "url(travelgear.jpg)",
+        "backgroundImage": "url(baby-travel-gear.jpg)",
         "transform": "translate3d(0,0px,0)",
       }
     }
@@ -762,19 +762,19 @@ exports[`Renders TravelGear page. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/hospitalbag"
+                    href="/list-ideas/hospital-bag-checklist"
                   >
                     <img
                       alt="..."
                       className="makeStyles-listImage-332"
-                      src="hospitalbag.jpg"
+                      src="hospital-bag-checklist.jpg"
                     />
                   </a>
                   <div
                     className="makeStyles-coloredShadow-330"
                     style={
                       Object {
-                        "backgroundImage": "url(hospitalbag.jpg)",
+                        "backgroundImage": "url(hospital-bag-checklist.jpg)",
                         "opacity": "1",
                       }
                     }
@@ -794,7 +794,7 @@ exports[`Renders TravelGear page. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                       Hospital Bag
                     </a>
@@ -804,7 +804,7 @@ exports[`Renders TravelGear page. 1`] = `
                   >
                     Make sure you're all set with everything you need for the all important hospital bag.
                     <a
-                      href="/listideas/hospitalbag"
+                      href="/list-ideas/hospital-bag-checklist"
                     >
                        Read Article 
                     </a>
@@ -822,7 +822,7 @@ exports[`Renders TravelGear page. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/bathtime"
+                    href="/list-ideas/baby-bath-time"
                   >
                     <img
                       alt="..."
@@ -854,7 +854,7 @@ exports[`Renders TravelGear page. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/bathtime"
+                      href="/list-ideas/baby-bath-time"
                     >
                       Bath Time
                     </a>
@@ -864,7 +864,7 @@ exports[`Renders TravelGear page. 1`] = `
                   >
                     Everything you need when bathing your baby.
                     <a
-                      href="/listideas/bathtime"
+                      href="/list-ideas/baby-bath-time"
                     >
                        Read Article 
                     </a>
@@ -882,7 +882,7 @@ exports[`Renders TravelGear page. 1`] = `
                   className="makeStyles-cardHeader-306 makeStyles-cardHeaderImage-308"
                 >
                   <a
-                    href="/listideas/nursery"
+                    href="/list-ideas/nursery-list"
                   >
                     <img
                       alt="..."
@@ -914,7 +914,7 @@ exports[`Renders TravelGear page. 1`] = `
                     className="makeStyles-cardTitle-329"
                   >
                     <a
-                      href="/listideas/nursery"
+                      href="/list-ideas/nursery-list"
                     >
                       The Nursery List
                     </a>
@@ -924,7 +924,7 @@ exports[`Renders TravelGear page. 1`] = `
                   >
                     What to buy for your baby’s bedroom.
                     <a
-                      href="/listideas/nursery"
+                      href="/list-ideas/nursery-list"
                     >
                        Read Article 
                     </a>

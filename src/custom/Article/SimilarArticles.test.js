@@ -4,9 +4,9 @@ import SimilarArticles from './SimilarArticles';
 
 test('Renders SimilarArticles component.', () => {
   const similarArticles = [
-    {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travelgear.jpg',
+    {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'baby-travel-gear.jpg',
     description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-    {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospitalbag.jpg',
+    {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag-checklist.jpg',
     description_short: "Make sure you're all set with everything you need for the all important hospital bag."}
   ];
 

@@ -59,7 +59,7 @@ exports[`Login Page Snapshots Renders empty form of login page 1`] = `
               >
                 <a
                   className="makeStyles-navLink-152"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas

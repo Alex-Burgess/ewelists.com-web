@@ -19,7 +19,7 @@ export default function HeaderLinks({ ...props }) {
   return (
     <List className={classes.list + " " + classes.mlAuto}>
       <ListItem className={classes.listItem}>
-        <Link to="/listideas" className={classes.navLink}>
+        <Link to="/list-ideas" className={classes.navLink}>
           Gift List Ideas
         </Link>
       </ListItem>

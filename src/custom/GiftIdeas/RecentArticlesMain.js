@@ -18,25 +18,38 @@ export default function RecentArticlesMain(props) {
   const { articles } = props;
   const classes = useStyles();
 
-  const renderLeftImg = (title, url, img, description_short, beginning_content) => {
+  const renderImg = (url, img, type) => {
+    return (
+      <CardHeader image plain>
+        <a href={url}>
+          {type === 'desktop'
+            ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageDesktop} alt="..." />
+            : type === 'right'
+                ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageRight} alt="..." />
+              : type === 'tablet'
+                  ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageTablet} alt="..." />
+                : <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageMobile} alt="..." />
+          }
+        </a>
+        <div
+          className={classes.coloredShadow}
+          style={{
+            backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
+            opacity: "1"
+          }}
+        />
+      </CardHeader>
+    )
+  }
+
+  const renderLeftArticle = (title, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
         <GridContainer>
-          <GridItem xs={12} sm={5} md={5}>
-            <CardHeader image plain>
-              <a href={url}>
-                <img src={config.imagePrefix + '/images/' + img} className={classes.leftImage} alt="..." />
-              </a>
-              <div
-                className={classes.coloredShadow}
-                style={{
-                  backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
-                  opacity: "1"
-                }}
-              />
-            </CardHeader>
+          <GridItem xs={12} sm={12} md={5}>
+            {renderImg(url, img, 'desktop')}
           </GridItem>
-          <GridItem xs={12} sm={7} md={7}>
+          <GridItem xs={12} sm={12} md={7}>
             <Info>
               <h6 className={classes.cardCategory}>
                 <a href={url}>
@@ -49,38 +62,34 @@ export default function RecentArticlesMain(props) {
                 {description_short}
               </a>
             </h3>
-            <p className={classes.description1}>
-              {beginning_content}
-              <a href={url}>
-                {" "}
-                Read More{" "}
-              </a>
-            </p>
+            <GridContainer>
+              <GridItem xs={12} sm={5} md={12}>
+                {renderImg(url, img, 'tablet')}
+              </GridItem>
+              <GridItem xs={12} sm={7} md={12}>
+                <p className={classes.description}>
+                  {beginning_content}
+                  <a href={url}>
+                    {" "}
+                    Read More{" "}
+                  </a>
+                </p>
+              </GridItem>
+            </GridContainer>
           </GridItem>
-          <GridItem xs={12} sm={5} md={5}>
-            <CardHeader image plain>
-              <a href={url}>
-                <img src={config.imagePrefix + '/images/' + img} className={classes.leftImageMobile} alt="..." />
-              </a>
-              <div
-                className={classes.coloredShadow}
-                style={{
-                  backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
-                  opacity: "1"
-                }}
-              />
-            </CardHeader>
+          <GridItem xs={12} sm={12} md={5}>
+            {renderImg(url, img, 'mobile')}
           </GridItem>
         </GridContainer>
       </Card>
     );
   }
 
-  const renderRightImg = (title, url, img, description_short, beginning_content) => {
+  const renderRightArticle = (title, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
           <GridContainer>
-            <GridItem xs={12} sm={7} md={7}>
+            <GridItem xs={12} sm={12} md={7}>
               <Danger>
                 <h6 className={classes.cardCategory}>
                   <a href={url}>
@@ -93,27 +102,23 @@ export default function RecentArticlesMain(props) {
                   {description_short}
                 </a>
               </h3>
-              <p className={classes.description1}>
-              {beginning_content}
-                <a href={url}>
-                  {" "}
-                  Read More{" "}
-                </a>
-              </p>
+              <GridContainer>
+                <GridItem xs={12} sm={7} md={12}>
+                  <p className={classes.description}>
+                    {beginning_content}
+                    <a href={url}>
+                      {" "}
+                      Read More{" "}
+                    </a>
+                  </p>
+                </GridItem>
+                <GridItem xs={12} sm={5} md={12}>
+                  {renderImg(url, img, 'tablet')}
+                </GridItem>
+              </GridContainer>
             </GridItem>
-            <GridItem xs={12} sm={5} md={5}>
-              <CardHeader image plain>
-                <a href={url}>
-                  <img src={config.imagePrefix + '/images/' + img} className={classes.rightImage} alt="..." />
-                </a>
-                <div
-                  className={classes.coloredShadow}
-                  style={{
-                    backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
-                    opacity: "1"
-                  }}
-                />
-              </CardHeader>
+            <GridItem xs={12} sm={12} md={5}>
+              {renderImg(url, img, 'right')}
             </GridItem>
           </GridContainer>
         </Card>
@@ -128,14 +133,14 @@ export default function RecentArticlesMain(props) {
             articles.map ((article, i) =>
               <div key={i}>
                 {article.img_position_left
-                  ? renderLeftImg(
+                  ? renderLeftArticle(
                       article.title,
                       article.url,
                       article.img,
                       article.description_short,
                       article.beginning_content
                     )
-                  : renderRightImg(
+                  : renderRightArticle(
                       article.title,
                       article.url,
                       article.img,

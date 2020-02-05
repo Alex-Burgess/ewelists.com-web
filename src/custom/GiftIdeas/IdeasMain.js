@@ -9,7 +9,6 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 // Custom components
-import SimilarArticlesMain from "custom/GiftIdeas/SimilarArticlesMain.js";
 import RecentArticlesMain from "custom/GiftIdeas/RecentArticlesMain.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 
@@ -17,7 +16,7 @@ import styles from "assets/jss/custom/components/giftIdeasMainStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function GiftIdeasMain(props) {
-  const { isAuthenticated, recentArticles, similarArticles, user } = props;
+  const { isAuthenticated, recentArticles, user } = props;
   const classes = useStyles();
 
   return (
@@ -41,11 +40,6 @@ export default function GiftIdeasMain(props) {
               recentArticles
             }
           />
-          <SimilarArticlesMain
-            articles={
-              similarArticles
-            }
-          />
         </div>
       </div>
       <div className={classes.spacer}>
@@ -58,6 +52,5 @@ export default function GiftIdeasMain(props) {
 GiftIdeasMain.propTypes = {
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
-  recentArticles: PropTypes.array,
-  similarArticles: PropTypes.array
+  recentArticles: PropTypes.array
 };

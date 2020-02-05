@@ -59,7 +59,7 @@ exports[`renders privacy page 1`] = `
               >
                 <a
                   className="makeStyles-navLink-144"
-                  href="/listideas"
+                  href="/list-ideas"
                   onClick={[Function]}
                 >
                   Gift List Ideas

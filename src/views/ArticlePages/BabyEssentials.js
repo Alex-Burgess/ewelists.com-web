@@ -8,16 +8,16 @@ import Products from "custom/Article/Products.js";
 import ChecklistCard from "custom/Article/ChecklistCard.js";
 
 // Blog Data
-const title = 'The Essentials Baby List';
+const title = 'Newborn Baby Essentials List';
 const subtitle = 'What are the basic items that you need for your new arrival?';
-const backgroundImg = 'baby-essentials.jpg';
+const backgroundImg = 'newborn-baby-essentials-list.jpg';
 const productData = require('./Products/BabyEssentials.json');
 const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/listideas/travelgear", img: 'travel-gear.jpg',
+  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
   description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/listideas/hospitalbag", img: 'hospital-bag.jpg',
+  {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag.jpg',
   description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "NURSERY", title: "The Nursery List", url: "/listideas/nursery", img: 'nursery-list.jpg',
+  {category: "NURSERY", title: "The Nursery List", url: "/list-ideas/nursery-list", img: 'nursery-list.jpg',
   description_short: "What to buy for your baby’s bedroom."}
 ];
 
