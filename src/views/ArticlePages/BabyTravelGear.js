@@ -8,18 +8,8 @@ import Products from "custom/Article/Products.js";
 import Quote from "components/Typography/Quote.js";
 
 // Blog Data
-const title = 'Baby Travel Gear';
-const subtitle = 'Our favourite gear to take the fuss out of travelling with little ones!';
-const backgroundImg = 'baby-travel-gear.jpg';
+const name = 'baby-travel-gear'
 const productData = require('./Products/BabyTravelGear.json');
-const similarArticles = [
-  {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag.jpg',
-  description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "BABY", title: "Bath Time", url: "/list-ideas/baby-bath-time", img: 'bath-time.jpg',
-  description_short: "Everything you need when bathing your baby."},
-  {category: "NURSERY", title: "The Nursery List", url: "/list-ideas/nursery-list", img: 'nursery-list.jpg',
-  description_short: "What to buy for your baby’s bedroom."}
-];
 
 export default function TravelGear(props) {
   const [lists, setLists] = useState({});
@@ -273,6 +263,7 @@ export default function TravelGear(props) {
       />
     </div>
   );
+
   useEffect( () => {
     async function getLists(){
       const lists = await getUsersLists();
@@ -288,12 +279,8 @@ export default function TravelGear(props) {
     <ListArticle
       isAuthenticated={props.isAuthenticated}
       user={props.user}
+      name={name}
       content={ content }
-      backgroundImg={backgroundImg}
-      title={title}
-      subtitle={subtitle}
-      storyProducts={[]}
-      similarArticles={similarArticles}
     />
   );
 }

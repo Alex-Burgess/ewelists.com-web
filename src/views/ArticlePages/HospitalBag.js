@@ -8,18 +8,8 @@ import Products from "custom/Article/Products.js";
 import ChecklistCard from "custom/Article/ChecklistCard.js";
 
 // Blog Data
-const title = 'Hospital Bag Checklist';
-const subtitle = "What to Pack in Your Hospital Bag: Our top tips and checklist";
-const backgroundImg = 'hospital-bag-checklist.jpg';
+const name = 'hospital-bag-checklist';
 const productData = require('./Products/HospitalBag.json');
-const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
-  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "NURSERY", title: "The Nursery List", url: "/list-ideas/nursery-list", img: 'nursery-list.jpg',
-  description_short: "What to buy for your baby’s bedroom."},
-  {category: "BABY", title: "Bath Time", url: "/list-ideas/baby-bath-time", img: 'bath-time.jpg',
-  description_short: "Everything you need when bathing your baby."}
-];
 
 export default function HostpitalBag(props) {
   const [lists, setLists] = useState({});
@@ -215,12 +205,8 @@ export default function HostpitalBag(props) {
       <ListArticle
         isAuthenticated={props.isAuthenticated}
         user={props.user}
+        name={name}
         content={ content }
-        backgroundImg={backgroundImg}
-        title={title}
-        subtitle={subtitle}
-        storyProducts={[]}
-        similarArticles={similarArticles}
       />
     </div>
   );

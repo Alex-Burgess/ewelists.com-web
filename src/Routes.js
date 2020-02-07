@@ -10,7 +10,7 @@ import SignupPage from "views/SignupPage/SignupPage.js";
 import PrivacyPage from "views/PrivacyPage/PrivacyPage.js";
 import TermsPage from "views/TermsPage/TermsPage.js";
 import ContactPage from "views/ContactUsPage/ContactUsPage.js";
-import GiftIdeasMain from "views/ArticlePages/GiftIdeasMain.js";
+import GiftListIdeas from "views/GiftListIdeas/GiftListIdeas.js";
 import ArticleTravelGear from "views/ArticlePages/BabyTravelGear.js";
 import ArticleHospitalBag from "views/ArticlePages/HospitalBag.js";
 import ArticleNursery from "views/ArticlePages/Nursery.js";
@@ -30,7 +30,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/terms" exact component={TermsPage} props={childProps} />
     <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
     <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
-    <AppliedRoute path="/list-ideas" exact component={GiftIdeasMain} props={childProps} />
+    <AppliedRoute path="/list-ideas" exact component={GiftListIdeas} props={childProps} />
     <AppliedRoute path="/list-ideas/baby-travel-gear" exact component={ArticleTravelGear} props={childProps} />
     <AppliedRoute path="/list-ideas/hospital-bag-checklist" exact component={ArticleHospitalBag} props={childProps} />
     <AppliedRoute path="/list-ideas/nursery-list" exact component={ArticleNursery} props={childProps} />

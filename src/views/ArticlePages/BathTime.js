@@ -7,18 +7,8 @@ import ListArticle from "custom/Article/ListArticle.js";
 import Products from "custom/Article/Products.js";
 
 // Blog Data
-const title = 'Baby Bath Time';
-const subtitle = 'How to give your baby a bath, with everyting you need.';
-const backgroundImg = 'baby-bath-time.jpg';
+const name = 'baby-bath-time';
 const productData = require('./Products/BathTime.json');
-const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
-  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag.jpg',
-  description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "NURSERY", title: "The Nursery List", url: "/list-ideas/nursery-list", img: 'nursery-list.jpg',
-  description_short: "What to buy for your baby’s bedroom."}
-];
 
 export default function BathTime(props) {
   const [lists, setLists] = useState({});
@@ -169,12 +159,8 @@ export default function BathTime(props) {
     <ListArticle
       isAuthenticated={props.isAuthenticated}
       user={props.user}
+      name={name}
       content={ content }
-      backgroundImg={backgroundImg}
-      title={title}
-      subtitle={subtitle}
-      storyProducts={[]}
-      similarArticles={similarArticles}
     />
   );
 }

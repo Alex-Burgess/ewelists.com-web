@@ -1,15 +1,8 @@
 import * as React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import IdeasMain from './IdeasMain';
+import RecentArticles from './RecentArticles';
 
-const user = {
-  email: 'test.user@gmail.com',
-  name: 'Test User',
-  sub: '6c9b0a41-1234-abcd-5678-c51f280c557f'
-}
-
-test('Renders IdeasMain component.', () => {
+test('Renders RecentArticles component.', () => {
   const recentArticles = [
     {title: "Christmas Ideas", url: "/list-ideas/christmas-ideas-for-toddlers", img: 'christmastoddlers.jpg', img_position_left: false,
     description_short: "Great Christmas ideas for toddlers and young children.",
@@ -19,23 +12,13 @@ test('Renders IdeasMain component.', () => {
     beginning_content: "The compact stroller/buggy is one of the most useful items for travelling. They are handy for all sorts, such as effortlessly moving around the city hopping on and off public transport, taking with you through the airport, or just keeping in the car..."}
   ];
 
-  const similarArticles = [
-    {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'baby-travel-gear.jpg',
-    description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-    {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag-checklist.jpg',
-    description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  ];
-
   const tree = renderer
     .create(
-      <Router>
-        <IdeasMain
-          isAuthenticated={false}
-          user={user}
-          recentArticles={recentArticles}
-          similarArticles={similarArticles}
-        />
-      </Router>
+      <RecentArticles
+        articles={
+          recentArticles
+        }
+      />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

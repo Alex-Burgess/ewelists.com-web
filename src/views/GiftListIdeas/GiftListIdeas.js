@@ -1,6 +1,4 @@
 import React from "react";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -9,19 +7,23 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 // Custom components
-import RecentArticlesMain from "custom/GiftIdeas/RecentArticlesMain.js";
+import RecentArticles from "custom/Articles/RecentArticles.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
+import details from 'views/ArticlePages/PageDetails/PageDetails.json'
 
 import styles from "assets/jss/custom/components/giftIdeasMainStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function GiftIdeasMain(props) {
-  const { isAuthenticated, recentArticles, user } = props;
   const classes = useStyles();
+
+  const getRecentArticles = () => {
+      return Object.keys(details);
+  }
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
+      <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user} />
       <Parallax filter="info" className={classes.parallaxSize}>
         <div className={classes.container}>
           <GridContainer justify="center">
@@ -35,9 +37,9 @@ export default function GiftIdeasMain(props) {
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>
-          <RecentArticlesMain
+          <RecentArticles
             articles={
-              recentArticles
+              getRecentArticles()
             }
           />
         </div>
@@ -48,9 +50,3 @@ export default function GiftIdeasMain(props) {
     </div>
   );
 }
-
-GiftIdeasMain.propTypes = {
-  isAuthenticated: PropTypes.bool,
-  user: PropTypes.object,
-  recentArticles: PropTypes.array
-};

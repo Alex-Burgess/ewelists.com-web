@@ -8,18 +8,8 @@ import SectionHeading from "custom/Article/SectionHeading.js";
 import SectionHeadings from "custom/Article/SectionHeadings.js";
 
 // Blog Data
-const title = 'The Nursery List';
-const subtitle = 'What to buy for your baby’s bedroom.';
-const backgroundImg = 'nursery-list.jpg';
+const name = 'nursery-list';
 const productData = require('./Products/NurseryList.json');
-const similarArticles = [
-  {category: "TRAVEL", title: "Travel Gear", url: "/list-ideas/baby-travel-gear", img: 'travel-gear.jpg',
-  description_short: "Our favourite buggies, travel cots and other gear which make travelling with your little ones hassle free."},
-  {category: "MATERNITY", title: "Hospital Bag", url: "/list-ideas/hospital-bag-checklist", img: 'hospital-bag.jpg',
-  description_short: "Make sure you're all set with everything you need for the all important hospital bag."},
-  {category: "BABY", title: "Bath Time", url: "/list-ideas/baby-bath-time", img: 'bath-time.jpg',
-  description_short: "Everything you need when bathing your baby."}
-];
 
 export default function Nursery(props) {
   const [lists, setLists] = useState({});
@@ -239,12 +229,8 @@ export default function Nursery(props) {
     <ListArticle
       isAuthenticated={props.isAuthenticated}
       user={props.user}
+      name={name}
       content={ content }
-      backgroundImg={backgroundImg}
-      title={title}
-      subtitle={subtitle}
-      storyProducts={[]}
-      similarArticles={similarArticles}
     />
   );
 }

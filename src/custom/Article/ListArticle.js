@@ -9,8 +9,9 @@ import FooterDark from "custom/Footer/FooterDark.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 // Custom components
-import SimilarArticles from "custom/Article/SimilarArticles.js";
+import SimilarArticles from "custom/Articles/SimilarArticles.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
+import details from 'views/ArticlePages/PageDetails/PageDetails.json'
 import config from 'config.js';
 
 import styles from "assets/jss/custom/components/article/listArticleStyle.js";
@@ -19,7 +20,11 @@ const useStyles = makeStyles(styles);
 export default function ListArticle(props) {
   const classes = useStyles();
 
-  const { isAuthenticated, backgroundImg, title, subtitle, similarArticles, content, user } = props;
+  const { isAuthenticated, name, content, user } = props;
+
+  const title = details[name].title;
+  const subtitle = details[name].description_short;
+  const backgroundImg = details[name].img;
 
   return (
     <div>
@@ -46,9 +51,7 @@ export default function ListArticle(props) {
         </div>
       </div>
       <SimilarArticles
-        articles={
-          similarArticles
-        }
+        name={name}
       />
       <FooterDark />
     </div>
@@ -57,9 +60,6 @@ export default function ListArticle(props) {
 
 ListArticle.propTypes = {
   isAuthenticated: PropTypes.bool,
-  backgroundImg: PropTypes.string,
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  similarArticles: PropTypes.array,
-  content: PropTypes.object
+  name: PropTypes.string,
+  content: PropTypes.object,
 };

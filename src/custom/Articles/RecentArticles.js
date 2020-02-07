@@ -9,12 +9,13 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Info from "components/Typography/Info.js";
 import Danger from "components/Typography/Danger.js";
+import details from 'views/ArticlePages/PageDetails/PageDetails.json'
 import config from 'config.js';
 
 import styles from "assets/jss/custom/components/recentArticlesMainStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function RecentArticlesMain(props) {
+export default function RecentArticles(props) {
   const { articles } = props;
   const classes = useStyles();
 
@@ -125,28 +126,30 @@ export default function RecentArticlesMain(props) {
     );
   }
 
+  const renderArticle = (id, i) => {
+    const title = details[id].title;
+    const subtitle = details[id].description_short;
+    const url = details[id].url;
+    const img = details[id].img;
+    const beginning_content = details[id].beginning_content;
+
+    if ( (i / 2) % 1 !== 0 ) {
+      return renderLeftArticle(title, url, img, subtitle, beginning_content);
+    } else {
+      return renderRightArticle(title, url, img, subtitle, beginning_content);
+    }
+  }
+
+
   return (
     <div className={classes.section}>
       <GridContainer>
         <GridItem xs={12} sm={10} md={10} className={classes.mlAuto + " " + classes.mrAuto}>
           {
-            articles.map ((article, i) =>
+            articles.map ((id, i) =>
               <div key={i}>
-                {article.img_position_left
-                  ? renderLeftArticle(
-                      article.title,
-                      article.url,
-                      article.img,
-                      article.description_short,
-                      article.beginning_content
-                    )
-                  : renderRightArticle(
-                      article.title,
-                      article.url,
-                      article.img,
-                      article.description_short,
-                      article.beginning_content
-                  )
+                {
+                  renderArticle(id, i)
                 }
               </div>
             )
@@ -157,6 +160,6 @@ export default function RecentArticlesMain(props) {
   );
 }
 
-RecentArticlesMain.propTypes = {
+RecentArticles.propTypes = {
   articles: PropTypes.array,
 };
