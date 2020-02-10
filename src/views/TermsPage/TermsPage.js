@@ -89,8 +89,9 @@ export default function TermsPage(props) {
               </p>
               <p>
                 Subject to these Terms, Ewelists agrees to provide the Services to You free of charge. Ewelists may include
-                affiliate links on the Site to merchants{"'"} websites and in return Ewelists may receive money from such merchants
-                for purchases made by You, Your family or friends after clicking through the affiliate links.
+                affiliate links on the Site to merchants{"'"} websites and in return Ewelists may receive money from such
+                merchants for purchases made by You, Your family or friends after clicking through the affiliate links.
+                As an Amazon Associate we earn from qualifying purchases.
               </p>
               <p>
                 Your correspondence or dealings with affiliates or merchants found on this Site or through the Services,
