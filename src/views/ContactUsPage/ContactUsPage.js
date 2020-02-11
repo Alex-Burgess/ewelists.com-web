@@ -14,13 +14,12 @@ import FooterGrey from "custom/Footer/FooterGrey.js";
 import Parallax from "components/Parallax/Parallax.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
 import SentMessage from "./Sections/SentMessage.js";
-import config from 'config.js';
 import { contactApiPost } from "./contactApi";
 
 import styles from "assets/jss/custom/views/contactUsCustomStyle.js";
 const useStyles = makeStyles(styles);
 
-const backgroundImage = config.imagePrefix + "/images/sheep-with-shoes.jpg";
+const backgroundImage = "/images/sheep-with-shoes";
 
 export default function ContactUsPage(props) {
   const classes = useStyles();

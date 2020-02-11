@@ -50,15 +50,12 @@ export default function SimilarArticles(props) {
       <Card blog>
         <CardHeader image>
           <a href={url}>
-            <img src={config.imagePrefix + '/images/' + img} className={classes.listImage} alt="..." />
+            <picture>
+              <source type="image/webp" srcSet={config.imagePrefix + '/images/' + img + '.tile.webp'} />
+              <source type="image/jpeg" srcSet={config.imagePrefix + '/images/' + img + '.tile.jpg'} />
+              <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.listImage} alt="..." />
+            </picture>
           </a>
-          <div
-            className={classes.coloredShadow}
-            style={{
-              backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
-              opacity: "1"
-            }}
-          />
         </CardHeader>
         <CardBody>
           <Info>

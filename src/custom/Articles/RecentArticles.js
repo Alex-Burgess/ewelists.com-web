@@ -23,22 +23,19 @@ export default function RecentArticles(props) {
     return (
       <CardHeader image plain>
         <a href={url}>
-          {type === 'desktop'
-            ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageDesktop} alt="..." />
-            : type === 'right'
-                ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageRight} alt="..." />
-              : type === 'tablet'
-                  ? <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageTablet} alt="..." />
-                : <img src={config.imagePrefix + '/images/' + img} className={classes.image + " " + classes.imageMobile} alt="..." />
-          }
+          <picture>
+              <source type="image/webp" srcSet={config.imagePrefix + '/images/' + img + '.tile.webp'} />
+              <source type="image/jpeg" srcSet={config.imagePrefix + '/images/' + img + '.tile.jpg'} />
+              {type === 'desktop'
+                ? <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.image + " " + classes.imageDesktop} alt="..." />
+                : type === 'right'
+                    ? <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.image + " " + classes.imageRight} alt="..." />
+                  : type === 'tablet'
+                      ? <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.image + " " + classes.imageTablet} alt="..." />
+                      : <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.image + " " + classes.imageMobile} alt="..." />
+              }
+          </picture>
         </a>
-        <div
-          className={classes.coloredShadow}
-          style={{
-            backgroundImage: "url(" + config.imagePrefix + '/images/' + img + ")",
-            opacity: "1"
-          }}
-        />
       </CardHeader>
     )
   }
@@ -130,9 +127,8 @@ export default function RecentArticles(props) {
     const title = details[id].title;
     const subtitle = details[id].description_short;
     const url = details[id].url;
-    const img = details[id].tile;
+    const img = details[id].img;
 
-    console.log("img link: " + img);
     const beginning_content = details[id].beginning_content;
 
     if ( (i / 2) % 1 !== 0 ) {

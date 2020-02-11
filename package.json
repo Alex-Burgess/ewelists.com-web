@@ -25,6 +25,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-image-gallery": "0.8.18",
+    "react-image-webp": "^0.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-slick": "0.25.2",

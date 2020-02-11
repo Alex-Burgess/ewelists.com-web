@@ -8,12 +8,12 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import config from 'config.js';
+import {imageSize} from 'custom/Image/Image.js';
 
 import styles from "assets/jss/custom/views/resetPasswordPageStyle.js";
 const useStyles = makeStyles(styles);
 
-const image = config.imagePrefix + "/images/sheep-with-shoes.jpg";
+const image = "/images/sheep-with-shoes";
 
 export default function SuccessMessage(props) {
   const classes = useStyles();
@@ -24,7 +24,7 @@ export default function SuccessMessage(props) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url(" + image + ")",
+          backgroundImage: "url(" + imageSize(image) + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center"
         }}

@@ -12,7 +12,7 @@ import config from 'config.js';
 import styles from "assets/jss/custom/views/landingPage/createStyle.js";
 const useStyles = makeStyles(styles);
 
-const laptop = config.imagePrefix + "/images/laptop-mockup.jpg";
+const laptopImg = config.imagePrefix + "/images/laptop-mockup";
 
 export default function LandingCreate(props) {
   const classes = useStyles();
@@ -58,7 +58,11 @@ export default function LandingCreate(props) {
           </GridItem>
           <GridItem xs={12} sm={7} md={7}>
             <div className={classes.imgContainer}>
-              <img src={laptop} alt="..." />
+              <picture>
+                <source type="image/webp" srcSet={laptopImg + '.webp'} />
+                <source type="image/jpeg" srcSet={laptopImg + '.jpg'} />
+                <img src={laptopImg + '.jpg'} alt="..." />
+              </picture>
             </div>
             { desktop
               ? null

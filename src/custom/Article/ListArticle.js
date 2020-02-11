@@ -12,7 +12,6 @@ import GridItem from "components/Grid/GridItem.js";
 import SimilarArticles from "custom/Articles/SimilarArticles.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import details from 'views/ArticlePages/PageDetails/PageDetails.json'
-import config from 'config.js';
 
 import styles from "assets/jss/custom/components/article/listArticleStyle.js";
 const useStyles = makeStyles(styles);
@@ -24,12 +23,12 @@ export default function ListArticle(props) {
 
   const title = details[name].title;
   const subtitle = details[name].description_short;
-  const backgroundImg = details[name].img;
+  const img = details[name].img;
 
   return (
     <div>
       <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
-      <Parallax image={config.imagePrefix + '/images/' + backgroundImg} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
+      <Parallax image={'/images/' + img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>

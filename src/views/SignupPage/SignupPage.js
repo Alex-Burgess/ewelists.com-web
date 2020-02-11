@@ -24,12 +24,12 @@ import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
 import NotifyPopOut from "./Sections/NotifyPopOut.js";
-import config from 'config.js';
+import {imageSize} from 'custom/Image/Image.js';
 
 import styles from "assets/jss/custom/views/signupPageStyle.js";
 const useStyles = makeStyles(styles);
 
-const image = config.imagePrefix + "/images/sheep-with-shoes.jpg";
+const image = "/images/sheep-with-shoes";
 
 export default function SignupPage(props) {
   const classes = useStyles();
@@ -123,7 +123,7 @@ export default function SignupPage(props) {
         <div
           className={classes.pageHeader}
           style={{
-            backgroundImage: "url(" + image + ")",
+            backgroundImage: "url(" + imageSize(image) + ")",
             backgroundSize: "cover",
             backgroundPosition: "top center"
           }}

@@ -5,6 +5,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+// Custom
+import {imageSize} from 'custom/Image/Image.js';
 
 // core components
 import styles from "assets/jss/material-kit-pro-react/components/parallaxStyle.js";
@@ -43,12 +45,13 @@ export default function Parallax(props) {
     [classes.small]: small,
     [className]: className !== undefined
   });
+
   return (
     <div
       className={parallaxClasses}
       style={{
         ...style,
-        backgroundImage: "url(" + image + ")",
+        backgroundImage: "url(" + imageSize(image) + ")",
         transform: transform
       }}
     >

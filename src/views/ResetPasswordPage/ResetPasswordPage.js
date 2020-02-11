@@ -16,12 +16,12 @@ import CardBody from "components/Card/CardBody.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import SuccessMessage from "./Sections/SuccessMessage.js";
 import NewPasswordForm from "./Sections/NewPasswordForm.js";
-import config from 'config.js';
+import {imageSize} from 'custom/Image/Image.js';
 
 import styles from "assets/jss/custom/views/resetPasswordPageStyle.js";
 const useStyles = makeStyles(styles);
 
-const image = config.imagePrefix + "/images/sheep-with-shoes.jpg";
+const image = "/images/sheep-with-shoes";
 
 export default function ResetPasswordPage(props) {
   const classes = useStyles();
@@ -57,7 +57,7 @@ export default function ResetPasswordPage(props) {
         <div
           className={classes.pageHeader}
           style={{
-            backgroundImage: "url(" + image + ")",
+            backgroundImage: "url(" + imageSize(image) + ")",
             backgroundSize: "cover",
             backgroundPosition: "top center"
           }}
