@@ -130,7 +130,9 @@ export default function RecentArticles(props) {
     const title = details[id].title;
     const subtitle = details[id].description_short;
     const url = details[id].url;
-    const img = details[id].img;
+    const img = details[id].tile;
+
+    console.log("img link: " + img);
     const beginning_content = details[id].beginning_content;
 
     if ( (i / 2) % 1 !== 0 ) {
