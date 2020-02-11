@@ -7,12 +7,12 @@ import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-
-import laptop from "assets/img/laptop-mockup.png";
-// import sheeptoy from "assets/img/sheep-toy1.jpg";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/landingPage/createStyle.js";
 const useStyles = makeStyles(styles);
+
+const laptop = config.imagePrefix + "/images/laptop-mockup.jpg";
 
 export default function LandingCreate(props) {
   const classes = useStyles();

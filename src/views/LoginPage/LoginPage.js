@@ -16,11 +16,12 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-
-import image from "assets/img/sheep-with-shoes.jpg";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/loginPageStyle.js";
 const useStyles = makeStyles(styles);
+
+const backgroundImage = config.imagePrefix + "/images/sheep-with-shoes.jpg";
 
 export default function LoginPage(props) {
   const classes = useStyles();
@@ -59,7 +60,7 @@ export default function LoginPage(props) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url(" + image + ")",
+          backgroundImage: "url(" + backgroundImage + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center"
         }}

@@ -16,11 +16,12 @@ import CardBody from "components/Card/CardBody.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import SuccessMessage from "./Sections/SuccessMessage.js";
 import NewPasswordForm from "./Sections/NewPasswordForm.js";
-
-import image from "assets/img/sheep-with-shoes.jpg";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/resetPasswordPageStyle.js";
 const useStyles = makeStyles(styles);
+
+const image = config.imagePrefix + "/images/sheep-with-shoes.jpg";
 
 export default function ResetPasswordPage(props) {
   const classes = useStyles();

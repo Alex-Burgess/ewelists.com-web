@@ -7,11 +7,12 @@ import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-
-import image from "assets/img/sheep-with-shoes.jpg";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/errorPageCustomStyle.js";
 const useStyles = makeStyles(styles);
+
+const backgroundImage = config.imagePrefix + "/images/sheep-with-shoes.jpg";
 
 export default function ErrorPage(props) {
   const classes = useStyles();
@@ -21,7 +22,7 @@ export default function ErrorPage(props) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url(" + image + ")",
+          backgroundImage: "url(" + backgroundImage + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center"
         }}

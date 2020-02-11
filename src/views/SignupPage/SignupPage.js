@@ -24,11 +24,12 @@ import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
 import NotifyPopOut from "./Sections/NotifyPopOut.js";
-
-import image from "assets/img/sheep-with-shoes.jpg";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/signupPageStyle.js";
 const useStyles = makeStyles(styles);
+
+const image = config.imagePrefix + "/images/sheep-with-shoes.jpg";
 
 export default function SignupPage(props) {
   const classes = useStyles();
