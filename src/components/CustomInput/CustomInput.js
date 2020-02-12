@@ -44,9 +44,11 @@ export default function CustomInput(props) {
   const marginTop = classNames({
     [inputRootCustomClasses]: inputRootCustomClasses !== undefined
   });
-  const inputClasses = classNames({
+  const inputClasses = classNames(
+    inputProps.className,
+    {
     [classes.input]: true,
-    [classes.whiteInput]: white
+    [classes.whiteInput]: white,
   });
   var formControlClasses;
   if (formControlProps !== undefined) {

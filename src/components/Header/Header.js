@@ -56,7 +56,7 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   };
-  const { color, links, brand, fixed, absolute } = props;
+  const { color, links, brand, fixed, absolute, back, page } = props;
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes[color]]: color,
@@ -65,23 +65,32 @@ export default function Header(props) {
   });
   return (
     <AppBar className={appBarClasses}>
-      <Toolbar className={classes.container}>
-        <Button className={classes.title}>
-          <Link to="/">{brand}</Link>
-        </Button>
-        <Hidden smDown implementation="css" className={classes.hidden}>
-          <div className={classes.collapse}>{links}</div>
-        </Hidden>
-        <Hidden mdUp>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden>
-      </Toolbar>
+      { back
+        ? <Toolbar className={classes.containerBack}>
+            <Button className={classes.title}>
+              {brand}
+            </Button>
+            {page}
+          </Toolbar>
+        : <Toolbar className={classes.container}>
+            <Button className={classes.title}>
+              <Link to="/">{brand}</Link>
+            </Button>
+            <Hidden smDown implementation="css" className={classes.hidden}>
+              <div className={classes.collapse}>{links}</div>
+            </Hidden>
+            <Hidden mdUp>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerToggle}
+              >
+                <Menu />
+              </IconButton>
+            </Hidden>
+          </Toolbar>
+      }
+
       <Hidden mdUp implementation="js">
         <Drawer
           variant="temporary"
@@ -126,6 +135,8 @@ Header.propTypes = {
   links: PropTypes.node,
   brand: PropTypes.object,
   fixed: PropTypes.bool,
+  back: PropTypes.bool,
+  page: PropTypes.object,
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
   // props.color (see above) to changeColorOnScroll.color

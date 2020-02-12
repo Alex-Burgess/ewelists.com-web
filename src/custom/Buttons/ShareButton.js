@@ -8,11 +8,10 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-import styles from "assets/jss/material-kit-pro-react/components/buttonStyle.js";
-
+import styles from "assets/jss/custom/components/buttonCustomStyle.js";
 const useStyles = makeStyles(styles);
 
-const RegularButton = React.forwardRef((props, ref) => {
+const ShareButton = React.forwardRef((props, ref) => {
   const {
     color,
     round,
@@ -50,30 +49,12 @@ const RegularButton = React.forwardRef((props, ref) => {
   );
 });
 
-RegularButton.propTypes = {
+ShareButton.propTypes = {
   color: PropTypes.oneOf([
     "default",
-    "primary",
-    "secondary",
-    "info",
-    "success",
-    "warning",
-    "danger",
-    "rose",
-    "white",
-    "twitter",
-    "facebook",
-    "google",
-    "linkedin",
-    "pinterest",
-    "youtube",
-    "tumblr",
-    "github",
-    "behance",
-    "dribbble",
-    "reddit",
-    "instagram",
-    "transparent"
+    "share",
+    "facebookMessenger",
+    "whatsapp",
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   simple: PropTypes.bool,
@@ -88,4 +69,4 @@ RegularButton.propTypes = {
   className: PropTypes.string
 };
 
-export default RegularButton;
+export default ShareButton;

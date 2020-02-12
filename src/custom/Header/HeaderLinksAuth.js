@@ -11,7 +11,6 @@ import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToApp from "@material-ui/icons/ExitToApp";
-import Settings from "@material-ui/icons/Settings";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 
@@ -34,26 +33,38 @@ export default function HeaderLinks(props) {
           Gift List Ideas
         </Link>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          navDropdown
-          hoverColor={dropdownHoverColor}
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent"
-          }}
-          buttonIcon={Settings}
-          dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-              <AccountCircle className={classes.dropdownIcons} /> {user.name}
-            </Link>,
-            <Link to="/logout" className={classes.dropdownLink}>
-              <ExitToApp className={classes.dropdownIcons} /> Sign Out
+      {window.innerWidth < 400
+        ? <div><ListItem className={classes.listItem}>
+            <Link to="/" className={classes.navLink}>
+              <AccountCircle /> {user.name}
             </Link>
-          ]}
-        />
-      </ListItem>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/logout" className={classes.navLink}>
+              <ExitToApp /> Sign Out
+            </Link>
+          </ListItem></div>
+        : <ListItem className={classes.listItem}>
+            <CustomDropdown
+              noLiPadding
+              navDropdown
+              hoverColor={dropdownHoverColor}
+              buttonProps={{
+                className: classes.navLink,
+                color: "transparent"
+              }}
+              buttonIcon={AccountCircle}
+              dropdownList={[
+                <Link to="/" className={classes.dropdownLink}>
+                  <AccountCircle className={classes.dropdownIcons} /> {user.name}
+                </Link>,
+                <Link to="/logout" className={classes.dropdownLink}>
+                  <ExitToApp className={classes.dropdownIcons} /> Sign Out
+                </Link>
+              ]}
+            />
+          </ListItem>
+      }
     </List>
   );
 }

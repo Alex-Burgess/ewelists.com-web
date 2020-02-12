@@ -53,6 +53,10 @@ const headerStyle = theme => ({
     display: "flex",
     flexWrap: "nowrap"
   },
+  containerBack: {
+    ...container,
+    minHeight: "50px",
+  },
   title: {
     letterSpacing: "unset",
     "&,& a": {

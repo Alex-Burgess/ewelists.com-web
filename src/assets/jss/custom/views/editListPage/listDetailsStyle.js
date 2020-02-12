@@ -34,6 +34,20 @@ const sectionDetailsStyle = theme => ({
       paddingRight: "15px",
     }
   },
+  cogMobile: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+      paddingLeft: "5px",
+      paddingRight: "15px",
+    }
+  },
+  cogDesktop: {
+    display: "block",
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    }
+  },
   title: {
     ...title,
     textAlign: "Left",
@@ -44,49 +58,24 @@ const sectionDetailsStyle = theme => ({
         fontSize: "2rem"
     },
     [theme.breakpoints.down("xs")]: {
-        textAlign: "Center",
+        // textAlign: "Center",
         fontSize: "1.75rem",
-        // marginTop: "30px",
         marginTop: "10px",
         marginBottom: "10px",
     }
   },
   description: {
     paddingBottom: "10px",
-    minHeight: "48px"
-  },
-  descriptionEditWrapper: {
-    paddingTop: "10px",
-  },
-  label: {
-    paddingTop: "25px",
-    paddingBottom: "5px",
-    color: grayColor[12],
+    minHeight: "48px",
+    color: grayColor[0],
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "0",
-      paddingBottom: "10px",
-      textAlign: "Center",
+        // textAlign: "Center",
     }
   },
-  labelEdit: {
-    paddingTop: "10px",
-    paddingBottom: "0",
-    color: grayColor[12],
+  event: {
+    color: grayColor[0],
     [theme.breakpoints.down("xs")]: {
-      paddingTop: "0",
-      paddingBottom: "0",
-    }
-  },
-  labelWrapper: {
-    [theme.breakpoints.down("xs")]: {
-      display: "inline-flex",
-    }
-  },
-  labelValue: {
-    display: "inline-flex",
-    maxWidth: "125px",
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "7px"
+        // textAlign: "Center",
     }
   },
   listImage: {
@@ -100,10 +89,11 @@ const sectionDetailsStyle = theme => ({
     [theme.breakpoints.down("xs")]: {
       // marginTop: "10px",
       maxWidth: "320px",
-      maxHeight: "200px",
+      maxHeight: "225px",
     }
   },
   customProfile: {
+    marginBottom: "5px",
     [theme.breakpoints.down("xs")]: {
       // marginTop: "10px",
       marginTop: "20px",
@@ -115,41 +105,9 @@ const sectionDetailsStyle = theme => ({
       textAlign: "Center",
     }
   },
-  viewButtons: {
-    paddingTop: "20px",
-    // paddingLeft: "22px",
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "0",
-      paddingLeft: "0",
-      textAlign: "Center",
-    }
-  },
-  editButtons: {
-    paddingTop: "32px",
-    paddingLeft: "22px",
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "0",
-      paddingLeft: "0",
-      textAlign: "Center",
-    }
-  },
-  occasionSelect: {
-    paddingTop: "0px",
-    minWidth: "100px",
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "5px"
-    }
-  },
-  dateSelect: {
-    paddingTop: "0px",
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "5px"
-    }
-  },
-  customButton: {
-    [theme.breakpoints.down("sm")]: {
-      padding: "12px 15px",
-    }
+  shareText: {
+    textTransform: "capitalize",
+    fontSize: "14px"
   }
 });
 

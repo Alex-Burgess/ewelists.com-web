@@ -4,7 +4,6 @@ import { API } from "aws-amplify";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import People from "@material-ui/icons/People";
 import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
 import Redeem from "@material-ui/icons/Redeem";
@@ -16,7 +15,6 @@ import NavPills from "components/NavPills/NavPills.js";
 import SectionListDetails from "./Sections/ListDetails.js";
 import SectionProducts from "./Sections/Products.js";
 import SectionAddGifts from "./Sections/AddGifts.js";
-import SectionShare from "./Sections/Share.js";
 import SectionReserved from "./Sections/Reserved.js";
 
 import config from 'config.js';
@@ -38,7 +36,6 @@ export default function EditPage(props) {
   const [imageUrl, setImageUrl] = useState('');
   const [products, setProducts] = useState({});
   const [reserved, setReserved] = useState([]);
-  const [shared, setShared] = useState({});
   const [tabId, setTabId] = useState(0);
 
   useEffect( () => {
@@ -73,7 +70,6 @@ export default function EditPage(props) {
       setOccasion(response.list.occasion);
       setImageUrl(response.list.imageUrl);
       setReserved(response.reserved);
-      setShared(response.shared);
 
       if (('eventDate' in response.list) && (response.list.eventDate !== 'None')) {
         setDate(response.list.eventDate);
@@ -156,20 +152,6 @@ export default function EditPage(props) {
     )
   }
 
-  const addUserToSharedState = (user) => {
-    setShared({
-      ...shared,
-      [user['email']]: user
-    })
-  }
-
-  const removeUserFromSharedState = (email) => {
-    // unset command of immutability helper requires array of keys to be removed.
-    setShared(
-      update(shared, { $unset: [email] })
-    )
-  }
-
   const setActive = (id) => {
     if (! desktop) {
       if (window.pageYOffset < 200) {
@@ -210,7 +192,6 @@ export default function EditPage(props) {
                 occasion={occasion}
                 date={date}
                 imageUrl={imageUrl}
-                products={products}
               />
             <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills
@@ -220,7 +201,7 @@ export default function EditPage(props) {
                   color="primary"
                   tabs={[
                     {
-                      tabButton: "Manage",
+                      tabButton: "Manage List",
                       tabIcon: List,
                       tabContent: (
                         <div>
@@ -243,20 +224,6 @@ export default function EditPage(props) {
                             listId={listId}
                             addProductToState={addProductToState}
                             setActive={setActive}
-                          />
-                        </div>
-                      )
-                    },
-                    {
-                      tabButton: "Share",
-                      tabIcon: People,
-                      tabContent: (
-                        <div>
-                          <SectionShare
-                            listId={listId}
-                            shared={shared}
-                            addUserToSharedState={addUserToSharedState}
-                            removeUserFromSharedState={removeUserFromSharedState}
                           />
                         </div>
                       )

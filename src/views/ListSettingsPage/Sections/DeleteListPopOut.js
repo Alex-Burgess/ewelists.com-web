@@ -15,7 +15,7 @@ import Close from "@material-ui/icons/Close";
 // core components
 import Button from "components/CustomButtons/Button.js";
 
-import styles from "assets/jss/custom/views/editListPage/popoutStyle.js";
+import styles from "assets/jss/custom/views/listSettingsPage/deleteListStyle.js";
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {

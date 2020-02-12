@@ -54,9 +54,9 @@ const navPillsStyle = theme => ({
     fontWeight: "500",
     // Custom Style for mobile edit nav bar
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "70px",
-      minWidth: "70px",
-      maxHeight: "100px"
+      maxWidth: "95px",
+      minWidth: "95px",
+      padding: "10px 5px",
     }
   },
   pillsWithIcons: {

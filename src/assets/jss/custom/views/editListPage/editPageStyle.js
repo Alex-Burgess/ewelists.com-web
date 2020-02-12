@@ -5,7 +5,7 @@ import {
   whiteColor
 } from "assets/jss/material-kit-pro-react.js";
 
-const pageStyle = {
+const pageStyle = theme => ({
   container: {
     ...container,
     zIndex: "2"
@@ -41,8 +41,10 @@ const pageStyle = {
     width: "auto"
   },
   profileTabs: {
-    marginTop: "2rem"
-  },
-};
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "2rem"
+    }
+  }
+});
 
 export default pageStyle;

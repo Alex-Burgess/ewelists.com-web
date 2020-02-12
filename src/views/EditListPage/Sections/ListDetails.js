@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { API } from "aws-amplify";
+import React, { useState } from 'react';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// react plugin for creating date-time-picker
-import Datetime from "react-datetime";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-// @material-ui/icons
-import Delete from "@material-ui/icons/DeleteOutline";
-import Close from "@material-ui/icons/Close";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -21,163 +10,91 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Button from "components/CustomButtons/Button.js";
 // Custom components
-import ListsInput from "custom/Inputs/ListsInput.js";
-// Sections
-import SectionDelete from "./DeleteListPopOut.js";
-
-import config from 'config.js';
+import ShareButton from "custom/Buttons/ShareButton.js";
+import { Facebook } from "custom/Share/Share.js";
 
 import styles from "assets/jss/custom/views/editListPage/listDetailsStyle.js";
 const useStyles = makeStyles(styles);
 
-const occasionList = ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christening', 'Other'];
+const copy = require('clipboard-copy')
 
 export default function SectionDetails(props) {
   const classes = useStyles();
 
-  const { listId, title, description, occasion, date, imageUrl, products } = props;
+  const { listId, title, description, occasion, date, imageUrl } = props;
 
-  const [newTitle, setNewTitle] = useState('');
-  const [newDescription, setNewDescription] = useState('');
-  const [newOccasion, setNewOccasion] = useState('');
-  const [newDate, setNewDate] = useState('');
-  const [newImageUrl, setNewImageUrl] = useState('');
-  const [isEdit, setIsEdit] = useState(false);
-  const [showDeletePopOut, setShowDeletePopOut] = useState(false);
+  const mailToText = "mailto:?subject=User shared a list with you&body=Hi! I've created a gift list for my " + occasion + ".  You can view this on ewelists.com:%0D%0A%0D%0Ahttp://localhost:3000/edit/" + listId
 
-  useEffect(() => {
-    setNewTitle(title);
-    setNewDescription(description);
-    setNewOccasion(occasion);
-    setNewDate(date);
-    setNewImageUrl(imageUrl);
-  }, [title, description, occasion, date, imageUrl])
+  const [showCopied, setShowCopied] = useState(false);
 
-  const cancelEdit = async () => {
-    setNewTitle(title);
-    setNewDescription(description);
-    setNewOccasion(occasion);
-    setNewDate(date);
-    setNewImageUrl(imageUrl);
-    setIsEdit(false);
+  const copyLink = () => {
+    copy("http://localhost:3000/edit/" + listId);
+    setShowCopied(true);
+
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 3000);
   }
 
-  const changeDate = (d) => {
-    if (d) {
-      const t = typeof d;
-      if ( t === 'string') {
-        console.log("Date string: " + d + "(" + t + ")")
-        setNewDate('');
-      } else {
-        setNewDate(d.format('DD MMMM YYYY'));
-      }
-    } else {
-      setNewDate('');
-    }
-  }
-
-  const changeOccasion = (event) => {
-    let newOccasion = event.target.value;
-
-    const occasion_parsed = newOccasion.toLowerCase().replace(/\s/g,'');
-    let newImageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
-
-    setNewOccasion(newOccasion);
-    setNewImageUrl(newImageUrl);
-  }
-
-  const renderOccasionSelect = () => {
-    return (
-      <FormControl fullWidth className={classes.occasionSelect}>
-        <Select
-          MenuProps={{className: classes.selectMenu}}
-          classes={{select: classes.select}}
-          value={newOccasion}
-          onChange={changeOccasion}
-          inputProps={{name: "occasion", id: "simple-select"}}
-        >
-          <MenuItem disabled classes={{root: classes.selectMenuItem}}>
-            Select Type
-          </MenuItem>
-          {renderMenuItems(occasionList)}
-        </Select>
-      </FormControl>
-    )
-  }
-
-  const saveDetails = async () => {
-    try {
-      var requestBody = {
-        "title": newTitle,
-        "description": newDescription,
-        "eventDate": newDate,
-        "occasion": newOccasion,
-        "imageUrl":  newImageUrl,
-      };
-
-      console.log('Updating list details: ' + JSON.stringify(requestBody));
-
-      await API.put("lists", "/" + listId, {
-        body: requestBody
-      });
-
-      setIsEdit(false);
-    } catch (e) {
-      console.log('Unexpected error occurred when updating list: ' + e.response.data.error);
-    }
-  }
-
-  const renderMenuItems = () => {
-    return occasionList.map(
-      (label, i) =>
-          <MenuItem classes={{root: classes.selectMenuItem, selected: classes.selectMenuItemSelected}} value={label} key={i}>
-            {label}
-          </MenuItem>
-    )
-  }
-
-  const renderView = () => {
-    return (
+  return (
+    <div className={classes.section}>
       <div className={classes.container}>
         <GridContainer >
           <GridItem xs={12} sm={7} md={7}>
-            <h1 className={classes.title}>
-              {newTitle}
-            </h1>
+            <GridContainer >
+              <GridItem xs={10} sm={12} md={12}>
+                <h1 className={classes.title}>
+                  {title}
+                </h1>
+              </GridItem>
+              <GridItem xs={2} sm={12} md={12} className={classes.cogMobile}>
+                <a href={"/settings/" + listId}>
+                  <Button round justIcon simple>
+                    <i className="fas fa-cog"></i>
+                  </Button>
+                </a>
+              </GridItem>
+            </GridContainer>
+            <h6 className={classes.event}>
+              {occasion}, {date}
+            </h6>
             <div className={classes.description}>
-              {newDescription}
+              {description}
             </div>
             <GridContainer >
-              <GridItem xs={12} sm={5} md={4}>
+              <GridItem xs={12} sm={8} md={9}>
                 <div className={classes.centerMobileText}>
-                  <div className={classes.labelWrapper}>
-                    <InputLabel className={classes.label}>
-                      Date:
-                    </InputLabel>
-                  </div>
-                  <div className={classes.labelValue}>
-                    {newDate}
-                  </div>
+                  <a href={mailToText}>
+                    <ShareButton color="default" round simple justIcon>
+                      <i className="far fa-envelope" />
+                    </ShareButton>
+                  </a>
+                  <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook()}>
+                    <i className="fab fa-facebook-messenger" />
+                  </ShareButton>
+                  <ShareButton color="whatsapp" round simple justIcon>
+                    <i className="fab fa-whatsapp" />
+                  </ShareButton>
+                  <ShareButton color="share" round simple onClick={() => copyLink() }>
+                    <i className="fas fa-share-alt" />
+                    <span className={classes.shareText}>
+                      { showCopied
+                        ? 'Copied!'
+                        : 'Share'
+                      }
+                    </span>
+                  </ShareButton>
                 </div>
               </GridItem>
-              <GridItem xs={12} sm={4} md={4}>
-                <div className={classes.centerMobileText}>
-                  <div className={classes.labelWrapper}>
-                    <InputLabel className={classes.label}>
-                      Occasion:
-                    </InputLabel>
-                  </div>
-                  <div className={classes.labelValue}>
-                    {newOccasion}
-                  </div>
-                </div>
-              </GridItem>
-              <GridItem xs={12} sm={3} md={4} className={classes.lessGridPadding}>
-                <div className={classes.viewButtons}>
-                  <Button round color="info" onClick={() => setIsEdit(true)} className={classes.customButton}>
-                    <Icon>mode_edit</Icon> Edit
+              <GridItem xs={12} sm={4} md={3} className={classes.cogDesktop}>
+                <a href={"/settings/" + listId}>
+                  <Button round simple>
+                    <i className="fas fa-cog"></i>
+                    <span className={classes.shareText}>
+                      Settings
+                    </span>
                   </Button>
-                </div>
+                </a>
               </GridItem>
             </GridContainer>
           </GridItem>
@@ -185,12 +102,12 @@ export default function SectionDetails(props) {
             <Card profile plain className={classes.customProfile}>
               <CardHeader image plain>
                 <a href="#img" onClick={e => e.preventDefault()}>
-                  <img src={newImageUrl} className={classes.listImage} alt="..." />
+                  <img src={imageUrl} className={classes.listImage} alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: `url(${newImageUrl})`,
+                    backgroundImage: `url(${imageUrl})`,
                     opacity: "1"
                   }}
                 />
@@ -199,120 +116,6 @@ export default function SectionDetails(props) {
           </GridItem>
         </GridContainer>
       </div>
-    )
-  }
-
-  const renderEdit = () => {
-    return (
-      <div className={classes.container}>
-        <GridContainer >
-          <GridItem xs={12} sm={7} md={7}>
-            <ListsInput
-              id="title"
-              title
-              inputProps={{
-                placeholder: "Enter your title here...",
-                defaultValue: newTitle,
-                onChange: event => setNewTitle(event.target.value)
-              }}
-              formControlProps={{
-                fullWidth: true
-              }}
-            />
-            <div className={classes.descriptionEditWrapper}>
-              <ListsInput
-                id="description"
-                description
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  placeholder: "Add your description here...",
-                  defaultValue: newDescription,
-                  multiline: true,
-                  rows: 2,
-                  onChange: event => setNewDescription(event.target.value)
-                }}
-              />
-          </div>
-            <GridContainer >
-              <GridItem xs={12} sm={4} md={4}>
-                <div className={classes.centerMobileText}>
-                  <div className={classes.labelWrapper}>
-                    <InputLabel className={classes.label}>
-                      Date:
-                    </InputLabel>
-                  </div>
-                  <div className={classes.labelValue}>
-                    <FormControl fullWidth>
-                      <Datetime
-                        className={classes.dateSelect}
-                        dateFormat="DD MMMM YYYY"
-                        timeFormat={false}
-                        inputProps={{ placeholder: "Select a date" }}
-                        value={newDate}
-                        onChange={changeDate}
-                        closeOnSelect={true}
-                      />
-                    </FormControl>
-                  </div>
-                </div>
-              </GridItem>
-              <GridItem xs={12} sm={3} md={4}>
-                <div className={classes.centerMobileText}>
-                  <div className={classes.labelWrapper}>
-                    <InputLabel className={classes.label}>
-                      Occasion:
-                    </InputLabel>
-                  </div>
-                  <div className={classes.labelValue}>
-                    {renderOccasionSelect()}
-                  </div>
-                </div>
-              </GridItem>
-              <GridItem xs={12} sm={5} md={4} className={classes.lessGridPadding}>
-                <div className={classes.editButtons}>
-                  <Button justIcon round color="success" onClick={() => saveDetails()} >
-                    <Icon>save</Icon>
-                  </Button>
-                  <Button justIcon round onClick={() => cancelEdit()} >
-                    <Close />
-                  </Button>
-                  <Button justIcon round onClick={() => setShowDeletePopOut(true)} >
-                    <Delete />
-                  </Button>
-                </div>
-              </GridItem>
-            </GridContainer>
-          </GridItem>
-          <GridItem xs={12} sm={5} md={5}>
-            <Card profile plain className={classes.customProfile}>
-              <CardHeader image plain>
-                <a href="#img" onClick={e => e.preventDefault()}>
-                  <img src={newImageUrl} className={classes.listImage} alt="..." />
-                </a>
-                <div
-                  className={classes.coloredShadow}
-                  style={{
-                    backgroundImage: `url(${newImageUrl})`,
-                    opacity: "1"
-                  }}
-                />
-              </CardHeader>
-            </Card>
-          </GridItem>
-        </GridContainer>
-      </div>
-    )
-  }
-
-  return (
-    <div className={classes.section}>
-      { isEdit
-        ? renderEdit()
-        : renderView()
-      }
-      <SectionDelete open={showDeletePopOut} listId={listId} setShowDeletePopOut={setShowDeletePopOut} products={products}/>
     </div>
   )
 }
@@ -324,5 +127,4 @@ SectionDetails.propTypes = {
   occasion: PropTypes.string,
   date: PropTypes.string,
   imageUrl: PropTypes.string,
-  products: PropTypes.object
 };

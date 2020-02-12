@@ -19,6 +19,7 @@ import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasF
 import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ViewListPage from "views/ViewListPage/ViewListPage.js";
 import EditListPage from "views/EditListPage/EditListPage.js";
+import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
 import AppliedRoute from "./custom/Routes/AppliedRoute";
 import AuthenticatedRoute from "./custom/Routes/AuthenticatedRoute";
@@ -43,6 +44,7 @@ export default ({childProps}) =>
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
     <AuthenticatedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
     <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
+    <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }
     <AppliedRoute component={ErrorPage} props={childProps}/>
   </Switch>;
