@@ -42,7 +42,7 @@ export default ({childProps}) =>
     <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
-    <AuthenticatedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
+    <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
     <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
     <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }

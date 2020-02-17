@@ -200,7 +200,7 @@ export default function ViewList(props) {
     <div>
       {loaded
         ? <div>
-            <HeaderScroll isAuthenticated={true} user={props.user}/>
+            <HeaderScroll isAuthenticated={props.isAuthenticated} user={props.user}/>
             <Parallax filter="info" className={classes.articleBg}>
             </Parallax>
             <div className={classes.main}>
