@@ -34,7 +34,16 @@ const styles = theme => ({
     }
   },
   container: {
-    ...container
+    ...container,
+    [theme.breakpoints.up("md")]: {
+      paddingLeft: "0px",
+      paddingRight: "0px",
+      maxWidth: "1000px"
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: "5px",
+      paddingRight: "5px",
+    }
   },
   description: {
     color: grayColor[0],
@@ -43,9 +52,12 @@ const styles = theme => ({
     display: "-webkit-box",
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "13px"
+    },
     [theme.breakpoints.down("xs")]: {
-      textAlign: "center"
-    }
+      fontSize: "14px"
+    },
   },
   section: {
     ...section,
@@ -144,6 +156,11 @@ const styles = theme => ({
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0px",
     }
+  },
+  cardCategory: {
+    color: "#6c757d",
+    marginTop: "0px",
+    marginBottom: "0px"
   }
 });
 

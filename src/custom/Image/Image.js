@@ -2,6 +2,10 @@ import {isWebpSupported} from 'react-image-webp/dist/utils';
 import config from 'config.js';
 
 export function imageSize(image) {
+  if (! image) {
+      return null
+  }
+
   image = config.imagePrefix + image;
   if (isWebpSupported()) {
     return image + '.webp'

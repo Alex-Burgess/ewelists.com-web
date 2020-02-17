@@ -112,11 +112,9 @@ export default function Products(props) {
           ? reservePopouts[product['productId']]
           : false }
         product={product}
-        reservedDetails={getUserReservedDetails(product['productId'])
-          ? getUserReservedDetails(product['productId'])
-          : null }
         closeReservePopout={closeReservePopout}
         listId={listId}
+        user={props.user}
         updateReservedQuantity={props.updateReservedQuantity}
         unreserveProduct={props.unreserveProduct}
         updateUserReservation={props.updateUserReservation}
@@ -145,14 +143,14 @@ export default function Products(props) {
                   <h4 className={classes.cardTitle}>{product['brand']}</h4>
                 </button>
               </div>
-              <p className={classes.description}>
+              <p className={classes.description + " " + classes.textCenter}>
                 {product['details']}
               </p>
             </CardBody>
             <CardFooter plain className={classes.footer}>
-              <div>
-                <span className={classes.description}> Remaining: {product['quantity'] - product['reserved']}</span>
-              </div>
+              <h6 className={classes.cardCategory + " " + classes.textCenter}>
+                {product['quantity']} requested - {product['quantity'] - product['reserved']} remaining
+              </h6>
               <div className={classes.textCenter}>
                 {userReservedItem(product['productId'])
                   ? <Button default className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
@@ -339,5 +337,6 @@ Products.propTypes = {
   products: PropTypes.object,
   reserved: PropTypes.object,
   listId: PropTypes.string,
-  userId: PropTypes.string
+  userId: PropTypes.string,
+  user: PropTypes.object,
 };

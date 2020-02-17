@@ -19,6 +19,9 @@ import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasF
 import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ViewListPage from "views/ViewListPage/ViewListPage.js";
 import EditListPage from "views/EditListPage/EditListPage.js";
+import ReservedPage from "views/ReservedPage/ReservedPage.js";
+import UnreservedPage from "views/UnreservedPage/UnreservedPage.js";
+import PurchasedPage from "views/PurchasedPage/PurchasedPage.js";
 import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
 import AppliedRoute from "./custom/Routes/AppliedRoute";
@@ -43,6 +46,9 @@ export default ({childProps}) =>
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
     <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
     <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
+    <AppliedRoute path="/reserved/:id" exact component={ReservedPage} props={childProps} />
+    <AppliedRoute path="/unreserved/:id" exact component={UnreservedPage} props={childProps} />
+    <AppliedRoute path="/purchased/:id" exact component={PurchasedPage} props={childProps} />
     <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
     <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }

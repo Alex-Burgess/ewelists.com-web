@@ -3,34 +3,24 @@ import {
   title,
   cardTitle,
   grayColor,
-  whiteColor,
 } from "assets/jss/material-kit-pro-react.js";
 
 import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.js";
 
 const sectionStyle = theme => ({
   ...modalStyle(theme),
-  centerText: {
-    textAlign: "Center",
-  },
   error: {
     color: dangerColor[1]
   },
   title: {
     ...title,
-    paddingTop: "10px",
-    marginBottom: 0
-  },
-  mainPrice: {
-    margin: "10px 0px 25px"
+    marginBottom: "5px"
   },
   productImage: {
     [theme.breakpoints.down("xs")]: {
-      // height: "82vw",
-      maxHeight: "220px",
+      maxHeight: "180px",
     },
-    // height: "18vw",
-    maxHeight: "400px",
+    maxHeight: "250px",
     objectFit: "contain",
   },
   cardTitle: {
@@ -48,30 +38,27 @@ const sectionStyle = theme => ({
     display: "-webkit-box",
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
-    textAlign: "center"
-  },
-  purchase: {
-    paddingTop: "10px",
-    paddingBottom: "10px"
-  },
-  textCenter: {
+    visibility: "visible",
     textAlign: "center",
+    marginBottom: "3px"
   },
   reserveButton: {
     minWidth: "150px",
-    // width: "100%",
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "100%",
-    //   minWidth: "123px",
-    // },
-    // [theme.breakpoints.down("xs")]: {
-    //   minWidth: "285px",
-    //   width: "100%",
-    //   marginBottom: "30px"
-    // }
+    marginTop: "12px"
+  },
+  customHeader: {
+    textAlign: "center",
+    position: "relative",
+    marginBottom: "5px"
+  },
+  customCloseButton: {
+    position: "absolute",
+    right: "25px",
+    top: "5px"
   },
   quantity: {
-    paddingTop: "10px"
+    paddingTop: "10px",
+    textAlign: "center"
   },
   reserveContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -80,9 +67,9 @@ const sectionStyle = theme => ({
     }
   },
   productCard: {
+    marginBottom: "0px",
     [theme.breakpoints.down("xs")]: {
       marginTop: "25px",
-      marginBottom: "0px"
     }
   },
   productDetails: {
@@ -92,6 +79,9 @@ const sectionStyle = theme => ({
     }
   },
   reservePopout: {
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "800px"
+    },
     [theme.breakpoints.down("sm")]: {
       marginLeft: "20px",
       marginRight: "20px",
@@ -105,34 +95,47 @@ const sectionStyle = theme => ({
       padding: "20px 0px"
     }
   },
-  stepOne: {
+  centerText: {
+    textAlign: "center",
+  },
+  desktop: {
     [theme.breakpoints.down("xs")]: {
-      marginTop: "0px"
+      display: 'none'
     }
   },
-  mobileCenter: {
-    [theme.breakpoints.down("xs")]: {
-      textAlign: "center",
-    }
-  },
-  buttonLink: {
-    color: whiteColor,
-    "&:hover": {
-      color: whiteColor,
+  mobile: {
+    [theme.breakpoints.up("sm")]: {
+      display: 'none'
     }
   },
   label: {
     paddingTop: "10px",
     paddingBottom: "10px"
   },
-  extraPadding: {
-    paddingTop: "10px",
-  },
   labelQuantity: {
     fontSize: "16px",
     color: "rgba(0, 0, 0, 0.541176)",
     fontWeight: "normal",
     paddingTop: "10px"
+  },
+  formIntro: {
+    fontSize: "1.2em",
+    fontWeight: "400",
+    color: "#777",
+    lineHeight: "1.2",
+    marginBottom: "0px",
+    textAlign: "left",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.5em"
+    }
+  },
+  customForm: {
+    marginBottom: "0px"
+  },
+  cardCategory: {
+    color: "#6c757d",
+    marginTop: "0px",
+    marginBottom: "0px"
   }
 });
 

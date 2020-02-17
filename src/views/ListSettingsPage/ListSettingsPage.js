@@ -21,9 +21,8 @@ import CardHeader from "components/Card/CardHeader.js";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 // Custom components
-import HeaderFixed from "custom/Header/HeaderFixed.js";
-import HeaderSettings from "custom/Header/HeaderSettings.js";
-import FooterDark from "custom/Footer/FooterDark.js";
+import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
+import Footer from "custom/Footer/FooterGrey.js";
 // Sections
 import SectionDelete from "./Sections/DeleteListPopOut.js";
 
@@ -53,22 +52,8 @@ export default function SectionDetails(props) {
   const [newImageUrl, setNewImageUrl] = useState('');
   const [showDeletePopOut, setShowDeletePopOut] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [mobile, setMobile] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerWidth < 400){
-        setMobile(true);
-      } else {
-        setMobile(false);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
 
   useEffect( () => {
     async function getList() {
@@ -399,10 +384,7 @@ export default function SectionDetails(props) {
 
   return (
     <div>
-      {mobile
-        ? <HeaderSettings isAuthenticated={true} user={props.user} url={"/edit/" + listId} />
-        : <HeaderFixed isAuthenticated={true} user={props.user} />
-      }
+      <HeaderMobileBar isAuthenticated={true} user={props.user} url={"/edit/" + listId} name='List Settings' />
       <div className={classes.main}>
         <div className={classes.container}>
           <h2 className={classes.title + " " + classes.textCenter + " " + classes.mobileHide}><Settings className={classes.icon}/> Settings</h2>
@@ -424,7 +406,7 @@ export default function SectionDetails(props) {
         </div>
         <div className={classes.flexer} />
       </div>
-      <FooterDark />
+      <Footer />
       <SectionDelete open={showDeletePopOut} listId={listId} setShowDeletePopOut={setShowDeletePopOut} products={products}/>
     </div>
   )

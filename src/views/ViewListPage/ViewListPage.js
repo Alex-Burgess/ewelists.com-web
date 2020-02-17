@@ -174,7 +174,7 @@ export default function ViewList(props) {
 
     let productOldReservedQuantity = products[productId].reserved;
     const productNewReservedQuantity = productOldReservedQuantity + quantityChange
-    console.log("Updating product (" + productId + ") total reservered to (" + productNewReservedQuantity + ")");
+    console.log("Updating product (" + productId + ") total reserved to (" + productNewReservedQuantity + ")");
 
     setReserved(
       update(reserved, {
@@ -216,6 +216,7 @@ export default function ViewList(props) {
                 reserved={reserved}
                 userId={props.userSub}
                 listId={listId}
+                user={props.user}
                 updateReservedQuantity={updateReservedQuantity}
                 unreserveProduct={unreserveProduct}
                 updateUserReservation={updateUserReservation}

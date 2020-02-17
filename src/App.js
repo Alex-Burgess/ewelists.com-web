@@ -49,7 +49,7 @@ class App extends React.Component {
               break;
             default:
               // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
-              console.log("Default auth event data: " + JSON.stringify(data));
+              // console.log("Default auth event data: " + JSON.stringify(data));
               this.setState({ user: null });
               break;
           }

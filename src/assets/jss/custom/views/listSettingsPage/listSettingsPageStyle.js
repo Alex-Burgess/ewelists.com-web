@@ -22,9 +22,12 @@ const pageStyle = theme => ({
   main: {
     ...main,
     paddingTop: "70px",
-    minHeight: "75vh",
+    minHeight: "93vh",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "92vh",
+    }
   },
   title: {
     ...title,
