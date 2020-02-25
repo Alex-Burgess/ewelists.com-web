@@ -22,6 +22,7 @@ import EditListPage from "views/EditListPage/EditListPage.js";
 import ReservedPage from "views/ReservedPage/ReservedPage.js";
 import UnreservedPage from "views/UnreservedPage/UnreservedPage.js";
 import PurchasedPage from "views/PurchasedPage/PurchasedPage.js";
+import EditReservationPage from "views/EditReservationPage/EditReservationPage.js";
 import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
 import AppliedRoute from "./custom/Routes/AppliedRoute";
@@ -49,6 +50,7 @@ export default ({childProps}) =>
     <AppliedRoute path="/reserved/:id" exact component={ReservedPage} props={childProps} />
     <AppliedRoute path="/unreserved/:id" exact component={UnreservedPage} props={childProps} />
     <AppliedRoute path="/purchased/:id" exact component={PurchasedPage} props={childProps} />
+    <AppliedRoute path="/edit-reservation/:id" exact component={EditReservationPage} props={childProps} />
     <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
     <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }

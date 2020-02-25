@@ -85,15 +85,13 @@ function ReservePopout(props) {
     setReserveError('');
     let productId = product['productId'];
 
-    let response;
-
     try {
       if (user.email) {
-        response = await API.post("lists", "/" + listId + "/reserve/" +  productId, {
+        await API.post("lists", "/" + listId + "/reserve/" +  productId, {
           body: { "quantity": reserveQuantity }
         });
       } else {
-        response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
+        await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
           body: {
             "quantity": reserveQuantity,
             "name": name

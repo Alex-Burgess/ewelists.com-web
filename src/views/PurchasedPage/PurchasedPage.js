@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-// import update from 'immutability-helper';
+import React from 'react';
+// import React, { useState, useEffect } from 'react';
 // import { API } from "aws-amplify";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,8 +13,6 @@ import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import ProductDetails from "custom/Reserve/ProductDetails.js";
 import BackToList from "custom/Reserve/BackToList.js";
 import Message from "custom/Reserve/Message.js";
-
-import config from 'config.js';
 
 import styles from "assets/jss/custom/views/purchasedPage/purchasedPageStyle.js";
 const useStyles = makeStyles(styles);

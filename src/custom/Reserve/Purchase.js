@@ -17,7 +17,8 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { listId, productId, name, product, reserveQuantity } = props;
+  // const { listId, productId, name, product, reserveQuantity } = props;
+  const { listId, name, product, reserveQuantity } = props;
 
   const purchased = async () => {
     // try {

@@ -84,17 +84,17 @@ export default function Products(props) {
     return true
   }
 
-  const getUserReservedDetails = (productId) => {
-    if (! (productId in reserved)) {
-      return false
-    }
-
-    if (! (userId in reserved[productId])) {
-      return false
-    }
-
-    return reserved[productId][userId]
-  }
+  // const getUserReservedDetails = (productId) => {
+  //   if (! (productId in reserved)) {
+  //     return false
+  //   }
+  //
+  //   if (! (userId in reserved[productId])) {
+  //     return false
+  //   }
+  //
+  //   return reserved[productId][userId]
+  // }
 
   const renderReservePopouts = () => {
     return (
