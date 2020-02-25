@@ -12,6 +12,9 @@ const sectionStyle = theme => ({
   error: {
     color: dangerColor[1]
   },
+  logIn: {
+    fontWeight: "400"
+  },
   title: {
     ...title,
     marginBottom: "5px"

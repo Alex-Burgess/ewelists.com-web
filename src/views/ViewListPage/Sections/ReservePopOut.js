@@ -38,6 +38,9 @@ function ReservePopout(props) {
 
   const [reserveQuantity, setReserveQuantity] = useState(1);
   const [reserveError, setReserveError] = useState('');
+  const [accountError, setAccountError] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   const closePopout = () => {
     setReserveError('');
@@ -58,19 +61,56 @@ function ReservePopout(props) {
     }
   }
 
+  const disabled = () => {
+    if (user.email) {
+      return true
+    }
+
+    if (accountError) {
+      return true
+    }
+
+    return false
+  }
+
   const reserveProduct = async () => {
     setReserveError('');
     let productId = product['productId'];
-    console.log("Reserving product (" + productId + ") for list (" + listId + ").  Quantity (" + reserveQuantity + ")");
 
-    try {
-      await API.post("lists", "/" + listId + "/reserve/" +  productId, {
-        body: { "quantity": reserveQuantity }
-      });
-    } catch (e) {
-      console.log('Unexpected error occurred when reserving product: ' + e);
-      setReserveError('Product could not be reserved.');
-      return false
+    if (user.email) {
+      console.log("Reserving product. Authenticated: true, Quantity: " + reserveQuantity)
+
+      try {
+        await API.post("lists", "/" + listId + "/reserve/" +  productId, {
+          body: { "quantity": reserveQuantity }
+        });
+      } catch (e) {
+        console.log('Unexpected error occurred when reserving product: ' + e);
+        setReserveError('Product could not be reserved.');
+        return false
+      }
+    } else {
+      console.log("Reserving product. Authenticated: false, Quantity: " + reserveQuantity)
+      let response;
+
+      try {
+        response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
+          body: {
+            "quantity": reserveQuantity,
+            "name": name
+          }
+        });
+      } catch (e) {
+        if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
+          setAccountError(true);
+          setReserveError('Looks like you already have an account. Please log in to reserve this product.');
+        } else {
+          console.log('Unexpected error occurred when reserving product: ' + JSON.stringify(e));
+          setReserveError('Product could not be reserved.');
+        }
+
+        return false
+      }
     }
 
     // TODO - API post request will return encrypted string of productId, user email and name.  Add to search.
@@ -127,8 +167,9 @@ function ReservePopout(props) {
           <CustomInput
               labelText="Name"
               inputProps={{
-                value: user.name ? user.name : '',
-                disabled: user.name ? true : false
+                value: user.name ? user.name : name,
+                disabled: disabled() ? true : false,
+                onChange: event => setName(event.target.value)
               }}
               formControlProps={{
                 fullWidth: true,
@@ -138,8 +179,9 @@ function ReservePopout(props) {
           <CustomInput
             labelText="Email"
             inputProps={{
-              value: user.email ? user.email : '',
-              disabled: user.email ? true : false
+              value: user.email ? user.email : email,
+              disabled: disabled() ? true : false,
+              onChange: event => setEmail(event.target.value)
             }}
             formControlProps={{
               fullWidth: true,
@@ -153,11 +195,11 @@ function ReservePopout(props) {
                       Quantity:
                   </span>
                   <span>
-                    <Button id="reserve" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+                    <Button id="reserve" color="primary" size="sm" simple onClick={() => decreaseQuantity()} disabled={disabled()}>
                       <Remove />
                     </Button>
                     {reserveQuantity}
-                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()}>
+                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()} disabled={disabled()}>
                       <Add />
                     </Button>
                   </span>
@@ -165,9 +207,18 @@ function ReservePopout(props) {
               </div>
             : null
           }
-          <Button default color="primary" className={classes.reserveButton} onClick={() => reserveProduct()}>
-            Reserve Gift
-          </Button>
+
+
+          {accountError
+            ? <a href={"/login?/lists/" + listId} className={classes.logIn}>
+                <Button default color="primary" className={classes.reserveButton}>
+                  Log In
+                </Button>
+              </a>
+            : <Button default color="primary" className={classes.reserveButton} onClick={() => reserveProduct()}>
+                Reserve Gift
+              </Button>
+          }
 
           {reserveError
             ? <div className={classes.error}> {reserveError} </div>
@@ -227,7 +278,7 @@ ReservePopout.propTypes = {
   open: PropTypes.bool,
   listId: PropTypes.string,
   product: PropTypes.object,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 export default withRouter(ReservePopout);
