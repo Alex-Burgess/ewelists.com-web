@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom'
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
@@ -42,6 +42,14 @@ function ReservePopout(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  useEffect( () => {
+    if (user.email){
+      setEmail(user.email)
+      setName(user.name)
+    }
+
+  }, [user]);
+
   const closePopout = () => {
     setReserveError('');
     props.closeReservePopout(product['productId']);
@@ -77,43 +85,34 @@ function ReservePopout(props) {
     setReserveError('');
     let productId = product['productId'];
 
-    if (user.email) {
-      console.log("Reserving product. Authenticated: true, Quantity: " + reserveQuantity)
+    let response;
 
-      try {
-        await API.post("lists", "/" + listId + "/reserve/" +  productId, {
+    try {
+      if (user.email) {
+        response = await API.post("lists", "/" + listId + "/reserve/" +  productId, {
           body: { "quantity": reserveQuantity }
         });
-      } catch (e) {
-        console.log('Unexpected error occurred when reserving product: ' + e);
-        setReserveError('Product could not be reserved.');
-        return false
-      }
-    } else {
-      console.log("Reserving product. Authenticated: false, Quantity: " + reserveQuantity)
-      let response;
-
-      try {
+      } else {
         response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
           body: {
             "quantity": reserveQuantity,
             "name": name
           }
         });
-      } catch (e) {
-        if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
-          setAccountError(true);
-          setReserveError('Looks like you already have an account. Please log in to reserve this product.');
-        } else {
-          console.log('Unexpected error occurred when reserving product: ' + JSON.stringify(e));
-          setReserveError('Product could not be reserved.');
-        }
-
-        return false
       }
+    } catch (e) {
+      if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
+        setAccountError(true);
+        setReserveError('Looks like you already have an account. Please log in to reserve this product.');
+      } else {
+        console.log('Unexpected error occurred when reserving product: ' + e);
+        setReserveError('Product could not be reserved.');
+      }
+
+      return false
     }
 
-    // TODO - API post request will return encrypted string of productId, user email and name.  Add to search.
+    // TODO - API post request will return encrypted string of productId, user email and name.  Add to search. Not sure if necessary.
     // TODO - refreshing page actually works.  issue is if copy url and paste to new tab / browser.  Maybe in this situation, we should redirect back to list.
     props.history.push({
       pathname: "/reserved/" + listId,
@@ -122,8 +121,8 @@ function ReservePopout(props) {
         productId: productId,
         product: product,
         reserveQuantity: reserveQuantity,
-        email: user.email,
-        name: user.name
+        email: email,
+        name: name
       }
     });
   }

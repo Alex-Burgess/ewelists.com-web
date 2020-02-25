@@ -55,6 +55,8 @@ export default function EditPage(props) {
             product={product}
             reserveQuantity={reserveQuantity}
             name={name}
+            email={email}
+            isAuthenticated={props.isAuthenticated}
           />
           <BackToList
             listId={listId}

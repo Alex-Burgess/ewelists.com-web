@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
@@ -17,17 +17,36 @@ const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
-
-  const { listId, productId, name, product, reserveQuantity } = props;
+  const { listId, productId, name, email, isAuthenticated, product, reserveQuantity } = props;
+  const [error, setError] = useState('');
 
   const unReserveProduct = async () => {
-    try {
-      await API.del("lists", "/" + listId + "/reserve/" +  productId);
+    setError('');
 
-    } catch (e) {
-      console.log('Unexpected error occurred when unreserving product: ' + e);
-      // setReserveError('Product could not be unreserved.');
-      return false
+    if (isAuthenticated) {
+      console.log("Unreserving product. Authenticated: true")
+
+      try {
+        await API.del("lists", "/" + listId + "/reserve/" +  productId);
+      } catch (e) {
+        console.log('Unexpected error occurred when unreserving product: ' + e);
+        setError('Oops! There was an issue unreserving this product, please contact us.');
+        return false
+      }
+    } else {
+      console.log("Unreserving product. Authenticated: false")
+
+      try {
+        await API.del("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
+          body: {
+            "name": name
+          }
+        });
+      } catch (e) {
+        console.log('Unexpected error occurred when unreserving product: ' + e);
+        setError('Oops! There was an issue unreserving this product, please contact us.');
+        return false
+      }
     }
 
     props.history.push({
@@ -59,6 +78,10 @@ function Manage(props) {
           </Button>
         </GridItem>
       </GridContainer>
+      {error
+        ? <div className={classes.error}> {error} </div>
+        : null
+      }
       <hr />
     </div>
   );
@@ -70,6 +93,8 @@ Manage.propTypes = {
   product: PropTypes.object,
   reserveQuantity: PropTypes.number,
   name: PropTypes.string,
+  email: PropTypes.string,
+  isAuthenticated: PropTypes.bool
 };
 
 export default withRouter(Manage);
