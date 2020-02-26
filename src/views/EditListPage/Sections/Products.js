@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import update from 'immutability-helper';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -21,23 +21,9 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { listId, products } = props;
+  const { mobile, listId, products } = props;
 
-  const [desktop, setDesktop] = useState(true);
   const [editPopouts, setEditPopouts] = useState({});
-
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerWidth < 600){
-        setDesktop(false);
-      } else {
-        setDesktop(true);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
 
   const handleEditClose = (id) => {
     setEditPopouts({
@@ -227,9 +213,9 @@ export default function SectionProducts(props) {
         <Card plain>
           <CardBody plain>
             {
-              desktop
-              ? renderDesktopProductView()
-              : renderMobileProductView()
+              mobile
+              ? renderMobileProductView()
+              : renderDesktopProductView()
             }
             <div className={classes.addItemButton}>
               <Button round color="primary" onClick={() => props.switchToAddProduct(1)} >
@@ -246,6 +232,7 @@ export default function SectionProducts(props) {
 }
 
 SectionProducts.propTypes = {
+  mobile: PropTypes.bool,
   listId: PropTypes.string,
   products: PropTypes.object
 };

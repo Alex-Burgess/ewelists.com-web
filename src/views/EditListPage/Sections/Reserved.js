@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -14,21 +14,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { reserved, products } = props;
-  const [desktop, setDesktop] = useState(true);
-
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerWidth < 600){
-        setDesktop(false);
-      } else {
-        setDesktop(true);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
+  const { mobile, reserved, products } = props;
 
   const renderDesktopView = () => {
     return (
@@ -165,9 +151,9 @@ export default function SectionProducts(props) {
         <Card plain>
           <CardBody plain>
             {
-              desktop
-              ? renderDesktopView()
-              : renderMobileView()
+              mobile
+              ? renderMobileView()
+              : renderDesktopView()
             }
           </CardBody>
         </Card>
@@ -177,6 +163,7 @@ export default function SectionProducts(props) {
 }
 
 SectionProducts.propTypes = {
+  mobile: PropTypes.bool,
   reserved: PropTypes.array,
   products: PropTypes.object
 };

@@ -32,7 +32,7 @@ export default function LandingPage(props) {
     return (
       <div>
         <div className={classes.page}>
-          <HeaderFixed isAuthenticated={true} user={props.user} />
+          <HeaderFixed isAuthenticated={true} user={props.user} mobile={props.mobile}/>
           <div className={classes.main}>
             <YourLists showCreate={checkForCreateParam()} />
           </div>
@@ -47,9 +47,9 @@ export default function LandingPage(props) {
   const renderUnAuthed = () => {
     return (
       <div>
-        <HeaderFixed isAuthenticated={false} />
+        <HeaderFixed isAuthenticated={false} mobile={props.mobile}/>
         <div className={classes.main}>
-          <Create />
+          <Create mobile={props.mobile} />
           <Product />
           <Ideas />
         </div>

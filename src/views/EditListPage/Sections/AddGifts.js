@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -26,9 +26,8 @@ const useStyles = makeStyles(styles);
 
 export default function SectionAddGifts(props) {
   const classes = useStyles();
-  const { listId } = props;
+  const { mobile, listId } = props;
 
-  const [desktop, setDesktop] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [searchResult, setSearchResult] = useState('');
   const [searchSuccess, setSearchSuccess] = useState(false);
@@ -46,19 +45,6 @@ export default function SectionAddGifts(props) {
   const [productUrl, setProductUrl] = useState('');
   const [productImageUrl, setProductImageUrl] = useState('');
   const [productQuantity, setProductQuantity] = useState(1);
-
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerWidth < 600){
-        setDesktop(false);
-      } else {
-        setDesktop(true);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
 
   const decreaseProductQuantity = () => {
     var quantity = productQuantity;
@@ -409,9 +395,9 @@ export default function SectionAddGifts(props) {
       <Card plain>
           <CardBody plain>
       {
-        desktop
-          ? renderDesktopSearchResultTable()
-          : renderMobileSearchResultTable()
+        mobile
+          ? renderMobileSearchResultTable()
+          : renderDesktopSearchResultTable()
       }
       </CardBody>
     </Card>
@@ -475,9 +461,9 @@ export default function SectionAddGifts(props) {
           <GridItem xs={12} sm={12} md={10} lg={9}
             className={classes.mrAuto + " " + classes.mlAuto}
           >
-            { desktop
-              ? renderDesktopSearchInput()
-              : renderMobileSearchInput()
+            { mobile
+              ? renderMobileSearchInput()
+              : renderDesktopSearchInput()
             }
             <div className={classes.errorContainer}>
             {errorMessage
@@ -505,5 +491,6 @@ export default function SectionAddGifts(props) {
 }
 
 SectionAddGifts.propTypes = {
-  listId: PropTypes.string,
+  mobile: PropTypes.bool,
+  listId: PropTypes.string
 };

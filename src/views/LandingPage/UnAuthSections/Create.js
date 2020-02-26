@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -16,24 +18,10 @@ const laptopImg = config.imagePrefix + "/images/laptop-mockup";
 
 export default function LandingCreate(props) {
   const classes = useStyles();
-
-  const [desktop, setDesktop] = useState(true);
-
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerWidth < 600){
-        setDesktop(false);
-      } else {
-        setDesktop(true);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
+  const { mobile } = props;
 
   const scrollToExplore = (id) => {
-    if (! desktop) {
+    if (mobile) {
       window.scrollTo({ top: 620, behavior: 'smooth' })
     } else {
       window.scrollTo({ top: 520, behavior: 'smooth' })
@@ -64,13 +52,13 @@ export default function LandingCreate(props) {
                 <img src={laptopImg + '.jpg'} alt="..." />
               </picture>
             </div>
-            { desktop
-              ? null
-              : <div className={classes.downButton}>
+            { mobile
+              ? <div className={classes.downButton}>
                   <Button justIcon round onClick={() => scrollToExplore()}>
                     <ArrowDownward />
                   </Button>
                 </div>
+              : null
             }
           </GridItem>
         </GridContainer>
@@ -78,3 +66,7 @@ export default function LandingCreate(props) {
     </div>
   );
 }
+
+LandingCreate.propTypes = {
+  mobile: PropTypes.bool
+};

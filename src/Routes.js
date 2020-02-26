@@ -1,6 +1,10 @@
 import React from "react";
 // import { Route, Switch } from "react-router-dom";
 import { Switch } from "react-router-dom";
+import AppliedRoute from "./custom/Routes/AppliedRoute";
+import AuthenticatedRoute from "./custom/Routes/AuthenticatedRoute";
+import UnauthenticatedRoute from "./custom/Routes/UnauthenticatedRoute";
+
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
@@ -25,34 +29,33 @@ import PurchasedPage from "views/PurchasedPage/PurchasedPage.js";
 import EditReservationPage from "views/EditReservationPage/EditReservationPage.js";
 import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
-import AppliedRoute from "./custom/Routes/AppliedRoute";
-import AuthenticatedRoute from "./custom/Routes/AuthenticatedRoute";
-import UnauthenticatedRoute from "./custom/Routes/UnauthenticatedRoute";
-
-export default ({childProps}) =>
-  <Switch>
-    <AppliedRoute path="/" exact component={LandingPage} props={childProps} />
-    <AppliedRoute path="/terms" exact component={TermsPage} props={childProps} />
-    <AppliedRoute path="/privacy" exact component={PrivacyPage} props={childProps} />
-    <AppliedRoute path="/contact" exact component={ContactPage} props={childProps} />
-    <AppliedRoute path="/list-ideas" exact component={GiftListIdeas} props={childProps} />
-    <AppliedRoute path="/list-ideas/baby-travel-gear" exact component={ArticleTravelGear} props={childProps} />
-    <AppliedRoute path="/list-ideas/hospital-bag-checklist" exact component={ArticleHospitalBag} props={childProps} />
-    <AppliedRoute path="/list-ideas/nursery-list" exact component={ArticleNursery} props={childProps} />
-    <AppliedRoute path="/list-ideas/baby-bath-time" exact component={ArticleBathTime} props={childProps} />
-    <AppliedRoute path="/list-ideas/christmas-ideas-for-toddlers" exact component={ArticleChristmasIdeasForToddlers} props={childProps} />
-    <AppliedRoute path="/list-ideas/newborn-baby-essentials-list" exact component={ArticleBabyEssentials} props={childProps} />
-    <UnauthenticatedRoute path="/login" exact component={LoginPage} props={childProps} />
-    <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={childProps} />
-    <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={childProps} />
-    <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={childProps} />
-    <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={childProps} />
-    <AppliedRoute path="/reserved/:id" exact component={ReservedPage} props={childProps} />
-    <AppliedRoute path="/unreserved/:id" exact component={UnreservedPage} props={childProps} />
-    <AppliedRoute path="/purchased/:id" exact component={PurchasedPage} props={childProps} />
-    <AppliedRoute path="/edit-reservation/:id" exact component={EditReservationPage} props={childProps} />
-    <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={childProps} />
-    <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={childProps} />
-    { /* Finally, catch all unmatched routes */ }
-    <AppliedRoute component={ErrorPage} props={childProps}/>
-  </Switch>;
+export default function Routes({appProps}) {
+  return (
+    <Switch>
+      <AppliedRoute path="/" exact component={LandingPage} props={appProps} />
+      <AppliedRoute path="/terms" exact component={TermsPage} props={appProps} />
+      <AppliedRoute path="/privacy" exact component={PrivacyPage} props={appProps} />
+      <AppliedRoute path="/contact" exact component={ContactPage} props={appProps} />
+      <AppliedRoute path="/list-ideas" exact component={GiftListIdeas} props={appProps} />
+      <AppliedRoute path="/list-ideas/baby-travel-gear" exact component={ArticleTravelGear} props={appProps} />
+      <AppliedRoute path="/list-ideas/hospital-bag-checklist" exact component={ArticleHospitalBag} props={appProps} />
+      <AppliedRoute path="/list-ideas/nursery-list" exact component={ArticleNursery} props={appProps} />
+      <AppliedRoute path="/list-ideas/baby-bath-time" exact component={ArticleBathTime} props={appProps} />
+      <AppliedRoute path="/list-ideas/christmas-ideas-for-toddlers" exact component={ArticleChristmasIdeasForToddlers} props={appProps} />
+      <AppliedRoute path="/list-ideas/newborn-baby-essentials-list" exact component={ArticleBabyEssentials} props={appProps} />
+      <UnauthenticatedRoute path="/login" exact component={LoginPage} props={appProps} />
+      <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={appProps} />
+      <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={appProps} />
+      <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={appProps} />
+      <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={appProps} />
+      <AppliedRoute path="/reserved/:id" exact component={ReservedPage} props={appProps} />
+      <AppliedRoute path="/unreserved/:id" exact component={UnreservedPage} props={appProps} />
+      <AppliedRoute path="/purchased/:id" exact component={PurchasedPage} props={appProps} />
+      <AppliedRoute path="/edit-reservation/:id" exact component={EditReservationPage} props={appProps} />
+      <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={appProps} />
+      <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={appProps} />
+      { /* Finally, catch all unmatched routes */ }
+      <AppliedRoute component={ErrorPage} props={appProps}/>
+    </Switch>
+  );
+}

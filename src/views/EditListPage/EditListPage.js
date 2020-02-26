@@ -26,8 +26,8 @@ export default function EditPage(props) {
   const classes = useStyles();
 
   const listId = props.match.params.id;
+  const mobile = props.mobile;
 
-  const [desktop, setDesktop] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -116,19 +116,6 @@ export default function EditPage(props) {
     setLoaded(true);
   }, [listId, props.history]);
 
-  useEffect( () => {
-    function updateDimensions() {
-      if (window.innerHeight < 1025){
-        setDesktop(false);
-      } else {
-        setDesktop(true);
-      }
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-  }, []);
-
   const deleteProductFromState = (id) => {
     setProducts(
       update(products, { $unset: [id] })
@@ -153,7 +140,7 @@ export default function EditPage(props) {
   }
 
   const setActive = (id) => {
-    if (! desktop) {
+    if (mobile) {
       if (window.pageYOffset < 200) {
         window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
       }
@@ -163,12 +150,7 @@ export default function EditPage(props) {
   }
 
   const switchToAddProduct = (id) => {
-    // if (! desktop) {
-    //   window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
-    // }
-
     window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
-
     setTabId(id);
   }
 
@@ -183,7 +165,7 @@ export default function EditPage(props) {
     <div>
       {loaded
         ? <div>
-            <HeaderFixed isAuthenticated={true} user={props.user} />
+            <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
             <div className={classes.main}>
               <SectionListDetails
                 listId={listId}
@@ -206,6 +188,7 @@ export default function EditPage(props) {
                       tabContent: (
                         <div>
                           <SectionProducts
+                            mobile={mobile}
                             products={products}
                             listId={listId}
                             deleteProductFromState={deleteProductFromState}
@@ -221,6 +204,7 @@ export default function EditPage(props) {
                       tabContent: (
                         <div>
                           <SectionAddGifts
+                            mobile={mobile}
                             listId={listId}
                             addProductToState={addProductToState}
                             setActive={setActive}
@@ -234,6 +218,7 @@ export default function EditPage(props) {
                       tabContent: (
                         <div>
                           <SectionReserved
+                            mobile={mobile}
                             reserved={reserved}
                             products={products}
                           />

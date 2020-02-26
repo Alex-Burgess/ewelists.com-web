@@ -1,105 +1,104 @@
-import React, { Fragment } from 'react';
-import Routes from "./Routes";
-import { withRouter } from "react-router-dom";
+import React, { Fragment, useState, useEffect } from 'react';
 import { Auth, Hub } from "aws-amplify";
+import { withRouter } from "react-router-dom";
+import Routes from "./Routes";
 import { Helmet } from 'react-helmet';
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App(props) {
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [user, setUser] = useState({});
 
-    this.state = {
-      isAuthenticated: false,
-      isAuthenticating: true,
-      email: null
-    };
-  }
+  const [mobile, setMobile] = useState(false);
 
-  async componentDidMount() {
-    Hub.listen("auth", ({ payload: { event, data } }) => {
-          console.log("Auth Event: " + event)
-          switch (event) {
-            case "signIn":
-              this.setState({ user: data });
-              this.userHasAuthenticated(true);
-              this.getAttributes();
-              break;
-            case "signOut":
-              this.setState({ user: null });
-              break;
-            case "signUp":
-              console.log("Signup event for: " + data.user.username);
-              break;
-            case "forgotPassword":
-              console.log("Forgot password request for: " + data.username);
-              break;
-            case "signIn_failure":
-              if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
-                console.log("Signup actually completed.  Attempt login again.");
-              } else if ((data.message === "Cannot read property 'accessToken' of undefined") || (data.message === "undefined is not an object (evaluating 'a.accessToken')")) {
-                console.log("Got generic aws amplify error, redirecting to login page.");
-              } else {
-                console.log("Unexpected Data message: " + data.message);
-              }
-
-              // Redirect back to login page again.
-              this.setState({ user: null });
-              this.props.history.push("/login");
-              break;
-            default:
-              // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
-              // console.log("Default auth event data: " + JSON.stringify(data));
-              this.setState({ user: null });
-              break;
-          }
-        });
-
-    try {
-      await Auth.currentSession();
-      this.userHasAuthenticated(true);
-      console.log("User has current auth session.");
-    }
-    catch(e) {
-      if (e !== 'No current user') {
-        console.log("Current session could not be retrieved:" + e);
+  useEffect( () => {
+    function updateDimensions() {
+      if (window.innerWidth < 400){
+        setMobile(true);
+      } else {
+        setMobile(false);
       }
-    }
+    };
 
-    if (this.state.isAuthenticated) {
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+  }, []);
+
+  useEffect(() => {
+    async function onLoad() {
+      Hub.listen("auth", ({ payload: { event, data } }) => {
+            console.log("Auth Event: " + event)
+            switch (event) {
+              case "signIn":
+                // TODO this doesn't look right.  Setting user, then getting attributes again??  Getting attributes function was removed.
+                // this.setState({ user: data });
+                // await getAttributes();
+                userHasAuthenticated(true);
+                break;
+              case "signOut":
+                this.setState({ user: null });
+                break;
+              case "signUp":
+                console.log("Signup event for: " + data.user.username);
+                break;
+              case "forgotPassword":
+                console.log("Forgot password request for: " + data.username);
+                break;
+              case "signIn_failure":
+                if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
+                  console.log("Signup actually completed.  Attempt login again.");
+                } else if ((data.message === "Cannot read property 'accessToken' of undefined") || (data.message === "undefined is not an object (evaluating 'a.accessToken')")) {
+                  console.log("Got generic aws amplify error, redirecting to login page.");
+                } else {
+                  console.log("Unexpected Data message: " + data.message);
+                }
+
+                // Redirect back to login page again.
+                this.setState({ user: null });
+                this.props.history.push("/login");
+                break;
+              default:
+                // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
+                // console.log("Default auth event data: " + JSON.stringify(data));
+                this.setState({ user: null });
+                break;
+            }
+          });
+
       try {
-        this.getAttributes();
+        await Auth.currentSession();
+        console.log("User has current auth session.");
+        await getAttributes();
+
+        userHasAuthenticated(true);
+
       }
       catch(e) {
         if (e !== 'No current user') {
-          console.log("Attributes could not be retrieved: " + e);
+          console.log("Current session could not be retrieved:" + e);
         }
       }
+
+      setIsAuthenticating(false);
     }
 
-    this.setState({ isAuthenticating: false });
-  }
+    onLoad();
+  }, []);
 
-  getAttributes = async () => {
-    let user = await Auth.currentAuthenticatedUser();
-    const { attributes } = user;
-    // console.log("User id (sub): " + attributes['sub'] + " User email: " + attributes['email']);
-    this.setState({
+  async function getAttributes() {
+    const { attributes } = await Auth.currentAuthenticatedUser();
+    const user = {
       email: attributes['email'],
       sub: attributes['sub'],
       name: attributes['name']
-    });
+    }
+
+    console.log("Retrieved user details: " + JSON.stringify(user));
+    setUser(user);
   }
 
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated });
-  }
-
-  getUserEmail() {
-    return this.state.email
-  }
-
-  setTitle() {
+  const setTitle = () => {
     var title = 'Ewelists';
 
     if (process.env.REACT_APP_STAGE === "prod") {
@@ -114,27 +113,16 @@ class App extends React.Component {
     return title
   }
 
-  render() {
-    // console.log("User state: " + JSON.stringify(this.state.user));
-    const childProps = {
-      isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated,
-      userEmail: this.state.email,
-      userSub: this.state.sub,
-      user: { email: this.state.email, sub: this.state.sub, name: this.state.name }
-    };
-
-    return (
-      !this.state.isAuthenticating &&
-      <Fragment>
-        <ScrollToTop />
-        <Helmet>
-          <title>{this.setTitle()}</title>
-        </Helmet>
-        <Routes childProps={childProps} />
-      </Fragment>
-    );
-  }
+  return (
+    !isAuthenticating &&
+    <Fragment>
+      <ScrollToTop />
+      <Helmet>
+        <title>{setTitle()}</title>
+      </Helmet>
+      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile}} />
+    </Fragment>
+  );
 }
 
 export default withRouter(App);

@@ -20,6 +20,7 @@ export default function ViewList(props) {
   const classes = useStyles();
 
   const listId = props.match.params.id;
+  const userId = props.user.sub;
 
   const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState('');
@@ -111,7 +112,6 @@ export default function ViewList(props) {
 
   const updateReservedQuantity = async (reservedQuantity, product) => {
     let productId = product['productId'];
-    let userId = props.userSub;
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
     console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
 
@@ -139,7 +139,6 @@ export default function ViewList(props) {
   }
 
   const unreserveProduct = async (product) => {
-    let userId = props.userSub;
     let productId = product['productId'];
     console.log("Unreserving product (" + productId + ") for user (" + userId + ")");
     // console.log("reserved state: " + JSON.stringify(this.state.reserved));
@@ -165,7 +164,6 @@ export default function ViewList(props) {
   }
 
   const updateUserReservation = async (newUserQuantity, product) => {
-    let userId = props.userSub;
     let productId = product['productId'];
 
     let userOldReservedQuantity = reserved[productId][userId].quantity;
@@ -214,7 +212,7 @@ export default function ViewList(props) {
               <SectionProducts
                 products={products}
                 reserved={reserved}
-                userId={props.userSub}
+                userId={userId}
                 listId={listId}
                 user={props.user}
                 updateReservedQuantity={updateReservedQuantity}

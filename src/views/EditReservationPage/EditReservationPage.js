@@ -4,7 +4,7 @@ import { API } from "aws-amplify";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
+import Header from "custom/Header/HeaderFixed.js";
 import Footer from "custom/Footer/FooterGrey.js";
 // custom components
 import ProductDetails from "custom/Reserve/ProductDetails.js";
@@ -19,7 +19,7 @@ export default function EditPage(props) {
   const classes = useStyles();
 
   const listId = props.match.params.id;
-  const userId = props.userSub;
+  const userId = props.user.sub;
 
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
@@ -32,9 +32,6 @@ export default function EditPage(props) {
   // const productType = 'notfound'
 
 
-  // TODO - getting inconistent userSub state for some reason.
-  // Header bar is also showing as signed out, when actually logged in.
-  // If we comment out the section below
   useEffect( () => {
     async function getList(listId) {
       let response;
@@ -50,12 +47,8 @@ export default function EditPage(props) {
     }
 
     const getListDetails = async (listId) => {
-      console.log("Getting list: " + listId)
       const response = await getList(listId);
-      // console.log("Response: " + JSON.stringify(response));
-      console.log("Getting quantity. ProductId: " + productId + " userId: " + userId);
       const quantity = response.reserved[productId][userId]['quantity'];
-      console.log("Quantity: " + quantity)
       setReservedQuantity(quantity)
     }
 
@@ -97,10 +90,10 @@ export default function EditPage(props) {
 
   return (
     <div>
-      <HeaderMobileBar user={props.user} name='Edit Reservation' url={"/lists/" + listId} />
+      <Header isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile}/>
       <div className={classes.main}>
         <div className={classes.container}>
-          <h2 className={classes.title + " " + classes.textCenter + " " + classes.mobileHide}> Edit Reservation</h2>
+          <h2 className={classes.title + " " + classes.textCenter}> Edit Reservation</h2>
           <ProductDetails
             product={product}
             reserveQuantity={reservedQuantity}

@@ -384,7 +384,7 @@ export default function SectionDetails(props) {
 
   return (
     <div>
-      <HeaderMobileBar isAuthenticated={true} user={props.user} url={"/edit/" + listId} name='List Settings' />
+      <HeaderMobileBar isAuthenticated={props.isAuthenticated} user={props.user} url={"/edit/" + listId} title='List Settings' mobile={props.mobile} />
       <div className={classes.main}>
         <div className={classes.container}>
           <h2 className={classes.title + " " + classes.textCenter + " " + classes.mobileHide}><Settings className={classes.icon}/> Settings</h2>

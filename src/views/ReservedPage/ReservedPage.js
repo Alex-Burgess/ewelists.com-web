@@ -30,7 +30,7 @@ export default function EditPage(props) {
 
   return (
     <div>
-      <HeaderMobileBar user={props.user} name='Reserved Gift' url={"/lists/" + listId} />
+      <HeaderMobileBar isAuthenticated={props.isAuthenticated} user={props.user} url={"/lists/" + listId} title='Reserved Gift' mobile={props.mobile} />
       <div className={classes.main}>
         <div className={classes.container}>
           <SnackbarContent

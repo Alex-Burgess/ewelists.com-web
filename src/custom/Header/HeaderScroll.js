@@ -13,7 +13,7 @@ import styles from "assets/jss/material-kit-pro-react/components/headerStyle.js"
 const useStyles = makeStyles(styles);
 
 export default function HeaderScroll(props) {
-  const { isAuthenticated, user } = props;
+  const { isAuthenticated, user, mobile } = props;
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ export default function HeaderScroll(props) {
       {isAuthenticated
         ? <Header
               brand={<img className={classes.logo} src={require("assets/img/logo-white.png")} alt="logo"/>}
-              links={<HeaderLinksAuth dropdownHoverColor="info" user={user} />}
+              links={<HeaderLinksAuth dropdownHoverColor="info" user={user} mobile={mobile} />}
               fixed
               color="transparent"
                changeColorOnScroll={{
@@ -46,5 +46,6 @@ export default function HeaderScroll(props) {
 
 HeaderScroll.propTypes = {
   isAuthenticated: PropTypes.bool,
-  user: PropTypes.object
+  user: PropTypes.object,
+  mobile: PropTypes.bool
 };

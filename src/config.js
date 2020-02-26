@@ -64,10 +64,8 @@ const prod = {
   imagePrefix: ""
 };
 
-const environment = process.env.REACT_APP_STAGE;
-// console.log("Environment: " + environment);
 var config;
-switch (environment) {
+switch (process.env.REACT_APP_STAGE) {
   case "prod":
     console.log("Config: prod");
     config = prod;

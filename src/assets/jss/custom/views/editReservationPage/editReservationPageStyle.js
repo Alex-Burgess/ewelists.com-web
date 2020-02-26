@@ -31,15 +31,15 @@ const pageStyle = theme => ({
   },
   title: {
     ...title,
-    marginBottom: "0px"
+    marginBottom: "0px",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "10px",
+      marginTop: "0px",
+      fontSize: "2rem"
+    }
   },
   textCenter: {
     textAlign: "center !important"
-  },
-  mobileHide: {
-    [theme.breakpoints.down("xs")]: {
-      display: "none"
-    }
   }
 });
 

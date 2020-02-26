@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
-
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -17,9 +16,9 @@ import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import styles from "assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
+export default function HeaderLinksAuth(props) {
   const classes = useStyles();
-  const { dropdownHoverColor, user } = props;
+  const { dropdownHoverColor, user, mobile } = props;
 
   return (
     <List className={classes.list + " " + classes.mlAuto}>
@@ -33,7 +32,7 @@ export default function HeaderLinks(props) {
           Gift List Ideas
         </Link>
       </ListItem>
-      {window.innerWidth < 400
+      {mobile
         ? <div><ListItem className={classes.listItem}>
             <Link to="/" className={classes.navLink}>
               <AccountCircle /> {user.name}
@@ -69,11 +68,11 @@ export default function HeaderLinks(props) {
   );
 }
 
-HeaderLinks.defaultProps = {
+HeaderLinksAuth.defaultProps = {
   hoverColor: "primary"
 };
 
-HeaderLinks.propTypes = {
+HeaderLinksAuth.propTypes = {
   dropdownHoverColor: PropTypes.oneOf([
     "dark",
     "primary",
