@@ -19,7 +19,8 @@ const useStyles = makeStyles(styles);
 export default function EditPage(props) {
   const classes = useStyles();
 
-  const listId = props.match.params.id;
+  // const resvId = props.match.params.id;
+  const listId = props.location.state.listId;
   const productId = props.location.state.productId;
   const product = props.location.state.product;
   const reserveQuantity = props.location.state.reserveQuantity;

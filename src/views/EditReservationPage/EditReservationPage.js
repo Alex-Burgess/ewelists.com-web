@@ -26,10 +26,24 @@ export default function EditPage(props) {
 
   // We don't need user details as user will be required to sign in.
   // TODO make sure user is signed in and if not forward to login page.
+
+  // Flow:
+  // 1. Call api to unencrypt parameters
+  // 2. If user has account, check they have auth session, if not, forward to login page with message.
   // const exists = true;
   const productId = '12345678-blog-e002-1234-abcdefghijkl';
   const productType = 'products'
   // const productType = 'notfound'
+
+  // 3. If user does not have account, the parameters will also contain information about user.
+  // Unreserve call should have the state it requires.  name and email props below will need to be updated to be common.
+  // const exists = false;
+  // const productId = '12345678-blog-e002-1234-abcdefghijkl';
+  // const productType = 'products'
+  // const productType = 'notfound'
+  // email = 'test.user@gmail.com'
+  // name = 'Test User'
+
 
 
   useEffect( () => {

@@ -29,7 +29,7 @@ const useStyles = makeStyles(styles);
 export default function Products(props) {
   const classes = useStyles();
 
-  const { listId, userId, products, reserved } = props;
+  const { listId, listTitle, userId, products, reserved } = props;
 
   const [desktop, setDesktop] = useState(true);
   const [filterItems, setFilterItems] = useState('all');
@@ -114,6 +114,7 @@ export default function Products(props) {
         product={product}
         closeReservePopout={closeReservePopout}
         listId={listId}
+        listTitle={listTitle}
         user={props.user}
         updateReservedQuantity={props.updateReservedQuantity}
         unreserveProduct={props.unreserveProduct}
@@ -337,6 +338,7 @@ Products.propTypes = {
   products: PropTypes.object,
   reserved: PropTypes.object,
   listId: PropTypes.string,
+  listTitle: PropTypes.string,
   userId: PropTypes.string,
   user: PropTypes.object,
 };

@@ -214,6 +214,7 @@ export default function ViewList(props) {
                 reserved={reserved}
                 userId={userId}
                 listId={listId}
+                listTitle={title}
                 user={props.user}
                 updateReservedQuantity={updateReservedQuantity}
                 unreserveProduct={unreserveProduct}

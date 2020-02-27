@@ -34,7 +34,7 @@ Transition.displayName = "Transition";
 
 function ReservePopout(props) {
   const classes = useStyles();
-  const { listId, open, product, user } = props;
+  const { listId, listTitle, open, product, user } = props;
 
   const [reserveQuantity, setReserveQuantity] = useState(1);
   const [reserveError, setReserveError] = useState('');
@@ -84,16 +84,21 @@ function ReservePopout(props) {
   const reserveProduct = async () => {
     setReserveError('');
     let productId = product['productId'];
+    let response;
 
     try {
       if (user.email) {
-        await API.post("lists", "/" + listId + "/reserve/" +  productId, {
-          body: { "quantity": reserveQuantity }
-        });
-      } else {
-        await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
+        response = await API.post("lists", "/" + listId + "/reserve/" +  productId, {
           body: {
             "quantity": reserveQuantity,
+            "title": listTitle
+          }
+        });
+      } else {
+        response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
+          body: {
+            "quantity": reserveQuantity,
+            "title": listTitle,
             "name": name
           }
         });
@@ -113,9 +118,10 @@ function ReservePopout(props) {
     // TODO - API post request will return encrypted string of productId, user email and name.  Add to search. Not sure if necessary.
     // TODO - refreshing page actually works.  issue is if copy url and paste to new tab / browser.  Maybe in this situation, we should redirect back to list.
     props.history.push({
-      pathname: "/reserved/" + listId,
+      pathname: "/reserved/" + response.reservation_id,
       // search: '?product=' + product.productId,
       state: {
+        listId: listId,
         productId: productId,
         product: product,
         reserveQuantity: reserveQuantity,
@@ -274,6 +280,7 @@ function ReservePopout(props) {
 ReservePopout.propTypes = {
   open: PropTypes.bool,
   listId: PropTypes.string,
+  listTitle: PropTypes.string,
   product: PropTypes.object,
   user: PropTypes.object
 };
