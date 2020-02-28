@@ -91,7 +91,14 @@ function ReservePopout(props) {
         response = await API.post("lists", "/" + listId + "/reserve/" +  productId, {
           body: {
             "quantity": reserveQuantity,
-            "title": listTitle
+            "title": listTitle,
+            "product": {
+              "type": product['type'],
+              "brand": product['brand'],
+              "details": product['details'],
+              "productUrl": product['productUrl'],
+              "imageUrl": product['imageUrl']
+            }
           }
         });
       } else {
@@ -99,7 +106,14 @@ function ReservePopout(props) {
           body: {
             "quantity": reserveQuantity,
             "title": listTitle,
-            "name": name
+            "name": name,
+            "product": {
+              "type": product['type'],
+              "brand": product['brand'],
+              "details": product['details'],
+              "productUrl": product['productUrl'],
+              "imageUrl": product['imageUrl']
+            }
           }
         });
       }

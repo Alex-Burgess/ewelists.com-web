@@ -25,9 +25,6 @@ export default function EditPage(props) {
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
 
-  const productType = 'products'
-  // const productType = 'notfound'
-
   useEffect( () => {
     async function getProduct(id, type) {
       let response;
@@ -60,15 +57,14 @@ export default function EditPage(props) {
       setProductId(reservation.product_id);
       setReservedQuantity(reservation.quantity);
 
-
-      const product_response = await getProduct(reservation.product_id, productType);
+      const product_response = await getProduct(reservation.product_id, reservation.product_type);
       let product = {};
 
       product['brand'] = product_response.brand;
       product['details'] = product_response.details;
       product['productUrl'] = product_response.productUrl;
 
-      if (productType === 'products') {
+      if (reservation.product_type === 'products') {
         product['imageUrl'] = product_response.imageUrl;
       } else {
         product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';

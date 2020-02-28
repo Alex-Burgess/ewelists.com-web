@@ -31,19 +31,17 @@ function App(props) {
             console.log("Auth Event: " + event)
             switch (event) {
               case "signIn":
-                // TODO this doesn't look right.  Setting user, then getting attributes again??  Getting attributes function was removed.
-                // this.setState({ user: data });
-                // await getAttributes();
+                getAttributes();
                 userHasAuthenticated(true);
                 break;
               case "signOut":
-                this.setState({ user: null });
+                setUser(null);
                 break;
               case "signUp":
                 console.log("Signup event for: " + data.user.username);
                 break;
               case "forgotPassword":
-                console.log("Forgot password request for: " + data.username);
+                console.log("Forgot password request for: " + data.user.username);
                 break;
               case "signIn_failure":
                 if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
@@ -54,14 +52,10 @@ function App(props) {
                   console.log("Unexpected Data message: " + data.message);
                 }
 
-                // Redirect back to login page again.
-                this.setState({ user: null });
                 this.props.history.push("/login");
                 break;
               default:
                 // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
-                // console.log("Default auth event data: " + JSON.stringify(data));
-                this.setState({ user: null });
                 break;
             }
           });
