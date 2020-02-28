@@ -18,56 +18,15 @@ const useStyles = makeStyles(styles);
 export default function EditPage(props) {
   const classes = useStyles();
 
-  const listId = props.match.params.id;
-  const userId = props.user.sub;
+  const resvId = props.match.params.id;
 
+  const [listId, setListId] = useState('');
+  const [productId, setProductId] = useState('');
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
 
-  // We don't need user details as user will be required to sign in.
-  // TODO make sure user is signed in and if not forward to login page.
-
-  // Flow:
-  // 1. Call api to unencrypt parameters
-  // 2. If user has account, check they have auth session, if not, forward to login page with message.
-  // const exists = true;
-  const productId = '12345678-blog-e002-1234-abcdefghijkl';
   const productType = 'products'
   // const productType = 'notfound'
-
-  // 3. If user does not have account, the parameters will also contain information about user.
-  // Unreserve call should have the state it requires.  name and email props below will need to be updated to be common.
-  // const exists = false;
-  // const productId = '12345678-blog-e002-1234-abcdefghijkl';
-  // const productType = 'products'
-  // const productType = 'notfound'
-  // email = 'test.user@gmail.com'
-  // name = 'Test User'
-
-
-
-  useEffect( () => {
-    async function getList(listId) {
-      let response;
-      try {
-        response = await API.get("lists", "/" + listId + "/shared");
-      } catch (e) {
-        console.log("List ID " + listId + " does not exist for the user.")
-        props.history.push('/error/' + listId);
-        return false
-      }
-
-      return response;
-    }
-
-    const getListDetails = async (listId) => {
-      const response = await getList(listId);
-      const quantity = response.reserved[productId][userId]['quantity'];
-      setReservedQuantity(quantity)
-    }
-
-    getListDetails(listId);
-  }, [listId, userId, props.history]);
 
   useEffect( () => {
     async function getProduct(id, type) {
@@ -82,16 +41,35 @@ export default function EditPage(props) {
       return response;
     }
 
-    const getProductDetails = async (productId, productType) => {
-      let product = {};
-      const response = await getProduct(productId, productType);
+    async function getReservation(resvId) {
+      let response;
+      try {
+        response = await API.get("lists", "/reservation/" + resvId);
+      } catch (e) {
+        console.log("Reservation ID " + resvId + " does not exist.")
+        // props.history.push('/error/' + listId);
+        return false
+      }
 
-      product['brand'] = response.brand;
-      product['details'] = response.details;
-      product['productUrl'] = response.productUrl;
+      return response;
+    }
+
+    const getPageDetails = async (resvId) => {
+      const reservation = await getReservation(resvId);
+      setListId(reservation.list_id);
+      setProductId(reservation.product_id);
+      setReservedQuantity(reservation.quantity);
+
+
+      const product_response = await getProduct(reservation.product_id, productType);
+      let product = {};
+
+      product['brand'] = product_response.brand;
+      product['details'] = product_response.details;
+      product['productUrl'] = product_response.productUrl;
 
       if (productType === 'products') {
-        product['imageUrl'] = response.imageUrl;
+        product['imageUrl'] = product_response.imageUrl;
       } else {
         product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
       }
@@ -99,8 +77,8 @@ export default function EditPage(props) {
       setProduct(product)
     }
 
-    getProductDetails(productId, productType);
-  }, [productId, productType]);
+    getPageDetails(resvId);
+  }, [resvId, props.history]);
 
   return (
     <div>
