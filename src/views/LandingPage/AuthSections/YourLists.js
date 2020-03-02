@@ -31,21 +31,19 @@ export default function YourLists(props) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [ownedLists, setOwnedLists] = useState([]);
-  const [sharedLists, setSharedLists] = useState([]);
   const [createModal, setCreateModal] = useState(showCreate);
 
   useEffect( () => {
     async function getLists(){
       const response = await GetLists();
       setOwnedLists(response.owned);
-      setSharedLists(response.shared);
     }
 
     getLists();
     setIsLoading(false);
   }, []);
 
-  const renderYourLists = (lists: Lists[], shared) => {
+  const renderYourLists = (lists: Lists[]) => {
     let allLists: Lists[] = [];
 
     return allLists.concat(lists).map (
@@ -74,27 +72,18 @@ export default function YourLists(props) {
                 {list.occasion}
               </p>
             </CardBody>
-            {shared
-              ? <CardFooter profile className={classes.justifyContentCenter}>
-                  <a href={"/lists/" + list.listId}>
-                    <Button round color="info" className={classes.reserveButton2}>
-                      Shop List
-                    </Button>
-                  </a>
-                </CardFooter>
-              : <CardFooter profile className={classes.justifyContentCenter}>
-                  <a href={"/lists/" + list.listId}>
-                    <Button round color="info" className={classes.customButton}>
-                      <ViewIcon /> View
-                    </Button>
-                  </a>
-                  <a href={"/edit/" + list.listId}>
-                    <Button round color="success" className={classes.customButton}>
-                      <Icon>mode_edit</Icon> Edit
-                    </Button>
-                  </a>
-                </CardFooter>
-            }
+              <CardFooter profile className={classes.justifyContentCenter}>
+                <a href={"/lists/" + list.listId}>
+                  <Button round color="info" className={classes.customButton}>
+                    <ViewIcon /> View
+                  </Button>
+                </a>
+                <a href={"/edit/" + list.listId}>
+                  <Button round color="success" className={classes.customButton}>
+                    <Icon>mode_edit</Icon> Edit
+                  </Button>
+                </a>
+              </CardFooter>
           </Card>
         </GridItem>
     )
@@ -104,27 +93,16 @@ export default function YourLists(props) {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+        <h1 className={classes.title}>Your lists</h1>
+        <br />
         <GridContainer>
-          <GridItem xs={12} sm={12} md={12}>
-            <h1 className={classes.title}>Your lists</h1>
-            <br />
-            <GridContainer>
-              {!isLoading && renderYourLists(ownedLists, false)}
-              <GridItem xs={12} sm={4} md={4}>
-                <CreateButton
-                  text="Create a New List"
-                  onClick={() => setCreateModal(true)}
-                />
-                {<CreatePopOut open={createModal} setCreateModal={setCreateModal} />}
-              </GridItem>
-            </GridContainer>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={12}>
-            <h1 className={classes.title}>Lists Shared With You</h1>
-            <br />
-            <GridContainer>
-              {!isLoading && renderYourLists(sharedLists, true)}
-            </GridContainer>
+          {!isLoading && renderYourLists(ownedLists)}
+          <GridItem xs={12} sm={4} md={4}>
+            <CreateButton
+              text="Create a New List"
+              onClick={() => setCreateModal(true)}
+            />
+            {<CreatePopOut open={createModal} setCreateModal={setCreateModal} />}
           </GridItem>
         </GridContainer>
       </div>
