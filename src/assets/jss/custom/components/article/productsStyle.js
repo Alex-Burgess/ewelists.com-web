@@ -44,6 +44,7 @@ const blogPostPageStyle = theme => ({
   },
   description: {
     color: grayColor[0],
+    textAlign: "center",
     overflow: "hidden",
     textOverflow: "ellipsis",
     display: "-webkit-box",
