@@ -53,18 +53,18 @@ export default function EditPage(props) {
 
     const getPageDetails = async (resvId) => {
       const reservation = await getReservation(resvId);
-      setListId(reservation.list_id);
-      setProductId(reservation.product_id);
+      setListId(reservation.listId);
+      setProductId(reservation.productId);
       setReservedQuantity(reservation.quantity);
 
-      const product_response = await getProduct(reservation.product_id, reservation.product_type);
+      const product_response = await getProduct(reservation.productId, reservation.productType);
       let product = {};
 
       product['brand'] = product_response.brand;
       product['details'] = product_response.details;
       product['productUrl'] = product_response.productUrl;
 
-      if (reservation.product_type === 'products') {
+      if (reservation.productType === 'products') {
         product['imageUrl'] = product_response.imageUrl;
       } else {
         product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
