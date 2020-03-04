@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from 'react-router-dom'
-// import { API } from "aws-amplify";
+import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -17,21 +17,27 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  // const { listId, productId, name, product, reserveQuantity } = props;
-  const { listId, name, product, reserveQuantity } = props;
+  const { listId, resvId, productId, name, product, reserveQuantity } = props;
 
   const purchased = async () => {
-    // try {
-    //   await API.del("lists", "/" + listId + "/reserve/" +  productId);
-    //
-    // } catch (e) {
-    //   console.log('Unexpected error occurred when unreserving product: ' + e);
-    //   // setReserveError('Product could not be unreserved.');
-    //   return false
-    // }
+    try {
+      await API.put("lists", "/" + listId + "/purchase/" +  productId);
+
+      // if (user.email) {
+      //   await API.put("lists", "/" + listId + "/purchase/" +  productId);
+      // } else {
+      //   await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email);
+      // }
+
+
+    } catch (e) {
+      console.log('Unexpected error occurred when unreserving product: ' + e);
+      // setReserveError('Product could not be unreserved.');
+      return false
+    }
 
     props.history.push({
-      pathname: "/purchased/" + listId,
+      pathname: "/purchased/" + resvId,
       state: {
         product: product,
         reserveQuantity: reserveQuantity,
@@ -76,6 +82,7 @@ function Purchase(props) {
 
 Purchase.propTypes = {
   listId: PropTypes.string,
+  resvId: PropTypes.string,
   productId: PropTypes.string,
   product: PropTypes.object,
   reserveQuantity: PropTypes.number,

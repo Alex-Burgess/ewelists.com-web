@@ -24,9 +24,6 @@ import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ViewListPage from "views/ViewListPage/ViewListPage.js";
 import EditListPage from "views/EditListPage/EditListPage.js";
 import ReservedPage from "views/ReservedPage/ReservedPage.js";
-import UnreservedPage from "views/UnreservedPage/UnreservedPage.js";
-import PurchasedPage from "views/PurchasedPage/PurchasedPage.js";
-import EditReservationPage from "views/EditReservationPage/EditReservationPage.js";
 import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
 export default function Routes({appProps}) {
@@ -48,10 +45,7 @@ export default function Routes({appProps}) {
       <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={appProps} />
       <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={appProps} />
       <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={appProps} />
-      <AppliedRoute path="/reserved/:id" exact component={ReservedPage} props={appProps} />
-      <AppliedRoute path="/unreserved/:id" exact component={UnreservedPage} props={appProps} />
-      <AppliedRoute path="/purchased/:id" exact component={PurchasedPage} props={appProps} />
-      <AppliedRoute path="/edit-reservation/:id" exact component={EditReservationPage} props={appProps} />
+      <AppliedRoute path="/reserve/:id" exact component={ReservedPage} props={appProps} />
       <AuthenticatedRoute path="/edit/:id" exact component={EditListPage} props={appProps} />
       <AuthenticatedRoute path="/settings/:id" exact component={ListSettingsPage} props={appProps} />
       { /* Finally, catch all unmatched routes */ }

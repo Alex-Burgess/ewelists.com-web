@@ -132,7 +132,7 @@ function ReservePopout(props) {
     // TODO - API post request will return encrypted string of productId, user email and name.  Add to search. Not sure if necessary.
     // TODO - refreshing page actually works.  issue is if copy url and paste to new tab / browser.  Maybe in this situation, we should redirect back to list.
     props.history.push({
-      pathname: "/reserved/" + response.reservation_id,
+      pathname: "/reserve/" + response.reservation_id,
       // search: '?product=' + product.productId,
       state: {
         listId: listId,
