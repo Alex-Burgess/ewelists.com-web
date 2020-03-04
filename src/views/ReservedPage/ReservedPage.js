@@ -106,22 +106,7 @@ export default function EditPage(props) {
       setLoad(true);
     }
 
-    if (props.location.state) {
-      console.log("Details from state.")
-      const state = props.location.state;
-      setReserved(state.reservationConfirmed);
-      setListId(state.listId);
-      setListTitle(state.listTitle);
-      setProductId(state.productId);
-      setProduct(state.product);
-      setReservedQuantity(state.reserveQuantity);
-      setEmail(state.email);
-      setName(state.name);
-      setLoad(true);
-    } else {
-      console.log("Details from resrvation id.")
-      getPageDetails(resvId);
-    }
+    getPageDetails(resvId);
 
   }, [resvId, props.location.state]);
 

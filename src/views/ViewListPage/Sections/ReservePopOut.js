@@ -131,17 +131,6 @@ function ReservePopout(props) {
 
     props.history.push({
       pathname: "/reserve/" + response.reservation_id,
-      state: {
-        reservationConfirmed: true,
-        notification: 'You have reserved this gift.',
-        listId: listId,
-        listTitle: listTitle,
-        productId: productId,
-        product: product,
-        reserveQuantity: reserveQuantity,
-        email: email,
-        name: name
-      }
     });
   }
 
