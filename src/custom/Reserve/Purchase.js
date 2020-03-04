@@ -17,7 +17,7 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { listId, resvId, productId, name, product, reserveQuantity } = props;
+  const { listId, productId, product } = props;
 
   const purchased = async () => {
     try {
@@ -36,14 +36,8 @@ function Purchase(props) {
       return false
     }
 
-    props.history.push({
-      pathname: "/purchased/" + resvId,
-      state: {
-        product: product,
-        reserveQuantity: reserveQuantity,
-        name: name
-      }
-    });
+    props.setReserved(false);
+    props.setPurchased(true);
   }
 
   return (
@@ -82,11 +76,8 @@ function Purchase(props) {
 
 Purchase.propTypes = {
   listId: PropTypes.string,
-  resvId: PropTypes.string,
   productId: PropTypes.string,
-  product: PropTypes.object,
-  reserveQuantity: PropTypes.number,
-  name: PropTypes.string,
+  product: PropTypes.object
 };
 
 export default withRouter(Purchase);

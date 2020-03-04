@@ -17,7 +17,8 @@ const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
-  const { listId, productId, name, email, isAuthenticated, product, reserveQuantity } = props;
+  // const { listId, productId, name, email, isAuthenticated, product, reserveQuantity } = props;
+  const { listId, productId, name, email, isAuthenticated } = props;
   const [error, setError] = useState('');
 
   const unReserveProduct = async () => {
@@ -49,8 +50,8 @@ function Manage(props) {
       }
     }
 
-    props.setReservationConfirmed(false);
-    props.setUnreserveConfirmed(true);
+    props.setReserved(false);
+    props.setUnreserved(true);
   }
 
   return (

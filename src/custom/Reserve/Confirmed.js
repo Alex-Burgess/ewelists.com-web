@@ -19,11 +19,11 @@ export default function Unreserve(props) {
       <SnackbarContent
         message={
           <span className={classes.message}>
-            Looks like you unreserved this gift already.  Head back to <a href={"/lists/" + listId} className={classes.link}> {listTitle} </a>
+            Looks like you confirmed your purchase of this gift already.  Head back to <a href={"/lists/" + listId} className={classes.link}> {listTitle} </a>
             to reserve another product.
           </span>
         }
-        color="danger"
+        color="warning"
         icon="info_outline"
       />
     </div>

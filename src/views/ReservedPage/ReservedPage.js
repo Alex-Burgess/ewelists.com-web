@@ -13,6 +13,8 @@ import Purchase from "custom/Reserve/Purchase.js";
 import BackToList from "custom/Reserve/BackToList.js";
 import Unreserved from "custom/Reserve/Unreserved.js";
 import Cancelled from "custom/Reserve/Cancelled.js";
+import Purchased from "custom/Reserve/Purchased.js";
+import Confirmed from "custom/Reserve/Confirmed.js";
 import config from 'config.js';
 
 import styles from "assets/jss/custom/views/reservedPage/reservedPageStyle.js";
@@ -28,6 +30,8 @@ export default function EditPage(props) {
   const [reserved, setReserved] = useState(false);
   const [unreserved, setUnreserved] = useState(false);
   const [cancelled, setCancelled] = useState(false);
+  const [purchased, setPurchased] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
 
   const [listId, setListId] = useState('');
   const [listTitle, setListTitle] = useState('');
@@ -77,8 +81,10 @@ export default function EditPage(props) {
         case "cancelled":
           setCancelled(true);
           break;
+        case "purchased":
+          setConfirmed(true);
+          break;
         default:
-          setCancelled(true);
           break;
       }
 
@@ -127,11 +133,10 @@ export default function EditPage(props) {
                   ? <div>
                       <Purchase
                         listId={listId}
-                        resvId={resvId}
                         productId={productId}
                         product={product}
-                        reserveQuantity={reservedQuantity}
-                        name={name}
+                        setReserved={setReserved}
+                        setPurchased={setPurchased}
                       />
                       <Manage
                         listId={listId}
@@ -141,29 +146,32 @@ export default function EditPage(props) {
                         name={name}
                         email={email}
                         isAuthenticated={props.isAuthenticated}
-                        setUnreserveConfirmed={setUnreserved}
-                        setReservationConfirmed={setReserved}
+                        setUnreserved={setUnreserved}
+                        setReserved={setReserved}
                       />
                     </div>
                   : null
                 }
-                {unreserved
-                  ? <Unreserved
+                {purchased
+                  ? <Purchased
                       listId={listId}
                       listTitle={listTitle}
                     />
                   : null
                 }
-                {cancelled
-                  ? <Cancelled
-                      listId={listId}
-                      listTitle={listTitle}
-                      />
+                {unreserved
+                  ? <Unreserved listId={listId} listTitle={listTitle}/>
                   : null
                 }
-                <BackToList
-                  listId={listId}
-                />
+                {cancelled
+                  ? <Cancelled listId={listId} listTitle={listTitle}/>
+                  : null
+                }
+                {confirmed
+                  ? <Confirmed listId={listId} listTitle={listTitle}/>
+                  : null
+                }
+                <BackToList listId={listId}/>
               </div>
             : null
           }
