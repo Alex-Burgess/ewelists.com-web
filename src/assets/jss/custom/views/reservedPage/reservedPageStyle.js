@@ -1,6 +1,7 @@
 import {
   container,
-  main
+  main,
+  title
 } from "assets/jss/material-kit-pro-react.js";
 
 const pageStyle = theme => ({
@@ -27,6 +28,19 @@ const pageStyle = theme => ({
     [theme.breakpoints.down("sm")]: {
       minHeight: "92vh",
     }
+  },
+  title: {
+    ...title,
+    marginTop: "15px",
+    marginBottom: "20px",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "10px",
+      marginTop: "0px",
+      fontSize: "2rem"
+    }
+  },
+  textCenter: {
+    textAlign: "center !important"
   }
 });
 

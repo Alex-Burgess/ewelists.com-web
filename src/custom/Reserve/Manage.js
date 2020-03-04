@@ -49,14 +49,8 @@ function Manage(props) {
       }
     }
 
-    props.history.push({
-      pathname: "/unreserved/" + listId,
-      state: {
-        product: product,
-        reserveQuantity: reserveQuantity,
-        name: name
-      }
-    });
+    props.setReservationConfirmed(false);
+    props.setUnreserveConfirmed(true);
   }
 
   return (

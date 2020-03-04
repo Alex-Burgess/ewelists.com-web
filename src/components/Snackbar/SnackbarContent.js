@@ -18,9 +18,9 @@ export default function SnackbarContent(props) {
   const { message, color, close, icon } = props;
   const classes = useStyles();
   var action = [];
-  const closeAlert = () => {
-    setAlert(null);
-  };
+  // const closeAlert = () => {
+  //   setAlert(null);
+  // };
   if (close !== undefined) {
     action = [
       <IconButton
@@ -28,7 +28,7 @@ export default function SnackbarContent(props) {
         key="close"
         aria-label="Close"
         color="inherit"
-        onClick={closeAlert}
+        onClick={props.closeAlert}
       >
         <Close className={classes.close} />
       </IconButton>

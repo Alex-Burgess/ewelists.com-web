@@ -3,27 +3,34 @@ import { API } from "aws-amplify";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import Check from "@material-ui/icons/Check";
 // core components
 import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
 import Footer from "custom/Footer/FooterGrey.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // custom components
 import ProductDetails from "custom/Reserve/ProductDetails.js";
 import Manage from "custom/Reserve/Manage.js";
 import Purchase from "custom/Reserve/Purchase.js";
 import BackToList from "custom/Reserve/BackToList.js";
+import Unreserved from "custom/Reserve/Unreserved.js";
+import Cancelled from "custom/Reserve/Cancelled.js";
 import config from 'config.js';
 
 import styles from "assets/jss/custom/views/reservedPage/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
+
 
 export default function EditPage(props) {
   const classes = useStyles();
 
   const resvId = props.match.params.id;
 
+  // Page scenarios
+  const [reserved, setReserved] = useState(false);
+  const [unreserved, setUnreserved] = useState(false);
+  const [cancelled, setCancelled] = useState(false);
+
   const [listId, setListId] = useState('');
+  const [listTitle, setListTitle] = useState('');
   const [productId, setProductId] = useState('');
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
@@ -59,9 +66,26 @@ export default function EditPage(props) {
 
     const getPageDetails = async (resvId) => {
       const reservation = await getReservation(resvId);
+
+      switch (reservation.state) {
+        case "reserved":
+          setReserved(true);
+          break;
+        case "unreserved":
+          setUnreserved(true);
+          break;
+        case "cancelled":
+          setCancelled(true);
+          break;
+        default:
+          setCancelled(true);
+          break;
+      }
+
       setEmail(reservation.email);
       setName(reservation.name);
       setListId(reservation.listId);
+      setListTitle(reservation.title);
       setProductId(reservation.productId);
       setReservedQuantity(reservation.quantity);
 
@@ -83,8 +107,11 @@ export default function EditPage(props) {
     }
 
     if (props.location.state) {
+      console.log("Details from state.")
       const state = props.location.state;
+      setReserved(state.reservationConfirmed);
       setListId(state.listId);
+      setListTitle(state.listTitle);
       setProductId(state.productId);
       setProduct(state.product);
       setReservedQuantity(state.reserveQuantity);
@@ -92,6 +119,7 @@ export default function EditPage(props) {
       setName(state.name);
       setLoad(true);
     } else {
+      console.log("Details from resrvation id.")
       getPageDetails(resvId);
     }
 
@@ -105,35 +133,52 @@ export default function EditPage(props) {
         <div className={classes.container}>
           {load
             ? <div>
-                <SnackbarContent
-                  message={<span><b>Thanks {name}! </b> You have reserved this gift.</span>}
-                  color="success"
-                  icon={Check}
-                />
+                <h2 className={classes.title + " " + classes.textCenter}> Reservation </h2>
                 <ProductDetails
                   product={product}
                   reserveQuantity={reservedQuantity}
                 />
-                <Purchase
-                  listId={listId}
-                  resvId={resvId}
-                  productId={productId}
-                  product={product}
-                  reserveQuantity={reservedQuantity}
-                  name={name}
-                />
-                <Manage
-                  listId={listId}
-                  productId={productId}
-                  product={product}
-                  reserveQuantity={reservedQuantity}
-                  name={name}
-                  email={email}
-                  isAuthenticated={props.isAuthenticated}
-                />
-                <BackToList
-                  listId={listId}
-                />
+              {reserved
+                  ? <div>
+                      <Purchase
+                        listId={listId}
+                        resvId={resvId}
+                        productId={productId}
+                        product={product}
+                        reserveQuantity={reservedQuantity}
+                        name={name}
+                      />
+                      <Manage
+                        listId={listId}
+                        productId={productId}
+                        product={product}
+                        reserveQuantity={reservedQuantity}
+                        name={name}
+                        email={email}
+                        isAuthenticated={props.isAuthenticated}
+                        setUnreserveConfirmed={setUnreserved}
+                        setReservationConfirmed={setReserved}
+                      />
+                      <BackToList
+                        listId={listId}
+                      />
+                    </div>
+                  : null
+                }
+                {unreserved
+                  ? <Unreserved
+                      listId={listId}
+                      listTitle={listTitle}
+                      />
+                  : null
+                }
+                {cancelled
+                  ? <Cancelled
+                      listId={listId}
+                      listTitle={listTitle}
+                      />
+                  : null
+                }
               </div>
             : null
           }
