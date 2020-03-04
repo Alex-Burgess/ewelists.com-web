@@ -1,5 +1,5 @@
 import {
-  
+  whiteColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const productDetailsStyle = theme => ({
@@ -9,14 +9,12 @@ const productDetailsStyle = theme => ({
       padding: "0px 20px",
     },
   },
-  shortText: {
-    paddingTop: "13px",
-    fontSize: "17px",
-    textAlign: "center"
+  link: {
+    fontWeight: "700",
+    color: whiteColor
   },
-  centerContent: {
-    marginLeft: "auto",
-    marginRight: "auto"
+  message: {
+    fontSize: "16px"
   }
 });
 

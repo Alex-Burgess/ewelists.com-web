@@ -144,9 +144,6 @@ export default function EditPage(props) {
                         setUnreserveConfirmed={setUnreserved}
                         setReservationConfirmed={setReserved}
                       />
-                      <BackToList
-                        listId={listId}
-                      />
                     </div>
                   : null
                 }
@@ -154,7 +151,7 @@ export default function EditPage(props) {
                   ? <Unreserved
                       listId={listId}
                       listTitle={listTitle}
-                      />
+                    />
                   : null
                 }
                 {cancelled
@@ -164,6 +161,9 @@ export default function EditPage(props) {
                       />
                   : null
                 }
+                <BackToList
+                  listId={listId}
+                />
               </div>
             : null
           }
