@@ -135,8 +135,11 @@ export default function EditPage(props) {
                         listId={listId}
                         productId={productId}
                         product={product}
-                        setReserved={setReserved}
+                        email={email}
                         setPurchased={setPurchased}
+                        setReserved={setReserved}
+                        setConfirmed={setConfirmed}
+                        setCancelled={setCancelled}
                       />
                       <Manage
                         listId={listId}
@@ -145,9 +148,10 @@ export default function EditPage(props) {
                         reserveQuantity={reservedQuantity}
                         name={name}
                         email={email}
-                        isAuthenticated={props.isAuthenticated}
                         setUnreserved={setUnreserved}
                         setReserved={setReserved}
+                        setConfirmed={setConfirmed}
+                        setCancelled={setCancelled}
                       />
                     </div>
                   : null

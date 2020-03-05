@@ -17,22 +17,23 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { listId, productId, product } = props;
+  const { listId, productId, product, email } = props;
 
   const purchased = async () => {
     try {
-      await API.put("lists", "/" + listId + "/purchase/" +  productId);
-
-      // if (user.email) {
-      //   await API.put("lists", "/" + listId + "/purchase/" +  productId);
-      // } else {
-      //   await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email);
-      // }
-
-
+      await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email);
     } catch (e) {
-      console.log('Unexpected error occurred when unreserving product: ' + e);
-      // setReserveError('Product could not be unreserved.');
+      if (e.response.data.error === 'Product was already purchased.') {
+        props.setReserved(false);
+        props.setConfirmed(true);
+      } else if (e.response.data.error === 'Product is not reserved by user.'){
+        props.setReserved(false);
+        props.setCancelled(true);
+      } else {
+          console.log('Unexpected error occurred when unreserving product: ' + e);
+          // TODO
+          // setError('Oops! There was an issue unreserving this product, please contact us.');
+      }
       return false
     }
 
@@ -77,7 +78,8 @@ function Purchase(props) {
 Purchase.propTypes = {
   listId: PropTypes.string,
   productId: PropTypes.string,
-  product: PropTypes.object
+  product: PropTypes.object,
+  email: PropTypes.string
 };
 
 export default withRouter(Purchase);

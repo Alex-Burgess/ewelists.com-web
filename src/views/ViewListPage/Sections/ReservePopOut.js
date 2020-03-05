@@ -87,36 +87,20 @@ function ReservePopout(props) {
     let response;
 
     try {
-      if (user.email) {
-        response = await API.post("lists", "/" + listId + "/reserve/" +  productId, {
-          body: {
-            "quantity": reserveQuantity,
-            "title": listTitle,
-            "product": {
-              "type": product['type'],
-              "brand": product['brand'],
-              "details": product['details'],
-              "productUrl": product['productUrl'],
-              "imageUrl": product['imageUrl']
-            }
+      response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
+        body: {
+          "quantity": reserveQuantity,
+          "title": listTitle,
+          "name": name,
+          "product": {
+            "type": product['type'],
+            "brand": product['brand'],
+            "details": product['details'],
+            "productUrl": product['productUrl'],
+            "imageUrl": product['imageUrl']
           }
-        });
-      } else {
-        response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
-          body: {
-            "quantity": reserveQuantity,
-            "title": listTitle,
-            "name": name,
-            "product": {
-              "type": product['type'],
-              "brand": product['brand'],
-              "details": product['details'],
-              "productUrl": product['productUrl'],
-              "imageUrl": product['imageUrl']
-            }
-          }
-        });
-      }
+        }
+      });
     } catch (e) {
       if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
         setAccountError(true);

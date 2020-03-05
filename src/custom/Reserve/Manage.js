@@ -17,37 +17,31 @@ const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
-  // const { listId, productId, name, email, isAuthenticated, product, reserveQuantity } = props;
-  const { listId, productId, name, email, isAuthenticated } = props;
+  // const { listId, productId, name, email, product, reserveQuantity } = props;
+  const { listId, productId, name, email } = props;
   const [error, setError] = useState('');
 
   const unReserveProduct = async () => {
     setError('');
 
-    if (isAuthenticated) {
-      console.log("Unreserving product. Authenticated: true")
-
-      try {
-        await API.del("lists", "/" + listId + "/reserve/" +  productId);
-      } catch (e) {
+    try {
+      await API.del("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
+        body: {
+          "name": name
+        }
+      });
+    } catch (e) {
+      if (e.response.data.error === 'Product was already purchased.') {
+        props.setReserved(false);
+        props.setConfirmed(true);
+      } else if (e.response.data.error === 'Product is not reserved by user.'){
+        props.setReserved(false);
+        props.setCancelled(true);
+      } else {
         console.log('Unexpected error occurred when unreserving product: ' + e);
         setError('Oops! There was an issue unreserving this product, please contact us.');
-        return false
       }
-    } else {
-      console.log("Unreserving product. Authenticated: false")
-
-      try {
-        await API.del("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
-          body: {
-            "name": name
-          }
-        });
-      } catch (e) {
-        console.log('Unexpected error occurred when unreserving product: ' + e);
-        setError('Oops! There was an issue unreserving this product, please contact us.');
-        return false
-      }
+      return false
     }
 
     props.setReserved(false);
@@ -88,8 +82,7 @@ Manage.propTypes = {
   product: PropTypes.object,
   reserveQuantity: PropTypes.number,
   name: PropTypes.string,
-  email: PropTypes.string,
-  isAuthenticated: PropTypes.bool
+  email: PropTypes.string
 };
 
 export default withRouter(Manage);
