@@ -17,11 +17,24 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { listId, productId, product, email } = props;
+  const { listId, listTitle, name, reserveQuantity, productId, product, email } = props;
 
   const purchased = async () => {
     try {
-      await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email);
+      await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email, {
+        body: {
+          "quantity": reserveQuantity,
+          "title": listTitle,
+          "name": name,
+          "product": {
+            "type": product['type'],
+            "brand": product['brand'],
+            "details": product['details'],
+            "productUrl": product['productUrl'],
+            "imageUrl": product['imageUrl']
+          }
+        }
+      });
     } catch (e) {
       if (e.response.data.error === 'Product was already purchased.') {
         props.setReserved(false);
@@ -77,6 +90,9 @@ function Purchase(props) {
 
 Purchase.propTypes = {
   listId: PropTypes.string,
+  listTitle: PropTypes.string,
+  name: PropTypes.string,
+  reserveQuantity: PropTypes.number,
   productId: PropTypes.string,
   product: PropTypes.object,
   email: PropTypes.string

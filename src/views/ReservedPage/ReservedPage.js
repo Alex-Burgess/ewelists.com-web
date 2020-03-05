@@ -133,6 +133,9 @@ export default function EditPage(props) {
                   ? <div>
                       <Purchase
                         listId={listId}
+                        listTitle={listTitle}
+                        name={name}
+                        reserveQuantity={reservedQuantity}
                         productId={productId}
                         product={product}
                         email={email}
