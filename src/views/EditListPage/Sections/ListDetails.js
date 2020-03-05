@@ -12,6 +12,7 @@ import Button from "components/CustomButtons/Button.js";
 // Custom components
 import ShareButton from "custom/Buttons/ShareButton.js";
 import { Facebook } from "custom/Share/Share.js";
+import config from 'config.js';
 
 import styles from "assets/jss/custom/views/editListPage/listDetailsStyle.js";
 const useStyles = makeStyles(styles);
@@ -23,12 +24,13 @@ export default function SectionDetails(props) {
 
   const { listId, title, description, occasion, date, imageUrl } = props;
 
-  const mailToText = "mailto:?subject=User shared a list with you&body=Hi! I've created a gift list for my " + occasion + ".  You can view this on ewelists.com:%0D%0A%0D%0Ahttp://localhost:3000/edit/" + listId
+  const listUrl = config.rootDomain + "/lists/" + listId;
+  const mailToText = "mailto:?subject=User shared a list with you&body=Hi! I've created a gift list for my " + occasion + ".  You can view this on ewelists.com:%0D%0A%0D%0A" + listUrl;
 
   const [showCopied, setShowCopied] = useState(false);
 
   const copyLink = () => {
-    copy("http://localhost:3000/edit/" + listId);
+    copy(listUrl);
     setShowCopied(true);
 
     setTimeout(() => {

@@ -17,7 +17,8 @@ const test = {
     REDIRECTSIGNOUT: "http://localhost:3000/login",
     RESPONSETYPE: 'code',
   },
-  imagePrefix: "https://test.ewelists.com"
+  imagePrefix: "https://test.ewelists.com",
+  rootDomain: "https://test.ewelists.com"
 };
 
 const staging = {
@@ -39,7 +40,8 @@ const staging = {
     REDIRECTSIGNOUT: "https://staging.ewelists.com/login",
     RESPONSETYPE: 'code',
   },
-  imagePrefix: ""
+  imagePrefix: "",
+  rootDomain: "https://staging.ewelists.com"
 };
 
 const prod = {
@@ -61,7 +63,8 @@ const prod = {
     REDIRECTSIGNOUT: "https://ewelists.com/login",
     RESPONSETYPE: 'code',
   },
-  imagePrefix: ""
+  imagePrefix: "",
+  rootDomain: "https://ewelists.com"
 };
 
 var config;
@@ -71,12 +74,17 @@ switch (process.env.REACT_APP_STAGE) {
     config = prod;
     break;
   case "staging":
-  console.log("Config: staging");
-  config = staging;
+    console.log("Config: staging");
+    config = staging;
+    break;
+  case "test":
+    console.log("Config: test");
+    config = test;
     break;
   default:
-    console.log("Config: test (default)");
+    console.log("Config: test (localhost)");
     config = test;
+    config['rootDomain'] = "http://localhost:3000";
     break;
 }
 
