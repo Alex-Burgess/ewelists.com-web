@@ -1,4 +1,5 @@
 User-Agent: *
-Allow: /
+Disallow: /reserve/
+Disallow: /lists/
 
 Sitemap: https://ewelists.com/sitemap.xml
