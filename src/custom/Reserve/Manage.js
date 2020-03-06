@@ -23,6 +23,7 @@ function Manage(props) {
   const { listId, productId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
 
   const [error, setError] = useState('');
+  const [showUpdated, setShowUpdated] = useState(false);
   const [newQuantity, setNewQuantity] = useState(reservedQuantity);
   const [newProductReserved, setNewProductReserved] = useState(productReserved);
 
@@ -31,25 +32,30 @@ function Manage(props) {
 
   const updateProduct = async () => {
     if (reservedQuantity === newQuantity) {
-      // setEditError('There are no updates to this item.');
       return false;
     }
 
-    // try {
-    //   await API.put("lists", "/" + listId + "/product/" +  productId, {
-    //     body: { "quantity": newQuantity }
-    //   });
-    // } catch (e) {
-    //   console.log('Unexpected error occurred when creating product: ' + e);
-    //   // setEditError('Product could not be updated.');
-    //   return false
-    // }
+    try {
+      await API.put("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
+        body: {
+          "quantity": newQuantity,
+          "name": name
+        }
+      });
+    } catch (e) {
+      setError('Oops! There was an issue updating the quantity of this product, please contact us.');
+      return false
+    }
 
     props.setReservedQuantity(newQuantity);
     props.setProductReserved(newProductReserved);
-    // Display message
-    // show errors
-    // make api public
+
+    // Show updated in button
+    setShowUpdated(true);
+
+    setTimeout(() => {
+      setShowUpdated(false);
+    }, 3000);
 
     return true
   }
@@ -138,7 +144,12 @@ function Manage(props) {
         </GridItem>
         <GridItem md={3} sm={3} xs={6} className={classes.buttonWrapper}>
           <Button color="primary" className={classes.customButton} onClick={() => updateProduct()}>
-            Update
+            <span className={classes.shareText}>
+              { showUpdated
+                ? 'Updated!'
+                : 'Update'
+              }
+            </span>
           </Button>
         </GridItem>
       </GridContainer>
