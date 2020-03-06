@@ -161,6 +161,9 @@ const styles = theme => ({
     color: "#6c757d",
     marginTop: "0px",
     marginBottom: "0px"
+  },
+  remaining: {
+    minHeight: "18px"
   }
 });
 

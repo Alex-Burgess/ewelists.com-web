@@ -56,7 +56,7 @@ function ReservePopout(props) {
   }
 
   const increaseQuantity = () => {
-    const remaining = product['quantity'] - product['reserved'];
+    const remaining = product['quantity'] - product['reserved'] - product['purchased'];
 
     if (reserveQuantity < remaining){
       setReserveQuantity(reserveQuantity + 1);
@@ -134,7 +134,7 @@ function ReservePopout(props) {
             {product['details']}
           </p>
           <h6 className={classes.cardCategory + " " + classes.centerText}>
-            Remaining: {product['quantity'] - product['reserved']}
+            Remaining: {product['quantity'] - product['reserved'] - product['purchased']}
           </h6>
         </CardBody>
       </Card>
@@ -185,11 +185,11 @@ function ReservePopout(props) {
                       Quantity:
                   </span>
                   <span>
-                    <Button id="reserve" color="primary" size="sm" simple onClick={() => decreaseQuantity()} disabled={disabled()}>
+                    <Button id="reserve" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
                       <Remove />
                     </Button>
                     {reserveQuantity}
-                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()} disabled={disabled()}>
+                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()}>
                       <Add />
                     </Button>
                   </span>
