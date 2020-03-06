@@ -22,7 +22,7 @@ const copy = require('clipboard-copy')
 export default function SectionDetails(props) {
   const classes = useStyles();
 
-  const { listId, title, description, occasion, date, imageUrl } = props;
+  const { listId, title, description, occasion, date, imageUrl, mobile } = props;
 
   const listUrl = config.rootDomain + "/lists/" + listId;
   const mailToText = "mailto:?subject=User shared a list with you&body=Hi! I've created a gift list for my " + occasion + ".  You can view this on ewelists.com:%0D%0A%0D%0A" + listUrl;
@@ -74,9 +74,12 @@ export default function SectionDetails(props) {
                   <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook()}>
                     <i className="fab fa-facebook-messenger" />
                   </ShareButton>
-                  <ShareButton color="whatsapp" round simple justIcon>
-                    <i className="fab fa-whatsapp" />
-                  </ShareButton>
+                  { mobile
+                    ? <ShareButton color="whatsapp" round simple justIcon>
+                        <i className="fab fa-whatsapp" />
+                      </ShareButton>
+                    : null
+                  }
                   <ShareButton color="share" round simple onClick={() => copyLink() }>
                     <i className="fas fa-share-alt" />
                     <span className={classes.shareText}>
@@ -129,4 +132,5 @@ SectionDetails.propTypes = {
   occasion: PropTypes.string,
   date: PropTypes.string,
   imageUrl: PropTypes.string,
+  mobile: PropTypes.bool
 };

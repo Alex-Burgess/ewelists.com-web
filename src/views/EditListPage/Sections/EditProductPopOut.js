@@ -209,7 +209,7 @@ export default function SectionDetails(props) {
               <h6 className={classes.quantity}>
                 {product['quantity']} Requested - {product['reserved'] + product['purchased']} Reserved
                 { product['reserved'] > 0
-                  ? product['reserved'] == 1
+                  ? product['reserved'] === 1
                     ? <div>
                         (Pending purchase confirmation)
                       </div>

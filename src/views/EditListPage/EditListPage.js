@@ -174,6 +174,7 @@ export default function EditPage(props) {
                 occasion={occasion}
                 date={date}
                 imageUrl={imageUrl}
+                mobile={props.mobile}
               />
             <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills
