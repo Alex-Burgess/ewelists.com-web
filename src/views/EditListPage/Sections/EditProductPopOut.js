@@ -32,6 +32,8 @@ export default function SectionDetails(props) {
   const [editError, setEditError] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
 
+  const totalReserved = product['reserved'] + product['purchased'];
+
   useEffect(() => {
     setNewQuantity(product['quantity'])
   }, [product])
@@ -39,7 +41,7 @@ export default function SectionDetails(props) {
   const decreaseQuantity = () => {
     var quantity = newQuantity;
 
-    if (quantity > 1) {
+    if (quantity > 1 && quantity > totalReserved ) {
       quantity = quantity - 1;
     }
 
@@ -55,8 +57,10 @@ export default function SectionDetails(props) {
     let productId = product['productId'];
     let type = product['type'];
 
-    if (product['reserved'] > 0) {
-      console.log("Reserved number: " + product['reserved']);
+    const reservedQuantity = product['reserved'] + product['purchased'];
+
+    if (reservedQuantity > 0) {
+      console.log("Reserved number: " + reservedQuantity);
       setEditError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
       return false
     } else {
@@ -117,6 +121,49 @@ export default function SectionDetails(props) {
     props.handleClose(productId);
   }
 
+  const allButtons = () => {
+    return (
+      <div>
+        <InputLabel className={classes.label}>
+          Quantity:
+          <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+            <Remove />
+          </Button>
+          {` `}{newQuantity}{` `}
+        <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+            <Add />
+          </Button>
+        </InputLabel>
+        <Button round type="submit" onClick={() => deleteProduct()}>
+          Delete
+        </Button>
+        <Button round color="primary" type="submit" onClick={() => updateProduct()}>
+          Update
+        </Button>
+      </div>
+    )
+  }
+
+  const editButtons = () => {
+    return (
+      <div>
+        <InputLabel className={classes.label}>
+          Quantity:
+          <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+            <Remove />
+          </Button>
+          {` `}{newQuantity}{` `}
+        <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+            <Add />
+          </Button>
+        </InputLabel>
+        <Button round color="primary" type="submit" onClick={() => updateProduct()}>
+          Update
+        </Button>
+      </div>
+    )
+  }
+
   return (
     <div className={classes.section}>
       {/* NOTICE MODAL START */}
@@ -157,28 +204,31 @@ export default function SectionDetails(props) {
                 <h4 className={classes.cardTitle}>{product['brand']}</h4>
               </a>
               <p className={classes.description}>
-                {product['description']}
+                {product['details']}
               </p>
-              <p className={classes.description}>
-                Reserved: {product['reserved']}
-              </p>
+              <h6 className={classes.quantity}>
+                {product['quantity']} Requested - {product['reserved'] + product['purchased']} Reserved
+                { product['reserved'] > 0
+                  ? product['reserved'] == 1
+                    ? <div>
+                        (Pending purchase confirmation)
+                      </div>
+                    : <div>
+                        ({product['reserved']} pending purchase confirmation)
+                      </div>
+                  : null
+                }
+              </h6>
               <div className={classes.textCenter}>
-                <InputLabel className={classes.label}>
-                  Quantity:
-                  <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
-                    <Remove />
-                  </Button>
-                  {` `}{newQuantity}{` `}
-                <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
-                    <Add />
-                  </Button>
-                </InputLabel>
-                <Button round type="submit" onClick={() => deleteProduct()}>
-                  Delete
-                </Button>
-                <Button round color="primary" type="submit" onClick={() => updateProduct()}>
-                  Update
-                </Button>
+                {product['reserved'] + product['purchased'] > 0
+                  ? <div>
+                      <h6 className={classes.quantity}>
+                        This gift has been reserved, it is no longer possible to remove it from the list, but you can increase the quantity.
+                      </h6>
+                      {editButtons()}
+                    </div>
+                  : allButtons()
+                }
               </div>
               {editError
                 ?

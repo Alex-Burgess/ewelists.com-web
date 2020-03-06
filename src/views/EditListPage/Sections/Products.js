@@ -94,7 +94,7 @@ export default function SectionProducts(props) {
   const renderProducts = () => {
     const allproducts = Object.entries(products).map(
       ([key, p]) =>
-            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
+            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'])
     )
 
     return allproducts
@@ -103,7 +103,7 @@ export default function SectionProducts(props) {
   const renderMobileProducts = () => {
     const allproducts = Object.entries(products).map(
       ([key, p]) =>
-            renderMobileProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'])
+            renderMobileProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'])
     )
 
     return allproducts

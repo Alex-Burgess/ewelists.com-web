@@ -65,6 +65,11 @@ const sectionStyle = theme => ({
   errorContainer: {
     paddingTop: "20px",
     fontSize: "14px"
+  },
+  quantity: {
+    fontSize: "0.85rem",
+    color: "#6c757d",
+    textAlign: "center"
   }
 });
 
