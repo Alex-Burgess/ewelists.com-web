@@ -225,8 +225,6 @@ export default function Products(props) {
 
   return (
     <div className={classes.section}>
-      {console.log("Products: " + JSON.stringify(products))}
-      {console.log("Reserved: " + JSON.stringify(reserved))}
       <div className={classes.container}>
         <GridContainer>
           <GridItem md={3} sm={4}>

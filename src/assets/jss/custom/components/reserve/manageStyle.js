@@ -56,6 +56,11 @@ const productDetailsStyle = theme => ({
     textAlign: 'center',
     paddingTop: "10px"
   },
+  editRow: {
+    [theme.breakpoints.up("sm")]: {
+      paddingBottom: "30px"
+    },
+  }
 });
 
 export default productDetailsStyle;

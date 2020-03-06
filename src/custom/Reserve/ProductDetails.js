@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles);
 export default function ProductDetails(props) {
   const classes = useStyles();
 
-  const { product, reserveQuantity } = props;
+  const { product, reservedQuantity, productQuantity, remainingQuantity } = props;
 
   return (
     <div className={classes.section}>
@@ -37,9 +37,14 @@ export default function ProductDetails(props) {
               <p className={classes.description}>
                 {product['details']}
               </p>
-              <h6 className={classes.quantity}>
-                Quantity: {reserveQuantity}
-              </h6>
+              {productQuantity > 1
+                ? <h6 className={classes.quantity}>
+                    {remainingQuantity} remaining - You reserved {reservedQuantity}
+                  </h6>
+                : <h6 className={classes.quantity}>
+                    Quantity: {reservedQuantity}
+                  </h6>
+              }
             </div>
           </GridItem>
         </GridContainer>
@@ -50,5 +55,7 @@ export default function ProductDetails(props) {
 
 ProductDetails.propTypes = {
   product: PropTypes.object,
-  reserveQuantity: PropTypes.number,
+  reservedQuantity: PropTypes.number,
+  productQuantity: PropTypes.number,
+  remainingQuantity: PropTypes.number
 };

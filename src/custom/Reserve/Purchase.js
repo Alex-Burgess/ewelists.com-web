@@ -17,13 +17,13 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { listId, listTitle, name, reserveQuantity, productId, product, email } = props;
+  const { listId, listTitle, name, reservedQuantity, productId, product, email } = props;
 
   const purchased = async () => {
     try {
       await API.put("lists", "/" + listId + "/purchase/" +  productId + "/email/" + email, {
         body: {
-          "quantity": reserveQuantity,
+          "quantity": reservedQuantity,
           "title": listTitle,
           "name": name,
           "product": {
@@ -92,7 +92,7 @@ Purchase.propTypes = {
   listId: PropTypes.string,
   listTitle: PropTypes.string,
   name: PropTypes.string,
-  reserveQuantity: PropTypes.number,
+  reservedQuantity: PropTypes.number,
   productId: PropTypes.string,
   product: PropTypes.object,
   email: PropTypes.string

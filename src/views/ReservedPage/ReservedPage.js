@@ -38,6 +38,9 @@ export default function EditPage(props) {
   const [productId, setProductId] = useState('');
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(0);
+  const [productReserved, setProductReserved] = useState(0);
+  const [productPurchased, setProductPurchased] = useState(0);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [load, setLoad] = useState(false);
@@ -50,6 +53,19 @@ export default function EditPage(props) {
         response = await API.get(type, "/" + id);
       } catch (e) {
         console.log("Could not find a product in the " + type + " table for Id: " + id)
+      }
+
+      return response;
+    }
+
+    async function getList(listId) {
+      let response;
+      try {
+        response = await API.get("lists", "/" + listId + "/shared");
+      } catch (e) {
+        console.log("List ID " + listId + " does not exist for the user.")
+        // props.history.push('/error/' + listId);
+        return false
       }
 
       return response;
@@ -91,9 +107,16 @@ export default function EditPage(props) {
       setEmail(reservation.email);
       setName(reservation.name);
       setListId(reservation.listId);
-      setListTitle(reservation.title);
+      // setListTitle(reservation.title);
       setProductId(reservation.productId);
       setReservedQuantity(reservation.quantity);
+
+      const list = await getList(reservation.listId);
+      setListTitle(list.title);
+      const product_quantities = list.products[reservation.productId];
+      setProductQuantity(product_quantities['quantity'])
+      setProductReserved(product_quantities['reserved'])
+      setProductPurchased(product_quantities['purchased'])
 
       const product_response = await getProduct(reservation.productId, reservation.productType);
       let product = {};
@@ -127,7 +150,9 @@ export default function EditPage(props) {
                 <h2 className={classes.title + " " + classes.textCenter}> Reservation </h2>
                 <ProductDetails
                   product={product}
-                  reserveQuantity={reservedQuantity}
+                  reservedQuantity={reservedQuantity}
+                  productQuantity={productQuantity}
+                  remainingQuantity={productQuantity - productReserved - productPurchased}
                 />
               {reserved
                   ? <div>
@@ -135,7 +160,7 @@ export default function EditPage(props) {
                         listId={listId}
                         listTitle={listTitle}
                         name={name}
-                        reserveQuantity={reservedQuantity}
+                        reservedQuantity={reservedQuantity}
                         productId={productId}
                         product={product}
                         email={email}
@@ -148,13 +173,18 @@ export default function EditPage(props) {
                         listId={listId}
                         productId={productId}
                         product={product}
-                        reserveQuantity={reservedQuantity}
+                        reservedQuantity={reservedQuantity}
+                        productQuantity={productQuantity}
+                        productReserved={productReserved}
+                        productPurchased={productPurchased}
                         name={name}
                         email={email}
                         setUnreserved={setUnreserved}
                         setReserved={setReserved}
                         setConfirmed={setConfirmed}
                         setCancelled={setCancelled}
+                        setReservedQuantity={setReservedQuantity}
+                        setProductReserved={setProductReserved}
                       />
                     </div>
                   : null
