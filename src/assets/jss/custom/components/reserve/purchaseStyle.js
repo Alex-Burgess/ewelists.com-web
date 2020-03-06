@@ -1,5 +1,6 @@
 import {
-  title
+  title,
+  dangerColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const productDetailsStyle = theme => ({
@@ -49,6 +50,11 @@ const productDetailsStyle = theme => ({
   },
   extraMargin: {
     marginTop: "15px"
+  },
+  error: {
+    color: dangerColor[1],
+    textAlign: 'center',
+    paddingTop: "10px"
   }
 });
 

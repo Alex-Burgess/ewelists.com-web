@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
@@ -18,6 +18,8 @@ const useStyles = makeStyles(styles);
 function Purchase(props) {
   const classes = useStyles();
   const { listId, listTitle, name, reservedQuantity, productId, product, email } = props;
+
+  const [error, setError] = useState('');
 
   const purchased = async () => {
     try {
@@ -44,8 +46,7 @@ function Purchase(props) {
         props.setCancelled(true);
       } else {
           console.log('Unexpected error occurred when unreserving product: ' + e);
-          // TODO
-          // setError('Oops! There was an issue unreserving this product, please contact us.');
+          setError('Oops! There was an issue confirming the purchase of this gift, please contact us.');
       }
       return false
     }
@@ -83,6 +84,10 @@ function Purchase(props) {
           </Button>
         </GridItem>
       </GridContainer>
+      {error
+        ? <div className={classes.error}> {error} </div>
+        : null
+      }
       <hr />
     </div>
   );

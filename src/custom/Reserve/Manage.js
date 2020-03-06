@@ -43,7 +43,7 @@ function Manage(props) {
         }
       });
     } catch (e) {
-      setError('Oops! There was an issue updating the quantity of this product, please contact us.');
+      setError('Oops! There was an issue updating the quantity of this gift, please contact us.');
       return false
     }
 
@@ -97,7 +97,7 @@ function Manage(props) {
         props.setCancelled(true);
       } else {
         console.log('Unexpected error occurred when unreserving product: ' + e);
-        setError('Oops! There was an issue unreserving this product, please contact us.');
+        setError('Oops! There was an issue unreserving this gift, please contact us.');
       }
       return false
     }

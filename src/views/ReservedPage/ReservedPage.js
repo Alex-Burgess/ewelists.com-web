@@ -112,7 +112,7 @@ export default function EditPage(props) {
       setReservedQuantity(reservation.quantity);
 
       const list = await getList(reservation.listId);
-      setListTitle(list.title);
+      setListTitle(list.list.title);
       const product_quantities = list.products[reservation.productId];
       setProductQuantity(product_quantities['quantity'])
       setProductReserved(product_quantities['reserved'])
