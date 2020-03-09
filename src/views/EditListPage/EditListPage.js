@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MetaTags from 'react-meta-tags';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // @material-ui/core components
@@ -165,6 +166,10 @@ export default function EditPage(props) {
     <div>
       {loaded
         ? <div>
+            <MetaTags>
+              <title>{"Edit list - " + title}</title>
+              <meta name="og:title" content={title} />
+            </MetaTags>
             <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
             <div className={classes.main}>
               <SectionListDetails
@@ -175,6 +180,7 @@ export default function EditPage(props) {
                 date={date}
                 imageUrl={imageUrl}
                 mobile={props.mobile}
+                user={props.user}
               />
             <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills

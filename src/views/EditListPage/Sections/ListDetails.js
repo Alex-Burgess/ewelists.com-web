@@ -22,10 +22,12 @@ const copy = require('clipboard-copy')
 export default function SectionDetails(props) {
   const classes = useStyles();
 
-  const { listId, title, description, occasion, date, imageUrl, mobile } = props;
+  const { listId, title, description, occasion, date, imageUrl, mobile, user } = props;
 
   const listUrl = config.rootDomain + "/lists/" + listId;
-  const mailToText = "mailto:?subject=User shared a list with you&body=Hi! I've created a gift list for my " + occasion + ".  You can view this on ewelists.com:%0D%0A%0D%0A" + listUrl;
+  const mailToText = "mailto:?subject=" + user.name + " shared a gift list with you&body=Hi!%0D%0A%0D%0AYou can view " + title + " at the link below if you wish to buy a gift:%0D%0A%0D%0A" + listUrl;
+  const whatsAppLink = "whatsapp://send?text=View " + title + " here: " + listUrl;
+  const fbMobileLink = "fb-messenger://share/?link=" + encodeURIComponent(listUrl) + "&app_id=1053511994854271";
 
   const [showCopied, setShowCopied] = useState(false);
 
@@ -71,14 +73,22 @@ export default function SectionDetails(props) {
                       <i className="far fa-envelope" />
                     </ShareButton>
                   </a>
-                  <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook()}>
-                    <i className="fab fa-facebook-messenger" />
-                  </ShareButton>
                   { mobile
-                    ? <ShareButton color="whatsapp" round simple justIcon>
-                        <i className="fab fa-whatsapp" />
+                    ? <span>
+                        <a href={fbMobileLink}>
+                          <ShareButton color="facebookMessenger" round simple justIcon>
+                            <i className="fab fa-facebook-messenger" />
+                          </ShareButton>
+                        </a>
+                        <a href={whatsAppLink} data-action="share/whatsapp/share">
+                          <ShareButton color="whatsapp" round simple justIcon>
+                            <i className="fab fa-whatsapp" />
+                          </ShareButton>
+                        </a>
+                      </span>
+                    : <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook(listUrl)}>
+                        <i className="fab fa-facebook-messenger" />
                       </ShareButton>
-                    : null
                   }
                   <ShareButton color="share" round simple onClick={() => copyLink() }>
                     <i className="fas fa-share-alt" />
@@ -132,5 +142,6 @@ SectionDetails.propTypes = {
   occasion: PropTypes.string,
   date: PropTypes.string,
   imageUrl: PropTypes.string,
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
+  user: PropTypes.object
 };

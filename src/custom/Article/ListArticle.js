@@ -1,4 +1,5 @@
 import React from "react";
+import MetaTags from 'react-meta-tags';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -27,6 +28,10 @@ export default function ListArticle(props) {
 
   return (
     <div>
+      <MetaTags>
+        <title>{title}</title>
+        <meta name="og:title" content={title} />
+      </MetaTags>
       <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
       <Parallax image={'/images/' + img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>

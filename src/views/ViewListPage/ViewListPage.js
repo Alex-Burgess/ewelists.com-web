@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MetaTags from 'react-meta-tags';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // @material-ui/core components
@@ -198,6 +199,10 @@ export default function ViewList(props) {
     <div>
       {loaded
         ? <div>
+            <MetaTags>
+              <title>{title}</title>
+              <meta name="og:title" content={title} />
+            </MetaTags>
             <HeaderScroll isAuthenticated={props.isAuthenticated} user={props.user}/>
             <Parallax filter="info" className={classes.articleBg}>
             </Parallax>
