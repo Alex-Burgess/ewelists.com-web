@@ -112,7 +112,7 @@ export default function ViewList(props) {
 
     setEditListDetails();
     setLoaded(true);
-  }, [listId, props]);
+  }, [listId, props, props.history]);
 
   const updateReservedQuantity = async (reservedQuantity, product) => {
     let productId = product['productId'];

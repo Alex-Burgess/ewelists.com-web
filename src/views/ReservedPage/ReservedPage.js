@@ -153,7 +153,7 @@ export default function EditPage(props) {
 
     getPageDetails(resvId);
 
-  }, [resvId, props.location.state]);
+  }, [resvId, props.location.state, props.history]);
 
 
   return (
