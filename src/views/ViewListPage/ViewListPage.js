@@ -39,7 +39,6 @@ export default function ViewList(props) {
         response = await API.get("lists", "/" + listId + "/shared");
       } catch (e) {
         console.log("List ID " + listId + " does not exist for the user.")
-        props.history.push('/error/' + listId);
         return false
       }
 
@@ -99,7 +98,11 @@ export default function ViewList(props) {
     const setEditListDetails = async () => {
       const response = await getList();
 
-      setListState(response);
+      if (response) {
+          setListState(response);
+      } else {
+          props.history.push('/error/' + listId);
+      }
 
       let productDetails = await getProductDetails(response.products);
       setProducts(
