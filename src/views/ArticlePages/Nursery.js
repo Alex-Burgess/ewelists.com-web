@@ -231,6 +231,7 @@ export default function Nursery(props) {
       user={props.user}
       name={name}
       content={ content }
+      setTitle={props.setTitle}
     />
   );
 }

@@ -131,6 +131,7 @@ export default function ChristmasIdeasForToddlers(props) {
       user={props.user}
       name={name}
       content={ content }
+      setTitle={props.setTitle}
     />
   );
 }

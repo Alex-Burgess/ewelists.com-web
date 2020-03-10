@@ -207,6 +207,7 @@ export default function HostpitalBag(props) {
         user={props.user}
         name={name}
         content={ content }
+        setTitle={props.setTitle}
       />
     </div>
   );

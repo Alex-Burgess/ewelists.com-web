@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MetaTags from 'react-meta-tags';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // @material-ui/core components
@@ -66,6 +65,7 @@ export default function EditPage(props) {
     }
 
     function setListState(response) {
+      props.setTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -115,7 +115,7 @@ export default function EditPage(props) {
 
     setEditListDetails();
     setLoaded(true);
-  }, [listId, props.history]);
+  }, [listId, props]);
 
   const deleteProductFromState = (id) => {
     setProducts(
@@ -166,10 +166,6 @@ export default function EditPage(props) {
     <div>
       {loaded
         ? <div>
-            <MetaTags>
-              <title>{"Edit list - " + title}</title>
-              <meta name="og:title" content={title} />
-            </MetaTags>
             <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
             <div className={classes.main}>
               <SectionListDetails

@@ -2,12 +2,13 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Auth, Hub } from "aws-amplify";
 import { withRouter } from "react-router-dom";
 import Routes from "./Routes";
-import { Helmet } from 'react-helmet';
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
+import Title from "custom/Title/Title.js"
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [title, setTitle] = useState('Ewelists');
   const [user, setUser] = useState({});
 
   const [mobile, setMobile] = useState(false);
@@ -92,29 +93,12 @@ function App(props) {
     setUser(user);
   }
 
-  const setTitle = () => {
-    var title = 'Ewelists';
-
-    if (process.env.REACT_APP_STAGE === "prod") {
-      title = 'Ewelists';
-    } else if (process.env.REACT_APP_STAGE === "staging") {
-      title = 'Ewelists - Staging';
-    } else if (process.env.REACT_APP_STAGE === 'test') {
-      title = 'Ewelists - Test';
-    } else if (process.env.REACT_APP_STAGE === undefined) {
-      title = 'Ewelists - Test';
-    }
-    return title
-  }
-
   return (
     !isAuthenticating &&
     <Fragment>
       <ScrollToTop />
-      <Helmet>
-        <title>{setTitle()}</title>
-      </Helmet>
-      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile}} />
+      <Title title={title} environment={process.env.REACT_APP_STAGE}/>
+      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle}} />
     </Fragment>
   );
 }

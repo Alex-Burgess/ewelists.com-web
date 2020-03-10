@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MetaTags from 'react-meta-tags';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // @material-ui/core components
@@ -58,6 +57,7 @@ export default function ViewList(props) {
     }
 
     function setListState(response) {
+      props.setTitle(response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -112,7 +112,7 @@ export default function ViewList(props) {
 
     setEditListDetails();
     setLoaded(true);
-  }, [listId, props.history]);
+  }, [listId, props]);
 
   const updateReservedQuantity = async (reservedQuantity, product) => {
     let productId = product['productId'];
@@ -202,10 +202,6 @@ export default function ViewList(props) {
     <div>
       {loaded
         ? <div>
-            <MetaTags>
-              <title>{title}</title>
-              <meta name="og:title" content={title} />
-            </MetaTags>
             <HeaderScroll isAuthenticated={props.isAuthenticated} user={props.user}/>
             <Parallax filter="info" className={classes.articleBg}>
             </Parallax>

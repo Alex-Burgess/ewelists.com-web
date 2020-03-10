@@ -1,6 +1,4 @@
 import React from 'react';
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -10,9 +8,8 @@ import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import styles from "assets/jss/custom/components/reserve/cancelledStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function Unreserve(props) {
+export default function Closed(props) {
   const classes = useStyles();
-  const { listId, listTitle } = props;
 
   return (
     <div className={classes.section}>
@@ -28,8 +25,3 @@ export default function Unreserve(props) {
     </div>
   );
 }
-
-Unreserve.propTypes = {
-  listId: PropTypes.string,
-  listTitle: PropTypes.string
-};
