@@ -87,12 +87,18 @@ export default function EditPage(props) {
     const getPageDetails = async (resvId) => {
       // Get reservation details
       const reservation = await getReservation(resvId);
-      setEmail(reservation.email);
-      setName(reservation.name);
-      setListId(reservation.listId);
-      setListTitle(reservation.title);
-      setProductId(reservation.productId);
-      setReservedQuantity(reservation.quantity);
+
+      if (reservation) {
+        setEmail(reservation.email);
+        setName(reservation.name);
+        setListId(reservation.listId);
+        setListTitle(reservation.title);
+        setProductId(reservation.productId);
+        setReservedQuantity(reservation.quantity);
+      } else {
+          props.history.push('/error/' + resvId);
+          return false
+      }
 
       // Get product details
       const product_response = await getProduct(reservation.productId, reservation.productType);
