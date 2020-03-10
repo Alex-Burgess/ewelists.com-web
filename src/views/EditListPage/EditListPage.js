@@ -178,7 +178,7 @@ export default function EditPage(props) {
                 mobile={props.mobile}
                 user={props.user}
               />
-            <div className={classes.profileTabs} id="navTabContainer">
+              <div className={classes.profileTabs} id="navTabContainer">
                 <NavPills
                   active={tabId}
                   setActive={setActive}
