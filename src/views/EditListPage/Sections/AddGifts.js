@@ -131,6 +131,7 @@ export default function SectionAddGifts(props) {
       productId: productId,
       quantity: productQuantity,
       reserved: 0,
+      purchased: 0,
       brand: productBrand,
       details: productDetails,
       type: 'products',
@@ -191,7 +192,8 @@ export default function SectionAddGifts(props) {
       url: notFoundUrl,
       imageUrl: config.imagePrefix + '/images/product-default.jpg',
       quantity: notFoundQuantity,
-      reserved: 0
+      reserved: 0,
+      purchased: 0
     }
 
     props.addProductToState(product)
