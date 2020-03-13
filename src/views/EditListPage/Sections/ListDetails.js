@@ -9,6 +9,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Button from "components/CustomButtons/Button.js";
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // Custom components
 import ShareButton from "custom/Buttons/ShareButton.js";
 import { Facebook } from "custom/Share/Share.js";
@@ -22,7 +23,7 @@ const copy = require('clipboard-copy')
 export default function SectionDetails(props) {
   const classes = useStyles();
 
-  const { listId, title, description, occasion, date, imageUrl, mobile, user } = props;
+  const { listId, title, description, occasion, date, imageUrl, mobile, user, closed } = props;
 
   const listUrl = config.rootDomain + "/lists/" + listId;
   const mailToText = "mailto:?subject=" + user.name + " shared a gift list with you&body=Hi!%0D%0A%0D%0AYou can view " + title + " at the link below if you wish to buy a gift:%0D%0A%0D%0A" + listUrl;
@@ -65,53 +66,64 @@ export default function SectionDetails(props) {
             <div className={classes.description}>
               {description}
             </div>
-            <GridContainer >
-              <GridItem xs={12} sm={8} md={9}>
-                <div className={classes.centerMobileText}>
-                  <a href={mailToText}>
-                    <ShareButton color="default" round simple justIcon>
-                      <i className="far fa-envelope" />
-                    </ShareButton>
-                  </a>
-                  { mobile
-                    ? <span>
-                        <a href={fbMobileLink}>
-                          <ShareButton color="facebookMessenger" round simple justIcon>
+            {closed
+              ? <SnackbarContent
+                  message={
+                    <span className={classes.message}>
+                      This list is now closed.
+                    </span>
+                  }
+                  color="success"
+                  icon="info_outline"
+                />
+              : <GridContainer >
+                  <GridItem xs={12} sm={8} md={9}>
+                    <div className={classes.centerMobileText}>
+                      <a href={mailToText}>
+                        <ShareButton color="default" round simple justIcon>
+                          <i className="far fa-envelope" />
+                        </ShareButton>
+                      </a>
+                      { mobile
+                        ? <span>
+                            <a href={fbMobileLink}>
+                              <ShareButton color="facebookMessenger" round simple justIcon>
+                                <i className="fab fa-facebook-messenger" />
+                              </ShareButton>
+                            </a>
+                            <a href={whatsAppLink} data-action="share/whatsapp/share">
+                              <ShareButton color="whatsapp" round simple justIcon>
+                                <i className="fab fa-whatsapp" />
+                              </ShareButton>
+                            </a>
+                          </span>
+                        : <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook(listUrl)}>
                             <i className="fab fa-facebook-messenger" />
                           </ShareButton>
-                        </a>
-                        <a href={whatsAppLink} data-action="share/whatsapp/share">
-                          <ShareButton color="whatsapp" round simple justIcon>
-                            <i className="fab fa-whatsapp" />
-                          </ShareButton>
-                        </a>
-                      </span>
-                    : <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook(listUrl)}>
-                        <i className="fab fa-facebook-messenger" />
-                      </ShareButton>
-                  }
-                  <ShareButton color="share" round simple onClick={() => copyLink() }>
-                    <i className="fas fa-share-alt" />
-                    <span className={classes.shareText}>
-                      { showCopied
-                        ? 'Copied!'
-                        : 'Share'
                       }
-                    </span>
-                  </ShareButton>
-                </div>
-              </GridItem>
-              <GridItem xs={12} sm={4} md={3} className={classes.cogDesktop}>
-                <a href={"/settings/" + listId}>
-                  <Button round simple>
-                    <i className="fas fa-cog"></i>
-                    <span className={classes.shareText}>
-                      Settings
-                    </span>
-                  </Button>
-                </a>
-              </GridItem>
-            </GridContainer>
+                      <ShareButton color="share" round simple onClick={() => copyLink() }>
+                        <i className="fas fa-share-alt" />
+                        <span className={classes.shareText}>
+                          { showCopied
+                            ? 'Copied!'
+                            : 'Share'
+                          }
+                        </span>
+                      </ShareButton>
+                    </div>
+                  </GridItem>
+                  <GridItem xs={12} sm={4} md={3} className={classes.cogDesktop}>
+                    <a href={"/settings/" + listId}>
+                      <Button round simple>
+                        <i className="fas fa-cog"></i>
+                        <span className={classes.shareText}>
+                          Settings
+                        </span>
+                      </Button>
+                    </a>
+                  </GridItem>
+                </GridContainer>
+            }
           </GridItem>
           <GridItem xs={12} sm={5} md={5} className={classes.lessGridPadding}>
             <Card profile plain className={classes.customProfile}>

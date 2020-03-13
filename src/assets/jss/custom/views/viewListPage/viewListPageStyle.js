@@ -34,6 +34,12 @@ const blogPostPageStyle = theme => ({
   },
   spacer: {
     height: "30px"
+  },
+  bannerWrapper: {
+    width: "90%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    paddingBottom: "20px"
   }
 });
 

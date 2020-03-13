@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import HeaderScroll from "custom/Header/HeaderScroll.js";
 import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "custom/Footer/FooterDark.js";
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // sections for this page
 import SectionProducts from "./Sections/Products.js";
 import SectionListDetails from "./Sections/ListDetails.js";
@@ -23,6 +24,7 @@ export default function ViewList(props) {
   const userId = props.user.sub;
 
   const [loaded, setLoaded] = useState(false);
+  const [closed, setClosed] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [occasion, setOccasion] = useState('');
@@ -69,6 +71,10 @@ export default function ViewList(props) {
       } else {
         setDate('');
       }
+
+      if (response.list.state === 'closed') {
+          setClosed(response.list.state);
+      }
     }
 
     async function getProductDetails(products) {
@@ -108,10 +114,11 @@ export default function ViewList(props) {
       setProducts(
         productDetails
       )
+
+      setLoaded(true);
     };
 
     setEditListDetails();
-    setLoaded(true);
   }, [listId, props, props.history]);
 
   const updateReservedQuantity = async (reservedQuantity, product) => {
@@ -213,17 +220,30 @@ export default function ViewList(props) {
                 date={date}
                 imageUrl={imageUrl}
               />
-              <SectionProducts
-                products={products}
-                reserved={reserved}
-                userId={userId}
-                listId={listId}
-                listTitle={title}
-                user={props.user}
-                updateReservedQuantity={updateReservedQuantity}
-                unreserveProduct={unreserveProduct}
-                updateUserReservation={updateUserReservation}
-              />
+              {closed
+                ? <div className={classes.bannerWrapper}>
+                    <SnackbarContent
+                      message={
+                        <span className={classes.message}>
+                          This list is now closed.
+                        </span>
+                      }
+                      color="warning"
+                      icon="info_outline"
+                    />
+                  </div>
+                : <SectionProducts
+                    products={products}
+                    reserved={reserved}
+                    userId={userId}
+                    listId={listId}
+                    listTitle={title}
+                    user={props.user}
+                    updateReservedQuantity={updateReservedQuantity}
+                    unreserveProduct={unreserveProduct}
+                    updateUserReservation={updateUserReservation}
+                  />
+              }
             </div>
             <div className={classes.spacer}>
             </div>

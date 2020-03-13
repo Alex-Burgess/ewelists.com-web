@@ -30,20 +30,22 @@ export default function YourLists(props) {
   const { showCreate } = props;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [ownedLists, setOwnedLists] = useState([]);
+  const [openLists, setOpenLists] = useState([]);
+  const [closedLists, setClosedLists] = useState([]);
   const [createModal, setCreateModal] = useState(showCreate);
 
   useEffect( () => {
     async function getLists(){
       const response = await GetLists();
-      setOwnedLists(response.owned);
+      setOpenLists(response.owned);
+      setClosedLists(response.closed);
     }
 
     getLists();
     setIsLoading(false);
   }, []);
 
-  const renderYourLists = (lists: Lists[]) => {
+  const renderOpenLists = (lists: Lists[]) => {
     let allLists: Lists[] = [];
 
     return allLists.concat(lists).map (
@@ -89,6 +91,46 @@ export default function YourLists(props) {
     )
   }
 
+  const renderClosedLists = (lists: Lists[]) => {
+    let allLists: Lists[] = [];
+
+    return allLists.concat(lists).map (
+      (list, i) =>
+        <GridItem xs={12} sm={4} md={4} key={i}>
+          <Card profile>
+            <CardHeader image>
+              <a href={"/lists/" + list.listId}>
+                <img src={list.imageUrl} className={classes.listImage} alt="..." />
+              </a>
+              <div
+                className={classes.coloredShadow}
+                style={{
+                  backgroundImage: `url(${list.imageUrl})`,
+                  opacity: "1"
+                }}
+              />
+            </CardHeader>
+            <CardBody>
+              <Info>
+                <a href={"/lists/" + list.listId}>
+                  <h6 className={classes.cardCategory}>{list.title}</h6>
+                </a>
+              </Info>
+              <p className={classes.cardDescription}>
+                {list.occasion} - closed
+              </p>
+            </CardBody>
+              <CardFooter profile className={classes.justifyContentCenter}>
+                <a href={"/edit/" + list.listId}>
+                  <Button round color="info" className={classes.customButton}>
+                    <Icon>mode_edit</Icon> Details
+                  </Button>
+                </a>
+              </CardFooter>
+          </Card>
+        </GridItem>
+    )
+  }
 
   return (
     <div className={classes.section}>
@@ -96,7 +138,8 @@ export default function YourLists(props) {
         <h1 className={classes.title}>Your lists</h1>
         <br />
         <GridContainer>
-          {!isLoading && renderYourLists(ownedLists)}
+          {!isLoading && renderOpenLists(openLists)}
+          {!isLoading && renderClosedLists(closedLists)}
           <GridItem xs={12} sm={4} md={4}>
             <CreateButton
               text="Create a New List"

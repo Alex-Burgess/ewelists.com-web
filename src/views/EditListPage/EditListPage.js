@@ -11,11 +11,12 @@ import Redeem from "@material-ui/icons/Redeem";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
 import FooterDark from "custom/Footer/FooterDark.js";
 import NavPills from "components/NavPills/NavPills.js";
-// sections for this page
-import SectionListDetails from "./Sections/ListDetails.js";
-import SectionProducts from "./Sections/Products.js";
-import SectionAddGifts from "./Sections/AddGifts.js";
-import SectionReserved from "./Sections/Reserved.js";
+// s for this page
+import ListDetails from "./Sections/ListDetails.js";
+import Products from "./Sections/Products.js";
+import ClosedProducts from "./Sections/ClosedProducts.js"
+import AddGifts from "./Sections/AddGifts.js";
+import Reserved from "./Sections/Reserved.js";
 
 import config from 'config.js';
 
@@ -29,6 +30,7 @@ export default function EditPage(props) {
   const mobile = props.mobile;
 
   const [loaded, setLoaded] = useState(false);
+  const [closed, setClosed] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [occasion, setOccasion] = useState('');
@@ -77,6 +79,10 @@ export default function EditPage(props) {
       } else {
         setDate('');
       }
+
+      if (response.list.state === 'closed') {
+          setClosed(response.list.state);
+      }
     }
 
     async function getProductDetails(products) {
@@ -111,10 +117,10 @@ export default function EditPage(props) {
         productDetails
       )
       setListState(response);
+      setLoaded(true);
     };
 
     setEditListDetails();
-    setLoaded(true);
   }, [listId, props]);
 
   const deleteProductFromState = (id) => {
@@ -168,7 +174,7 @@ export default function EditPage(props) {
         ? <div>
             <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
             <div className={classes.main}>
-              <SectionListDetails
+              <ListDetails
                 listId={listId}
                 title={title}
                 description={description}
@@ -177,59 +183,95 @@ export default function EditPage(props) {
                 imageUrl={imageUrl}
                 mobile={props.mobile}
                 user={props.user}
+                closed={closed}
               />
               <div className={classes.profileTabs} id="navTabContainer">
-                <NavPills
-                  active={tabId}
-                  setActive={setActive}
-                  alignCenter
-                  color="primary"
-                  tabs={[
-                    {
-                      tabButton: "Manage List",
-                      tabIcon: List,
-                      tabContent: (
-                        <div>
-                          <SectionProducts
-                            mobile={mobile}
-                            products={products}
-                            listId={listId}
-                            deleteProductFromState={deleteProductFromState}
-                            updateProductToState={updateProductToState}
-                            switchToAddProduct={switchToAddProduct}
-                          />
-                        </div>
-                      )
-                    },
-                    {
-                      tabButton: "Add Items",
-                      tabIcon: Search,
-                      tabContent: (
-                        <div>
-                          <SectionAddGifts
-                            mobile={mobile}
-                            listId={listId}
-                            addProductToState={addProductToState}
-                            setActive={setActive}
-                          />
-                        </div>
-                      )
-                    },
-                    {
-                      tabButton: "Reserved",
-                      tabIcon: Redeem,
-                      tabContent: (
-                        <div>
-                          <SectionReserved
-                            mobile={mobile}
-                            reserved={reserved}
-                            products={products}
-                          />
-                        </div>
-                      )
-                    }
-                  ]}
-                />
+                {closed
+                  ? <NavPills
+                      active={tabId}
+                      setActive={setActive}
+                      alignCenter
+                      color="primary"
+                      tabs={[
+                        {
+                          tabButton: "Reserved",
+                          tabIcon: Redeem,
+                          tabContent: (
+                            <div>
+                              <Reserved
+                                mobile={mobile}
+                                reserved={reserved}
+                                products={products}
+                              />
+                            </div>
+                          )
+                        },
+                        {
+                          tabButton: "View List",
+                          tabIcon: List,
+                          tabContent: (
+                            <div>
+                              <ClosedProducts
+                                mobile={mobile}
+                                products={products}
+                              />
+                            </div>
+                          )
+                        }
+                      ]}
+                    />
+                  : <NavPills
+                      active={tabId}
+                      setActive={setActive}
+                      alignCenter
+                      color="primary"
+                      tabs={[
+                        {
+                          tabButton: "Manage List",
+                          tabIcon: List,
+                          tabContent: (
+                            <div>
+                              <Products
+                                mobile={mobile}
+                                products={products}
+                                listId={listId}
+                                deleteProductFromState={deleteProductFromState}
+                                updateProductToState={updateProductToState}
+                                switchToAddProduct={switchToAddProduct}
+                              />
+                            </div>
+                          )
+                        },
+                        {
+                          tabButton: "Add Items",
+                          tabIcon: Search,
+                          tabContent: (
+                            <div>
+                              <AddGifts
+                                mobile={mobile}
+                                listId={listId}
+                                addProductToState={addProductToState}
+                                setActive={setActive}
+                              />
+                            </div>
+                          )
+                        },
+                        {
+                          tabButton: "Reserved",
+                          tabIcon: Redeem,
+                          tabContent: (
+                            <div>
+                              <Reserved
+                                mobile={mobile}
+                                reserved={reserved}
+                                products={products}
+                              />
+                            </div>
+                          )
+                        }
+                      ]}
+                    />
+                }
               </div>
             </div>
             <FooterDark />
