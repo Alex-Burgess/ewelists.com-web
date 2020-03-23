@@ -37,7 +37,6 @@ export default function EditPage(props) {
 
   const [listId, setListId] = useState('');
   const [listTitle, setListTitle] = useState('');
-  const [productId, setProductId] = useState('');
   const [product, setProduct] = useState({});
   const [reservedQuantity, setReservedQuantity] = useState(0);
   const [productQuantity, setProductQuantity] = useState(0);
@@ -93,7 +92,6 @@ export default function EditPage(props) {
         setName(reservation.name);
         setListId(reservation.listId);
         setListTitle(reservation.title);
-        setProductId(reservation.productId);
         setReservedQuantity(reservation.quantity);
       } else {
           props.history.push('/error/' + resvId);
@@ -173,11 +171,10 @@ export default function EditPage(props) {
               {reserved
                   ? <div>
                       <Purchase
-                        listId={listId}
+                        resvId={resvId}
                         listTitle={listTitle}
                         name={name}
                         reservedQuantity={reservedQuantity}
-                        productId={productId}
                         product={product}
                         email={email}
                         setPurchased={setPurchased}
@@ -186,8 +183,7 @@ export default function EditPage(props) {
                         setCancelled={setCancelled}
                       />
                       <Manage
-                        listId={listId}
-                        productId={productId}
+                        resvId={resvId}
                         product={product}
                         reservedQuantity={reservedQuantity}
                         productQuantity={productQuantity}

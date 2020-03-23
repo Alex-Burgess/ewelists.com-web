@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
-  const { listId, productId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
+  const { resvId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
 
   const [error, setError] = useState('');
   const [showUpdated, setShowUpdated] = useState(false);
@@ -36,7 +36,7 @@ function Manage(props) {
     }
 
     try {
-      await API.put("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
+      await API.put("lists", "/reserve/" +  resvId + "/email/" + email,{
         body: {
           "quantity": newQuantity,
           "name": name
@@ -83,7 +83,7 @@ function Manage(props) {
     setError('');
 
     try {
-      await API.del("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email,{
+      await API.del("lists", "/reserve/" +  resvId + "/email/" + email,{
         body: {
           "name": name
         }
@@ -178,8 +178,7 @@ function Manage(props) {
 }
 
 Manage.propTypes = {
-  listId: PropTypes.string,
-  productId: PropTypes.string,
+  resvId: PropTypes.string,
   reservedQuantity: PropTypes.number,
   productQuantity: PropTypes.number,
   productReserved: PropTypes.number,

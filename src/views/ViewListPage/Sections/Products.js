@@ -81,7 +81,198 @@ export default function Products(props) {
       return false
     }
 
-    return reserved[productId][userId]
+    const details = {
+      'reserved': false,
+      'purchased': false,
+      'reserved_quantity': 0,
+      'purchased_quantity': 0,
+    }
+
+    for (var r of reserved[productId][userId]) {
+      console.log("reservation: " + JSON.stringify(r));
+      if (r['state'] === 'purchased') {
+        details['purchased'] = true;
+        details['purchased_quantity'] = r['quantity'] + details['purchased_quantity'];
+      } else {
+        details['reserved'] = true;
+        details['reserved_quantity'] = r['quantity'];
+        details['reservationId'] = r['reservationId'];
+      }
+    }
+
+    console.log("Reserved details: " + JSON.stringify(details));
+    return details
+  }
+
+  const renderButton = (product) => {
+    const reserved = getReservedDetails(product['productId']);
+
+    if (reserved['reserved']) {
+      return (
+        <a href={"/reserve/" + reserved['reservationId']}>
+          <Button default className={classes.reserveButton}>
+            Confirm Purchase
+          </Button>
+        </a>
+      )
+    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] >= product['quantity'])){
+      return (
+        <Button default className={classes.reserveButton} disabled>
+          Purchased by you
+        </Button>
+      )
+    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] < product['quantity'])){
+      return (
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
+          Reserve Another
+        </Button>
+      )
+    } else if (product['reserved'] + product['purchased'] < product['quantity']) {
+      return (
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
+          Reserve Gift
+        </Button>
+      )
+    } else {
+      return (
+        <Button default className={classes.reserveButton} disabled>
+          Reserved
+        </Button>
+      )
+    }
+  }
+
+  const renderRemainingQuantities = (product) => {
+    const reserved = getReservedDetails(product['productId']);
+
+    const quantityRemaining = product['quantity'] - product['reserved'] - product['purchased'];
+
+    if (reserved['reserved'] && reserved['purchased']) {
+      return (
+        <span>
+          You purchased {reserved['purchased_quantity']} and reserved {reserved['reserved_quantity']}
+        </span>
+      )
+    }
+    else if (reserved['reserved']) {
+      return (
+        <span>
+          {quantityRemaining} remaining - You reserved {reserved['reserved_quantity']}
+        </span>
+      )
+    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] >= product['quantity'])){
+      return (
+        <span>
+          {quantityRemaining} remaining - You purchased {reserved['purchased_quantity']}
+        </span>
+      )
+    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] < product['quantity'])){
+      return (
+        <span>
+          {quantityRemaining} remaining - You purchased {reserved['purchased_quantity']}
+        </span>
+      )
+    } else if (product['reserved'] + product['purchased'] < product['quantity']) {
+      return (
+        <span>
+          {quantityRemaining} remaining
+        </span>
+      )
+    } else {
+      return (
+        <span>
+          You reserved item
+        </span>
+      )
+    }
+  }
+
+  const renderImage = (product) => {
+    const reserved = getReservedDetails(product['productId']);
+
+    if (reserved['reserved']) {
+      return (
+        <a href={"/reserve/" + reserved['reservationId']}>
+          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
+        </a>
+      )
+    } else if (reserved['purchased']) {
+      return (
+          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
+      )
+    } else {
+      return (
+        <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
+          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
+        </button>
+      )
+    }
+  }
+
+
+  const renderTitle = (product) => {
+    const reserved = getReservedDetails(product['productId']);
+
+    if (reserved['reserved']) {
+      return (
+        <a href={"/reserve/" + reserved['reservationId']}>
+          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+        </a>
+      )
+    } else if (reserved['purchased']) {
+      return (
+          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+      )
+    } else {
+      return (
+        <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
+          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+        </button>
+      )
+    }
+  }
+
+  const renderProduct = (product, i) => {
+    if ((filterItems === "purchased") && (product['reserved'] < product['quantity'])) {
+        return (null)
+    } else if ((filterItems === "available") && (product['reserved'] >= product['quantity'])) {
+      return (null)
+    } else {
+      return (
+        <GridItem md={4} sm={6} key={i}>
+          <Card plain product className={classes.customProduct}>
+            <CardHeader noShadow image>
+              {renderImage(product)}
+            </CardHeader>
+            <CardBody plain className={classes.productDetails}>
+              <div className={classes.textCenter}>
+                {renderTitle(product)}
+              </div>
+              <p className={classes.description + " " + classes.textCenter}>
+                {product['details']}
+              </p>
+            </CardBody>
+            <CardFooter plain className={classes.footer}>
+              <div className={classes.remaining}>
+                <h6 className={classes.cardCategory + " " + classes.textCenter}>
+                  {renderRemainingQuantities(product)}
+                </h6>
+              </div>
+              {renderButton(product)}
+            </CardFooter>
+          </Card>
+        </GridItem>
+      )
+    }
+  }
+
+  const renderProducts = () => {
+    return (
+      Object.entries(products).map(
+        ([key, product]) =>
+          renderProduct(product, key)
+      )
+    )
   }
 
   const renderReservePopouts = () => {
@@ -109,117 +300,6 @@ export default function Products(props) {
         updateUserReservation={props.updateUserReservation}
         key={i}
       />
-    )
-  }
-
-  const renderButton = (product) => {
-    const reserved = getReservedDetails(product['productId']);
-
-    if (reserved['reservationId'] && (reserved['state'] === 'purchased') && (product['reserved'] + product['purchased'] >= product['quantity'])){
-      return (
-        <Button default className={classes.reserveButton} disabled>
-          Purchased by you
-        </Button>
-      )
-    } else if (reserved['reservationId'] && (reserved['state'] === 'reserved')) {
-      return (
-        <a href={"/reserve/" + reserved['reservationId']}>
-          <Button default className={classes.reserveButton}>
-            Confirm Purchase
-          </Button>
-        </a>
-      )
-    } else if (product['reserved'] + product['purchased'] < product['quantity']) {
-      return (
-        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
-          Reserve Gift
-        </Button>
-      )
-    } else {
-      return (
-        <Button default className={classes.reserveButton} disabled>
-          Reserved
-        </Button>
-      )
-    }
-  }
-
-  const renderRemainingQuantities = (product) => {
-    const reserved = getReservedDetails(product['productId']);
-
-    const quantityRemaining = product['quantity'] - product['reserved'] - product['purchased'];
-
-    if (reserved['reservationId'] && (reserved['state'] === 'purchased') && (product['reserved'] + product['purchased'] < product['quantity'])){
-      return (
-        <span>
-          {quantityRemaining} remaining - You purchased {reserved['quantity']}
-        </span>
-      )
-    } else  if (reserved['reservationId'] && (reserved['state'] === 'reserved') && (product['reserved'] + product['purchased'] < product['quantity'])) {
-      return (
-        <span>
-          {quantityRemaining} remaining - You reserved {reserved['quantity']}
-        </span>
-      )
-    } else  if (reserved['reservationId'] && (reserved['state'] === 'reserved') && (product['reserved'] + product['purchased'] >= product['quantity'])) {
-      return (
-        <span>
-          You reserved item
-        </span>
-      )
-    } else if (quantityRemaining > 0) {
-      return (
-        <span>
-          {quantityRemaining} remaining
-        </span>
-      )
-    }
-  }
-
-  const renderProduct = (product, i) => {
-    if ((filterItems === "purchased") && (product['reserved'] < product['quantity'])) {
-        return (null)
-    } else if ((filterItems === "available") && (product['reserved'] >= product['quantity'])) {
-      return (null)
-    } else {
-      return (
-        <GridItem md={4} sm={6} key={i}>
-          <Card plain product className={classes.customProduct}>
-            <CardHeader noShadow image>
-              <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
-                <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-              </button>
-            </CardHeader>
-            <CardBody plain className={classes.productDetails}>
-              <div className={classes.textCenter}>
-                <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
-                  <h4 className={classes.cardTitle}>{product['brand']}</h4>
-                </button>
-              </div>
-              <p className={classes.description + " " + classes.textCenter}>
-                {product['details']}
-              </p>
-            </CardBody>
-            <CardFooter plain className={classes.footer}>
-              <div className={classes.remaining}>
-                <h6 className={classes.cardCategory + " " + classes.textCenter}>
-                  {renderRemainingQuantities(product)}
-                </h6>
-              </div>
-              {renderButton(product)}
-            </CardFooter>
-          </Card>
-        </GridItem>
-      )
-    }
-  }
-
-  const renderProducts = () => {
-    return (
-      Object.entries(products).map(
-        ([key, product]) =>
-          renderProduct(product, key)
-      )
     )
   }
 
