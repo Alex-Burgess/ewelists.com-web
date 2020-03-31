@@ -178,7 +178,10 @@ const buttonStyle = {
         hexToRgb("#4FCE5D") +
         ", 0.2)"
     }
-  }
+  },
+  round: {
+    borderRadius: "30px"
+  },
 };
 
 export default buttonStyle;
