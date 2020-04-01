@@ -72,7 +72,7 @@ export default function Products(props) {
     }
   }
 
-  const getReservedDetails = (productId) => {
+  const getUserReservedDetails = (productId) => {
     if (! (productId in reserved)) {
       return false
     }
@@ -104,32 +104,38 @@ export default function Products(props) {
     return details
   }
 
-  const renderButton = (product) => {
-    const reserved = getReservedDetails(product['productId']);
+  const checkAllReserved = (product) => {
+    if (product['reserved'] + product['purchased'] >= product['quantity']) {
+      return true
+    }
 
-    if (reserved['reserved']) {
+    return false
+  }
+
+  const renderButton = (userReserved, userPurchased, allReserved, resvId, productId ) => {
+    if (userReserved) {
       return (
-        <a href={"/reserve/" + reserved['reservationId']}>
+        <a href={"/reserve/" + resvId}>
           <Button default className={classes.reserveButton}>
             Confirm Purchase
           </Button>
         </a>
       )
-    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] >= product['quantity'])){
+    } else if (userPurchased && allReserved){
       return (
         <Button default className={classes.reserveButton} disabled>
           Purchased by you
         </Button>
       )
-    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] < product['quantity'])){
+    } else if (userPurchased && !allReserved){
       return (
-        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)}>
           Reserve Another
         </Button>
       )
-    } else if (product['reserved'] + product['purchased'] < product['quantity']) {
+    } else if (!allReserved) {
       return (
-        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(product['productId'])}>
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)}>
           Reserve Gift
         </Button>
       )
@@ -142,53 +148,31 @@ export default function Products(props) {
     }
   }
 
-  const renderRemainingQuantities = (product) => {
-    const reserved = getReservedDetails(product['productId']);
+  const renderRemainingQuantities = (userReserved, userPurchased, allReserved, quantityRemaining, userReservedQuantity, userPurchasedQuantity) => {
+    let remainingDetails;
 
-    const quantityRemaining = product['quantity'] - product['reserved'] - product['purchased'];
+    if (userReserved && userPurchased) {
+      remainingDetails = "You purchased " + userPurchasedQuantity + " and reserved " + userReservedQuantity;
+    }
+    else if (userReserved && allReserved) {
+      remainingDetails = "You reserved " + userReservedQuantity;
+    }
+    else if (userReserved && !allReserved) {
+      remainingDetails = quantityRemaining + " remaining - You reserved " + userReservedQuantity;
+    }
+    else if (!allReserved) {
+      remainingDetails = quantityRemaining + " remaining";
+    }
 
-    if (reserved['reserved'] && reserved['purchased']) {
-      return (
-        <span>
-          You purchased {reserved['purchased_quantity']} and reserved {reserved['reserved_quantity']}
-        </span>
-      )
-    }
-    else if (reserved['reserved']) {
-      return (
-        <span>
-          {quantityRemaining} remaining - You reserved {reserved['reserved_quantity']}
-        </span>
-      )
-    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] >= product['quantity'])){
-      return (
-        <span>
-          {quantityRemaining} remaining - You purchased {reserved['purchased_quantity']}
-        </span>
-      )
-    } else if (reserved['purchased'] && (product['reserved'] + product['purchased'] < product['quantity'])){
-      return (
-        <span>
-          {quantityRemaining} remaining - You purchased {reserved['purchased_quantity']}
-        </span>
-      )
-    } else if (product['reserved'] + product['purchased'] < product['quantity']) {
-      return (
-        <span>
-          {quantityRemaining} remaining
-        </span>
-      )
-    } else {
-      return (
-        <span>
-          You reserved item
-        </span>
-      )
-    }
+    return (
+      <span>
+        {remainingDetails}
+      </span>
+    )
   }
 
   const renderImage = (product) => {
-    const reserved = getReservedDetails(product['productId']);
+    const reserved = getUserReservedDetails(product['productId']);
 
     if (reserved['reserved']) {
       return (
@@ -209,33 +193,36 @@ export default function Products(props) {
     }
   }
 
-
-  const renderTitle = (product) => {
-    const reserved = getReservedDetails(product['productId']);
-
-    if (reserved['reserved']) {
+  const renderTitle = (userReserved, userPurchased, allReserved, brand, resvId, productId) => {
+    if (userReserved) {
       return (
-        <a href={"/reserve/" + reserved['reservationId']}>
-          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+        <a href={"/reserve/" + resvId}>
+          <h4 className={classes.cardTitle}>{brand}</h4>
         </a>
       )
-    } else if (reserved['purchased']) {
+    } else if (userPurchased && allReserved) {
       return (
-          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+          <h4 className={classes.cardTitle}>{brand}</h4>
       )
     } else {
       return (
-        <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
-          <h4 className={classes.cardTitle}>{product['brand']}</h4>
+        <button onClick={() => openReservePopout(productId)} className={classes.undoButton}>
+          <h4 className={classes.cardTitle}>{brand}</h4>
         </button>
       )
     }
   }
 
   const renderProduct = (product, i) => {
-    if ((filterItems === "purchased") && (product['reserved'] < product['quantity'])) {
+    const userReservation = getUserReservedDetails(product['productId']);
+    const userReserved = userReservation['reserved'];
+    const userPurchased = userReservation['purchased'];
+    const allReserved = checkAllReserved(product);
+    const quantityRemaining = product['quantity'] - product['reserved'] - product['purchased'];
+
+    if ((filterItems === "purchased") && (quantityRemaining > 0)) {
         return (null)
-    } else if ((filterItems === "available") && (product['reserved'] >= product['quantity'])) {
+    } else if ((filterItems === "available") && (quantityRemaining <= 0)) {
       return (null)
     } else {
       return (
@@ -246,7 +233,7 @@ export default function Products(props) {
             </CardHeader>
             <CardBody plain className={classes.productDetails}>
               <div className={classes.textCenter}>
-                {renderTitle(product)}
+                {renderTitle(userReserved, userPurchased, allReserved, product['brand'], userReservation['reservationId'], product['productId'])}
               </div>
               <p className={classes.description + " " + classes.textCenter}>
                 {product['details']}
@@ -255,10 +242,10 @@ export default function Products(props) {
             <CardFooter plain className={classes.footer}>
               <div className={classes.remaining}>
                 <h6 className={classes.cardCategory + " " + classes.textCenter}>
-                  {renderRemainingQuantities(product)}
+                  {renderRemainingQuantities(userReserved, userPurchased, allReserved, quantityRemaining, userReservation['reserved_quantity'], userReservation['purchased_quantity'])}
                 </h6>
               </div>
-              {renderButton(product)}
+              {renderButton(userReserved, userPurchased, allReserved, userReservation['reservationId'], product['productId'])}
             </CardFooter>
           </Card>
         </GridItem>
