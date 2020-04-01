@@ -70,7 +70,13 @@ const sectionStyle = theme => ({
     fontSize: "0.85rem",
     color: "#6c757d",
     textAlign: "center"
-  }
+  },
+  labelQuantity: {
+    fontSize: "16px",
+    color: "rgba(0, 0, 0, 0.541176)",
+    fontWeight: "normal",
+    paddingTop: "10px"
+  },
 });
 
 export default sectionStyle;

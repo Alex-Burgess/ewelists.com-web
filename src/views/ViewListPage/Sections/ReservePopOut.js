@@ -185,7 +185,7 @@ function ReservePopout(props) {
                       Quantity:
                   </span>
                   <span>
-                    <Button id="reserve" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+                    <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
                       <Remove />
                     </Button>
                     {reserveQuantity}

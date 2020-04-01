@@ -124,16 +124,18 @@ export default function SectionDetails(props) {
   const allButtons = () => {
     return (
       <div>
-        <InputLabel className={classes.label}>
-          Quantity:
-          <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+        <div className={classes.labelQuantity}>
+          <span>
+              Quantity:
+          </span>
+          <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
             <Remove />
           </Button>
           {` `}{newQuantity}{` `}
-        <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+          <Button id="add" color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
             <Add />
           </Button>
-        </InputLabel>
+        </div>
         <Button round type="submit" onClick={() => deleteProduct()}>
           Delete
         </Button>
@@ -147,16 +149,16 @@ export default function SectionDetails(props) {
   const editButtons = () => {
     return (
       <div>
-        <InputLabel className={classes.label}>
+        <div className={classes.labelQuantity}>
           Quantity:
           <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
             <Remove />
           </Button>
           {` `}{newQuantity}{` `}
-        <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+          <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
             <Add />
           </Button>
-        </InputLabel>
+        </div>
         <Button round color="primary" type="submit" onClick={() => updateProduct()}>
           Update
         </Button>
