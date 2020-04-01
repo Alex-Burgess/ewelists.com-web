@@ -171,28 +171,6 @@ export default function Products(props) {
     )
   }
 
-  const renderImage = (product) => {
-    const reserved = getUserReservedDetails(product['productId']);
-
-    if (reserved['reserved']) {
-      return (
-        <a href={"/reserve/" + reserved['reservationId']}>
-          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-        </a>
-      )
-    } else if (reserved['purchased']) {
-      return (
-          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-      )
-    } else {
-      return (
-        <button onClick={() => openReservePopout(product['productId'])} className={classes.undoButton}>
-          <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-        </button>
-      )
-    }
-  }
-
   const renderTitle = (userReserved, userPurchased, allReserved, brand, resvId, productId) => {
     if (userReserved) {
       return (
@@ -204,11 +182,45 @@ export default function Products(props) {
       return (
           <h4 className={classes.cardTitle}>{brand}</h4>
       )
+    } else if (allReserved) {
+      return (
+          <h4 className={classes.cardTitle}>{brand}</h4>
+      )
     } else {
       return (
         <button onClick={() => openReservePopout(productId)} className={classes.undoButton}>
           <h4 className={classes.cardTitle}>{brand}</h4>
         </button>
+      )
+    }
+  }
+
+  const renderImage = (userReserved, userPurchased, allReserved, imageUrl, resvId, productId) => {
+    if (userReserved) {
+      return (
+        <a href={"/reserve/" + resvId}>
+          <img src={imageUrl} className={classes.productImage} alt=".." />
+        </a>
+      )
+    } else if (userPurchased && allReserved) {
+      return (
+        <img src={imageUrl} className={classes.productImage} alt=".." />
+      )
+    } else if (userPurchased && !allReserved){
+      return (
+        <button onClick={() => openReservePopout(productId)} className={classes.undoButton}>
+          <img src={imageUrl} className={classes.productImage} alt=".." />
+        </button>
+      )
+    } else if (!allReserved) {
+      return (
+        <button onClick={() => openReservePopout(productId)} className={classes.undoButton}>
+          <img src={imageUrl} className={classes.productImage} alt=".." />
+        </button>
+      )
+    } else {
+      return (
+        <img src={imageUrl} className={classes.productImage} alt=".." />
       )
     }
   }
@@ -229,7 +241,7 @@ export default function Products(props) {
         <GridItem md={4} sm={6} key={i}>
           <Card plain product className={classes.customProduct}>
             <CardHeader noShadow image>
-              {renderImage(product)}
+              {renderImage(userReserved, userPurchased, allReserved, product['imageUrl'], userReservation['reservationId'], product['productId'])}
             </CardHeader>
             <CardBody plain className={classes.productDetails}>
               <div className={classes.textCenter}>

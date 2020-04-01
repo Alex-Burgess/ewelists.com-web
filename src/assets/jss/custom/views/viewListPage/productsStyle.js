@@ -101,6 +101,7 @@ const styles = theme => ({
     [theme.breakpoints.down("xs")]: {
       height: "82vw",
       maxHeight: "276.59px",
+      minWidth: "295px"
     },
     height: "18vw",
     maxHeight: "180.05px",
