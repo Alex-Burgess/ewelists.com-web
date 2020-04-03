@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import qs from "qs";
 import { Auth, Hub } from "aws-amplify";
 import { withRouter } from "react-router-dom";
 import Routes from "./Routes";
@@ -27,59 +28,89 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    async function onLoad() {
-      Hub.listen("auth", ({ payload: { event, data } }) => {
-            console.log("Auth Event: " + event)
-            switch (event) {
-              case "signIn":
-                getAttributes();
-                userHasAuthenticated(true);
-                break;
-              case "signOut":
-                setUser(null);
-                break;
-              case "signUp":
-                console.log("Signup event for: " + data.user.username);
-                break;
-              case "forgotPassword":
-                console.log("Forgot password request for: " + data.user.username);
-                break;
-              case "signIn_failure":
-                if (data.message === "PreSignUp failed with error Sign up process complete for user.") {
-                  console.log("Signup actually completed.  Attempt login again.");
-                } else if ((data.message === "Cannot read property 'accessToken' of undefined") || (data.message === "undefined is not an object (evaluating 'a.accessToken')")) {
-                  console.log("Got generic aws amplify error, redirecting to login page.");
-                } else {
-                  console.log("Unexpected Data message: " + data.message);
-                }
-
-                this.props.history.push("/login");
-                break;
-              default:
-                // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
-                break;
-            }
-          });
-
+    async function getSession() {
       try {
         await Auth.currentSession();
         console.log("User has current auth session.");
         await getAttributes();
 
         userHasAuthenticated(true);
-
       }
       catch(e) {
         if (e !== 'No current user') {
           console.log("Current session could not be retrieved:" + e);
         }
       }
+    }
 
+    function parseErrorMessage(error) {
+      const details = {};
+      const errorArray = error.slice(0, -2).split(" ");
+
+      details['account'] = errorArray[4];
+      details['type'] = errorArray[5];
+
+      return details
+    }
+
+    function checkForErrorMessage() {
+      const substring = "PreSignUp failed with error"
+      const error_message = qs.parse(props.location.search, { ignoreQueryPrefix: true }).error_description;
+
+      if (error_message) {
+        console.log("Message: " + error_message);
+
+        if (error_message.indexOf(substring) !== -1) {
+          const results = parseErrorMessage(error_message)
+
+          var account = results['account'];
+          if (account === 'LoginWithAmazon') {
+            account = 'Amazon'
+          }
+
+          props.history.push({
+            pathname: '/',
+            search: '?po=login&account=' + account + '&type=' + results['type'],
+          })
+        }
+      }
+
+    }
+
+    async function onLoad() {
+      checkForErrorMessage();
+
+      Hub.listen("auth", ({ payload: { event, data } }) => {
+        console.log("Auth Event: " + event)
+        switch (event) {
+          case "signIn":
+            getAttributes();
+            userHasAuthenticated(true);
+            break;
+          case "signOut":
+            setUser(null);
+            break;
+          case "signUp":
+            console.log("Signup event for: " + data.user.username);
+            break;
+          case "forgotPassword":
+            console.log("Forgot password request for: " + data.user.username);
+            break;
+          case "signIn_failure":
+            props.history.push("/login");
+            break;
+          default:
+            // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
+            break;
+        }
+      });
+
+      getSession();
       setIsAuthenticating(false);
     }
 
     onLoad();
-  }, []);
+  }, [props.history, props.location.search]);
 
   async function getAttributes() {
     const { attributes } = await Auth.currentAuthenticatedUser();

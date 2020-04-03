@@ -32,7 +32,7 @@ export default function YourLists(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [openLists, setOpenLists] = useState([]);
   const [closedLists, setClosedLists] = useState([]);
-  const [createModal, setCreateModal] = useState(showCreate);
+  // const [createModal, setCreateModal] = useState(showCreate);
 
   useEffect( () => {
     async function getLists(){
@@ -143,9 +143,9 @@ export default function YourLists(props) {
           <GridItem xs={12} sm={4} md={4}>
             <CreateButton
               text="Create a New List"
-              onClick={() => setCreateModal(true)}
+              onClick={() => props.setCreate(true)}
             />
-            {<CreatePopOut open={createModal} setCreateModal={setCreateModal} />}
+          {<CreatePopOut open={showCreate} setCreate={props.setCreate} />}
           </GridItem>
         </GridContainer>
       </div>

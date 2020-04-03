@@ -23,7 +23,6 @@ import AmazonButton from "custom/Buttons/AmazonButton.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
-import NotifyPopOut from "./Sections/NotifyPopOut.js";
 import {imageSize} from 'custom/Image/Image.js';
 
 import styles from "assets/jss/custom/views/signupPageStyle.js";
@@ -38,8 +37,6 @@ export default function SignupPage(props) {
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(null);
   const [error, setError] = useState('');
-  const [popoutModal, setPopoutModal] = useState(false);
-  const [socialType, setSocialType] = useState('');
 
   const validateForm = () => {
     return (
@@ -111,11 +108,6 @@ export default function SignupPage(props) {
     }
   }
 
-  const openNotification = (type) => {
-    setSocialType(type);
-    setPopoutModal(true);
-  }
-
   const renderForm = () => {
     return (
       <div>
@@ -137,19 +129,19 @@ export default function SignupPage(props) {
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <div className={classes.textCenter}>
-                          <AmazonButton justIcon round color="amazon" onClick={() => openNotification('LoginWithAmazon')}>
+                          <AmazonButton justIcon round color="amazon" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
                             <i
                               className={classes.socials + " fab fa-amazon"}
                             />
                           </AmazonButton>
                           {` `}
-                          <Button justIcon round color="google" onClick={() => openNotification('Google')}>
+                          <Button justIcon round color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})}>
                             <i
                               className={classes.socials + " fab fa-google"}
                             />
                           </Button>
                           {` `}
-                          <Button justIcon round color="facebook" onClick={() => openNotification('Facebook')}>
+                          <Button justIcon round color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>
                             <i
                               className={classes.socials + " fab fa-facebook-f"}
                             />
@@ -288,7 +280,6 @@ export default function SignupPage(props) {
 
   return (
     <div>
-      {<NotifyPopOut open={popoutModal} socialType={socialType} setPopoutModal={setPopoutModal} />}
       {newUser === null
         ? renderForm()
         : <ConfirmationForm email={email} password={password} checkGoogleEmail={checkGoogleEmail} />}

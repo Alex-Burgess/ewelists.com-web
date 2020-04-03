@@ -135,7 +135,7 @@ function CreatePopOut(props) {
       }}
       open={open}
       TransitionComponent={Transition}
-      onClose={() => props.setCreateModal(false)}
+      onClose={() => props.setCreate(false)}
       aria-labelledby="classic-modal-slide-title"
       aria-describedby="classic-modal-slide-description"
     >
@@ -149,7 +149,7 @@ function CreatePopOut(props) {
           className={classes.modalCloseButton}
           key="close"
           aria-label="Close"
-          onClick={() => props.setCreateModal(false)}
+          onClick={() => props.setCreate(false)}
         >
           {" "}
           <Close className={classes.modalClose} />

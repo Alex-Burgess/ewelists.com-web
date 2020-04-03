@@ -7,7 +7,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
-import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
 import Remove from "@material-ui/icons/Remove";
