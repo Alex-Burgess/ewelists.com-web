@@ -1,13 +1,6 @@
-import { withRouter } from 'react-router'
-import { Auth } from "aws-amplify";
-
 function LogoutPage(props) {
-  console.log("Logging user out");
-  Auth.signOut();
-  props.userHasAuthenticated(false);
-  props.history.push("/login");
-
+  props.handleLogout();
   return null;
 }
 
-export default withRouter(LogoutPage);
+export default LogoutPage;

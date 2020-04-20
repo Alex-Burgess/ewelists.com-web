@@ -1,12 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import qs from "qs";
 import { Auth, Hub } from "aws-amplify";
-import { withRouter } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Routes from "./Routes";
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
 import Title from "custom/Title/Title.js"
 
 function App(props) {
+  const history = useHistory();
+  const location = useLocation();
+
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [title, setTitle] = useState('Ewelists');
@@ -55,7 +58,7 @@ function App(props) {
 
     function checkForErrorMessage() {
       const substring = "PreSignUp failed with error"
-      const error_message = qs.parse(props.location.search, { ignoreQueryPrefix: true }).error_description;
+      const error_message = qs.parse(location.search, { ignoreQueryPrefix: true }).error_description;
 
       if (error_message) {
         console.log("Message: " + error_message);
@@ -68,7 +71,7 @@ function App(props) {
             account = 'Amazon'
           }
 
-          props.history.push({
+          history.push({
             pathname: '/',
             search: '?po=login&account=' + account + '&type=' + results['type'],
           })
@@ -87,20 +90,7 @@ function App(props) {
             getAttributes();
             userHasAuthenticated(true);
             break;
-          case "signOut":
-            setUser(null);
-            break;
-          case "signUp":
-            console.log("Signup event for: " + data.user.username);
-            break;
-          case "forgotPassword":
-            console.log("Forgot password request for: " + data.user.username);
-            break;
-          case "signIn_failure":
-            props.history.push("/login");
-            break;
           default:
-            // Catch all for ther cases, e.g. cognitoHostedUI_failure, customState_failure
             break;
         }
       });
@@ -110,7 +100,7 @@ function App(props) {
     }
 
     onLoad();
-  }, [props.history, props.location.search]);
+  }, [history, location]);
 
   async function getAttributes() {
     const { attributes } = await Auth.currentAuthenticatedUser();
@@ -124,14 +114,19 @@ function App(props) {
     setUser(user);
   }
 
+  async function handleLogout() {
+    await Auth.signOut();
+    userHasAuthenticated(false);
+  }
+
   return (
     !isAuthenticating &&
     <Fragment>
       <ScrollToTop />
       <Title title={title} environment={process.env.REACT_APP_STAGE}/>
-      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle}} />
+      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
     </Fragment>
   );
 }
 
-export default withRouter(App);
+export default App;
