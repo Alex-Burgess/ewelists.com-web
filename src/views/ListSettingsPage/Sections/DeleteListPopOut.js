@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { API } from "aws-amplify";
-import { withRouter } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -26,6 +26,8 @@ Transition.displayName = "Transition";
 
 function SectionDeletePopout(props) {
   const classes = useStyles();
+  const history = useHistory();
+
   const { open, listId, products } = props;
   const [deleteError, setDeleteError] = useState('');
 
@@ -55,7 +57,7 @@ function SectionDeletePopout(props) {
       }
     }
 
-    props.history.push('/');
+    history.push('/');
   }
 
   return (
@@ -151,4 +153,4 @@ SectionDeletePopout.propTypes = {
   products: PropTypes.object
 };
 
-export default withRouter(SectionDeletePopout);
+export default SectionDeletePopout;

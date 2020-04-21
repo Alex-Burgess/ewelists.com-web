@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -38,7 +38,10 @@ const occasionList = ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christ
 
 function CreatePopOut(props) {
   const classes = useStyles();
+  const history = useHistory();
+
   const { open } = props;
+
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
@@ -90,7 +93,7 @@ function CreatePopOut(props) {
     console.log("List was created with ID (" + listId + "), redirecting to edit page for list.")
 
     setIsCreating(false);
-    props.history.push('/edit/' + listId);
+    history.push('/edit/' + listId);
   }
 
   const createListRequest = (createList) => {
@@ -248,4 +251,4 @@ CreatePopOut.propTypes = {
   open: PropTypes.bool,
 };
 
-export default withRouter(CreatePopOut);
+export default CreatePopOut;

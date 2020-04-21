@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom'
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -187,4 +186,4 @@ Manage.propTypes = {
   email: PropTypes.string
 };
 
-export default withRouter(Manage);
+export default Manage;

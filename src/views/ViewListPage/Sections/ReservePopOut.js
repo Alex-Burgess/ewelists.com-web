@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -34,6 +34,8 @@ Transition.displayName = "Transition";
 
 function ReservePopout(props) {
   const classes = useStyles();
+  const history = useHistory();
+
   const { listId, listTitle, open, product, user } = props;
 
   const [reserveQuantity, setReserveQuantity] = useState(1);
@@ -113,7 +115,7 @@ function ReservePopout(props) {
       return false
     }
 
-    props.history.push({
+    history.push({
       pathname: "/reserve/" + response.reservation_id,
     });
   }
@@ -272,4 +274,4 @@ ReservePopout.propTypes = {
   user: PropTypes.object
 };
 
-export default withRouter(ReservePopout);
+export default ReservePopout;
