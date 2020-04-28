@@ -34,6 +34,22 @@ export default function NewPasswordForm(props) {
   const handleConfirmClick = async event => {
     event.preventDefault();
 
+    if (!(/(?=^[0-9]{6}$)/.test(code))) {
+      setConfirmationError("Confirmation code should be a 6 digit number which was sent to you by email.");
+      return false
+    }
+
+    let passwordError = checkPassword(password);
+    if (passwordError) {
+      setConfirmationError(passwordError);
+      return false
+    }
+
+    if (password != confirmPassword) {
+      setConfirmationError("Your confirmed password does not match the new password.");
+      return false
+    }
+
     try {
       await Auth.forgotPasswordSubmit(
         email,
@@ -47,11 +63,33 @@ export default function NewPasswordForm(props) {
     }
   };
 
+  const checkPassword = (password) => {
+    if (!(/(?=.*[a-z])/.test(password))) {
+      return "Password does not contain any lower case letters."
+    }
+
+    if (!(/(?=.*[A-Z])/.test(password))) {
+      return "Password does not contain any upper case letters."
+    }
+
+    if (!(/(?=.*\d)/.test(password))) {
+      return "Password does not contain any numbers."
+    }
+
+    if (!(/(?=.*[-+_!@#$%^&*.,?])/.test(password))) {
+      return "Password does not contain any symbols."
+    }
+
+    return null
+  }
+
   const validateResetForm = () => {
     return (
       code.length > 0 &&
       password.length > 6 &&
-      password === confirmPassword
+      confirmPassword.length > 6
+      // password.length > 6 &&
+      // password === confirmPassword
     );
   }
 
@@ -150,6 +188,9 @@ export default function NewPasswordForm(props) {
                         placeholder: "Confirm Password..."
                       }}
                     />
+                    <div className={classes.passwordRules}>
+                      Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
+                    </div>
                     { confirmationError
                       ? <div id="newPasswordError" className={classes.error}>
                           <p>{confirmationError}</p>

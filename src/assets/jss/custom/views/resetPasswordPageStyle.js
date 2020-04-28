@@ -190,6 +190,11 @@ const resetPasswordPageStyle = theme => ({
   },
   error: {
     color: dangerColor[1]
+  },
+  passwordRules: {
+    color: "#999",
+    paddingBottom: "15px",
+    fontSize: "13px"
   }
 });
 
