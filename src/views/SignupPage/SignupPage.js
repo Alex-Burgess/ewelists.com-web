@@ -80,9 +80,7 @@ export default function SignupPage(props) {
     if (email.includes('@googlemail.com')) {
       const fields = email.split('@');
       email = fields[0] + "@gmail.com"
-    }
-
-    if (email.includes('@gmail.com')) {
+    } else if (email.includes('@gmail.com')) {
       const fields = email.split('@');
       email = fields[0] + "@googlemail.com"
     }
