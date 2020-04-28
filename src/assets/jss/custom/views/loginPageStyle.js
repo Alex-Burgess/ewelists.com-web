@@ -6,13 +6,20 @@ import {
   blackColor,
   whiteColor,
   grayColor,
+  dangerColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
 
 const loginPageStyle = theme => ({
   description,
+  emailLine:{
+    paddingTop: "30px",
+    margin: "0px"
+  },
   cardTitle: {
     ...cardTitle,
+    fontSize: "1.325rem",
+    lineHeight: "4rem",
     color: whiteColor + "  !important"
   },
   container: {
@@ -60,12 +67,8 @@ const loginPageStyle = theme => ({
   },
   cardHeader: {
     width: "auto",
-    textAlign: "center"
-  },
-  socialLine: {
-    marginTop: "1rem",
     textAlign: "center",
-    padding: "0"
+    height: "124px"
   },
   inputIconsColor: {
     color: grayColor[13]
@@ -159,7 +162,13 @@ const loginPageStyle = theme => ({
     "&,& *,& *:hover,& *:focus": {
       color: infoColor[2] + "  !important"
     }
-  }
+  },
+  buttonSizes: {
+    width: "100%"
+  },
+  loginError: {
+    color: dangerColor[1]
+  },
 });
 
 export default loginPageStyle;

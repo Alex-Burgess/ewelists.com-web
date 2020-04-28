@@ -58,10 +58,21 @@ function App(props) {
 
     function checkForErrorMessage() {
       const substring = "PreSignUp failed with error"
+      const substring2 = "PreSignUp failed with error User exists with different google email address"
       const error_message = qs.parse(location.search, { ignoreQueryPrefix: true }).error_description;
 
       if (error_message) {
         console.log("Message: " + error_message);
+
+        if (error_message.indexOf(substring2) !== -1) {
+          console.log("Google social login failure, recommend username and password login.");
+
+          history.push({
+            pathname: '/login',
+            search: '?error=GoogleDomainError',
+          })
+          return false
+        }
 
         if (error_message.indexOf(substring) !== -1) {
           const results = parseErrorMessage(error_message)

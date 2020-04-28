@@ -10,6 +10,7 @@ import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
 import ListIcon from "@material-ui/icons/List";
 import Perm from "@material-ui/icons/PermIdentity";
+import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -19,7 +20,6 @@ import CardBody from "components/Card/CardBody.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 // Custom components
-import AmazonButton from "custom/Buttons/AmazonButton.js";
 import HeaderTransparent from "custom/Header/HeaderTransparent.js";
 import FooterTransparent from "custom/Footer/FooterTransparent.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
@@ -37,6 +37,7 @@ export default function SignupPage(props) {
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(null);
   const [error, setError] = useState('');
+  const [showEmailForm, setShowEmailForm] = useState(false);
 
   const validateForm = () => {
     return (
@@ -74,18 +75,23 @@ export default function SignupPage(props) {
     return null
   }
 
-  const checkGoogleEmail = (email) => {
+  const switchGoogleMail = (email) => {
+
     if (email.includes('@googlemail.com')) {
-      var fields = email.split('@');
+      const fields = email.split('@');
       email = fields[0] + "@gmail.com"
     }
+
+    if (email.includes('@gmail.com')) {
+      const fields = email.split('@');
+      email = fields[0] + "@googlemail.com"
+    }
+
     return email
   }
 
   const handleSubmit = async event => {
     event.preventDefault();
-
-    let checkedEmail = checkGoogleEmail(email);
 
     let passwordError = checkPassword(password);
     if (passwordError) {
@@ -96,7 +102,7 @@ export default function SignupPage(props) {
 
     try {
       const newUser = await Auth.signUp({
-        username: checkedEmail,
+        username: email,
         password: password,
         attributes: {
           name: name
@@ -104,8 +110,114 @@ export default function SignupPage(props) {
       });
       setNewUser(newUser);
     } catch (e) {
-      setError(e.message);
+      if (e.message === 'PreSignUp failed with error User exists with different google email address..') {
+        setError("An account with this email already exists (" + switchGoogleMail(email) + ").");
+      } else if (e.message === 'An account with the given email already exists.') {
+        setError("An account with this email already exists.");
+      } else {
+        setError(e.message);
+      }
     }
+  }
+
+  const emailRegistrationForm = () => {
+    return (
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <div className={classes.signUpHeader}>
+          <Button justIcon simple className={classes.backButton} onClick={() => setShowEmailForm(false)}>
+            <ArrowBackIos />
+          </Button>
+          <h4 className={classes.title}>
+            Sign Up With Email
+          </h4>
+        </div>
+        <CustomInput
+          id="name"
+          formControlProps={{
+            fullWidth: true,
+            className: classes.customFormControlClasses,
+            value: name,
+            onChange: event => setName(event.target.value)
+          }}
+          inputProps={{
+            startAdornment: (
+              <InputAdornment
+                position="start"
+                className={classes.inputAdornment}
+              >
+                <Face
+                  className={classes.inputAdornmentIcon}
+                />
+              </InputAdornment>
+            ),
+            placeholder: "Name..."
+          }}
+        />
+        <CustomInput
+          id="email"
+          formControlProps={{
+            fullWidth: true,
+            className: classes.customFormControlClasses,
+            value: email,
+            onChange: event => setEmail(event.target.value)
+          }}
+          inputProps={{
+            startAdornment: (
+              <InputAdornment
+                position="start"
+                className={classes.inputAdornment}
+              >
+                <Email
+                  className={classes.inputAdornmentIcon}
+                />
+              </InputAdornment>
+            ),
+            placeholder: "Email..."
+          }}
+        />
+        <CustomInput
+          id="password"
+          formControlProps={{
+            fullWidth: true,
+            className: classes.customFormControlClasses,
+            value: password,
+            onChange: event => setPassword(event.target.value),
+          }}
+          inputProps={{
+            startAdornment: (
+              <InputAdornment
+                position="start"
+                className={classes.inputAdornment}
+              >
+                <Icon className={classes.inputAdornmentIcon}>
+                  lock_outline
+                </Icon>
+              </InputAdornment>
+            ),
+            type: "password",
+            autoComplete: "off",
+            placeholder: "Password..."
+          }}
+        />
+        <div className={classes.passwordRules}>
+          Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
+        </div>
+        { error
+          ? <div id="signupError" className={classes.signUpError}>
+              <p>{error}</p>
+            </div>
+          : null
+        }
+        <div className={classes.textCenter}>
+          <Button color="info" type="submit" disabled={!validateForm()} className={classes.buttonSizes}>
+            Sign Up
+          </Button>
+        </div>
+        <p className={classes.description + " " + classes.loginLink}>
+          Already signed up? <a href="/login" className={classes.link}>Log in</a>
+        </p>
+      </form>
+    )
   }
 
   const renderForm = () => {
@@ -128,113 +240,32 @@ export default function SignupPage(props) {
                   <CardBody>
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
-                        <div className={classes.textCenter}>
-                          <AmazonButton justIcon round color="amazon" onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}>
-                            <i
-                              className={classes.socials + " fab fa-amazon"}
-                            />
-                          </AmazonButton>
-                          {` `}
-                          <Button justIcon round color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})}>
-                            <i
-                              className={classes.socials + " fab fa-google"}
-                            />
-                          </Button>
-                          {` `}
-                          <Button justIcon round color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>
-                            <i
-                              className={classes.socials + " fab fa-facebook-f"}
-                            />
-                          </Button>
-                          {` `}
-                          <div className={classes.orEmail}>
-                            or sign up with your email address
-                          </div>
-                        </div>
-                        <form className={classes.form} onSubmit={handleSubmit}>
-                          <CustomInput
-                            id="name"
-                            formControlProps={{
-                              fullWidth: true,
-                              className: classes.customFormControlClasses,
-                              value: name,
-                              onChange: event => setName(event.target.value)
-                            }}
-                            inputProps={{
-                              startAdornment: (
-                                <InputAdornment
-                                  position="start"
-                                  className={classes.inputAdornment}
-                                >
-                                  <Face
-                                    className={classes.inputAdornmentIcon}
-                                  />
-                                </InputAdornment>
-                              ),
-                              placeholder: "Name..."
-                            }}
-                          />
-                          <CustomInput
-                            id="email"
-                            formControlProps={{
-                              fullWidth: true,
-                              className: classes.customFormControlClasses,
-                              value: email,
-                              onChange: event => setEmail(event.target.value)
-                            }}
-                            inputProps={{
-                              startAdornment: (
-                                <InputAdornment
-                                  position="start"
-                                  className={classes.inputAdornment}
-                                >
-                                  <Email
-                                    className={classes.inputAdornmentIcon}
-                                  />
-                                </InputAdornment>
-                              ),
-                              placeholder: "Email..."
-                            }}
-                          />
-                          <CustomInput
-                            id="password"
-                            formControlProps={{
-                              fullWidth: true,
-                              className: classes.customFormControlClasses,
-                              value: password,
-                              onChange: event => setPassword(event.target.value),
-                            }}
-                            inputProps={{
-                              startAdornment: (
-                                <InputAdornment
-                                  position="start"
-                                  className={classes.inputAdornment}
-                                >
-                                  <Icon className={classes.inputAdornmentIcon}>
-                                    lock_outline
-                                  </Icon>
-                                </InputAdornment>
-                              ),
-                              type: "password",
-                              autoComplete: "off",
-                              placeholder: "Password..."
-                            }}
-                          />
-                          <div className={classes.passwordRules}>
-                            Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
-                          </div>
-                          { error
-                            ? <div id="signupError" className={classes.signUpError}>
-                                <p>{error}</p>
-                              </div>
-                            : null
-                          }
-                          <div className={classes.textCenter}>
-                            <Button round color="info" type="submit" disabled={!validateForm()}>
-                              Sign Up
-                            </Button>
-                          </div>
-                        </form>
+                        { showEmailForm
+                          ? null
+                          : <div className={classes.textCenter + " " + classes.buttonSpacer}>
+                              <Button color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})} className={classes.buttonSizes}>
+                                <i className="fab fa-google" /> Sign up with Google
+                              </Button>
+                              <Button color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})} className={classes.buttonSizes}>
+                                <i className="fab fa-facebook" /> Sign up with Facebook
+                              </Button>
+                              <p
+                                className={classes.description + " " + classes.textCenter + " " + classes.emailLine}
+                              >
+                                Or sign up with email
+                              </p>
+                              <Button color="info" onClick={() => setShowEmailForm(true)} className={classes.buttonSizes}>
+                                Sign up with email
+                              </Button>
+                              <p className={classes.description + " " + classes.loginLink}>
+                                Already signed up? <a href="/login" className={classes.link}>Log in</a>
+                              </p>
+                            </div>
+                        }
+                        { showEmailForm
+                          ? emailRegistrationForm()
+                          : null
+                        }
                       </GridItem>
                       <GridItem xs={12} sm={5} md={5}>
                         <InfoArea
@@ -282,7 +313,7 @@ export default function SignupPage(props) {
     <div>
       {newUser === null
         ? renderForm()
-        : <ConfirmationForm email={email} password={password} checkGoogleEmail={checkGoogleEmail} />}
+        : <ConfirmationForm email={email} password={password} />}
     </div>
   );
 }

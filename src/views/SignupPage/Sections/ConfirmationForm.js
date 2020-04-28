@@ -36,23 +36,13 @@ export default function ConfirmationForm(props) {
   const handleConfirmationSubmit = async event => {
     event.preventDefault();
 
-    let checkedEmail = checkGoogleEmail(email);
-
     try {
-      await Auth.confirmSignUp(checkedEmail, confirmationCode);
+      await Auth.confirmSignUp(email, confirmationCode);
       console.log("User confirmed email.");
-      await Auth.signIn(checkedEmail, password);
+      await Auth.signIn(email, password);
     } catch (e) {
       setConfirmationError(e.message);
     }
-  }
-
-  const checkGoogleEmail = (email) => {
-    if (email.includes('@googlemail.com')) {
-      var fields = email.split('@');
-      email = fields[0] + "@gmail.com"
-    }
-    return email
   }
 
   return (

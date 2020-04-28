@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Auth } from "aws-amplify";
+import qs from "qs";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -29,28 +30,40 @@ export default function LoginPage(props) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  useEffect( () => {
+    function checkUrlParams() {
+      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+
+      switch (params['error']) {
+        case "GoogleDomainError":
+          setError('An account has already been registed with this email address.  Log in with your username and password.');
+          break;
+        default:
+          break;
+      }
+    };
+
+    checkUrlParams();
+  }, [props.location.search]);
+
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
-  }
-
-  const checkGoogleEmail = (email) => {
-    if (email.includes('@googlemail.com')) {
-      var fields = email.split('@');
-      email = fields[0] + "@gmail.com"
-    }
-    return email
   }
 
   const handleSubmit = async event => {
     event.preventDefault();
 
-    let checkedEmail = checkGoogleEmail(email)
-
     try {
-      await Auth.signIn(checkedEmail, password);
+      await Auth.signIn(email, password);
       props.userHasAuthenticated(true);
     } catch (e) {
-      setError(e.message);
+      if (e.message === 'User does not exist.') {
+        setError("We couldn't find an account with the username you entered.");
+      } else if (e.message === 'Incorrect username or password.') {
+        setError("The username or password you entered was incorrect.");
+      } else {
+        setError(e.message);
+      }
     }
   }
 
@@ -74,40 +87,20 @@ export default function LoginPage(props) {
                     signup
                     className={classes.cardHeader}
                   >
-                    <h4 className={classes.cardTitle}>Login</h4>
-                    <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={() => Auth.federatedSignIn({provider: 'LoginWithAmazon'})}
-                      >
-                        <i className="fab fa-amazon" />
-                      </Button>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={() => Auth.federatedSignIn({provider: 'Google'})}
-                      >
-                        <i className="fab fa-google" />
-                      </Button>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}
-                      >
-                        <i className="fab fa-facebook" />
-                      </Button>
-                    </div>
+                    <h4 className={classes.cardTitle}>Log in to Ewelists</h4>
                   </CardHeader>
-                  <p
-                    className={classes.description + " " + classes.textCenter}
-                  >
-                    Or log in with email
-                  </p>
                   <CardBody signup>
+                    <Button color="google" onClick={() => Auth.federatedSignIn({provider: 'Google'})} className={classes.buttonSizes}>
+                      <i className="fab fa-google" /> Log in with Google
+                    </Button>
+                    <Button color="facebook" onClick={() => Auth.federatedSignIn({provider: 'Facebook'})} className={classes.buttonSizes}>
+                      <i className="fab fa-facebook" /> Log in with Facebook
+                    </Button>
+                    <p
+                      className={classes.description + " " + classes.textCenter + " " + classes.emailLine}
+                    >
+                      Or log in with email
+                    </p>
                     <form className={classes.form} onSubmit={handleSubmit}>
                     <CustomInput
                       id="email"
@@ -146,19 +139,20 @@ export default function LoginPage(props) {
                         autoComplete: "off"
                       }}
                     />
-                    <div className={classes.details}>
-                      <a href="/login/reset" className={classes.link}>Forgot your password?</a>
-                    </div>
                     { error
                       ? <div id="loginError" className={classes.loginError}>
                           <p>{error}</p>
                         </div>
                       : null
                     }
-                    <div className={classes.textCenter}>
-                      <Button round color="info" type="submit" disabled={!validateForm()}>
-                        Login
-                      </Button>
+                    <Button color="info" type="submit" disabled={!validateForm()} className={classes.buttonSizes}>
+                      Login
+                    </Button>
+                    <div className={classes.details}>
+                      <a href="/login/reset" className={classes.link}>Forgot your password?</a>
+                      <p className={classes.description}>
+                        New To Ewelists? <a href="/signup" className={classes.link}>Sign Up</a>
+                      </p>
                     </div>
                   </form>
                   </CardBody>

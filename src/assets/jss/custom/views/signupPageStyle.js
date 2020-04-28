@@ -6,7 +6,9 @@ import {
   cardTitle,
   whiteColor,
   blackColor,
-  hexToRgb
+  hexToRgb,
+  description,
+  title
 } from "assets/jss/material-kit-pro-react.js";
 
 import customCheckboxRadioSwitchStyle from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.js";
@@ -14,6 +16,13 @@ import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.js";
 
 const signupPageStyle = theme => ({
   ...modalStyle(theme),
+  description,
+  title: {
+    ...title,
+    marginBottom: "0px",
+    minHeight: "32px",
+    marginTop: "18px"
+  },
   container: {
     ...container,
     zIndex: "2",
@@ -85,6 +94,10 @@ const signupPageStyle = theme => ({
   },
   textCenter: {
     textAlign: "center"
+  },
+  loginLink: {
+    textAlign: "left",
+    paddingTop: "10px"
   },
   inputAdornment: {
     marginRight: "18px",
@@ -196,6 +209,21 @@ const signupPageStyle = theme => ({
     "&,& *,& *:hover,& *:focus": {
       color: infoColor[2] + "  !important"
     }
+  },
+  buttonSizes: {
+    width: "100%"
+  },
+  buttonSpacer: {
+    paddingTop: "20px"
+  },
+  emailLine: {
+    paddingTop: "10px"
+  },
+  signUpHeader: {
+    display: "flex"
+  },
+  backButton: {
+    marginTop: "10px"
   }
 });
 
