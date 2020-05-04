@@ -9,6 +9,8 @@ phases:
       - npm install
       - CLOUDFRONT_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?AliasICPRecordals[?CNAME=='$WEB_BUCKET']].{ID:Id}" --output text)
       - echo CloudFront ID $CLOUDFRONT_ID
+      - PREVIOUS_COMMIT_ID=$(aws codepipeline list-pipeline-executions --pipeline-name main --query "pipelineExecutionSummaries[1].sourceRevisions[?actionName=='Web'].revisionId" --output text)
+      - echo Previous commit $PREVIOUS_COMMIT_ID
   build:
     commands:
       - REACT_APP_STAGE=${ENVIRONMENT} npm run build
