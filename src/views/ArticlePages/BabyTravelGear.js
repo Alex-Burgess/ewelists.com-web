@@ -58,16 +58,27 @@ export default function TravelGear(props) {
         <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/joie-baby-kubbie-sleep-bedside-travel-cot-foggy-grey/p4329548"> Joie</a>,
         which have adaptable heights, making it a little easier for putting your baby down.
       </p>
-      <p>
-        Once your child is a little older and no longer fits in a travel cot, things a little more tricky, but a travel
-        bed guard can help provide some extra security for them sleeping in a single bed.
-      </p>
       <Products
         products={[
           "12345678-prod-t001-1234-abcdefghijkl",
           "12345678-prod-t002-1234-abcdefghijkl",
-          "12345678-prod-t010-1234-abcdefghijkl",
-          "12345678-prod-t011-1234-abcdefghijkl"
+          "12345678-prod-t010-1234-abcdefghijkl"
+        ]}
+        data={productData}
+        lists={lists}
+        isAuthenticated={props.isAuthenticated}
+      />
+      <p>
+        Once your child is a little older and no longer fits in a travel cot, things a little more tricky, but a travel
+        bed guard can help provide some extra security for them sleeping in a single bed.  The brightness of the room
+        could also have an impact on their sleep quality and duration.  For example, if it is unusually bright your
+        little one may wake earlier than usual.  It can be useful to take a portable blackout blind, which can be
+        temporarily stuck to the window.
+      </p>
+      <Products
+        products={[
+          "12345678-prod-t011-1234-abcdefghijkl",
+          "12345678-prod-t032-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}
