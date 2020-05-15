@@ -45,7 +45,7 @@ export default function NewPasswordForm(props) {
       return false
     }
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setConfirmationError("Your confirmed password does not match the new password.");
       return false
     }

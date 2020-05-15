@@ -106,7 +106,7 @@ function App(props) {
         }
       });
 
-      getSession();
+      await getSession();
       setIsAuthenticating(false);
     }
 
@@ -131,12 +131,13 @@ function App(props) {
   }
 
   return (
-    !isAuthenticating &&
-    <Fragment>
-      <ScrollToTop />
-      <Title title={title} environment={process.env.REACT_APP_STAGE}/>
-      <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
-    </Fragment>
+    !isAuthenticating && (
+      <Fragment>
+        <ScrollToTop />
+        <Title title={title} environment={process.env.REACT_APP_STAGE}/>
+        <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
+      </Fragment>
+    )
   );
 }
 
