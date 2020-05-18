@@ -18,7 +18,8 @@ const test = {
     RESPONSETYPE: 'code',
   },
   imagePrefix: "https://test.ewelists.com",
-  rootDomain: "https://test.ewelists.com"
+  rootDomain: "https://test.ewelists.com",
+  sentry: "https://d8b578cadd2a449eb20814921c4de6bf@o393405.ingest.sentry.io/5244580"
 };
 
 const staging = {
@@ -41,7 +42,8 @@ const staging = {
     RESPONSETYPE: 'code',
   },
   imagePrefix: "",
-  rootDomain: "https://staging.ewelists.com"
+  rootDomain: "https://staging.ewelists.com",
+  sentry: "https://07023ac975a14c6abb70d9d6a48e2255@o393405.ingest.sentry.io/5244570"
 };
 
 const prod = {
@@ -64,7 +66,8 @@ const prod = {
     RESPONSETYPE: 'code',
   },
   imagePrefix: "",
-  rootDomain: "https://ewelists.com"
+  rootDomain: "https://ewelists.com",
+  sentry: "https://c5ce6fba823641b8be4c628d42133e57@o393405.ingest.sentry.io/5242440"
 };
 
 var config;
@@ -72,18 +75,22 @@ switch (process.env.REACT_APP_STAGE) {
   case "prod":
     console.log("Config: prod");
     config = prod;
+    config['environment'] = "prod";
     break;
   case "staging":
     console.log("Config: staging");
     config = staging;
+    config['environment'] = "staging";
     break;
   case "test":
     console.log("Config: test");
     config = test;
+    config['environment'] = "test";
     break;
   default:
     console.log("Config: test (localhost)");
     config = test;
+    config['environment'] = "test";
     config['rootDomain'] = "http://localhost:3000";
     break;
 }

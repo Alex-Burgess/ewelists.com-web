@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Auth } from "aws-amplify";
 import qs from "qs";
+// libs
+import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,6 +20,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import {imageSize} from 'custom/Image/Image.js';
+
 
 import styles from "assets/jss/custom/views/loginPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -57,6 +60,8 @@ export default function LoginPage(props) {
       await Auth.signIn(email, password);
       props.userHasAuthenticated(true);
     } catch (e) {
+      onAuthError(e, email);
+
       if (e.message === 'User does not exist.') {
         setError("We couldn't find an account with the username you entered.");
       } else if (e.message === 'Incorrect username or password.') {

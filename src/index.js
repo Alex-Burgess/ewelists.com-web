@@ -5,9 +5,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import config from "./config";
 import './index.css';
 import App from './App';
+import { initSentry } from './libs/errorLib';
 import * as serviceWorker from './serviceWorker';
 
 import "assets/scss/material-kit-pro-react.scss?v=1.8.0";
+
+initSentry();
 
 Amplify.configure({
   Auth: {

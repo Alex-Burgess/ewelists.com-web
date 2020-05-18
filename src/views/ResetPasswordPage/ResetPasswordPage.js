@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from "aws-amplify";
+// libs
+import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -42,6 +44,8 @@ export default function ResetPasswordPage(props) {
       await Auth.forgotPassword(email);
       setCodeSent(true);
     } catch (e) {
+      onAuthError(e, email);
+
       if (e.message === "Username/client id combination not found.") {
         setRequestError("Incorrect username.");
       } else {

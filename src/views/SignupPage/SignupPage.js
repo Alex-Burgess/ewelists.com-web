@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from "aws-amplify";
+// libs
+import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -108,6 +110,8 @@ export default function SignupPage(props) {
       });
       setNewUser(newUser);
     } catch (e) {
+      onAuthError(e, email);
+      
       if (e.message === 'PreSignUp failed with error User exists with different google email address..') {
         setError("An account with this email already exists (" + switchGoogleMail(email) + ").");
       } else if (e.message === 'An account with the given email already exists.') {
