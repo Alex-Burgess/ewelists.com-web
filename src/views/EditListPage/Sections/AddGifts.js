@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -75,7 +77,7 @@ export default function SectionAddGifts(props) {
       const response = await API.get("products", "/url/" + encodeURIComponent(url));
       product = response.product;
     } catch (e) {
-      console.log('Unexpected error occurred when searching for product: ' + e);
+      onError('Unexpected error occurred when searching for product.');
       setErrorMessage('Product could not be found.');
       return false
     }
@@ -88,7 +90,7 @@ export default function SectionAddGifts(props) {
       setProductUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
-      console.log("Notfound url: " + url);
+      debugError("Notfound url: " + url);
       setNotFoundUrl(url);
       setSearchSuccess(false);
     }
@@ -99,7 +101,7 @@ export default function SectionAddGifts(props) {
   }
 
   const addProductToList = async event => {
-    console.log("adding product (" + productId + ") to list: (" + listId + ")");
+    debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     let addDetails = {
       "quantity": productQuantity,
@@ -113,7 +115,7 @@ export default function SectionAddGifts(props) {
         body: addDetails
       });
     } catch (e) {
-      console.log('Error message: ' + e.response.data.error);
+      onError(e);
 
       if (e.response.data.error === 'Product already exists in list.') {
         setErrorMessage('Product already exists in your list.  You can change the quantity in Manage List.');
@@ -125,7 +127,7 @@ export default function SectionAddGifts(props) {
       return false
     }
 
-    console.log("Add response: " + response.message);
+    debugError("Add response: " + response.message);
 
     let product = {
       productId: productId,
@@ -156,12 +158,12 @@ export default function SectionAddGifts(props) {
     try {
       createResponse = await API.post("notfound", "/", { body: requestBody });
     } catch (e) {
-      console.log('Unexpected error occurred when creating product: ' + e);
+      onError('Unexpected error occurred when creating product.');
       setErrorMessage('Product could not be added to your list.');
       return false
     }
 
-    console.log("created product: " + createResponse.productId);
+    debugError("created product: " + createResponse.productId);
 
     // Update list with new product id
     let addDetails = {
@@ -176,12 +178,12 @@ export default function SectionAddGifts(props) {
         body: addDetails
       });
     } catch (e) {
-      console.log('Unexpected error occurred when adding product to list: ' + e.updateListResponse.data.error);
+      onError('Unexpected error occurred when adding product to list');
       setErrorMessage('Product could not be added to your list.');
       return false
     }
 
-    console.log("Add response: " + updateListResponse.message);
+    debugError("Add response: " + updateListResponse.message);
 
     // Update state
     var product = {

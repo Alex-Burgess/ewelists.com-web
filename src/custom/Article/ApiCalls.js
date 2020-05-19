@@ -8,6 +8,6 @@ export function GetList(id) {
   return API.get("lists", "/" + id);
 }
 
-export function GetProduct(type, id) {
-  return API.get(type, "/" + id);
-}
+// export function GetProduct(type, id) {
+//   return API.get(type, "/" + id);
+// }

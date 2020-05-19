@@ -1,5 +1,6 @@
 import {
-  container
+  container,
+  dangerColor
 } from "assets/jss/material-kit-pro-react.js";
 
 import contactUsStyles from "assets/jss/material-kit-pro-react/views/contactUsStyle.js";
@@ -37,6 +38,11 @@ const contactUsStyle = {
   },
   sent: {
     minHeight: "400px"
+  },
+  error: {
+    // maxWidth: "280px",
+    color: dangerColor[1],
+    textAlign: "center"
   }
 };
 

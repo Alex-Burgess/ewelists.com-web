@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -37,6 +39,8 @@ function Purchase(props) {
         }
       });
     } catch (e) {
+      onError(e);
+
       if (e.response.data.error === 'Product was already purchased.') {
         props.setReserved(false);
         props.setConfirmed(true);
@@ -44,8 +48,7 @@ function Purchase(props) {
         props.setReserved(false);
         props.setCancelled(true);
       } else {
-          console.log('Unexpected error occurred when unreserving product: ' + e);
-          setError('Oops! There was an issue confirming the purchase of this gift, please contact us.');
+        setError('Oops! There was an issue confirming the purchase of this gift, please contact us.');
       }
       return false
     }

@@ -32,7 +32,6 @@ export default function LandingPage(props) {
 
       switch (params['po']) {
         case "create":
-          console.log("setting create to true")
           setCreate(true);
           break;
         case "login":

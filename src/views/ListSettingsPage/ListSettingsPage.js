@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // react plugin for creating date-time-picker
 import Datetime from "react-datetime";
 // @material-ui/core components
@@ -61,7 +63,7 @@ export default function SectionDetails(props) {
       try {
         response = await API.get("lists", "/" + listId);
       } catch (e) {
-        console.log("List ID " + listId + " does not exist for the user.");
+        onError("List ID " + listId + " does not exist for the user.");
         setLoadError(true);
       }
 
@@ -109,7 +111,7 @@ export default function SectionDetails(props) {
         "imageUrl":  newImageUrl,
       };
 
-      console.log('Updating list details: ' + JSON.stringify(requestBody));
+      debugError('Updating list details: ' + JSON.stringify(requestBody));
 
       await API.put("lists", "/" + listId, {
         body: requestBody
@@ -122,7 +124,7 @@ export default function SectionDetails(props) {
       setImageUrl(newImageUrl);
       setEdit(false);
     } catch (e) {
-      console.log('Unexpected error occurred when updating list: ' + e.response.data.error);
+      onError(e);
     }
   }
 
@@ -139,7 +141,7 @@ export default function SectionDetails(props) {
     if (d) {
       const t = typeof d;
       if ( t === 'string') {
-        console.log("Date string: " + d + "(" + t + ")")
+        debugError("Date string: " + d + "(" + t + ")")
         setNewDate('');
       } else {
         setNewDate(d.format('DD MMMM YYYY'));

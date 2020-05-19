@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
+// libs
+import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -89,7 +91,7 @@ export default function Products(props) {
     }
 
     for (var r of reserved[productId][userId]) {
-      console.log("reservation: " + JSON.stringify(r));
+      debugError("reservation: " + JSON.stringify(r));
       if (r['state'] === 'purchased') {
         details['purchased'] = true;
         details['purchased_quantity'] = r['quantity'] + details['purchased_quantity'];
@@ -100,7 +102,7 @@ export default function Products(props) {
       }
     }
 
-    console.log("Reserved details: " + JSON.stringify(details));
+    debugError("Reserved details: " + JSON.stringify(details));
     return details
   }
 

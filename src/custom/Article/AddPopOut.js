@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -71,7 +73,7 @@ export default function AddPopOut(props) {
     clearError(listId);
 
     let productId = product.productId;
-    console.log("adding product (" + productId + ") to list: (" + listId + ")");
+    debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     try {
       await API.post("lists", "/" + listId + "/product/" +  productId, {
@@ -80,9 +82,9 @@ export default function AddPopOut(props) {
           "productType": "products"
         }
       });
-      console.log("Added product to list.")
+      debugError("Added product to list.")
     } catch (e) {
-      console.log('Error message: ' + e.response.data.error);
+      onError(e);
 
       if (e.response.data.error !== 'Product already exists in list.') {
         setAddError({

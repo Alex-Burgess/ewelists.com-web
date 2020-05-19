@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -27,6 +28,7 @@ export default function ContactUsPage(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const sendMail = async event => {
     let details = {
@@ -35,19 +37,16 @@ export default function ContactUsPage(props) {
       message: message
     }
 
-    console.log("API request body: " + JSON.stringify(details));
+    debugError("API request body: " + JSON.stringify(details));
 
-    const response = await contactApiPost(details);
-
-    console.log("response: " + JSON.stringify(response))
-    setSubmit(true);
+    try {
+      await contactApiPost(details);
+      setSubmit(true);
+    } catch (e) {
+      onError(e);
+      setError("There was an unexpected error, we're working on it!");
+    }
   }
-
-  // const contactApiPost = async details => {
-  //   return API.post("contact", "/", {
-  //     body: details
-  //   });
-  // }
 
   const validateForm = () => {
     return (
@@ -97,6 +96,12 @@ export default function ContactUsPage(props) {
           <Button color="primary" round onClick={() => sendMail()} disabled={!validateForm()}>
             Contact us
           </Button>
+          {error
+            ? <div className={classes.error}>
+                <p>{error}</p>
+              </div>
+            : null
+          }
         </div>
       </form>
     )

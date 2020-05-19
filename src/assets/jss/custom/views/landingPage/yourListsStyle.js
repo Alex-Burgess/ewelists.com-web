@@ -6,6 +6,7 @@ import {
   blackColor,
   grayColor,
   successColor,
+  dangerColor,
   coloredShadow,
   description,
   mlAuto,
@@ -130,6 +131,12 @@ const sectionStyle = theme => ({
   },
   customButton: {
     padding: "12px 20px"
+  },
+  error: {
+    margin: "0 auto",
+    maxWidth: "280px",
+    color: dangerColor[1],
+    textAlign: "center"
   }
 });
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
+// libs
+import { onError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -46,8 +48,7 @@ export default function EditPage(props) {
       try {
         response = await API.get("lists", "/" + listId);
       } catch (e) {
-        console.log("List ID " + listId + " does not exist for the user.")
-        props.history.push('/error/' + listId);
+        onError("List ID " + listId + " does not exist for the user.", props.user.sub);
         return false
       }
 
@@ -60,7 +61,7 @@ export default function EditPage(props) {
       try {
         response = await API.get(product.type, "/" + product.productId);
       } catch (e) {
-        console.log("Could not find a product in the " + product.type + " table for Id: " + product.productId)
+        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId)
       }
 
       return response;
@@ -112,12 +113,16 @@ export default function EditPage(props) {
     const setEditListDetails = async () => {
       const response = await getList();
 
-      let productDetails = await getProductDetails(response.products);
-      setProducts(
-        productDetails
-      )
-      setListState(response);
-      setLoaded(true);
+      if (! response) {
+        props.history.push('/error/' + listId);
+      } else {
+        let productDetails = await getProductDetails(response.products);
+        setProducts(
+          productDetails
+        )
+        setListState(response);
+        setLoaded(true);
+      }
     };
 
     setEditListDetails();

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
+// libs
+import { onError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -108,7 +110,7 @@ function ReservePopout(props) {
         setAccountError(true);
         setReserveError('Looks like you already have an account. Please log in to reserve this product.');
       } else {
-        console.log('Unexpected error occurred when reserving product: ' + e);
+        onError('Unexpected error occurred when reserving product: ' + e);
         setReserveError('Product could not be reserved.');
       }
 

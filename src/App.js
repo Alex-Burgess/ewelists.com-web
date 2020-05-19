@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import qs from "qs";
 import { Auth, Hub } from "aws-amplify";
+import { onError, debugError } from "libs/errorLib";
 import { useHistory, useLocation } from "react-router-dom";
 import Routes from "./Routes";
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
@@ -34,14 +35,14 @@ function App(props) {
     async function getSession() {
       try {
         await Auth.currentSession();
-        console.log("User has current auth session.");
+        debugError("User has current auth session.");
         await getAttributes();
 
         userHasAuthenticated(true);
       }
       catch(e) {
         if (e !== 'No current user') {
-          console.log("Current session could not be retrieved:" + e);
+          onError(e);
         }
       }
     }
@@ -57,24 +58,16 @@ function App(props) {
     }
 
     function checkForErrorMessage() {
-      const substring = "PreSignUp failed with error"
-      const substring2 = "PreSignUp failed with error User exists with different google email address"
+      const googleSignUpMsg = "PreSignUp failed with error Google";
+      const facebookSignUpMsg = "PreSignUp failed with error Facebook";
+      const amazonSignUpMsg = "PreSignUp failed with error LoginWithAmazon";
+      const googleDomainErrorMsg = "PreSignUp failed with error User exists with different google email address";
+      const generalError = "PreSignUp failed with error";
+
       const error_message = qs.parse(location.search, { ignoreQueryPrefix: true }).error_description;
 
       if (error_message) {
-        console.log("Message: " + error_message);
-
-        if (error_message.indexOf(substring2) !== -1) {
-          console.log("Google social login failure, recommend username and password login.");
-
-          history.push({
-            pathname: '/login',
-            search: '?error=GoogleDomainError',
-          })
-          return false
-        }
-
-        if (error_message.indexOf(substring) !== -1) {
+        if (error_message.indexOf(googleSignUpMsg) !== -1 || error_message.indexOf(facebookSignUpMsg) !== -1 || error_message.indexOf(amazonSignUpMsg) !== -1) {
           const results = parseErrorMessage(error_message)
 
           var account = results['account'];
@@ -86,6 +79,24 @@ function App(props) {
             pathname: '/',
             search: '?po=login&account=' + account + '&type=' + results['type'],
           })
+        } else if (error_message.indexOf(googleDomainErrorMsg) !== -1) {
+          onError(error_message);
+
+          history.push({
+            pathname: '/login',
+            search: '?error=GoogleDomainError',
+          })
+          return false
+        } else if (error_message.indexOf(generalError) !== -1) {
+          onError(error_message);
+
+          history.push({
+            pathname: '/login',
+            search: '?error=true'
+          })
+          return false
+        } else {
+          onError(error_message);
         }
       }
 
@@ -95,7 +106,7 @@ function App(props) {
       checkForErrorMessage();
 
       Hub.listen("auth", ({ payload: { event, data } }) => {
-        console.log("Auth Event: " + event)
+        debugError("Auth Event: " + event)
         switch (event) {
           case "signIn":
             getAttributes();
@@ -121,7 +132,7 @@ function App(props) {
       name: attributes['name']
     }
 
-    console.log("Retrieved user details: " + JSON.stringify(user));
+    debugError("Retrieved user details: " + JSON.stringify(user));
     setUser(user);
   }
 

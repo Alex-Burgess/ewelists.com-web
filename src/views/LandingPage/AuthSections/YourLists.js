@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { onError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -32,13 +34,17 @@ export default function YourLists(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [openLists, setOpenLists] = useState([]);
   const [closedLists, setClosedLists] = useState([]);
-  // const [createModal, setCreateModal] = useState(showCreate);
 
   useEffect( () => {
     async function getLists(){
-      const response = await GetLists();
-      setOpenLists(response.owned);
-      setClosedLists(response.closed);
+      let response;
+      try {
+        response = await GetLists();
+        setOpenLists(response.owned);
+        setClosedLists(response.closed);
+      } catch (e) {
+        onError(e);
+      }
     }
 
     getLists();

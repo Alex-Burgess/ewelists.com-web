@@ -1,4 +1,5 @@
-import { GetLists, GetList } from "Apis";
+import { GetLists, GetList } from "./ApiCalls";
+import { onError } from "libs/errorLib";
 
 export async function getUsersLists() {
   let lists = {};
@@ -10,16 +11,21 @@ export async function getUsersLists() {
   for (var i in responseLists) {
     const list = responseLists[i];
 
-    const listResponse = await GetList(list.listId);
+    let listResponse;
+    try {
+      listResponse = await GetList(list.listId);
 
-    let products = [];
-    for (var key in listResponse.products) {
-      products.push(key);
-    }
+      let products = [];
+      for (var key in listResponse.products) {
+        products.push(key);
+      }
 
-    lists[list.listId] = {
-      "title": list.title,
-      "products": products
+      lists[list.listId] = {
+        "title": list.title,
+        "products": products
+      }
+    } catch (e) {
+      onError(e);
     }
   }
 

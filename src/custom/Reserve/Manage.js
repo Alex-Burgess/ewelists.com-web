@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -42,6 +44,7 @@ function Manage(props) {
         }
       });
     } catch (e) {
+      onError(e);
       setError('Oops! There was an issue updating the quantity of this gift, please contact us.');
       return false
     }
@@ -60,8 +63,8 @@ function Manage(props) {
   }
 
   const increaseQuantity = () => {
-    console.log("Quantity: " + newQuantity);
-    console.log("Remaining: " + remainingQuantity);
+    debugError("Quantity: " + newQuantity);
+    debugError("Remaining: " + remainingQuantity);
     if (remainingQuantity > 0) {
       setNewQuantity(newQuantity + 1);
       setNewProductReserved(newProductReserved + 1)
@@ -88,6 +91,8 @@ function Manage(props) {
         }
       });
     } catch (e) {
+      onError(e);
+
       if (e.response.data.error === 'Product was already purchased.') {
         props.setReserved(false);
         props.setConfirmed(true);
@@ -95,7 +100,6 @@ function Manage(props) {
         props.setReserved(false);
         props.setCancelled(true);
       } else {
-        console.log('Unexpected error occurred when unreserving product: ' + e);
         setError('Oops! There was an issue unreserving this gift, please contact us.');
       }
       return false

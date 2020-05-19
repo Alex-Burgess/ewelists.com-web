@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -53,7 +55,7 @@ export default function EditPage(props) {
       try {
         response = await API.get(type, "/" + id);
       } catch (e) {
-        console.log("Could not find a product in the " + type + " table for Id: " + id)
+        onError("Could not find a product in the " + type + " table for Id: " + id)
       }
 
       return response;
@@ -64,7 +66,7 @@ export default function EditPage(props) {
       try {
         response = await API.get("lists", "/" + listId + "/shared");
       } catch (e) {
-        console.log("List ID " + listId + " does not exist for the user.")
+        onError("List ID " + listId + " does not exist for the user.")
         return false
       }
 
@@ -76,7 +78,7 @@ export default function EditPage(props) {
       try {
         response = await API.get("lists", "/reservation/" + resvId);
       } catch (e) {
-        console.log("Reservation ID " + resvId + " does not exist.")
+        onError("Reservation ID " + resvId + " does not exist.")
         return false
       }
 

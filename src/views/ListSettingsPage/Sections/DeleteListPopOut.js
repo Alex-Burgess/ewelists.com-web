@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { API } from "aws-amplify";
 import { useHistory } from "react-router-dom";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -35,9 +37,9 @@ function SectionDeletePopout(props) {
     // Delete the list
     try {
       const response = await API.del("lists", "/" + listId);
-      console.log(response.message);
+      debugError(response.message);
     } catch (e) {
-      console.log('Unexpected error occurred when deleting list: ' + JSON.stringify(e));
+      onError(e);
       setDeleteError('Unexpected error occurred when deleting list. Check that the list still exists.');
       return false
     }
@@ -47,12 +49,12 @@ function SectionDeletePopout(props) {
       let product = products[key];
 
       if (product.type === "notfound") {
-        console.log("Deleting product: " + key);
+        debugError("Deleting product: " + key);
 
         try {
           await API.del("notfound", "/" + key);
         } catch (e) {
-          console.log('Unexpected error occurred when deleting notfound item: ' + JSON.stringify(e));
+          onError(e);
         }
       }
     }

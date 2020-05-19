@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from "aws-amplify";
 // libs
-import { onAuthError } from "libs/errorLib";
+import { onAuthError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -40,7 +40,7 @@ export default function ConfirmationForm(props) {
 
     try {
       await Auth.confirmSignUp(email, confirmationCode);
-      console.log("User confirmed email.");
+      debugError("User confirmed email.");
       await Auth.signIn(email, password);
     } catch (e) {
       onAuthError(e, email);

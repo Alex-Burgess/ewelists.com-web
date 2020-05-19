@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -59,35 +61,35 @@ export default function SectionDetails(props) {
     const reservedQuantity = product['reserved'] + product['purchased'];
 
     if (reservedQuantity > 0) {
-      console.log("Reserved number: " + reservedQuantity);
+      debugError("Reserved number: " + reservedQuantity);
       setEditError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
       return false
     } else {
-      console.log("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
+      debugError("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
     }
 
 
     try {
       await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
-      console.log('Unexpected error occurred when adding product to list: ' + e.response.data.error);
+      onError('Unexpected error occurred when deleting product from list.');
       setEditError('Item could not be deleted from your list.');
       return false
     }
 
-    console.log("Deleted product from list: " + productId);
+    debugError("Deleted product from list: " + productId);
 
     if (type === 'notfound'){
       // Delete product from table
       try {
         await API.del("notfound", "/" + productId);
       } catch (e) {
-        console.log('Unexpected error occurred when deleting product: ' + e.response.data.error);
+        onError('Unexpected error occurred when deleting product.');
         setEditError('Product could not be deleted.');
         return false
       }
 
-      console.log("Deleted product from notfound table: " + productId);
+      debugError("Deleted product from notfound table: " + productId);
     }
 
     props.deleteProductFromState(productId);
@@ -97,7 +99,7 @@ export default function SectionDetails(props) {
   const updateProduct = async () => {
     let productId = product['productId'];
     let quantity = product['quantity'];
-    console.log("Updating product (" + productId + ") for list (" + listId + ")");
+    debugError("Updating product (" + productId + ") for list (" + listId + ")");
 
     if (quantity === newQuantity) {
       setEditError('There are no updates to this item.');
@@ -109,7 +111,7 @@ export default function SectionDetails(props) {
         body: { "quantity": newQuantity }
       });
     } catch (e) {
-      console.log('Unexpected error occurred when creating product: ' + e);
+      onError('Unexpected error occurred when updating product on list.');
       setEditError('Product could not be updated.');
       return false
     }

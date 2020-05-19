@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -39,7 +41,7 @@ export default function ViewList(props) {
       try {
         response = await API.get("lists", "/" + listId + "/shared");
       } catch (e) {
-        console.log("List ID " + listId + " does not exist for the user.")
+        onError("List ID " + listId + " does not exist.");
         return false
       }
 
@@ -52,7 +54,7 @@ export default function ViewList(props) {
       try {
         response = await API.get(product.type, "/" + product.productId);
       } catch (e) {
-        console.log("Could not find a product in the " + product.type + " table for Id: " + product.productId)
+        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId);
       }
 
       return response;
@@ -124,7 +126,7 @@ export default function ViewList(props) {
   const updateReservedQuantity = async (reservedQuantity, product) => {
     let productId = product['productId'];
     const new_reserved_quantity = products[productId].reserved + reservedQuantity;
-    console.log("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
+    debugError("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
 
     let userReservedObject = {
       [userId] : {
@@ -151,13 +153,12 @@ export default function ViewList(props) {
 
   const unreserveProduct = async (product) => {
     let productId = product['productId'];
-    console.log("Unreserving product (" + productId + ") for user (" + userId + ")");
-    // console.log("reserved state: " + JSON.stringify(this.state.reserved));
+    debugError("Unreserving product (" + productId + ") for user (" + userId + ")");
 
     let userReservedQuantity = reserved[productId][userId].quantity;
     let productTotalReservedQuantity = products[productId].reserved;
     const reservedQuantity = productTotalReservedQuantity - userReservedQuantity;
-    console.log("New product reserved quantity: " + reservedQuantity)
+    debugError("New product reserved quantity: " + reservedQuantity);
 
     setReserved(
       update(reserved, {
@@ -179,11 +180,11 @@ export default function ViewList(props) {
 
     let userOldReservedQuantity = reserved[productId][userId].quantity;
     const quantityChange = newUserQuantity - userOldReservedQuantity
-    console.log("Updating product (" + productId + ") reservation for user (" + userId + ") to " + newUserQuantity);
+    debugError("Updating product (" + productId + ") reservation for user (" + userId + ") to " + newUserQuantity);
 
     let productOldReservedQuantity = products[productId].reserved;
     const productNewReservedQuantity = productOldReservedQuantity + quantityChange
-    console.log("Updating product (" + productId + ") total reserved to (" + productNewReservedQuantity + ")");
+    debugError("Updating product (" + productId + ") total reserved to (" + productNewReservedQuantity + ")");
 
     setReserved(
       update(reserved, {

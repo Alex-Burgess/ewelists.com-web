@@ -1,5 +1,5 @@
 # ewelists-web
-Web application written in React. This documentation has a few basic notes, but more comprehensive documentation is available at the main repo [Ewelists](https://github.com/Alex-Burgess/ewelists.com). 
+Web application written in React. This documentation has a few basic notes, but more comprehensive documentation is available at the main repo [Ewelists](https://github.com/Alex-Burgess/ewelists.com).
 
 ## React Docs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -20,6 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+
+### `REACT_APP_SENTRY=true npm run build`
+
+Runs the app in development mode, but logs to senty.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
@@ -27,10 +32,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for a local/test environment to the `build` folder.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### `REACT_APP_STAGE=staging npm run build`
+
+Builds the application for staging environment.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

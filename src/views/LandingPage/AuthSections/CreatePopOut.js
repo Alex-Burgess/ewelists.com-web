@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
+// libs
+import { onError, debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
@@ -47,12 +49,13 @@ function CreatePopOut(props) {
   const [description, setDescription] = useState('');
   const [occasion, setOccasion] = useState('');
   const [isCreating, setIsCreating] = useState(false);
+  const [error, setError] = useState('');
 
   const changeDate = (d) => {
     if (d) {
       const t = typeof d;
       if ( t === 'string') {
-        console.log("Date string: " + d + "(" + t + ")")
+        debugError("Date string: " + d + "(" + t + ")")
         setDate('');
       } else {
         setDate(d.format('DD MMMM YYYY'));
@@ -77,7 +80,7 @@ function CreatePopOut(props) {
     const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
     const new_image_url = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
 
-    console.log("Creating list with values: title: " + title + ", description: " + description + ", date: " + date + ", occasion: " + occasion + ", imageUrl: " + new_image_url);
+    debugError("Creating list with values: title: " + title + ", description: " + description + ", date: " + date + ", occasion: " + occasion + ", imageUrl: " + new_image_url);
 
     var createList = {
       "title": title,
@@ -87,13 +90,20 @@ function CreatePopOut(props) {
       "imageUrl": new_image_url
     }
 
-    const response = await createListRequest(createList);
+    let response;
+    try {
+      response = await createListRequest(createList);
+      const listId = response.listId;
+      debugError("List was created with ID (" + listId + "), redirecting to edit page for list.")
 
-    const listId = response.listId;
-    console.log("List was created with ID (" + listId + "), redirecting to edit page for list.")
-
-    setIsCreating(false);
-    history.push('/edit/' + listId);
+      setIsCreating(false);
+      history.push('/edit/' + listId);
+    } catch (e) {
+      console.log('Response: ' + JSON.stringify(e.response.data.error));
+      onError(e);
+      setIsCreating(false);
+      setError('There was an unexpected error, if this persists please contact us.');
+    }
   }
 
   const createListRequest = (createList) => {
@@ -240,6 +250,12 @@ function CreatePopOut(props) {
                 </div>
               </div>
             </form>
+            {error
+              ? <div className={classes.error}>
+                  <p>{error}</p>
+                </div>
+              : null
+            }
           </GridItem>
         </GridContainer>
       </DialogContent>

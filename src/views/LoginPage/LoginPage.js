@@ -37,12 +37,15 @@ export default function LoginPage(props) {
     function checkUrlParams() {
       const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
 
-      switch (params['error']) {
-        case "GoogleDomainError":
-          setError('An account has already been registed with this email address.  Log in with your username and password.');
-          break;
-        default:
-          break;
+      if (params['error']) {
+        switch (params['error']) {
+          case "GoogleDomainError":
+            setError('An account has already been registed with this email address.  Log in with your username and password.');
+            break;
+          default:
+            setError('Oops, there was error whilst logging in. If this issue persists please contact us.');
+            break;
+        }
       }
     };
 
