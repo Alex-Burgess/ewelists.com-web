@@ -6,6 +6,8 @@ import { useHistory, useLocation } from "react-router-dom";
 import Routes from "./Routes";
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
 import Title from "custom/Title/Title.js"
+import ErrorBoundary from "views/ErrorBoundary/ErrorBoundary.js";
+
 
 function App(props) {
   const history = useHistory();
@@ -142,13 +144,15 @@ function App(props) {
   }
 
   return (
-    !isAuthenticating && (
-      <Fragment>
-        <ScrollToTop />
-        <Title title={title} environment={process.env.REACT_APP_STAGE}/>
-        <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
-      </Fragment>
-    )
+      !isAuthenticating && (
+          <Fragment>
+            <ScrollToTop />
+            <Title title={title} environment={process.env.REACT_APP_STAGE}/>
+            <ErrorBoundary>
+              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
+            </ErrorBoundary>
+          </Fragment>
+      )
   );
 }
 
