@@ -46,5 +46,13 @@
     "img": "christmas-ideas-for-toddlers",
     "description_short": "Some of our favourite Christmas ideas for toddlers!",
     "beginning_content": "If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play..."
+  },
+  "childrens-outdoor-play": {
+    "category": "PLAY",
+    "title": "Childrens Outdoor Play Ideas",
+    "url": "/list-ideas/childrens-outdoor-play",
+    "img": "childrens-outdoor-play",
+    "description_short": "The toys you need to have fun outdoors.",
+    "beginning_content": "There is nothing better than getting out in the fresh air and enjoying the outdoors. Children love the freedom of running around and learning new skills, and it's a great way to burn some of their boundless energy..."
   }
 }
