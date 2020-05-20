@@ -61,6 +61,7 @@ export default function EditPage(props) {
       try {
         response = await API.get(product.type, "/" + product.productId);
       } catch (e) {
+        onError(e)
         onError("Could not find a product in the " + product.type + " table for Id: " + product.productId)
       }
 
