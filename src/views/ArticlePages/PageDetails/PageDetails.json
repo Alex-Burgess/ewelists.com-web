@@ -54,5 +54,21 @@
     "img": "childrens-outdoor-play",
     "description_short": "The toys you need to have fun outdoors.",
     "beginning_content": "There is nothing better than getting out in the fresh air and enjoying the outdoors. Children love the freedom of running around and learning new skills, and it's a great way to burn some of their boundless energy..."
+  },
+  "childrens-indoor-play": {
+    "category": "PLAY",
+    "title": "Childrens Indoor Play Ideas",
+    "url": "/list-ideas/childrens-indoor-play",
+    "img": "childrens-indoor-play",
+    "description_short": "Hours of Fun Indoors",
+    "beginning_content": "Keep them engaged and help them learn new skills with our fun ideas for playtime."
+  },
+  "play-room": {
+    "category": "PLAY",
+    "title": "Play Room Ideas",
+    "url": "/list-ideas/play-room-ideas",
+    "img": "play-room",
+    "description_short": "Create your perfect play room.",
+    "beginning_content": "Keep toys tidy and organised by creating your own dedicated play space or play room. With some careful choices you can have your play area looking great and fitting in with the rest of your home decor. Here are some of our favourite pieces to get you started."
   }
 }

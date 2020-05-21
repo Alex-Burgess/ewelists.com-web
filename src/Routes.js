@@ -22,6 +22,8 @@ import ArticleBathTime from "views/ArticlePages/BathTime.js";
 import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasForToddlers.js";
 import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ArticleOutdoorPlay from "views/ArticlePages/OutdoorPlay.js";
+import ArticleIndoorPlay from "views/ArticlePages/IndoorPlay.js";
+import ArticlePlayRoom from "views/ArticlePages/PlayRoom.js";
 import ViewListPage from "views/ViewListPage/ViewListPage.js";
 import EditListPage from "views/EditListPage/EditListPage.js";
 import ReservedPage from "views/ReservedPage/ReservedPage.js";
@@ -42,6 +44,8 @@ export default function Routes({appProps}) {
       <AppliedRoute path="/list-ideas/christmas-ideas-for-toddlers" exact component={ArticleChristmasIdeasForToddlers} props={appProps} />
       <AppliedRoute path="/list-ideas/newborn-baby-essentials-list" exact component={ArticleBabyEssentials} props={appProps} />
       <AppliedRoute path="/list-ideas/childrens-outdoor-play" exact component={ArticleOutdoorPlay} props={appProps} />
+      <AppliedRoute path="/list-ideas/childrens-indoor-play" exact component={ArticleIndoorPlay} props={appProps} />
+      <AppliedRoute path="/list-ideas/play-room-ideas" exact component={ArticlePlayRoom} props={appProps} />
       <UnauthenticatedRoute path="/login" exact component={LoginPage} props={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={appProps} />
       <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={appProps} />
