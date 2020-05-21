@@ -23,7 +23,8 @@ export function initSentry() {
 
 export function logError(error, errorInfo = null) {
   if (isLocal) {
-    console.log(JSON.stringify(errorInfo));
+    console.log(error);
+    console.log(errorInfo);
     return;
   }
 
