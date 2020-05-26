@@ -97,6 +97,10 @@ export default function ViewList(props) {
           product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
         }
 
+        if (productResponse.price) {
+          product['price'] = productResponse.price;
+        }
+
         productDetails[key] = product;
       }
 

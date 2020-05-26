@@ -249,17 +249,25 @@ export default function Products(props) {
               <div className={classes.textCenter}>
                 {renderTitle(userReserved, userPurchased, allReserved, product['brand'], userReservation['reservationId'], product['productId'])}
               </div>
-              <p className={classes.description + " " + classes.textCenter}>
-                {product['details']}
-              </p>
+              <div className={classes.textLeft}>
+                <p className={classes.description}>
+                  {product['details']}
+                </p>
+              </div>
+              {product['price']
+                ? <div className={classes.price}>
+                    £ {product['price']}
+                  </div>
+                : null
+              }
             </CardBody>
             <CardFooter plain className={classes.footer}>
+              {renderButton(userReserved, userPurchased, allReserved, userReservation['reservationId'], product['productId'])}
               <div className={classes.remaining}>
                 <h6 className={classes.cardCategory + " " + classes.textCenter}>
                   {renderRemainingQuantities(userReserved, userPurchased, allReserved, quantityRemaining, userReservation['reserved_quantity'], userReservation['purchased_quantity'])}
                 </h6>
               </div>
-              {renderButton(userReserved, userPurchased, allReserved, userReservation['reservationId'], product['productId'])}
             </CardFooter>
           </Card>
         </GridItem>

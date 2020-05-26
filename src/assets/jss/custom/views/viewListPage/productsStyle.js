@@ -66,11 +66,11 @@ const styles = theme => ({
       padding: "0px 0px",
     }
   },
-  priceContainer: {
-    display: "inline-flex"
-  },
+  // priceContainer: {
+  //   display: "inline-flex"
+  // },
   price: {
-    fontSize: "16px",
+    fontSize: "18px",
     color: grayColor[22]
   },
   pullRight: {
@@ -108,7 +108,7 @@ const styles = theme => ({
     objectFit: "contain",
   },
   productDetails: {
-    height: "110px",
+    height: "145px",
   },
   filterButtonContainer: {
     display: "none",
@@ -126,7 +126,8 @@ const styles = theme => ({
     marginTop: "0px"
   },
   footer: {
-    display: "block"
+    display: "block",
+    paddingBottom: "3rem"
   },
   textCenter: {
     textAlign: "center"
