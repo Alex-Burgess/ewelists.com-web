@@ -17,7 +17,8 @@ export default function OutdoorPlay(props) {
     <div>
       <div>
         <p>
-          Keep them engaged and help them learn new skills with our fun ideas for playtime.
+          Young children have active minds and want to explore everything in the world around them. Keep them engaged
+          and help them learn new skills with our fun ideas for playtime.
         </p>
       </div>
       <SectionHeadings
