@@ -50,7 +50,9 @@ export default function EditPage(props) {
     }
 
     const id = getTabId();
-    setTabId(id);
+    if (id) {
+      setTabId(id);
+    }
   }, [props.location.search]);
 
 
