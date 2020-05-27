@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import qs from "qs";
 import update from 'immutability-helper';
 import { API } from "aws-amplify";
 // libs
@@ -41,6 +42,17 @@ export default function EditPage(props) {
   const [products, setProducts] = useState({});
   const [reserved, setReserved] = useState([]);
   const [tabId, setTabId] = useState(0);
+
+  useEffect( () => {
+    function getTabId() {
+      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+      return parseInt(params['tab'])
+    }
+
+    const id = getTabId();
+    setTabId(id);
+  }, [props.location.search]);
+
 
   useEffect( () => {
     async function getList() {
