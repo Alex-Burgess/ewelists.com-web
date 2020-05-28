@@ -43,9 +43,9 @@ function App(props) {
         userHasAuthenticated(true);
       }
       catch(e) {
-        if (e == 'No current user') {
+        if (e === 'No current user') {
           debugError('No current user');
-        } else if (e == 'Refresh Token has expired') {
+        } else if (e === 'Refresh Token has expired') {
           debugError('Refresh Token has expired.');
         } else {
           onError(e);
