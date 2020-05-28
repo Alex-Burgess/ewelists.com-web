@@ -41,7 +41,7 @@ export default function ViewList(props) {
       try {
         response = await API.get("lists", "/" + listId + "/shared");
       } catch (e) {
-        onError("List ID " + listId + " does not exist.");
+        onError("List ID " + listId + " does not exist for the user " + props.user.sub + ". Error: " + e.response.data.error);
         return false
       }
 
@@ -54,7 +54,7 @@ export default function ViewList(props) {
       try {
         response = await API.get(product.type, "/" + product.productId);
       } catch (e) {
-        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId);
+        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId + ". Error: " + e.response.data.error);
       }
 
       return response;
@@ -87,15 +87,16 @@ export default function ViewList(props) {
 
         const productResponse = await getProduct(product);
 
-        product['brand'] = productResponse.brand;
-        product['details'] = productResponse.details;
-        product['productUrl'] = productResponse.productUrl;
+        if (productResponse) {
+          product['brand'] = productResponse.brand;
+          product['details'] = productResponse.details;
+          product['productUrl'] = productResponse.productUrl;
 
-        if (product.type === 'products') {
-          product['imageUrl'] = productResponse.imageUrl;
-        } else {
-          product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-        }
+          if (product.type === 'products') {
+            product['imageUrl'] = productResponse.imageUrl;
+          } else {
+            product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
+          }
 
         if (productResponse.price) {
           product['price'] = productResponse.price;
@@ -112,16 +113,16 @@ export default function ViewList(props) {
 
       if (response) {
           setListState(response);
+
+          let productDetails = await getProductDetails(response.products);
+          setProducts(
+            productDetails
+          )
+
+          setLoaded(true);
       } else {
           props.history.push('/error/' + listId);
       }
-
-      let productDetails = await getProductDetails(response.products);
-      setProducts(
-        productDetails
-      )
-
-      setLoaded(true);
     };
 
     setEditListDetails();
