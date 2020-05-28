@@ -1,15 +1,23 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import qs from "qs";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import CookieConsent from "react-cookie-consent";
 import { Auth, Hub } from "aws-amplify";
+import qs from "qs";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+// libs
 import { onError, debugError } from "libs/errorLib";
-import { useHistory, useLocation } from "react-router-dom";
+// components
 import Routes from "./Routes";
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
 import Title from "custom/Title/Title.js"
 import ErrorBoundary from "views/ErrorBoundary/ErrorBoundary.js";
 
+import styles from "assets/jss/custom/views/appStyle.js";
+const useStyles = makeStyles(styles);
 
-function App(props) {
+export default function App(props) {
+  const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
 
@@ -154,10 +162,26 @@ function App(props) {
             <Title title={title} environment={process.env.REACT_APP_STAGE}/>
             <ErrorBoundary>
               <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
+              {!isAuthenticated
+                ? <CookieConsent
+                    style={{ background: "#2B373B" }}
+                    buttonStyle={{
+                      color: "#FFF",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      padding: "10px 15px",
+                      backgroundColor: "#00acc1"
+                    }}
+                  >
+                    Our website uses cookies to improve your experience and to provide personalised content. By using
+                    our site you agree to our use of cookies
+                    <Link to="/cookies" className={classes.link}> Learn more</Link>
+                    .
+                  </CookieConsent>
+                : null
+              }
             </ErrorBoundary>
           </Fragment>
       )
   );
 }
-
-export default App;

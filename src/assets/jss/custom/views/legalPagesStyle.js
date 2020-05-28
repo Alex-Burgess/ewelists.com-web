@@ -5,12 +5,12 @@ import {
   grayColor
 } from "assets/jss/material-kit-pro-react.js";
 
-const termsPageStyle = {
+const privacyPageStyle = {
   container: {
     ...container,
     zIndex: "2"
   },
-  termsContent: {
+  content: {
     paddingBottom: "40px",
     paddingTop: "80px"
   },
@@ -80,4 +80,4 @@ const termsPageStyle = {
   }
 };
 
-export default termsPageStyle;
+export default privacyPageStyle;

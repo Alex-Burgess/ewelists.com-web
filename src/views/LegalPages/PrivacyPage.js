@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FooterGrey from "custom/Footer/FooterGrey.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
 
-import styles from "assets/jss/custom/views/privacyPageStyle.js";
+import styles from "assets/jss/custom/views/legalPagesStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function PrivacyPage(props) {
@@ -15,7 +15,7 @@ export default function PrivacyPage(props) {
     <div>
       <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile}/>
       <div className={classes.main}>
-        <div className={classes.privacyContent}>
+        <div className={classes.content}>
           <div className={classes.container}>
             <h1 className={classes.title}>Privacy Policy</h1>
 
@@ -32,7 +32,7 @@ export default function PrivacyPage(props) {
                 and how Ewelists will ensure Your data remains secure.
               </p>
               <p>
-                By using the Site You accept the Terms and this Privacy Policy and You agree to comply with them.
+                By using the Site You accept the Terms, Cookies and this Privacy Policy and You agree to comply with them.
                 Ewelists may make changes to this Privacy Policy without notice to You. Please ensure that You review
                 this Privacy Policy regularly as You will be deemed to have accepted any variation if You continue to
                 use the Site after it has been posted.

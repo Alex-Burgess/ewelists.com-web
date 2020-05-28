@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FooterGrey from "custom/Footer/FooterGrey.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
 
-import styles from "assets/jss/custom/views/termsPageStyle.js";
+import styles from "assets/jss/custom/views/legalPagesStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function TermsPage(props) {
@@ -16,7 +16,7 @@ export default function TermsPage(props) {
       <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
 
       <div className={classes.main}>
-        <div className={classes.termsContent}>
+        <div className={classes.content}>
           <div className={classes.container}>
             <h1 className={classes.title}>Terms of Service</h1>
 

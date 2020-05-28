@@ -11,8 +11,9 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import ResetPasswordPage from "views/ResetPasswordPage/ResetPasswordPage.js";
 import LogoutPage from "views/LogoutPage/LogoutPage.js";
 import SignupPage from "views/SignupPage/SignupPage.js";
-import PrivacyPage from "views/PrivacyPage/PrivacyPage.js";
-import TermsPage from "views/TermsPage/TermsPage.js";
+import PrivacyPage from "views/LegalPages/PrivacyPage.js";
+import TermsPage from "views/LegalPages/TermsPage.js";
+import CookiesPage from "views/LegalPages/CookiesPage.js";
 import ContactPage from "views/ContactUsPage/ContactUsPage.js";
 import GiftListIdeas from "views/GiftListIdeas/GiftListIdeas.js";
 import ArticleTravelGear from "views/ArticlePages/BabyTravelGear.js";
@@ -35,6 +36,7 @@ export default function Routes({appProps}) {
       <AppliedRoute path="/" exact component={LandingPage} props={appProps} />
       <AppliedRoute path="/terms" exact component={TermsPage} props={appProps} />
       <AppliedRoute path="/privacy" exact component={PrivacyPage} props={appProps} />
+      <AppliedRoute path="/cookies" exact component={CookiesPage} props={appProps} />
       <AppliedRoute path="/contact" exact component={ContactPage} props={appProps} />
       <AppliedRoute path="/list-ideas" exact component={GiftListIdeas} props={appProps} />
       <AppliedRoute path="/list-ideas/baby-travel-gear" exact component={ArticleTravelGear} props={appProps} />
