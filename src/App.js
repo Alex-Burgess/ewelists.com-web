@@ -1,12 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from "react-router-dom";
-import CookieConsent from "react-cookie-consent";
+import CookieConsent, { Cookies } from "react-cookie-consent";
 import { Auth, Hub } from "aws-amplify";
 import qs from "qs";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // libs
 import { onError, debugError } from "libs/errorLib";
+import { initGA, onView } from './libs/googleAnalyticsLib';
 // components
 import Routes from "./Routes";
 import ScrollToTop from "custom/Scroll/ScrollToTop.js";
@@ -28,6 +29,18 @@ export default function App(props) {
 
   const [mobile, setMobile] = useState(false);
 
+  // Google Analytics
+  if (isAuthenticated || Cookies.get('CookieConsent') === 'true') {
+    initGA();
+    onView(window.location.pathname + window.location.search);
+  }
+
+  history.listen((location) => {
+    onView(location.pathname + window.location.search);
+  });
+
+
+  // Page size
   useEffect( () => {
     function updateDimensions() {
       if (window.innerWidth < 400){
@@ -41,6 +54,8 @@ export default function App(props) {
     updateDimensions();
   }, []);
 
+
+  // Session Logic
   useEffect(() => {
     async function getSession() {
       try {
@@ -51,9 +66,6 @@ export default function App(props) {
         userHasAuthenticated(true);
       }
       catch(e) {
-        console.log("Auth exception: " + JSON.stringify(e));
-        console.log("Auth error message: " + e.message);
-
         if (e === 'No current user') {
           debugError('No current user');
         } else if (e.message === 'Refresh Token has expired') {
@@ -176,6 +188,10 @@ export default function App(props) {
                       fontWeight: "600",
                       padding: "10px 15px",
                       backgroundColor: "#00acc1"
+                    }}
+                    onAccept={({ acceptedByScrolling }) => {
+                      initGA();
+                      onView(window.location.pathname + window.location.search);
                     }}
                   >
                     Our website uses cookies to improve your experience and to provide personalised content. By using

@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Amplify from "aws-amplify";
 import { BrowserRouter as Router } from "react-router-dom";
-import config from "./config";
-import './index.css';
-import App from './App';
+// Libs
 import { initSentry } from './libs/errorLib';
+// Components
+import App from './App';
+import './index.css';
+import config from "./config";
 import * as serviceWorker from './serviceWorker';
 
 import "assets/scss/material-kit-pro-react.scss?v=1.8.0";

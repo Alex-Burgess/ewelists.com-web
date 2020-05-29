@@ -19,7 +19,8 @@ const test = {
   },
   imagePrefix: "https://test.ewelists.com",
   rootDomain: "https://test.ewelists.com",
-  sentry: "https://d8b578cadd2a449eb20814921c4de6bf@o393405.ingest.sentry.io/5244580"
+  sentry: "https://d8b578cadd2a449eb20814921c4de6bf@o393405.ingest.sentry.io/5244580",
+  ga: "UA-168019304-3"
 };
 
 const staging = {
@@ -43,7 +44,8 @@ const staging = {
   },
   imagePrefix: "",
   rootDomain: "https://staging.ewelists.com",
-  sentry: "https://07023ac975a14c6abb70d9d6a48e2255@o393405.ingest.sentry.io/5244570"
+  sentry: "https://07023ac975a14c6abb70d9d6a48e2255@o393405.ingest.sentry.io/5244570",
+  ga: "UA-168019304-1"
 };
 
 const prod = {
@@ -67,7 +69,8 @@ const prod = {
   },
   imagePrefix: "",
   rootDomain: "https://ewelists.com",
-  sentry: "https://c5ce6fba823641b8be4c628d42133e57@o393405.ingest.sentry.io/5242440"
+  sentry: "https://c5ce6fba823641b8be4c628d42133e57@o393405.ingest.sentry.io/5242440",
+  ga: "UA-168019304-2"
 };
 
 var config;
