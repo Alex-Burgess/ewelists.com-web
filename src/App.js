@@ -51,10 +51,15 @@ export default function App(props) {
         userHasAuthenticated(true);
       }
       catch(e) {
-        if (e.message === 'No current user') {
+        console.log("Auth exception: " + JSON.stringify(e));
+        console.log("Auth error message: " + e.message);
+
+        if (e === 'No current user') {
           debugError('No current user');
         } else if (e.message === 'Refresh Token has expired') {
           debugError('Refresh Token has expired.');
+        } else if (e.message === 'Cannot retrieve a new session. Please authenticate.') {
+          debugError('Cannot retrieve a new session. Please authenticate.');
         } else {
           onError(e);
         }

@@ -77,7 +77,7 @@ export function onAuthError(error, email) {
 
 export function debugError(error) {
   if (isLocal) {
-    console.log(error);
+    console.log("DEBUG:" + error);
   } else {
     return
   }
