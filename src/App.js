@@ -51,9 +51,9 @@ export default function App(props) {
         userHasAuthenticated(true);
       }
       catch(e) {
-        if (e === 'No current user') {
+        if (e.message === 'No current user') {
           debugError('No current user');
-        } else if (e === 'Refresh Token has expired') {
+        } else if (e.message === 'Refresh Token has expired') {
           debugError('Refresh Token has expired.');
         } else {
           onError(e);
