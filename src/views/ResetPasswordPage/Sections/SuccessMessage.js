@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -38,7 +39,9 @@ export default function SuccessMessage(props) {
                   <div id="successMessage" className={classes.details}>
                     <p>Your password has been reset.</p>
                     <p>
-                      <a href="/login" className={classes.link}>Login with your new credentials</a>
+                      <Link to="/login" className={classes.link}>
+                        Login with your new credentials
+                      </Link>
                     </p>
                   </div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 // libs
 import { onError, debugError } from "libs/errorLib";
@@ -390,11 +391,11 @@ export default function SectionDetails(props) {
       <div className={classes.main}>
         <div className={classes.container}>
           <h2 className={classes.title + " " + classes.textCenter + " " + classes.mobileHide}><Settings className={classes.icon}/> Settings</h2>
-          <a href={"/edit/" + listId} className={classes.mobileHide}>
-           <Button color="primary" simple className={classes.backButton}>
-             <ArrowBackIos /> Back to list
-           </Button>
-          </a>
+          <Link to={"/edit/" + listId} className={classes.mobileHide}>
+            <Button color="primary" simple className={classes.backButton}>
+              <ArrowBackIos /> Back to list
+            </Button>
+          </Link>
           {loadError
             ? renderLoadError()
             : loaded

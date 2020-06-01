@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -49,26 +50,26 @@ export default function SimilarArticles(props) {
     return (
       <Card blog>
         <CardHeader image>
-          <a href={url}>
+          <Link to={url}>
             <picture>
               <source type="image/webp" srcSet={config.imagePrefix + '/images/' + img + '.tile.webp'} />
               <source type="image/jpeg" srcSet={config.imagePrefix + '/images/' + img + '.tile.jpg'} />
               <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.listImage} alt="..." />
             </picture>
-          </a>
+          </Link>
         </CardHeader>
         <CardBody>
           <Info>
             <h6>{category}</h6>
           </Info>
           <h4 className={classes.cardTitle}>
-            <a href={url}>
+            <Link to={url}>
               {title}
-            </a>
+            </Link>
           </h4>
           <p className={classes.description}>
             {subtitle}
-            <a href={url}> Read Article </a>
+            <Link to={url}> Read Article </Link>
           </p>
         </CardBody>
       </Card>

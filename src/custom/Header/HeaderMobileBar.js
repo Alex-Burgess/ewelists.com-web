@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -20,7 +21,7 @@ export default function HeaderMobileBar(props) {
     <div>
       {mobile
         ? <Header
-            brand={<a href={url}> <ArrowBackIos className={classes.arrow}/> </a>}
+            brand={<Link to={url}> <ArrowBackIos className={classes.arrow}/> </Link>}
             links={null}
             fixed
             color="info"

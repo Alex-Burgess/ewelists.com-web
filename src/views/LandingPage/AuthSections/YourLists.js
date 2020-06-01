@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 // libs
 import { onError } from "libs/errorLib";
 // nodejs library to set properties for components
@@ -59,9 +60,9 @@ export default function YourLists(props) {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <a href={"/lists/" + list.listId}>
+              <Link to={"/lists/" + list.listId}>
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
-              </a>
+              </Link>
               <div
                 className={classes.coloredShadow}
                 style={{
@@ -72,25 +73,25 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Info>
-                <a href={"/lists/" + list.listId}>
+                <Link to={"/lists/" + list.listId}>
                   <h6 className={classes.cardCategory}>{list.title}</h6>
-                </a>
+                </Link>
               </Info>
               <p className={classes.cardDescription}>
                 {list.occasion}
               </p>
             </CardBody>
               <CardFooter profile className={classes.justifyContentCenter}>
-                <a href={"/lists/" + list.listId}>
+                <Link to={"/lists/" + list.listId}>
                   <Button round color="info" className={classes.customButton}>
                     <ViewIcon /> View
                   </Button>
-                </a>
-                <a href={"/edit/" + list.listId}>
+                </Link>
+                <Link to={"/edit/" + list.listId}>
                   <Button round color="success" className={classes.customButton}>
                     <Icon>mode_edit</Icon> Edit
                   </Button>
-                </a>
+                </Link>
               </CardFooter>
           </Card>
         </GridItem>
@@ -105,9 +106,9 @@ export default function YourLists(props) {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <a href={"/lists/" + list.listId}>
+              <Link to={"/lists/" + list.listId}>
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
-              </a>
+              </Link>
               <div
                 className={classes.coloredShadow}
                 style={{
@@ -118,20 +119,20 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Info>
-                <a href={"/lists/" + list.listId}>
+                <Link to={"/lists/" + list.listId}>
                   <h6 className={classes.cardCategory}>{list.title}</h6>
-                </a>
+                </Link>
               </Info>
               <p className={classes.cardDescription}>
                 {list.occasion} - closed
               </p>
             </CardBody>
               <CardFooter profile className={classes.justifyContentCenter}>
-                <a href={"/edit/" + list.listId}>
+                <Link to={"/edit/" + list.listId}>
                   <Button round color="info" className={classes.customButton}>
                     <Icon>mode_edit</Icon> Details
                   </Button>
-                </a>
+                </Link>
               </CardFooter>
           </Card>
         </GridItem>

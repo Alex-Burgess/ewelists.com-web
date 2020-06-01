@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 // libs
 import { onError } from "libs/errorLib";
@@ -204,11 +205,11 @@ function ReservePopout(props) {
 
 
           {accountError
-            ? <a href={"/login?/lists/" + listId} className={classes.logIn}>
+            ?  <Link to={"/login?/lists/" + listId} className={classes.logIn}>
                 <Button default color="primary" className={classes.reserveButton}>
                   Log In
                 </Button>
-              </a>
+              </Link>
             : <Button default color="primary" className={classes.reserveButton} onClick={() => reserveProduct()}>
                 Reserve Gift
               </Button>

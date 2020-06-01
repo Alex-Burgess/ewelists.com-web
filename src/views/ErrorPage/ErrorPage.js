@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -32,7 +33,7 @@ export default function ErrorPage(props) {
             <GridItem md={12}>
               <h1 className={classes.title}>Page not found</h1>
               <h2 className={classes.subTitle}>The page you are looking for does not exist.</h2>
-              <a href="/">Click to go back to the home page.</a>
+              <Link to="/">Click to go back to the home page.</Link>
             </GridItem>
           </GridContainer>
         </div>

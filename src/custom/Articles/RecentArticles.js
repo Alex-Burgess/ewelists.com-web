@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -22,7 +23,7 @@ export default function RecentArticles(props) {
   const renderImg = (url, img, type) => {
     return (
       <CardHeader image plain>
-        <a href={url}>
+        <Link to={url}>
           <picture>
               <source type="image/webp" srcSet={config.imagePrefix + '/images/' + img + '.tile.webp'} />
               <source type="image/jpeg" srcSet={config.imagePrefix + '/images/' + img + '.tile.jpg'} />
@@ -35,7 +36,7 @@ export default function RecentArticles(props) {
                       : <img src={config.imagePrefix + '/images/' + img + '.tile.jpg'} className={classes.image + " " + classes.imageMobile} alt="..." />
               }
           </picture>
-        </a>
+        </Link>
       </CardHeader>
     )
   }
@@ -50,15 +51,15 @@ export default function RecentArticles(props) {
           <GridItem xs={12} sm={12} md={7}>
             <Info>
               <h6 className={classes.cardCategory}>
-                <a href={url}>
+                <Link to={url}>
                   {title}
-                </a>
+                </Link>
               </h6>
             </Info>
             <h3 className={classes.cardTitle}>
-              <a href={url}>
+              <Link to={url}>
                 {description_short}
-              </a>
+              </Link>
             </h3>
             <GridContainer>
               <GridItem xs={12} sm={5} md={12}>
@@ -67,10 +68,10 @@ export default function RecentArticles(props) {
               <GridItem xs={12} sm={7} md={12}>
                 <p className={classes.description}>
                   {beginning_content}
-                  <a href={url}>
+                  <Link to={url}>
                     {" "}
                     Read More{" "}
-                  </a>
+                  </Link>
                 </p>
               </GridItem>
             </GridContainer>
@@ -90,24 +91,24 @@ export default function RecentArticles(props) {
             <GridItem xs={12} sm={12} md={7}>
               <Danger>
                 <h6 className={classes.cardCategory}>
-                  <a href={url}>
+                  <Link to={url}>
                     {title}
-                  </a>
+                  </Link>
                 </h6>
               </Danger>
               <h3 className={classes.cardTitle}>
-                <a href={url}>
+                <Link to={url}>
                   {description_short}
-                </a>
+                </Link>
               </h3>
               <GridContainer>
                 <GridItem xs={12} sm={7} md={12}>
                   <p className={classes.description}>
                     {beginning_content}
-                    <a href={url}>
+                    <Link to={url}>
                       {" "}
                       Read More{" "}
-                    </a>
+                    </Link>
                   </p>
                 </GridItem>
                 <GridItem xs={12} sm={5} md={12}>

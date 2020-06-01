@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -53,11 +54,11 @@ export default function SectionDetails(props) {
                 </h1>
               </GridItem>
               <GridItem xs={2} sm={12} md={12} className={classes.cogMobile}>
-                <a href={"/settings/" + listId}>
+                <Link to={"/settings/" + listId}>
                   <Button round justIcon simple>
                     <i className="fas fa-cog"></i>
                   </Button>
-                </a>
+                </Link>
               </GridItem>
             </GridContainer>
             <h6 className={classes.event}>
@@ -113,14 +114,14 @@ export default function SectionDetails(props) {
                     </div>
                   </GridItem>
                   <GridItem xs={12} sm={4} md={3} className={classes.cogDesktop}>
-                    <a href={"/settings/" + listId}>
+                    <Link to={"/settings/" + listId}>
                       <Button round simple>
                         <i className="fas fa-cog"></i>
                         <span className={classes.shareText}>
                           Settings
                         </span>
                       </Button>
-                    </a>
+                    </Link>
                   </GridItem>
                 </GridContainer>
             }
@@ -128,9 +129,7 @@ export default function SectionDetails(props) {
           <GridItem xs={12} sm={5} md={5} className={classes.lessGridPadding}>
             <Card profile plain className={classes.customProfile}>
               <CardHeader image plain>
-                <a href="#img" onClick={e => e.preventDefault()}>
-                  <img src={imageUrl} className={classes.listImage} alt="..." />
-                </a>
+                <img src={imageUrl} className={classes.listImage} alt="..." />
                 <div
                   className={classes.coloredShadow}
                   style={{

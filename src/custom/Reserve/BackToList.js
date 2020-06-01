@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/icons
@@ -10,11 +11,11 @@ export default function BackToLink(props) {
   const { listId } = props;
 
   return (
-    <a href={"/lists/" + listId}>
+    <Link to={"/lists/" + listId}>
      <Button color="primary" simple>
        <ArrowBackIos /> Back to list
      </Button>
-    </a>
+   </Link>
   );
 }
 

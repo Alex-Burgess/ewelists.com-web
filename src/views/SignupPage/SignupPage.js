@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
 // libs
 import { onAuthError } from "libs/errorLib";
@@ -111,7 +112,7 @@ export default function SignupPage(props) {
       setNewUser(newUser);
     } catch (e) {
       onAuthError(e, email);
-      
+
       if (e.message === 'PreSignUp failed with error User exists with different google email address..') {
         setError("An account with this email already exists (" + switchGoogleMail(email) + ").");
       } else if (e.message === 'An account with the given email already exists.') {
@@ -216,7 +217,7 @@ export default function SignupPage(props) {
           </Button>
         </div>
         <p className={classes.description + " " + classes.loginLink}>
-          Already signed up? <a href="/login" className={classes.link}>Log in</a>
+          Already signed up? <Link to="/login" className={classes.link}>Log in</Link>
         </p>
       </form>
     )
@@ -260,7 +261,7 @@ export default function SignupPage(props) {
                                 Sign up with email
                               </Button>
                               <p className={classes.description + " " + classes.loginLink}>
-                                Already signed up? <a href="/login" className={classes.link}>Log in</a>
+                                Already signed up? <Link to="/login" className={classes.link}>Log in</Link>
                               </p>
                             </div>
                         }
@@ -296,8 +297,8 @@ export default function SignupPage(props) {
                     <div className={classes.terms + " " + classes.textCenter}>
                       <span>
                         By signing up to Ewelists, you agree to the{" "}
-                        <a href="/terms" target="_blank" className={classes.link}>terms of service</a>. View
-                        our <a href="/privacy" target="_blank" className={classes.link}>privacy policy</a>.
+                        <Link to="/terms" target="_blank" className={classes.link}>terms of service</Link>. View our
+                        <Link to="/privacy" target="_blank" className={classes.link}> privacy policy</Link>.
                       </span>
                     </div>
                   </CardBody>

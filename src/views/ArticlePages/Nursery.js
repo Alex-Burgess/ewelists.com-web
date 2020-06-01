@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 // custom components
 // import { scrollToId } from "custom/Scroll/ScrollToId";
 import { getUsersLists } from "custom/Article/GetUsersLists";
@@ -105,8 +106,8 @@ export default function Nursery(props) {
         Some drawers or a changing table with some storage will help save your back at changing time and will give you
         somewhere to organise all the things you need for changing time. If you have space, you may want to buy a
         wardrobe which can provide you with some hanging space as well as shelves to store blankets and toys. See
-        <a href="/list-ideas/newborn-baby-essentials-list"> The Essentials Baby List </a> for getting started with clothing and other
-        items in your nursery.
+        <Link to="/list-ideas/newborn-baby-essentials-list"> The Essentials Baby List </Link> for getting started with
+        clothing and other items in your nursery.
       </p>
       <Products
         products={[

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -20,7 +21,7 @@ export default function Unreserve(props) {
       <SnackbarContent
         message={
           <span className={classes.message}>
-            Thank you for confirming you purchased this gift.  Head back to <a href={"/lists/" + listId} className={classes.link}> {listTitle} </a>
+            Thank you for confirming you purchased this gift.  Head back to <Link to={"/lists/" + listId} className={classes.link}> {listTitle} </Link>
             to reserve another product.
           </span>
         }

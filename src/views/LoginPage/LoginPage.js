@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
 import qs from "qs";
 // libs
@@ -157,9 +158,9 @@ export default function LoginPage(props) {
                       Login
                     </Button>
                     <div className={classes.details}>
-                      <a href="/login/reset" className={classes.link}>Forgot your password?</a>
+                      <Link to="/login/reset" className={classes.link}>Forgot your password?</Link>
                       <p className={classes.description}>
-                        New To Ewelists? <a href="/signup" className={classes.link}>Sign Up</a>
+                        New To Ewelists? <Link to="/signup" className={classes.link}>Sign Up</Link>
                       </p>
                     </div>
                   </form>

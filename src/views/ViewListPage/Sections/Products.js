@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import update from 'immutability-helper';
 // libs
 import { debugError } from "libs/errorLib";
@@ -117,11 +118,11 @@ export default function Products(props) {
   const renderButton = (userReserved, userPurchased, allReserved, resvId, productId ) => {
     if (userReserved) {
       return (
-        <a href={"/reserve/" + resvId}>
+        <Link to={"/reserve/" + resvId}>
           <Button default className={classes.reserveButton}>
             Confirm Purchase
           </Button>
-        </a>
+        </Link>
       )
     } else if (userPurchased && allReserved){
       return (
@@ -176,9 +177,9 @@ export default function Products(props) {
   const renderTitle = (userReserved, userPurchased, allReserved, brand, resvId, productId) => {
     if (userReserved) {
       return (
-        <a href={"/reserve/" + resvId}>
+        <Link to={"/reserve/" + resvId}>
           <h4 className={classes.cardTitle}>{brand}</h4>
-        </a>
+        </Link>
       )
     } else if (userPurchased && allReserved) {
       return (
@@ -200,9 +201,9 @@ export default function Products(props) {
   const renderImage = (userReserved, userPurchased, allReserved, imageUrl, resvId, productId) => {
     if (userReserved) {
       return (
-        <a href={"/reserve/" + resvId}>
+        <Link to={"/reserve/" + resvId}>
           <img src={imageUrl} className={classes.productImage} alt=".." />
-        </a>
+        </Link>
       )
     } else if (userPurchased && allReserved) {
       return (
