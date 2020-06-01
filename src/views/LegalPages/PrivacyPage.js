@@ -59,47 +59,47 @@ export default function PrivacyPage(props) {
               </h3>
               <p>
                 We may use Your Personal Information for a variety of reasons to provide the Services, including:
-                <ul>
-                  <li>
-                    To present the Site and its contents to You.
-                  </li>
-                  <li>
-                    To provide You with information, products or services that You request from Us.
-                  </li>
-                  <li>
-                    To allow You to participate in the creation and sharing of gift lists
-                  </li>
-                  <li>
-                    To contact You and deliver administrative notices and communications relevant to Your use of the
-                    Service, such as security or support and maintenance advisories.
-                  </li>
-                  <li>
-                    To conduct system administration and system troubleshooting and to diagnose or fix technology
-                    problems.
-                  </li>
-                  <li>
-                    To enforce Our Terms of Service or other policies or agreements.
-                  </li>
-                  <li>
-                    To operate the Service, monitor the effectiveness of the Service, to improve the content of the
-                    Service, and laYout and design.
-                  </li>
-                  <li>
-                    To monitor, analyse and describe usage patterns and performance of the Service, including
-                    aggregate metrics such as total number of visitors, traffic, and demographic patterns.
-                  </li>
-                  <li>
-                    To send promotional communications and/or newsletters to You and for other marketing purposes of
-                    Ewelists or its Affiliates or Partners.
-                  </li>
-                  <li>
-                    For distribution to Service Providers that provide services to Ewelists and Partners of Ewelists.
-                  </li>
-                  <li>
-                    As otherwise set forth in this Privacy Policy.
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  To present the Site and its contents to You.
+                </li>
+                <li>
+                  To provide You with information, products or services that You request from Us.
+                </li>
+                <li>
+                  To allow You to participate in the creation and sharing of gift lists
+                </li>
+                <li>
+                  To contact You and deliver administrative notices and communications relevant to Your use of the
+                  Service, such as security or support and maintenance advisories.
+                </li>
+                <li>
+                  To conduct system administration and system troubleshooting and to diagnose or fix technology
+                  problems.
+                </li>
+                <li>
+                  To enforce Our Terms of Service or other policies or agreements.
+                </li>
+                <li>
+                  To operate the Service, monitor the effectiveness of the Service, to improve the content of the
+                  Service, and laYout and design.
+                </li>
+                <li>
+                  To monitor, analyse and describe usage patterns and performance of the Service, including
+                  aggregate metrics such as total number of visitors, traffic, and demographic patterns.
+                </li>
+                <li>
+                  To send promotional communications and/or newsletters to You and for other marketing purposes of
+                  Ewelists or its Affiliates or Partners.
+                </li>
+                <li>
+                  For distribution to Service Providers that provide services to Ewelists and Partners of Ewelists.
+                </li>
+                <li>
+                  As otherwise set forth in this Privacy Policy.
+                </li>
+              </ul>
               <h3 className={classes.title}>
                 How We Store Your Personal Data
               </h3>
@@ -129,18 +129,18 @@ export default function PrivacyPage(props) {
               <p>
                 We may share Your personal information with any member of Our group or with selected relevant third
                 parties including:
-                <ul>
-                  <li>
-                    Business partners, suppliers, sub-contractors and other service providers (such as mapping and
-                    location services), if required for the performance of the services We provide to You or a
-                    product requested by You.
-                  </li>
-                  <li>
-                    Analytics and search engine providers that assist Us in the improvement and optimisation of Our
-                    Site.
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  Business partners, suppliers, sub-contractors and other service providers (such as mapping and
+                  location services), if required for the performance of the services We provide to You or a
+                  product requested by You.
+                </li>
+                <li>
+                  Analytics and search engine providers that assist Us in the improvement and optimisation of Our
+                  Site.
+                </li>
+              </ul>
               <p>
                 We may disclose Your personal information to third parties in the event that We sell or buy any
                 business or assets, in which case We may disclose Your personal data to the prospective seller or

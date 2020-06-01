@@ -124,47 +124,47 @@ export default function TermsPage(props) {
               <p>
                 You agree that You will access the Services only through the interfaces provided. You agree not to do
                 any of the following:
-                <ul>
-                  <li>
-                    Attempt to decipher, decompile, disassemble or reverse engineer or otherwise hack the Site or any
-                    software, network or servers used to provide the Services, or to damage Site, Services or other
-                    property in any way;
-                  </li>
-                  <li>
-                    Not misuse this Site by knowingly introducing viruses, trojans, worms, logic bombs or other
-                    material which is malicious or technologically harmful;
-                  </li>
-                  <li>
-                    Attempt to breach any security or authentication measures of the Site or the Services;
-                  </li>
-                  <li>
-                    Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological
-                    measure implemented by Ewelists or any other third party to protect the Services or the Content;
-                  </li>
-                  <li>
-                    Use the Services, Your account, or communications with other Users for any commercial purpose or
-                    solicitation;
-                  </li>
-                  <li>
-                    Interfere or attempt to interfere with other Users’ use of the Services;
-                  </li>
-                  <li>
-                    Defame, abuse, stalk, threaten, intimidate, harass or otherwise violate the legal rights,
-                    including such person's privacy rights or rights of publicity, of any User, third parties or
-                    employee, staff or agent of Ewelists
-                  </li>
-                  <li>
-                    Do anything that could disable, damage, tamper with, impair or otherwise cause interruptions to
-                    the proper working of the Services;
-                  </li>
-                  <li>
-                    Send spam or any other unauthorised advertisements or solicitations through or using the Services;
-                  </li>
-                  <li>
-                    Attempt, encourage or facilitate any of the above.
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  Attempt to decipher, decompile, disassemble or reverse engineer or otherwise hack the Site or any
+                  software, network or servers used to provide the Services, or to damage Site, Services or other
+                  property in any way;
+                </li>
+                <li>
+                  Not misuse this Site by knowingly introducing viruses, trojans, worms, logic bombs or other
+                  material which is malicious or technologically harmful;
+                </li>
+                <li>
+                  Attempt to breach any security or authentication measures of the Site or the Services;
+                </li>
+                <li>
+                  Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological
+                  measure implemented by Ewelists or any other third party to protect the Services or the Content;
+                </li>
+                <li>
+                  Use the Services, Your account, or communications with other Users for any commercial purpose or
+                  solicitation;
+                </li>
+                <li>
+                  Interfere or attempt to interfere with other Users’ use of the Services;
+                </li>
+                <li>
+                  Defame, abuse, stalk, threaten, intimidate, harass or otherwise violate the legal rights,
+                  including such person's privacy rights or rights of publicity, of any User, third parties or
+                  employee, staff or agent of Ewelists
+                </li>
+                <li>
+                  Do anything that could disable, damage, tamper with, impair or otherwise cause interruptions to
+                  the proper working of the Services;
+                </li>
+                <li>
+                  Send spam or any other unauthorised advertisements or solicitations through or using the Services;
+                </li>
+                <li>
+                  Attempt, encourage or facilitate any of the above.
+                </li>
+              </ul>
               <p>
                 By breaching any of these provisions, You would commit a criminal offence. We will report any such
                 breach to the relevant law enforcement authorities and We will co-operate with those authorities by

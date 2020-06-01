@@ -28,24 +28,24 @@ export default function TermsPage(props) {
                 We use cookies to provide you with a better experience across our Site and to show your personalised
                 content. Cookies are used for a number of purposes, some of which essential to the operation of our
                 Site, including:
-                <ul>
-                  <li>
-                    <b>Perform analytics:</b> We have integrated third party analytics service provides, such as Google Analytics, to understand our
-                    clients use of the Site.  This tracking is subsequently used to improve our Site.
-                  </li>
-                  <li>
-                    <b>Improve user experience:</b> We use cookies to store Site specific information, so that we can
-                      personalise pages for users that have not registered with our site.
-                  </li>
-                  <li>
-                    <b>Recognise your device:</b> We use cookies to recognise your device, so that we don't have to
-                      request certain information repeatedly and so that we can provide a smooth user experience.
-                  </li>
-                  <li>
-                    <b>Cookie consent:</b> We use a cookie to record your approval for us to use cookies on our Site.
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  <b>Perform analytics:</b> We have integrated third party analytics service provides, such as Google Analytics, to understand our
+                  clients use of the Site.  This tracking is subsequently used to improve our Site.
+                </li>
+                <li>
+                  <b>Improve user experience:</b> We use cookies to store Site specific information, so that we can
+                    personalise pages for users that have not registered with our site.
+                </li>
+                <li>
+                  <b>Recognise your device:</b> We use cookies to recognise your device, so that we don't have to
+                    request certain information repeatedly and so that we can provide a smooth user experience.
+                </li>
+                <li>
+                  <b>Cookie consent:</b> We use a cookie to record your approval for us to use cookies on our Site.
+                </li>
+              </ul>
               <h3 className={classes.title}>
                 Cookie Preferences
               </h3>
