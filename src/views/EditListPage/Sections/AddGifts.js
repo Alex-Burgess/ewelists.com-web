@@ -35,6 +35,8 @@ export default function SectionAddGifts(props) {
   const [searchSuccess, setSearchSuccess] = useState(false);
   const [searchUrl, setSearchUrl] = useState('');
   const [listUpdated, setListUpdated] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   // Notfound state
   const [notFoundBrand, setNotFoundBrand] = useState('');
   const [notFoundDetails, setNotFoundDetails] = useState('');
@@ -69,6 +71,8 @@ export default function SectionAddGifts(props) {
   }
 
   const searchProduct = async event => {
+    setErrorMessage('');
+    setIsSearching(true);
     let product;
 
     let url = parseUrl(searchUrl);
@@ -79,6 +83,7 @@ export default function SectionAddGifts(props) {
     } catch (e) {
       onError('Unexpected error occurred when searching for product.');
       setErrorMessage('Product could not be found.');
+      setIsSearching(false);
       return false
     }
 
@@ -97,10 +102,13 @@ export default function SectionAddGifts(props) {
 
     setSearchResult(true);
     setListUpdated(false);
+    setIsSearching(false);
     setErrorMessage('');
   }
 
   const addProductToList = async event => {
+    setIsAdding(true);
+    setErrorMessage('');
     debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     let addDetails = {
@@ -123,7 +131,7 @@ export default function SectionAddGifts(props) {
         setErrorMessage('Product could not be added to your list.');
       }
 
-
+      setIsAdding(false);
       return false
     }
 
@@ -142,12 +150,16 @@ export default function SectionAddGifts(props) {
     }
 
     props.addProductToState(product)
+    setIsAdding(false);
     setListUpdated(true);
     setSearchUrl('');
     props.setActive(0);
   }
 
   const createProduct = async event => {
+    setIsAdding(true);
+    setErrorMessage('');
+
     let createResponse;
     let requestBody = {
       "brand": notFoundBrand,
@@ -160,6 +172,7 @@ export default function SectionAddGifts(props) {
     } catch (e) {
       onError('Unexpected error occurred when creating product.');
       setErrorMessage('Product could not be added to your list.');
+      setIsAdding(false);
       return false
     }
 
@@ -180,6 +193,7 @@ export default function SectionAddGifts(props) {
     } catch (e) {
       onError('Unexpected error occurred when adding product to list');
       setErrorMessage('Product could not be added to your list.');
+      setIsAdding(false);
       return false
     }
 
@@ -199,6 +213,7 @@ export default function SectionAddGifts(props) {
     }
 
     props.addProductToState(product)
+    setIsAdding(false);
     setListUpdated(true);
     setSearchUrl('');
     props.setActive(0);
@@ -277,7 +292,7 @@ export default function SectionAddGifts(props) {
               </Button>
             </div>
             <div className={classes.textCenter}>
-              <Button round color="primary" onClick={() => createProduct()} disabled={!validateNotFoundForm()}>
+              <Button round color="primary" onClick={() => createProduct()} disabled={!validateNotFoundForm() || isAdding}>
                 Add to list
               </Button>
             </div>
@@ -320,7 +335,7 @@ export default function SectionAddGifts(props) {
                   <Add />
                 </Button>
               </span>
-              <Button default size="sm" color="primary" className={classes.reserveButton} onClick={() => addProductToList()}>
+              <Button default size="sm" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()}>
                 Add to list
               </Button>
               </div>
@@ -375,7 +390,7 @@ export default function SectionAddGifts(props) {
                   <Add />
                 </Button>
               </span>,
-              <Button default color="primary" className={classes.reserveButton} onClick={() => addProductToList()}>
+              <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()}>
                 Add to list
               </Button>
             ]
@@ -423,7 +438,7 @@ export default function SectionAddGifts(props) {
             value: searchUrl
           }}
         />
-        <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm()}>
+        <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching}>
           <Search />
         </Button>
         <Button justIcon onClick={() => setSearchUrl('')}>
@@ -448,7 +463,7 @@ export default function SectionAddGifts(props) {
             value: searchUrl
           }}
         />
-        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm()}>
+        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching}>
           <Search /> Search
         </Button>
         <Button onClick={() => setSearchUrl('')}>

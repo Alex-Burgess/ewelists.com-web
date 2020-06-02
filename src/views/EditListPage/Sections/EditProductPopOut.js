@@ -32,6 +32,8 @@ export default function SectionDetails(props) {
   const { open, listId, product } = props;
   const [editError, setEditError] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const totalReserved = product['reserved'] + product['purchased'];
 
@@ -55,6 +57,9 @@ export default function SectionDetails(props) {
   }
 
   const deleteProduct = async () => {
+    setEditError('');
+    setIsDeleting(true);
+
     let productId = product['productId'];
     let type = product['type'];
 
@@ -63,6 +68,7 @@ export default function SectionDetails(props) {
     if (reservedQuantity > 0) {
       debugError("Reserved number: " + reservedQuantity);
       setEditError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
+      setIsDeleting(false);
       return false
     } else {
       debugError("Deleting product (" + productId + ") of type (" + type + ") from list (" + listId + ").");
@@ -74,6 +80,7 @@ export default function SectionDetails(props) {
     } catch (e) {
       onError('Unexpected error occurred when deleting product from list.');
       setEditError('Item could not be deleted from your list.');
+      setIsDeleting(false);
       return false
     }
 
@@ -86,23 +93,29 @@ export default function SectionDetails(props) {
       } catch (e) {
         onError('Unexpected error occurred when deleting product.');
         setEditError('Product could not be deleted.');
+        setIsDeleting(false);
         return false
       }
 
       debugError("Deleted product from notfound table: " + productId);
     }
 
+    setIsDeleting(false);
     props.deleteProductFromState(productId);
     props.handleClose(productId);
   }
 
   const updateProduct = async () => {
+    setIsUpdating(true);
+    setEditError('');
+
     let productId = product['productId'];
     let quantity = product['quantity'];
     debugError("Updating product (" + productId + ") for list (" + listId + ")");
 
     if (quantity === newQuantity) {
       setEditError('There are no updates to this item.');
+      setIsUpdating(false);
       return false;
     }
 
@@ -113,11 +126,13 @@ export default function SectionDetails(props) {
     } catch (e) {
       onError('Unexpected error occurred when updating product on list.');
       setEditError('Product could not be updated.');
+      setIsUpdating(false);
       return false
     }
 
     product['quantity'] =newQuantity
 
+    setIsUpdating(false);
     props.updateProductToState(product)
     props.handleClose(productId);
   }
@@ -137,10 +152,10 @@ export default function SectionDetails(props) {
             <Add />
           </Button>
         </div>
-        <Button round type="submit" onClick={() => deleteProduct()}>
+        <Button round type="submit" disabled={isDeleting} onClick={() => deleteProduct()}>
           Delete
         </Button>
-        <Button round color="primary" type="submit" onClick={() => updateProduct()}>
+        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()}>
           Update
         </Button>
       </div>
@@ -160,7 +175,7 @@ export default function SectionDetails(props) {
             <Add />
           </Button>
         </div>
-        <Button round color="primary" type="submit" onClick={() => updateProduct()}>
+        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()}>
           Update
         </Button>
       </div>

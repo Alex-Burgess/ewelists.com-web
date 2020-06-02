@@ -44,6 +44,7 @@ function ReservePopout(props) {
   const [reserveQuantity, setReserveQuantity] = useState(1);
   const [reserveError, setReserveError] = useState('');
   const [accountError, setAccountError] = useState(false);
+  const [isReserving, setIsReserving] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
@@ -88,6 +89,8 @@ function ReservePopout(props) {
 
   const reserveProduct = async () => {
     setReserveError('');
+    setIsReserving(true);
+
     let productId = product['productId'];
     let response;
 
@@ -115,9 +118,11 @@ function ReservePopout(props) {
         setReserveError('Product could not be reserved.');
       }
 
+      setIsReserving(false);
       return false
     }
 
+    setIsReserving(false);
     history.push({
       pathname: "/reserve/" + response.reservation_id,
     });
@@ -202,15 +207,13 @@ function ReservePopout(props) {
               </div>
             : null
           }
-
-
           {accountError
             ?  <Link to={"/login?/lists/" + listId} className={classes.logIn}>
                 <Button default color="primary" className={classes.reserveButton}>
                   Log In
                 </Button>
               </Link>
-            : <Button default color="primary" className={classes.reserveButton} onClick={() => reserveProduct()}>
+            : <Button default color="primary" className={classes.reserveButton} disabled={isReserving} onClick={() => reserveProduct()}>
                 Reserve Gift
               </Button>
           }

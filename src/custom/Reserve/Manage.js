@@ -24,6 +24,8 @@ function Manage(props) {
   const { resvId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
 
   const [error, setError] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isUnreserving, setIsUnreserving] = useState(false);
   const [showUpdated, setShowUpdated] = useState(false);
   const [newQuantity, setNewQuantity] = useState(reservedQuantity);
   const [newProductReserved, setNewProductReserved] = useState(productReserved);
@@ -32,6 +34,8 @@ function Manage(props) {
 
 
   const updateProduct = async () => {
+    setError('');
+    setIsUpdating(true);
     if (reservedQuantity === newQuantity) {
       return false;
     }
@@ -46,6 +50,7 @@ function Manage(props) {
     } catch (e) {
       onError(e);
       setError('Oops! There was an issue updating the quantity of this gift, please contact us.');
+      setIsUpdating(false);
       return false
     }
 
@@ -53,6 +58,7 @@ function Manage(props) {
     props.setProductReserved(newProductReserved);
 
     // Show updated in button
+    setIsUpdating(false);
     setShowUpdated(true);
 
     setTimeout(() => {
@@ -83,6 +89,7 @@ function Manage(props) {
 
   const unReserveProduct = async () => {
     setError('');
+    setIsUnreserving(true);
 
     try {
       await API.del("lists", "/reserve/" +  resvId + "/email/" + email,{
@@ -102,9 +109,12 @@ function Manage(props) {
       } else {
         setError('Oops! There was an issue unreserving this gift, please contact us.');
       }
+
+      setIsUnreserving(false);
       return false
     }
 
+    setIsUnreserving(false);
     props.setReserved(false);
     props.setUnreserved(true);
   }
@@ -118,7 +128,7 @@ function Manage(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} onClick={() => unReserveProduct()}>
+          <Button color="primary" className={classes.customButton} disabled={isUnreserving} onClick={() => unReserveProduct()}>
             Unreserve
           </Button>
         </GridItem>
@@ -146,7 +156,7 @@ function Manage(props) {
           </InputLabel>
         </GridItem>
         <GridItem md={3} sm={3} xs={6} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} onClick={() => updateProduct()}>
+          <Button color="primary" className={classes.customButton} disabled={isUpdating} onClick={() => updateProduct()}>
             <span className={classes.shareText}>
               { showUpdated
                 ? 'Updated!'

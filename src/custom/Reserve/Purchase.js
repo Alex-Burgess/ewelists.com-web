@@ -21,8 +21,12 @@ function Purchase(props) {
   const { resvId, listTitle, name, reservedQuantity, product, email } = props;
 
   const [error, setError] = useState('');
+  const [isPurchasing, setIsPurchasing] = useState(false);
 
   const purchased = async () => {
+    setError('');
+    setIsPurchasing(true);
+
     try {
       await API.put("lists", "/purchase/" + resvId + "/email/" + email, {
         body: {
@@ -50,9 +54,12 @@ function Purchase(props) {
       } else {
         setError('Oops! There was an issue confirming the purchase of this gift, please contact us.');
       }
+
+      setIsPurchasing(false);
       return false
     }
 
+    setIsPurchasing(false);
     props.setReserved(false);
     props.setPurchased(true);
   }
@@ -81,7 +88,7 @@ function Purchase(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} onClick={() => purchased()}>
+          <Button color="primary" className={classes.customButton} disabled={isPurchasing} onClick={() => purchased()}>
             Purchased
           </Button>
         </GridItem>
