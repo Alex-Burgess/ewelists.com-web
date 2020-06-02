@@ -61,7 +61,7 @@ export default function ViewList(props) {
     }
 
     function setListState(response) {
-      props.setTitle(response.list.title);
+      props.setTabTitle(response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);

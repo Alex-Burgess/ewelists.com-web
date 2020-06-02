@@ -83,7 +83,7 @@ export default function EditPage(props) {
     }
 
     function setListState(response) {
-      props.setTitle('Editing ' + response.list.title);
+      props.setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);

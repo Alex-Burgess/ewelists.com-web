@@ -48,9 +48,14 @@ export default function YourLists(props) {
       }
     }
 
+    function updateTab(){
+      props.setTabTitle('Your Lists');
+    }
+
     getLists();
+    updateTab();
     setIsLoading(false);
-  }, []);
+  }, [props]);
 
   const renderOpenLists = (lists: Lists[]) => {
     let allLists: Lists[] = [];

@@ -72,6 +72,7 @@ export default function SectionDetails(props) {
     }
 
     function setListState(response) {
+      props.setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -100,7 +101,7 @@ export default function SectionDetails(props) {
 
     setListDetails();
     setLoaded(true);
-  }, [listId]);
+  }, [listId, props]);
 
   const saveDetails = async () => {
     try {

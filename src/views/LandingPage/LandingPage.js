@@ -53,7 +53,7 @@ export default function LandingPage(props) {
         <div className={classes.page}>
           <HeaderFixed isAuthenticated={true} user={props.user} mobile={props.mobile}/>
           <div className={classes.main}>
-            <YourLists showCreate={create} setCreate={setCreate} />
+            <YourLists showCreate={create} setCreate={setCreate} setTabTitle={props.setTabTitle}/>
           </div>
           <div className={classes.flexer}>
           </div>

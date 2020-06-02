@@ -24,7 +24,7 @@ export default function App(props) {
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  const [title, setTitle] = useState('Ewelists');
+  const [tabTitle, setTabTitle] = useState('Ewelists');
   const [user, setUser] = useState({});
 
   const [mobile, setMobile] = useState(false);
@@ -37,6 +37,7 @@ export default function App(props) {
 
   history.listen((location) => {
     onView(location.pathname + window.location.search);
+    setTabTitle('Ewelists');
   });
 
 
@@ -176,9 +177,9 @@ export default function App(props) {
       !isAuthenticating && (
           <Fragment>
             <ScrollToTop />
-            <Title title={title} environment={process.env.REACT_APP_STAGE}/>
+            <Title title={tabTitle} environment={process.env.REACT_APP_STAGE}/>
             <ErrorBoundary>
-              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTitle, handleLogout}} />
+              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTabTitle, handleLogout}} />
               {!isAuthenticated
                 ? <CookieConsent
                     style={{ background: "#2B373B" }}

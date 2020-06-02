@@ -284,7 +284,7 @@ export default function BathTime(props) {
       user={props.user}
       name={name}
       content={ content }
-      setTitle={props.setTitle}
+      setTitle={props.setTabTitle}
     />
   );
 }
