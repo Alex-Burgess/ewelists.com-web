@@ -60,7 +60,7 @@ export default function YourLists(props) {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <Link to={"/lists/" + list.listId}>
+              <Link to={"/edit/" + list.listId}>
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
               </Link>
               <div
@@ -73,7 +73,7 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Info>
-                <Link to={"/lists/" + list.listId}>
+                <Link to={"/edit/" + list.listId}>
                   <h6 className={classes.cardCategory}>{list.title}</h6>
                 </Link>
               </Info>
@@ -106,7 +106,7 @@ export default function YourLists(props) {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <Link to={"/lists/" + list.listId}>
+              <Link to={"/edit/" + list.listId}>
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
               </Link>
               <div
@@ -119,7 +119,7 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Info>
-                <Link to={"/lists/" + list.listId}>
+                <Link to={"/edit/" + list.listId}>
                   <h6 className={classes.cardCategory}>{list.title}</h6>
                 </Link>
               </Info>
