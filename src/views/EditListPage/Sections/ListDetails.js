@@ -78,10 +78,10 @@ export default function SectionDetails(props) {
                   icon="info_outline"
                 />
               : <GridContainer >
-                  <GridItem xs={12} sm={8} md={9}>
+                  <GridItem xs={12} sm={9} md={9}>
                     <div className={classes.centerMobileText}>
                       <a href={mailToText}>
-                        <ShareButton color="default" round simple justIcon>
+                        <ShareButton color="darkDefault" round simple justIcon>
                           <i className="far fa-envelope" />
                         </ShareButton>
                       </a>
@@ -111,16 +111,24 @@ export default function SectionDetails(props) {
                           }
                         </span>
                       </ShareButton>
+                      <Link to={"/lists/" + listId}>
+                        <ShareButton color="darkDefault" round simple>
+                          <i className="fas fa-eye"></i>
+                          <span className={classes.shareText}>
+                           View
+                          </span>
+                        </ShareButton>
+                      </Link>
                     </div>
                   </GridItem>
-                  <GridItem xs={12} sm={4} md={3} className={classes.cogDesktop}>
+                  <GridItem xs={12} sm={3} md={3} className={classes.cogDesktop}>
                     <Link to={"/settings/" + listId}>
-                      <Button round simple>
+                      <ShareButton color="default" round simple>
                         <i className="fas fa-cog"></i>
                         <span className={classes.shareText}>
                           Settings
                         </span>
-                      </Button>
+                      </ShareButton>
                     </Link>
                   </GridItem>
                 </GridContainer>

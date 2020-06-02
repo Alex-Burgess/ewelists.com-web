@@ -52,6 +52,7 @@ const ShareButton = React.forwardRef((props, ref) => {
 ShareButton.propTypes = {
   color: PropTypes.oneOf([
     "default",
+    "darkDefault",
     "share",
     "facebookMessenger",
     "whatsapp",

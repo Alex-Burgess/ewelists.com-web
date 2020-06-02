@@ -113,6 +113,23 @@ const buttonStyle = {
   },
   default: {
     backgroundColor: whiteColor,
+    color: grayColor[0],
+    boxShadow: 'none',
+    "&:hover,&:focus": {
+      backgroundColor: grayColor[0],
+      color: whiteColor,
+      boxShadow:
+        "0 14px 26px -12px rgba(" +
+        hexToRgb(grayColor[0]) +
+        ", 0.42), 0 4px 23px 0px rgba(" +
+        hexToRgb(grayColor[0]) +
+        ", 0.12), 0 8px 10px -5px rgba(" +
+        hexToRgb(grayColor[0]) +
+        ", 0.2)"
+    }
+  },
+  darkDefault: {
+    backgroundColor: whiteColor,
     color: grayColor[4],
     boxShadow: 'none',
     "&:hover,&:focus": {
