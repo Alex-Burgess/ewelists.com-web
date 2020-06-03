@@ -56,6 +56,9 @@ const sectionDetailsStyle = theme => ({
   tdNumberSmall: {
     marginRight: "3px"
   },
+  tdState: {
+    minWidth: "110px"
+  },
   actionButton: {
     margin: "0px",
     padding: "5px"

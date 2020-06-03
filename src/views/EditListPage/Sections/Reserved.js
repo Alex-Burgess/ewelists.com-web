@@ -16,14 +16,23 @@ export default function SectionProducts(props) {
   const classes = useStyles();
   const { mobile, reserved, products } = props;
 
+  const stateText = (state) => {
+    if (state === "purchased") {
+      return "Gift Purchased"
+    } else if (state === "reserved") {
+      return "Gift Reserved"
+    }
+  }
+
   const renderDesktopView = () => {
     return (
       <Table
         tableHead={[
           "",
           "ITEM",
+          "RESERVED BY",
           "QTY",
-          "RESERVED BY"
+          ""
         ]}
         tableData={
           renderDesktopTable()
@@ -36,10 +45,11 @@ export default function SectionProducts(props) {
         customHeadClassesForCells={[2, 3]}
         customCellClasses={[
           classes.tdName,
+          classes.textCenter + " " + classes.tdName,
           classes.tdNumber + " " + classes.textCenter,
-          classes.textCenter + " " + classes.tdName
+          classes.textCenter + " " + classes.tdState
         ]}
-        customClassesForCells={[1, 2, 3, 4]}
+        customClassesForCells={[1, 2, 3, 4, 5]}
       />
     )
   }
@@ -65,7 +75,7 @@ export default function SectionProducts(props) {
   const renderDesktopTable = () => {
     const allRows = reserved.map(
       (row, i) =>
-            renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['name'], row['message'], row['quantity'])
+            renderDesktopRow(products[row['productId']].productUrl, products[row['productId']].imageUrl, products[row['productId']].brand, products[row['productId']].details, row['state'], row['name'], row['message'], row['quantity'])
     )
 
     return allRows
@@ -80,7 +90,7 @@ export default function SectionProducts(props) {
     return allRows
   }
 
-  const renderDesktopRow = (productUrl, imageUrl, brand, details, userName, message, quantity) => {
+  const renderDesktopRow = (productUrl, imageUrl, brand, details, state, userName, message, quantity) => {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -98,14 +108,17 @@ export default function SectionProducts(props) {
         </small>
       </span>,
       <span>
-        {quantity}
-      </span>,
-      <span>
         {userName}
         <br />
         <small className={classes.tdNameSmall}>
           {message}
         </small>
+      </span>,
+      <span>
+        {quantity}
+      </span>,
+      <span>
+        {stateText(state)}
       </span>
       ]
     )
