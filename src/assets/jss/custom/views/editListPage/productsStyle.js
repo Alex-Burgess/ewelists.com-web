@@ -48,6 +48,9 @@ const sectionDetailsStyle = theme => ({
   tdNumberSmall: {
     marginRight: "3px"
   },
+  tdImage: {
+    width: "130px",
+  },
   actionButton: {
     margin: "0px",
     padding: "5px"
@@ -98,6 +101,11 @@ const sectionDetailsStyle = theme => ({
     fontWeight: "300",
     color: grayColor[22]
   },
+  loading: {
+    paddingTop: "20px",
+    width: "8%",
+    margin: "0 auto"
+  }
 });
 
 export default sectionDetailsStyle;

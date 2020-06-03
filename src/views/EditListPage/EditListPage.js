@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import qs from "qs";
 import update from 'immutability-helper';
-import { API } from "aws-amplify";
 // libs
-import { onError } from "libs/errorLib";
+import { getList, getProducts } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -21,8 +20,6 @@ import ClosedProducts from "./Sections/ClosedProducts.js"
 import AddGifts from "./Sections/AddGifts.js";
 import Reserved from "./Sections/Reserved.js";
 
-import config from 'config.js';
-
 import styles from "assets/jss/custom/views/editListPage/editPageStyle.js";
 const useStyles = makeStyles(styles);
 
@@ -32,7 +29,8 @@ export default function EditPage(props) {
   const listId = props.match.params.id;
   const mobile = props.mobile;
 
-  const [loaded, setLoaded] = useState(false);
+  const [listLoaded, setListLoaded] = useState(false);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [closed, setClosed] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -56,32 +54,7 @@ export default function EditPage(props) {
     }
   }, [props.location.search]);
 
-
   useEffect( () => {
-    async function getList() {
-      let response;
-      try {
-        response = await API.get("lists", "/" + listId);
-      } catch (e) {
-        onError("List ID " + listId + " does not exist for the user " + props.user.sub + ". Error: " + e.response.data.error);
-        return false
-      }
-
-      return response;
-    }
-
-    async function getProduct(product) {
-      let response;
-
-      try {
-        response = await API.get(product.type, "/" + product.productId);
-      } catch (e) {
-        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId + ". Error: " + e.response.data.error);
-      }
-
-      return response;
-    }
-
     function setListState(response) {
       props.setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
@@ -101,51 +74,24 @@ export default function EditPage(props) {
       }
     }
 
-    async function getProductDetails(products) {
-      let productDetails = {};
+    const getListDetails = async () => {
+      try {
+        const response = await getList(listId);
+        setListLoaded(true);
 
-      for (var key in products) {
-        let product = products[key];
-
-        const productResponse = await getProduct(product);
-
-        if (productResponse) {
-          product['brand'] = productResponse.brand;
-          product['details'] = productResponse.details;
-          product['productUrl'] = productResponse.productUrl;
-
-          if (product.type === 'products') {
-            product['imageUrl'] = productResponse.imageUrl;
-          } else {
-            product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-          }
-
-          if (productResponse.price) {
-            product['price'] = productResponse.price;
-          }
-
-          productDetails[key] = product;
-        }
-      }
-
-      return productDetails;
-    }
-
-    const setEditListDetails = async () => {
-      const response = await getList();
-
-      if (! response) {
-        setLoadError("There was an issue loading this page, we're working on it.");
-      } else {
-        let productDetails = await getProductDetails(response.products);
+        setListState(response);
+        let productDetails = await getProducts(response.products);
 
         setProducts(productDetails);
-        setListState(response);
-        setLoaded(true);
+        setProductsLoading(false);
+      } catch (e) {
+        setLoadError("There was an issue loading this page, we're working on it.");
+        setListLoaded(true);
+        setProductsLoading(false);
       }
     };
 
-    setEditListDetails();
+    getListDetails();
   }, [listId, props]);
 
   const deleteProductFromState = (id) => {
@@ -193,121 +139,136 @@ export default function EditPage(props) {
     return scrollHeight;
   }
 
+  const renderClosedView = () => {
+    return (
+      <NavPills
+          active={tabId}
+          setActive={setActive}
+          alignCenter
+          color="primary"
+          tabs={[
+            {
+              tabButton: "Reserved",
+              tabIcon: Redeem,
+              tabContent: (
+                <div>
+                  <Reserved
+                    mobile={mobile}
+                    reserved={reserved}
+                    products={products}
+                  />
+                </div>
+              )
+            },
+            {
+              tabButton: "View List",
+              tabIcon: List,
+              tabContent: (
+                <div>
+                  <ClosedProducts
+                    mobile={mobile}
+                    products={products}
+                  />
+                </div>
+              )
+            }
+          ]}
+        />
+    )
+  }
+
+  const renderOpenView = () => {
+    return (
+      <NavPills
+          active={tabId}
+          setActive={setActive}
+          alignCenter
+          color="primary"
+          tabs={[
+            {
+              tabButton: "Manage List",
+              tabIcon: List,
+              tabContent: (
+                <div>
+                  <Products
+                    loading={productsLoading}
+                    mobile={mobile}
+                    products={products}
+                    listId={listId}
+                    deleteProductFromState={deleteProductFromState}
+                    updateProductToState={updateProductToState}
+                    switchToAddProduct={switchToAddProduct}
+                  />
+                </div>
+              )
+            },
+            {
+              tabButton: "Add Items",
+              tabIcon: Search,
+              tabContent: (
+                <div>
+                  <AddGifts
+                    mobile={mobile}
+                    listId={listId}
+                    addProductToState={addProductToState}
+                    setActive={setActive}
+                  />
+                </div>
+              )
+            },
+            {
+              tabButton: "Reserved",
+              tabIcon: Redeem,
+              tabContent: (
+                <div>
+                  <Reserved
+                    loading={productsLoading}
+                    mobile={mobile}
+                    reserved={reserved}
+                    products={products}
+                  />
+                </div>
+              )
+            }
+          ]}
+        />
+    )
+  }
+
   return (
     <div>
-      { loaded
-        ? <div>
-            <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
-            {loadError
-              ? <div className={classes.main}>
-                  loadError
-                </div>
-              : <div className={classes.main}>
-                  <ListDetails
-                    listId={listId}
-                    title={title}
-                    description={description}
-                    occasion={occasion}
-                    date={date}
-                    imageUrl={imageUrl}
-                    mobile={props.mobile}
-                    user={props.user}
-                    closed={closed}
-                  />
-                  <div className={classes.profileTabs} id="navTabContainer">
-                    {closed
-                      ? <NavPills
-                          active={tabId}
-                          setActive={setActive}
-                          alignCenter
-                          color="primary"
-                          tabs={[
-                            {
-                              tabButton: "Reserved",
-                              tabIcon: Redeem,
-                              tabContent: (
-                                <div>
-                                  <Reserved
-                                    mobile={mobile}
-                                    reserved={reserved}
-                                    products={products}
-                                  />
-                                </div>
-                              )
-                            },
-                            {
-                              tabButton: "View List",
-                              tabIcon: List,
-                              tabContent: (
-                                <div>
-                                  <ClosedProducts
-                                    mobile={mobile}
-                                    products={products}
-                                  />
-                                </div>
-                              )
-                            }
-                          ]}
-                        />
-                      : <NavPills
-                          active={tabId}
-                          setActive={setActive}
-                          alignCenter
-                          color="primary"
-                          tabs={[
-                            {
-                              tabButton: "Manage List",
-                              tabIcon: List,
-                              tabContent: (
-                                <div>
-                                  <Products
-                                    mobile={mobile}
-                                    products={products}
-                                    listId={listId}
-                                    deleteProductFromState={deleteProductFromState}
-                                    updateProductToState={updateProductToState}
-                                    switchToAddProduct={switchToAddProduct}
-                                  />
-                                </div>
-                              )
-                            },
-                            {
-                              tabButton: "Add Items",
-                              tabIcon: Search,
-                              tabContent: (
-                                <div>
-                                  <AddGifts
-                                    mobile={mobile}
-                                    listId={listId}
-                                    addProductToState={addProductToState}
-                                    setActive={setActive}
-                                  />
-                                </div>
-                              )
-                            },
-                            {
-                              tabButton: "Reserved",
-                              tabIcon: Redeem,
-                              tabContent: (
-                                <div>
-                                  <Reserved
-                                    mobile={mobile}
-                                    reserved={reserved}
-                                    products={products}
-                                  />
-                                </div>
-                              )
-                            }
-                          ]}
-                        />
-                    }
-                  </div>
-                </div>
-            }
-            <FooterDark />
-          </div>
-        : null
-      }
+      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <div className={classes.main}>
+        {loadError
+          ? <div>
+              {loadError}
+            </div>
+          : null
+        }
+        {listLoaded
+          ? <div>
+              <ListDetails
+                listId={listId}
+                title={title}
+                description={description}
+                occasion={occasion}
+                date={date}
+                imageUrl={imageUrl}
+                mobile={props.mobile}
+                user={props.user}
+                closed={closed}
+              />
+              <div className={classes.profileTabs} id="navTabContainer">
+                {closed
+                  ? renderClosedView()
+                  : renderOpenView()
+                }
+              </div>
+            </div>
+          : null
+        }
+      </div>
+      <FooterDark />
     </div>
   );
 }

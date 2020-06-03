@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
-import { API } from "aws-amplify";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { debugError } from "libs/errorLib";
+import { getSharedList, getProducts } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -10,12 +10,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import HeaderScroll from "custom/Header/HeaderScroll.js";
 import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "custom/Footer/FooterDark.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // sections for this page
 import SectionProducts from "./Sections/Products.js";
 import SectionListDetails from "./Sections/ListDetails.js";
+import SectionClosed from "./Sections/Closed.js";
 
-import config from 'config.js';
 import styles from "assets/jss/custom/views/viewListPage/viewListPageStyle.js";
 const useStyles = makeStyles(styles);
 
@@ -25,7 +24,8 @@ export default function ViewList(props) {
   const listId = props.match.params.id;
   const userId = props.user.sub;
 
-  const [loaded, setLoaded] = useState(false);
+  const [listLoaded, setListLoaded] = useState(false);
+  const [productsLoading, setProductsLoading] = useState(false);
   const [closed, setClosed] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -36,30 +36,6 @@ export default function ViewList(props) {
   const [reserved, setReserved] = useState({});
 
   useEffect( () => {
-    async function getList() {
-      let response;
-      try {
-        response = await API.get("lists", "/" + listId + "/shared");
-      } catch (e) {
-        onError("List ID " + listId + " does not exist for the user " + props.user.sub + ". Error: " + e.response.data.error);
-        return false
-      }
-
-      return response;
-    }
-
-    async function getProduct(product) {
-      let response;
-
-      try {
-        response = await API.get(product.type, "/" + product.productId);
-      } catch (e) {
-        onError("Could not find a product in the " + product.type + " table for Id: " + product.productId + ". Error: " + e.response.data.error);
-      }
-
-      return response;
-    }
-
     function setListState(response) {
       props.setTabTitle(response.list.title);
       setTitle(response.list.title);
@@ -79,54 +55,26 @@ export default function ViewList(props) {
       }
     }
 
-    async function getProductDetails(products) {
-      let productDetails = {};
+    const getListDetails = async () => {
+      try {
+          const response = await getSharedList(listId);
 
-      for (var key in products) {
-        let product = products[key];
-
-        const productResponse = await getProduct(product);
-
-        if (productResponse) {
-          product['brand'] = productResponse.brand;
-          product['details'] = productResponse.details;
-          product['productUrl'] = productResponse.productUrl;
-
-          if (product.type === 'products') {
-            product['imageUrl'] = productResponse.imageUrl;
-          } else {
-            product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
-          }
-
-          if (productResponse.price) {
-            product['price'] = productResponse.price;
-          }
-
-          productDetails[key] = product;
-        }
-      }
-
-      return productDetails;
-    }
-
-    const setEditListDetails = async () => {
-      const response = await getList();
-
-      if (response) {
           setListState(response);
+          setListLoaded(true);
+          setProductsLoading(true);
 
-          let productDetails = await getProductDetails(response.products);
+          let productDetails = await getProducts(response.products);
           setProducts(
             productDetails
           )
 
-          setLoaded(true);
-      } else {
-          props.history.push('/error/' + listId);
+          setProductsLoading(false);
+      } catch (e) {
+        props.history.push('/error/' + listId);
       }
     };
 
-    setEditListDetails();
+    getListDetails();
   }, [listId, props, props.history]);
 
   const updateReservedQuantity = async (reservedQuantity, product) => {
@@ -214,50 +162,37 @@ export default function ViewList(props) {
 
   return (
     <div>
-      {loaded
-        ? <div>
-            <HeaderScroll isAuthenticated={props.isAuthenticated} user={props.user}/>
-            <Parallax filter="info" className={classes.articleBg}>
-            </Parallax>
-            <div className={classes.main}>
-              <SectionListDetails
-                title={title}
-                description={description}
-                occasion={occasion}
-                date={date}
-                imageUrl={imageUrl}
-              />
-              {closed
-                ? <div className={classes.bannerWrapper}>
-                    <SnackbarContent
-                      message={
-                        <span className={classes.message}>
-                          This list is now closed.
-                        </span>
-                      }
-                      color="warning"
-                      icon="info_outline"
-                    />
-                  </div>
-                : <SectionProducts
-                    products={products}
-                    reserved={reserved}
-                    userId={userId}
-                    listId={listId}
-                    listTitle={title}
-                    user={props.user}
-                    updateReservedQuantity={updateReservedQuantity}
-                    unreserveProduct={unreserveProduct}
-                    updateUserReservation={updateUserReservation}
-                  />
-              }
-            </div>
-            <div className={classes.spacer}>
-            </div>
-            <FooterDark />
-          </div>
-        : null
-      }
+      <HeaderScroll isAuthenticated={props.isAuthenticated} user={props.user} />
+      <Parallax filter="info" className={classes.articleBg} />
+      <div className={classes.main}>
+        {listLoaded
+          ? <SectionListDetails
+              title={title}
+              description={description}
+              occasion={occasion}
+              date={date}
+              imageUrl={imageUrl}
+            />
+          : null
+        }
+        { closed
+          ? <SectionClosed />
+          : <SectionProducts
+              loading={productsLoading}
+              products={products}
+              reserved={reserved}
+              userId={userId}
+              listId={listId}
+              listTitle={title}
+              user={props.user}
+              updateReservedQuantity={updateReservedQuantity}
+              unreserveProduct={unreserveProduct}
+              updateUserReservation={updateUserReservation}
+            />
+        }
+      </div>
+      <div className={classes.spacer} />
+      <FooterDark />
     </div>
   );
 }

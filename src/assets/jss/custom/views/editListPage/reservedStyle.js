@@ -75,6 +75,11 @@ const sectionDetailsStyle = theme => ({
     marginTop: "20px",
     marginBottom: "20px"
   },
+  loading: {
+    paddingTop: "20px",
+    width: "8%",
+    margin: "0 auto"
+  }
 });
 
 export default sectionDetailsStyle;

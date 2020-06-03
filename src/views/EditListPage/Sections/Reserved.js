@@ -1,4 +1,5 @@
 import React from 'react';
+import FadeLoader from "react-spinners/FadeLoader";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -14,7 +15,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { mobile, reserved, products } = props;
+  const { mobile, reserved, products, loading } = props;
 
   const stateText = (state) => {
     if (state === "purchased") {
@@ -160,22 +161,32 @@ export default function SectionProducts(props) {
 
   return (
     <div className={classes.section}>
-      <div className={classes.container}>
-        <Card plain>
-          <CardBody plain>
-            {
-              mobile
-              ? renderMobileView()
-              : renderDesktopView()
-            }
-          </CardBody>
-        </Card>
-      </div>
+      {loading
+        ? <div className={classes.loading}>
+            <FadeLoader
+              size={50}
+              color={"#9a9a9a"}
+              loading={true}
+            />
+          </div>
+        : <div className={classes.container}>
+            <Card plain>
+              <CardBody plain>
+                {
+                  mobile
+                  ? renderMobileView()
+                  : renderDesktopView()
+                }
+              </CardBody>
+            </Card>
+          </div>
+      }
     </div>
   );
 }
 
 SectionProducts.propTypes = {
+  loading: PropTypes.bool,
   mobile: PropTypes.bool,
   reserved: PropTypes.array,
   products: PropTypes.object

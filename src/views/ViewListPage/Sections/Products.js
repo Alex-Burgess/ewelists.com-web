@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import update from 'immutability-helper';
+import FadeLoader from "react-spinners/FadeLoader";
 // libs
 import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
@@ -32,7 +33,7 @@ const useStyles = makeStyles(styles);
 export default function Products(props) {
   const classes = useStyles();
 
-  const { listId, listTitle, userId, products, reserved } = props;
+  const { listId, listTitle, userId, products, reserved, loading } = props;
 
   const [desktop, setDesktop] = useState(true);
   const [filterItems, setFilterItems] = useState('all');
@@ -313,150 +314,165 @@ export default function Products(props) {
     )
   }
 
+  const renderFilterColumn = () => {
+    return (
+      <Card plain className={classes.filterCard}>
+        <CardBody className={classes.cardBodyRefine}>
+          <div className={classes.textCenter + " " + classes.filterButtonContainer}>
+            <Button default onClick={toggleMobileFilter} className={classes.filterButton}>
+              {
+                desktop || showFilter
+                ? <span>Hide Filter</span>
+                : <span>Filter Items</span>
+              }
+            </Button>
+          </div>
+          {
+            desktop || showFilter
+            ?  <div>
+                <h4 className={classes.cardTitle + " " + classes.textLeft}>
+                  Filter
+                  <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
+                    <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton} onClick={() => setFilterItems('all')}>
+                      <Cached />
+                    </Button>
+                  </Tooltip>
+                  <Clearfix />
+                </h4>
+                <Accordion
+                  active={[0, 1]}
+                  activeColor="rose"
+                  collapses={[
+                    {
+                      title: "Availability",
+                      content: (
+                        <div className={classes.customExpandPanel}>
+                          <div
+                            className={
+                              classes.checkboxAndRadio +
+                              " " +
+                              classes.checkboxAndRadioHorizontal
+                            }
+                          >
+                            <FormControlLabel
+                              control={
+                                <Radio
+                                  checked={filterItems === "all"}
+                                  onChange={event => setFilterItems("all")}
+                                  value="all"
+                                  name="radio button enabled"
+                                  aria-label="A"
+                                  icon={
+                                    <FiberManualRecord
+                                      className={classes.radioUnchecked}
+                                    />
+                                  }
+                                  checkedIcon={
+                                    <FiberManualRecord className={classes.radioChecked} />
+                                  }
+                                  classes={{
+                                    checked: classes.radio,
+                                    root: classes.radioRoot
+                                  }}
+                                />
+                              }
+                              classes={{
+                                label: classes.label,
+                                root: classes.labelRoot
+                              }}
+                              label="All Items"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Radio
+                                  checked={filterItems === "available"}
+                                  onChange={event => setFilterItems("available")}
+                                  value="available"
+                                  name="radio button enabled"
+                                  aria-label="B"
+                                  icon={
+                                    <FiberManualRecord
+                                      className={classes.radioUnchecked}
+                                    />
+                                  }
+                                  checkedIcon={
+                                    <FiberManualRecord className={classes.radioChecked} />
+                                  }
+                                  classes={{
+                                    checked: classes.radio,
+                                    root: classes.radioRoot
+                                  }}
+                                />
+                              }
+                              classes={{
+                                label: classes.label,
+                                root: classes.labelRoot
+                              }}
+                              label="Available Items"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Radio
+                                  checked={filterItems === "purchased"}
+                                  onChange={event => setFilterItems("purchased")}
+                                  value="purchased"
+                                  name="radio button enabled"
+                                  aria-label="C"
+                                  icon={
+                                    <FiberManualRecord
+                                      className={classes.radioUnchecked}
+                                    />
+                                  }
+                                  checkedIcon={
+                                    <FiberManualRecord className={classes.radioChecked} />
+                                  }
+                                  classes={{
+                                    checked: classes.radio,
+                                    root: classes.radioRoot
+                                  }}
+                                />
+                              }
+                              classes={{
+                                label: classes.label,
+                                root: classes.labelRoot
+                              }}
+                              label="Purchased Items"
+                            />
+                          </div>
+                        </div>
+                      )
+                    }
+                  ]}
+                />
+              </div>
+            : null
+          }
+        </CardBody>
+      </Card>
+    )
+  }
+
   return (
     <div className={classes.section}>
       <div className={classes.container}>
         <GridContainer>
           <GridItem md={3} sm={4}>
-            <Card plain className={classes.filterCard}>
-              <CardBody className={classes.cardBodyRefine}>
-                <div className={classes.textCenter + " " + classes.filterButtonContainer}>
-                  <Button default onClick={toggleMobileFilter} className={classes.filterButton}>
-                    {
-                      desktop || showFilter
-                      ? <span>Hide Filter</span>
-                      : <span>Filter Items</span>
-                    }
-                  </Button>
-                </div>
-                {
-                  desktop || showFilter
-                  ?  <div>
-                      <h4 className={classes.cardTitle + " " + classes.textLeft}>
-                        Filter
-                        <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
-                          <Button link justIcon size="sm" className={classes.pullRight + " " + classes.refineButton} onClick={() => setFilterItems('all')}>
-                            <Cached />
-                          </Button>
-                        </Tooltip>
-                        <Clearfix />
-                      </h4>
-                      <Accordion
-                        active={[0, 1]}
-                        activeColor="rose"
-                        collapses={[
-                          {
-                            title: "Availability",
-                            content: (
-                              <div className={classes.customExpandPanel}>
-                                <div
-                                  className={
-                                    classes.checkboxAndRadio +
-                                    " " +
-                                    classes.checkboxAndRadioHorizontal
-                                  }
-                                >
-                                  <FormControlLabel
-                                    control={
-                                      <Radio
-                                        checked={filterItems === "all"}
-                                        onChange={event => setFilterItems("all")}
-                                        value="all"
-                                        name="radio button enabled"
-                                        aria-label="A"
-                                        icon={
-                                          <FiberManualRecord
-                                            className={classes.radioUnchecked}
-                                          />
-                                        }
-                                        checkedIcon={
-                                          <FiberManualRecord className={classes.radioChecked} />
-                                        }
-                                        classes={{
-                                          checked: classes.radio,
-                                          root: classes.radioRoot
-                                        }}
-                                      />
-                                    }
-                                    classes={{
-                                      label: classes.label,
-                                      root: classes.labelRoot
-                                    }}
-                                    label="All Items"
-                                  />
-                                  <FormControlLabel
-                                    control={
-                                      <Radio
-                                        checked={filterItems === "available"}
-                                        onChange={event => setFilterItems("available")}
-                                        value="available"
-                                        name="radio button enabled"
-                                        aria-label="B"
-                                        icon={
-                                          <FiberManualRecord
-                                            className={classes.radioUnchecked}
-                                          />
-                                        }
-                                        checkedIcon={
-                                          <FiberManualRecord className={classes.radioChecked} />
-                                        }
-                                        classes={{
-                                          checked: classes.radio,
-                                          root: classes.radioRoot
-                                        }}
-                                      />
-                                    }
-                                    classes={{
-                                      label: classes.label,
-                                      root: classes.labelRoot
-                                    }}
-                                    label="Available Items"
-                                  />
-                                  <FormControlLabel
-                                    control={
-                                      <Radio
-                                        checked={filterItems === "purchased"}
-                                        onChange={event => setFilterItems("purchased")}
-                                        value="purchased"
-                                        name="radio button enabled"
-                                        aria-label="C"
-                                        icon={
-                                          <FiberManualRecord
-                                            className={classes.radioUnchecked}
-                                          />
-                                        }
-                                        checkedIcon={
-                                          <FiberManualRecord className={classes.radioChecked} />
-                                        }
-                                        classes={{
-                                          checked: classes.radio,
-                                          root: classes.radioRoot
-                                        }}
-                                      />
-                                    }
-                                    classes={{
-                                      label: classes.label,
-                                      root: classes.labelRoot
-                                    }}
-                                    label="Purchased Items"
-                                  />
-                                </div>
-                              </div>
-                            )
-                          }
-                        ]}
-                      />
-                    </div>
-                  : null
-                }
-              </CardBody>
-            </Card>
+            {renderFilterColumn()}
           </GridItem>
           <GridItem md={9} sm={8}>
-            <GridContainer>
-              {renderProducts()}
-              {renderReservePopouts()}
-            </GridContainer>
+            {loading
+              ? <div className={classes.loading}>
+                  <FadeLoader
+                    size={50}
+                    color={"#9a9a9a"}
+                    loading={true}
+                  />
+                </div>
+              : <GridContainer>
+                  {renderProducts()}
+                  {renderReservePopouts()}
+                </GridContainer>
+            }
           </GridItem>
         </GridContainer>
         <br />
@@ -466,6 +482,7 @@ export default function Products(props) {
 }
 
 Products.propTypes = {
+  loading: PropTypes.bool,
   products: PropTypes.object,
   reserved: PropTypes.object,
   listId: PropTypes.string,

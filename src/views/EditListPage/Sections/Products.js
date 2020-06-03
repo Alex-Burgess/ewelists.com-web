@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import update from 'immutability-helper';
+import FadeLoader from "react-spinners/FadeLoader";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
+
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
 import Playlist from "@material-ui/icons/PlaylistAdd";
@@ -21,7 +23,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { mobile, listId, products } = props;
+  const { mobile, listId, products, loading } = props;
 
   const [editPopouts, setEditPopouts] = useState({});
 
@@ -62,13 +64,13 @@ export default function SectionProducts(props) {
         ]}
         customHeadClassesForCells={[2, 3, 4]}
         customCellClasses={[
+          classes.tdImage,
           classes.tdName,
           classes.tdNumber + " " + classes.textCenter,
           classes.tdNumber + " " + classes.textCenter,
-          classes.tdNumber + " " + classes.textCenter,
-          classes.textCenter,
+          classes.textCenter
         ]}
-        customClassesForCells={[1, 2, 3, 4, 5]}
+        customClassesForCells={[0, 1, 2, 3, 4]}
       />
     )
   }
@@ -93,9 +95,9 @@ export default function SectionProducts(props) {
 
   const renderProducts = () => {
     const allproducts = Object.entries(products).map(
-      ([key, p]) =>
-            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'], p['price'])
-    )
+        ([key, p]) =>
+              renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'], p['price'])
+      );
 
     return allproducts
   }
@@ -229,6 +231,16 @@ export default function SectionProducts(props) {
               ? renderMobileProductView()
               : renderDesktopProductView()
             }
+            {loading
+              ? <div className={classes.loading}>
+                  <FadeLoader
+                    size={50}
+                    color={"#9a9a9a"}
+                    loading={true}
+                  />
+                </div>
+              : null
+            }
             <div className={classes.addItemButton}>
               <Button round color="primary" onClick={() => props.switchToAddProduct(1)} >
                 <Playlist /> Add Item
@@ -244,6 +256,7 @@ export default function SectionProducts(props) {
 }
 
 SectionProducts.propTypes = {
+  loading: PropTypes.bool,
   mobile: PropTypes.bool,
   listId: PropTypes.string,
   products: PropTypes.object

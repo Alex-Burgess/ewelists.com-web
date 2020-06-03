@@ -166,6 +166,16 @@ const styles = theme => ({
   },
   remaining: {
     minHeight: "18px"
+  },
+  loading: {
+    paddingTop: "60px",
+    paddingLeft: "60px",
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "20px",
+      paddingLeft: "0px",
+      width: "16%",
+      margin: "0 auto"
+    }
   }
 });
 
