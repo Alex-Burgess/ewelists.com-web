@@ -4,7 +4,8 @@ import {
   mlAuto,
   grayColor,
   dangerColor,
-  successColor
+  successColor,
+  primaryColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const sectionDetailsStyle = theme => ({
@@ -17,10 +18,11 @@ const sectionDetailsStyle = theme => ({
     overflow: "hidden",
     display: "block",
     "& img": {
-      width: "140px"
+      width: "100%"
     },
     [theme.breakpoints.down("xs")]: {
-      width: "160px"
+      width: "160px",
+      maxHeight: "100%"
     }
   },
   customFormControl: {
@@ -39,13 +41,13 @@ const sectionDetailsStyle = theme => ({
   rightText: {
     textAlign: "Right",
   },
-  tdNameAnchor: {
-    color: grayColor[1]
-  },
   tdNameSmall: {
     color: grayColor[0],
-    fontSize: "0.75em",
-    fontWeight: "300"
+    fontSize: "0.9em",
+    fontWeight: "300",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.85em",
+    }
   },
   errorContainer: {
     color: dangerColor[1],
@@ -66,6 +68,37 @@ const sectionDetailsStyle = theme => ({
   results: {
     minHeight: "390px",
     marginTop: "30px"
+  },
+  price: {
+    paddingTop: "15px",
+    fontSize: "18px",
+    fontWeight: "300",
+    color: grayColor[22]
+  },
+  brand: {
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    // textDecoration: "underline",
+    display: "inline",
+    margin: "0",
+    padding: "0",
+    color: grayColor[1],
+    fontWeight: "400",
+    fontSize: "1.2em",
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    "&:hover, &:focus": {
+      color: primaryColor[2] + "  !important"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.05em",
+    }
+  },
+  tdQuantity: {
+    minWidth: "130px",
+    [theme.breakpoints.down("md")]: {
+      minWidth: "130px"
+    }
   }
 });
 

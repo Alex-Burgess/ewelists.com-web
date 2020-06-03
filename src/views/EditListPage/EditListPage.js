@@ -120,6 +120,10 @@ export default function EditPage(props) {
             product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
           }
 
+          if (productResponse.price) {
+            product['price'] = productResponse.price;
+          }
+
           productDetails[key] = product;
         }
       }

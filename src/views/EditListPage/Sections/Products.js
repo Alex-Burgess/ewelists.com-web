@@ -94,7 +94,7 @@ export default function SectionProducts(props) {
   const renderProducts = () => {
     const allproducts = Object.entries(products).map(
       ([key, p]) =>
-            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'])
+            renderProduct(p['productId'], p['productUrl'], p['imageUrl'], p['brand'], p['details'], p['quantity'], p['reserved'] + p['purchased'], p['price'])
     )
 
     return allproducts
@@ -109,7 +109,7 @@ export default function SectionProducts(props) {
     return allproducts
   }
 
-  const renderProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved) => {
+  const renderProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved, price) => {
     return (
       [
       <div className={classes.imgContainer} key={1}>
@@ -118,13 +118,19 @@ export default function SectionProducts(props) {
         </button>
       </div>,
       <span key={1}>
-        <button onClick={() => handleEditClickOpen(productId)} className={classes.productDescription}>
+        <button onClick={() => handleEditClickOpen(productId)} className={classes.brand}>
           {brand}
         </button>
         <br />
         <small className={classes.tdNameSmall}>
           {details}
         </small>
+        {price
+          ? <div className={classes.price}>
+              £ {price}
+            </div>
+          : null
+        }
       </span>,
       <span key={1}>
         {quantity}
@@ -148,7 +154,7 @@ export default function SectionProducts(props) {
     )
   }
 
-  const renderMobileProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved) => {
+  const renderMobileProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved, price) => {
     return (
       [
           <div className={classes.textCenter}>
@@ -158,7 +164,7 @@ export default function SectionProducts(props) {
               </button>
             </div>
             <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
-              <h4 className={classes.cardTitle}>
+              <h4 className={classes.brand}>
                 {brand}
               </h4>
             </button>
@@ -166,6 +172,12 @@ export default function SectionProducts(props) {
             <small className={classes.mobileDescription}>
               {details}
             </small>
+            {price
+              ? <div className={classes.price}>
+                  £ {price}
+                </div>
+              : null
+            }
             <br />
             <small className={classes.quantities}>
               Quantity: {quantity}

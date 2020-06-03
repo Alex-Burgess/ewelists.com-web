@@ -2,16 +2,10 @@ import {
   grayColor,
   primaryColor,
   container,
-  cardTitle,
 } from "assets/jss/material-kit-pro-react.js";
 
 const sectionDetailsStyle = theme => ({
   container,
-  cardTitle: {
-    ...cardTitle,
-    textAlign: "center",
-    marginBottom: "0px !important",
-  },
   imgContainer: {
     width: "120px",
     maxHeight: "160px",
@@ -39,9 +33,6 @@ const sectionDetailsStyle = theme => ({
     minWidth: "200px",
     fontWeight: "400",
     fontSize: "1.2em"
-  },
-  tdNameAnchor: {
-    color: grayColor[1]
   },
   tdNameSmall: {
     color: grayColor[0],
@@ -74,7 +65,7 @@ const sectionDetailsStyle = theme => ({
     textAlign: "center",
     paddingTop: "20px"
   },
-  productDescription: {
+  brand: {
     backgroundColor: "transparent",
     border: "none",
     cursor: "pointer",
@@ -88,6 +79,9 @@ const sectionDetailsStyle = theme => ({
     fontFamily: "Roboto, Helvetica, Arial, sans-serif",
     "&:hover, &:focus": {
       color: primaryColor[2] + "  !important"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.35em",
     }
   },
   undoButton: {
@@ -97,7 +91,13 @@ const sectionDetailsStyle = theme => ({
     display: "inline",
     margin: "0",
     padding: "0",
-  }
+  },
+  price: {
+    paddingTop: "15px",
+    fontSize: "18px",
+    fontWeight: "300",
+    color: grayColor[22]
+  },
 });
 
 export default sectionDetailsStyle;

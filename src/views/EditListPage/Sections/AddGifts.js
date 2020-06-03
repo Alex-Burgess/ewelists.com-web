@@ -46,6 +46,7 @@ export default function SectionAddGifts(props) {
   const [productId, setProductId] = useState('');
   const [productBrand, setProductBrand] = useState('');
   const [productDetails, setProductDetails] = useState('');
+  const [productPrice, setProductPrice] = useState('');
   const [productUrl, setProductUrl] = useState('');
   const [productImageUrl, setProductImageUrl] = useState('');
   const [productQuantity, setProductQuantity] = useState(1);
@@ -92,6 +93,7 @@ export default function SectionAddGifts(props) {
       setProductId(product.productId);
       setProductBrand(product.brand);
       setProductDetails(product.details);
+      setProductPrice(product.price);
       setProductUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
@@ -142,6 +144,7 @@ export default function SectionAddGifts(props) {
       quantity: productQuantity,
       reserved: 0,
       purchased: 0,
+      price: productPrice,
       brand: productBrand,
       details: productDetails,
       type: 'products',
@@ -317,13 +320,19 @@ export default function SectionAddGifts(props) {
                     <img src={productImageUrl} alt="..." className={classes.img} />
                   </a>
                 </div>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
                   {productBrand}
                 </a>
                 <br />
                 <small className={classes.tdNameSmall}>
                   {productDetails}
                 </small>
+                {productPrice
+                  ? <div className={classes.price}>
+                      £ {productPrice}
+                    </div>
+                  : null
+                }
               </div>,
               <div className={classes.textCenter}>
               <span>
@@ -349,9 +358,10 @@ export default function SectionAddGifts(props) {
           ]}
           customHeadClassesForCells={[2]}
           customCellClasses={[
-            classes.tdName
+            classes.tdName,
+            classes.tdQuantity
           ]}
-          customClassesForCells={[1]}
+          customClassesForCells={[0,1]}
         />
     )
   }
@@ -373,13 +383,19 @@ export default function SectionAddGifts(props) {
                 </a>
               </div>,
               <span key={1}>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.tdNameAnchor}>
+                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
                   {productBrand}
                 </a>
                 <br />
                 <small className={classes.tdNameSmall}>
                   {productDetails}
                 </small>
+                {productPrice
+                  ? <div className={classes.price}>
+                      £ {productPrice}
+                    </div>
+                  : null
+                }
               </span>,
               <span>
                 <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
@@ -402,9 +418,10 @@ export default function SectionAddGifts(props) {
           ]}
           customHeadClassesForCells={[2]}
           customCellClasses={[
-            classes.tdName
+            classes.tdName,
+            classes.tdQuantity
           ]}
-          customClassesForCells={[1]}
+          customClassesForCells={[1,2]}
         />
     )
   }
