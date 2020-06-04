@@ -185,6 +185,8 @@ export default function ViewList(props) {
               listId={listId}
               listTitle={title}
               user={props.user}
+              isAuthenticated={props.isAuthenticated}
+              cookiesAllowed={props.cookiesAllowed}
               updateReservedQuantity={updateReservedQuantity}
               unreserveProduct={unreserveProduct}
               updateUserReservation={updateUserReservation}

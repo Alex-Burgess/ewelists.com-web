@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Amplify from "aws-amplify";
 import { BrowserRouter as Router } from "react-router-dom";
+import Amplify from "aws-amplify";
 // Libs
 import { initSentry } from './libs/errorLib';
 // Components

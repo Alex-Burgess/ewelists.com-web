@@ -24,9 +24,9 @@ export default function App(props) {
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [cookiesAllowed, setCookiesAllowed] = useState(false);
   const [tabTitle, setTabTitle] = useState('Ewelists');
   const [user, setUser] = useState({});
-
   const [mobile, setMobile] = useState(false);
 
   // Google Analytics
@@ -41,6 +41,13 @@ export default function App(props) {
   });
 
 
+  // Cookies
+  useEffect( () => {
+    if (isAuthenticated || Cookies.get('CookieConsent') === 'true') {
+      setCookiesAllowed(true);
+    }
+  }, [isAuthenticated]);
+
   // Page size
   useEffect( () => {
     function updateDimensions() {
@@ -54,7 +61,6 @@ export default function App(props) {
     window.addEventListener('resize', updateDimensions);
     updateDimensions();
   }, []);
-
 
   // Session Logic
   useEffect(() => {
@@ -179,7 +185,7 @@ export default function App(props) {
             <ScrollToTop />
             <Title title={tabTitle} environment={process.env.REACT_APP_STAGE}/>
             <ErrorBoundary>
-              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTabTitle, handleLogout}} />
+              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTabTitle, handleLogout, cookiesAllowed}} />
               {!isAuthenticated
                 ? <CookieConsent
                     style={{ background: "#2B373B" }}

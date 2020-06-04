@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 import update from 'immutability-helper';
 import FadeLoader from "react-spinners/FadeLoader";
 // libs
@@ -32,8 +33,9 @@ const useStyles = makeStyles(styles);
 
 export default function Products(props) {
   const classes = useStyles();
+  const [cookies] = useCookies(['email']);
 
-  const { listId, listTitle, userId, products, reserved, loading } = props;
+  const { listId, listTitle, userId, products, reserved, loading, isAuthenticated } = props;
 
   const [desktop, setDesktop] = useState(true);
   const [filterItems, setFilterItems] = useState('all');
@@ -77,11 +79,21 @@ export default function Products(props) {
   }
 
   const getUserReservedDetails = (productId) => {
-    if (! (productId in reserved)) {
-      return false
+    let user_key;
+    if (isAuthenticated) {
+      user_key = userId;
+    } else if (cookies.email) {
+      user_key = cookies.email;
+    } else {
+      return false;
     }
 
-    if (! (userId in reserved[productId])) {
+
+    if (! (productId in reserved)) {
+      return false;
+    }
+
+    if (! (user_key in reserved[productId])) {
       return false
     }
 
@@ -92,7 +104,7 @@ export default function Products(props) {
       'purchased_quantity': 0,
     }
 
-    for (var r of reserved[productId][userId]) {
+    for (var r of reserved[productId][user_key]) {
       debugError("reservation: " + JSON.stringify(r));
       if (r['state'] === 'purchased') {
         details['purchased'] = true;
@@ -306,6 +318,7 @@ export default function Products(props) {
         listId={listId}
         listTitle={listTitle}
         user={props.user}
+        cookiesAllowed={props.cookiesAllowed}
         updateReservedQuantity={props.updateReservedQuantity}
         unreserveProduct={props.unreserveProduct}
         updateUserReservation={props.updateUserReservation}
@@ -489,4 +502,5 @@ Products.propTypes = {
   listTitle: PropTypes.string,
   userId: PropTypes.string,
   user: PropTypes.object,
+  isAuthenticated: PropTypes.bool
 };

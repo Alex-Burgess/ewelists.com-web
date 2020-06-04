@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 import { API } from "aws-amplify";
 // libs
 import { onError } from "libs/errorLib";
@@ -38,8 +39,9 @@ Transition.displayName = "Transition";
 function ReservePopout(props) {
   const classes = useStyles();
   const history = useHistory();
+  const [cookies, setCookie] = useCookies(['name', 'email']);
 
-  const { listId, listTitle, open, product, user } = props;
+  const { listId, listTitle, open, product, user, cookiesAllowed } = props;
 
   const [reserveQuantity, setReserveQuantity] = useState(1);
   const [reserveError, setReserveError] = useState('');
@@ -52,9 +54,11 @@ function ReservePopout(props) {
     if (user.email){
       setEmail(user.email)
       setName(user.name)
+    } else if (cookies.name || cookies.email) {
+      setEmail(cookies.email)
+      setName(cookies.name)
     }
-
-  }, [user]);
+  }, [user, cookies.email, cookies.name]);
 
   const closePopout = () => {
     setReserveError('');
@@ -85,6 +89,13 @@ function ReservePopout(props) {
     }
 
     return false
+  }
+
+  const setUserDetailsCookie = () => {
+    if (cookiesAllowed) {
+      setCookie('name', name, { path: '/' });
+      setCookie('email', email, { path: '/' });
+    }
   }
 
   const reserveProduct = async () => {
@@ -123,6 +134,7 @@ function ReservePopout(props) {
     }
 
     setIsReserving(false);
+    setUserDetailsCookie();
     history.push({
       pathname: "/reserve/" + response.reservation_id,
     });
@@ -277,7 +289,8 @@ ReservePopout.propTypes = {
   listId: PropTypes.string,
   listTitle: PropTypes.string,
   product: PropTypes.object,
-  user: PropTypes.object
+  user: PropTypes.object,
+  cookiesAllowed: PropTypes.bool
 };
 
 export default ReservePopout;
