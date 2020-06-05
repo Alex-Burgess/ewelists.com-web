@@ -51,7 +51,7 @@ export default function Nursery(props) {
       <Products
         products={[
           "12345678-prod-n026-1234-abcdefghijkl",
-          "12345678-prod-n027-1234-abcdefghijkl",
+          "12345678-prod-n039-1234-abcdefghijkl",
           "12345678-prod-n001-1234-abcdefghijkl",
           "12345678-prod-n025-1234-abcdefghijkl",
           "12345678-prod-n002-1234-abcdefghijkl",
@@ -167,8 +167,8 @@ export default function Nursery(props) {
       <Products
         products={[
           "12345678-prod-n011-1234-abcdefghijkl",
-          "12345678-prod-n014-1234-abcdefghijkl",
-          "12345678-prod-n015-1234-abcdefghijkl"
+          "12345678-prod-n040-1234-abcdefghijkl",
+          "12345678-prod-n041-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}
@@ -201,10 +201,10 @@ export default function Nursery(props) {
       <Products
         products={[
           "12345678-prod-n021-1234-abcdefghijkl",
-          "12345678-prod-n022-1234-abcdefghijkl",
-          "12345678-prod-n023-1234-abcdefghijkl",
+          "12345678-prod-n042-1234-abcdefghijkl",
+          "12345678-prod-n043-1234-abcdefghijkl",
           "12345678-prod-n024-1234-abcdefghijkl",
-          "12345678-prod-n036-1234-abcdefghijkl",
+          "12345678-prod-n044-1234-abcdefghijkl",
           "12345678-prod-n037-1234-abcdefghijkl",
           "12345678-prod-n038-1234-abcdefghijkl"
         ]}

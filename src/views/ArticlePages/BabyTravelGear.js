@@ -89,15 +89,15 @@ export default function TravelGear(props) {
         It can be beneficial to have a buggy for getting through the airport and on days out on your holiday. Thanks to
         their compact sizes when folded, many strollers even fit in airline overhead lockers, allowing you to keep it
         with you to boarding. The
-        <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/babyzen-yoyo-pushchair-white-aqua/p4145291"> BABYZEN YOYO+ </a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/babyzen-yoyo-stroller-black-grey/p4921257"> BABYZEN YOYO² Stroller </a>
         is so practical it seems to get a mention in a number of our blogs and is often parents only pushchair. However,
         if you're considering a second buggy just for travelling, there are options a little cheaper and lighter, that
         tick nearly all the same boxes, which we've included below.
       </p>
       <Products
         products={[
-          "12345678-prod-t003-1234-abcdefghijkl",
-          "12345678-prod-t004-1234-abcdefghijkl",
+          "12345678-prod-t033-1234-abcdefghijkl",
+          "12345678-prod-t034-1234-abcdefghijkl",
           "12345678-prod-t005-1234-abcdefghijkl"
         ]}
         data={productData}
@@ -115,7 +115,7 @@ export default function TravelGear(props) {
         products={[
           "12345678-prod-t012-1234-abcdefghijkl",
           "12345678-prod-t006-1234-abcdefghijkl",
-          "12345678-prod-t007-1234-abcdefghijkl",
+          "12345678-prod-t035-1234-abcdefghijkl",
         ]}
         data={productData}
         lists={lists}
@@ -221,9 +221,9 @@ export default function TravelGear(props) {
       </p>
       <Products
         products={[
-          "12345678-prod-t023-1234-abcdefghijkl",
           "12345678-prod-t024-1234-abcdefghijkl",
-          "12345678-prod-t025-1234-abcdefghijkl"
+          "12345678-prod-t036-1234-abcdefghijkl",
+          "12345678-prod-t037-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}

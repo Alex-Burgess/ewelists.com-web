@@ -61,7 +61,7 @@ export default function Products(props) {
               products.map((id, key) =>
                 <GridItem xs={12} sm={4} md={4} key={key}>
                   <Card plain product className={classes.customProduct}>
-                    <CardHeader noShadow image>
+                    <CardHeader noShadow image className={classes.customHeader}>
                       <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
                         <img src={data[id].imageUrl} className={classes.productImage} alt=".." />
                       </a>
@@ -70,6 +70,14 @@ export default function Products(props) {
                       </a>
                       <div className={classes.description}>
                         {data[id].details}
+                      </div>
+                      <div className={classes.price}>
+                        {data[id].price
+                          ? <div>
+                              £ {data[id].price}
+                            </div>
+                          : null
+                        }
                       </div>
                     </CardHeader>
                     <CardBody plain>

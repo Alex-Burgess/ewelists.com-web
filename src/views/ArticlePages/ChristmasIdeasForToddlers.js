@@ -73,7 +73,7 @@ export default function ChristmasIdeasForToddlers(props) {
       </div>
       <Products
         products={[
-          "12345678-prod-c006-1234-abcdefghijkl",
+          "12345678-prod-c014-1234-abcdefghijkl",
           "12345678-prod-c007-1234-abcdefghijkl",
           "12345678-prod-c008-1234-abcdefghijkl",
           "12345678-prod-c009-1234-abcdefghijkl",
@@ -105,7 +105,7 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c010-1234-abcdefghijkl",
           "12345678-prod-c011-1234-abcdefghijkl",
           "12345678-prod-c012-1234-abcdefghijkl",
-          "12345678-prod-c013-1234-abcdefghijkl"
+          "12345678-prod-c015-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}

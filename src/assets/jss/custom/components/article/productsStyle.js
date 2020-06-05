@@ -44,7 +44,7 @@ const blogPostPageStyle = theme => ({
   },
   description: {
     color: grayColor[0],
-    textAlign: "center",
+    textAlign: "left",
     overflow: "hidden",
     textOverflow: "ellipsis",
     display: "-webkit-box",
@@ -68,6 +68,9 @@ const blogPostPageStyle = theme => ({
     [theme.breakpoints.down("xs")]: {
       marginBottom: "10px",
     }
+  },
+  customHeader: {
+    height: "320px"
   },
   amazonButton: {
     backgroundColor: "#FF9900",

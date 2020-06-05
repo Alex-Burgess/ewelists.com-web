@@ -54,7 +54,7 @@ export default function HostpitalBag(props) {
       <Products
         products={[
           "12345678-prod-h001-1234-abcdefghijkl",
-          "12345678-prod-h004-1234-abcdefghijkl",
+          "12345678-prod-h015-1234-abcdefghijkl",
           "12345678-prod-h005-1234-abcdefghijkl",
         ]}
         data={productData}
@@ -115,8 +115,8 @@ export default function HostpitalBag(props) {
       </div>
       <Products
         products={[
-          "12345678-prod-h007-1234-abcdefghijkl",
-          "12345678-prod-h008-1234-abcdefghijkl"
+          "12345678-prod-h016-1234-abcdefghijkl",
+          "12345678-prod-h017-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}
@@ -156,7 +156,7 @@ export default function HostpitalBag(props) {
           "12345678-prod-h009-1234-abcdefghijkl",
           "12345678-prod-h010-1234-abcdefghijkl",
           "12345678-prod-h011-1234-abcdefghijkl",
-          "12345678-prod-h012-1234-abcdefghijkl"
+          "12345678-prod-h018-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}

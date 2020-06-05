@@ -135,7 +135,7 @@ export default function BathTime(props) {
           "12345678-prod-b017-1234-abcdefghijkl",
           "12345678-prod-b018-1234-abcdefghijkl",
           "12345678-prod-b019-1234-abcdefghijkl",
-          "12345678-prod-b020-1234-abcdefghijkl"
+          "12345678-prod-b021-1234-abcdefghijkl"
         ]}
         data={productData}
         lists={lists}
