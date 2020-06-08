@@ -6,8 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import FooterDark from "custom/Footer/FooterDark.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import Login from "custom/Login/Login.js";
 // Sections for this page
 import Create from "./UnAuthSections/Create.js";
 import Product from "./UnAuthSections/Product.js";
@@ -22,9 +20,6 @@ export default function LandingPage(props) {
   const classes = useStyles();
 
   const [create, setCreate] = useState(false);
-  const [login, setLogin] = useState(false);
-  const [loginType, setLoginType] = useState('');
-  const [account, setAccount] = useState('');
 
   useEffect( () => {
     function checkUrlParams() {
@@ -33,11 +28,6 @@ export default function LandingPage(props) {
       switch (params['po']) {
         case "create":
           setCreate(true);
-          break;
-        case "login":
-          setLogin(true);
-          setLoginType(params['type']);
-          setAccount(params['account']);
           break;
         default:
           break;
@@ -50,15 +40,14 @@ export default function LandingPage(props) {
   const renderAuthed = () => {
     return (
       <div>
-        <div className={classes.page}>
-          <HeaderFixed isAuthenticated={true} user={props.user} mobile={props.mobile}/>
-          <div className={classes.main}>
-            <YourLists showCreate={create} setCreate={setCreate} setTabTitle={props.setTabTitle}/>
-          </div>
-          <div className={classes.flexer}>
-          </div>
-          <FooterGrey />
+      <div className={classes.page}>
+        <HeaderFixed isAuthenticated={true} user={props.user} mobile={props.mobile}/>
+        <div className={classes.main}>
+          <YourLists showCreate={create} setCreate={setCreate} setTabTitle={props.setTabTitle}/>
         </div>
+        <div className={classes.flexer} />
+      </div>
+      <FooterDark />
       </div>
     );
   }
@@ -73,7 +62,6 @@ export default function LandingPage(props) {
           <Ideas />
         </div>
         <FooterDark />
-        <Login open={login} account={account} loginType={loginType} setLogin={setLogin}/>
       </div>
     );
   }

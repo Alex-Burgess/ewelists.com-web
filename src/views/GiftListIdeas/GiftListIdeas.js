@@ -2,7 +2,7 @@ import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import FooterGrey from "custom/Footer/FooterGrey.js";
+import FooterDark from "custom/Footer/FooterDark.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
@@ -46,7 +46,7 @@ export default function GiftIdeasMain(props) {
       </div>
       <div className={classes.spacer}>
       </div>
-      <FooterGrey />
+      <FooterDark />
     </div>
   );
 }

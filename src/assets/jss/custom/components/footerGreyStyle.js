@@ -2,7 +2,7 @@ import {
   grayColor
 } from "assets/jss/material-kit-pro-react.js";
 
-const footerDarkStyle = {
+const footerDarkStyle = theme => ({
   block: {
     color: "inherit",
     padding: "0.9375rem",
@@ -12,7 +12,10 @@ const footerDarkStyle = {
     borderRadius: "3px",
     textDecoration: "none",
     position: "relative",
-    display: "block"
+    display: "block",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0.9375rem 0.5rem",
+    }
   },
   inlineBlock: {
     display: "inline-block",
@@ -25,7 +28,6 @@ const footerDarkStyle = {
     marginTop: "0"
   },
   left: {
-    paddingTop: "5px",
     float: "left!important",
     display: "block",
   },
@@ -61,5 +63,6 @@ const footerDarkStyle = {
       fontSize: "15px"
     }
   },
-};
+});
+
 export default footerDarkStyle;

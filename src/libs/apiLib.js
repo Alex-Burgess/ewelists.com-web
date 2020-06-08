@@ -68,3 +68,18 @@ export const getProducts = async (products) => {
 
   return productDetails;
 }
+
+
+export const contactRequest = async (details) => {
+  let response;
+
+  try {
+    response = await API.post("contact", "/", {
+      body: details
+    });
+  } catch (e) {
+    onError("Could not send message.");
+  }
+
+  return response;
+}

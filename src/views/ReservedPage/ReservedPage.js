@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
-import Footer from "custom/Footer/FooterGrey.js";
+import Footer from "custom/Footer/FooterDark.js";
 // custom components
 import ProductDetails from "custom/Reserve/ProductDetails.js";
 import Manage from "custom/Reserve/Manage.js";

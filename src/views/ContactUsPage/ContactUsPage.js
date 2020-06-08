@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
 // libs
 import { onError, debugError } from "libs/errorLib";
-// nodejs library that concatenates classes
-import classNames from "classnames";
+import { contactRequest } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import Parallax from "components/Parallax/Parallax.js";
+import Footer from "custom/Footer/FooterGrey.js";
 import HeaderFixed from "custom/Header/HeaderFixed.js";
-import SentMessage from "./Sections/SentMessage.js";
-import { contactApiPost } from "./contactApi";
+import Card from "components/Card/Card.js";
+import CardBody from "components/Card/CardBody.js";
 
-import styles from "assets/jss/custom/views/contactUsCustomStyle.js";
+import styles from "assets/jss/custom/views/contactPageStyle.js";
 const useStyles = makeStyles(styles);
-
-const backgroundImage = "/images/sheep-with-shoes";
 
 export default function ContactUsPage(props) {
   const classes = useStyles();
@@ -40,7 +35,7 @@ export default function ContactUsPage(props) {
     debugError("API request body: " + JSON.stringify(details));
 
     try {
-      await contactApiPost(details);
+      await contactRequest(details);
       setSubmit(true);
     } catch (e) {
       onError(e);
@@ -107,51 +102,34 @@ export default function ContactUsPage(props) {
     )
   }
 
+
   return (
-    <div>
+    <div className={classes.page}>
       <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
-      <Parallax image={backgroundImage} className={classes.parallax}>
-        <div className={classes.container}>
-          <GridContainer justify="center">
-            <GridItem
-              md={8}
-              sm={8}
-              className={classNames(
-                classes.mlAuto,
-                classes.mrAuto,
-                classes.textCenter
-              )}
-            >
-            </GridItem>
-          </GridContainer>
-        </div>
-      </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.contactContent}>
-          <div className={classes.container}>
-            <h2 className={classes.title}>Send us a message</h2>
-            <GridContainer>
-              <GridItem md={12} sm={12}>
-                <p className={classes.subHeading}>
-                  You can contact us with anything related to Ewelists. We
-                  {"'"}ll get in touch with you as soon as possible.
-                  <br />
-                  <br />
-                </p>
+      <div className={classes.container}>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>
+            <Card className={classes.customCard}>
+              <CardBody signup>
+                <h3 className={classes.title + " " + classes.textCenter}>Send us a message</h3>
+                <h4>
+                  You can contact us with anything related to Ewelists. We {"'"}ll get back to you ASAP.
+                </h4>
                 <div id="formWrapper">
                   {submit
-                    ? <SentMessage name={name} />
+                    ? <div className={classes.sent}>
+                        Thank you for your message {name}.  We aim to respond to emails the same day.
+                      </div>
                     : renderForm()
                   }
                 </div>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </div>
+              </CardBody>
+            </Card>
+          </GridItem>
+        </GridContainer>
       </div>
-      <div className={classes.spacer}>
-      </div>
-      <FooterGrey />
+      <div className={classes.flexer} />
+      <Footer />
     </div>
   );
 }

@@ -38,7 +38,8 @@ const customInputStyle = theme => ({
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "1.42857",
-    top: "10px",
+    // top: "10px",
+    top: "0px",
     letterSpacing: "unset",
     "& + $underline": {
       marginTop: "0px"
@@ -63,7 +64,8 @@ const customInputStyle = theme => ({
   },
   formControl: {
     margin: "0 0 17px 0",
-    paddingTop: "27px",
+    // paddingTop: "27px",
+    paddingTop: "17px",
     position: "relative",
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
       color: grayColor[13]

@@ -25,7 +25,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 // Custom components
 import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
-import Footer from "custom/Footer/FooterGrey.js";
+import Footer from "custom/Footer/FooterDark.js";
 // Sections
 import SectionDelete from "./Sections/DeleteListPopOut.js";
 

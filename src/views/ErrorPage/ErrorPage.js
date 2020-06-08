@@ -4,42 +4,37 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import HeaderTransparent from "custom/Header/HeaderTransparent.js";
-import FooterTransparent from "custom/Footer/FooterTransparent.js";
+import HeaderFixed from "custom/Header/HeaderFixed.js";
+import Footer from "custom/Footer/FooterGrey.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import config from 'config.js';
 
-import styles from "assets/jss/custom/views/errorPageCustomStyle.js";
+import styles from "assets/jss/custom/views/errorPageStyle.js";
 const useStyles = makeStyles(styles);
-
-const backgroundImage = config.imagePrefix + "/images/sheep-with-shoes.jpg";
 
 export default function ErrorPage(props) {
   const classes = useStyles();
   return (
-    <div>
-      <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user} />
-      <div
-        className={classes.pageHeader}
-        style={{
-          backgroundImage: "url(" + backgroundImage + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "top center"
-        }}
-      >
-        <div className={classes.contentCenter}>
-          <GridContainer>
-            <GridItem md={12}>
-              <h1 className={classes.title}>Page not found</h1>
-              <h2 className={classes.subTitle}>The page you are looking for does not exist.</h2>
-              <Link to="/">Click to go back to the home page.</Link>
-            </GridItem>
-          </GridContainer>
-        </div>
-      </div>
+    <div className={classes.page}>
+      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <div className={classes.container}>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={10} md={7}>
+            <h1 className={classes.title}>Oops!</h1>
+            <h2 className={classes.subTitle}>We can't seem to find the page you're looking for.</h2>
+            <div>
+              You could head back to the
+              <Link to="/"> home page</Link>
+              , or if this keeps happening,
+              <Link to="/contact"> drop us a line </Link>
+               so we can quickly fix it.
+            </div>
 
-      <FooterTransparent />
+          </GridItem>
+        </GridContainer>
+      </div>
+      <div className={classes.flexer} />
+      <Footer />
     </div>
   );
 }

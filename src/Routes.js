@@ -7,10 +7,11 @@ import UnauthenticatedRoute from "./custom/Routes/UnauthenticatedRoute";
 
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.js";
-import LoginPage from "views/LoginPage/LoginPage.js";
-import ResetPasswordPage from "views/ResetPasswordPage/ResetPasswordPage.js";
-import LogoutPage from "views/LogoutPage/LogoutPage.js";
-import SignupPage from "views/SignupPage/SignupPage.js";
+import LoginPage from "views/AuthPages/LoginPage.js";
+import SignupPage from "views/AuthPages/SignupPage.js";
+import SocialConfirmationPage from "views/AuthPages/SocialConfirmationPage.js";
+import ResetPasswordPage from "views/AuthPages/ResetPasswordPage.js";
+import LogoutPage from "views/AuthPages/LogoutPage.js";
 import PrivacyPage from "views/LegalPages/PrivacyPage.js";
 import TermsPage from "views/LegalPages/TermsPage.js";
 import CookiesPage from "views/LegalPages/CookiesPage.js";
@@ -50,6 +51,7 @@ export default function Routes({appProps}) {
       <AppliedRoute path="/list-ideas/play-room-ideas" exact component={ArticlePlayRoom} props={appProps} />
       <UnauthenticatedRoute path="/login" exact component={LoginPage} props={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={appProps} />
+      <UnauthenticatedRoute path="/signup-complete" exact component={SocialConfirmationPage} props={appProps} />
       <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={appProps} />
       <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={appProps} />
       <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={appProps} />

@@ -22,17 +22,13 @@ const sectionStyle = theme => ({
   mrAuto,
   cardTitle,
   ...modalStyle(theme),
-  modal: {
-    width: "100%",
-    overflow: "visible",
+  ...customSelectStyle,
+  modalCustom: {
     marginTop: "130px !important",
-    maxHeight: "unset",
-    borderRadius: "6px",
     [theme.breakpoints.down("xs")]: {
-      marginTop: "0px !important"
+      marginTop: "0px !important",
     }
   },
-  ...customSelectStyle,
   container: {
     color: whiteColor,
     ...container,
@@ -85,8 +81,9 @@ const sectionStyle = theme => ({
     textAlign: "Center",
   },
   label: {
-    paddingTop: "30px",
+    paddingTop: "10px",
     color: grayColor[12],
+    fontSize: "14px"
   },
   progress: {
     color: successColor[1],
@@ -137,6 +134,19 @@ const sectionStyle = theme => ({
     maxWidth: "280px",
     color: dangerColor[1],
     textAlign: "center"
+  },
+  selectGrid: {
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "0px",
+      paddingBottom: "0px"
+    },
+  },
+  occasionGrid: {
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "15px",
+    }
   }
 });
 

@@ -43,7 +43,7 @@ const buttonStyle = {
     padding: "12px 30px",
     margin: ".3125rem 1px",
     fontSize: "12px",
-    fontWeight: "400",
+    fontWeight: "500",
     textTransform: "uppercase",
     letterSpacing: "0",
     willChange: "box-shadow, transform",
@@ -658,6 +658,24 @@ const buttonStyle = {
       background: "transparent",
       boxShadow: "none"
     }
+  },
+  clear: {
+    backgroundColor: whiteColor,
+    color: grayColor[8],
+    boxShadow: "none",
+    border: "solid 1px #ddd",
+    fontSize: "14px",
+    fontWeight: "400",
+    textTransform: "Capitalize",
+    "&:hover,&:focus": {
+      backgroundColor: whiteColor,
+      color: grayColor[8],
+      boxShadow: "none",
+      border: "solid 1px #999",
+    }
+  },
+  googleIcon: {
+    colour: "red"
   },
   disabled: {
     opacity: "0.65",

@@ -144,7 +144,7 @@ function CreatePopOut(props) {
     <Dialog
       classes={{
         root: classes.modalRoot,
-        paper: classes.modal + " " + classes.modalClassic
+        paper: classes.modal + " " + classes.modalCustom
       }}
       open={open}
       TransitionComponent={Transition}
@@ -172,7 +172,7 @@ function CreatePopOut(props) {
             classes.cardTitle + " " + classes.modalTitle + " " + classes.textCenter
           }
         >
-          Create New List
+          Enter List Details
         </h3>
       </DialogTitle>
       <DialogContent
@@ -187,54 +187,53 @@ function CreatePopOut(props) {
             className={classes.mrAuto}
           >
             <form className={classes.form}>
-              <InputLabel className={classes.label}>
-                Title:
-              </InputLabel>
               <CustomInput
+                labelText="Title"
                 id="title"
-                inputProps={{
-                  placeholder: "Enter your title here...",
-                  onChange: event => setTitle(event.target.value)
-                }}
                 formControlProps={{
                   fullWidth: true,
-                  className: classes.createFormControl
+                  value: title,
+                  onChange: event => setTitle(event.target.value),
+                  className: classes.inputProps
                 }}
               />
-              <InputLabel className={classes.label}>
-                Description:
-              </InputLabel>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={6} md={6} className={classes.selectGrid}>
+                  <InputLabel className={classes.label}>
+                    Date:
+                  </InputLabel>
+                  <FormControl fullWidth>
+                    <Datetime
+                      className={classes.dateField}
+                      dateFormat="DD MMMM YYYY"
+                      timeFormat={false}
+                      inputProps={{name: "date", placeholder: "Select a date" }}
+                      value={date}
+                      onChange={changeDate}
+                      closeOnSelect={true}
+                    />
+                  </FormControl>
+                </GridItem>
+                <GridItem xs={12} sm={6} md={6} className={classes.selectGrid + " " + classes.occasionGrid}>
+                  <InputLabel className={classes.label + " " + classes.date}>
+                    Occasion:
+                  </InputLabel>
+                  {renderOccasionSelect()}
+                </GridItem>
+              </GridContainer>
               <CustomInput
+                labelText="Description"
                 id="description"
                 formControlProps={{
                   fullWidth: true,
                   className: classes.createFormControl
                 }}
                 inputProps={{
-                  placeholder: "Add your description here...",
                   onChange: event => setDescription(event.target.value),
                   multiline: true,
-                  rows: 2,
+                  rows: 3,
                 }}
               />
-              <InputLabel className={classes.label}>
-                Date:
-              </InputLabel>
-              <FormControl fullWidth>
-                <Datetime
-                  className={classes.dateField}
-                  dateFormat="DD MMMM YYYY"
-                  timeFormat={false}
-                  inputProps={{name: "date", placeholder: "Select a date" }}
-                  value={date}
-                  onChange={changeDate}
-                  closeOnSelect={true}
-                />
-              </FormControl>
-              <InputLabel className={classes.label + " " + classes.date}>
-                Occasion:
-              </InputLabel>
-              {renderOccasionSelect()}
               <div className={classes.root}>
                 <div className={classes.wrapper}>
                   <Button

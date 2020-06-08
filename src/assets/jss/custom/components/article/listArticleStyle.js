@@ -41,7 +41,10 @@ const blogPostPageStyle = theme => ({
     ...mainRaised
   },
   articleBg: {
-    height: "40vh"
+    height: "60vh",
+    [theme.breakpoints.down("xs")]: {
+        height: "40vh"
+    }
   },
   content: {
     "& p": {

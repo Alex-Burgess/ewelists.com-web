@@ -114,8 +114,8 @@ export default function App(props) {
           }
 
           history.push({
-            pathname: '/',
-            search: '?po=login&account=' + account + '&type=' + results['type'],
+            pathname: '/signup-complete',
+            search: '?account=' + account + '&type=' + results['type'],
           })
         } else if (error_message.indexOf(googleDomainErrorMsg) !== -1) {
           onError(error_message);

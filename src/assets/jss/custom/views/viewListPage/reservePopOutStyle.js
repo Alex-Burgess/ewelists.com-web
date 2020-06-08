@@ -126,14 +126,11 @@ const sectionStyle = theme => ({
     fontWeight: "400",
     color: "#777",
     lineHeight: "1.2",
-    marginBottom: "0px",
+    marginBottom: "15px",
     textAlign: "left",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.5em"
     }
-  },
-  customForm: {
-    marginBottom: "0px"
   },
   cardCategory: {
     color: "#6c757d",

@@ -184,8 +184,7 @@ function ReservePopout(props) {
                 onChange: event => setName(event.target.value)
               }}
               formControlProps={{
-                fullWidth: true,
-                className:  classes.customForm,
+                fullWidth: true
               }}
             />
           <CustomInput
@@ -196,8 +195,7 @@ function ReservePopout(props) {
               onChange: event => setEmail(event.target.value)
             }}
             formControlProps={{
-              fullWidth: true,
-              className:  classes.customForm,
+              fullWidth: true
             }}
           />
           {product['quantity'] > 1
