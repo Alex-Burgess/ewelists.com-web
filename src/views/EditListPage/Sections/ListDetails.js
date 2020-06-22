@@ -9,14 +9,13 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // Custom components
-import ShareButton from "custom/Buttons/ShareButton.js";
-import { Facebook } from "custom/Share/Share.js";
+import { Facebook } from "components/Share/Share.js";
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/editListPage/listDetailsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/listDetailsStyle.js";
 const useStyles = makeStyles(styles);
 
 const copy = require('clipboard-copy')
@@ -81,54 +80,48 @@ export default function SectionDetails(props) {
                   <GridItem xs={12} sm={9} md={9}>
                     <div className={classes.centerMobileText}>
                       <a href={mailToText}>
-                        <ShareButton color="darkDefault" round simple justIcon>
+                        <Button round justIcon share>
                           <i className="far fa-envelope" />
-                        </ShareButton>
+                        </Button>
                       </a>
                       { mobile
                         ? <span>
                             <a href={fbMobileLink}>
-                              <ShareButton color="facebookMessenger" round simple justIcon>
+                              <Button color="messenger" round share justIcon>
                                 <i className="fab fa-facebook-messenger" />
-                              </ShareButton>
+                              </Button>
                             </a>
                             <a href={whatsAppLink} data-action="share/whatsapp/share">
-                              <ShareButton color="whatsapp" round simple justIcon>
+                              <Button color="whatsapp" round share justIcon>
                                 <i className="fab fa-whatsapp" />
-                              </ShareButton>
+                              </Button>
                             </a>
                           </span>
-                        : <ShareButton color="facebookMessenger" round simple justIcon onClick={() => Facebook(listUrl)}>
+                        : <Button color="messenger" round justIcon share onClick={() => Facebook(listUrl)}>
                             <i className="fab fa-facebook-messenger" />
-                          </ShareButton>
+                          </Button>
                       }
-                      <ShareButton color="share" round simple onClick={() => copyLink() }>
+                      <Button color="primary" round share onClick={() => copyLink() }>
                         <i className="fas fa-share-alt" />
-                        <span className={classes.shareText}>
                           { showCopied
                             ? 'Copied!'
                             : 'Share'
                           }
-                        </span>
-                      </ShareButton>
+                      </Button>
                       <Link to={"/lists/" + listId}>
-                        <ShareButton color="darkDefault" round simple>
+                        <Button round share>
                           <i className="fas fa-eye"></i>
-                          <span className={classes.shareText}>
                            View
-                          </span>
-                        </ShareButton>
+                        </Button>
                       </Link>
                     </div>
                   </GridItem>
                   <GridItem xs={12} sm={3} md={3} className={classes.cogDesktop}>
                     <Link to={"/settings/" + listId}>
-                      <ShareButton color="default" round simple>
+                      <Button round share>
                         <i className="fas fa-cog"></i>
-                        <span className={classes.shareText}>
                           Settings
-                        </span>
-                      </ShareButton>
+                      </Button>
                     </Link>
                   </GridItem>
                 </GridContainer>

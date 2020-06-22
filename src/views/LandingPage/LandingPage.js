@@ -4,15 +4,15 @@ import qs from "qs";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import FooterDark from "custom/Footer/FooterDark.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterDark from "components/Footer/FooterDark.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 // Sections for this page
 import Create from "./UnAuthSections/Create.js";
 import Product from "./UnAuthSections/Product.js";
 import Ideas from "./UnAuthSections/Ideas.js";
 import YourLists from "./AuthSections/YourLists.js";
 
-import styles from "assets/jss/custom/views/landingPage/landingPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/landingPageStyle.js";
 const useStyles = makeStyles(styles);
 
 

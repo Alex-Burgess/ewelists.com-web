@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-// import { scrollToId } from "custom/Scroll/ScrollToId";
-import { getUsersLists } from "custom/Article/GetUsersLists";
-import ListArticle from "custom/Article/ListArticle.js";
-import Products from "custom/Article/Products.js";
+// import { scrollToId } from "components/Scroll/ScrollToId";
+import { getUsersLists } from "components/Article/GetUsersLists";
+import ListArticle from "components/Article/ListArticle.js";
+import Products from "components/Article/Products.js";
 
 // Blog Data
 const name = 'christmas-ideas-for-toddlers'

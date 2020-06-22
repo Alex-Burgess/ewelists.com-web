@@ -10,11 +10,11 @@ import { onError, debugError } from "libs/errorLib";
 import { initGA, onView } from './libs/googleAnalyticsLib';
 // components
 import Routes from "./Routes";
-import ScrollToTop from "custom/Scroll/ScrollToTop.js";
-import Title from "custom/Title/Title.js"
+import ScrollToTop from "components/Scroll/ScrollToTop.js";
+import Title from "components/Title/Title.js"
 import ErrorBoundary from "views/ErrorBoundary/ErrorBoundary.js";
 
-import styles from "assets/jss/custom/views/appStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/appStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function App(props) {

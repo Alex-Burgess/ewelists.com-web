@@ -8,9 +8,9 @@ import Group from "@material-ui/icons/Group";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
+import InfoArea from "./InfoArea.js";
 
-import styles from "assets/jss/custom/views/landingPage/productStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/productStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function LandingProduct(props) {

@@ -7,10 +7,10 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/Buttons/Button.js";
+import Input from "components/Input/CustomInput.js";
 
-import styles from "assets/jss/custom/views/authPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function NewPasswordForm(props) {
@@ -91,7 +91,7 @@ export default function NewPasswordForm(props) {
       <div>
         A confirmation code was sent to your email ({email}).
       </div>
-      <CustomInput
+      <Input
         labelText="Confirmation Code"
         id="code"
         formControlProps={{
@@ -104,7 +104,7 @@ export default function NewPasswordForm(props) {
       <div className={classes.newPassword}>
         Enter your new password below:
       </div>
-      <CustomInput
+      <Input
         labelText="Password"
         id="password"
         formControlProps={{
@@ -118,7 +118,7 @@ export default function NewPasswordForm(props) {
           autoComplete: "off"
         }}
       />
-      <CustomInput
+      <Input
         labelText="Confirm Password"
         id="confirmPassword"
         formControlProps={{

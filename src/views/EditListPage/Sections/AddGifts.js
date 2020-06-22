@@ -14,15 +14,15 @@ import Remove from "@material-ui/icons/Remove";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Input from "components/Input/CustomInput.js";
 import Table from "components/Table/Table.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/editListPage/addGiftsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/addGiftsStyle.js";
 const useStyles = makeStyles(styles);
 
 
@@ -254,7 +254,7 @@ export default function SectionAddGifts(props) {
             We don't currently have any details for this product. Add the item with some basic details below and we'll update the item a.s.a.p.
           </h5>
           <form className={classes.form}>
-            <CustomInput
+            <Input
               labelText="Brand"
               id="brand"
               formControlProps={{
@@ -264,7 +264,7 @@ export default function SectionAddGifts(props) {
                 onChange: event => setNotFoundBrand(event.target.value)
               }}
             />
-            <CustomInput
+            <Input
               labelText="Details"
               id="details"
               formControlProps={{
@@ -274,7 +274,7 @@ export default function SectionAddGifts(props) {
                 onChange: event => setNotFoundDetails(event.target.value)
               }}
             />
-            <CustomInput
+            <Input
               labelText="Link"
               id="url"
               formControlProps={{
@@ -443,7 +443,7 @@ export default function SectionAddGifts(props) {
   const renderDesktopSearchInput = () => {
     return (
       <div className={classes.textCenter}>
-        <CustomInput
+        <Input
           id="searchUrl"
           formControlProps={{
             fullWidth: false,
@@ -468,7 +468,7 @@ export default function SectionAddGifts(props) {
   const renderMobileSearchInput = () => {
     return (
       <div className={classes.textCenter}>
-        <CustomInput
+        <Input
           id="searchUrl"
           formControlProps={{
             fullWidth: false,

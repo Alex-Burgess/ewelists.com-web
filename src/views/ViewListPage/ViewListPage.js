@@ -7,15 +7,15 @@ import { getSharedList, getProducts } from "libs/apiLib";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import HeaderScroll from "custom/Header/HeaderScroll.js";
+import HeaderScroll from "components/Header/HeaderScroll.js";
 import Parallax from "components/Parallax/Parallax.js";
-import FooterDark from "custom/Footer/FooterDark.js";
+import FooterDark from "components/Footer/FooterDark.js";
 // sections for this page
 import SectionProducts from "./Sections/Products.js";
 import SectionListDetails from "./Sections/ListDetails.js";
 import SectionClosed from "./Sections/Closed.js";
 
-import styles from "assets/jss/custom/views/viewListPage/viewListPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/viewListPage/viewListPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ViewList(props) {

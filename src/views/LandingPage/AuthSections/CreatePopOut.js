@@ -20,14 +20,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 // core components
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Input from "components/Input/CustomInput.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/landingPage/yourListsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/yourListsStyle.js";
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -187,7 +187,7 @@ function CreatePopOut(props) {
             className={classes.mrAuto}
           >
             <form className={classes.form}>
-              <CustomInput
+              <Input
                 labelText="Title"
                 id="title"
                 formControlProps={{
@@ -221,7 +221,7 @@ function CreatePopOut(props) {
                   {renderOccasionSelect()}
                 </GridItem>
               </GridContainer>
-              <CustomInput
+              <Input
                 labelText="Description"
                 id="description"
                 formControlProps={{

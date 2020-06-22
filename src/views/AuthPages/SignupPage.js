@@ -10,17 +10,17 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Input from "components/Input/CustomInput.js";
 // Custom components
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterGrey from "components/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
 import SocialButtons from "./Sections/SocialButtons.js";
 
-import styles from "assets/jss/custom/views/authPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function SignupPage(props) {
@@ -126,7 +126,7 @@ export default function SignupPage(props) {
           Sign Up
           <div className={classes.emailFormSpacer}/>
         </h3>
-        <CustomInput
+        <Input
           labelText="Name"
           id="name"
           formControlProps={{
@@ -136,7 +136,7 @@ export default function SignupPage(props) {
             className: classes.inputProps
           }}
         />
-        <CustomInput
+        <Input
           labelText="Email"
           id="email"
           formControlProps={{
@@ -146,7 +146,7 @@ export default function SignupPage(props) {
             className: classes.inputProps
           }}
         />
-        <CustomInput
+        <Input
           labelText="Password"
           id="password"
           formControlProps={{

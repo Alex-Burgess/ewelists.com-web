@@ -7,10 +7,10 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/Buttons/Button.js";
+import Input from "components/Input/CustomInput.js";
 
-import styles from "assets/jss/custom/views/authPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ConfirmationForm(props) {
@@ -45,7 +45,7 @@ export default function ConfirmationForm(props) {
           Please check your email for the code.
         </p>
       </div>
-      <CustomInput
+      <Input
         labelText="Confirmation Code"
         id="confirmationCode"
         formControlProps={{

@@ -9,7 +9,7 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
 
-import styles from "assets/jss/custom/views/editListPage/productsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/productsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {

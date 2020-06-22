@@ -15,9 +15,9 @@ import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 
-import styles from "assets/jss/custom/views/listSettingsPage/deleteListStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/listSettingsPage/deleteListStyle.js";
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {

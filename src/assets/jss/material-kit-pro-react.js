@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Material Kit PRO React - v1.8.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 // ##############################
 // // // Function that converts from hex color to rgb color
 // // // Example: input = #9c27b0 => output = 156, 39, 176
@@ -134,17 +117,10 @@ const grayColor = [
 ];
 const whiteColor = "#FFF";
 const blackColor = "#000";
-const twitterColor = "#55acee";
 const facebookColor = "#3b5998";
 const googleColor = "#dd4b39";
-const linkedinColor = "#0976b4";
-const pinterestColor = "#cc2127";
-const youtubeColor = "#e52d27";
-const tumblrColor = "#35465c";
-const behanceColor = "#1769ff";
-const dribbbleColor = "#ea4c89";
-const redditColor = "#ff4500";
-const instagramColor = "#125688";
+const messengerColor = "#0078FF";
+const whatsappColor = "#4FCE5D";
 
 const transition = {
   transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)"
@@ -453,17 +429,10 @@ export {
   grayColor,
   whiteColor,
   blackColor,
-  twitterColor,
   facebookColor,
   googleColor,
-  linkedinColor,
-  pinterestColor,
-  youtubeColor,
-  tumblrColor,
-  behanceColor,
-  dribbbleColor,
-  redditColor,
-  instagramColor,
+  messengerColor,
+  whatsappColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,

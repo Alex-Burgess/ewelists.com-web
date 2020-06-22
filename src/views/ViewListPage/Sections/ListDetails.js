@@ -11,7 +11,7 @@ import Today from "@material-ui/icons/Today";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
-import styles from "assets/jss/custom/views/viewListPage/listDetailsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/viewListPage/listDetailsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function SectionDetails(props) {

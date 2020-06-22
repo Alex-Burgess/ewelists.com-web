@@ -1,9 +1,9 @@
 import React from "react";
 // import { Route, Switch } from "react-router-dom";
 import { Switch } from "react-router-dom";
-import AppliedRoute from "./custom/Routes/AppliedRoute";
-import AuthenticatedRoute from "./custom/Routes/AuthenticatedRoute";
-import UnauthenticatedRoute from "./custom/Routes/UnauthenticatedRoute";
+import AppliedRoute from "./components/Routes/AppliedRoute";
+import AuthenticatedRoute from "./components/Routes/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/Routes/UnauthenticatedRoute";
 
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ErrorPage from "views/ErrorPage/ErrorPage.js";
@@ -16,7 +16,7 @@ import PrivacyPage from "views/LegalPages/PrivacyPage.js";
 import TermsPage from "views/LegalPages/TermsPage.js";
 import CookiesPage from "views/LegalPages/CookiesPage.js";
 import ContactPage from "views/ContactUsPage/ContactUsPage.js";
-import GiftListIdeas from "views/GiftListIdeas/GiftListIdeas.js";
+import IdeasPage from "views/IdeasPage/IdeasPage.js";
 import ArticleTravelGear from "views/ArticlePages/BabyTravelGear.js";
 import ArticleHospitalBag from "views/ArticlePages/HospitalBag.js";
 import ArticleNursery from "views/ArticlePages/Nursery.js";
@@ -39,7 +39,7 @@ export default function Routes({appProps}) {
       <AppliedRoute path="/privacy" exact component={PrivacyPage} props={appProps} />
       <AppliedRoute path="/cookies" exact component={CookiesPage} props={appProps} />
       <AppliedRoute path="/contact" exact component={ContactPage} props={appProps} />
-      <AppliedRoute path="/list-ideas" exact component={GiftListIdeas} props={appProps} />
+      <AppliedRoute path="/list-ideas" exact component={IdeasPage} props={appProps} />
       <AppliedRoute path="/list-ideas/baby-travel-gear" exact component={ArticleTravelGear} props={appProps} />
       <AppliedRoute path="/list-ideas/hospital-bag-checklist" exact component={ArticleHospitalBag} props={appProps} />
       <AppliedRoute path="/list-ideas/nursery-list" exact component={ArticleNursery} props={appProps} />

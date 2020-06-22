@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import HeaderFixed from "custom/Header/HeaderFixed.js";
-import Footer from "custom/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
+import Footer from "components/Footer/FooterGrey.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
-import styles from "assets/jss/custom/views/errorPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/errorPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ErrorPage(props) {

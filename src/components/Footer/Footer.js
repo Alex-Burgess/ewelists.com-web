@@ -11,7 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
-import styles from "assets/jss/material-kit-pro-react/components/footerStyle.js";
+import styles from "assets/jss/material-kit-pro-react/components/footer/footerStyle.js";
 
 const useStyles = makeStyles(styles);
 

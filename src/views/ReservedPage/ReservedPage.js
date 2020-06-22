@@ -6,21 +6,21 @@ import { onError } from "libs/errorLib";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
-import Footer from "custom/Footer/FooterDark.js";
+import HeaderMobileBar from "components/Header/HeaderMobileBar.js";
+import Footer from "components/Footer/FooterDark.js";
 // custom components
-import ProductDetails from "custom/Reserve/ProductDetails.js";
-import Manage from "custom/Reserve/Manage.js";
-import Purchase from "custom/Reserve/Purchase.js";
-import BackToList from "custom/Reserve/BackToList.js";
-import Unreserved from "custom/Reserve/Unreserved.js";
-import Cancelled from "custom/Reserve/Cancelled.js";
-import Purchased from "custom/Reserve/Purchased.js";
-import Confirmed from "custom/Reserve/Confirmed.js";
-import Closed from "custom/Reserve/Closed.js";
+import ProductDetails from "./Sections/ProductDetails.js";
+import Manage from "./Sections/Manage.js";
+import Purchase from "./Sections/Purchase.js";
+import BackToList from "./Sections/BackToList.js";
+import Unreserved from "./Sections/Unreserved.js";
+import Cancelled from "./Sections/Cancelled.js";
+import Purchased from "./Sections/Purchased.js";
+import Confirmed from "./Sections/Confirmed.js";
+import Closed from "./Sections/Closed.js";
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/reservedPage/reservedPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPage/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 

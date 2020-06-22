@@ -8,10 +8,10 @@ import ArrowDownward from "@material-ui/icons/ArrowDownward";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/landingPage/createStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/createStyle.js";
 const useStyles = makeStyles(styles);
 
 const laptopImg = config.imagePrefix + "/images/laptop-mockup";

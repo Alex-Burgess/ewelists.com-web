@@ -1,10 +1,10 @@
 import React from "react";
 import { logError } from "libs/errorLib";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
-import FooterGrey from "custom/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
+import FooterGrey from "components/Footer/FooterGrey.js";
 
 import { withStyles } from '@material-ui/styles';
-import styles from "assets/jss/custom/views/errorBoundaryStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/errorBoundaryStyle.js";
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false };

@@ -12,19 +12,19 @@ import ViewIcon from "@material-ui/icons/Visibility";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import Info from "components/Typography/Info.js";
 // Custom Buttons
-import CreateButton from "custom/Buttons/CreateButton.js";
+import CreateButton from "components/Buttons/CreateListButton.js";
 import CreatePopOut from "./CreatePopOut.js";
 
 import { GetLists } from "./YourListsApi";
 
-import styles from "assets/jss/custom/views/landingPage/yourListsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/yourListsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function YourLists(props) {

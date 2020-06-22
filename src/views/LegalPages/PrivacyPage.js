@@ -3,10 +3,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterGrey from "components/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 
-import styles from "assets/jss/custom/views/legalPagesStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/legalPagesStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function PrivacyPage(props) {

@@ -10,8 +10,8 @@ import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
 import Redeem from "@material-ui/icons/Redeem";
 // core components
-import HeaderFixed from "custom/Header/HeaderFixed.js";
-import FooterDark from "custom/Footer/FooterDark.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
+import FooterDark from "components/Footer/FooterDark.js";
 import NavPills from "components/NavPills/NavPills.js";
 // s for this page
 import ListDetails from "./Sections/ListDetails.js";
@@ -20,7 +20,7 @@ import ClosedProducts from "./Sections/ClosedProducts.js"
 import AddGifts from "./Sections/AddGifts.js";
 import Reserved from "./Sections/Reserved.js";
 
-import styles from "assets/jss/custom/views/editListPage/editPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/editPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function EditPage(props) {

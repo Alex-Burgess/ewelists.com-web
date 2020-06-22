@@ -14,11 +14,11 @@ import Close from "@material-ui/icons/Close";
 import Remove from "@material-ui/icons/Remove";
 import Add from "@material-ui/icons/Add";
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
-import styles from "assets/jss/custom/views/editListPage/editProductPopOutStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/editProductPopOutStyle.js";
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {

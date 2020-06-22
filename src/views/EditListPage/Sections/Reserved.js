@@ -10,7 +10,7 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
-import styles from "assets/jss/custom/views/editListPage/reservedStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/editListPage/reservedStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {

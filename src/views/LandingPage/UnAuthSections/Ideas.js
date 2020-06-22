@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import RecentArticles from "custom/Articles/RecentArticles.js";
+import RecentArticles from "components/Articles/RecentArticles.js";
 
-import styles from "assets/jss/custom/views/landingPage/ideasStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/landingPage/ideasStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function LandingIdeas(props) {

@@ -6,17 +6,17 @@ import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterGrey from "components/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Input from "components/Input/CustomInput.js";
 import NewPasswordForm from "./Sections/NewPasswordForm.js";
 
-import styles from "assets/jss/custom/views/authPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ResetPasswordPage(props) {
@@ -55,7 +55,7 @@ export default function ResetPasswordPage(props) {
         <div>
           <p>Enter your email address below and we'll send you a link with a code.</p>
         </div>
-        <CustomInput
+        <Input
           labelText="Email"
           id="email"
           formControlProps={{

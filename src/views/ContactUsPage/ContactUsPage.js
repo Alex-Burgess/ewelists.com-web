@@ -7,14 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Footer from "custom/Footer/FooterGrey.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import Input from "components/Input/CustomInput.js";
+import Button from "components/Buttons/Button.js";
+import Footer from "components/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
-import styles from "assets/jss/custom/views/contactPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/contactPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ContactUsPage(props) {
@@ -55,7 +55,7 @@ export default function ContactUsPage(props) {
   const renderForm = () => {
     return (
       <form>
-        <CustomInput
+        <Input
           labelText="Your Name"
           id="name"
           formControlProps={{
@@ -65,7 +65,7 @@ export default function ContactUsPage(props) {
             onChange: event => setName(event.target.value)
           }}
         />
-        <CustomInput
+        <Input
           labelText="Email address"
           id="email"
           formControlProps={{
@@ -75,7 +75,7 @@ export default function ContactUsPage(props) {
             onChange: event => setEmail(event.target.value)
           }}
         />
-        <CustomInput
+        <Input
           labelText="Your message"
           id="message"
           formControlProps={{

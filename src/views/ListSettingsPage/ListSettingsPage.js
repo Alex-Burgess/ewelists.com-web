@@ -15,23 +15,23 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import Clear from "@material-ui/icons/Clear";
 import Done from "@material-ui/icons/Done";
 // core components
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Input from "components/Input/CustomInput.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 // Custom components
-import HeaderMobileBar from "custom/Header/HeaderMobileBar.js";
-import Footer from "custom/Footer/FooterDark.js";
+import HeaderMobileBar from "components/Header/HeaderMobileBar.js";
+import Footer from "components/Footer/FooterDark.js";
 // Sections
 import SectionDelete from "./Sections/DeleteListPopOut.js";
 
 import config from 'config.js';
 
-import styles from "assets/jss/custom/views/listSettingsPage/listSettingsPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/listSettingsPage/listSettingsPageStyle.js";
 const useStyles = makeStyles(styles);
 
 const occasionList = ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christening', 'Other'];
@@ -201,7 +201,7 @@ export default function SectionDetails(props) {
             <InputLabel>
               Title:
             </InputLabel>
-            <CustomInput
+            <Input
               id="regular"
               formControlProps={{
                 fullWidth: true,
@@ -217,7 +217,7 @@ export default function SectionDetails(props) {
             <InputLabel>
               Description:
             </InputLabel>
-            <CustomInput
+            <Input
               id="regular"
               formControlProps={{
                 fullWidth: true,

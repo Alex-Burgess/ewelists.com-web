@@ -7,16 +7,16 @@ import config from 'config.js';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import FooterGrey from "custom/Footer/FooterGrey.js";
-import HeaderFixed from "custom/Header/HeaderFixed.js";
+import FooterGrey from "components/Footer/FooterGrey.js";
+import HeaderFixed from "components/Header/HeaderFixed.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 // Custom components
-import LetsGoButton from "custom/Buttons/LetsGoButton.js"
+import LetsGoButton from "components/Buttons/LetsGoButton.js"
 
-import styles from "assets/jss/custom/views/authPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
 
 const laptopImg = config.imagePrefix + "/images/create-list";

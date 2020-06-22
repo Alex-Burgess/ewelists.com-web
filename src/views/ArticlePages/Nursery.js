@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 // custom components
-// import { scrollToId } from "custom/Scroll/ScrollToId";
-import { getUsersLists } from "custom/Article/GetUsersLists";
-import ListArticle from "custom/Article/ListArticle.js";
-import Products from "custom/Article/Products.js";
-import SectionHeading from "custom/Article/SectionHeading.js";
-import SectionHeadings from "custom/Article/SectionHeadings.js";
+// import { scrollToId } from "components/Scroll/ScrollToId";
+import { getUsersLists } from "components/Article/GetUsersLists";
+import ListArticle from "components/Article/ListArticle.js";
+import Products from "components/Article/Products.js";
+import SectionHeading from "components/Article/SectionHeading.js";
+import SectionHeadings from "components/Article/SectionHeadings.js";
 
 // Blog Data
 const name = 'nursery-list';

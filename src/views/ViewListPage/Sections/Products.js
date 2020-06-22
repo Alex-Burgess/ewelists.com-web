@@ -23,12 +23,12 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/Buttons/Button.js";
 import Clearfix from "components/Clearfix/Clearfix.js";
 // Sections
 import SectionReserve from "./ReservePopOut.js";
 
-import styles from "assets/jss/custom/views/viewListPage/productsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/viewListPage/productsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Products(props) {
