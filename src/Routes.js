@@ -5,8 +5,8 @@ import AppliedRoute from "./components/Routes/AppliedRoute";
 import AuthenticatedRoute from "./components/Routes/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/Routes/UnauthenticatedRoute";
 
-import LandingPage from "views/LandingPage/LandingPage.js";
-import ErrorPage from "views/ErrorPage/ErrorPage.js";
+import HomePage from "views/HomePage/HomePage.js";
+import ErrorPage from "views/ErrorPages/ErrorPage.js";
 import LoginPage from "views/AuthPages/LoginPage.js";
 import SignupPage from "views/AuthPages/SignupPage.js";
 import SocialConfirmationPage from "views/AuthPages/SocialConfirmationPage.js";
@@ -16,6 +16,10 @@ import PrivacyPage from "views/LegalPages/PrivacyPage.js";
 import TermsPage from "views/LegalPages/TermsPage.js";
 import CookiesPage from "views/LegalPages/CookiesPage.js";
 import ContactPage from "views/ContactUsPage/ContactUsPage.js";
+import ViewListPage from "views/ViewListPage/ViewListPage.js";
+import EditListPage from "views/EditListPage/EditListPage.js";
+import ReservedPage from "views/ReservedPage/ReservedPage.js";
+import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 import IdeasPage from "views/IdeasPage/IdeasPage.js";
 import ArticleTravelGear from "views/ArticlePages/BabyTravelGear.js";
 import ArticleHospitalBag from "views/ArticlePages/HospitalBag.js";
@@ -26,15 +30,11 @@ import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ArticleOutdoorPlay from "views/ArticlePages/OutdoorPlay.js";
 import ArticleIndoorPlay from "views/ArticlePages/IndoorPlay.js";
 import ArticlePlayRoom from "views/ArticlePages/PlayRoom.js";
-import ViewListPage from "views/ViewListPage/ViewListPage.js";
-import EditListPage from "views/EditListPage/EditListPage.js";
-import ReservedPage from "views/ReservedPage/ReservedPage.js";
-import ListSettingsPage from "views/ListSettingsPage/ListSettingsPage.js";
 
 export default function Routes({appProps}) {
   return (
     <Switch>
-      <AppliedRoute path="/" exact component={LandingPage} props={appProps} />
+      <AppliedRoute path="/" exact component={HomePage} props={appProps} />
       <AppliedRoute path="/terms" exact component={TermsPage} props={appProps} />
       <AppliedRoute path="/privacy" exact component={PrivacyPage} props={appProps} />
       <AppliedRoute path="/cookies" exact component={CookiesPage} props={appProps} />

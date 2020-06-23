@@ -1,18 +1,14 @@
 import {
   container,
   defaultFont,
-  primaryColor,
-  infoColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  roseColor,
   transition,
   boxShadow,
   drawerWidth,
   blackColor,
   whiteColor,
   grayColor,
+  primaryColor,
+  title,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
 
@@ -20,18 +16,14 @@ const headerStyle = theme => ({
   appBar: {
     display: "flex",
     border: "0",
-    borderRadius: "3px",
+    borderRadius: "none",
     padding: "0.625rem 0",
     marginBottom: "20px",
     color: grayColor[15],
     width: "100%",
     backgroundColor: whiteColor,
     boxShadow:
-      "0 4px 18px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.12), 0 7px 10px -5px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.15)",
+      "0px 1px 2px rgba(" + hexToRgb(blackColor) + ", 0.18)",
     transition: "all 150ms ease 0s",
     alignItems: "center",
     flexFlow: "row nowrap",
@@ -57,7 +49,7 @@ const headerStyle = theme => ({
     ...container,
     minHeight: "50px",
   },
-  title: {
+  logoButton: {
     letterSpacing: "unset",
     "&,& a": {
       ...defaultFont,
@@ -76,69 +68,26 @@ const headerStyle = theme => ({
     // Custom styles to make logo button smaller
     padding: "0px"
   },
+  arrow: {
+    marginLeft: "10px",
+    color: whiteColor
+  },
+  mobileTitle: {
+    ...title,
+    marginTop: "0px",
+    marginBottom: "0px",
+    color: whiteColor,
+    textAlign: "center",
+    fontSize: "1.375rem",
+    lineHeight: "1.1em"
+  },
+  titleWrapper: {
+    width: "280px",
+    textAlign: "center"
+  },
   appResponsive: {
     margin: "20px 10px",
     marginTop: "0px"
-  },
-  primary: {
-    backgroundColor: primaryColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(primaryColor[0]) +
-      ", 0.46)"
-  },
-  info: {
-    backgroundColor: infoColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(infoColor[0]) +
-      ", 0.46)"
-  },
-  success: {
-    backgroundColor: successColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(successColor[0]) +
-      ", 0.46)"
-  },
-  warning: {
-    backgroundColor: warningColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(warningColor[0]) +
-      ", 0.46)"
-  },
-  danger: {
-    backgroundColor: dangerColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(dangerColor[0]) +
-      ", 0.46)"
-  },
-  rose: {
-    backgroundColor: roseColor[0],
-    color: whiteColor,
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(roseColor[0]) +
-      ", 0.46)"
   },
   transparent: {
     backgroundColor: "transparent !important",
@@ -148,13 +97,7 @@ const headerStyle = theme => ({
   },
   dark: {
     color: whiteColor,
-    backgroundColor: grayColor[9] + " !important",
-    boxShadow:
-      "0 4px 20px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 7px 12px -5px rgba(" +
-      hexToRgb(grayColor[9]) +
-      ", 0.46)"
+    backgroundColor: primaryColor[0] + " !important"
   },
   white: {
     border: "0",
@@ -162,12 +105,6 @@ const headerStyle = theme => ({
     marginBottom: "20px",
     color: grayColor[15],
     backgroundColor: whiteColor + " !important",
-    boxShadow:
-      "0 4px 18px 0px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.12), 0 7px 10px -5px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.15)"
   },
   drawerPaper: {
     border: "none",
@@ -215,7 +152,7 @@ const headerStyle = theme => ({
   },
   // Custpm style - Added logo
   logo: {
-    height: "40px",
+    height: "45px",
     verticalAlign: "middle"
   }
 });

@@ -1,9 +1,7 @@
 import {
   grayColor,
-  roseColor,
   primaryColor,
   secondaryColor,
-  infoColor,
   successColor,
   warningColor,
   dangerColor,
@@ -22,14 +20,7 @@ const buttonStyle = {
     minWidth: "auto",
     backgroundColor: grayColor[0],
     color: whiteColor,
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(grayColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(grayColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(grayColor[0]) +
-      ", 0.12)",
+
     border: "none",
     borderRadius: "3px",
     position: "relative",
@@ -51,14 +42,6 @@ const buttonStyle = {
     "&:hover,&:focus": {
       color: whiteColor,
       backgroundColor: grayColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(grayColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(grayColor[0]) +
-        ", 0.2)"
     },
     "& .fab,& .fas,& .far,& .fal,& .material-icons": {
       position: "relative",
@@ -99,202 +82,57 @@ const buttonStyle = {
   },
   primary: {
     backgroundColor: primaryColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(primaryColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(primaryColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(primaryColor[0]) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: primaryColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(primaryColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(primaryColor[0]) +
-        ", 0.2)"
+      backgroundColor: primaryColor[2],
+    }
+  },
+  primary2: {
+    backgroundColor: whiteColor,
+    color: primaryColor[0],
+    border: "solid 2px " + primaryColor[0],
+    padding: "10px 30px",
+    "&:hover,&:focus": {
+      backgroundColor: primaryColor[2],
+      color: whiteColor,
+      border: "solid 2px " + primaryColor[2],
     }
   },
   messenger: {
     backgroundColor: messengerColor,
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(messengerColor) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(messengerColor) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(messengerColor) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: messengerColor,
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(messengerColor) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(messengerColor) +
-        ", 0.2)"
+      backgroundColor: messengerColor
     }
   },
   whatsapp: {
     backgroundColor: whatsappColor,
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(whatsappColor) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(whatsappColor) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(whatsappColor) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: whatsappColor,
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(whatsappColor) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(whatsappColor) +
-        ", 0.2)"
+      backgroundColor: whatsappColor
     }
   },
   secondary: {
     color: "rgba(" + hexToRgb(blackColor) + ",.87)",
     backgroundColor: secondaryColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(secondaryColor[0]) +
-      ",.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(secondaryColor[0]) +
-      ",.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(secondaryColor[0]) +
-      ",.12)",
     "&:hover,&:focus": {
-      boxShdow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(secondaryColor[0]) +
-        ",.42), 0 4px 23px 0 rgba(" +
-        hexToRgb(blackColor) +
-        ",.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(secondaryColor[0]) +
-        ",.2)",
       color: "rgba(" + hexToRgb(blackColor) + ",.87)",
-      backgroundColor: grayColor[19]
-    }
-  },
-  info: {
-    backgroundColor: infoColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(infoColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(infoColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(infoColor[0]) +
-      ", 0.12)",
-    "&:hover,&:focus": {
-      backgroundColor: infoColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(infoColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(infoColor[0]) +
-        ", 0.2)"
+      backgroundColor: secondaryColor[2]
     }
   },
   success: {
     backgroundColor: successColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(successColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(successColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(successColor[0]) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: successColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.2)"
+      backgroundColor: successColor[0]
     }
   },
   warning: {
     backgroundColor: warningColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(warningColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(warningColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(warningColor[0]) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: warningColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(warningColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(warningColor[0]) +
-        ", 0.2)"
+      backgroundColor: warningColor[0]
     }
   },
   danger: {
     backgroundColor: dangerColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(dangerColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(dangerColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(dangerColor[0]) +
-      ", 0.12)",
     "&:hover,&:focus": {
-      backgroundColor: dangerColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(dangerColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(dangerColor[0]) +
-        ", 0.2)"
-    }
-  },
-  rose: {
-    backgroundColor: roseColor[0],
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(roseColor[0]) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(roseColor[0]) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(roseColor[0]) +
-      ", 0.12)",
-    "&:hover,&:focus": {
-      backgroundColor: roseColor[0],
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(roseColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(roseColor[0]) +
-        ", 0.2)"
+      backgroundColor: dangerColor[0]
     }
   },
   white: {
@@ -306,49 +144,17 @@ const buttonStyle = {
   facebook: {
     backgroundColor: facebookColor,
     color: whiteColor,
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(facebookColor) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(facebookColor) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(facebookColor) +
-      ", 0.12)",
     "&:hover,&:focus": {
       backgroundColor: facebookColor,
-      color: whiteColor,
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(facebookColor) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(facebookColor) +
-        ", 0.2)"
+      color: whiteColor
     }
   },
   google: {
     backgroundColor: googleColor,
     color: whiteColor,
-    boxShadow:
-      "0 2px 2px 0 rgba(" +
-      hexToRgb(googleColor) +
-      ", 0.14), 0 3px 1px -2px rgba(" +
-      hexToRgb(googleColor) +
-      ", 0.2), 0 1px 5px 0 rgba(" +
-      hexToRgb(googleColor) +
-      ", 0.12)",
     "&:hover,&:focus": {
       backgroundColor: googleColor,
-      color: whiteColor,
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(googleColor) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(googleColor) +
-        ", 0.2)"
+      color: whiteColor
     }
   },
   simple: {
@@ -363,11 +169,6 @@ const buttonStyle = {
         color: primaryColor[0]
       }
     },
-    "&$info": {
-      "&,&:focus,&:hover,&:visited": {
-        color: infoColor[0]
-      }
-    },
     "&$success": {
       "&,&:focus,&:hover,&:visited": {
         color: successColor[0]
@@ -376,11 +177,6 @@ const buttonStyle = {
     "&$warning": {
       "&,&:focus,&:hover,&:visited": {
         color: warningColor[0]
-      }
-    },
-    "&$rose": {
-      "&,&:focus,&:hover,&:visited": {
-        color: roseColor[0]
       }
     },
     "&$danger": {
@@ -436,15 +232,7 @@ const buttonStyle = {
     fontSize: "14px",
     "&:hover,&:focus": {
       backgroundColor: grayColor[0],
-      color: whiteColor,
-      boxShadow:
-        "0 14px 26px -12px rgba(" +
-        hexToRgb(grayColor[0]) +
-        ", 0.42), 0 4px 23px 0px rgba(" +
-        hexToRgb(grayColor[0]) +
-        ", 0.12), 0 8px 10px -5px rgba(" +
-        hexToRgb(grayColor[0]) +
-        ", 0.2)"
+      color: whiteColor
     },
     "&$primary": {
       color: primaryColor[0],
@@ -452,15 +240,16 @@ const buttonStyle = {
       backgroundColor: whiteColor,
       "&:hover,&:focus": {
         backgroundColor: primaryColor[0],
-        color: whiteColor,
-        boxShadow:
-          "0 14px 26px -12px rgba(" +
-          hexToRgb(primaryColor[0]) +
-          ", 0.42), 0 4px 23px 0px rgba(" +
-          hexToRgb(primaryColor[0]) +
-          ", 0.12), 0 8px 10px -5px rgba(" +
-          hexToRgb(primaryColor[0]) +
-          ", 0.2)"
+        color: whiteColor
+      }
+    },
+    "&$secondary": {
+      color: secondaryColor[0],
+      boxShadow: 'none',
+      backgroundColor: whiteColor,
+      "&:hover,&:focus": {
+        backgroundColor: secondaryColor[0],
+        color: whiteColor
       }
     },
     "&$whatsapp": {
@@ -469,15 +258,7 @@ const buttonStyle = {
       backgroundColor: whiteColor,
       "&:hover,&:focus": {
         backgroundColor: whatsappColor,
-        color: whiteColor,
-        boxShadow:
-          "0 14px 26px -12px rgba(" +
-          hexToRgb(whatsappColor) +
-          ", 0.42), 0 4px 23px 0px rgba(" +
-          hexToRgb(whatsappColor) +
-          ", 0.12), 0 8px 10px -5px rgba(" +
-          hexToRgb(whatsappColor) +
-          ", 0.2)"
+        color: whiteColor
       }
     },
     "&$messenger": {
@@ -486,15 +267,7 @@ const buttonStyle = {
       backgroundColor: whiteColor,
       "&:hover,&:focus": {
         backgroundColor: messengerColor,
-        color: whiteColor,
-        boxShadow:
-          "0 14px 26px -12px rgba(" +
-          hexToRgb(messengerColor) +
-          ", 0.42), 0 4px 23px 0px rgba(" +
-          hexToRgb(messengerColor) +
-          ", 0.12), 0 8px 10px -5px rgba(" +
-          hexToRgb(messengerColor) +
-          ", 0.2)"
+        color: whiteColor
       }
     }
   },
@@ -503,15 +276,15 @@ const buttonStyle = {
     pointerEvents: "none"
   },
   lg: {
-    "&$justIcon": {
-      "& .fab,& .fas,& .far,& .fal,& svg,& .material-icons": {
-        marginTop: "-4px"
-      }
-    },
     padding: "1.125rem 2.25rem",
     fontSize: "0.875rem",
     lineHeight: "1.333333",
-    borderRadius: "0.2rem"
+    borderRadius: "0.2rem",
+    "&$justIcon": {
+      "& .fab,& .fas,& .far,& .fal,& svg,& .material-icons": {
+        // marginTop: "-4px"
+      }
+    }
   },
   sm: {
     "&$justIcon": {
@@ -553,13 +326,14 @@ const buttonStyle = {
       minWidth: "57px",
       width: "57px",
       lineHeight: "56px",
+      padding: "0 !important",
       "& .fab,& .fas,& .far,& .fal,& .material-icons": {
         fontSize: "32px",
         lineHeight: "56px"
       },
       "& svg": {
-        width: "32px",
-        height: "32px"
+        width: "38px",
+        height: "38px",
       }
     },
     "&$sm": {

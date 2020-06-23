@@ -17,6 +17,7 @@ import Add from "@material-ui/icons/Add";
 import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListPage/editProductPopOutStyle.js";
 const useStyles = makeStyles(styles);
@@ -30,7 +31,7 @@ Transition.displayName = "Transition";
 export default function SectionDetails(props) {
   const classes = useStyles();
   const { open, listId, product } = props;
-  const [editError, setEditError] = useState('');
+  const [error, setError] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -57,7 +58,7 @@ export default function SectionDetails(props) {
   }
 
   const deleteProduct = async () => {
-    setEditError('');
+    setError('');
     setIsDeleting(true);
 
     let productId = product['productId'];
@@ -67,7 +68,7 @@ export default function SectionDetails(props) {
 
     if (reservedQuantity > 0) {
       debugError("Reserved number: " + reservedQuantity);
-      setEditError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
+      setError('Item has been reserved, so will not be removed from your list. You can edit the quantity if required.');
       setIsDeleting(false);
       return false
     } else {
@@ -79,7 +80,7 @@ export default function SectionDetails(props) {
       await API.del("lists", "/" + listId + "/product/" +  productId);
     } catch (e) {
       onError('Unexpected error occurred when deleting product from list.');
-      setEditError('Item could not be deleted from your list.');
+      setError('Item could not be deleted from your list.');
       setIsDeleting(false);
       return false
     }
@@ -92,7 +93,7 @@ export default function SectionDetails(props) {
         await API.del("notfound", "/" + productId);
       } catch (e) {
         onError('Unexpected error occurred when deleting product.');
-        setEditError('Product could not be deleted.');
+        setError('Product could not be deleted.');
         setIsDeleting(false);
         return false
       }
@@ -107,14 +108,14 @@ export default function SectionDetails(props) {
 
   const updateProduct = async () => {
     setIsUpdating(true);
-    setEditError('');
+    setError('');
 
     let productId = product['productId'];
     let quantity = product['quantity'];
     debugError("Updating product (" + productId + ") for list (" + listId + ")");
 
     if (quantity === newQuantity) {
-      setEditError('There are no updates to this item.');
+      setError('There are no updates to this item.');
       setIsUpdating(false);
       return false;
     }
@@ -125,7 +126,7 @@ export default function SectionDetails(props) {
       });
     } catch (e) {
       onError('Unexpected error occurred when updating product on list.');
-      setEditError('Product could not be updated.');
+      setError('Product could not be updated.');
       setIsUpdating(false);
       return false
     }
@@ -248,10 +249,12 @@ export default function SectionDetails(props) {
                   : allButtons()
                 }
               </div>
-              {editError
+              {error
                 ?
-                  <div className={classes.errorContainer + " " + classes.centerText + " " + classes.error}>
-                    {editError}
+                  <div className={classes.errorContainer + " " + classes.centerText}>
+                    <ErrorText>
+                      <p>{error}</p>
+                    </ErrorText>
                   </div>
                 : null
               }

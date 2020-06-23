@@ -1,11 +1,10 @@
 import {
   grayColor,
   whiteColor,
+  primaryColor,
   mlAuto,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
-
-import tooltip from "assets/jss/material-kit-pro-react/tooltipsStyle.js";
 
 const headerLinksStyle = theme => ({
   list: {
@@ -54,23 +53,18 @@ const headerLinksStyle = theme => ({
       }
     }
   },
-  listItemText: {
-    padding: "0 !important"
-  },
   navLink: {
     color: "inherit",
     position: "relative",
     padding: "0.9375rem",
     fontWeight: "400",
-    // Custom style - fontSize: "12px"
-    fontSize: "14px",
-    textTransform: "uppercase",
+    fontSize: "16px",
     lineHeight: "20px",
     textDecoration: "none",
     margin: "0px",
     display: "inline-flex",
     "&:hover,&:focus": {
-      color: "inherit"
+      color: "inherit",
     },
     "& .fab,& .far,& .fal,& .fas,& .material-icons": {
       position: "relative",
@@ -96,68 +90,25 @@ const headerLinksStyle = theme => ({
       height: "20px"
     }
   },
-  navLinkJustIcon: {
-    "& .fab,& .far,& .fal,& .fas,& .material-icons": {
-      marginRight: "0px"
-    },
-    "& svg": {
-      marginRight: "0px"
-    }
-  },
-  navButton: {
-    position: "relative",
-    fontWeight: "400",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    lineHeight: "20px",
-    textDecoration: "none",
-    margin: "0px",
-    display: "inline-flex",
-    [theme.breakpoints.down("sm")]: {
-      width: "calc(100% - 30px)",
-      marginLeft: "15px",
-      marginBottom: "5px",
-      marginTop: "5px",
-      textAlign: "left",
-      "& > span:first-child": {
-        justifyContent: "flex-start"
-      }
-    },
-    "& $icons": {
-      marginRight: "3px"
-    }
-  },
-  notificationNavLink: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "400",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    lineHeight: "20px",
-    textDecoration: "none",
-    margin: "0px",
-    display: "inline-flex"
-  },
-  registerNavLink: {
-    position: "relative",
-    fontWeight: "400",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    lineHeight: "20px",
-    textDecoration: "none",
-    margin: "0px",
-    display: "inline-flex"
-  },
-  navLinkActive: {
-    "&, &:hover, &:focus,&:active ": {
+  activeLinkWhite: {
+    "&:hover,&:focus": {
       color: "inherit",
       backgroundColor: "rgba(" + hexToRgb(whiteColor) + ", 0.1)"
-    }
+    },
   },
-  icons: {
-    width: "20px",
-    height: "20px",
-    marginRight: "14px"
+  activeLinkDark: {
+    "&:hover,&:focus": {
+      color: "inherit",
+      backgroundColor: "rgba(" + hexToRgb(primaryColor[0]) + ", 0.15)"
+    },
+  },
+  signupDark: {
+    color: primaryColor[0],
+    fontWeight: "500"
+  },
+  signupWhite: {
+    color: whiteColor,
+    fontWeight: "600"
   },
   dropdownIcons: {
     width: "24px",
@@ -170,35 +121,14 @@ const headerLinksStyle = theme => ({
     fontSize: "24px",
     position: "relative"
   },
-  socialIcons: {
-    position: "relative",
-    fontSize: "1.25rem",
-    maxWidth: "24px"
-  },
   dropdownLink: {
+    fontSize: "14px",
     "&,&:hover,&:focus": {
       color: "inherit",
       textDecoration: "none",
       display: "flex",
       padding: "0.75rem 1.25rem 0.75rem 0.75rem"
     }
-  },
-  ...tooltip,
-  marginRight5: {
-    marginRight: "5px"
-  },
-  collapse: {
-    [theme.breakpoints.up("md")]: {
-      display: "flex !important",
-      MsFlexPreferredSize: "auto",
-      flexBasis: "auto"
-    },
-    WebkitBoxFlex: "1",
-    MsFlexPositive: "1",
-    flexGrow: "1",
-    WebkitBoxAlign: "center",
-    MsFlexAlign: "center",
-    alignItems: "center"
   },
   mlAuto
 });

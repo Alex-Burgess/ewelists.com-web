@@ -49,7 +49,7 @@ export default function Footer(props) {
 }
 
 Footer.propTypes = {
-  theme: PropTypes.oneOf(["dark", "white", "transparent"]),
+  theme: PropTypes.oneOf(["dark", "grey"]),
   big: PropTypes.bool,
   content: PropTypes.node.isRequired
 };

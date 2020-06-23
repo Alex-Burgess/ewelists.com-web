@@ -1,17 +1,6 @@
 import {
   defaultFont,
   primaryColor,
-  primaryBoxShadow,
-  infoColor,
-  infoBoxShadow,
-  successColor,
-  successBoxShadow,
-  warningColor,
-  warningBoxShadow,
-  dangerColor,
-  dangerBoxShadow,
-  roseColor,
-  roseBoxShadow,
   blackColor,
   whiteColor,
   grayColor,
@@ -114,58 +103,10 @@ const customDropdownStyle = theme => ({
     whiteSpace: "nowrap",
     minHeight: "unset"
   },
-  darkHover: {
-    "&:hover": {
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(grayColor[9]) +
-        ", 0.4)",
-      backgroundColor: grayColor[9],
-      color: whiteColor
-    }
-  },
-  primaryHover: {
+  blueHover: {
     "&:hover": {
       backgroundColor: primaryColor[0],
       color: whiteColor,
-      ...primaryBoxShadow
-    }
-  },
-  infoHover: {
-    "&:hover": {
-      backgroundColor: infoColor[0],
-      color: whiteColor,
-      ...infoBoxShadow
-    }
-  },
-  successHover: {
-    "&:hover": {
-      backgroundColor: successColor[0],
-      color: whiteColor,
-      ...successBoxShadow
-    }
-  },
-  warningHover: {
-    "&:hover": {
-      backgroundColor: warningColor[0],
-      color: whiteColor,
-      ...warningBoxShadow
-    }
-  },
-  dangerHover: {
-    "&:hover": {
-      backgroundColor: dangerColor[0],
-      color: whiteColor,
-      ...dangerBoxShadow
-    }
-  },
-  roseHover: {
-    "&:hover": {
-      backgroundColor: roseColor[0],
-      color: whiteColor,
-      ...roseBoxShadow
     }
   },
   dropdownItemRTL: {

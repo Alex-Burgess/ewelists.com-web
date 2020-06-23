@@ -9,7 +9,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/productDetailsStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function ProductDetails(props) {

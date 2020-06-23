@@ -3,7 +3,7 @@ import {
   title,
   main,
   whiteColor,
-  infoColor,
+  primaryColor,
   mainRaised
 } from "assets/jss/material-kit-pro-react.js";
 
@@ -34,7 +34,7 @@ const style = theme => ({
     "&:after": {
       background: "0"
     },
-    backgroundColor: infoColor[0],
+    backgroundColor: primaryColor[0],
     "&:after,&:before": {
       position: "absolute",
       zIndex: "1",

@@ -1,6 +1,5 @@
 import {
   blackColor,
-  primaryColor,
   roseColor,
   infoColor,
   successColor,
@@ -28,14 +27,14 @@ const parallaxStyle = {
     "&:before": {
       background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
     },
-    "&:after": {
-      background:
-        "linear-gradient(60deg,rgba(" +
-        hexToRgb(primaryColor[4]) +
-        ",.56),rgba(" +
-        hexToRgb(primaryColor[5]) +
-        ",.95))"
-    },
+    // "&:after": {
+    //   background:
+    //     "linear-gradient(60deg,rgba(" +
+    //     hexToRgb(primaryColor[4]) +
+    //     ",.56),rgba(" +
+    //     hexToRgb(primaryColor[5]) +
+    //     ",.95))"
+    // },
     "&:after,&:before": {
       position: "absolute",
       zIndex: "1",

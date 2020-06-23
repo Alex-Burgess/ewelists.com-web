@@ -12,7 +12,7 @@ import { initGA, onView } from './libs/googleAnalyticsLib';
 import Routes from "./Routes";
 import ScrollToTop from "components/Scroll/ScrollToTop.js";
 import Title from "components/Title/Title.js"
-import ErrorBoundary from "views/ErrorBoundary/ErrorBoundary.js";
+import ErrorBoundary from "views/ErrorPages/ErrorBoundary.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/appStyle.js";
 const useStyles = makeStyles(styles);
@@ -188,13 +188,13 @@ export default function App(props) {
               <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTabTitle, handleLogout, cookiesAllowed}} />
               {!isAuthenticated
                 ? <CookieConsent
-                    style={{ background: "#2B373B" }}
+                    style={{ background: "#294861" }}
                     buttonStyle={{
-                      color: "#FFF",
+                      color: "#000",
                       fontSize: "14px",
                       fontWeight: "600",
                       padding: "10px 15px",
-                      backgroundColor: "#00acc1"
+                      backgroundColor: "#F9C74F"
                     }}
                     onAccept={({ acceptedByScrolling }) => {
                       initGA();
@@ -202,7 +202,7 @@ export default function App(props) {
                     }}
                   >
                     Our website uses cookies to improve your experience and to provide personalised content. By using
-                    our site you agree to our use of cookies
+                    our site you agree to our use of cookies.
                     <Link to="/cookies" className={classes.link}> Learn more</Link>
                     .
                   </CookieConsent>

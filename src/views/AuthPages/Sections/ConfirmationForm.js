@@ -62,7 +62,7 @@ export default function ConfirmationForm(props) {
         : null
       }
       <div className={classes.textCenter}>
-        <Button round color="info" type="submit" disabled={!validateConfirmationForm()}>
+        <Button round color="primary" type="submit" disabled={!validateConfirmationForm()}>
           Verify
         </Button>
       </div>

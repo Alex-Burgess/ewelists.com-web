@@ -100,10 +100,6 @@ Accordion.propTypes = {
   activeColor: PropTypes.oneOf([
     "primary",
     "secondary",
-    "warning",
-    "danger",
-    "success",
-    "info",
-    "rose"
+    "red"
   ])
 };

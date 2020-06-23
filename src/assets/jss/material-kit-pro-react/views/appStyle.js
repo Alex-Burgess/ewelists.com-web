@@ -1,10 +1,10 @@
 import {
-  infoColor
+  secondaryColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const appStyle = {
   link: {
-    color: infoColor[2] + "  !important"
+    color: secondaryColor[0] + "  !important"
   }
 };
 

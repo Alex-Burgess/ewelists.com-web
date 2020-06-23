@@ -107,9 +107,10 @@ a {
   color: $link-color;
   text-decoration: none;
   background-color: transparent;
+  font-weight:500;
   &:hover,
   &:focus {
-    color: darken($link-color, 5%);
+    color: darken($link-color, 15%);
     text-decoration: none;
   }
 }

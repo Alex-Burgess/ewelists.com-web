@@ -26,6 +26,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 // Custom components
 import HeaderMobileBar from "components/Header/HeaderMobileBar.js";
 import Footer from "components/Footer/FooterDark.js";
+import ErrorText from "components/Typography/Error.js";
 // Sections
 import SectionDelete from "./Sections/DeleteListPopOut.js";
 
@@ -378,14 +379,6 @@ export default function SectionDetails(props) {
     )
   }
 
-  const renderLoadError = () => {
-    return (
-      <div className={classes.error}>
-        There was an unexpected error.
-      </div>
-    )
-  }
-
   return (
     <div>
       <HeaderMobileBar isAuthenticated={props.isAuthenticated} user={props.user} url={"/edit/" + listId} title='List Settings' mobile={props.mobile} />
@@ -398,7 +391,11 @@ export default function SectionDetails(props) {
             </Button>
           </Link>
           {loadError
-            ? renderLoadError()
+            ? <div className={classes.textCenter}>
+                <ErrorText>
+                  There was an unexpected error.
+                </ErrorText>
+              </div>
             : loaded
               ? <div>
                   {renderDetailsSection()}

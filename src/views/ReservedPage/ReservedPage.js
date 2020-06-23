@@ -20,7 +20,7 @@ import Confirmed from "./Sections/Confirmed.js";
 import Closed from "./Sections/Closed.js";
 import config from 'config.js';
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/reservedPageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { getUsersLists } from "components/Article/GetUsersLists";
-import SectionHeading from "components/Article/SectionHeading.js";
-import SectionHeadings from "components/Article/SectionHeadings.js";
-import ListArticle from "components/Article/ListArticle.js";
-import Products from "components/Article/Products.js";
+import { getUsersLists } from "./Sections//GetUsersLists";
+import SectionHeading from "./Sections//SectionHeading.js";
+import SectionHeadings from "./Sections//SectionHeadings.js";
+import ListArticle from "./Sections//ListArticle.js";
+import Products from "./Sections//Products.js";
 
 // Blog Data
 const name = 'play-room'
@@ -91,7 +91,7 @@ export default function OutdoorPlay(props) {
         <p>
           If you have the space why not invest in some furniture to help keep things really tidy. We love the Great
           Little Trading Co. cube storage furniture because you can style it with your choice of basket or box. You
-          could also create your own little reading corner which is a lovely space for ‘quiet time’. 
+          could also create your own little reading corner which is a lovely space for ‘quiet time’.
         </p>
       </div>
       <Products

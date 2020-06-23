@@ -2,17 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 // core components
 import Footer from "components/Footer/Footer.js";
 import Button from "components/Buttons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
-import styles from "assets/jss/material-kit-pro-react/components/footer/footerDarkStyle.js";
+import styles from "assets/jss/material-kit-pro-react/components/footer/footerStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function FooterLarge(props) {
+export default function FooterDark(props) {
   const classes = useStyles();
 
   return (
@@ -25,12 +24,10 @@ export default function FooterLarge(props) {
           </div>
         }
       >
-      <div className={classes.footer}>
+      <div>
         <GridContainer>
           <GridItem xs={12} sm={3} md={8}>
-            <a href="#pablo">
-              <h5>Join Us</h5>
-            </a>
+            <h5>Join Us</h5>
             <p>
               Join us and other parents who believe in making parenting simpler.
             </p>

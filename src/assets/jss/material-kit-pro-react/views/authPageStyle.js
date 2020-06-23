@@ -1,9 +1,7 @@
 import {
   container,
   title,
-  infoColor,
   whiteColor,
-  dangerColor,
   blackColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
@@ -58,22 +56,9 @@ const style = theme => ({
       marginTop: "70px"
     }
   },
-  link: {
-    fontSize: "13px",
-    textDecoration: "none",
-    "&,& *,& *:hover,& *:focus": {
-      color: infoColor[2] + "  !important"
-    }
-  },
-  buttonSizes: {
-    width: "100%"
-  },
   signUpButton: {
     marginTop: "30px",
     marginBottom: "30px"
-  },
-  error: {
-    color: dangerColor[1]
   },
   seperatorLine: {
     borderTop: "1px solid #ddd",

@@ -1,11 +1,15 @@
 import {
   defaultFont,
   primaryColor,
-  infoColor,
+  secondaryColor,
+  redColor,
+  orangeRedColor,
+  yellowOrangeColor,
+  lightGreenColor,
+  greenColor,
   successColor,
   warningColor,
   dangerColor,
-  roseColor,
   grayColor
 } from "assets/jss/material-kit-pro-react.js";
 
@@ -46,9 +50,9 @@ const typographyStyle = {
       display: "inline-block"
     }
   },
-  infoText: {
+  secondaryText: {
     "&, & *": {
-      color: infoColor[0],
+      color: secondaryColor[0],
       display: "inline-block"
     }
   },
@@ -64,15 +68,9 @@ const typographyStyle = {
       display: "inline-block"
     }
   },
-  dangerText: {
+  errorText: {
     "&, & *": {
       color: dangerColor[0],
-      display: "inline-block"
-    }
-  },
-  roseText: {
-    "&, & *": {
-      color: roseColor[0],
       display: "inline-block"
     }
   },
@@ -81,7 +79,43 @@ const typographyStyle = {
     fontWeight: "400",
     lineHeight: "1",
     color: grayColor[10]
-  }
+  },
+  redText: {
+    "&, & *": {
+      color: redColor[0],
+      display: "inline-block"
+    }
+  },
+  orangeRedText: {
+    "&, & *": {
+      color: orangeRedColor[0],
+      display: "inline-block"
+    }
+  },
+  yellowOrangeText: {
+    "&, & *": {
+      color: yellowOrangeColor[0],
+      display: "inline-block"
+    }
+  },
+  yellowText: {
+    "&, & *": {
+      color: secondaryColor[0],
+      display: "inline-block"
+    }
+  },
+  lightGreenText: {
+    "&, & *": {
+      color: lightGreenColor[0],
+      display: "inline-block"
+    }
+  },
+  greenText: {
+    "&, & *": {
+      color: greenColor[0],
+      display: "inline-block"
+    }
+  },
 };
 
 export default typographyStyle;

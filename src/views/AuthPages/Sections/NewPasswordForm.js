@@ -141,7 +141,7 @@ export default function NewPasswordForm(props) {
           </div>
         : null
       }
-      <Button color="info" type="submit" disabled={!validateResetForm()} className={classes.buttonSizes}>
+      <Button color="primary" type="submit" disabled={!validateResetForm()} className={classes.buttonSizes}>
         Verify
       </Button>
     </form>

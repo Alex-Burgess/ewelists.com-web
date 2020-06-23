@@ -1,12 +1,8 @@
 import {
   primaryColor,
   secondaryColor,
-  warningColor,
-  dangerColor,
-  successColor,
-  infoColor,
-  roseColor,
-  grayColor
+  grayColor,
+  redColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const accordionStyle = theme => ({
@@ -42,29 +38,9 @@ const accordionStyle = theme => ({
       color: secondaryColor[0]
     }
   },
-  warningExpansionPanelSummary: {
+  redExpansionPanelSummary: {
     "&:hover": {
-      color: warningColor[0]
-    }
-  },
-  dangerExpansionPanelSummary: {
-    "&:hover": {
-      color: dangerColor[0]
-    }
-  },
-  successExpansionPanelSummary: {
-    "&:hover": {
-      color: successColor[0]
-    }
-  },
-  infoExpansionPanelSummary: {
-    "&:hover": {
-      color: infoColor[0]
-    }
-  },
-  roseExpansionPanelSummary: {
-    "&:hover": {
-      color: roseColor[0]
+      color: redColor[0]
     }
   },
   expansionPanelSummaryExpaned: {
@@ -89,20 +65,8 @@ const accordionStyle = theme => ({
   secondaryExpansionPanelSummaryExpaned: {
     color: secondaryColor[0]
   },
-  warningExpansionPanelSummaryExpaned: {
-    color: warningColor[0]
-  },
-  dangerExpansionPanelSummaryExpaned: {
-    color: dangerColor[0]
-  },
-  successExpansionPanelSummaryExpaned: {
-    color: successColor[0]
-  },
-  infoExpansionPanelSummaryExpaned: {
-    color: infoColor[0]
-  },
-  roseExpansionPanelSummaryExpaned: {
-    color: roseColor[0]
+  redExpansionPanelSummaryExpaned: {
+    color: redColor[0]
   },
   expansionPanelSummaryContent: {
     margin: "0 !important"

@@ -132,14 +132,14 @@ export default function Products(props) {
     if (userReserved) {
       return (
         <Link to={"/reserve/" + resvId}>
-          <Button default className={classes.reserveButton}>
+          <Button default color="secondary" className={classes.reserveButton}>
             Confirm Purchase
           </Button>
         </Link>
       )
     } else if (userPurchased && allReserved){
       return (
-        <Button default className={classes.reserveButton} disabled>
+        <Button default color="primary" className={classes.reserveButton} disabled>
           Purchased by you
         </Button>
       )
@@ -354,7 +354,7 @@ export default function Products(props) {
                 </h4>
                 <Accordion
                   active={[0, 1]}
-                  activeColor="rose"
+                  activeColor="red"
                   collapses={[
                     {
                       title: "Availability",

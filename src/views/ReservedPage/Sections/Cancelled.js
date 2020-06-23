@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/cancelledStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Unreserve(props) {

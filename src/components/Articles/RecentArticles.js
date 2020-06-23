@@ -8,8 +8,13 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import Info from "components/Typography/Info.js";
-import Danger from "components/Typography/Danger.js";
+import Red from "components/Typography/Red.js";
+import OrangeRed from "components/Typography/OrangeRed.js";
+import YellowOrange from "components/Typography/YellowOrange.js";
+import Yellow from "components/Typography/Yellow.js";
+import LightGreen from "components/Typography/LightGreen.js";
+import Green from "components/Typography/Green.js";
+import Blue from "components/Typography/Blue.js";
 import details from 'views/ArticlePages/PageDetails/PageDetails.json'
 import config from 'config.js';
 
@@ -41,7 +46,50 @@ export default function RecentArticles(props) {
     )
   }
 
-  const renderLeftArticle = (title, url, img, description_short, beginning_content) => {
+  const renderTitle = (titleColour, title, url) => {
+    switch (titleColour) {
+      case "Red":
+        return (
+          <Red>{titleContent(title, url)}</Red>
+        )
+      case "OrangeRed":
+        return (
+          <OrangeRed>{titleContent(title, url)}</OrangeRed>
+        )
+      case "YellowOrange":
+        return (
+          <YellowOrange>{titleContent(title, url)}</YellowOrange>
+        )
+      case "Yellow":
+        return (
+          <Yellow>{titleContent(title, url)}</Yellow>
+        )
+      case "LightGreen":
+        return (
+          <LightGreen>{titleContent(title, url)}</LightGreen>
+        )
+      case "Green":
+        return (
+          <Green>{titleContent(title, url)}</Green>
+        )
+      default:
+        return (
+          <Blue>{titleContent(title, url)}</Blue>
+        )
+    }
+  }
+
+  const titleContent = (title, url) => {
+    return (
+      <h6 className={classes.cardCategory}>
+        <Link to={url}>
+          {title}
+        </Link>
+      </h6>
+    )
+  }
+
+  const renderLeftArticle = (title, titleColour, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
         <GridContainer>
@@ -49,13 +97,7 @@ export default function RecentArticles(props) {
             {renderImg(url, img, 'desktop')}
           </GridItem>
           <GridItem xs={12} sm={12} md={7}>
-            <Info>
-              <h6 className={classes.cardCategory}>
-                <Link to={url}>
-                  {title}
-                </Link>
-              </h6>
-            </Info>
+            {renderTitle(titleColour, title, url)}
             <h3 className={classes.cardTitle}>
               <Link to={url}>
                 {description_short}
@@ -84,18 +126,12 @@ export default function RecentArticles(props) {
     );
   }
 
-  const renderRightArticle = (title, url, img, description_short, beginning_content) => {
+  const renderRightArticle = (title, titleColour, url, img, description_short, beginning_content) => {
     return (
       <Card plain blog className={classes.card}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={7}>
-              <Danger>
-                <h6 className={classes.cardCategory}>
-                  <Link to={url}>
-                    {title}
-                  </Link>
-                </h6>
-              </Danger>
+              {renderTitle(titleColour, title, url)}
               <h3 className={classes.cardTitle}>
                 <Link to={url}>
                   {description_short}
@@ -126,6 +162,7 @@ export default function RecentArticles(props) {
 
   const renderArticle = (id, i) => {
     const title = details[id].title;
+    const titleColour = details[id].titleColour;
     const subtitle = details[id].description_short;
     const url = details[id].url;
     const img = details[id].img;
@@ -133,9 +170,9 @@ export default function RecentArticles(props) {
     const beginning_content = details[id].beginning_content;
 
     if ( (i / 2) % 1 !== 0 ) {
-      return renderLeftArticle(title, url, img, subtitle, beginning_content);
+      return renderLeftArticle(title, titleColour, url, img, subtitle, beginning_content);
     } else {
-      return renderRightArticle(title, url, img, subtitle, beginning_content);
+      return renderRightArticle(title, titleColour, url, img, subtitle, beginning_content);
     }
   }
 

@@ -1,6 +1,5 @@
 import {
   container,
-  dangerColor,
   whiteColor,
   grayColor,
   title
@@ -44,10 +43,6 @@ const contactPageStyle = theme => ({
     paddingTop: "60px",
     fontSize: "16px",
     color: grayColor[0]
-  },
-  error: {
-    color: dangerColor[1],
-    textAlign: "center"
   }
 });
 

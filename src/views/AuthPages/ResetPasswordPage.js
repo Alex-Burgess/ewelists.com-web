@@ -7,7 +7,7 @@ import { onAuthError } from "libs/errorLib";
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import FooterGrey from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/Buttons/Button.js";
@@ -72,7 +72,7 @@ export default function ResetPasswordPage(props) {
           : null
         }
         <div className={classes.textCenter}>
-          <Button color="info" type="submit" disabled={!validateCodeForm()} className={classes.buttonSizes}>
+          <Button color="primary" type="submit" disabled={!validateCodeForm()} className={classes.buttonSizes}>
             Submit
           </Button>
         </div>
@@ -95,7 +95,7 @@ export default function ResetPasswordPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderFixed isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>

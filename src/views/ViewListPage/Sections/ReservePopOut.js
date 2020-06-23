@@ -25,6 +25,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/viewListPage/reservePopOutStyle.js";
 const useStyles = makeStyles(styles);
@@ -229,7 +230,11 @@ function ReservePopout(props) {
           }
 
           {reserveError
-            ? <div className={classes.error}> {reserveError} </div>
+            ? <div>
+                <ErrorText>
+                  <p>{reserveError}</p>
+                </ErrorText>
+              </div>
             : null
           }
         </GridItem>

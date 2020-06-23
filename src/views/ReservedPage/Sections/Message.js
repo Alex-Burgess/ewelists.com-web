@@ -8,7 +8,7 @@ import Chat from "@material-ui/icons/Chat";
 // core components
 
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/messageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Message(props) {

@@ -57,18 +57,18 @@ RegularButton.propTypes = {
   color: PropTypes.oneOf([
     "default",
     "primary",
+    "primary2",
     "secondary",
-    "info",
     "success",
     "warning",
     "danger",
-    "rose",
     "white",
+    "transparent",
     "twitter",
     "facebook",
-    "google",
-    "transparent",
-    "clear"
+    "messenger",
+    "instagram",
+    "google"
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   auth: PropTypes.bool,

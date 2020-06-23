@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -6,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 // core components
 import Footer from "components/Footer/Footer.js";
 
-import styles from "assets/jss/material-kit-pro-react/components/footer/footerGreyStyle.js";
+import styles from "assets/jss/material-kit-pro-react/components/footer/footerStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function FooterGrey(props) {
@@ -16,25 +17,19 @@ export default function FooterGrey(props) {
     <div>
       <div className={classes.spacer} />
       <Footer
-        className={classes.footer}
+        theme="grey"
         content={
           <div>
             <div className={classes.left}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
-                  <a href="/privacy" className={classes.block}>
-                    Privacy
-                  </a>
+                  <Link to="/privacy">Privacy</Link>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a href="/terms" className={classes.block}>
-                    Terms
-                  </a>
+                  <Link to="/terms">Terms</Link>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a href="/contact"  className={classes.block}>
-                    Support
-                  </a>
+                  <Link to="/contact">Support</Link>
                 </ListItem>
               </List>
             </div>

@@ -8,7 +8,7 @@ import config from 'config.js';
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import FooterGrey from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Card from "components/Card/Card.js";
@@ -49,7 +49,7 @@ export default function LoginPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderFixed isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>

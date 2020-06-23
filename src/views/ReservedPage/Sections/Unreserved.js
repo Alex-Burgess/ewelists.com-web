@@ -9,7 +9,7 @@ import Check from "@material-ui/icons/Check";
 // core components
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/unreservedStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Unreserve(props) {

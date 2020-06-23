@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { getUsersLists } from "components/Article/GetUsersLists";
-import SectionHeading from "components/Article/SectionHeading.js";
-import SectionHeadings from "components/Article/SectionHeadings.js";
-import ListArticle from "components/Article/ListArticle.js";
-import Products from "components/Article/Products.js";
-import ChecklistCard from "components/Article/ChecklistCard.js";
+import { getUsersLists } from "./Sections//GetUsersLists";
+import SectionHeading from "./Sections//SectionHeading.js";
+import SectionHeadings from "./Sections//SectionHeadings.js";
+import ListArticle from "./Sections//ListArticle.js";
+import Products from "./Sections//Products.js";
+import ChecklistCard from "./Sections//ChecklistCard.js";
 
 // Blog Data
 const name = 'hospital-bag-checklist';

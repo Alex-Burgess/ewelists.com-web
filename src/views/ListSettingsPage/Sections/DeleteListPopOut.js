@@ -16,6 +16,7 @@ import Slide from "@material-ui/core/Slide";
 import Close from "@material-ui/icons/Close";
 // core components
 import Button from "components/Buttons/Button.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/listSettingsPage/deleteListStyle.js";
 const useStyles = makeStyles(styles);
@@ -31,7 +32,7 @@ function SectionDeletePopout(props) {
   const history = useHistory();
 
   const { open, listId, products } = props;
-  const [deleteError, setDeleteError] = useState('');
+  const [error, setError] = useState('');
 
   const deleteList = async event => {
     // Delete the list
@@ -40,7 +41,7 @@ function SectionDeletePopout(props) {
       debugError(response.message);
     } catch (e) {
       onError(e);
-      setDeleteError('Unexpected error occurred when deleting list. Check that the list still exists.');
+      setError('Unexpected error occurred when deleting list. Check that the list still exists.');
       return false
     }
 
@@ -107,25 +108,10 @@ function SectionDeletePopout(props) {
             classes.modalFooter + " " + classes.modalFooterCenter
           }
         >
-          <Button
-            onClick={() => props.setShowDeletePopOut(false)}
-            color="success"
-            block
-            round
-            className={classes.modalSmallFooterFirstButton}
-          >
+          <Button color="secondary" onClick={() => props.setShowDeletePopOut(false)}>
             No
           </Button>
-          <Button
-            onClick={deleteList}
-            block
-            round
-            className={
-              classes.modalSmallFooterFirstButton +
-              " " +
-              classes.modalSmallFooterSecondButton
-            }
-          >
+          <Button color="primary" onClick={deleteList}>
             Yes
           </Button>
         </DialogActions>
@@ -135,11 +121,10 @@ function SectionDeletePopout(props) {
             classes.modalFooter + " " + classes.centerText + " " + classes.error
           }
         >
-          {deleteError
-            ?
-              <div className={classes.errorContainer}>
-                {deleteError}
-              </div>
+          {error
+            ? <ErrorText>
+                <p>{error}</p>
+              </ErrorText>
             : null
           }
         </DialogContent>

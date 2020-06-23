@@ -1,5 +1,4 @@
 import {
-  dangerColor,
   title,
   cardTitle,
   grayColor
@@ -13,9 +12,6 @@ const style = theme => ({
   ...buttonGroup,
   centerText: {
     textAlign: "Center",
-  },
-  error: {
-    color: dangerColor[1]
   },
   title: {
     ...title,

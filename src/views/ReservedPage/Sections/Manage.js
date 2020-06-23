@@ -15,15 +15,16 @@ import Add from "@material-ui/icons/Add";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/Buttons/Button.js";
+import ErrorText from "components/Typography/Error.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/manageStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
   const { resvId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState();
   const [isUpdating, setIsUpdating] = useState(false);
   const [isUnreserving, setIsUnreserving] = useState(false);
   const [showUpdated, setShowUpdated] = useState(false);
@@ -128,7 +129,7 @@ function Manage(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} disabled={isUnreserving} onClick={() => unReserveProduct()}>
+          <Button color="primary2" className={classes.customButton} disabled={isUnreserving} onClick={() => unReserveProduct()}>
             Unreserve
           </Button>
         </GridItem>
@@ -156,7 +157,7 @@ function Manage(props) {
           </InputLabel>
         </GridItem>
         <GridItem md={3} sm={3} xs={6} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} disabled={isUpdating} onClick={() => updateProduct()}>
+          <Button color="primary2" className={classes.customButton} disabled={isUpdating} onClick={() => updateProduct()}>
             <span className={classes.shareText}>
               { showUpdated
                 ? 'Updated!'
@@ -182,7 +183,11 @@ function Manage(props) {
       }
       {renderUnreserve()}
       {error
-        ? <div className={classes.error}> {error} </div>
+        ? <div className={classes.error}>
+            <ErrorText>
+              <p>{error}</p>
+            </ErrorText>
+          </div>
         : null
       }
       <hr />

@@ -5,8 +5,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// Custom
-import {imageSize} from 'components/Image/Image.js';
+// libs
+import {imageSize} from 'libs/imageLib.js';
 
 // core components
 import styles from "assets/jss/material-kit-pro-react/components/parallaxStyle.js";

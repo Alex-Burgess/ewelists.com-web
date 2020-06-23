@@ -101,7 +101,7 @@ export default function SectionDetails(props) {
                             <i className="fab fa-facebook-messenger" />
                           </Button>
                       }
-                      <Button color="primary" round share onClick={() => copyLink() }>
+                      <Button color="secondary" round share onClick={() => copyLink() }>
                         <i className="fas fa-share-alt" />
                           { showCopied
                             ? 'Copied!'
@@ -109,7 +109,7 @@ export default function SectionDetails(props) {
                           }
                       </Button>
                       <Link to={"/lists/" + listId}>
-                        <Button round share>
+                        <Button color="primary" round share>
                           <i className="fas fa-eye"></i>
                            View
                         </Button>

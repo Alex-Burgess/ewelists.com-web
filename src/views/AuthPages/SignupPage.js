@@ -16,9 +16,10 @@ import CardBody from "components/Card/CardBody.js";
 import Input from "components/Input/CustomInput.js";
 // Custom components
 import FooterGrey from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 import ConfirmationForm from "./Sections/ConfirmationForm.js";
 import SocialButtons from "./Sections/SocialButtons.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -52,7 +53,7 @@ export default function SignupPage(props) {
     if (email === password) {
       return "Password cannot be your email."
     }
-    
+
     if (!(/(?=.*[a-z])/.test(password))) {
       return "Password does not contain any lower case letters."
     }
@@ -164,12 +165,14 @@ export default function SignupPage(props) {
           Your password must be a least 8 characters long.
         </div>
         { error
-          ? <div className={classes.error + " " + classes.textCenter}>
-              <p>{error}</p>
+          ? <div className={classes.textCenter}>
+              <ErrorText>
+                <p>{error}</p>
+              </ErrorText>
             </div>
           : null
         }
-        <Button color="info" type="submit" disabled={!validateForm()} className={classes.buttonSizes}>
+        <Button fullWidth color="primary" type="submit" disabled={!validateForm()}>
           Sign Up
         </Button>
       </form>
@@ -185,7 +188,7 @@ export default function SignupPage(props) {
           : <div>
               <h3 className={classes.title + " " + classes.textCenter}>Sign Up</h3>
               <SocialButtons />
-              <Button color="info" onClick={() => setShowEmailForm(true)} className={classes.buttonSizes + " " + classes.signUpButton}>
+              <Button fullWidth color="primary" onClick={() => setShowEmailForm(true)} className={classes.signUpButton}>
                 Sign up with email
               </Button>
             </div>
@@ -204,7 +207,7 @@ export default function SignupPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderFixed isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>

@@ -24,7 +24,7 @@ export default function Ideas(props) {
   return (
     <div>
       <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user} />
-      <Parallax filter="info" className={classes.parallaxSize}>
+      <Parallax className={classes.parallaxSize}>
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>

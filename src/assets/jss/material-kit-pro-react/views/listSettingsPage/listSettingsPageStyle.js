@@ -125,10 +125,6 @@ const style = theme => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "0px",
     }
-  },
-  error: {
-    textAlign: "center",
-    color: "red"
   }
 });
 

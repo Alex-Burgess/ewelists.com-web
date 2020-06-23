@@ -8,7 +8,7 @@ import { onAuthError } from "libs/errorLib";
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import FooterGrey from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/Buttons/Button.js";
@@ -17,6 +17,7 @@ import CardBody from "components/Card/CardBody.js";
 import Input from "components/Input/CustomInput.js";
 // Custom components
 import SocialButtons from "./Sections/SocialButtons.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -71,7 +72,7 @@ export default function LoginPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderFixed isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>
@@ -105,18 +106,20 @@ export default function LoginPage(props) {
                     }}
                   />
                   { error
-                    ? <div className={classes.error + " " + classes.textCenter}>
-                        <p>{error}</p>
+                    ? <div className={classes.textCenter}>
+                        <ErrorText>
+                          <p>{error}</p>
+                        </ErrorText>
                       </div>
                     : null
                   }
-                  <Button color="info" type="submit" disabled={!validateForm()} className={classes.buttonSizes}>
+                  <Button fullWidth color="primary" type="submit" disabled={!validateForm()}>
                     Login
                   </Button>
                   <Link to="/login/reset" className={classes.link}>Forgot your password?</Link>
                 </form>
                 <div className={classes.accountCheck + " " + classes.textCenter}>
-                  Don't have an account? <Link to="/signup" className={classes.link}>Sign Up</Link>
+                  Don't have an account? <Link to="/signup">Sign Up</Link>
                 </div>
               </CardBody>
             </Card>

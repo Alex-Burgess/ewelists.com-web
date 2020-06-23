@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+// @material-ui/icons
+import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,8 +23,10 @@ import styles from "assets/jss/material-kit-pro-react/components/header/headerSt
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
+  const { color, links, fixed, absolute, mobileBar, title, url } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const classes = useStyles();
+
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
@@ -33,9 +37,11 @@ export default function Header(props) {
       }
     };
   });
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const headerColorChange = () => {
     const { color, changeColorOnScroll } = props;
 
@@ -56,25 +62,47 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   };
-  const { color, links, brand, fixed, absolute, back, page } = props;
+
+  const logo = () => {
+    switch (color) {
+      case "dark":
+        return (
+          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo"/>
+        )
+      case "white":
+        return (
+          <img className={classes.logo} src={require("assets/img/logo-blue.svg")} alt="logo"/>
+        )
+      default:
+        return (
+          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo"/>
+        )
+    }
+  }
+
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes[color]]: color,
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
+
   return (
     <AppBar className={appBarClasses}>
-      { back
+      { mobileBar
         ? <Toolbar className={classes.containerBack}>
-            <Button className={classes.title}>
-              {brand}
+            <Button className={classes.logoButton}>
+              <Link to={url}> <ArrowBackIos className={classes.arrow}/> </Link>
             </Button>
-            {page}
+            <div className={classes.titleWrapper}>
+              <h4 className={classes.mobileTitle}>{title}</h4>
+            </div>
           </Toolbar>
         : <Toolbar className={classes.container}>
-            <Button className={classes.title}>
-              <Link to="/">{brand}</Link>
+            <Button className={classes.logoButton}>
+              <Link to="/">
+                {logo()}
+              </Link>
             </Button>
             <Hidden smDown implementation="css" className={classes.hidden}>
               <div className={classes.collapse}>{links}</div>
@@ -122,21 +150,15 @@ Header.defaultProp = {
 
 Header.propTypes = {
   color: PropTypes.oneOf([
-    "primary",
-    "info",
-    "success",
-    "warning",
-    "danger",
     "transparent",
     "white",
-    "rose",
     "dark"
   ]),
   links: PropTypes.node,
-  brand: PropTypes.object,
   fixed: PropTypes.bool,
-  back: PropTypes.bool,
-  page: PropTypes.object,
+  mobileBar: PropTypes.bool,
+  title: PropTypes.string,
+  url: PropTypes.string,
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
   // props.color (see above) to changeColorOnScroll.color
@@ -147,14 +169,8 @@ Header.propTypes = {
   changeColorOnScroll: PropTypes.shape({
     height: PropTypes.number.isRequired,
     color: PropTypes.oneOf([
-      "primary",
-      "info",
-      "success",
-      "warning",
-      "danger",
       "transparent",
       "white",
-      "rose",
       "dark"
     ]).isRequired
   })

@@ -12,8 +12,9 @@ import Redeem from "@material-ui/icons/Redeem";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/Buttons/Button.js";
+import ErrorText from "components/Typography/Error.js";
 
-import styles from "assets/jss/material-kit-pro-react/views/reservedPage/purchaseStyle.js";
+import styles from "assets/jss/material-kit-pro-react/views/reservedPageStyle.js";
 const useStyles = makeStyles(styles);
 
 function Purchase(props) {
@@ -66,7 +67,7 @@ function Purchase(props) {
 
   return (
     <div className={classes.section}>
-      <h3 className={classes.title + " " + classes.sectionHeading}><Redeem className={classes.icon}/> Purchase Gift</h3>
+      <h3 className={classes.subTitle + " " + classes.sectionHeading}><Redeem className={classes.icon}/> Purchase Gift</h3>
       <GridContainer>
         <GridItem md={9} sm={9} xs={12} >
           <p className={classes.shortText}>
@@ -74,7 +75,7 @@ function Purchase(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+          <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" className={classes.linkWidth}>
             <Button color="primary" className={classes.customButton}>
               Buy Gift
             </Button>
@@ -88,13 +89,17 @@ function Purchase(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary" className={classes.customButton} disabled={isPurchasing} onClick={() => purchased()}>
+          <Button color="primary2" className={classes.customButton} disabled={isPurchasing} onClick={() => purchased()}>
             Purchased
           </Button>
         </GridItem>
       </GridContainer>
       {error
-        ? <div className={classes.error}> {error} </div>
+        ? <div className={classes.error}>
+            <ErrorText>
+              <p>{error}</p>
+            </ErrorText>
+          </div>
         : null
       }
       <hr />

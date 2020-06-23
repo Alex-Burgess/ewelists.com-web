@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import FooterGrey from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/legalPagesStyle.js";
 const useStyles = makeStyles(styles);
@@ -13,7 +13,7 @@ export default function PrivacyPage(props) {
   const classes = useStyles();
   return (
     <div>
-      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile}/>
       <div className={classes.main}>
         <div className={classes.content}>
           <div className={classes.container}>

@@ -3,23 +3,9 @@ import {
   title,
   whiteColor,
   blackColor,
-  grayColor,
 } from "assets/jss/material-kit-pro-react.js";
 
 const createStyle = theme => ({
-  container: {
-    color: whiteColor,
-    ...container,
-    zIndex: "2"
-  },
-  description: {
-    color: grayColor[0],
-    fontSize: "20px",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "18px",
-      textAlign: "center"
-    }
-  },
   section: {
     paddingTop: "150px",
     paddingBottom: "70px",
@@ -28,6 +14,11 @@ const createStyle = theme => ({
       paddingTop: "70px",
       paddingBottom: "0",
     }
+  },
+  container: {
+    color: whiteColor,
+    ...container,
+    zIndex: "2"
   },
   title: {
     ...title,
@@ -53,11 +44,6 @@ const createStyle = theme => ({
       paddingBottom: "20px",
     }
 
-  },
-  infoArea: {
-    maxWidth: "none",
-    margin: "0 auto",
-    padding: "10px 0 0px"
   },
   buttonContainer: {
     [theme.breakpoints.down("xs")]: {

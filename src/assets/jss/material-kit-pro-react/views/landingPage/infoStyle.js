@@ -1,10 +1,11 @@
 import {
   primaryColor,
-  warningColor,
-  dangerColor,
-  successColor,
-  infoColor,
-  roseColor,
+  secondaryColor,
+  greenColor,
+  lightGreenColor,
+  yellowOrangeColor,
+  orangeRedColor,
+  redColor,
   grayColor,
   title
 } from "assets/jss/material-kit-pro-react.js";
@@ -20,23 +21,26 @@ const infoStyle = {
     marginTop: "24px",
     marginRight: "10px"
   },
-  primary: {
+  blue: {
     color: primaryColor[0]
   },
-  warning: {
-    color: warningColor[0]
+  green: {
+    color: greenColor[0]
   },
-  danger: {
-    color: dangerColor[0]
+  lightGreen: {
+    color: lightGreenColor[0]
   },
-  success: {
-    color: successColor[0]
+  yellow: {
+    color: secondaryColor[0]
   },
-  info: {
-    color: infoColor[0]
+  yellowOrange: {
+    color: yellowOrangeColor[0]
   },
-  rose: {
-    color: roseColor[0]
+  orangeRed: {
+    color: orangeRedColor[0]
+  },
+  red:{
+    color: redColor[0]
   },
   gray: {
     color: grayColor[0]

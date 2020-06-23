@@ -10,7 +10,7 @@ import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
 import Redeem from "@material-ui/icons/Redeem";
 // core components
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import Header from "components/Header/HeaderDark.js";
 import FooterDark from "components/Footer/FooterDark.js";
 import NavPills from "components/NavPills/NavPills.js";
 // s for this page
@@ -237,7 +237,7 @@ export default function EditPage(props) {
 
   return (
     <div>
-      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <Header isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
       <div className={classes.main}>
         {loadError
           ? <div>

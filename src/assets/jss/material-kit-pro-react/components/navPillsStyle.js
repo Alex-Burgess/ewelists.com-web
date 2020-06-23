@@ -1,14 +1,8 @@
 import {
-  roseColor,
   primaryColor,
-  infoColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  blackColor,
+  secondaryColor,
   whiteColor,
-  grayColor,
-  hexToRgb
+  grayColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const navPillsStyle = theme => ({
@@ -85,76 +79,44 @@ const navPillsStyle = theme => ({
   primary: {
     "&,&:hover": {
       color: whiteColor,
-      backgroundColor: primaryColor[0],
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(primaryColor[0]) +
-        ", 0.4)"
+      backgroundColor: primaryColor[2],
     }
   },
-  info: {
+  secondary: {
     "&,&:hover": {
       color: whiteColor,
-      backgroundColor: infoColor[0],
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.4)"
+      backgroundColor: secondaryColor[0],
     }
   },
-  success: {
-    "&,&:hover": {
-      color: whiteColor,
-      backgroundColor: successColor[0],
-      boxShadow:
-        "0 2px 2px 0 rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.14), 0 3px 1px -2px rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.2), 0 1px 5px 0 rgba(" +
-        hexToRgb(successColor[0]) +
-        ", 0.12)"
+  notActive:{
+    color: "inherit",
+    backgroundColor: "transparent",
+    "&$primary": {
+      "&:hover": {
+        color: whiteColor,
+        backgroundColor: primaryColor[1],
+      }
+    },
+    "&$secondary": {
+      "&:hover": {
+        color: whiteColor,
+        backgroundColor: secondaryColor[2],
+      }
     }
   },
-  warning: {
-    "&,&:hover": {
-      color: whiteColor,
-      backgroundColor: warningColor[0],
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(warningColor[0]) +
-        ", 0.4)"
-    }
-  },
-  danger: {
-    "&,&:hover": {
-      color: whiteColor,
-      backgroundColor: dangerColor[0],
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(warningColor[0]) +
-        ", 0.4)"
-    }
-  },
-  rose: {
-    "&,&:hover": {
-      color: whiteColor,
-      backgroundColor: roseColor[0],
-      boxShadow:
-        "0 4px 20px 0px rgba(" +
-        hexToRgb(blackColor) +
-        ", 0.14), 0 7px 10px -5px rgba(" +
-        hexToRgb(roseColor[0]) +
-        ", 0.4)"
-    }
+  active:{
+    "&$primary": {
+      "&,&:hover": {
+        color: whiteColor,
+        backgroundColor: primaryColor[2]
+      }
+    },
+    "&$secondary": {
+      "&,&:hover": {
+        color: whiteColor,
+        backgroundColor: secondaryColor[0],
+      }
+    },
   },
   alignCenter: {
     alignItems: "center",

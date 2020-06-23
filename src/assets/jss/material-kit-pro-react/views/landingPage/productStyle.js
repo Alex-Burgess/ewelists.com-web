@@ -16,9 +16,7 @@ const productStyle = {
     paddingRight: "0px",
     paddingBottom: "70px",
     paddingLeft: "0px",
-    textAlign: "center"
-  },
-  sectionGray: {
+    textAlign: "center",
     background: grayColor[14]
   },
   title: {

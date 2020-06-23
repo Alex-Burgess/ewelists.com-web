@@ -3,7 +3,6 @@ import {
   mrAuto,
   mlAuto,
   grayColor,
-  dangerColor,
   successColor,
   primaryColor
 } from "assets/jss/material-kit-pro-react.js";
@@ -50,7 +49,6 @@ const style = theme => ({
     }
   },
   errorContainer: {
-    color: dangerColor[1],
     textAlign: "center !important",
     minHeight: "50px",
     width: "60%",

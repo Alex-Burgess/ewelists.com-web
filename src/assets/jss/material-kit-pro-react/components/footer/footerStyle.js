@@ -1,12 +1,12 @@
 import {
   container,
-  primaryColor,
   whiteColor,
   grayColor,
+  primaryColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
 
-const footerStyle = {
+const footerStyle = theme => ({
   left: {
     float: "left!important",
     display: "block"
@@ -59,52 +59,52 @@ const footerStyle = {
     textAlign: "left"
   },
   a: {
-    color: primaryColor[0],
     textDecoration: "none",
     backgroundColor: "transparent"
   },
   dark: {
-    background:
-      "radial-gradient(ellipse at center," +
-      grayColor[4] +
-      " 0," +
-      grayColor[5] +
-      " 100%)",
-    backgroundSize: "550% 450%",
+    background: primaryColor[0],
     color: whiteColor,
     "& p": {
-      color: grayColor[0]
+      color: whiteColor,
+      fontSize: "16px",
+      fontWeight: "400"
     },
     "& i": {
       color: whiteColor
     },
     "& a": {
       color: whiteColor,
-      opacity: ".86",
+      fontWeight: "400",
       "&:visited": {
         color: whiteColor
       },
       "&:focus, &:hover": {
-        opacity: 1
+        opacity: 1,
+        fontWeight: "500"
       }
     },
     "& hr": {
       borderColor: "rgba(" + hexToRgb(whiteColor) + ",0.2)"
-    },
-    "& $btnTwitter, & $btnDribbble, & $btnInstagram": {
-      color: whiteColor
     }
   },
-  white: {
-    backgroundColor: whiteColor,
-    color: grayColor[1],
+  grey: {
+    backgroundColor: grayColor[14],
     textDecoration: "none",
     "& a": {
+      fontSize: "12px",
+      fontWeight: "500",
+      textTransform: "uppercase",
+      padding: "0.9375rem",
+      display: "block",
+      [theme.breakpoints.down("xs")]: {
+        padding: "0.9375rem 0.5rem",
+      },
       "&:visited": {
         color: grayColor[1]
       },
       "&:hover, &:focus": {
-        color: grayColor[20]
+        fontWeight: "600"
       }
     }
   },
@@ -119,38 +119,13 @@ const footerStyle = {
     padding: "0px",
     width: "auto"
   },
-  icon: {
-    width: "18px",
-    height: "18px",
-    position: "relative",
-    top: "3px"
-  },
-  iconSocial: {
-    width: "41px",
-    height: "41px",
-    fontSize: "24px",
-    minWidth: "41px",
-    padding: 0,
-    overflow: "hidden",
-    position: "relative"
-  },
-  footerBrand: {
-    height: "50px",
-    padding: "15px 15px",
-    fontSize: "18px",
-    lineHeight: "50px",
-    marginLeft: "-15px",
-    color: grayColor[1],
-    textDecoration: "none",
-    fontWeight: 700,
-    fontFamily: "Roboto Slab,Times New Roman,serif"
-  },
-  pullCenter: {
-    display: "inline-block",
-    float: "none"
-  },
   clearFix: {
     clear: "both"
+  },
+  socialButtons: {
+    "& li": {
+      display: "inline-block"
+    }
   }
-};
+});
 export default footerStyle;

@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
   const [active, setActive] = React.useState(props.active);
-  
+
   React.useEffect(() => {
      setActive(props.active);
    }, [props.active])
@@ -34,10 +34,12 @@ export default function NavPills(props) {
   };
   const { tabs, direction, color, horizontal, alignCenter } = props;
   const classes = useStyles();
+
   const flexContainerClasses = classNames({
     [classes.flexContainer]: true,
     [classes.horizontalDisplay]: horizontal !== undefined
   });
+
   const tabButtons = (
     <Tabs
       classes={{
@@ -52,11 +54,15 @@ export default function NavPills(props) {
     >
       {tabs.map((prop, key) => {
         var icon = {};
+
         if (prop.tabIcon !== undefined) {
           icon["icon"] = <prop.tabIcon className={classes.tabIcon} />;
         }
         const pillsClasses = classNames({
           [classes.pills]: true,
+          [classes[color]]: color,
+          [classes.notActive]: true,
+          [classes.active]: key === active,
           [classes.horizontalPills]: horizontal !== undefined,
           [classes.pillsWithIcons]: prop.tabIcon !== undefined
         });
@@ -67,14 +73,14 @@ export default function NavPills(props) {
             {...icon}
             classes={{
               root: pillsClasses,
-              label: classes.label,
-              selected: classes[color]
+              label: classes.label
             }}
           />
         );
       })}
     </Tabs>
   );
+
   const tabContent = (
     <div className={classes.contentWrapper}>
       <SwipeableViews
@@ -92,6 +98,7 @@ export default function NavPills(props) {
       </SwipeableViews>
     </div>
   );
+
   return horizontal !== undefined ? (
     <GridContainer>
       <GridItem {...horizontal.tabsGrid}>{tabButtons}</GridItem>
@@ -122,11 +129,7 @@ NavPills.propTypes = {
   ).isRequired,
   color: PropTypes.oneOf([
     "primary",
-    "warning",
-    "danger",
-    "success",
-    "info",
-    "rose"
+    "secondary"
   ]),
   direction: PropTypes.string,
   horizontal: PropTypes.shape({

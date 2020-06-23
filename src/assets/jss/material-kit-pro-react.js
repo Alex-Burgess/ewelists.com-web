@@ -38,14 +38,42 @@ const hexToRgb = input => {
 const drawerWidth = 260;
 
 const primaryColor = [
-  "#9c27b0",
-  "#ab47bc",
-  "#8e24aa",
-  "#af2cc5",
-  "#e1bee7",
-  "#ba68c8"
+  "#577590",
+  "#86a4c0",
+  "#2a4a62"
 ];
-const secondaryColor = ["#fafafa"];
+const secondaryColor = [
+  "#F9C74F",
+  "#fffa80",
+  "#c39719"
+];
+const redColor = [
+  "#F94144",
+  "#ff7870",
+  "#bf001c"
+];
+const orangeRedColor = [
+  "#F3722C",
+  "#ffa35a",
+  "#ba4300"
+];
+const yellowOrangeColor = [
+  "#F8961E",
+  "#ffc754",
+  "#bf6800"
+];
+const lightGreenColor = [
+  "#90BE6D",
+  "#c2f19c",
+  "#618e40"
+];
+const greenColor = [
+  "#43AA8B",
+  "#77dcbb",
+  "#007a5e"
+];
+
+// Old Colors - need to review this.
 const warningColor = [
   "#ff9800",
   "#ffa726",
@@ -115,6 +143,7 @@ const grayColor = [
   "#505050",
   "#1f1f1f"
 ];
+
 const whiteColor = "#FFF";
 const blackColor = "#000";
 const facebookColor = "#3b5998";
@@ -421,6 +450,11 @@ export {
   defaultFont,
   primaryColor,
   secondaryColor,
+  redColor,
+  orangeRedColor,
+  yellowOrangeColor,
+  lightGreenColor,
+  greenColor,
   warningColor,
   dangerColor,
   successColor,

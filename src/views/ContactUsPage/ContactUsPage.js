@@ -10,9 +10,10 @@ import GridItem from "components/Grid/GridItem.js";
 import Input from "components/Input/CustomInput.js";
 import Button from "components/Buttons/Button.js";
 import Footer from "components/Footer/FooterGrey.js";
-import HeaderFixed from "components/Header/HeaderFixed.js";
+import HeaderWhite from "components/Header/HeaderWhite.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/contactPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -92,8 +93,10 @@ export default function ContactUsPage(props) {
             Contact us
           </Button>
           {error
-            ? <div className={classes.error}>
-                <p>{error}</p>
+            ? <div className={classes.textCenter}>
+                <ErrorText>
+                  <p>{error}</p>
+                </ErrorText>
               </div>
             : null
           }
@@ -105,7 +108,7 @@ export default function ContactUsPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderFixed isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>

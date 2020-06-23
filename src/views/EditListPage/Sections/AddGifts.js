@@ -19,6 +19,7 @@ import Table from "components/Table/Table.js";
 import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import ErrorText from "components/Typography/Error.js";
 
 import config from 'config.js';
 
@@ -30,7 +31,7 @@ export default function SectionAddGifts(props) {
   const classes = useStyles();
   const { mobile, listId } = props;
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState('');
   const [searchResult, setSearchResult] = useState('');
   const [searchSuccess, setSearchSuccess] = useState(false);
   const [searchUrl, setSearchUrl] = useState('');
@@ -72,7 +73,7 @@ export default function SectionAddGifts(props) {
   }
 
   const searchProduct = async event => {
-    setErrorMessage('');
+    setError('');
     setIsSearching(true);
     let product;
 
@@ -83,7 +84,7 @@ export default function SectionAddGifts(props) {
       product = response.product;
     } catch (e) {
       onError('Unexpected error occurred when searching for product.');
-      setErrorMessage('Product could not be found.');
+      setError('Product could not be found.');
       setIsSearching(false);
       return false
     }
@@ -105,12 +106,12 @@ export default function SectionAddGifts(props) {
     setSearchResult(true);
     setListUpdated(false);
     setIsSearching(false);
-    setErrorMessage('');
+    setError('');
   }
 
   const addProductToList = async event => {
     setIsAdding(true);
-    setErrorMessage('');
+    setError('');
     debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     let addDetails = {
@@ -128,9 +129,9 @@ export default function SectionAddGifts(props) {
       onError(e);
 
       if (e.response.data.error === 'Product already exists in list.') {
-        setErrorMessage('Product already exists in your list.  You can change the quantity in Manage List.');
+        setError('Product already exists in your list.  You can change the quantity in Manage List.');
       } else {
-        setErrorMessage('Product could not be added to your list.');
+        setError('Product could not be added to your list.');
       }
 
       setIsAdding(false);
@@ -161,7 +162,7 @@ export default function SectionAddGifts(props) {
 
   const createProduct = async event => {
     setIsAdding(true);
-    setErrorMessage('');
+    setError('');
 
     let createResponse;
     let requestBody = {
@@ -174,7 +175,7 @@ export default function SectionAddGifts(props) {
       createResponse = await API.post("notfound", "/", { body: requestBody });
     } catch (e) {
       onError('Unexpected error occurred when creating product.');
-      setErrorMessage('Product could not be added to your list.');
+      setError('Product could not be added to your list.');
       setIsAdding(false);
       return false
     }
@@ -195,7 +196,7 @@ export default function SectionAddGifts(props) {
       });
     } catch (e) {
       onError('Unexpected error occurred when adding product to list');
-      setErrorMessage('Product could not be added to your list.');
+      setError('Product could not be added to your list.');
       setIsAdding(false);
       return false
     }
@@ -502,10 +503,10 @@ export default function SectionAddGifts(props) {
               : renderDesktopSearchInput()
             }
             <div className={classes.errorContainer}>
-            {errorMessage
-              ? <div>
-                  {errorMessage}
-                </div>
+            {error
+              ? <ErrorText>
+                  <p>{error}</p>
+                </ErrorText>
               : null
             }
             </div>
