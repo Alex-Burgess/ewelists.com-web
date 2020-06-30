@@ -2,6 +2,8 @@ import {
   grayColor,
   primaryColor,
   secondaryColor,
+  greenColor,
+  redColor,
   successColor,
   warningColor,
   dangerColor,
@@ -95,6 +97,12 @@ const buttonStyle = {
       backgroundColor: primaryColor[2],
       color: whiteColor,
       border: "solid 2px " + primaryColor[2],
+    }
+  },
+  green: {
+    backgroundColor: greenColor[0],
+    "&:hover,&:focus": {
+      backgroundColor: greenColor[2],
     }
   },
   messenger: {
@@ -200,6 +208,26 @@ const buttonStyle = {
       color: "inherit",
       background: "transparent",
       boxShadow: "none"
+    }
+  },
+  transparent_white: {
+    color: whiteColor,
+    background: "transparent",
+    boxShadow: "none",
+    border: "solid 2px " + whiteColor,
+    "&:focus,&:hover": {
+      color: primaryColor[0],
+      background: whiteColor,
+    }
+  },
+  transparent_red: {
+    color: redColor[0],
+    background: "transparent",
+    boxShadow: "none",
+    border: "solid 2px " + redColor[0],
+    "&:focus,&:hover": {
+      color: whiteColor,
+      background: redColor[0],
     }
   },
   auth: {

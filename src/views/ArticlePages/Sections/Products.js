@@ -61,7 +61,7 @@ export default function Products(props) {
               products.map((id, key) =>
                 <GridItem xs={12} sm={4} md={4} key={key}>
                   <Card plain product className={classes.customProduct}>
-                    <CardHeader noShadow image className={classes.customHeader}>
+                    <CardHeader noShadow image className={classes.customImage}>
                       <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
                         <img src={data[id].imageUrl} className={classes.productImage} alt=".." />
                       </a>
@@ -80,13 +80,13 @@ export default function Products(props) {
                         }
                       </div>
                     </CardHeader>
-                    <CardBody plain>
+                    <CardBody plain className={classes.customBody}>
                       { isAuthenticated
-                      ? <Button color="secondary" className={classes.button} onClick={() => handleAddOpen(data[id].productId)}>
+                      ? <Button color="primary2" className={classes.button} onClick={() => handleAddOpen(data[id].productId)}>
                            <Playlist /> Add To List
                          </Button>
                       : <a href="/signup" target="_blank" rel="noopener noreferrer">
-                          <Button color="secondary" className={classes.button}>
+                          <Button color="primary2" className={classes.button}>
                            Sign up to Create List
                          </Button>
                        </a>

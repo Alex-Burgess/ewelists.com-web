@@ -66,14 +66,17 @@ const style = theme => ({
   customProduct: {
     marginTop: "30px",
     [theme.breakpoints.down("xs")]: {
+      marginTop: "40px",
       marginBottom: "10px",
     }
   },
-  customHeader: {
-    height: "320px",
-    [theme.breakpoints.down("xs")]: {
-      height: "245px"
-    }
+  customImage: {
+    marginLeft: "4px",
+    marginRight: "4px"
+  },
+  customBody: {
+    paddingLeft: "1px",
+    paddingRight: "1px"
   },
   amazonButton: {
     backgroundColor: "#FF9900",

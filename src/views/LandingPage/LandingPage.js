@@ -5,9 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import FooterDark from "components/Footer/FooterDark.js";
 import HeaderWhite from "components/Header/HeaderWhite.js";
 // Sections for this page
-import Create from "./Section/Create.js";
-import Product from "./Section/Product.js";
-import Ideas from "./Section/Ideas.js";
+import Hero from "./Sections/Hero.js";
+import Product from "./Sections/Product.js";
+import Ideas from "./Sections/Ideas.js";
+import LearnMore from "./Sections/LearnMore.js";
+import GetStarted from "./Sections/GetStarted.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/landingPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -20,9 +22,11 @@ export default function LandingPage(props) {
     <div>
       <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.main}>
-        <Create mobile={props.mobile} />
+        <Hero mobile={props.mobile} />
+        <LearnMore />
         <Product />
         <Ideas />
+        <GetStarted />
       </div>
       <FooterDark />
     </div>
