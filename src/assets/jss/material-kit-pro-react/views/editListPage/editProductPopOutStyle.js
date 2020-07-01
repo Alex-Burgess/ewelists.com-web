@@ -43,6 +43,7 @@ const style = theme => ({
       maxHeight: "276.59px",
     },
     height: "28vw",
+    width: "100%",
     // maxHeight: "180.05px",
     objectFit: "contain",
   },

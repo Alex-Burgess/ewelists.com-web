@@ -10,7 +10,7 @@ export default function LetsGoButton(props) {
   const { account } = props;
 
   return (
-      <Button color="info" fullWidth onClick={() => Auth.federatedSignIn({provider: account})}>
+      <Button color="primary" fullWidth onClick={() => Auth.federatedSignIn({provider: account})}>
         Get Started
       </Button>
   );
