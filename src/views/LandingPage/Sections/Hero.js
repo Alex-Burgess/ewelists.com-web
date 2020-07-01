@@ -1,34 +1,20 @@
 import React from 'react';
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 // libs
 import {imageSize} from 'libs/imageLib.js';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/Buttons/Button.js";
-import config from 'config.js';
 
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/heroStyle.js";
 const useStyles = makeStyles(styles);
 
 const image = "/images/landing-cot";
 
-export default function LandingCreate(props) {
+export default function Hero(props) {
   const classes = useStyles();
-  const { mobile } = props;
-
-  const scrollToExplore = (id) => {
-    if (mobile) {
-      window.scrollTo({ top: 620, behavior: 'smooth' })
-    } else {
-      window.scrollTo({ top: 520, behavior: 'smooth' })
-    }
-  }
 
   return (
     <div className={classes.section}>
@@ -53,7 +39,3 @@ export default function LandingCreate(props) {
     </div>
   );
 }
-
-LandingCreate.propTypes = {
-  mobile: PropTypes.bool
-};
