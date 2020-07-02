@@ -7,6 +7,7 @@ import UnauthenticatedRoute from "./components/Routes/UnauthenticatedRoute";
 
 import HomePage from "views/HomePage/HomePage.js";
 import ErrorPage from "views/ErrorPages/ErrorPage.js";
+import AboutPage from "views/AboutPage/AboutPage.js";
 import LoginPage from "views/AuthPages/LoginPage.js";
 import SignupPage from "views/AuthPages/SignupPage.js";
 import SocialConfirmationPage from "views/AuthPages/SocialConfirmationPage.js";
@@ -35,6 +36,7 @@ export default function Routes({appProps}) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={HomePage} props={appProps} />
+      <AppliedRoute path="/about" exact component={AboutPage} props={appProps} />
       <AppliedRoute path="/terms" exact component={TermsPage} props={appProps} />
       <AppliedRoute path="/privacy" exact component={PrivacyPage} props={appProps} />
       <AppliedRoute path="/cookies" exact component={CookiesPage} props={appProps} />
