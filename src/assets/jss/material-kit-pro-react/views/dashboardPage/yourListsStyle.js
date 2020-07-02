@@ -32,7 +32,13 @@ const style = theme => ({
     minHeight: "32px",
     color: blackColor,
     textDecoration: "none",
-    fontSize: "2.3125rem"
+    // fontSize: "2.3125rem"
+  },
+  icon: {
+    fontSize: "2.7rem",
+    paddingRight: "6px",
+    paddingBottom: "6px",
+    verticalAlign: "bottom",
   },
   cardCategory: {
     marginTop: "10px",

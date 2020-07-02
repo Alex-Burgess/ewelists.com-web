@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
+import Update from "@material-ui/icons/ListAlt";
 import ViewIcon from "@material-ui/icons/Visibility";
 import Add from "@material-ui/icons/Add";
 // core components
@@ -147,7 +148,7 @@ export default function YourLists(props) {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
-        <h1 className={classes.title}>Your lists</h1>
+        <h2 className={classes.title}><Update className={classes.icon}/>Your Lists</h2>
         <br />
         <GridContainer>
           {!isLoading && renderOpenLists(openLists)}

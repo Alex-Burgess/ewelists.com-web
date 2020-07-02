@@ -102,11 +102,12 @@ const style = theme => ({
   },
   createListImage: {
     boxShadow:
-      "0 5px 15px -8px rgba(" +
+      "0 0 15px 0 rgba(" +
       hexToRgb(blackColor) +
-      ", 0.24), 0 8px 10px -5px rgba(" +
+      ", 0.20), 0 0 100px 0 rgba(" +
       hexToRgb(blackColor) +
-      ", 0.2)",
+      ", 0.25)",
+    borderRadius: "0.4rem"
   }
 });
 

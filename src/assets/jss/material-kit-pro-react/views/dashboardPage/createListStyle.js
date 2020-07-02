@@ -12,7 +12,7 @@ const style = theme => ({
   ...modalStyle(theme),
   ...customSelectStyle,
   modalCustom: {
-    marginTop: "130px !important",
+    marginTop: "145px !important",
     [theme.breakpoints.down("xs")]: {
       marginTop: "0px !important",
     }
