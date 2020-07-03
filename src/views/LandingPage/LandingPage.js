@@ -10,6 +10,7 @@ import Product from "./Sections/Product.js";
 import Ideas from "./Sections/Ideas.js";
 import LearnMore from "./Sections/LearnMore.js";
 import GetStarted from "./Sections/GetStarted.js";
+import Benefits from "./Sections/Benefits.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/landingPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -24,6 +25,7 @@ export default function LandingPage(props) {
       <div className={classes.main}>
         <Hero mobile={props.mobile} />
         <LearnMore />
+        <Benefits />
         <Product />
         <Ideas />
         <GetStarted />

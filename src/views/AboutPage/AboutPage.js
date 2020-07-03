@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -16,7 +15,7 @@ const useStyles = makeStyles(styles);
 
 const fiveHatsImg = config.imagePrefix + "/images/about-mascot.svg";
 
-export default function ErrorPage(props) {
+export default function AboutPage(props) {
   const classes = useStyles();
   return (
     <div className={classes.page}>
