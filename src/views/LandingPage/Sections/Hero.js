@@ -26,7 +26,7 @@ export default function Hero(props) {
       >
         <GridContainer className={classes.createContainer} justify="center">
           <GridItem xs={12} sm={7} md={10} className={classes.centerText}>
-            <h1 className={classes.title}>The gift list tool for parents</h1>
+            <h1 className={classes.title}>The Gift List Tool For Parents</h1>
             <br />
             <div className={classes.buttonContainer}>
               <Button color="transparent_white" size="lg" href="/signup">

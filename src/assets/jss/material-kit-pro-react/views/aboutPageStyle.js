@@ -1,7 +1,7 @@
 import {
   container,
   whiteColor,
-  title
+  grayColor
 } from "assets/jss/material-kit-pro-react.js";
 
 const style = theme => ({
@@ -16,36 +16,53 @@ const style = theme => ({
   },
   container: {
     ...container,
-    marginTop: "75px"
+    marginTop: "75px",
+    marginBottom: "25px"
   },
   title: {
-    ...title,
-    // fontSize: "4em",
-    // fontWeight: "700"
-    // marginBottom: "5px"
-  },
-  paragraph: {
-    fontSize: "16px",
-    textAlign: "justify"
-  },
-  quote: {
-    marginTop: "20px",
-    marginBottom: "20px"
-  },
-  imgContainer: {
+    color: "#577590",
+    marginTop: "50px",
+    marginBottom: "10px",
+    fontWeight: "500",
+    lineHeight: "1.15",
+    fontSize: "45px",
     textAlign: "center",
-    "& img": {
-      width: "80%",
-      paddingTop: "100px",
-      paddingLeft: "100px",
-      [theme.breakpoints.down("sm")]: {
-        width: "40%",
-        paddingTop: "10px",
-        paddingLeft: "0px",
-        paddingBottom: "40px"
-      }
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "34px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "32px"
     }
   },
+  subtitle: {
+    fontSize: "28px",
+    fontWeight: "400",
+    color: grayColor[10],
+    marginTop: "10px",
+    textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "24px",
+    }
+  },
+  paragraph: {
+    fontSize: "18px",
+    textAlign: "justify",
+    lineHeight: "1.6rem"
+  },
+  image: {
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    height: "360px",
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: {
+      height: "300px",
+      backgroundSize: "450px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "220px",
+      backgroundSize: "contain",
+    }
+  }
 });
 
 export default style;

@@ -21,9 +21,9 @@ export default function LandingProduct(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={8} md={8}>
-            <h2 className={classes.title}>Get organised with Ewelists</h2>
+            <h2 className={classes.title}>How It Works</h2>
             <h5 className={classes.description}>
-              Ewelists helps new and expecting parents get the gifts they need for their new arrival.
+              Ewelists helps new and expecting parents get the gifts they need for their little ones. <br />
               Create a gift list, which you can share with friends and family, for free.
             </h5>
           </GridItem>

@@ -1,19 +1,19 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 // core components
 import HeaderWhite from "components/Header/HeaderWhite.js";
 import Footer from "components/Footer/FooterGrey.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Small from "components/Typography/Small.js";
-import config from 'config.js';
+// import config from 'config.js';
+
+import about from "assets/img/about.png";
 
 import styles from "assets/jss/material-kit-pro-react/views/aboutPageStyle.js";
 const useStyles = makeStyles(styles);
 
-const fiveHatsImg = config.imagePrefix + "/images/about-mascot.svg";
+// const fiveHatsImg = config.imagePrefix + "/images/about-mascot.svg";
 
 export default function AboutPage(props) {
   const classes = useStyles();
@@ -21,14 +21,18 @@ export default function AboutPage(props) {
     <div className={classes.page}>
       <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
       <div className={classes.container}>
-        <GridContainer justify="center2">
-          <GridItem xs={12} sm={12} md={7}>
-            <h2 className={classes.title}>About Ewelists
-              <br />
-              <Small>
-                It all started with 5 hats...
-              </Small>
-            </h2>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={10} lg={10}>
+            <h1 className={classes.title}>
+              About Ewelists
+            </h1>
+            <h3 className={classes.subtitle}>
+              It all started one Christmas with 5 hats...
+            </h3>
+            <div
+              className={classes.image}
+              style={{ backgroundImage: `url(${about})` }}
+            />
             <div>
               <p className={classes.paragraph}>
                 The arrival of our son brought about a gift giving frenzy and we were completely overwhelmed by the
@@ -42,11 +46,6 @@ export default function AboutPage(props) {
                 and easy.
               </p>
             </div>
-            <h2 className={classes.quote}>
-              <Small>
-                Add products from any store.
-              </Small>
-            </h2>
             <div>
               <p className={classes.paragraph}>
                 Ewelists helps parents get the gifts they need for their little ones. You can create a list with products
@@ -57,11 +56,6 @@ export default function AboutPage(props) {
                 We understand that there are so many choices these days on what to buy. We love well designed products
                 that give value for money and we hope to inspire you with our guides and lists of favourite products.
               </p>
-            </div>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={5}>
-            <div className={classes.imgContainer}>
-              <img src={fiveHatsImg} alt="..." />
             </div>
           </GridItem>
         </GridContainer>
