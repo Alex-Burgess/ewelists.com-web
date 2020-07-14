@@ -11,7 +11,7 @@ import Button from "components/Buttons/Button.js";
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/heroStyle.js";
 const useStyles = makeStyles(styles);
 
-const image = "/images/landing-cot";
+const image = "landing-cot";
 
 export default function Hero(props) {
   const classes = useStyles();

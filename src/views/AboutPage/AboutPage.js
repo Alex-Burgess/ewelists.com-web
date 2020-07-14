@@ -1,19 +1,18 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+// libs
+import {imageUrl} from 'libs/imageLib.js';
 // core components
 import HeaderWhite from "components/Header/HeaderWhite.js";
 import Footer from "components/Footer/FooterGrey.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-// import config from 'config.js';
-
-import about from "assets/img/about.png";
 
 import styles from "assets/jss/material-kit-pro-react/views/aboutPageStyle.js";
 const useStyles = makeStyles(styles);
 
-// const fiveHatsImg = config.imagePrefix + "/images/about-mascot.svg";
+const about = "about-1.svg";
 
 export default function AboutPage(props) {
   const classes = useStyles();
@@ -31,7 +30,7 @@ export default function AboutPage(props) {
             </h3>
             <div
               className={classes.image}
-              style={{ backgroundImage: `url(${about})` }}
+              style={{ backgroundImage: "url(" + imageUrl(about) + ")" }}
             />
             <div>
               <p className={classes.paragraph}>

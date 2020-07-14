@@ -31,7 +31,7 @@ export default function ListArticle(props) {
   return (
     <div>
       <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
-      <Parallax image={'/images/' + img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
+      <Parallax image={img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>

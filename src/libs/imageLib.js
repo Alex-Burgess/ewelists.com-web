@@ -6,7 +6,7 @@ export function imageSize(image) {
       return null
   }
 
-  image = config.imagePrefix + image;
+  image = config.imagePrefix + "/images/" + image;
   if (isWebpSupported()) {
     return image + '.webp'
   } else {
@@ -16,4 +16,10 @@ export function imageSize(image) {
       return image + '.mob.jpg'
     }
   }
+}
+
+export function imageUrl(image) {
+  image = config.imagePrefix + "/images/" + image;
+
+  return image;
 }

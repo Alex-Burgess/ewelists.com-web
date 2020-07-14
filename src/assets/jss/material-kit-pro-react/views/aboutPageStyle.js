@@ -52,8 +52,9 @@ const style = theme => ({
   image: {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    height: "360px",
-    marginBottom: "30px",
+    height: "320px",
+    marginTop: "20px",
+    marginBottom: "40px",
     [theme.breakpoints.down("sm")]: {
       height: "300px",
       backgroundSize: "450px"

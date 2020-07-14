@@ -1,34 +1,21 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+// libs
+import {imageUrl} from 'libs/imageLib.js';
 // @material-ui/core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-// import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import Blue from "components/Typography/Blue.js";
-import config from 'config.js';
-
-import landing1 from "assets/img/landing-1.png";
-import landing2 from "assets/img/landing-2.png";
-import landing3 from "assets/img/landing-3.png";
 
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/benefitsStyle.js";
 const useStyles = makeStyles(styles);
 
+const landing1 = "landing-1.svg";
+const landing2 = "landing-2.svg";
+const landing3 = "landing-3.svg";
+
 export default function Benefits(props) {
   const classes = useStyles();
-
-  const renderImg = (img) => {
-    return (
-      <CardHeader image plain>
-        <picture>
-          <source type="image/webp" srcSet={config.imagePrefix + '/images/' + img + '.webp'} />
-          <source type="image/jpeg" srcSet={config.imagePrefix + '/images/' + img + '.jpg'} />
-          <img src={config.imagePrefix + '/images/' + img + '.jpg'} className={classes.image + " " + classes.imageDesktop} alt="..." />
-        </picture>
-      </CardHeader>
-    )
-  }
 
   const renderBenefit1 = () => {
     return (
@@ -50,7 +37,7 @@ export default function Benefits(props) {
           <GridItem xs={12} sm={6} md={6}>
             <div
               className={classes.image + " " + classes.image1}
-              style={{ backgroundImage: `url(${landing1})` }}
+              style={{ backgroundImage: "url(" + imageUrl(landing1) + ")" }}
             />
           </GridItem>
         </GridContainer>
@@ -67,7 +54,7 @@ export default function Benefits(props) {
           <GridItem xs={12} sm={6} md={6}>
             <div
               className={classes.image + " " + classes.image2}
-              style={{ backgroundImage: `url(${landing2})` }}
+              style={{ backgroundImage: "url(" + imageUrl(landing2) + ")" }}
             />
           </GridItem>
           <GridItem xs={12} sm={6} md={6} className={classes.rightText}>
@@ -83,7 +70,7 @@ export default function Benefits(props) {
           <GridItem xs={12} sm={6} md={6}>
             <div
               className={classes.image + " " + classes.imageMob2}
-              style={{ backgroundImage: `url(${landing2})` }}
+              style={{ backgroundImage: "url(" + imageUrl(landing2) + ")" }}
             />
           </GridItem>
         </GridContainer>
@@ -111,7 +98,7 @@ export default function Benefits(props) {
           <GridItem xs={12} sm={6} md={6}>
             <div
               className={classes.image}
-              style={{ backgroundImage: `url(${landing3})` }}
+              style={{ backgroundImage: "url(" + imageUrl(landing3) + ")" }}
             />
           </GridItem>
         </GridContainer>
