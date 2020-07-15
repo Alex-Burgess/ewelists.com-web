@@ -113,12 +113,12 @@ export default function LoginPage(props) {
                       </div>
                     : null
                   }
-                  <Button fullWidth color="primary" type="submit" disabled={!validateForm()}>
+                  <Button fullWidth color="primary" type="submit" id="login" disabled={!validateForm()}>
                     Login
                   </Button>
                   <Link to="/login/reset" className={classes.link}>Forgot your password?</Link>
                 </form>
-                <div className={classes.accountCheck + " " + classes.textCenter}>
+                <div id="no_account" className={classes.accountCheck + " " + classes.textCenter}>
                   Don't have an account? <Link to="/signup">Sign Up</Link>
                 </div>
               </CardBody>

@@ -172,7 +172,7 @@ export default function SignupPage(props) {
             </div>
           : null
         }
-        <Button fullWidth color="primary" type="submit" disabled={!validateForm()}>
+        <Button fullWidth color="primary" type="submit" id="signup" disabled={!validateForm()}>
           Sign Up
         </Button>
       </form>
