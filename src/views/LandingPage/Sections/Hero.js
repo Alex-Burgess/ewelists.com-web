@@ -17,7 +17,7 @@ export default function Hero(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.section}>
+    <div className={classes.section} data-cy="section-hero">
       <div
         className={classes.image}
         style={{

@@ -76,7 +76,7 @@ export default function LoginPage(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>
-            <Card className={classes.cardLogin}>
+            <Card className={classes.cardLogin} data-cy="card">
               <CardBody signup>
                 <h3 className={classes.title + " " + classes.textCenter}>Log in</h3>
                 <SocialButtons />
@@ -113,13 +113,13 @@ export default function LoginPage(props) {
                       </div>
                     : null
                   }
-                  <Button fullWidth color="primary" type="submit" id="login" disabled={!validateForm()}>
+                  <Button fullWidth color="primary" type="submit" data-cy="login" disabled={!validateForm()}>
                     Login
                   </Button>
                   <Link to="/login/reset" className={classes.link}>Forgot your password?</Link>
                 </form>
-                <div id="no_account" className={classes.accountCheck + " " + classes.textCenter}>
-                  Don't have an account? <Link to="/signup">Sign Up</Link>
+                <div className={classes.accountCheck + " " + classes.textCenter}>
+                  Don't have an account? <Link to="/signup" data-cy="signup">Sign Up</Link>
                 </div>
               </CardBody>
             </Card>

@@ -24,9 +24,9 @@ export default function ErrorPage(props) {
             <h2 className={classes.subTitle}>We can't seem to find the page you're looking for.</h2>
             <div>
               You could head back to the
-              <Link to="/"> home page</Link>
+              <Link to="/" data-cy="home"> home page</Link>
               , or if this keeps happening,
-              <Link to="/contact"> drop us a line </Link>
+              <Link to="/contact" data-cy="contact"> drop us a line </Link>
                so we can quickly fix it.
             </div>
 

@@ -24,7 +24,7 @@ export default function LearnMore(props) {
   }
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-cy="section-learn-more">
       <GridContainer justify="center">
         <GridItem xs={12} sm={8} md={8} className={classes.textCenter}>
           <h3 className={classes.subTitle}>

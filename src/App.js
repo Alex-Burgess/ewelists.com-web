@@ -203,7 +203,7 @@ export default function App(props) {
                   >
                     Our website uses cookies to improve your experience and to provide personalised content. By using
                     our site you agree to our use of cookies.
-                    <Link to="/cookies" className={classes.link}> Learn more</Link>
+                    <Link to="/cookies" className={classes.link} data-cy="cookie-policy-link"> Learn more</Link>
                     .
                   </CookieConsent>
                 : null

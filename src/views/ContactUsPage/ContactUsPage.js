@@ -89,7 +89,7 @@ export default function ContactUsPage(props) {
           }}
         />
         <div className={classes.textCenter}>
-          <Button color="primary" round onClick={() => sendMail()} disabled={!validateForm()}>
+          <Button color="primary" round data-cy="contact" onClick={() => sendMail()} disabled={!validateForm()}>
             Contact us
           </Button>
           {error
@@ -112,11 +112,11 @@ export default function ContactUsPage(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>
-            <Card className={classes.customCard}>
+            <Card className={classes.customCard} data-cy="card">
               <CardBody signup>
                 <h3 className={classes.title + " " + classes.textCenter}>Send us a message</h3>
                 <h4>
-                  You can contact us with anything related to Ewelists. We {"'"}ll get back to you ASAP.
+                  You can contact us with anything related to Ewelists. We{"'"}ll get back to you ASAP.
                 </h4>
                 <div id="formWrapper">
                   {submit

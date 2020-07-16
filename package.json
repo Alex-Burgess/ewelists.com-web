@@ -54,7 +54,10 @@
     "cypress": "cypress open"
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.4.1",
     "cypress": "^4.10.0",
+    "cypress-image-snapshot": "^3.1.1",
+    "cypress-react-unit-test": "^4.10.0",
     "enzyme-to-json": "^3.4.4",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",

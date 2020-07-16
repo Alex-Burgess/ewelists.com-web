@@ -1,9 +1,7 @@
 describe('Landing Page Tests', () => {
-  it('Visits the landing page', () => {
-    cy.visit('/')
-    cy.get('h1').contains('The Gift List Tool For Parents')
-    // cy.contains('The Gift List Tool For Parents')
-    cy.contains('Create Your List')
+  beforeEach(() => {
+    cy.setCookie("CookieConsent", "true")
+    Cypress.config('defaultCommandTimeout', 50000);
   })
 
   it('Checks the Create Your List button redirects to signup page', () => {
