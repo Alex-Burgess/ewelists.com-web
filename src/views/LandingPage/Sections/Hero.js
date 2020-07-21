@@ -29,7 +29,7 @@ export default function Hero(props) {
             <h1 className={classes.title}>The Gift List Tool For Parents</h1>
             <br />
             <div className={classes.buttonContainer}>
-              <Button color="transparent_white" size="lg" href="/signup">
+              <Button color="transparent_white" size="lg" href="/signup" data-cy="create-button">
                 Create Your List
               </Button>
             </div>

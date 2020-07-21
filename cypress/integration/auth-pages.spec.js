@@ -11,8 +11,15 @@ const pages = [
 ];
 
 describe('Auth Page Visual Regression tests', () => {
-  beforeEach(() => {
-    cy.login(Cypress.config().testUser1, Cypress.config().testUser1_password)
+  const email = "eweuser8+authpages@gmail.com"
+
+  before(() => {
+    cy.exec('python ' + Cypress.config().createUserScript + ' -e ' + email + ' -n "Cypress TestDashboard"')
+    cy.login(email, 'P4ssw0rd!')
+  })
+
+  after(() => {
+    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e ' + email)
   })
 
   sizes.forEach((size) => {

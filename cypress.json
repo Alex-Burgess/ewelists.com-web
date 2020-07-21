@@ -5,10 +5,13 @@
   "testFiles": "**/*spec.js",
   "video": false,
   "screenshotOnRunFailure": false,
+  "contactEmail": "contact@ewelists.com",
+  "verifyEmailSubject": "Verify your Ewelists account (test)",
+  "welcomeEmailSubject": "Welcome to Ewelists (test)",
+  "createUserScript": "cypress/scripts/create_user.py",
+  "deleteUserScript": "cypress/scripts/delete_user.py",
   "env": {
     "failOnSnapshotDiff": false,
     "updateSnapshots": false
-  },
-  "testUser1": "burgess.alexander+test1@gmail.com",
-  "testUser1_password": "L1stst3st!"
+  }
 }

@@ -6,9 +6,10 @@ import { onAuthError, debugError } from "libs/errorLib";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
+// components
 import Button from "components/Buttons/Button.js";
 import Input from "components/Input/CustomInput.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -56,14 +57,16 @@ export default function ConfirmationForm(props) {
         }}
       />
       { confirmationError
-        ? <div className={classes.error + " " + classes.textCenter}>
-            <p>{confirmationError}</p>
+        ? <div className={classes.textCenter}>
+            <ErrorText>
+              <p>{confirmationError}</p>
+            </ErrorText>
           </div>
         : null
       }
       <div className={classes.textCenter}>
-        <Button round color="primary" type="submit" disabled={!validateConfirmationForm()}>
-          Verify
+        <Button fullWidth round color="primary" type="submit" disabled={!validateConfirmationForm()} data-cy="confirm-signup-button">
+          Complete Signup
         </Button>
       </div>
     </form>

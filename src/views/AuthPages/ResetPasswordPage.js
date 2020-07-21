@@ -5,7 +5,7 @@ import { Auth } from "aws-amplify";
 import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
+// components
 import FooterGrey from "components/Footer/FooterGrey.js";
 import HeaderWhite from "components/Header/HeaderWhite.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -14,6 +14,8 @@ import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import Input from "components/Input/CustomInput.js";
+import ErrorText from "components/Typography/Error.js";
+// sections
 import NewPasswordForm from "./Sections/NewPasswordForm.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
@@ -66,14 +68,16 @@ export default function ResetPasswordPage(props) {
           }}
         />
         { requestError
-          ? <div id="submitError" className={classes.error}>
-              <p>{requestError}</p>
+          ? <div className={classes.textCenter}>
+              <ErrorText>
+                <p>{requestError}</p>
+              </ErrorText>
             </div>
           : null
         }
         <div className={classes.textCenter}>
-          <Button color="primary" type="submit" disabled={!validateCodeForm()} className={classes.buttonSizes}>
-            Submit
+          <Button fullWidth color="primary" type="submit" disabled={!validateCodeForm()} className={classes.buttonSizes} data-cy="submit-reset">
+            Reset
           </Button>
         </div>
       </form>
@@ -99,7 +103,7 @@ export default function ResetPasswordPage(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>
-            <Card className={classes.cardLogin}>
+            <Card className={classes.cardLogin} data-cy="card">
               <CardBody>
                 {! codeSent
                   ? renderRequestCodeForm()

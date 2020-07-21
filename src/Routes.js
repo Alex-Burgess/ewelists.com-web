@@ -54,7 +54,7 @@ export default function Routes({appProps}) {
       <UnauthenticatedRoute path="/login" exact component={LoginPage} props={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={appProps} />
       <UnauthenticatedRoute path="/signup-complete" exact component={SocialConfirmationPage} props={appProps} />
-      <UnauthenticatedRoute path="/login/reset" exact component={ResetPasswordPage} props={appProps} />
+      <UnauthenticatedRoute path="/reset" exact component={ResetPasswordPage} props={appProps} />
       <AuthenticatedRoute path="/logout" exact component={LogoutPage} props={appProps} />
       <AppliedRoute path="/lists/:id" exact component={ViewListPage} props={appProps} />
       <AppliedRoute path="/reserve/:id" exact component={ReservedPage} props={appProps} />

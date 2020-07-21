@@ -39,3 +39,19 @@ Builds the app for a local/test environment to the `build` folder.
 Builds the application for staging environment.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## UI and E2E Cypress tests
+Run All tests:
+```
+npx cypress run --headless --browser chrome
+```
+
+Run a specific test:
+```
+npx cypress run --spec "cypress/integration/about.spec.js" --headless --browser chrome
+```
+
+Update snapshots:
+```
+CYPRESS_updateSnapshots=true npx cypress run --headless --browser chrome
+```

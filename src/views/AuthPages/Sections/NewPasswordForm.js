@@ -6,9 +6,10 @@ import { onAuthError } from "libs/errorLib";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
+// components
 import Button from "components/Buttons/Button.js";
 import Input from "components/Input/CustomInput.js";
+import ErrorText from "components/Typography/Error.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -136,12 +137,14 @@ export default function NewPasswordForm(props) {
         Use 8 or more characters with a mix of upper and lower case letters, numbers & symbols
       </div>
       { confirmationError
-        ? <div id="newPasswordError" className={classes.error}>
-            <p>{confirmationError}</p>
+        ? <div className={classes.textCenter}>
+            <ErrorText>
+              <p>{confirmationError}</p>
+            </ErrorText>
           </div>
         : null
       }
-      <Button color="primary" type="submit" disabled={!validateResetForm()} className={classes.buttonSizes}>
+      <Button fullWidth color="primary" type="submit" disabled={!validateResetForm()} className={classes.buttonSizes} data-cy="submit-verify">
         Verify
       </Button>
     </form>

@@ -15,11 +15,13 @@ export default function LearnMore(props) {
   const classes = useStyles();
   const { mobile } = props;
 
-  const scrollToExplore = (id) => {
+  const scrollPage = () => {
+    // Mobile is undefined, not sure why?
+    // console.log("Mobile: " + props.mobile)
     if (mobile) {
-      window.scrollTo({ top: 670, behavior: 'smooth' })
+      window.scrollTo({ top: 820, behavior: 'smooth' })
     } else {
-      window.scrollTo({ top: 690, behavior: 'smooth' })
+      window.scrollTo({ top: 790, behavior: 'smooth' })
     }
   }
 
@@ -30,7 +32,7 @@ export default function LearnMore(props) {
           <h3 className={classes.subTitle}>
             Share your gift ideas with ewelists.  It's simple to use and it's free!
           </h3>
-          <Button color="primary" onClick={() => scrollToExplore()}>
+          <Button color="primary" onClick={() => scrollPage()} data-cy="learn-more-button">
             Learn More
           </Button>
         </GridItem>

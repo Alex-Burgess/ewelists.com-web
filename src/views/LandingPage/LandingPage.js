@@ -24,7 +24,7 @@ export default function LandingPage(props) {
       <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
       <div className={classes.main}>
         <Hero mobile={props.mobile} />
-        <LearnMore />
+        <LearnMore mobile={props.mobile}/>
         <Benefits />
         <Product />
         <Ideas />

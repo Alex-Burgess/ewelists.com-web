@@ -21,7 +21,7 @@ export default function LandingCreate(props) {
           <h3 className={classes.subTitle}>
             Create your list and get organised today!
           </h3>
-          <Button color="secondary" href="/signup">
+          <Button color="secondary" href="/signup" data-cy="get-started-button">
             Get Started
           </Button>
         </GridItem>

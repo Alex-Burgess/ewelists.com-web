@@ -14,6 +14,8 @@
 
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const {addMatchImageSnapshotPlugin} = require('cypress-image-snapshot/plugin');
+const path = require("path");
+const gmail_tester = require("gmail-tester");
 
 /**
  * @type {Cypress.PluginConfig}
@@ -22,11 +24,39 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 
-  on('file:preprocessor', webpackPreprocessor())
-  addMatchImageSnapshotPlugin(on, config)
+  on('file:preprocessor', webpackPreprocessor());
 
-  require('cypress-react-unit-test/plugins/react-scripts')(on, config)
+  on("task", {
+    "gmail:check": async args => {
+      const { from, to, subject } = args;
+      const email = await gmail_tester.check_inbox(
+        path.resolve(__dirname, "gt-credentials.json"), // credentials.json is inside plugins/ directory.
+        path.resolve(__dirname, "gt-token.json"), // gmail_token.json is inside plugins/ directory.
+        {
+          subject: subject,
+          from: from,
+          to: to,
+          wait_time_sec: 10,
+          max_wait_time_sec: 30,
+          include_body: true
+        }
+      );
+      return email;
+    },
+    "gmail:get-messages": async args => {
+      const messages = await gmail_tester.get_messages(
+        path.resolve(__dirname, "gt-credentials.json"),
+        path.resolve(__dirname, "gt-token.json"),
+        args.options
+      );
+      return messages;
+    }
+  });
+
+  addMatchImageSnapshotPlugin(on, config);
+
+  require('cypress-react-unit-test/plugins/react-scripts')(on, config);
   // IMPORTANT to return the config object
   // with the any changed environment variables
-  return config
+  return config;
 }

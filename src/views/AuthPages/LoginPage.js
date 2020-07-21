@@ -6,7 +6,7 @@ import qs from "qs";
 import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
+// components
 import FooterGrey from "components/Footer/FooterGrey.js";
 import HeaderWhite from "components/Header/HeaderWhite.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -15,9 +15,9 @@ import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import Input from "components/Input/CustomInput.js";
-// Custom components
-import SocialButtons from "./Sections/SocialButtons.js";
 import ErrorText from "components/Typography/Error.js";
+// sections
+import SocialButtons from "./Sections/SocialButtons.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/authPageStyle.js";
 const useStyles = makeStyles(styles);
@@ -116,10 +116,10 @@ export default function LoginPage(props) {
                   <Button fullWidth color="primary" type="submit" data-cy="login" disabled={!validateForm()}>
                     Login
                   </Button>
-                  <Link to="/login/reset" className={classes.link}>Forgot your password?</Link>
+                  <Link to="/reset" className={classes.link}>Forgot your password?</Link>
                 </form>
                 <div className={classes.accountCheck + " " + classes.textCenter}>
-                  Don't have an account? <Link to="/signup" data-cy="signup">Sign Up</Link>
+                  Don't have an account? <Link to="/signup" data-cy="link-signup">Sign Up</Link>
                 </div>
               </CardBody>
             </Card>

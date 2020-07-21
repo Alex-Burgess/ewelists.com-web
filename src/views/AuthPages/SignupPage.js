@@ -124,7 +124,7 @@ export default function SignupPage(props) {
           <Button justIcon simple className={classes.backButton} onClick={() => setShowEmailForm(false)}>
             <ArrowBackIos />
           </Button>
-          Sign Up
+          Sign Up With Email
           <div className={classes.emailFormSpacer}/>
         </h3>
         <Input
@@ -172,7 +172,7 @@ export default function SignupPage(props) {
             </div>
           : null
         }
-        <Button fullWidth color="primary" type="submit" id="signup" disabled={!validateForm()}>
+        <Button fullWidth color="primary" type="submit" id="signup" disabled={!validateForm()} data-cy="button-signup-form">
           Sign Up
         </Button>
       </form>
@@ -188,18 +188,18 @@ export default function SignupPage(props) {
           : <div>
               <h3 className={classes.title + " " + classes.textCenter}>Sign Up</h3>
               <SocialButtons />
-              <Button fullWidth color="primary" onClick={() => setShowEmailForm(true)} className={classes.signUpButton}>
+              <Button fullWidth color="primary" onClick={() => setShowEmailForm(true)} className={classes.signUpButton} data-cy="button-signup-with-email">
                 Sign up with email
               </Button>
             </div>
         }
         <div className={classes.terms}>
           By signing up to Ewelists, you agree to our{" "}
-          <Link to="/terms" target="_blank" className={classes.link}>terms of service</Link> and
-          <Link to="/privacy" target="_blank" className={classes.link}> privacy policy</Link>.
+          <Link to="/terms" target="_blank" className={classes.link} data-cy="link-terms">terms of service</Link> and
+          <Link to="/privacy" target="_blank" className={classes.link} data-cy="link-privacy"> privacy policy</Link>.
         </div>
         <div className={classes.accountCheck + " " + classes.textCenter}>
-          Already have an account? <Link to="/login" className={classes.link}>Log in</Link>
+          Already have an account? <Link to="/login" className={classes.link} data-cy="link-login">Log in</Link>
         </div>
       </div>
     );
@@ -211,7 +211,7 @@ export default function SignupPage(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>
-            <Card className={classes.cardLogin}>
+            <Card className={classes.cardLogin} data-cy="card">
                 <CardBody signup>
                 {newUser === null
                    ? renderLanding()

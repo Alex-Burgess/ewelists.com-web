@@ -1,4 +1,5 @@
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+addMatchImageSnapshotCommand();
 
 import Amplify, { Auth } from 'aws-amplify';
 Amplify.configure({
@@ -20,8 +21,6 @@ Amplify.configure({
     }
   }
 });
-
-addMatchImageSnapshotCommand();
 
 Cypress.Commands.add("login", (email, password) => {
   return Auth.signIn(email, password)

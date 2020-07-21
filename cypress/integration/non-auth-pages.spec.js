@@ -23,7 +23,7 @@ const pages = [
 describe('Non Auth Page Visual Regression Tests', () => {
   sizes.forEach((size) => {
     pages.forEach((page) => {
-      it(`Should match previous screenshot '${page} Page' When '${size}' resolution`, () => {
+      it(`Should match previous screenshot ${page} Page When ${size} resolution`, () => {
         cy.setCookie("CookieConsent", "true")
 
         if (Cypress._.isArray(size)) {
@@ -40,7 +40,7 @@ describe('Non Auth Page Visual Regression Tests', () => {
 
         cy.get('header').invoke('css', 'position', 'relative');
         Cypress.config('defaultCommandTimeout', 50000);
-        cy.matchImageSnapshot(`'${page}' - '${size}'`);
+        cy.matchImageSnapshot(`${page}-${size}`);
       });
     });
   });
