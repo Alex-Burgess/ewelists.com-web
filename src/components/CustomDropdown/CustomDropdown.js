@@ -68,7 +68,8 @@ export default function CustomDropdown(props) {
     [classes.dropdownItem]: true,
     [classes[hoverColor + "Hover"]]: true,
     [classes.noLiPadding]: noLiPadding,
-    [classes.dropdownItemRTL]: rtlActive
+    [classes.dropdownItemRTL]: rtlActive,
+    "dropdownItem": true
   });
   const dropDownMenu = (
     <MenuList role="menu" className={classes.menuList}>

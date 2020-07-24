@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinksAuth(props) {
   const classes = useStyles();
-  const { dropdownHoverColor, isAuthenticated, user, mobile, headerColor } = props;
+  const { dropdownHoverColor, isAuthenticated, user, tablet, headerColor } = props;
 
   const signUpClasses = classNames({
     [classes.navLink]: true,
@@ -40,27 +40,29 @@ export default function HeaderLinksAuth(props) {
     return (
       <List className={classes.list + " " + classes.mlAuto}>
         <ListItem className={classes.listItem}>
-          <Link to="/" className={linkClasses}>
+          <Link to="/" className={linkClasses} data-cy="header-link-your-lists">
             Your Lists
           </Link>
         </ListItem>
         <ListItem className={classes.listItem}>
-          <Link to="/list-ideas" className={linkClasses}>
+          <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
             Ideas
           </Link>
         </ListItem>
-        {mobile
-          ? <div><ListItem className={classes.listItem}>
-              <Link to="/" className={linkClasses}>
-                <AccountCircle /> {user.name}
-              </Link>
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <Link to="/logout" className={linkClasses}>
-                <ExitToApp /> Sign Out
-              </Link>
-            </ListItem></div>
-          : <ListItem className={classes.listItem}>
+        {tablet
+          ? <div>
+              <ListItem className={classes.listItem}>
+                <Link to="/" className={linkClasses} data-cy="header-mobile-link-account">
+                  <AccountCircle /> {user.name}
+                </Link>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Link to="/logout" className={linkClasses} data-cy="header-mobile-link-logout">
+                  <ExitToApp /> Sign Out
+                </Link>
+              </ListItem>
+            </div>
+          : <ListItem className={classes.listItem} data-cy="header-link-profile-dropdown">
               <CustomDropdown
                 noLiPadding
                 navDropdown
@@ -71,10 +73,10 @@ export default function HeaderLinksAuth(props) {
                 }}
                 buttonIcon={AccountCircle}
                 dropdownList={[
-                  <Link to="/" className={classes.dropdownLink}>
+                  <Link to="/" className={classes.dropdownLink} data-cy="header-link-user-account">
                     <AccountCircle className={classes.dropdownIcons} /> {user.name}
                   </Link>,
-                  <Link to="/logout" className={classes.dropdownLink}>
+                  <Link to="/logout" className={classes.dropdownLink} data-cy="header-link-logout">
                     <ExitToApp className={classes.dropdownIcons} /> Sign Out
                   </Link>
                 ]}
@@ -87,17 +89,17 @@ export default function HeaderLinksAuth(props) {
     return (
       <List className={classes.list + " " + classes.mlAuto}>
         <ListItem className={classes.listItem}>
-          <Link to="/list-ideas" className={linkClasses}>
+          <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
             Ideas
           </Link>
         </ListItem>
         <ListItem className={classes.listItem}>
-          <Link to="/login" className={linkClasses}>
+          <Link to="/login" className={linkClasses} data-cy="header-link-login">
             Log In
           </Link>
         </ListItem>
         <ListItem className={classes.listItem}>
-          <Link to="/signup" className={signUpClasses}>
+          <Link to="/signup" className={signUpClasses} data-cy="header-link-signup">
             Sign Up
           </Link>
         </ListItem>
@@ -122,5 +124,6 @@ HeaderLinksAuth.propTypes = {
   ]),
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
+  tablet: PropTypes.bool
 };

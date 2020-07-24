@@ -67,15 +67,15 @@ export default function Header(props) {
     switch (color) {
       case "dark":
         return (
-          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo"/>
+          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo" data-cy="header-logo-white"/>
         )
       case "white":
         return (
-          <img className={classes.logo} src={require("assets/img/logo-blue.svg")} alt="logo"/>
+          <img className={classes.logo} src={require("assets/img/logo-blue.svg")} alt="logo" data-cy="header-logo-blue"/>
         )
       default:
         return (
-          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo"/>
+          <img className={classes.logo} src={require("assets/img/logo-white.svg")} alt="logo" data-cy="header-logo-white"/>
         )
     }
   }
@@ -88,7 +88,7 @@ export default function Header(props) {
   });
 
   return (
-    <AppBar className={appBarClasses}>
+    <AppBar className={appBarClasses} data-cy="header">
       { mobileBar
         ? <Toolbar className={classes.containerBack}>
             <Button className={classes.logoButton}>
@@ -100,7 +100,7 @@ export default function Header(props) {
           </Toolbar>
         : <Toolbar className={classes.container}>
             <Button className={classes.logoButton}>
-              <Link to="/">
+              <Link to="/" data-cy="header-link-logo">
                 {logo()}
               </Link>
             </Button>

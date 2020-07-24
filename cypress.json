@@ -10,6 +10,7 @@
   "welcomeEmailSubject": "Welcome to Ewelists (test)",
   "createUserScript": "cypress/scripts/create_user.py",
   "deleteUserScript": "cypress/scripts/delete_user.py",
+  "deleteListScript": "cypress/scripts/delete_list.py",
   "env": {
     "failOnSnapshotDiff": false,
     "updateSnapshots": false

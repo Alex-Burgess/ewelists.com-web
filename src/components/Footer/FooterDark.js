@@ -33,12 +33,12 @@ export default function FooterDark(props) {
             </p>
             <ul className={classes.socialButtons}>
               <li>
-                <Button justIcon simple href="https://www.facebook.com/ewelists" target="_blank" color="facebook">
+                <Button justIcon simple href="https://www.facebook.com/ewelists" target="_blank" color="facebook" data-cy="footer-dark-link-facebook">
                   <i className="fab fa-facebook-square" />
                 </Button>
               </li>
               <li>
-                <Button justIcon simple href="https://www.instagram.com/ewelists/" target="_blank" color="instagram">
+                <Button justIcon simple href="https://www.instagram.com/ewelists/" target="_blank" color="instagram" data-cy="footer-dark-link-instagram">
                   <i className="fab fa-instagram" />
                 </Button>
               </li>
@@ -48,13 +48,13 @@ export default function FooterDark(props) {
             <h5>About</h5>
             <ul>
               <li>
-                <Link to="/list-ideas">Blog</Link>
+                <Link to="/list-ideas" data-cy="footer-dark-link-ideas">Blog</Link>
               </li>
               <li>
-                <Link to="/about">About us</Link>
+                <Link to="/about" data-cy="footer-dark-link-about">About us</Link>
               </li>
               <li>
-                <Link to="/contact">Contact us</Link>
+                <Link to="/contact" data-cy="footer-dark-link-contact">Contact us</Link>
               </li>
             </ul>
           </GridItem>
@@ -62,13 +62,13 @@ export default function FooterDark(props) {
             <h5>Legal</h5>
             <ul>
               <li>
-                <Link to="/privacy">Privacy</Link>
+                <Link to="/privacy" data-cy="footer-dark-link-privacy">Privacy</Link>
               </li>
               <li>
-                <Link to="/terms">Terms</Link>
+                <Link to="/terms" data-cy="footer-dark-link-terms">Terms</Link>
               </li>
               <li>
-                <Link to="/cookies">Cookies</Link>
+                <Link to="/cookies" data-cy="footer-dark-link-cookies">Cookies</Link>
               </li>
             </ul>
           </GridItem>

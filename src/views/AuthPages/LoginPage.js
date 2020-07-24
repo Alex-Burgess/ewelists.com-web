@@ -72,7 +72,7 @@ export default function LoginPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile} tablet={props.tablet}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>

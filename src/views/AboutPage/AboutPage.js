@@ -18,7 +18,7 @@ export default function AboutPage(props) {
   const classes = useStyles();
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={10} lg={10}>

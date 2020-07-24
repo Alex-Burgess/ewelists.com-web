@@ -23,18 +23,18 @@ export default function FooterGrey(props) {
             <div className={classes.left}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
-                  <Link to="/privacy">Privacy</Link>
+                  <Link to="/privacy" data-cy="footer-grey-link-privacy">Privacy</Link>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <Link to="/terms">Terms</Link>
+                  <Link to="/terms" data-cy="footer-grey-link-terms">Terms</Link>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <Link to="/contact">Support</Link>
+                  <Link to="/contact" data-cy="footer-grey-link-contact">Support</Link>
                 </ListItem>
               </List>
             </div>
             <div className={classes.rightLinks}>
-              <a href="/" className={classes.block}>
+              <a href="/" className={classes.block} data-cy="footer-grey-link-copy">
                 &copy; {1900 + new Date().getYear()} ewelists
               </a>
             </div>

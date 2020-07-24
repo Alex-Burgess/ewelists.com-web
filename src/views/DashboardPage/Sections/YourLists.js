@@ -64,9 +64,9 @@ export default function YourLists(props) {
     return allLists.concat(lists).map (
       (list, i) =>
         <GridItem xs={12} sm={4} md={4} key={i}>
-          <Card profile>
+          <Card profile className={"listCard"}>
             <CardHeader image>
-              <Link to={"/edit/" + list.listId}>
+              <Link to={"/edit/" + list.listId} data-cy="link-image">
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
               </Link>
               <div
@@ -79,7 +79,7 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Primary>
-                <Link to={"/edit/" + list.listId}>
+                <Link to={"/edit/" + list.listId} data-cy="link-header">
                   <h6 className={classes.cardCategory}>{list.title}</h6>
                 </Link>
               </Primary>
@@ -88,12 +88,12 @@ export default function YourLists(props) {
               </p>
             </CardBody>
               <CardFooter profile className={classes.justifyContentCenter}>
-                <Link to={"/lists/" + list.listId}>
+                <Link to={"/lists/" + list.listId} data-cy="link-view-list">
                   <Button round color="primary2" className={classes.customButton}>
                     <ViewIcon /> View
                   </Button>
                 </Link>
-                <Link to={"/edit/" + list.listId}>
+                <Link to={"/edit/" + list.listId} data-cy="link-edit-list">
                   <Button round color="primary" className={classes.customButton}>
                     <Icon>mode_edit</Icon> Edit
                   </Button>
@@ -112,7 +112,7 @@ export default function YourLists(props) {
         <GridItem xs={12} sm={4} md={4} key={i}>
           <Card profile>
             <CardHeader image>
-              <Link to={"/edit/" + list.listId}>
+              <Link to={"/edit/" + list.listId} data-cy="link-closed-image">
                 <img src={list.imageUrl} className={classes.listImage} alt="..." />
               </Link>
               <div
@@ -125,7 +125,7 @@ export default function YourLists(props) {
             </CardHeader>
             <CardBody>
               <Primary>
-                <Link to={"/edit/" + list.listId}>
+                <Link to={"/edit/" + list.listId} data-cy="link-closed-header">
                   <h6 className={classes.cardCategory}>{list.title}</h6>
                 </Link>
               </Primary>
@@ -134,7 +134,7 @@ export default function YourLists(props) {
               </p>
             </CardBody>
               <CardFooter profile className={classes.justifyContentCenter}>
-                <Link to={"/edit/" + list.listId}>
+                <Link to={"/edit/" + list.listId} data-cy="link-closed-edit-list">
                   <Button round color="primary" className={classes.customButton}>
                     <Icon>mode_edit</Icon> Details
                   </Button>
@@ -147,7 +147,7 @@ export default function YourLists(props) {
 
   return (
     <div className={classes.section}>
-      <div className={classes.container}>
+      <div className={classes.container} data-cy="your-lists">
         <h2 className={classes.title}><Update className={classes.icon}/>Your Lists</h2>
         <br />
         <GridContainer>
@@ -155,7 +155,7 @@ export default function YourLists(props) {
           {!isLoading && renderClosedLists(closedLists)}
           <GridItem xs={12} sm={4} md={4} className={classes.addList}>
               <div className={classes.centerButton}>
-                <Button round justIcon color="secondary" size="lg" onClick={() => props.setCreate(true)}>
+                <Button round justIcon color="secondary" size="lg" onClick={() => props.setCreate(true)} data-cy="button-create-new-list">
                   <Add />
                 </Button>
                 <div className={classes.createText}>

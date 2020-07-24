@@ -28,6 +28,7 @@ export default function App(props) {
   const [tabTitle, setTabTitle] = useState('Ewelists');
   const [user, setUser] = useState({});
   const [mobile, setMobile] = useState(false);
+  const [tablet, setTablet] = useState(false);
 
   // Google Analytics
   if (isAuthenticated || Cookies.get('CookieConsent') === 'true') {
@@ -53,7 +54,10 @@ export default function App(props) {
     function updateDimensions() {
       if (window.innerWidth < 400){
         setMobile(true);
+      } else if (window.innerWidth < 960) {
+        setTablet(true);
       } else {
+        setTablet(false);
         setMobile(false);
       }
     };
@@ -185,7 +189,7 @@ export default function App(props) {
             <ScrollToTop />
             <Title title={tabTitle} environment={process.env.REACT_APP_STAGE}/>
             <ErrorBoundary>
-              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, setTabTitle, handleLogout, cookiesAllowed}} />
+              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, tablet, setTabTitle, handleLogout, cookiesAllowed}} />
               {!isAuthenticated
                 ? <CookieConsent
                     style={{ background: "#294861" }}

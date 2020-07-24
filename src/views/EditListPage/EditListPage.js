@@ -10,7 +10,7 @@ import List from "@material-ui/icons/List";
 import Search from "@material-ui/icons/Search";
 import Redeem from "@material-ui/icons/Redeem";
 // core components
-import Header from "components/Header/HeaderDark.js";
+import HeaderDark from "components/Header/HeaderDark.js";
 import FooterDark from "components/Footer/FooterDark.js";
 import NavPills from "components/NavPills/NavPills.js";
 // s for this page
@@ -237,7 +237,7 @@ export default function EditPage(props) {
 
   return (
     <div>
-      <Header isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <HeaderDark isAuthenticated={true} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
       <div className={classes.main}>
         {loadError
           ? <div>

@@ -21,7 +21,7 @@ export default function LandingPage(props) {
 
   return (
     <div>
-      <HeaderWhite isAuthenticated={false} mobile={props.mobile}/>
+      <HeaderWhite isAuthenticated={false} mobile={props.mobile} tablet={props.tablet}/>
       <div className={classes.main}>
         <Hero mobile={props.mobile} />
         <LearnMore mobile={props.mobile}/>

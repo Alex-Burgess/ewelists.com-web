@@ -81,8 +81,10 @@ def user_pool_id():
 
 @mock.patch("create_user.set_password", mock.MagicMock(return_value=[True]))
 class TestCreateUser:
-    def test_create_user(self, cognito_mock, dynamodb_mock, user_pool_id):
+    def test_create_user(self, capsys, cognito_mock, dynamodb_mock, user_pool_id):
         assert create_user.main('new.user1@gmail.com', 'New User1', user_pool_id, 'lists-unittest')
+        captured = capsys.readouterr()
+        assert captured.out == "new.user1@gmail.com\n"
 
     def test_create_fails_in_cognito(self, cognito_mock, user_pool_id):
         with pytest.raises(SystemExit) as e:

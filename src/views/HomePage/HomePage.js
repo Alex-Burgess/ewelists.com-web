@@ -27,7 +27,7 @@ export default function HomePage(props) {
   return (
     <div>
       {props.isAuthenticated
-        ? <DashboardPage create={create} setCreate={setCreate} user={props.user} setTabTitle={props.setTabTitle}/>
+        ? <DashboardPage create={create} setCreate={setCreate} user={props.user} mobile={props.mobile} tablet={props.tablet} setTabTitle={props.setTabTitle}/>
         : <LandingPage />
       }
     </div>

@@ -18,7 +18,7 @@ const useStyles = makeStyles(styles);
 export default function ListArticle(props) {
   const classes = useStyles();
 
-  const { isAuthenticated, name, content, user } = props;
+  const { name, content, user, isAuthenticated, mobile, tablet } = props;
 
   const title = details[name].title;
   const subtitle = details[name].description_short;
@@ -30,7 +30,7 @@ export default function ListArticle(props) {
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={isAuthenticated} user={user} />
+      <HeaderTransparent isAuthenticated={isAuthenticated} user={user}  mobile={mobile} tablet={tablet}/>
       <Parallax image={img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
@@ -61,4 +61,6 @@ ListArticle.propTypes = {
   isAuthenticated: PropTypes.bool,
   name: PropTypes.string,
   content: PropTypes.object,
+  mobile: PropTypes.bool,
+  tablet: PropTypes.bool
 };

@@ -170,7 +170,7 @@ export default function HostpitalBag(props) {
         <SectionHeading name="partnerlist" text="What to pack for your birth partner" />
         <p>
           As hospitals can be hot places, your birth partner might like to have some cool clothes to change into and
-          something fresh to put on after the birth. Shorts, t-shirts and loose dresses all work well. It's also a good
+          something fresh to put on after the birth. Shorts, t-shirts and loose dresses all work well. It{"'"}s also a good
           idea to give them the responsibility for the camera and any chargers you need. Not all hospitals allow you to
           plug into their sockets, but a chargeable battery pack will solve this issue.
         </p>
@@ -208,6 +208,8 @@ export default function HostpitalBag(props) {
         name={name}
         content={ content }
         setTitle={props.setTabTitle}
+        mobile={props.mobile}
+        tablet={props.tablet}
       />
     </div>
   );

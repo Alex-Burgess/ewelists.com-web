@@ -6,11 +6,11 @@ import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 
 export default function HeaderTransparent(props) {
-  const { isAuthenticated, user, mobile } = props;
+  const { isAuthenticated, user, mobile, tablet } = props;
 
   return (
     <Header
-      links={<HeaderLinks headerColor="dark" isAuthenticated={isAuthenticated} user={user} mobile={mobile}/>}
+      links={<HeaderLinks headerColor="dark" isAuthenticated={isAuthenticated} user={user} mobile={mobile} tablet={tablet} />}
       fixed
       color="transparent"
       changeColorOnScroll={{
@@ -24,5 +24,6 @@ export default function HeaderTransparent(props) {
 HeaderTransparent.propTypes = {
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
+  tablet: PropTypes.bool
 };

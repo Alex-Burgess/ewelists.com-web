@@ -31,7 +31,7 @@ export default function Footer(props) {
   });
 
   return (
-    <footer className={footerClasses}>
+    <footer className={footerClasses} data-cy="footer">
       <div className={classes.container}>
         {children !== undefined ? (
           <div>

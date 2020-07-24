@@ -21,7 +21,7 @@ export default function DashboardPage(props) {
   return (
     <div>
       <div className={classes.page}>
-        <HeaderDark isAuthenticated={true} user={props.user} mobile={props.mobile}/>
+        <HeaderDark isAuthenticated={true} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
         <div className={classes.main}>
           <YourLists showCreate={create} setCreate={setCreate} setTabTitle={props.setTabTitle}/>
         </div>

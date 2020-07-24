@@ -108,7 +108,7 @@ export default function ContactUsPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} />
+      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} tablet={props.tablet} />
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>

@@ -145,7 +145,7 @@ function CreatePopOut(props) {
     <Dialog
       classes={{
         root: classes.modalRoot,
-        paper: classes.modal + " " + classes.modalCustom
+        paper: classes.modal + " " + classes.modalCustom + " signUpCard"
       }}
       open={open}
       TransitionComponent={Transition}
@@ -164,6 +164,7 @@ function CreatePopOut(props) {
           key="close"
           aria-label="Close"
           onClick={() => props.setCreate(false)}
+          data-cy="button-form-close"
         >
           {" "}
           <Close className={classes.modalClose} />
@@ -205,7 +206,7 @@ function CreatePopOut(props) {
                   </InputLabel>
                   <FormControl fullWidth>
                     <Datetime
-                      className={classes.dateField}
+                      className={classes.dateField + " datepicker"}
                       dateFormat="DD MMMM YYYY"
                       timeFormat={false}
                       inputProps={{name: "date", placeholder: "Select a date" }}
@@ -243,6 +244,7 @@ function CreatePopOut(props) {
                     className={classes.buttonSuccess}
                     disabled={!validateForm() || isCreating}
                     onClick={createList}
+                    data-cy="button-create-list"
                   >
                     Create
                   </Button>

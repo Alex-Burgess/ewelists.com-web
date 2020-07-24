@@ -7,16 +7,16 @@ cognito = session.client('cognito-idp')
 
 
 def main(email, name, user_pool_id, table_name):
-    create_in_cognito(email, name, user_pool_id)
+    username = create_in_cognito(email, name, user_pool_id)
     set_password(email, user_pool_id)
 
-    print("Created user: " + email)
+    print(username)
     return True
 
 
 def create_in_cognito(email, name, user_pool_id):
     try:
-        cognito.admin_create_user(
+        response = cognito.admin_create_user(
             UserPoolId=user_pool_id,
             Username=email,
             UserAttributes=[
@@ -34,7 +34,7 @@ def create_in_cognito(email, name, user_pool_id):
               )
         sys.exit(1)
 
-    return True
+    return response['User']['Username']
 
 
 def set_password(email, user_pool_id):

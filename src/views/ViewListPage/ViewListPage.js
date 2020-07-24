@@ -7,7 +7,7 @@ import { getSharedList, getProducts } from "libs/apiLib";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import Header from "components/Header/HeaderTransparent.js";
+import HeaderTransparent from "components/Header/HeaderTransparent.js";
 import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "components/Footer/FooterDark.js";
 // sections for this page
@@ -162,7 +162,7 @@ export default function ViewList(props) {
 
   return (
     <div>
-      <Header isAuthenticated={props.isAuthenticated} user={props.user} />
+      <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user}  mobile={props.mobile} tablet={props.tablet}/>
       <Parallax className={classes.articleBg} />
       <div className={classes.main}>
         {listLoaded

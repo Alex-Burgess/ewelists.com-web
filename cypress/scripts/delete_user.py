@@ -94,7 +94,7 @@ def delete_from_db(userId, table_name):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Create test user in cognito and lists table.')
+    parser = argparse.ArgumentParser(description='Delete test user in cognito and lists table.')
     parser.add_argument('-e', '--email', help='users email', required=True)
     # Add userpool and table names as arguments
     args = parser.parse_args()

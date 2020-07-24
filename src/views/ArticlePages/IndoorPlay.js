@@ -153,6 +153,8 @@ export default function OutdoorPlay(props) {
       name={name}
       content={ content }
       setTitle={props.setTabTitle}
+      mobile={props.mobile}
+      tablet={props.tablet}
     />
   );
 }
