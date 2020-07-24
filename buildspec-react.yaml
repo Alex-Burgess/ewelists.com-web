@@ -5,10 +5,10 @@ phases:
       nodejs: 12
     commands:
       - echo Installing NPM dependencies...
-      - npm install
+      - npm install --production
   pre_build:
     commands:
-      - CLOUDFRONT_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?AliasICPRecordals[?CNAME=='$WEB_BUCKET']].{ID:Id}" --output text)
+      - CLOUDFRONT_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{ID:Id, AliaseDomainName:Aliases.Items[0]}[?AliaseDomainName=='$WEB_BUCKET']" --output text | awk '{print $2}')
       - echo CloudFront ID $CLOUDFRONT_ID
       - TRIGGER=$(aws codepipeline list-pipeline-executions --pipeline-name main --query "pipelineExecutionSummaries[0].trigger.triggerType" --output text | head -1)
       - echo TRIGGER was $TRIGGER
