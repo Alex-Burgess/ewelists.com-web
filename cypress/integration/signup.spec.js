@@ -1,4 +1,5 @@
 // TODO E2E tests for welcome email content (e.g. test links work correctly)
+// TODO Signup tests for googlemail gmail issues.  (Prevent signup with googlemail if gmail exists and vice versa.)
 
 describe('Sign up E2E Test', () => {
   beforeEach(() => {

@@ -75,6 +75,7 @@ export default function NavPills(props) {
               root: pillsClasses,
               label: classes.label
             }}
+            id={prop.tabButton}
           />
         );
       })}

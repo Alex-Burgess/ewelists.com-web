@@ -30,7 +30,7 @@ export default function SectionProducts(props) {
       <Table
         tableHead={[
           "",
-          "ITEM",
+          "RESERVED GIFTS",
           "RESERVED BY",
           "QTY",
           ""
@@ -59,7 +59,7 @@ export default function SectionProducts(props) {
     return (
       <Table
         tableHead={[
-          "RESERVED ITEMS"
+          "RESERVED GIFTS"
         ]}
         tableData={
           renderMobileTable()

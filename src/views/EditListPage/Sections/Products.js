@@ -47,7 +47,7 @@ export default function SectionProducts(props) {
       <Table
         tableHead={[
           "",
-          "PRODUCT",
+          "GIFTS",
           "QTY",
           "RESERVED",
           ""
@@ -79,7 +79,7 @@ export default function SectionProducts(props) {
     return (
       <Table
         tableHead={[
-          "MANAGE ITEMS"
+          "MANAGE GIFTS"
         ]}
         tableData={
           renderMobileProducts()
@@ -115,12 +115,12 @@ export default function SectionProducts(props) {
     return (
       [
       <div className={classes.imgContainer} key={1}>
-        <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
+        <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
           <img src={imageUrl} alt="..." className={classes.img} />
         </button>
       </div>,
       <span key={1}>
-        <button onClick={() => handleEditClickOpen(productId)} className={classes.brand}>
+        <button onClick={() => handleEditClickOpen(productId)} className={classes.brand} data-cy="link-brand">
           {brand}
         </button>
         <br />
@@ -147,7 +147,7 @@ export default function SectionProducts(props) {
           placement="left"
           classes={{ tooltip: classes.tooltip }}
         >
-          <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)}>
+          <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)} data-cy="link-edit">
             <Edit />
           </Button>
         </Tooltip>
@@ -161,11 +161,11 @@ export default function SectionProducts(props) {
       [
           <div className={classes.textCenter}>
             <div className={classes.imgContainer} key={1}>
-              <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
+              <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
                 <img src={imageUrl} alt="..." className={classes.img} />
               </button>
             </div>
-            <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton}>
+            <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-brand">
               <h4 className={classes.brand}>
                 {brand}
               </h4>
@@ -195,7 +195,7 @@ export default function SectionProducts(props) {
               placement="left"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)}>
+              <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)} data-cy="link-edit">
                 <Edit />
               </Button>
             </Tooltip>

@@ -9,6 +9,7 @@
   "verifyEmailSubject": "Verify your Ewelists account (test)",
   "welcomeEmailSubject": "Welcome to Ewelists (test)",
   "createUserScript": "cypress/scripts/create_user.py",
+  "createListScript": "cypress/scripts/create_list.py",
   "deleteUserScript": "cypress/scripts/delete_user.py",
   "deleteListScript": "cypress/scripts/delete_list.py",
   "env": {

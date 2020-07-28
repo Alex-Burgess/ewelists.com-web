@@ -141,15 +141,15 @@ export default function SectionDetails(props) {
   const allButtons = () => {
     return (
       <div>
-        <div className={classes.labelQuantity}>
+        <div className={classes.labelQuantity} data-cy="div-quantity">
           <span>
               Quantity:
           </span>
-          <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+          <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()} data-cy="link-quantity-decrease">
             <Remove />
           </Button>
           {` `}{newQuantity}{` `}
-          <Button id="add" color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+          <Button id="add" color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)} data-cy="link-quantity-increase">
             <Add />
           </Button>
         </div>
@@ -166,13 +166,13 @@ export default function SectionDetails(props) {
   const editButtons = () => {
     return (
       <div>
-        <div className={classes.labelQuantity}>
+        <div className={classes.labelQuantity} data-cy="div-quantity">
           Quantity:
-          <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+          <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()} data-cy="link-quantity-decrease">
             <Remove />
           </Button>
           {` `}{newQuantity}{` `}
-          <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)}>
+          <Button color="primary" size="sm" simple onClick={() => setNewQuantity(newQuantity + 1)} data-cy="link-quantity-increase">
             <Add />
           </Button>
         </div>
@@ -214,12 +214,12 @@ export default function SectionDetails(props) {
           </Button>
           <Card plain product>
             <div className={classes.productImageContainer}>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" data-cy="link-product-image">
                 <img src={product['imageUrl']} className={classes.productImage} alt=".." />
               </a>
             </div>
             <CardBody plain className={classes.productDetails}>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer">
+              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" data-cy="link-product-brand">
                 <h4 className={classes.cardTitle}>{product['brand']}</h4>
               </a>
               <p className={classes.description}>

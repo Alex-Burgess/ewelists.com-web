@@ -79,7 +79,7 @@ export default function SectionDetails(props) {
               : <GridContainer >
                   <GridItem xs={12} sm={9} md={9}>
                     <div className={classes.centerMobileText}>
-                      <a href={mailToText}>
+                      <a href={mailToText} data-cy="link-mailto">
                         <Button round justIcon share>
                           <i className="far fa-envelope" />
                         </Button>
@@ -97,18 +97,18 @@ export default function SectionDetails(props) {
                               </Button>
                             </a>
                           </span>
-                        : <Button color="messenger" round justIcon share onClick={() => Facebook(listUrl)}>
+                        : <Button color="messenger" round justIcon share onClick={() => Facebook(listUrl)} data-cy="button-fb">
                             <i className="fab fa-facebook-messenger" />
                           </Button>
                       }
-                      <Button color="secondary" round share onClick={() => copyLink() }>
+                      <Button color="secondary" round share onClick={() => copyLink() } data-cy="button-share">
                         <i className="fas fa-share-alt" />
                           { showCopied
                             ? 'Copied!'
                             : 'Share'
                           }
                       </Button>
-                      <Link to={"/lists/" + listId}>
+                      <Link to={"/lists/" + listId} data-cy="link-view">
                         <Button color="primary" round share>
                           <i className="fas fa-eye"></i>
                            View
@@ -117,7 +117,7 @@ export default function SectionDetails(props) {
                     </div>
                   </GridItem>
                   <GridItem xs={12} sm={3} md={3} className={classes.cogDesktop}>
-                    <Link to={"/settings/" + listId}>
+                    <Link to={"/settings/" + listId} data-cy="link-settings">
                       <Button round share>
                         <i className="fas fa-cog"></i>
                           Settings
