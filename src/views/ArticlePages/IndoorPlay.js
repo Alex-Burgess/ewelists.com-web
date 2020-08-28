@@ -8,7 +8,6 @@ import Products from "./Sections//Products.js";
 
 // Blog Data
 const name = 'childrens-indoor-play'
-const productData = require('./Products/IndoorPlay.json');
 
 export default function OutdoorPlay(props) {
   const [lists, setLists] = useState({});
@@ -47,7 +46,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r003-1234-abcdefghijkl",
           "12345678-blog-r006-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -69,7 +67,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r013-1234-abcdefghijkl",
           "12345678-blog-r015-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -86,7 +83,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r011-1234-abcdefghijkl",
           "12345678-blog-r012-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -107,7 +103,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r020-1234-abcdefghijkl",
           "12345678-blog-r016-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -128,7 +123,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r026-1234-abcdefghijkl",
           "12345678-blog-r027-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

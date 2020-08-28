@@ -9,7 +9,6 @@ import Quote from "components/Typography/Quote.js";
 
 // Blog Data
 const name = 'baby-travel-gear'
-const productData = require('./Products/BabyTravelGear.json');
 
 export default function TravelGear(props) {
   const [lists, setLists] = useState({});
@@ -64,7 +63,6 @@ export default function TravelGear(props) {
           "12345678-prod-t002-1234-abcdefghijkl",
           "12345678-prod-t010-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -80,7 +78,6 @@ export default function TravelGear(props) {
           "12345678-prod-t011-1234-abcdefghijkl",
           "12345678-prod-t032-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -100,7 +97,6 @@ export default function TravelGear(props) {
           "12345678-prod-t034-1234-abcdefghijkl",
           "12345678-prod-t005-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -117,7 +113,6 @@ export default function TravelGear(props) {
           "12345678-prod-t006-1234-abcdefghijkl",
           "12345678-prod-t035-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -135,7 +130,6 @@ export default function TravelGear(props) {
           "12345678-prod-t013-1234-abcdefghijkl",
           "12345678-prod-t014-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -155,7 +149,6 @@ export default function TravelGear(props) {
           "12345678-prod-t017-1234-abcdefghijkl",
           "12345678-prod-t018-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -172,7 +165,6 @@ export default function TravelGear(props) {
           "12345678-prod-t020-1234-abcdefghijkl",
           "12345678-prod-t021-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -187,7 +179,6 @@ export default function TravelGear(props) {
           "12345678-prod-t009-1234-abcdefghijkl",
           "12345678-prod-t019-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -225,7 +216,6 @@ export default function TravelGear(props) {
           "12345678-prod-t036-1234-abcdefghijkl",
           "12345678-prod-t037-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -245,7 +235,6 @@ export default function TravelGear(props) {
           "12345678-prod-t027-1234-abcdefghijkl",
           "12345678-prod-t028-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -268,7 +257,6 @@ export default function TravelGear(props) {
           "12345678-prod-t030-1234-abcdefghijkl",
           "12345678-prod-t031-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

@@ -8,7 +8,6 @@ import Products from "./Sections//Products.js";
 
 // Blog Data
 const name = 'childrens-outdoor-play'
-const productData = require('./Products/OutdoorPlay.json');
 
 export default function OutdoorPlay(props) {
   const [lists, setLists] = useState({});
@@ -43,7 +42,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o003-1234-abcdefghijkl",
           "12345678-blog-o017-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -63,7 +61,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o018-1234-abcdefghijkl",
           "12345678-blog-o008-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -87,7 +84,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o015-1234-abcdefghijkl",
           "12345678-blog-o016-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

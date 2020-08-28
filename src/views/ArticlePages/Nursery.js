@@ -10,7 +10,6 @@ import SectionHeadings from "./Sections//SectionHeadings.js";
 
 // Blog Data
 const name = 'nursery-list';
-const productData = require('./Products/NurseryList.json');
 
 export default function Nursery(props) {
   const [lists, setLists] = useState({});
@@ -57,7 +56,6 @@ export default function Nursery(props) {
           "12345678-prod-n002-1234-abcdefghijkl",
           "12345678-prod-n003-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -74,7 +72,6 @@ export default function Nursery(props) {
           "12345678-prod-n028-1234-abcdefghijkl",
           "12345678-prod-n029-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -84,7 +81,7 @@ export default function Nursery(props) {
         is slightly bigger than a cot (L 120 cm x W 60 cm) and can be converted into a small child's bed, providing much
         more longevity. However, if you are short on space, a cot is a good option and can still be used until they are
         around two years. Unlike Moses baskets and cribs, cots do not come with a mattress, so you'll need to purchase
-        the appropriate cot or cot bed mattress at the same. It's also a good idea to have a mattress protector because
+        the appropriate cot or cot bed mattress at the same. It{"''"}s also a good idea to have a mattress protector because
         of the inevitable dribbles and runny noses.
       </p>
       <Products
@@ -95,7 +92,6 @@ export default function Nursery(props) {
           "12345678-prod-n009-1234-abcdefghijkl",
           "12345678-prod-n010-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -115,7 +111,6 @@ export default function Nursery(props) {
           "12345678-prod-n030-1234-abcdefghijkl",
           "12345678-prod-n031-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -138,7 +133,6 @@ export default function Nursery(props) {
           "12345678-prod-n020-1234-abcdefghijkl",
           "12345678-prod-n032-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -154,7 +148,6 @@ export default function Nursery(props) {
           "12345678-prod-n034-1234-abcdefghijkl",
           "12345678-prod-n035-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -170,7 +163,6 @@ export default function Nursery(props) {
           "12345678-prod-n040-1234-abcdefghijkl",
           "12345678-prod-n041-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -208,7 +200,6 @@ export default function Nursery(props) {
           "12345678-prod-n037-1234-abcdefghijkl",
           "12345678-prod-n038-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

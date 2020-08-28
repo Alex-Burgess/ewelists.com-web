@@ -7,7 +7,6 @@ import Products from "./Sections//Products.js";
 
 // Blog Data
 const name = 'christmas-ideas-for-toddlers'
-const productData = require('./Products/ChristmasIdeas.json');
 
 export default function ChristmasIdeasForToddlers(props) {
   const [lists, setLists] = useState({});
@@ -40,7 +39,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c004-1234-abcdefghijkl",
           "12345678-prod-c005-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -78,7 +76,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c008-1234-abcdefghijkl",
           "12345678-prod-c009-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -107,7 +104,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c012-1234-abcdefghijkl",
           "12345678-prod-c015-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

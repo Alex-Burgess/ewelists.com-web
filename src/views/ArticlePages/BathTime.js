@@ -8,7 +8,6 @@ import Products from "./Sections//Products.js";
 
 // Blog Data
 const name = 'baby-bath-time';
-const productData = require('./Products/BathTime.json');
 
 export default function BathTime(props) {
   const [lists, setLists] = useState({});
@@ -43,7 +42,6 @@ export default function BathTime(props) {
           "12345678-prod-b001-1234-abcdefghijkl",
           "12345678-prod-b002-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -60,7 +58,6 @@ export default function BathTime(props) {
           "12345678-prod-b003-1234-abcdefghijkl",
           "12345678-prod-b004-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -79,7 +76,6 @@ export default function BathTime(props) {
           "12345678-prod-b007-1234-abcdefghijkl",
           "12345678-prod-b008-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -100,7 +96,6 @@ export default function BathTime(props) {
           "12345678-prod-b011-1234-abcdefghijkl",
           "12345678-prod-b012-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -116,7 +111,6 @@ export default function BathTime(props) {
           "12345678-prod-b013-1234-abcdefghijkl",
           "12345678-prod-b014-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -137,7 +131,6 @@ export default function BathTime(props) {
           "12345678-prod-b019-1234-abcdefghijkl",
           "12345678-prod-b021-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

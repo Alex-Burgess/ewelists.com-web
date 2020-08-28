@@ -39,6 +39,46 @@ export const getProduct = async (product) => {
   return response;
 }
 
+// Expects array of ids
+// [
+//   "12345678-blog-e001-1234-abcdefghijkl",
+//   "12345678-blog-e002-1234-abcdefghijkl",
+//   "12345678-blog-e038-1234-abcdefghijkl"
+// ]
+export const getBlogProducts = async (products) => {
+  let productDetails = {};
+
+  await Promise.all(products.map(async (id) => {
+    let product = {
+      "productId": id,
+      "type": "products"
+    };
+
+    const productResponse = await getProduct(product);
+
+    if (productResponse) {
+      product['brand'] = productResponse.brand;
+      product['details'] = productResponse.details;
+      product['productUrl'] = productResponse.productUrl;
+      product['imageUrl'] = productResponse.imageUrl;
+      product['price'] = productResponse.price;
+
+      productDetails[id] = product;
+    }
+  }));
+
+  return productDetails;
+}
+
+// Expects map object:
+// {
+// "e13fafa6-845e-416d-bbf6-b63fbd6d14ba": {
+//     "productId": "e13fafa6-845e-416d-bbf6-b63fbd6d14ba",
+//     "quantity": 2,
+//     "reserved": 0,
+//     "purchased": 0,
+//     "type": "products"
+// }
 export const getProducts = async (products) => {
   let productDetails = {};
 

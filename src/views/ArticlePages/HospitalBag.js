@@ -9,7 +9,6 @@ import ChecklistCard from "./Sections//ChecklistCard.js";
 
 // Blog Data
 const name = 'hospital-bag-checklist';
-const productData = require('./Products/HospitalBag.json');
 
 export default function HostpitalBag(props) {
   const [lists, setLists] = useState({});
@@ -57,7 +56,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h015-1234-abcdefghijkl",
           "12345678-prod-h005-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -83,7 +81,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h002-1234-abcdefghijkl",
           "12345678-prod-h006-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -118,7 +115,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h016-1234-abcdefghijkl",
           "12345678-prod-h017-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -158,7 +154,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h011-1234-abcdefghijkl",
           "12345678-prod-h018-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -179,7 +174,6 @@ export default function HostpitalBag(props) {
         products={[
           "12345678-prod-h013-1234-abcdefghijkl",
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />

@@ -7,9 +7,8 @@ import ListArticle from "./Sections/ListArticle.js";
 import Products from "./Sections/Products.js";
 import ChecklistCard from "./Sections/ChecklistCard.js";
 
-// Blog Data
+// data id
 const name = 'newborn-baby-essentials-list'
-const productData = require('./Products/BabyEssentials.json');
 
 export default function BathTime(props) {
   const [lists, setLists] = useState({});
@@ -50,7 +49,6 @@ export default function BathTime(props) {
           "12345678-blog-e002-1234-abcdefghijkl",
           "12345678-blog-e038-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -67,7 +65,6 @@ export default function BathTime(props) {
           "12345678-blog-e004-1234-abcdefghijkl",
           "12345678-blog-e005-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -88,7 +85,6 @@ export default function BathTime(props) {
           "12345678-blog-e008-1234-abcdefghijkl",
           "12345678-blog-e033-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -115,7 +111,6 @@ export default function BathTime(props) {
           "12345678-blog-e041-1234-abcdefghijkl",
           "12345678-blog-e045-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -133,7 +128,6 @@ export default function BathTime(props) {
           "12345678-blog-e012-1234-abcdefghijkl",
           "12345678-blog-e019-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -149,7 +143,6 @@ export default function BathTime(props) {
           "12345678-blog-e013-1234-abcdefghijkl",
           "12345678-blog-e014-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -167,7 +160,6 @@ export default function BathTime(props) {
           "12345678-blog-e016-1234-abcdefghijkl",
           "12345678-blog-e044-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -187,7 +179,6 @@ export default function BathTime(props) {
           "12345678-blog-e021-1234-abcdefghijkl",
           "12345678-blog-e022-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -203,7 +194,6 @@ export default function BathTime(props) {
           "12345678-blog-e023-1234-abcdefghijkl",
           "12345678-blog-e024-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -220,7 +210,6 @@ export default function BathTime(props) {
           "12345678-blog-e026-1234-abcdefghijkl",
           "12345678-blog-e027-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
@@ -257,7 +246,6 @@ export default function BathTime(props) {
           "12345678-blog-e031-1234-abcdefghijkl",
           "12345678-blog-e047-1234-abcdefghijkl"
         ]}
-        data={productData}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
