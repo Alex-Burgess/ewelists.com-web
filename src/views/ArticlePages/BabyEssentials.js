@@ -10,7 +10,7 @@ import ChecklistCard from "./Sections/ChecklistCard.js";
 // data id
 const name = 'newborn-baby-essentials-list'
 
-export default function BathTime(props) {
+export default function BabyEssentials(props) {
   const [lists, setLists] = useState({});
 
   const content = (

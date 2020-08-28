@@ -77,6 +77,10 @@ const style = theme => ({
       content: "''"
     }
   },
+  button: {
+    textAlign: "center",
+    paddingBottom: "20px"
+  }
 });
 
 export default style;

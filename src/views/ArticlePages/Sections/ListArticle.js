@@ -8,6 +8,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "components/Footer/FooterDark.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Button from "components/Buttons/Button.js";
 // Custom components
 import HeaderTransparent from "components/Header/HeaderTransparent.js";
 import details from 'views/ArticlePages/PageDetails/PageDetails.json'
@@ -46,6 +47,11 @@ export default function ListArticle(props) {
                 </h3>
                 <div className={classes.content}>
                   {content}
+                </div>
+                <div className={classes.button}>
+                  <Button color="secondary" href="/signup" data-cy="get-started-button">
+                    Create List Button
+                  </Button>
                 </div>
               </GridItem>
             </GridContainer>
