@@ -45,7 +45,7 @@ export default function BathTime(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e001-1234-abcdefghijkl",
+          "12345678-blog-e0010-1234-abcdefghijkl",
           "12345678-blog-e002-1234-abcdefghijkl",
           "12345678-blog-e038-1234-abcdefghijkl"
         ]}
