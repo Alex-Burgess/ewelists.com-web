@@ -149,10 +149,14 @@ export default function NewbornFeeding(props) {
         </p>
         <p>
           There are different options on the market for electric pumping, from single, double and even hands-free
-          pumping. The Tommee Tippee Made for Me pump is a great option covering everything you need and is compatible
-          with the bottles in their fantastic starter bundles (link?). The MAM brand seems to be a favourite with new
-          mums and always receives excellent reviews. The 2 in 1 pump gives you the option to do manual or electric
-          pumping, and you can attach the pump directly to their self-clean bottle (link?) and storage pots. The Elvie
+          pumping. The
+          <a target="_blank" rel="noopener noreferrer" href="https://amzn.to/2GhEsO5"> Tommee Tippee Made for Me pump </a>
+          is a great option covering everything you need and is compatible
+          with the bottles in their fantastic starter bundles. MAM products are also favourites with with new
+          mums, always receiving excellent reviews. The
+          <a target="_blank" rel="noopener noreferrer" href="https://www.johnlewis.com/mam-2-in-1-single-breast-pump/p3543120"> 2 in 1 pump </a>
+          gives you the option to do manual or electric
+          pumping, and you can attach the pump directly to their self-clean bottle and storage pots. The Elvie
           is a more luxurious hands-free option; designed to sit in your nursing bra, allowing you to get on with other
           tasks.
         </p>
