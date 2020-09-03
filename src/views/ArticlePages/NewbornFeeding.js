@@ -7,7 +7,7 @@ import ListArticle from "./Sections/ListArticle.js";
 import Products from "./Sections/Products.js";
 
 // data id
-const name = 'newborn-feeding'
+const name = 'newborn-baby-feeding'
 
 export default function NewbornFeeding(props) {
   const [lists, setLists] = useState({});
