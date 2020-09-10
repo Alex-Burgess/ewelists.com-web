@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 
 const copy = require('clipboard-copy')
 
-export default function SectionDetails(props) {
+export default function SectionListDetails(props) {
   const classes = useStyles();
 
   const { listId, title, description, occasion, date, imageUrl, mobile, user, closed } = props;
@@ -147,7 +147,7 @@ export default function SectionDetails(props) {
   )
 }
 
-SectionDetails.propTypes = {
+SectionListDetails.propTypes = {
   listId: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,

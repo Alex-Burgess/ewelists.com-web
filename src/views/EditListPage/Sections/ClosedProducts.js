@@ -12,7 +12,7 @@ import CardBody from "components/Card/CardBody.js";
 import styles from "assets/jss/material-kit-pro-react/views/editListPage/productsStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function SectionProducts(props) {
+export default function ClosedProducts(props) {
   const classes = useStyles();
   const { mobile, products } = props;
 
@@ -150,7 +150,7 @@ export default function SectionProducts(props) {
   );
 }
 
-SectionProducts.propTypes = {
+ClosedProducts.propTypes = {
   mobile: PropTypes.bool,
   products: PropTypes.object
 };

@@ -153,6 +153,7 @@ export default function EditPage(props) {
               tabContent: (
                 <div>
                   <Reserved
+                    loading={productsLoading}
                     mobile={mobile}
                     reserved={reserved}
                     products={products}

@@ -13,7 +13,7 @@ import CardBody from "components/Card/CardBody.js";
 import styles from "assets/jss/material-kit-pro-react/views/editListPage/reservedStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function SectionProducts(props) {
+export default function SectionReserved(props) {
   const classes = useStyles();
   const { mobile, reserved, products, loading } = props;
 
@@ -185,7 +185,7 @@ export default function SectionProducts(props) {
   );
 }
 
-SectionProducts.propTypes = {
+SectionReserved.propTypes = {
   loading: PropTypes.bool,
   mobile: PropTypes.bool,
   reserved: PropTypes.array,

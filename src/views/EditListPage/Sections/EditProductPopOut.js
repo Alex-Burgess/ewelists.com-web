@@ -28,7 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 Transition.displayName = "Transition";
 
-export default function SectionDetails(props) {
+export default function EditPopOut(props) {
   const classes = useStyles();
   const { open, listId, product } = props;
   const [error, setError] = useState('');
@@ -267,7 +267,7 @@ export default function SectionDetails(props) {
   );
 }
 
-SectionDetails.propTypes = {
+EditPopOut.propTypes = {
   open: PropTypes.bool,
   listId: PropTypes.string,
   product: PropTypes.object
