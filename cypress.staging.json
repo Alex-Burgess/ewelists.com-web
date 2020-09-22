@@ -1,0 +1,32 @@
+{
+  "baseUrl": "https://staging.ewelists.com",
+  "experimentalComponentTesting": true,
+  "componentFolder": "src",
+  "testFiles": "**/*spec.js",
+  "video": false,
+  "screenshotOnRunFailure": false,
+  "env": {
+    "failOnSnapshotDiff": false,
+    "updateSnapshots": false,
+    "userPoolId": "eu-west-1_Le825O3Pt",
+    "appClientId": "5tmme79b0m94mp3i87e300piqp",
+    "identityPoolId": "eu-west-1:704a4a75-e23e-4b9f-b7b1-ad7113e9c28d",
+    "domain": "staging-ewelists.auth.eu-west-1.amazoncognito.com",
+    "redirect_signin": "https://staging.ewelists.com",
+    "redirect_signout": "https://staging.ewelists.com/login",
+    "productsTable": "products-staging",
+    "notfoundTable": "notfound-staging",
+    "listsTable": "lists-staging",
+    "createUserScript": "python cypress/scripts/create_user.py",
+    "deleteUserScript": "python cypress/scripts/delete_user.py",
+    "createProductScript": "python cypress/scripts/create_product.py",
+    "deleteProductScript": "python cypress/scripts/delete_product.py",
+    "createNotFoundScript": "python cypress/scripts/create_notfound.py",
+    "createListScript": "python cypress/scripts/create_list.py",
+    "deleteListScript": "python cypress/scripts/delete_list.py",
+    "contactEmail": "contact@ewelists.com",
+    "verifyEmailSubject": "Verify your Ewelists account (staging)",
+    "welcomeEmailSubject": "Welcome to Ewelists (staging)"
+  },
+  "projectId": "vf6c6c"
+}

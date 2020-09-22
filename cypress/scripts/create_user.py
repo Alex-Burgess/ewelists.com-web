@@ -1,20 +1,19 @@
 import argparse
-import boto3
 import sys
-
-session = boto3.session.Session(profile_name='cypress-test')
-cognito = session.client('cognito-idp')
+import common
 
 
-def main(email, name, user_pool_id, table_name):
-    username = create_in_cognito(email, name, user_pool_id)
-    set_password(email, user_pool_id)
+def main(email, name, user_pool_id, profile=None):
+    username = create_in_cognito(email, name, user_pool_id, profile)
+    set_password(email, user_pool_id, profile)
 
     print(username)
     return True
 
 
-def create_in_cognito(email, name, user_pool_id):
+def create_in_cognito(email, name, user_pool_id, profile=None):
+    cognito = common.cognito_session(profile)
+
     try:
         response = cognito.admin_create_user(
             UserPoolId=user_pool_id,
@@ -37,8 +36,9 @@ def create_in_cognito(email, name, user_pool_id):
     return response['User']['Username']
 
 
-def set_password(email, user_pool_id):
+def set_password(email, user_pool_id, profile=None):
     password = 'P4ssw0rd!'
+    cognito = common.cognito_session(profile)
 
     try:
         cognito.admin_set_user_password(
@@ -69,6 +69,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Create test user in cognito and lists table.')
     parser.add_argument('-e', '--email', help='users email', required=True)
     parser.add_argument('-n', '--name', help='users name', required=True)
-    # Add userpool and table names as arguments
+    parser.add_argument('-U', '--user_pool', help='userpool id', required=True)
+    parser.add_argument('-P', '--profile', help='local user profile', required=False)
     args = parser.parse_args()
-    main(args.email, args.name, 'eu-west-1_vqox9Z8q7', 'lists-test')
+    main(args.email, args.name, args.user_pool, args.profile)

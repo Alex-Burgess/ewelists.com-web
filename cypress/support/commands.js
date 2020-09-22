@@ -6,14 +6,14 @@ Amplify.configure({
   Auth: {
     mandatorySignIn: true,
     region: "eu-west-1",
-    userPoolId: "eu-west-1_vqox9Z8q7",
-    identityPoolId: "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
-    userPoolWebClientId: "2effvksije4gnnrlefivcv246t",
+    userPoolId: Cypress.env("userPoolId"),
+    identityPoolId: Cypress.env("identityPoolId"),
+    userPoolWebClientId: Cypress.env("appClientId"),
     oauth: {
-        domain: "test-ewelists.auth.eu-west-1.amazoncognito.com",
+        domain: Cypress.env("domain"),
         scope: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
-        redirectSignIn: "http://localhost:3000",
-        redirectSignOut: "http://localhost:3000/login",
+        redirectSignIn: Cypress.env("redirect"),
+        redirectSignOut: Cypress.env("redirect"),
         responseType: 'code',
         options: {
             AdvancedSecurityDataCollectionFlag: false

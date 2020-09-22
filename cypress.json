@@ -5,15 +5,28 @@
   "testFiles": "**/*spec.js",
   "video": false,
   "screenshotOnRunFailure": false,
-  "contactEmail": "contact@ewelists.com",
-  "verifyEmailSubject": "Verify your Ewelists account (test)",
-  "welcomeEmailSubject": "Welcome to Ewelists (test)",
-  "createUserScript": "cypress/scripts/create_user.py",
-  "createListScript": "cypress/scripts/create_list.py",
-  "deleteUserScript": "cypress/scripts/delete_user.py",
-  "deleteListScript": "cypress/scripts/delete_list.py",
   "env": {
     "failOnSnapshotDiff": false,
-    "updateSnapshots": false
-  }
+    "updateSnapshots": false,
+    "userPoolId": "eu-west-1_vqox9Z8q7",
+    "appClientId": "2effvksije4gnnrlefivcv246t",
+    "identityPoolId": "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
+    "domain": "test-ewelists.auth.eu-west-1.amazoncognito.com",
+    "redirect_signin": "http://localhost:3000/",
+    "redirect_signout": "http://localhost:3000/login",
+    "productsTable": "products-test",
+    "notfoundTable": "notfound-test",
+    "listsTable": "lists-test",
+    "createUserScript": "python cypress/scripts/create_user.py -P cypress-test",
+    "deleteUserScript": "python cypress/scripts/delete_user.py -P cypress-test",
+    "createProductScript": "python cypress/scripts/create_product.py -P cypress-test",
+    "deleteProductScript": "python cypress/scripts/delete_product.py -P cypress-test",
+    "createNotFoundScript": "python cypress/scripts/create_notfound.py -P cypress-test",
+    "createListScript": "python cypress/scripts/create_list.py -P cypress-test",
+    "deleteListScript": "python cypress/scripts/delete_list.py -P cypress-test",
+    "contactEmail": "contact@ewelists.com",
+    "verifyEmailSubject": "Verify your Ewelists account (test)",
+    "welcomeEmailSubject": "Welcome to Ewelists (test)"
+  },
+  "projectId": "vf6c6c"
 }

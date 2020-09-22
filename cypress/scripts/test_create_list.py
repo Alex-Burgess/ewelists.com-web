@@ -1,25 +1,5 @@
 import pytest
-import boto3
-from moto import mock_dynamodb2
 import create_list
-
-
-@pytest.fixture
-def dynamodb_mock():
-    with mock_dynamodb2():
-        dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
-
-        dynamodb.create_table(
-            TableName='lists-unittest',
-            KeySchema=[{'AttributeName': 'PK', 'KeyType': 'HASH'}, {'AttributeName': 'SK', 'KeyType': 'RANGE'}],
-            AttributeDefinitions=[
-                {'AttributeName': 'PK', 'AttributeType': 'S'},
-                {'AttributeName': 'SK', 'AttributeType': 'S'}
-            ],
-            ProvisionedThroughput={'ReadCapacityUnits': 5, 'WriteCapacityUnits': 5},
-        )
-
-        yield
 
 
 class TestMain:

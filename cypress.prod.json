@@ -1,0 +1,32 @@
+{
+  "baseUrl": "https://ewelists.com",
+  "experimentalComponentTesting": true,
+  "componentFolder": "src",
+  "testFiles": "**/*spec.js",
+  "video": false,
+  "screenshotOnRunFailure": false,
+  "env": {
+    "failOnSnapshotDiff": false,
+    "updateSnapshots": false,
+    "userPoolId": "eu-west-1_8aOIk3Jcv",
+    "appClientId": "332d51kavmed0afpk2li1plv19",
+    "identityPoolId": "eu-west-1:f983160e-926c-47a7-a9a8-6dbceb68edbb",
+    "domain": "ewelists.auth.eu-west-1.amazoncognito.com",
+    "redirect_signin": "https://ewelists.com",
+    "redirect_signout": "https://ewelists.com/login",
+    "productsTable": "products-prod",
+    "notfoundTable": "notfound-prod",
+    "listsTable": "lists-prod",
+    "createUserScript": "python cypress/scripts/create_user.py",
+    "deleteUserScript": "python cypress/scripts/delete_user.py",
+    "createProductScript": "python cypress/scripts/create_product.py",
+    "deleteProductScript": "python cypress/scripts/delete_product.py",
+    "createNotFoundScript": "python cypress/scripts/create_notfound.py",
+    "createListScript": "python cypress/scripts/create_list.py",
+    "deleteListScript": "python cypress/scripts/delete_list.py",
+    "contactEmail": "contact@ewelists.com",
+    "verifyEmailSubject": "Verify your Ewelists account",
+    "welcomeEmailSubject": "Welcome to Ewelists"
+  },
+  "projectId": "vf6c6c"
+}

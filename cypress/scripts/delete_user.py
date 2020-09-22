@@ -1,29 +1,21 @@
-# TODO - Need to work out where userpool and table environment names are coming from.
-# Pass in environment as variable and have config in a file.
-
-# TODO - Also need to consider permissions for how to run script
-# boto3 session seems to work, will consider again when integrating to CLI.
-
 import argparse
-import boto3
+import common
 import sys
 
-session = boto3.session.Session(profile_name='cypress-test')
-cognito = session.client('cognito-idp')
-dynamodb = session.client('dynamodb')
 
+def main(email, user_pool_id, table_name, profile=None):
+    delete_from_cognito(email, user_pool_id, profile)
 
-def main(email, user_pool_id, table_name):
-    delete_from_cognito(email, user_pool_id)
-
-    user_id = user_in_db(email, table_name)
-    delete_from_db(user_id, table_name)
+    user_id = user_in_db(email, table_name, profile)
+    delete_from_db(user_id, table_name, profile)
 
     print("Deleted user: " + email)
     return True
 
 
-def delete_from_cognito(email, user_pool_id):
+def delete_from_cognito(email, user_pool_id, profile=None):
+    cognito = common.cognito_session(profile)
+
     try:
         cognito.admin_delete_user(
             UserPoolId=user_pool_id,
@@ -41,7 +33,9 @@ def delete_from_cognito(email, user_pool_id):
     return True
 
 
-def user_in_db(email, table_name):
+def user_in_db(email, table_name, profile=None):
+    dynamodb = common.dynamodb_session(profile)
+
     try:
         response = dynamodb.query(
             TableName=table_name,
@@ -70,7 +64,9 @@ def user_in_db(email, table_name):
     sys.exit(1)
 
 
-def delete_from_db(userId, table_name):
+def delete_from_db(userId, table_name, profile=None):
+    dynamodb = common.dynamodb_session(profile)
+
     key = {
         'PK': {'S': 'USER#' + userId},
         'SK': {'S': 'USER#' + userId}
@@ -96,6 +92,8 @@ def delete_from_db(userId, table_name):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Delete test user in cognito and lists table.')
     parser.add_argument('-e', '--email', help='users email', required=True)
-    # Add userpool and table names as arguments
+    parser.add_argument('-U', '--user_pool', help='userpool id', required=True)
+    parser.add_argument('-t', '--table', help='table name', required=True)
+    parser.add_argument('-P', '--profile', help='local user profile', required=False)
     args = parser.parse_args()
-    main(args.email, 'eu-west-1_vqox9Z8q7', 'lists-test')
+    main(args.email, args.user_pool, args.table, args.profile)
