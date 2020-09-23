@@ -10,8 +10,6 @@
     "aws-amplify": "^3.0.8",
     "classnames": "2.2.6",
     "clipboard-copy": "^3.1.0",
-    "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.8",
     "history": "4.9.0",
     "immutability-helper": "^3.0.2",
     "moment": "2.24.0",
@@ -49,21 +47,16 @@
     "minify-sass": "node-sass src/assets/scss/material-kit-pro-react.scss src/assets/css/material-kit-pro-react.min.css --output-style compressed",
     "map-sass": "node-sass src/assets/scss/material-kit-pro-react.scss src/assets/css/material-kit-pro-react.css --source-map true",
     "cypress": "cypress open",
-    "cy:run": "cypress run",
     "cy:verify": "cypress verify",
-    "cy:info": "cypress info",
-    "cy:parallel" : "cypress-parallel -s cy:run -t 2 -d cypress/integration -a '\"--headless --browser chrome\"'"
+    "cy:info": "cypress info"
   },
   "devDependencies": {
-    "@cypress/webpack-preprocessor": "^5.4.1",
     "chrome-remote-interface": "^0.28.2",
     "cypress": "^5.2.0",
     "cypress-image-snapshot": "^3.1.1",
-    "cypress-parallel": "^0.1.8",
-    "cypress-react-unit-test": "^4.10.0",
-    "enzyme-to-json": "^3.4.4",
     "gmail-tester": "^1.2.5",
-    "html-loader": "^0.5.5"
+    "gulp": "^4.0.2",
+    "gulp-append-prepend": "^1.0.8"
   },
   "optionalDependencies": {
     "@types/googlemaps": "3.37.3",

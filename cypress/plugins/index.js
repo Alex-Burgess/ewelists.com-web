@@ -3,7 +3,6 @@ const debug = require('debug')('cypress:server:protocol')
 const CRI = require('chrome-remote-interface')
 const gmail_tester = require("gmail-tester");
 const path = require("path");
-// const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 
 // Global Variables
 let port = 0
@@ -113,10 +112,6 @@ module.exports = (on, config) => {
       return messages;
     }
   });
-
-  // on('file:preprocessor', webpackPreprocessor());
-
-  // require('cypress-react-unit-test/plugins/react-scripts')(on, config);
 
   // IMPORTANT to return the config object
   // with the any changed environment variables
