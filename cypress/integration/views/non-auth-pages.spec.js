@@ -1,3 +1,5 @@
+import TestFilter from '../../support/TestFilter';
+
 const sizes = [
   'iphone-x',
   'ipad-2',
@@ -20,28 +22,30 @@ const pages = [
   'terms'
 ];
 
-describe('Non Auth Page Visual Regression Tests', () => {
-  sizes.forEach((size) => {
-    pages.forEach((page) => {
-      it(`Should match previous screenshot ${page} Page When ${size} resolution`, () => {
-        cy.setCookie("CookieConsent", "true")
+TestFilter(['regression'], () => {
+  describe('Non Auth Page Visual Regression Tests', () => {
+    sizes.forEach((size) => {
+      pages.forEach((page) => {
+        it(`Should match previous screenshot ${page} Page When ${size} resolution`, () => {
+          cy.setCookie("CookieConsent", "true")
 
-        if (Cypress._.isArray(size)) {
-          cy.viewport(size[0], size[1])
-        } else {
-          cy.viewport(size)
-        }
+          if (Cypress._.isArray(size)) {
+            cy.viewport(size[0], size[1])
+          } else {
+            cy.viewport(size)
+          }
 
-        if (page === 'landing' ) {
-          cy.visit('/');
-        } else {
-            cy.visit(`/${page}`);
-        }
+          if (page === 'landing' ) {
+            cy.visit('/');
+          } else {
+              cy.visit(`/${page}`);
+          }
 
-        cy.get('header').invoke('css', 'position', 'relative');
-        Cypress.config('defaultCommandTimeout', 50000);
-        cy.matchImageSnapshot(`${page}-${size}`);
+          cy.get('header').invoke('css', 'position', 'relative');
+          Cypress.config('defaultCommandTimeout', 50000);
+          cy.matchImageSnapshot(`${page}-${size}`);
+        });
       });
     });
   });
-});
+})

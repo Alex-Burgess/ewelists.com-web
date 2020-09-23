@@ -1,9 +1,9 @@
 const {addMatchImageSnapshotPlugin} = require('cypress-image-snapshot/plugin');
 const debug = require('debug')('cypress:server:protocol')
 const CRI = require('chrome-remote-interface')
+const gmail_tester = require("gmail-tester");
+const path = require("path");
 // const webpackPreprocessor = require('@cypress/webpack-preprocessor')
-// const path = require("path");
-// const gmail_tester = require("gmail-tester");
 
 // Global Variables
 let port = 0
@@ -86,34 +86,35 @@ module.exports = (on, config) => {
     }
   })
 
-  // on('file:preprocessor', webpackPreprocessor());
+  // Gmail tester for getting emails, e.g. reset password.
+  on("task", {
+    "gmail:check": async args => {
+      const { from, to, subject } = args;
+      const email = await gmail_tester.check_inbox(
+        path.resolve(__dirname, "gt-credentials.json"), // credentials.json is inside plugins/ directory.
+        path.resolve(__dirname, "gt-token.json"), // gmail_token.json is inside plugins/ directory.
+        {
+          subject: subject,
+          from: from,
+          to: to,
+          wait_time_sec: 10,
+          max_wait_time_sec: 30,
+          include_body: true
+        }
+      );
+      return email;
+    },
+    "gmail:get-messages": async args => {
+      const messages = await gmail_tester.get_messages(
+        path.resolve(__dirname, "gt-credentials.json"),
+        path.resolve(__dirname, "gt-token.json"),
+        args.options
+      );
+      return messages;
+    }
+  });
 
-  // on("task", {
-  //   "gmail:check": async args => {
-  //     const { from, to, subject } = args;
-  //     const email = await gmail_tester.check_inbox(
-  //       path.resolve(__dirname, "gt-credentials.json"), // credentials.json is inside plugins/ directory.
-  //       path.resolve(__dirname, "gt-token.json"), // gmail_token.json is inside plugins/ directory.
-  //       {
-  //         subject: subject,
-  //         from: from,
-  //         to: to,
-  //         wait_time_sec: 10,
-  //         max_wait_time_sec: 30,
-  //         include_body: true
-  //       }
-  //     );
-  //     return email;
-  //   },
-  //   "gmail:get-messages": async args => {
-  //     const messages = await gmail_tester.get_messages(
-  //       path.resolve(__dirname, "gt-credentials.json"),
-  //       path.resolve(__dirname, "gt-token.json"),
-  //       args.options
-  //     );
-  //     return messages;
-  //   }
-  // });
+  // on('file:preprocessor', webpackPreprocessor());
 
   // require('cypress-react-unit-test/plugins/react-scripts')(on, config);
 

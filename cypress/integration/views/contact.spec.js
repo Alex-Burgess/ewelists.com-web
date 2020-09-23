@@ -1,5 +1,4 @@
-import TestFilter from '../support/TestFilter';
-
+import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Contact Page E2E Test', () => {

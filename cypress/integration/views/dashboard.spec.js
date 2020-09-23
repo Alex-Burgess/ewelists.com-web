@@ -1,258 +1,284 @@
-describe('Dashboard Page E2E Tests', () => {
-  let listId = ""
-  let userId = ""
+import TestFilter from '../../support/TestFilter';
 
-  before(() => {
-    cy.exec('python ' + Cypress.config().createUserScript + ' -e eweuser8+dashboard@gmail.com -n "Cypress TestDashboard"').then((result) => {
-      userId = result.stdout
+TestFilter(['smoke', 'regression'], () => {
+  describe('Dashboard Page E2E Tests', () => {
+    const userName = '"Test Dashboard-E2E"'
+    let listId = ""
+    let userId = ""
+
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+        userId = result.stdout
+      })
     })
-    cy.login('eweuser8+dashboard@gmail.com', 'P4ssw0rd!')
-  })
 
-  after(() => {
-    cy.exec('python ' + Cypress.config().deleteListScript + ' -l ' + listId + ' -u ' + userId)
-    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e eweuser8+dashboard@gmail.com')
-  })
+    after(() => {
+      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
 
-  it('creates new list', () => {
-    cy.visit('/')
-    cy.contains("Your Lists")
-    cy.get('[data-cy=button-create-new-list]').click()
+    beforeEach(() => {
+      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+    })
 
-    // Complete form
-    cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
-    cy.get('.datepicker').click();
-    cy.contains('24').click();
-    cy.get('#mui-component-select-occasion').click()
-    cy.contains('Baby Shower').click();
-    cy.get('#description').type("A test list").should('have.value', "A test list")
+    it('creates new list', () => {
+      cy.visit('/')
+      cy.contains("Your Lists")
+      cy.get('[data-cy=button-create-new-list]').click()
 
-    // Submit form and check list created
-    cy.get('[data-cy=button-create-list]').click()
-    cy.contains('Baby Shower Test List')
-    cy.url().should('include', '/edit/')
+      // Complete form
+      cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('.datepicker').click();
+      cy.contains('24').click();
+      cy.get('#mui-component-select-occasion').click()
+      cy.contains('Baby Shower').click();
+      cy.get('#description').type("A test list").should('have.value', "A test list")
 
-    // Get list id for use in delete script
-    cy.url().then(url => {
-      listId = url.split('/edit/')[1]
+      // Submit form and check list created
+      cy.get('[data-cy=button-create-list]').click()
+      cy.contains('Baby Shower Test List')
+      cy.url().should('include', '/edit/')
+
+      // Get list id for use in delete script
+      cy.url().then(url => {
+        listId = url.split('/edit/')[1]
+      })
     })
   })
 })
 
-describe('Dashboard Page Visual Regression tests', () => {
-  const sizes = [
-    'iphone-x',
-    'ipad-2',
-    ['ipad-2', 'landscape'],
-    'macbook-13',
-    [1920, 1080],
-  ];
-  const email = "eweuser8+authpages@gmail.com"
+TestFilter(['smoke', 'regression'], () => {
+  describe('Dashboard Page Visual Regression tests', () => {
+    const userName = '"Test Dashboard-Page"'
 
-  before(() => {
-    cy.exec('python ' + Cypress.config().createUserScript + ' -e ' + email + ' -n "Cypress AuthPages"')
-  })
+    const sizes = [
+      'iphone-x',
+      'ipad-2',
+      ['ipad-2', 'landscape'],
+      'macbook-13',
+      [1920, 1080],
+    ];
 
-  after(() => {
-    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e ' + email)
-  })
-
-  beforeEach(() => {
-    cy.login(email, 'P4ssw0rd!')
-
-    // Fakes the API request so that we don't need to update the DB.
-    cy.server()
-    cy.route({
-      method: 'GET',
-      url: '/test/lists/',
-      response: {
-        "user": {
-          "email":"eweuser8+authpages@gmail.com",
-          "userId":"12345678-test-user-0001-abcdefghijkl",
-          "name":"Cypress YourLists"
-        },
-        "owned":[{
-          "listId":"12345678-test-list-0001-abcdefghijkl",
-          "title":"Baby Gift List",
-          "description":"Some gift ideas",
-          "occasion":"Baby Shower",
-          "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
-          "listOwner":"12345678-test-user-0001-abcdefghijkl",
-          "state":"open",
-          "eventDate":"31 July 2020"
-        }],
-        "closed":[]
-      }
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
-  })
 
-  sizes.forEach((size) => {
-    it(`Should match previous screenshot 'dashboard Page' When '${size}' resolution`, () => {
-      if (Cypress._.isArray(size)) {
-        cy.viewport(size[0], size[1])
-      } else {
-        cy.viewport(size)
-      }
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
+
+    beforeEach(() => {
+      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route({
+        method: 'GET',
+        url: '/test/lists/',
+        response: {
+          "user": {
+            "email": Cypress.env('testUserEmail'),
+            "userId":"12345678-test-user-0001-abcdefghijkl",
+            "name": userName
+          },
+          "owned":[{
+            "listId":"12345678-test-list-0001-abcdefghijkl",
+            "title":"Baby Gift List",
+            "description":"Some gift ideas",
+            "occasion":"Baby Shower",
+            "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
+            "listOwner":"12345678-test-user-0001-abcdefghijkl",
+            "state":"open",
+            "eventDate":"31 July 2020"
+          }],
+          "closed":[]
+        }
+      })
 
       cy.visit('/');
+    })
 
-      cy.contains("Baby Gift List")
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot 'dashboard Page' When '${size}' resolution`, () => {
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
 
-      cy.get('header').invoke('css', 'position', 'relative');
-      cy.matchImageSnapshot(`Dashboard-${size}`);
+        cy.contains("Baby Gift List")
+
+        cy.get('header').invoke('css', 'position', 'relative');
+        cy.matchImageSnapshot(`Dashboard-${size}`);
+      });
     });
   });
-});
 
-describe('Create List Form Tests', () => {
-  before(() => {
-    cy.exec('python ' + Cypress.config().createUserScript + ' -e eweuser8+createlist@gmail.com -n "Cypress TestDashboard"')
-    cy.login('eweuser8+createlist@gmail.com', 'P4ssw0rd!')
-    cy.visit('/')
-    cy.get('[data-cy=button-create-new-list]').click()
-  })
+  describe('Create List Form Tests', () => {
+    const userName = '"Test Dashboard-CreateForm"'
 
-  after(() => {
-    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e eweuser8+createlist@gmail.com')
-  })
-
-  it('Should have inactive form button when not complete', () => {
-    cy.get('.signUpCard').matchImageSnapshot('create-list-form-empty')
-
-    cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
-    cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
-
-    cy.get('.datepicker').click();
-    cy.contains('24').click();
-    cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
-
-    cy.get('#mui-component-select-occasion').click()
-    cy.contains('Baby Shower').click();
-    cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
-
-    cy.get('#description').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
-    cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "auto")
-
-    cy.get('.signUpCard').matchImageSnapshot('create-list-form-complete')
-  })
-
-  it('Should close create form', () => {
-    cy.get('[data-cy=button-form-close]').click()
-  })
-})
-
-describe('Open List Item Tests', () => {
-  before(() => {
-    cy.exec('python ' + Cypress.config().createUserScript + ' -e eweuser8+yourlists@gmail.com -n "Cypress YourLists"')
-    cy.login('eweuser8+yourlists@gmail.com', 'P4ssw0rd!')
-
-    // Fakes the API request so that we don't need to update the DB.
-    cy.server()
-    cy.route({
-      method: 'GET',
-      url: '/test/lists/',
-      response: {
-        "user": {
-          "email":"eweuser8+yourlists@gmail.com",
-          "userId":"12345678-test-user-0001-abcdefghijkl",
-          "name":"Cypress YourLists"
-        },
-        "owned":[{
-          "listId":"12345678-test-list-0001-abcdefghijkl",
-          "title":"Baby Gift List",
-          "description":"Some gift ideas",
-          "occasion":"Baby Shower",
-          "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
-          "listOwner":"12345678-test-user-0001-abcdefghijkl",
-          "state":"open",
-          "eventDate":"31 July 2020"
-        }],
-        "closed":[]
-      }
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
-    cy.visit('/')
-  })
-
-  after(() => {
-    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e eweuser8+yourlists@gmail.com')
-  })
-
-  it('Should match snapshot of dashboard with one list', () => {
-    cy.contains('Baby Gift List')
-    cy.get('header').invoke('css', 'position', 'relative');
-    cy.get('[data-cy=your-lists]').matchImageSnapshot('dashboard-with-one-list')
-  })
-
-  it('Should have correct view list link', () => {
-    cy.get('[data-cy=link-view-list]').should('have.attr', 'href', '/lists/12345678-test-list-0001-abcdefghijkl')
-  })
-
-  it('Should have correct edit list link', () => {
-    cy.get('[data-cy=link-edit-list]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
-  })
-
-  it('Should have correct image link', () => {
-    cy.get('[data-cy=link-image]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
-  })
-
-  it('Should have correct header link', () => {
-    cy.get('[data-cy=link-header]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
-  })
-})
-
-describe('Closed List Item Tests', () => {
-  before(() => {
-    cy.exec('python ' + Cypress.config().createUserScript + ' -e eweuser8+yourlists2@gmail.com -n "Cypress YourLists"')
-    cy.login('eweuser8+yourlists2@gmail.com', 'P4ssw0rd!')
-
-    // Fakes the API request to prevent emails being sent unnecessarily.
-    cy.server()
-    cy.route({
-      method: 'GET',
-      url: '/test/lists/',
-      response: {
-        "user": {
-          "email":"eweuser8+yourlists@gmail.com",
-          "userId":"12345678-test-user-0001-abcdefghijkl",
-          "name":"Cypress YourLists"
-        },
-        "owned":[],
-        "closed":[{
-          "listId":"12345678-test-list-0001-abcdefghijkl",
-          "title":"Baby Gift List",
-          "description":"Some gift ideas",
-          "occasion":"Baby Shower",
-          "imageUrl":"https://test.ewelists.com/images/babyshower-closed.jpg",
-          "listOwner":"12345678-test-user-0001-abcdefghijkl",
-          "state":"closed",
-          "eventDate":"31 July 2020"
-        }]
-      }
+    beforeEach(() => {
+      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.visit('/')
+      cy.get('[data-cy=button-create-new-list]').click()
     })
 
-    cy.visit('/')
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
+
+    it('Should have inactive form button when not complete', () => {
+      cy.get('.signUpCard').matchImageSnapshot('create-list-form-empty')
+
+      cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
+
+      cy.get('.datepicker').click();
+      cy.contains('24').click();
+      cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
+
+      cy.get('#mui-component-select-occasion').click()
+      cy.contains('Baby Shower').click();
+      cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
+
+      cy.get('#description').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "auto")
+
+      cy.get('.signUpCard').matchImageSnapshot('create-list-form-complete')
+    })
+
+    it('Should close create form', () => {
+      cy.get('[data-cy=button-form-close]').click()
+    })
   })
 
-  after(() => {
-    cy.exec('python ' + Cypress.config().deleteUserScript + ' -e eweuser8+yourlists2@gmail.com')
+  describe('Open List Item Tests', () => {
+    const userName = '"Test Dashboard-OpenList"'
+
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
+
+    beforeEach(() => {
+      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route({
+        method: 'GET',
+        url: '/test/lists/',
+        response: {
+          "user": {
+            "email": Cypress.env('testUserEmail'),
+            "userId":"12345678-test-user-0001-abcdefghijkl",
+            "name": userName
+          },
+          "owned":[{
+            "listId":"12345678-test-list-0001-abcdefghijkl",
+            "title":"Baby Gift List",
+            "description":"Some gift ideas",
+            "occasion":"Baby Shower",
+            "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
+            "listOwner":"12345678-test-user-0001-abcdefghijkl",
+            "state":"open",
+            "eventDate":"31 July 2020"
+          }],
+          "closed":[]
+        }
+      })
+
+      cy.visit('/')
+    })
+
+    it('Should match snapshot of dashboard with one list', () => {
+      cy.contains('Baby Gift List')
+      cy.get('header').invoke('css', 'position', 'relative');
+      cy.get('[data-cy=your-lists]').matchImageSnapshot('dashboard-with-one-list')
+    })
+
+    it('Should have correct view list link', () => {
+      cy.get('[data-cy=link-view-list]').should('have.attr', 'href', '/lists/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it('Should have correct edit list link', () => {
+      cy.get('[data-cy=link-edit-list]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it('Should have correct image link', () => {
+      cy.get('[data-cy=link-image]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it('Should have correct header link', () => {
+      cy.get('[data-cy=link-header]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
   })
 
-  it('Should match snapshot of dashboard with one list', () => {
-    cy.contains('Baby Gift List')
-    cy.get('header').invoke('css', 'position', 'relative');
-    cy.get('[data-cy=your-lists]').matchImageSnapshot('dashboard-with-closed-list')
-  })
+  describe.only('Closed List Item Tests', () => {
+    const userName = '"Test Dashboard-ClosedList"'
 
-  it('Should have correct details link', () => {
-    cy.get('[data-cy=link-closed-edit-list]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
-  })
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+    })
 
-  it('Should have correct image link', () => {
-    cy.get('[data-cy=link-closed-image]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
-  })
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
 
-  it('Should have correct header link', () => {
-    cy.get('[data-cy=link-closed-header]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    beforeEach(() => {
+      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route({
+        method: 'GET',
+        url: '/test/lists/',
+        response: {
+          "user": {
+            "email": Cypress.env('testUserEmail'),
+            "userId":"12345678-test-user-0001-abcdefghijkl",
+            "name": userName
+          },
+          "owned":[],
+          "closed":[{
+            "listId":"12345678-test-list-0001-abcdefghijkl",
+            "title":"Baby Gift List",
+            "description":"Some gift ideas",
+            "occasion":"Baby Shower",
+            "imageUrl":"https://test.ewelists.com/images/babyshower-closed.jpg",
+            "listOwner":"12345678-test-user-0001-abcdefghijkl",
+            "state":"closed",
+            "eventDate":"31 July 2020"
+          }]
+        }
+      })
+
+      cy.visit('/')
+    })
+
+    it('Should match snapshot of dashboard with one list', () => {
+      cy.contains('Baby Gift List')
+      cy.get('header').invoke('css', 'position', 'relative');
+      cy.get('[data-cy=your-lists]').matchImageSnapshot('dashboard-with-closed-list')
+    })
+
+    it('Should have correct details link', () => {
+      cy.get('[data-cy=link-closed-edit-list]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it('Should have correct image link', () => {
+      cy.get('[data-cy=link-closed-image]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it('Should have correct header link', () => {
+      cy.get('[data-cy=link-closed-header]').should('have.attr', 'href', '/edit/12345678-test-list-0001-abcdefghijkl')
+    })
   })
 })
