@@ -8,6 +8,8 @@
   "env": {
     "failOnSnapshotDiff": false,
     "updateSnapshots": false,
+    "testUserEmail": "eweuser8+cypress@gmail.com",
+    "testUserPassword": "P4ssw0rd!",
     "userPoolId": "eu-west-1_8aOIk3Jcv",
     "appClientId": "332d51kavmed0afpk2li1plv19",
     "identityPoolId": "eu-west-1:f983160e-926c-47a7-a9a8-6dbceb68edbb",
