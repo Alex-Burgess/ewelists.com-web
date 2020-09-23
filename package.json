@@ -10,6 +10,8 @@
     "aws-amplify": "^3.0.8",
     "classnames": "2.2.6",
     "clipboard-copy": "^3.1.0",
+    "gulp": "^4.0.2",
+    "gulp-append-prepend": "^1.0.8",
     "history": "4.9.0",
     "immutability-helper": "^3.0.2",
     "moment": "2.24.0",
@@ -54,9 +56,7 @@
     "chrome-remote-interface": "^0.28.2",
     "cypress": "^5.2.0",
     "cypress-image-snapshot": "^3.1.1",
-    "gmail-tester": "^1.2.5",
-    "gulp": "^4.0.2",
-    "gulp-append-prepend": "^1.0.8"
+    "gmail-tester": "^1.2.5"
   },
   "optionalDependencies": {
     "@types/googlemaps": "3.37.3",
