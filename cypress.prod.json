@@ -6,6 +6,7 @@
   "video": false,
   "screenshotOnRunFailure": false,
   "env": {
+    "environment": "prod",
     "failOnSnapshotDiff": false,
     "updateSnapshots": false,
     "testUserEmail": "eweuser8+cypress@gmail.com",

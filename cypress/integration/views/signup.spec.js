@@ -4,14 +4,17 @@ import TestFilter from '../../support/TestFilter';
 // TODO Signup tests for googlemail gmail issues.  (Prevent signup with googlemail if gmail exists and vice versa.)
 
 TestFilter(['smoke', 'regression'], () => {
-  describe.only('Sign up E2E Test', () => {
+  describe('Sign up E2E Test', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+signup" + val + "@gmail.com"
+
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
 
     after(() => {
       // Clean up new user that was created.
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('Signs up with test user email', () => {
@@ -25,7 +28,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-empty')
 
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#email').type(Cypress.env('testUserEmail')).should('have.value', Cypress.env('testUserEmail'))
+      cy.get('#email').type(userEmail).should('have.value', userEmail)
       cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
       cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-complete')
       cy.get('[data-cy=button-signup-form]').click()
@@ -33,7 +36,7 @@ TestFilter(['smoke', 'regression'], () => {
       // Check that welcome email is received
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: Cypress.env('testUserEmail'),
+        to: userEmail,
         subject: Cypress.env("welcomeEmailSubject"),
         after: date,
       })
@@ -49,7 +52,7 @@ TestFilter(['smoke', 'regression'], () => {
 
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: Cypress.env('testUserEmail'),
+        to: userEmail,
         subject: Cypress.env("verifyEmailSubject"),
         after: date,
       })

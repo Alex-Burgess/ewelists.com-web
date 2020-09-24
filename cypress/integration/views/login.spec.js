@@ -5,15 +5,17 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Login E2E Tests', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+login" + val + "@gmail.com"
     const userName = '"Test Login-E2E"'
 
     before(() => {
       cy.setCookie("CookieConsent", "true")
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('Logs in with username and password', () => {
@@ -22,8 +24,8 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=card]').matchImageSnapshot('empty-login-form');
 
       cy.get('#email')
-        .type(Cypress.env('testUserEmail'))
-        .should('have.value', Cypress.env('testUserEmail'))
+        .type(userEmail)
+        .should('have.value', userEmail)
 
       cy.get('#password')
         .type(Cypress.env('testUserPassword'))

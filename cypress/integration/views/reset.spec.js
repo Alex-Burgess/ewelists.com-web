@@ -1,75 +1,131 @@
 import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
-  const userName = '"Test Reset-E2E"'
+  describe.only('Reset password E2E Test', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+reset" + val + "@gmail.com"
+    const userName = '"Test Reset-E2E"'
 
-  describe('Reset password E2E Test', () => {
     before(() => {
       cy.setCookie("CookieConsent", "true")
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('resets password for test user', () => {
+      // const date = new Date();
+
       cy.visit('/reset')
       cy.contains('Reset')
-      cy.get('[data-cy=card]').matchImageSnapshot('empty-reset-form');
 
-      const date = new Date();
-
-      cy.get('#email').type(Cypress.env('testUserEmail')).should('have.value', Cypress.env('testUserEmail'))
-      cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
+      cy.get('#email').type(userEmail)
       cy.get('[data-cy=submit-reset]').click()
 
       cy.contains('Confirmation Code')
-      cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form');
 
+      // Get the confirmation code from email
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: Cypress.env('testUserEmail'),
+        to: userEmail,
         subject: Cypress.env("verifyEmailSubject"),
-        after: date,
+        after: new Date(),
       })
       .then(email => {
+        cy.log("Email body: " + JSON.stringify(email.body))
         const body = email.body.html
 
-        assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Found reset link");
+        assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
 
         const code = body.match(/ [0-9]{6} /)[0].trim()
 
         cy.get('#code').type(code)
-        cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
-        cy.get('#confirmPassword').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
-        cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
+        cy.get('#password').type(Cypress.env('testUserPassword'))
+        cy.get('#confirmPassword').type(Cypress.env('testUserPassword'))
 
         cy.get('[data-cy=submit-verify]').click()
         cy.contains('Password Reset Complete')
-        cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form');
 
         cy.contains("Login with your new credentials").click()
         cy.url().should('include', '/login')
       });
     })
   })
+
+  // describe('Reset password E2E Test', () => {
+  //   var val = Math.floor(Math.random() * 1000);
+  //   const userEmail = "eweuser8+reset" + val + "@gmail.com"
+  //   const userName = '"Test Reset-E2E"'
+  //
+  //   before(() => {
+  //     cy.setCookie("CookieConsent", "true")
+  //     cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+  //   })
+  //
+  //   after(() => {
+  //     cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+  //   })
+  //
+  //   it('resets password for test user', () => {
+  //     cy.visit('/reset')
+  //     cy.contains('Reset')
+  //     cy.get('[data-cy=card]').matchImageSnapshot('empty-reset-form');
+  //
+  //     const date = new Date();
+  //
+  //     cy.get('#email').type(userEmail).should('have.value', userEmail)
+  //     cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
+  //     cy.get('[data-cy=submit-reset]').click()
+  //
+  //     cy.contains('Confirmation Code')
+  //     cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form');
+  //
+  //     cy.task("gmail:check", {
+  //       from: Cypress.env("contactEmail"),
+  //       to: userEmail,
+  //       subject: Cypress.env("verifyEmailSubject"),
+  //       after: date,
+  //     })
+  //     .then(email => {
+  //       cy.log("Email body: " + JSON.stringify(email.body))
+  //       const body = email.body.html
+  //
+  //       assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
+  //
+  //       const code = body.match(/ [0-9]{6} /)[0].trim()
+  //
+  //       cy.get('#code').type(code)
+  //       cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+  //       cy.get('#confirmPassword').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+  //       cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
+  //
+  //       cy.get('[data-cy=submit-verify]').click()
+  //       cy.contains('Password Reset Complete')
+  //       cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form');
+  //
+  //       cy.contains("Login with your new credentials").click()
+  //       cy.url().should('include', '/login')
+  //     });
+  //   })
+  // })
 })
 
 TestFilter(['smoke', 'regression'], () => {
-  describe.only('Reset Form Tests', () => {
+  describe('Reset Form Tests', () => {
     // Using random email, to prevent issues with maximum retry limits
     var val = Math.floor(Math.random() * 1000);
-    const email = "eweuser8+reset" + val + "@gmail.com"
+    const userEmail = "eweuser8+reset" + val + "@gmail.com"
     const userName = '"Test Reset-Form"'
 
     before(() => {
-      cy.log('Reset Test User Email: ' + email)
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + email + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.log('Reset Test User Email: ' + userEmail)
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + email + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
@@ -94,7 +150,7 @@ TestFilter(['smoke', 'regression'], () => {
     it('Should error if confirmation code is wrong', () => {
       cy.visit('/reset')
 
-      cy.get('#email').type(email)
+      cy.get('#email').type(userEmail)
       cy.get('[data-cy=submit-reset]').click()
       cy.contains('Confirmation Code')
 
@@ -116,13 +172,13 @@ TestFilter(['smoke', 'regression'], () => {
       const date = new Date();
 
       cy.visit('/reset')
-      cy.get('#email').type(email)
+      cy.get('#email').type(userEmail)
       cy.get('[data-cy=submit-reset]').click()
       cy.contains('Confirmation Code')
 
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: email,
+        to: userEmail,
         subject: Cypress.env("verifyEmailSubject"),
         after: date,
       })

@@ -2,23 +2,24 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Dashboard Page E2E Tests', () => {
+    const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-E2E"'
     let listId = ""
     let userId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
       })
     })
 
     after(() => {
       cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
     })
 
     it('creates new list', () => {
@@ -42,13 +43,15 @@ TestFilter(['smoke', 'regression'], () => {
       // Get list id for use in delete script
       cy.url().then(url => {
         listId = url.split('/edit/')[1]
+        cy.log("Created List ID: " + listId)
       })
     })
   })
 })
 
-TestFilter(['smoke', 'regression'], () => {
+TestFilter(['regression'], () => {
   describe('Dashboard Page Visual Regression tests', () => {
+    const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-Page"'
 
     const sizes = [
@@ -60,24 +63,24 @@ TestFilter(['smoke', 'regression'], () => {
     ];
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
       cy.route({
         method: 'GET',
-        url: '/test/lists/',
+        url: '/' + Cypress.env('environment') + '/lists/',
         response: {
           "user": {
-            "email": Cypress.env('testUserEmail'),
+            "email": userEmail,
             "userId":"12345678-test-user-0001-abcdefghijkl",
             "name": userName
           },
@@ -115,20 +118,21 @@ TestFilter(['smoke', 'regression'], () => {
   });
 
   describe('Create List Form Tests', () => {
+    const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-CreateForm"'
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
       cy.visit('/')
       cy.get('[data-cy=button-create-new-list]').click()
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('Should have inactive form button when not complete', () => {
@@ -157,27 +161,28 @@ TestFilter(['smoke', 'regression'], () => {
   })
 
   describe('Open List Item Tests', () => {
+    const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-OpenList"'
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
       cy.route({
         method: 'GET',
-        url: '/test/lists/',
+        url: '/' + Cypress.env('environment') + '/lists/',
         response: {
           "user": {
-            "email": Cypress.env('testUserEmail'),
+            "email": userEmail,
             "userId":"12345678-test-user-0001-abcdefghijkl",
             "name": userName
           },
@@ -221,28 +226,29 @@ TestFilter(['smoke', 'regression'], () => {
     })
   })
 
-  describe.only('Closed List Item Tests', () => {
+  describe('Closed List Item Tests', () => {
+    const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-ClosedList"'
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
       cy.route({
         method: 'GET',
-        url: '/test/lists/',
+        url: '/' + Cypress.env('environment') + '/lists/',
         response: {
           "user": {
-            "email": Cypress.env('testUserEmail'),
+            "email": userEmail,
             "userId":"12345678-test-user-0001-abcdefghijkl",
             "name": userName
           },

@@ -113,6 +113,9 @@ module.exports = (on, config) => {
     }
   });
 
+  // Cypress log output for CI
+  require('cypress-terminal-report/src/installLogsPrinter')(on);
+
   // IMPORTANT to return the config object
   // with the any changed environment variables
   return config;

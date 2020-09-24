@@ -55,3 +55,18 @@ Update snapshots:
 ```
 CYPRESS_updateSnapshots=true npx cypress run --headless --browser chrome
 ```
+
+Run cypress tests with a different environment:
+```
+npx cypress run --config-file cypress.staging.json --tag "staging"
+```
+
+Run just smoke tests:
+```
+CYPRESS_TEST_TAGS=smoke npx cypress run
+```
+
+Run just regression tests
+```
+CYPRESS_TEST_TAGS=regression npx cypress run
+```

@@ -16,12 +16,13 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Edit List E2E Tests', () => {
+    const userEmail = "eweuser8+edit@gmail.com"
     const userName = '"Test Edit-E2E"'
     let userId = ""
     let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
 
         cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
@@ -31,12 +32,12 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
       cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
     })
 
     it('Adds and item, edits the item, then deletes the item.', () => {
@@ -56,12 +57,13 @@ TestFilter(['regression'], () => {
       'macbook-13',
       [1920, 1080],
     ];
+    const userEmail = "eweuser8+edit@gmail.com"
     const userName = '"Test Edit-Page"'
     let userId = ""
     let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
 
         cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
@@ -71,18 +73,18 @@ TestFilter(['regression'], () => {
     })
 
     after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
       cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
       cy.route({
         method: 'GET',
-        url: '/test/lists/' + listId,
+        url: '/' + Cypress.env('environment') + '/lists/' + listId,
         response: {
           "list":{
             "listId":listId,
@@ -134,7 +136,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-prod-t001-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-prod-t001-1234-abcdefghijkl',
         response: {
           "productId":"12345678-prod-t001-1234-abcdefghijkl",
           "brand":"BABYBJÖRN",
@@ -147,7 +149,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-prod-t034-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-prod-t034-1234-abcdefghijkl',
         response: {
           "productId":"12345678-prod-t034-1234-abcdefghijkl",
           "brand":"Mamas & Papas",
@@ -160,7 +162,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-blog-e007-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-blog-e007-1234-abcdefghijkl',
         response: {
           "productId":"12345678-blog-e007-1234-abcdefghijkl",
           "brand":"John Lewis & Partners",
@@ -202,12 +204,13 @@ TestFilter(['regression'], () => {
   });
 
   describe('Social Links', () => {
+    const userEmail = "eweuser8+edit@gmail.com"
     const userName = 'Test Edit-Page'
     let userId = ""
     let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
 
         cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
@@ -217,17 +220,17 @@ TestFilter(['regression'], () => {
     })
 
     after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
       cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
       cy.visit('/edit/' + listId);
     })
 
     it('Should have correct email link', () =>{
-      const mailto = 'mailto:?subject=' + userName + ' shared a gift list with you&body=Hi!%0D%0A%0D%0AYou can view Cypress Test Gift List at the link below if you wish to buy a gift:%0D%0A%0D%0Ahttp://localhost:3000/lists/' + listId
+      const mailto = 'mailto:?subject=' + userName + ' shared a gift list with you&body=Hi!%0D%0A%0D%0AYou can view Cypress Test Gift List at the link below if you wish to buy a gift:%0D%0A%0D%0A' + Cypress.config().baseUrl + '/lists/' + listId
       cy.get('[data-cy=link-mailto]').should('have.attr', 'href', mailto)
     })
 
@@ -250,13 +253,14 @@ TestFilter(['regression'], () => {
     })
   })
 
-  describe.only('Product Row Tests', () => {
+  describe('Product Row Tests', () => {
+    const userEmail = "eweuser8+edit@gmail.com"
     const userName = '"Test Edit-Page"'
     let userId = ""
     let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
 
         cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
@@ -266,18 +270,18 @@ TestFilter(['regression'], () => {
     })
 
     after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
       cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
-      cy.login(Cypress.env('testUserEmail'), Cypress.env('testUserPassword'))
+      cy.login(userEmail, Cypress.env('testUserPassword'))
 
       // Fakes the API request so that we don't need to update the DB.  It gets the list details and then details for the 3 products.
       cy.server()
       cy.route({
         method: 'GET',
-        url: '/test/lists/' + listId,
+        url: '/' + Cypress.env('environment') + '/lists/' + listId,
         response: {
           "list":{
             "listId":listId,
@@ -329,7 +333,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-prod-t001-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-prod-t001-1234-abcdefghijkl',
         response: {
           "productId":"12345678-prod-t001-1234-abcdefghijkl",
           "brand":"BABYBJÖRN",
@@ -342,7 +346,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-prod-t034-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-prod-t034-1234-abcdefghijkl',
         response: {
           "productId":"12345678-prod-t034-1234-abcdefghijkl",
           "brand":"Mamas & Papas",
@@ -355,7 +359,7 @@ TestFilter(['regression'], () => {
 
       cy.route({
         method: 'GET',
-        url: '/test/products/12345678-blog-e007-1234-abcdefghijkl',
+        url: '/' + Cypress.env('environment') + '/products/12345678-blog-e007-1234-abcdefghijkl',
         response: {
           "productId":"12345678-blog-e007-1234-abcdefghijkl",
           "brand":"John Lewis & Partners",
