@@ -72,4 +72,4 @@ phases:
     # e.g. awsCodeBuild-cypress-kitchen-sink/AWSCodeBuild-a14fc8e3-b5d6-42f9-9067-345d48a8f0fd
     commands:
       - URL=$(echo $COMMIT_URL | sed 's/api.github.com\/repos/github.com/' | sed 's/git\/commits/commit/')
-      - COMMIT_INFO_BRANCH=Master COMMIT_INFO_SHA=$COMMIT_ID COMMIT_INFO_MESSAGE=$COMMIT_MSG COMMIT_INFO_REMOTE=$URL CYPRESS_TEST_TAGS=$TEST_TAG npx cypress run --config-file ${CONFIG} --headless --record --parallel --ci-build-id $CODEBUILD_INITIATOR --key=$CYPRESS --tag "$ENVIRONMENT,$TEST_TAG,pipeline"
+      - COMMIT_INFO_BRANCH=Master COMMIT_INFO_SHA=$COMMIT_ID COMMIT_INFO_MESSAGE=$COMMIT_MSG COMMIT_INFO_REMOTE=$URL CYPRESS_TEST_TAGS=$TEST_TAG npx cypress run --config-file ${CONFIG} --headless --browser chrome --record --parallel --ci-build-id $CODEBUILD_INITIATOR --key=$CYPRESS --tag "$ENVIRONMENT,$TEST_TAG,pipeline"
