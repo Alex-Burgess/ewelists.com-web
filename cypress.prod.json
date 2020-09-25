@@ -9,7 +9,6 @@
     "environment": "prod",
     "failOnSnapshotDiff": true,
     "updateSnapshots": false,
-    "testUserEmail": "eweuser8+cypress@gmail.com",
     "testUserPassword": "P4ssw0rd!",
     "userPoolId": "eu-west-1_8aOIk3Jcv",
     "appClientId": "332d51kavmed0afpk2li1plv19",

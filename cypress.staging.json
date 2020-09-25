@@ -9,7 +9,6 @@
     "environment": "staging",
     "failOnSnapshotDiff": true,
     "updateSnapshots": false,
-    "testUserEmail": "eweuser8+cypress@gmail.com",
     "testUserPassword": "P4ssw0rd!",
     "userPoolId": "eu-west-1_Le825O3Pt",
     "appClientId": "5tmme79b0m94mp3i87e300piqp",

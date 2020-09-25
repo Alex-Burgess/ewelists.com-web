@@ -42,15 +42,17 @@ TestFilter(['smoke', 'regression'], () => {
 })
 
 TestFilter(['regression'], () => {
+  var val = Math.floor(Math.random() * 1000);
+  const userEmail = "eweuser8+login" + val + "@gmail.com"
   const userName = '"Test Login-Page"'
 
   describe('Login Page Form Tests', () => {
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('Should have inactive login button without email', () => {
@@ -80,7 +82,7 @@ TestFilter(['regression'], () => {
     it('Should show error if password is wrong', () => {
       cy.visit('/login')
 
-      cy.get('#email').type(Cypress.env('testUserEmail'))
+      cy.get('#email').type(userEmail)
       cy.get('#password').type('12345678')
 
       cy.get('[data-cy=login]').click()

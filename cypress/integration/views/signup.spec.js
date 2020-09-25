@@ -76,6 +76,9 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Signup Form Tests', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+signup" + val + "@gmail.com"
+
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
@@ -90,7 +93,7 @@ TestFilter(['smoke', 'regression'], () => {
 
     after(() => {
       // Clean up new user that was created.
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + Cypress.env('testUserEmail') + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
     })
 
     it('Should have inactive signup button if email missing', () => {
@@ -153,7 +156,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=button-signup-with-email]').click()
 
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#email').type(Cypress.env('testUserEmail')).should('have.value', Cypress.env('testUserEmail'))
+      cy.get('#email').type(userEmail).should('have.value', userEmail)
       cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
       cy.get('[data-cy=button-signup-form]').click()
 
