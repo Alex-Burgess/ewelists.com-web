@@ -112,6 +112,7 @@ export default function Header(props) {
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerToggle}
+                id="header-mobile-sidebar-button"
               >
                 <Menu />
               </IconButton>
@@ -128,6 +129,7 @@ export default function Header(props) {
             paper: classes.drawerPaper
           }}
           onClose={handleDrawerToggle}
+          id="header-mobile-sidebar"
         >
           <IconButton
             color="inherit"

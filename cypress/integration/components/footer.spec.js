@@ -19,6 +19,10 @@ TestFilter(['regression'], () => {
       cy.task('activateHoverPseudo', { selector: '[data-cy=footer-grey-link-privacy]' })
       cy.get('[data-cy=footer-grey-link-privacy]').should('have.css', "font-weight", "600")
     })
+
+    it('should match image snapshot', () => {
+      cy.get('#root').find('footer').matchImageSnapshot('footer-grey');
+    })
   })
 
   describe('Footer Dark Tests', () => {
@@ -48,6 +52,10 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=footer-dark-link-ideas]').should('have.css', "font-weight", "400")
       cy.task('activateHoverPseudo', { selector: '[data-cy=footer-dark-link-ideas]' })
       cy.get('[data-cy=footer-dark-link-ideas]').should('have.css', "font-weight", "500")
+    })
+
+    it('should match image snapshot', () => {
+      cy.get('#root').find('footer').matchImageSnapshot('footer-dark');
     })
   })
 })

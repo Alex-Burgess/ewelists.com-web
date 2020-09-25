@@ -1,7 +1,7 @@
 import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
-  describe.only('Reset password E2E Test', () => {
+  describe('Reset password E2E Test', () => {
     var val = Math.floor(Math.random() * 1000);
     const userEmail = "eweuser8+reset" + val + "@gmail.com"
     const userName = '"Test Reset-E2E"'

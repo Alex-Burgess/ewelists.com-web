@@ -37,77 +37,110 @@ export default function HeaderLinksAuth(props) {
   });
 
   if (isAuthenticated) {
-    return (
-      <List className={classes.list + " " + classes.mlAuto}>
-        <ListItem className={classes.listItem}>
-          <Link to="/" className={linkClasses} data-cy="header-link-your-lists">
-            Your Lists
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
-            Ideas
-          </Link>
-        </ListItem>
-        {tablet
-          ? <div>
-              <ListItem className={classes.listItem}>
-                <Link to="/" className={linkClasses} data-cy="header-mobile-link-account">
-                  <AccountCircle /> {user.name}
+    if (tablet) {
+      return (
+        <List className={classes.list + " " + classes.mlAuto}>
+          <ListItem className={classes.listItem}>
+            <Link to="/" className={linkClasses} data-cy="sidebar-link-your-lists">
+              Your Lists
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/list-ideas" className={linkClasses} data-cy="sidebar-link-ideas">
+              Ideas
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/" className={linkClasses} data-cy="sidebar-link-account">
+              <AccountCircle /> {user.name}
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/logout" className={linkClasses} data-cy="sidebar-link-logout">
+              <ExitToApp /> Sign Out
+            </Link>
+          </ListItem>
+        </List>
+      );
+    } else {
+      return (
+        <List className={classes.list + " " + classes.mlAuto}>
+          <ListItem className={classes.listItem}>
+            <Link to="/" className={linkClasses} data-cy="header-link-your-lists">
+              Your Lists
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
+              Ideas
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem} data-cy="header-link-profile-dropdown">
+            <CustomDropdown
+              noLiPadding
+              navDropdown
+              hoverColor={dropdownHoverColor}
+              buttonProps={{
+                className: linkClasses,
+                color: "transparent"
+              }}
+              buttonIcon={AccountCircle}
+              dropdownList={[
+                <Link to="/" className={classes.dropdownLink} data-cy="header-link-user-account">
+                  <AccountCircle className={classes.dropdownIcons} /> {user.name}
+                </Link>,
+                <Link to="/logout" className={classes.dropdownLink} data-cy="header-link-logout">
+                  <ExitToApp className={classes.dropdownIcons} /> Sign Out
                 </Link>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Link to="/logout" className={linkClasses} data-cy="header-mobile-link-logout">
-                  <ExitToApp /> Sign Out
-                </Link>
-              </ListItem>
-            </div>
-          : <ListItem className={classes.listItem} data-cy="header-link-profile-dropdown">
-              <CustomDropdown
-                noLiPadding
-                navDropdown
-                hoverColor={dropdownHoverColor}
-                buttonProps={{
-                  className: linkClasses,
-                  color: "transparent"
-                }}
-                buttonIcon={AccountCircle}
-                dropdownList={[
-                  <Link to="/" className={classes.dropdownLink} data-cy="header-link-user-account">
-                    <AccountCircle className={classes.dropdownIcons} /> {user.name}
-                  </Link>,
-                  <Link to="/logout" className={classes.dropdownLink} data-cy="header-link-logout">
-                    <ExitToApp className={classes.dropdownIcons} /> Sign Out
-                  </Link>
-                ]}
-              />
-            </ListItem>
-        }
-      </List>
-    );
+              ]}
+            />
+          </ListItem>
+        </List>
+      );
+    }
   } else {
-    return (
-      <List className={classes.list + " " + classes.mlAuto}>
-        <ListItem className={classes.listItem}>
-          <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
-            Ideas
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link to="/login" className={linkClasses} data-cy="header-link-login">
-            Log In
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link to="/signup" className={signUpClasses} data-cy="header-link-signup">
-            Sign Up
-          </Link>
-        </ListItem>
-      </List>
-    );
+    if (tablet) {
+      return (
+        <List className={classes.list + " " + classes.mlAuto}>
+          <ListItem className={classes.listItem}>
+            <Link to="/list-ideas" className={linkClasses} data-cy="sidebar-link-ideas">
+              Ideas
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/login" className={linkClasses} data-cy="sidebar-link-login">
+              Log In
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/signup" className={signUpClasses} data-cy="sidebar-link-signup">
+              Sign Up
+            </Link>
+          </ListItem>
+        </List>
+      );
+    } else {
+      return (
+        <List className={classes.list + " " + classes.mlAuto}>
+          <ListItem className={classes.listItem}>
+            <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
+              Ideas
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/login" className={linkClasses} data-cy="header-link-login">
+              Log In
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Link to="/signup" className={signUpClasses} data-cy="header-link-signup">
+              Sign Up
+            </Link>
+          </ListItem>
+        </List>
+      )
+    }
   }
-
-
 }
 
 HeaderLinksAuth.defaultProps = {
