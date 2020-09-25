@@ -45,9 +45,9 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e001-1234-abcdefghijkl",
-          "12345678-blog-e002-1234-abcdefghijkl",
-          "12345678-blog-e038-1234-abcdefghijkl"
+          "85762e22-4698-4599-8a6d-ee8e92bc6462",
+          "a020e76e-2044-41a0-afec-033d99f2836b",
+          "bad5205b-3891-4659-8bbe-1443eed7c11a"
         ]}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
@@ -62,8 +62,9 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e004-1234-abcdefghijkl",
-          "12345678-blog-e005-1234-abcdefghijkl"
+          "1a5efc38-cd9a-4a53-8071-d8ab87a9e31a",
+          "81195860-dc8a-4120-93a2-7c003e7ea53b",
+          "553d4076-e548-42bd-9e6a-7f5f27734200"
         ]}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
@@ -78,12 +79,12 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e039-1234-abcdefghijkl",
+          "7d49d7e7-0ff7-432f-998f-e8e0f0255932",
           "12345678-blog-e007-1234-abcdefghijkl",
           "12345678-blog-e048-1234-abcdefghijkl",
-          "12345678-blog-e034-1234-abcdefghijkl",
-          "12345678-blog-e008-1234-abcdefghijkl",
-          "12345678-blog-e033-1234-abcdefghijkl"
+          "c008fc49-071d-4bb1-ab57-c377f2dea4d2",
+          "e628ac31-2b2a-4210-9d2b-5027146b1336",
+          "7bfc99d0-1378-4bec-abab-dc6a5fce8592"
         ]}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
@@ -125,7 +126,7 @@ export default function BabyEssentials(props) {
       <Products
         products={[
           "12345678-blog-e042-1234-abcdefghijkl",
-          "12345678-blog-e012-1234-abcdefghijkl",
+          "73cfdb8a-33ba-41e7-b377-bcdd79522a4e",
           "12345678-blog-e019-1234-abcdefghijkl"
         ]}
         lists={lists}
@@ -140,8 +141,9 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e013-1234-abcdefghijkl",
-          "12345678-blog-e014-1234-abcdefghijkl"
+          "8c7ae6ad-3208-4b1d-b12d-0915bc4ceaff",
+          "f71d9805-4d11-4163-aa57-1d440b0a9ef0",
+          "c813f95e-c7e6-47bd-bf62-6a979ff936f2"
         ]}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
@@ -175,9 +177,9 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e020-1234-abcdefghijkl",
-          "12345678-blog-e021-1234-abcdefghijkl",
-          "12345678-blog-e022-1234-abcdefghijkl"
+          "63eb3382-d4bd-4fbd-bb6b-3a9fd339b805",
+          "c7dfd4d7-6fc0-4162-ba27-31773de537cc",
+          "ef23e257-aa5f-467f-bb7b-8d80696d3bec"
         ]}
         lists={lists}
         isAuthenticated={props.isAuthenticated}
@@ -238,11 +240,12 @@ export default function BabyEssentials(props) {
       </div>
       <Products
         products={[
-          "12345678-blog-e049-1234-abcdefghijkl",
-          "12345678-blog-e050-1234-abcdefghijkl",
-          "12345678-blog-e046-1234-abcdefghijkl",
-          "12345678-blog-e029-1234-abcdefghijkl",
-          "12345678-blog-e037-1234-abcdefghijkl",
+          "7227cd38-24d3-437d-9d9e-3e05048d6e16",
+          "7749b86a-50a8-4edc-a615-bde13302f3b4",
+          "8184657c-b1cf-4b01-b465-fb156c8b4eb6",
+          "2467d43c-c784-4be5-89ac-8a59bf50f384",
+          "1557d804-3a25-4d71-8943-6a4de7fd1727",
+          "6fd60ac6-3cb9-437f-b717-4d30b3b7b4f4",
           "12345678-blog-e031-1234-abcdefghijkl",
           "12345678-blog-e047-1234-abcdefghijkl"
         ]}
