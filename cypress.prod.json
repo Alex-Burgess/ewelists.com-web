@@ -7,7 +7,7 @@
   "screenshotOnRunFailure": false,
   "env": {
     "environment": "prod",
-    "failOnSnapshotDiff": false,
+    "failOnSnapshotDiff": true,
     "updateSnapshots": false,
     "testUserEmail": "eweuser8+cypress@gmail.com",
     "testUserPassword": "P4ssw0rd!",
