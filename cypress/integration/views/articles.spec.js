@@ -24,10 +24,10 @@ TestFilter(['smoke', 'regression'], () => {
 
   describe('Article Page - Authed Tests', () => {
     const userEmail = "eweuser8+article@gmail.com"
-    const userName = '"Test Article-Page"'
+    const userName = 'Test Article-Page'
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId"))
     })
 
     after(() => {
@@ -62,12 +62,12 @@ TestFilter(['smoke', 'regression'], () => {
 
   describe('Article Page - E2E Add To List Test', () => {
     const userEmail = "eweuser8+article@gmail.com"
-    const userName = '"Test Article-Page"'
+    const userName = 'Test Article-Page'
     let userId = ""
     let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
         userId = result.stdout
 
         cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
@@ -100,6 +100,8 @@ TestFilter(['smoke', 'regression'], () => {
   })
 })
 
+// We only snapshot the unauthed blog page.
+// TODO: Add snapshot for authed blog page.
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
     const page = 'article';

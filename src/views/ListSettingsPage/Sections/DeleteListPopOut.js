@@ -77,6 +77,7 @@ function SectionDeletePopout(props) {
         onClose={() => props.setShowDeletePopOut(false)}
         aria-labelledby="small-modal-slide-title"
         aria-describedby="small-modal-slide-description"
+        data-cy="popout-delete"
       >
         <DialogTitle
           id="small-modal-slide-title"
@@ -108,10 +109,10 @@ function SectionDeletePopout(props) {
             classes.modalFooter + " " + classes.modalFooterCenter
           }
         >
-          <Button color="secondary" onClick={() => props.setShowDeletePopOut(false)}>
+          <Button color="secondary" onClick={() => props.setShowDeletePopOut(false)} data-cy="button-close">
             No
           </Button>
-          <Button color="primary" onClick={deleteList}>
+          <Button color="primary" onClick={deleteList} data-cy="button-confirm">
             Yes
           </Button>
         </DialogActions>

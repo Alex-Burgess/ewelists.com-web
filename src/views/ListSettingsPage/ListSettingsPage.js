@@ -64,6 +64,7 @@ export default function SectionDetails(props) {
       let response;
       try {
         response = await API.get("lists", "/" + listId);
+        console.log("Get list response: " + JSON.stringify(response))
       } catch (e) {
         onError("List ID " + listId + " does not exist for the user.");
         setLoadError(true);
@@ -183,14 +184,14 @@ export default function SectionDetails(props) {
           <GridItem xs={4} className={classes.mobileButtons}>
             { edit
               ? <div>
-                  <Button justIcon size="sm" className={classes.alignButtonToBottom} onClick={() => cancelEdit(false)} >
+                  <Button justIcon size="sm" className={classes.alignButtonToBottom} onClick={() => cancelEdit(false)} data-cy="button-mobile-cancel">
                     <Clear />
                   </Button>
-                  <Button justIcon size="sm" color="success" className={classes.alignButtonToBottom} onClick={() => saveDetails()} >
+                  <Button justIcon size="sm" color="success" className={classes.alignButtonToBottom} onClick={() => saveDetails()} data-cy="button-mobile-save" >
                     <Done />
                   </Button>
                 </div>
-              : <Button size="sm" color="primary" className={classes.alignButtonToBottom} onClick={() => setEdit(true)} >
+              : <Button size="sm" color="primary" className={classes.alignButtonToBottom} onClick={() => setEdit(true)} data-cy="button-mobile-edit" >
                   Edit
                 </Button>
             }
@@ -203,7 +204,7 @@ export default function SectionDetails(props) {
               Title:
             </InputLabel>
             <Input
-              id="regular"
+              id="title"
               formControlProps={{
                 fullWidth: true,
                 className: classes.formControl
@@ -219,7 +220,7 @@ export default function SectionDetails(props) {
               Description:
             </InputLabel>
             <Input
-              id="regular"
+              id="description"
               formControlProps={{
                 fullWidth: true,
                 className: classes.formControl
@@ -243,6 +244,7 @@ export default function SectionDetails(props) {
                     { edit
                       ? <FormControl fullWidth>
                           <Datetime
+                            className={classes.dateField + " datepicker"}
                             dateFormat="DD MMMM YYYY"
                             timeFormat={false}
                             inputProps={{ placeholder: "Select a date" }}
@@ -295,14 +297,14 @@ export default function SectionDetails(props) {
           <GridItem md={3} sm={3} className={classes.sectionButtons}>
             { edit
               ? <div>
-                  <Button onClick={() => cancelEdit(false)} >
+                  <Button onClick={() => cancelEdit(false)} data-cy="button-cancel">
                     Cancel
                   </Button>
-                  <Button color="success" onClick={() => saveDetails()} >
+                  <Button color="success" onClick={() => saveDetails()} data-cy="button-save">
                     Save
                   </Button>
                 </div>
-              : <Button color="primary" onClick={() => setEdit(true)} >
+              : <Button color="primary" onClick={() => setEdit(true)} data-cy="button-edit" >
                   Edit
                 </Button>
             }
@@ -356,7 +358,7 @@ export default function SectionDetails(props) {
             <h3 className={classes.title + " " + classes.sectionHeading}>Delete</h3>
           </GridItem>
           <GridItem xs={3} className={classes.mobileButtons}>
-            <Button size="sm" color="danger" className={classes.alignButtonToBottom} onClick={() => setShowDeletePopOut(true)}>
+            <Button size="sm" color="danger" className={classes.alignButtonToBottom} onClick={() => setShowDeletePopOut(true)} data-cy="button-mobile-delete">
               Delete
             </Button>
           </GridItem>
@@ -369,7 +371,7 @@ export default function SectionDetails(props) {
             </p>
           </GridItem>
           <GridItem md={3} sm={3} className={classes.sectionButtons}>
-            <Button color="danger" onClick={() => setShowDeletePopOut(true)} >
+            <Button color="danger" onClick={() => setShowDeletePopOut(true)} data-cy="button-delete">
               Delete
             </Button>
           </GridItem>
