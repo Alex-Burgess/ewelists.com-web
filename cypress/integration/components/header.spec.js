@@ -83,13 +83,22 @@ TestFilter(['smoke', 'regression'], () => {
 
     const userEmail = "eweuser8+header-links@gmail.com"
     const userName = 'Test Header'
+    let userId = ""
+    let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
+        userId = result.stdout
+
+        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
+          listId = result.stdout
+        })
+      })
     })
 
     after(() => {
       cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
@@ -133,6 +142,15 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=sidebar-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=sidebar-link-account]').should('have.attr', 'href', '/')
       cy.get('[data-cy=sidebar-link-logout]').should('have.attr', 'href', '/logout')
+    })
+
+    it('Should have correct header mobile bar with mobile resolution', () => {
+      cy.viewport('iphone-x')
+
+      // Transparent header is used on list ideas page
+      cy.visit('/settings/' + listId)
+      cy.get('[data-cy=header-mobile-bar-back-button]').find('a').should('have.attr', 'href', '/edit/' + listId)
+      cy.get('[data-cy=header-mobile-bar-title]').contains('List Settings')
     })
   })
 })
@@ -193,13 +211,22 @@ TestFilter(['regression'], () => {
   describe('Header Visual Snapshot Tests For Authed Pages', () => {
     const userEmail = "eweuser8+header-snapshot@gmail.com"
     const userName = 'Test Header'
+    let userId = ""
+    let listId = ""
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId"))
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
+        userId = result.stdout
+
+        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
+          listId = result.stdout
+        })
+      })
     })
 
     after(() => {
       cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
     })
 
     beforeEach(() => {
@@ -220,6 +247,12 @@ TestFilter(['regression'], () => {
       cy.visit('/')
       cy.get('#header-mobile-sidebar-button').click()
       cy.get('#header-mobile-sidebar').matchImageSnapshot('mobile-sidebar-authed');
+    })
+
+    it('Should have correct snapshot for mobile bar', () => {
+      cy.viewport('iphone-x')
+      cy.visit('/settings/' + listId)
+      cy.get('[data-cy=header]').matchImageSnapshot('header-mobile-bar-authed');
     })
 
     it('Should change css styles with hover (desktop)', () => {

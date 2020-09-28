@@ -91,11 +91,11 @@ export default function Header(props) {
     <AppBar className={appBarClasses} data-cy="header">
       { mobileBar
         ? <Toolbar className={classes.containerBack}>
-            <Button className={classes.logoButton}>
+            <Button className={classes.logoButton} data-cy="header-mobile-bar-back-button">
               <Link to={url}> <ArrowBackIos className={classes.arrow}/> </Link>
             </Button>
             <div className={classes.titleWrapper}>
-              <h4 className={classes.mobileTitle}>{title}</h4>
+              <h4 className={classes.mobileTitle} data-cy="header-mobile-bar-title">{title}</h4>
             </div>
           </Toolbar>
         : <Toolbar className={classes.container}>
