@@ -49,8 +49,8 @@ export default function ListArticle(props) {
                   {content}
                 </div>
                 <div className={classes.button}>
-                  <Button color="secondary" href="/signup" data-cy="get-started-button">
-                    Create List Button
+                  <Button color="secondary" href="/signup" data-cy="create-list-button">
+                    Create List
                   </Button>
                 </div>
               </GridItem>

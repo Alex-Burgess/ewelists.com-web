@@ -124,7 +124,7 @@ export default function AddPopOut(props) {
   const renderButton = (id, list) => {
     if ((list.products.indexOf(product.productId) > -1 ) || (added[id])) {
       return (
-        <Button round justIcon color="success" disabled className={classes.successButton}>
+        <Button round justIcon color="success" disabled className={classes.successButton} data-cy="popout-added-icon">
           <Done />
         </Button>
       )
@@ -139,7 +139,7 @@ export default function AddPopOut(props) {
       )
     } else {
       return (
-        <Button round justIcon color="primary" onClick={() => addProductToList(id)}>
+        <Button round justIcon color="primary" onClick={() => addProductToList(id)} data-cy="popout-button-add-action">
           <Add />
         </Button>
       )
@@ -205,6 +205,7 @@ export default function AddPopOut(props) {
         onClose={() => closeEditPopOut()}
         aria-labelledby="notice-modal-slide-title"
         aria-describedby="notice-modal-slide-description"
+        data-cy="popout-add-to-list"
       >
       <DialogTitle
         id="notice-modal-slide-title"
@@ -217,12 +218,13 @@ export default function AddPopOut(props) {
           key="close"
           aria-label="Close"
           onClick={() => closeEditPopOut()}
+          data-cy="popout-close-button"
         >
           {" "}
           <Close className={classes.modalClose} />
         </Button>
         <h4 className={classes.modalTitle}>
-          Add Item to List
+          Add Item To List
         </h4>
       </DialogTitle>
       <DialogContent
