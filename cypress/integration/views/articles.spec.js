@@ -100,10 +100,6 @@ TestFilter(['smoke', 'regression'], () => {
   })
 })
 
-
-// Not sure what, if at all, visual tests to do.  maybe just some components.
-// Maybe will just accept blog can change and will screenshot whole thing.  using smallest blog post.
-
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
     const page = 'article';
