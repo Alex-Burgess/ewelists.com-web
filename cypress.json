@@ -9,6 +9,13 @@
     "environment": "test",
     "failOnSnapshotDiff": false,
     "updateSnapshots": false,
+    "snapshotSizes": [
+      "iphone-x",
+      "ipad-2",
+      ["ipad-2", "landscape"],
+      "macbook-13",
+      [1920, 1080]
+    ],
     "testUserPassword": "P4ssw0rd!",
     "userPoolId": "eu-west-1_vqox9Z8q7",
     "appClientId": "2effvksije4gnnrlefivcv246t",

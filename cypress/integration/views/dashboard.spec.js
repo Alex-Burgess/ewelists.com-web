@@ -54,13 +54,7 @@ TestFilter(['regression'], () => {
     const userEmail = "eweuser8+dashboard@gmail.com"
     const userName = '"Test Dashboard-Page"'
 
-    const sizes = [
-      'iphone-x',
-      'ipad-2',
-      ['ipad-2', 'landscape'],
-      'macbook-13',
-      [1920, 1080],
-    ];
+    const sizes = Cypress.env("snapshotSizes");
 
     before(() => {
       cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))

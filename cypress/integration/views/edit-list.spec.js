@@ -50,13 +50,7 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Edit List Page Visual Regression tests', () => {
-    const sizes = [
-      'iphone-x',
-      'ipad-2',
-      ['ipad-2', 'landscape'],
-      'macbook-13',
-      [1920, 1080],
-    ];
+    const sizes = Cypress.env("snapshotSizes");
     const userEmail = "eweuser8+edit@gmail.com"
     const userName = '"Test Edit-Page"'
     let userId = ""

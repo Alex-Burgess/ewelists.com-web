@@ -21,7 +21,6 @@ TestFilter(['smoke', 'regression'], () => {
     it('Logs in with username and password', () => {
       cy.visit('/login')
       cy.contains('Log In')
-      cy.get('[data-cy=card]').matchImageSnapshot('empty-login-form');
 
       cy.get('#email')
         .type(userEmail)
@@ -30,8 +29,6 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('#password')
         .type(Cypress.env('testUserPassword'))
         .should('have.value', Cypress.env('testUserPassword'))
-
-      cy.get('[data-cy=card]').matchImageSnapshot('complete-form');
 
       cy.get('[data-cy=login]').click()
 
@@ -42,9 +39,56 @@ TestFilter(['smoke', 'regression'], () => {
 })
 
 TestFilter(['regression'], () => {
-  var val = Math.floor(Math.random() * 1000);
-  const userEmail = "eweuser8+login" + val + "@gmail.com"
-  const userName = '"Test Login-Page"'
+  describe('Visual Snapshot Tests', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+login" + val + "@gmail.com"
+    const userName = '"Test Login-Page"'
+    const page = 'login';
+    const sizes = Cypress.env("snapshotSizes");
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+    })
+
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot when ${size} resolution`, () => {
+        cy.setCookie("CookieConsent", "true")
+
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
+
+        cy.visit(`/${page}`);
+
+        cy.get('header').invoke('css', 'position', 'relative');
+        Cypress.config('defaultCommandTimeout', 50000);
+        cy.matchImageSnapshot(`${page}-${size}`);
+      });
+    });
+
+    it('Should match previous screenshot of completed form', () => {
+      cy.visit('/login')
+
+      cy.get('#email').type(userEmail)
+      cy.get('#password').type(Cypress.env('testUserPassword'))
+
+      cy.get('[data-cy=card]').matchImageSnapshot('complete-form');
+    })
+
+    it('Should match previous screenshot of login error', () => {
+      cy.visit('/login')
+
+      cy.get('#email').type(userEmail)
+      cy.get('#password').type('12345678')
+
+      cy.get('[data-cy=login]').click()
+
+      cy.contains("There is no account with the email provided.")
+      cy.get('[data-cy=card]').matchImageSnapshot('login-error');
+    })
+  })
 
   describe('Login Page Form Tests', () => {
     before(() => {
@@ -63,7 +107,7 @@ TestFilter(['regression'], () => {
 
     it('Should have inactive login button without password', () => {
       cy.visit('/login')
-      cy.get('#email').type('dummy@gmail.com')
+      cy.get('#email').type(userEmail)
       cy.get('[data-cy=login]').should('have.css', "pointer-events", "none")
     })
 
@@ -76,7 +120,6 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=login]').click()
 
       cy.contains("There is no account with the email provided.")
-      cy.get('[data-cy=card]').matchImageSnapshot('login-error');
     })
 
     it('Should show error if password is wrong', () => {

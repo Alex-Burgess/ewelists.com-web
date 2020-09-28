@@ -1,6 +1,9 @@
 import TestFilter from '../../support/TestFilter';
 
-TestFilter(['smoke', 'regression'], () => {
+const page = 'reset';
+const sizes = Cypress.env("snapshotSizes");
+
+TestFilter(['smoke'], () => {
   describe('Reset password E2E Test', () => {
     var val = Math.floor(Math.random() * 1000);
     const userEmail = "eweuser8+reset" + val + "@gmail.com"
@@ -16,8 +19,6 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     it('resets password for test user', () => {
-      // const date = new Date();
-
       cy.visit('/reset')
       cy.contains('Reset')
 
@@ -53,66 +54,95 @@ TestFilter(['smoke', 'regression'], () => {
       });
     })
   })
-
-  // describe('Reset password E2E Test', () => {
-  //   var val = Math.floor(Math.random() * 1000);
-  //   const userEmail = "eweuser8+reset" + val + "@gmail.com"
-  //   const userName = '"Test Reset-E2E"'
-  //
-  //   before(() => {
-  //     cy.setCookie("CookieConsent", "true")
-  //     cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
-  //   })
-  //
-  //   after(() => {
-  //     cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-  //   })
-  //
-  //   it('resets password for test user', () => {
-  //     cy.visit('/reset')
-  //     cy.contains('Reset')
-  //     cy.get('[data-cy=card]').matchImageSnapshot('empty-reset-form');
-  //
-  //     const date = new Date();
-  //
-  //     cy.get('#email').type(userEmail).should('have.value', userEmail)
-  //     cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
-  //     cy.get('[data-cy=submit-reset]').click()
-  //
-  //     cy.contains('Confirmation Code')
-  //     cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form');
-  //
-  //     cy.task("gmail:check", {
-  //       from: Cypress.env("contactEmail"),
-  //       to: userEmail,
-  //       subject: Cypress.env("verifyEmailSubject"),
-  //       after: date,
-  //     })
-  //     .then(email => {
-  //       cy.log("Email body: " + JSON.stringify(email.body))
-  //       const body = email.body.html
-  //
-  //       assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
-  //
-  //       const code = body.match(/ [0-9]{6} /)[0].trim()
-  //
-  //       cy.get('#code').type(code)
-  //       cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
-  //       cy.get('#confirmPassword').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
-  //       cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
-  //
-  //       cy.get('[data-cy=submit-verify]').click()
-  //       cy.contains('Password Reset Complete')
-  //       cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form');
-  //
-  //       cy.contains("Login with your new credentials").click()
-  //       cy.url().should('include', '/login')
-  //     });
-  //   })
-  // })
 })
 
-TestFilter(['smoke', 'regression'], () => {
+TestFilter(['regression'], () => {
+  describe('Reset password E2E Test with snapshots', () => {
+    var val = Math.floor(Math.random() * 1000);
+    const userEmail = "eweuser8+reset" + val + "@gmail.com"
+    const userName = '"Test Reset-E2E"'
+
+    before(() => {
+      cy.setCookie("CookieConsent", "true")
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+    })
+
+    it('resets password for test user', () => {
+      cy.visit('/reset')
+      cy.contains('Reset')
+
+      cy.get('#email').type(userEmail)
+      cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
+      cy.get('[data-cy=submit-reset]').click()
+
+      cy.contains('Confirmation Code')
+      cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form');
+
+      // Get the confirmation code from email
+      cy.task("gmail:check", {
+        from: Cypress.env("contactEmail"),
+        to: userEmail,
+        subject: Cypress.env("verifyEmailSubject"),
+        after: new Date(),
+      })
+      .then(email => {
+        cy.log("Email body: " + JSON.stringify(email.body))
+        const body = email.body.html
+
+        assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
+
+        const code = body.match(/ [0-9]{6} /)[0].trim()
+
+        cy.get('#code').type(code)
+        cy.get('#password').type(Cypress.env('testUserPassword'))
+        cy.get('#confirmPassword').type(Cypress.env('testUserPassword'))
+        cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
+
+        cy.get('[data-cy=submit-verify]').click()
+        cy.contains('Password Reset Complete')
+        cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form');
+
+        cy.contains("Login with your new credentials").click()
+        cy.url().should('include', '/login')
+      });
+    })
+  })
+})
+
+
+TestFilter(['regression'], () => {
+  describe('Visual Snapshot Tests', () => {
+    const page = 'reset';
+    const sizes = Cypress.env("snapshotSizes");
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+    })
+
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot when ${size} resolution`, () => {
+        cy.setCookie("CookieConsent", "true")
+
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
+
+        cy.visit(`/${page}`);
+
+        cy.get('header').invoke('css', 'position', 'relative');
+        Cypress.config('defaultCommandTimeout', 50000);
+        cy.matchImageSnapshot(`${page}-${size}`);
+      });
+    });
+  })
+
+
   describe('Reset Form Tests', () => {
     // Using random email, to prevent issues with maximum retry limits
     var val = Math.floor(Math.random() * 1000);

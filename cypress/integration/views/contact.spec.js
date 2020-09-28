@@ -9,26 +9,75 @@ TestFilter(['smoke', 'regression'], () => {
     it('Should send email to contact address', () => {
       cy.visit('/contact')
 
-      cy.get('[data-cy=contact]').matchImageSnapshot('submit-button-disabled');
-
       // Complete form and submit
-      cy.get('#name').type('Dummy Name')
-      cy.get('#email').type('dummy@gmail.com')
+      cy.get('#name').type('Cypress TestUser')
+      cy.get('#email').type('eweuser8+contact@gmail.com')
       cy.get('#message').type('Dummy message')
 
-      cy.get('[data-cy=contact]').matchImageSnapshot('submit-button-enabled');
       cy.get('[data-cy=contact]').click()
 
       // Confirm that confirmation is as expected
-      cy.contains('Thank you for your message Dummy Name. We aim to respond to emails the same day.')
-      cy.get('header').invoke('css', 'position', 'relative');
-      cy.get('[data-cy=card]').matchImageSnapshot('confirmation-view');
+      cy.contains('Thank you for your message Cypress TestUser. We aim to respond to emails the same day.')
     })
   })
 })
 
 
 TestFilter(['regression'], () => {
+  describe('Visual Snapshot Tests', () => {
+    const page = 'contact';
+    const sizes = Cypress.env("snapshotSizes");
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+    })
+
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot when ${size} resolution`, () => {
+        cy.setCookie("CookieConsent", "true")
+
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
+
+        cy.visit(`/${page}`);
+
+        cy.get('header').invoke('css', 'position', 'relative');
+        Cypress.config('defaultCommandTimeout', 50000);
+        cy.matchImageSnapshot(`${page}-${size}`);
+      });
+    });
+
+    it('Should match previous screenshot of card after form submitted', () => {
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route({
+        method: 'POST',
+        url: '/' + Cypress.env('environment') + '/contact',
+        response: {
+          "name":"Cypress TestUser",
+          "email":"eweuser8+contact@gmail.com",
+          "message":"A test message",
+          "id":123456
+        }
+      })
+
+      cy.visit('/contact')
+
+      cy.get('#name').type('Cypress TestUser')
+      cy.get('#email').type('eweuser8+contact@gmail.com')
+      cy.get('#message').type('A test message')
+
+      cy.get('[data-cy=contact]').click()
+
+      cy.contains('Thank you for your message Cypress TestUser. We aim to respond to emails the same day.')
+      cy.get('header').invoke('css', 'position', 'relative');
+      cy.get('[data-cy=contact-card]').matchImageSnapshot('confirmation-card');
+    })
+  })
+
   describe('Contact Page Form Tests', () => {
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
@@ -53,31 +102,6 @@ TestFilter(['regression'], () => {
       cy.get('#name').type('Dummy Name')
       cy.get('#message').type('Dummy message')
       cy.get('[data-cy=contact]').should('have.css', "pointer-events", "none")
-    })
-
-    it('Should show confirmation page, but api request is stubbed', () => {
-      // Fakes the API request to prevent emails being sent unnecessarily.
-      cy.server()
-      cy.route({
-        method: 'POST',
-        url: '/test/contact',
-        response: {
-            "name": "Dummy Name",
-            "email": "dummy@gmail.com",
-            "message": "A test message",
-            "id": 493981
-        }
-      })
-
-      cy.visit('/contact')
-
-      cy.get('#name').type('Dummy Name')
-      cy.get('#email').type('dummy@gmail.com')
-      cy.get('#message').type('Dummy message')
-
-      cy.get('[data-cy=contact]').click()
-
-      cy.contains('Thank you for your message Dummy Name. We aim to respond to emails the same day.')
     })
   })
 })

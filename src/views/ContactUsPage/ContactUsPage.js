@@ -112,7 +112,7 @@ export default function ContactUsPage(props) {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>
-            <Card className={classes.customCard} data-cy="card">
+            <Card className={classes.customCard} data-cy="contact-card">
               <CardBody signup>
                 <h3 className={classes.title + " " + classes.textCenter}>Send us a message</h3>
                 <h4>
