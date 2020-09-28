@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 // libs
 import { onError, debugError } from "libs/errorLib";
+import { getList } from "libs/apiLib";
 // react plugin for creating date-time-picker
 import Datetime from "react-datetime";
 // @material-ui/core components
@@ -60,19 +61,6 @@ export default function SectionDetails(props) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect( () => {
-    async function getList() {
-      let response;
-      try {
-        response = await API.get("lists", "/" + listId);
-        console.log("Get list response: " + JSON.stringify(response))
-      } catch (e) {
-        onError("List ID " + listId + " does not exist for the user.");
-        setLoadError(true);
-      }
-
-      return response;
-    }
-
     function setListState(response) {
       props.setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
@@ -96,9 +84,13 @@ export default function SectionDetails(props) {
     }
 
     const setListDetails = async () => {
-      const response = await getList();
-
-      setListState(response);
+      try {
+        const response = await getList(listId);
+        // setListLoaded(true);
+        setListState(response);
+      } catch (e) {
+        setLoadError(true);
+      }
     };
 
     setListDetails();
