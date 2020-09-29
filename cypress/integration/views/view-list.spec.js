@@ -1,5 +1,41 @@
 import TestFilter from '../../support/TestFilter';
 
+// API request setup attempt
+TestFilter(['smoke'], () => {
+  describe.only('API request attempt', () => {
+    const userEmail = "eweuser8+viewlist@gmail.com"
+    const userName = 'Test View-List-Page'
+    let userId = ""
+    let listId = ""
+
+    before(() => {
+      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
+        userId = result.stdout
+
+        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
+          listId = result.stdout
+        })
+      })
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+    })
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/lists/' + listId)
+    })
+
+    it('should reserve gift when user authed', () => {
+      // Ensure page has loaded and contains products
+      cy.contains("Cypress Test Gift List")
+    })
+  })
+})
+
+
 // Smoke tests
 TestFilter(['smoke', 'regression'], () => {
   // Main Test scenarios which are covered by smoke tests are:
@@ -128,30 +164,11 @@ TestFilter(['regression'], () => {
     const sizes = Cypress.env("snapshotSizes");
 
     beforeEach(() => {
+      // Stub API responses
       cy.server()
-      cy.fixture('view-list-response').then((viewResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/lists/12345678-test-list-0001-abcdefghijkl/shared',
-          response: viewResponse
-        })
-      })
-
-      cy.fixture('view-list-product-response-1').then((productResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/products/12345678-prod-t001-1234-abcdefghijkl',
-          response: productResponse
-        })
-      })
-
-      cy.fixture('view-list-product-response-2').then((productResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/products/12345678-prod-t034-1234-abcdefghijkl',
-          response: productResponse
-        })
-      })
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl/shared', 'fx:view-list/get-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:view-list/get-product-response-1')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:view-list/get-product-response-2')
 
       cy.setCookie("CookieConsent", "true")
       cy.visit('/lists/12345678-test-list-0001-abcdefghijkl')
@@ -181,30 +198,11 @@ TestFilter(['regression'], () => {
 TestFilter(['regression'], () => {
   describe('Reserve popout form validation', () => {
     beforeEach(() => {
+      // Stub API responses
       cy.server()
-      cy.fixture('view-list-response').then((viewResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/lists/12345678-test-list-0001-abcdefghijkl/shared',
-          response: viewResponse
-        })
-      })
-
-      cy.fixture('view-list-product-response-1').then((productResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/products/12345678-prod-t001-1234-abcdefghijkl',
-          response: productResponse
-        })
-      })
-
-      cy.fixture('view-list-product-response-2').then((productResponse) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/products/12345678-prod-t034-1234-abcdefghijkl',
-          response: productResponse
-        })
-      })
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl/shared', 'fx:view-list/get-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:view-list/get-product-response-1')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:view-list/get-product-response-2')
 
       cy.setCookie("CookieConsent", "true")
       cy.visit('/lists/12345678-test-list-0001-abcdefghijkl')
@@ -232,7 +230,7 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "none")
     })
 
-    it.only(`should have inactive button, immediately after form submission`, () => {
+    it(`should have inactive button, immediately after form submission`, () => {
       // Open popout
       cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
 

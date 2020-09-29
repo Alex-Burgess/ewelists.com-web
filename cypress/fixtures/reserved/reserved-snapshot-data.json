@@ -1,0 +1,61 @@
+{
+  "getList":{
+    "list":{
+      "listId":"12345678-test-list-0001-abcdefghijkl",
+      "title":"Baby Shower Wish List",
+      "description":"Gift ideas for my baby shower",
+      "occasion":"Baby Shower",
+      "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
+      "listOwner":"12345678-test-user-0001-abcdefghijkl",
+      "state":"open",
+      "eventDate":"31 October 2020"
+    },
+    "products":{
+      "12345678-test-prod-0001-abcdefghijkl":{
+        "productId":"12345678-test-prod-0001-abcdefghijkl",
+        "quantity":2,
+        "reserved":1,
+        "purchased":0,
+        "type":"products"
+      }
+    },
+    "reserved":{
+      "12345678-test-prod-0001-abcdefghijkl":{
+        "eweuser8+testreserver@gmail.com":[{
+          "reservationId":"12345678-test-resv-0001-abcdefghijkl",
+          "productId":"12345678-test-prod-0001-abcdefghijkl",
+          "userId":"eweuser8+testreserver@gmail.com",
+          "listId":"12345678-test-list-0001-abcdefghijkl",
+          "listOwnerId":"12345678-test-user-0001-abcdefghijkl",
+          "name":"Cypress TestReserver",
+          "email":"eweuser8+testreserver@gmail.com",
+          "quantity":1,
+          "state":"reserved",
+          "listTitle":"Baby Shower Wish List",
+          "productType":"products"
+        }]
+      }
+    }
+  },
+  "getProduct":{
+    "productId":"12345678-test-prod-0001-abcdefghijkl",
+    "brand":"Mamas & Papas",
+    "details":"Acro Lightweight Buggy - Black",
+    "imageUrl":"https://media.mamasandpapas.com/i/mamasandpapas/657225301_Acro_Black_Side_On_Upright/Travel/Pushchairs/All+Pushchairs/Buggies+%26+Strollers?$pdpimagemobile$",
+    "productUrl":"https://www.mamasandpapas.com/en-gb/acro-lightweight-buggy-black/p/657225301",
+    "price":"189.00"
+  },
+  "getReservation":{
+    "reservationId":"12345678-test-resv-0001-abcdefghijkl",
+    "productId":"12345678-test-prod-0001-abcdefghijkl",
+    "userId":"eweuser8+testreserver@gmail.com",
+    "listId":"12345678-test-list-0001-abcdefghijkl",
+    "listOwnerId":"12345678-test-user-0001-abcdefghijkl",
+    "name":"Cypress TestReserver",
+    "email":"eweuser8+testreserver@gmail.com",
+    "quantity":1,
+    "state":"reserved",
+    "listTitle":"Baby Shower Wish List",
+    "productType":"products"
+  }
+}
