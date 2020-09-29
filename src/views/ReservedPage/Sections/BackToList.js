@@ -11,7 +11,7 @@ export default function BackToLink(props) {
   const { listId } = props;
 
   return (
-    <Link to={"/lists/" + listId}>
+    <Link to={"/lists/" + listId} data-cy="link-back-to-list">
      <Button color="primary" simple>
        <ArrowBackIos /> Back to list
      </Button>

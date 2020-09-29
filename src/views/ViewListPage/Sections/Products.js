@@ -132,32 +132,32 @@ export default function Products(props) {
     if (userReserved) {
       return (
         <Link to={"/reserve/" + resvId}>
-          <Button default color="secondary" className={classes.reserveButton}>
+          <Button default color="secondary" className={classes.reserveButton} data-cy="button-reserve">
             Confirm Purchase
           </Button>
         </Link>
       )
     } else if (userPurchased && allReserved){
       return (
-        <Button default color="primary" className={classes.reserveButton} disabled>
+        <Button default color="primary" className={classes.reserveButton} disabled data-cy="button-reserve">
           Purchased by you
         </Button>
       )
     } else if (userPurchased && !allReserved){
       return (
-        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)}>
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)} data-cy="button-reserve">
           Reserve Another
         </Button>
       )
     } else if (!allReserved) {
       return (
-        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)}>
+        <Button default color="primary" className={classes.reserveButton} onClick={() => openReservePopout(productId)} data-cy="button-reserve">
           Reserve Gift
         </Button>
       )
     } else {
       return (
-        <Button default className={classes.reserveButton} disabled>
+        <Button default className={classes.reserveButton} disabled data-cy="button-reserve">
           Reserved
         </Button>
       )
@@ -255,7 +255,7 @@ export default function Products(props) {
     } else {
       return (
         <GridItem md={4} sm={6} key={i}>
-          <Card plain product className={classes.customProduct}>
+          <Card plain product className={classes.customProduct} data-cy="product-card">
             <CardHeader noShadow image>
               {renderImage(userReserved, userPurchased, allReserved, product['imageUrl'], userReservation['reservationId'], product['productId'])}
             </CardHeader>

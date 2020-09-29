@@ -61,6 +61,10 @@ function ReservePopout(props) {
     }
   }, [user, cookies.email, cookies.name]);
 
+  const validateForm = () => {
+    return email.length > 0 && name.length > 0;
+  }
+
   const closePopout = () => {
     setReserveError('');
     props.closeReservePopout(product['productId']);
@@ -178,6 +182,7 @@ function ReservePopout(props) {
               Please enter some details about yourself:
           </h3>
           <Input
+              id="name"
               labelText="Name"
               inputProps={{
                 value: user.name ? user.name : name,
@@ -189,6 +194,7 @@ function ReservePopout(props) {
               }}
             />
           <Input
+            id="email"
             labelText="Email"
             inputProps={{
               value: user.email ? user.email : email,
@@ -206,11 +212,11 @@ function ReservePopout(props) {
                       Quantity:
                   </span>
                   <span>
-                    <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+                    <Button id="remove" color="primary" size="sm" simple onClick={() => decreaseQuantity()} data-cy="popout-button-quantity-decrease">
                       <Remove />
                     </Button>
                     {reserveQuantity}
-                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()}>
+                    <Button id="add" color="primary" size="sm" simple onClick={() => increaseQuantity()} data-cy="popout-button-quantity-increase">
                       <Add />
                     </Button>
                   </span>
@@ -224,7 +230,7 @@ function ReservePopout(props) {
                   Log In
                 </Button>
               </Link>
-            : <Button default color="primary" className={classes.reserveButton} disabled={isReserving} onClick={() => reserveProduct()}>
+            : <Button default color="primary" className={classes.reserveButton} disabled={!validateForm() || isReserving} onClick={() => reserveProduct()} data-cy="popout-button-reserve">
                 Reserve Gift
               </Button>
           }
@@ -254,6 +260,7 @@ function ReservePopout(props) {
         onClose={() => closePopout()}
         aria-labelledby="notice-modal-slide-title"
         aria-describedby="notice-modal-slide-description"
+        data-cy="popout-reserve"
       >
         <Card plain className={classes.modalSignupCard + " " + classes.reserveCard}>
           <DialogTitle

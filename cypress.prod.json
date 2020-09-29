@@ -33,6 +33,7 @@
     "createNotFoundScript": "python cypress/scripts/create_notfound.py",
     "createListScript": "python cypress/scripts/create_list.py",
     "deleteListScript": "python cypress/scripts/delete_list.py",
+    "addGiftScript": "python cypress/scripts/add_gift.py -P cypress-test",
     "contactEmail": "contact@ewelists.com",
     "verifyEmailSubject": "Verify your Ewelists account",
     "welcomeEmailSubject": "Welcome to Ewelists"
