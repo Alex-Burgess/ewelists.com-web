@@ -23,6 +23,14 @@ def cognito_mock():
 
 
 @pytest.fixture
+def user_pool_id():
+    client = boto3.client('cognito-idp', region_name='eu-west-1')
+    list_response = client.list_user_pools(MaxResults=1)
+    id = list_response['UserPools'][0]['Id']
+    return id
+
+
+@pytest.fixture
 def dynamodb_mock():
     with mock_dynamodb2():
         dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
@@ -89,10 +97,17 @@ def dynamodb_mock():
             ProvisionedThroughput={'ReadCapacityUnits': 5, 'WriteCapacityUnits': 5}
         )
 
-        # items = []
-        #
-        # for item in items:
-        #     table.put_item(TableName='notfound-unittest', Item=item)
+        items = [
+            {
+                "productId": "12345678-notf-0001-1234-abcdefghijkl",
+                "brand": "John Lewis",
+                "details": "Trike",
+                "productUrl": "https://www.johnlewis.com/john-lewis-partners-my-first-wooden-trike/p4779147"
+            }
+        ]
+
+        for item in items:
+            table.put_item(TableName='notfound-unittest', Item=item)
         # End of notfound
 
         # Create products table
@@ -121,3 +136,75 @@ def dynamodb_mock():
         # End of products
 
         yield
+
+
+@pytest.fixture
+def example_fixture():
+    return {
+        "user": {
+            "email": "test.user@gmail.com",
+            "name": "Test User1",
+            "password": "P4ssw0rd!"
+        },
+        "list": {
+            "title": "Cypress Test Wish List",
+            "occasion": "Birthday",
+            "createdAt": "1573739584",
+            "description": "A gift list for Cypress birthday.",
+            "eventDate": "31 October 2018",
+            "imageUrl": "/images/celebration-default.jpg"
+        },
+        "products": [
+            {
+                "brand": "John Lewis & Partners",
+                "retailer": "johnlewis.com",
+                "price": "9.00",
+                "priceCheckedDate": "2020-08-27 16:00:00",
+                "details": "Baby Sleeveless Organic GOTS Cotton Bodysuits, Pack of 5, White",
+                "productUrl": "https://www.johnlewis.com/john-lewis-partners-baby-sleeveless-organic-gots-cotton-bodysuits-pack-of-5-white/p3182352",
+                "imageUrl": "https://johnlewis.scene7.com/is/image/JohnLewis/002955092?$rsp-pdp-port-640$",
+                "type": "products",
+                "quantity": 1,
+                "reserved": 0,
+                "purchased": 0
+            },
+            {
+                "brand": "John Lewis",
+                "details": "Trike",
+                "productUrl": "https://www.johnlewis.com/john-lewis-partners-my-first-wooden-trike/p4779147",
+                "type": "notfound",
+                "quantity": 1,
+                "reserved": 0,
+                "purchased": 0
+            }
+        ]
+    }
+
+
+@pytest.fixture
+def notfound_product():
+    return {
+        "brand": "John Lewis",
+        "details": "Trike",
+        "productUrl": "https://www.johnlewis.com/john-lewis-partners-my-first-wooden-trike/p4779147",
+        "type": "notfound",
+        "quantity": 1,
+        "reserved": 0,
+        "purchased": 0
+    }
+
+
+@pytest.fixture
+def products_product():
+    return {
+        "brand": "Mini Micro",
+        "retailer": "johnlewis.com",
+        "price": "79.99",
+        "details": "Scooter",
+        "productUrl": "https://www.johnlewis.com/mini-micro-deluxe-scooter-2-5-years/aqua/p3567221",
+        "imageUrl": "https://johnlewis.scene7.com/is/image/JohnLewis/235862595?$rsp-pdp-port-1440$",
+        "type": "products",
+        "quantity": 1,
+        "reserved": 0,
+        "purchased": 0
+    }

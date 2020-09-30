@@ -89,7 +89,7 @@ export default function EditPage(props) {
       // Get reservation details
       const reservation = await getReservation(resvId);
       // TODO 1
-      console.log("reservation response: " + JSON.stringify(reservation))
+      // console.log("reservation response: " + JSON.stringify(reservation))
 
       if (reservation) {
         setEmail(reservation.email);
@@ -105,7 +105,7 @@ export default function EditPage(props) {
       // Get product details
       const product_response = await getProduct(reservation.productId, reservation.productType);
       // TODO 3
-      console.log("product response: " + JSON.stringify(product_response))
+      // console.log("product response: " + JSON.stringify(product_response))
 
       let product = {};
       product['brand'] = product_response.brand;
@@ -123,7 +123,7 @@ export default function EditPage(props) {
       // Get product quantities
       const list = await getList(reservation.listId);
       // TODO 2
-      console.log("get list response: " + JSON.stringify(list))
+      // console.log("get list response: " + JSON.stringify(list))
 
       if (list) {
         setListTitle(list.list.title);

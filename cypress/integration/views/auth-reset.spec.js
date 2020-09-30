@@ -1,28 +1,34 @@
 import TestFilter from '../../support/TestFilter';
 
-const page = 'reset';
-const sizes = Cypress.env("snapshotSizes");
-
 TestFilter(['smoke'], () => {
   describe('Reset password E2E Test', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+reset" + val + "@gmail.com"
-    const userName = '"Test Reset-E2E"'
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('auth-reset/reset-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('resets password for test user', () => {
       cy.visit('/reset')
       cy.contains('Reset')
 
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('[data-cy=submit-reset]').click()
 
       cy.contains('Confirmation Code')
@@ -30,7 +36,7 @@ TestFilter(['smoke'], () => {
       // Get the confirmation code from email
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("verifyEmailSubject"),
         after: new Date(),
       })
@@ -43,8 +49,8 @@ TestFilter(['smoke'], () => {
         const code = body.match(/ [0-9]{6} /)[0].trim()
 
         cy.get('#code').type(code)
-        cy.get('#password').type(Cypress.env('testUserPassword'))
-        cy.get('#confirmPassword').type(Cypress.env('testUserPassword'))
+        cy.get('#password').type(user.password)
+        cy.get('#confirmPassword').type(user.password)
 
         cy.get('[data-cy=submit-verify]').click()
         cy.contains('Password Reset Complete')
@@ -58,24 +64,33 @@ TestFilter(['smoke'], () => {
 
 TestFilter(['regression'], () => {
   describe('Reset password E2E Test with snapshots', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+reset" + val + "@gmail.com"
-    const userName = '"Test Reset-E2E"'
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('auth-reset/reset-e2e-snapshot.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e-snapshot.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('resets password for test user', () => {
       cy.visit('/reset')
       cy.contains('Reset')
 
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
       cy.get('[data-cy=submit-reset]').click()
 
@@ -85,7 +100,7 @@ TestFilter(['regression'], () => {
       // Get the confirmation code from email
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("verifyEmailSubject"),
         after: new Date(),
       })
@@ -98,8 +113,8 @@ TestFilter(['regression'], () => {
         const code = body.match(/ [0-9]{6} /)[0].trim()
 
         cy.get('#code').type(code)
-        cy.get('#password').type(Cypress.env('testUserPassword'))
-        cy.get('#confirmPassword').type(Cypress.env('testUserPassword'))
+        cy.get('#password').type(user.password)
+        cy.get('#confirmPassword').type(user.password)
         cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
 
         cy.get('[data-cy=submit-verify]').click()
@@ -116,13 +131,12 @@ TestFilter(['regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
-    const page = 'reset';
-    const sizes = Cypress.env("snapshotSizes");
-
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
 
+    const page = 'reset';
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot when ${size} resolution`, () => {
         cy.setCookie("CookieConsent", "true")
@@ -144,18 +158,26 @@ TestFilter(['regression'], () => {
 
 
   describe('Reset Form Tests', () => {
-    // Using random email, to prevent issues with maximum retry limits
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+reset" + val + "@gmail.com"
-    const userName = '"Test Reset-Form"'
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.log('Reset Test User Email: ' + userEmail)
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('auth-login/login-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-login/login-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
@@ -180,17 +202,17 @@ TestFilter(['regression'], () => {
     it('Should error if confirmation code is wrong', () => {
       cy.visit('/reset')
 
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('[data-cy=submit-reset]').click()
       cy.contains('Confirmation Code')
 
       cy.get('#code').type('123456')
       cy.get('[data-cy=submit-verify]').should('have.css', "pointer-events", "none")
 
-      cy.get('#password').type(Cypress.env('testUserPassword'))
+      cy.get('#password').type(user.password)
       cy.get('[data-cy=submit-verify]').should('have.css', "pointer-events", "none")
 
-      cy.get('#confirmPassword').type(Cypress.env('testUserPassword'))
+      cy.get('#confirmPassword').type(user.password)
       cy.get('[data-cy=submit-verify]').should('have.css', "pointer-events", "auto")
 
       cy.get('[data-cy=submit-verify]').click()
@@ -202,13 +224,13 @@ TestFilter(['regression'], () => {
       const date = new Date();
 
       cy.visit('/reset')
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('[data-cy=submit-reset]').click()
       cy.contains('Confirmation Code')
 
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("verifyEmailSubject"),
         after: date,
       })
@@ -248,7 +270,7 @@ TestFilter(['regression'], () => {
 
         cy.get('#password').clear()
         cy.get('#confirmPassword').clear()
-        cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+        cy.get('#password').type(user.password).should('have.value', user.password)
         cy.get('#confirmPassword').type('P4ssw0rd-').should('have.value', 'P4ssw0rd-')
         cy.get('[data-cy=submit-verify]').click()
         cy.contains("Your confirmed password does not match the new password.")

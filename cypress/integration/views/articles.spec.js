@@ -1,7 +1,7 @@
 import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
-  describe('Article Page - Not Authed Tests', () => {
+  describe('Article Page - Not Authed - E2E Tests', () => {
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
       cy.visit('/list-ideas/play-room-ideas')
@@ -22,20 +22,31 @@ TestFilter(['smoke', 'regression'], () => {
     })
   })
 
-  describe('Article Page - Authed Tests', () => {
-    const userEmail = "eweuser8+article@gmail.com"
-    const userName = 'Test Article-Page'
+  describe('Article Page - Authed - No List E2E Tests', () => {
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId"))
+      cy.fixture('articles/no-list-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/articles/no-list-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
       cy.visit('/list-ideas/play-room-ideas')
     })
 
@@ -60,29 +71,32 @@ TestFilter(['smoke', 'regression'], () => {
     })
   })
 
-  describe('Article Page - E2E Add To List Test', () => {
-    const userEmail = "eweuser8+article@gmail.com"
-    const userName = 'Test Article-Page'
-    let userId = ""
-    let listId = ""
+  describe('Article Page - Authed - Add To List E2E Test', () => {
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('articles/add-to-list-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/articles/add-to-list-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
       cy.visit('/list-ideas/play-room-ideas')
     })
 
@@ -93,7 +107,7 @@ TestFilter(['smoke', 'regression'], () => {
       // Add to list button should open pop up
       cy.get('[data-cy=button-add-to-list]').eq(0).click()
       cy.get('[data-cy=popout-add-to-list]').eq(0).contains('Add Item To List')
-      cy.get('[data-cy=popout-add-to-list]').eq(0).contains('Cypress Test Gift List')
+      cy.get('[data-cy=popout-add-to-list]').eq(0).contains('Cypress Test Wish List')
       cy.get('[data-cy=popout-add-to-list]').eq(0).find('[data-cy=popout-button-add-action]').click()
       cy.get('[data-cy=popout-add-to-list]').eq(0).find('[data-cy=popout-added-icon]')
     })

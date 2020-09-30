@@ -2,7 +2,12 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Contact Page E2E Test', () => {
+    let user = {}
+
     beforeEach(() => {
+      cy.fixture('contact/contact.json').then(fixture => {
+        user = fixture.user
+      })
       cy.setCookie("CookieConsent", "true")
     })
 
@@ -10,8 +15,8 @@ TestFilter(['smoke', 'regression'], () => {
       cy.visit('/contact')
 
       // Complete form and submit
-      cy.get('#name').type('Cypress TestUser')
-      cy.get('#email').type('eweuser8+contact@gmail.com')
+      cy.get('#name').type(user.name)
+      cy.get('#email').type(user.email)
       cy.get('#message').type('Dummy message')
 
       cy.get('[data-cy=contact]').click()
@@ -25,13 +30,13 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
-    const page = 'contact';
-    const sizes = Cypress.env("snapshotSizes");
-
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
+      cy.fixture('contact/response.json').as('response')
     })
 
+    const page = 'contact';
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot when ${size} resolution`, () => {
         cy.setCookie("CookieConsent", "true")
@@ -50,25 +55,16 @@ TestFilter(['regression'], () => {
       });
     });
 
-    it('Should match previous screenshot of card after form submitted', () => {
+    it('Should match previous screenshot of card after form submitted', function () {
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
-      cy.route({
-        method: 'POST',
-        url: '/' + Cypress.env('environment') + '/contact',
-        response: {
-          "name":"Cypress TestUser",
-          "email":"eweuser8+contact@gmail.com",
-          "message":"A test message",
-          "id":123456
-        }
-      })
+      cy.route('POST', '**/contact', 'fx:contact/response')
 
       cy.visit('/contact')
 
-      cy.get('#name').type('Cypress TestUser')
-      cy.get('#email').type('eweuser8+contact@gmail.com')
-      cy.get('#message').type('A test message')
+      cy.get('#name').type(this.response.name)
+      cy.get('#email').type(this.response.email)
+      cy.get('#message').type(this.response.message)
 
       cy.get('[data-cy=contact]').click()
 

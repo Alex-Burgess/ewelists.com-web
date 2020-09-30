@@ -1,0 +1,15 @@
+{
+  "user": {
+    "email": "eweuser8+listsettings@gmail.com",
+    "name": "Test List-Settings",
+    "password": "P4ssw0rd!"
+  },
+  "list": {
+      "title": "Cypress Test Wish List",
+      "occasion": "Birthday",
+      "createdAt": "1573739584",
+      "description": "A test list",
+      "eventDate": "31 October 2018",
+      "imageUrl": "/images/birthday-default.jpg"
+  }
+}

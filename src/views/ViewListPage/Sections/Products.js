@@ -255,7 +255,7 @@ export default function Products(props) {
     } else {
       return (
         <GridItem md={4} sm={6} key={i}>
-          <Card plain product className={classes.customProduct} data-cy="product-card">
+          <Card plain product className={classes.customProduct} data-cy={"product-card-" + product.productId }>
             <CardHeader noShadow image>
               {renderImage(userReserved, userPurchased, allReserved, product['imageUrl'], userReservation['reservationId'], product['productId'])}
             </CardHeader>

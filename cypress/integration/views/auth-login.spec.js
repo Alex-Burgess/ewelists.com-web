@@ -5,17 +5,26 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Login E2E Tests', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+login" + val + "@gmail.com"
-    const userName = '"Test Login-E2E"'
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('auth-login/login-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-login/login-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('Logs in with username and password', () => {
@@ -23,12 +32,12 @@ TestFilter(['smoke', 'regression'], () => {
       cy.contains('Log In')
 
       cy.get('#email')
-        .type(userEmail)
-        .should('have.value', userEmail)
+        .type(user.email)
+        .should('have.value', user.email)
 
       cy.get('#password')
-        .type(Cypress.env('testUserPassword'))
-        .should('have.value', Cypress.env('testUserPassword'))
+        .type(user.password)
+        .should('have.value', user.password)
 
       cy.get('[data-cy=login]').click()
 
@@ -40,16 +49,21 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+login" + val + "@gmail.com"
-    const userName = '"Test Login-Page"'
-    const page = 'login';
-    const sizes = Cypress.env("snapshotSizes");
+    let user = {}
+
+    before(() => {
+      cy.fixture('auth-login/snapshot.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+    })
 
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
 
+    const page = 'login';
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot when ${size} resolution`, () => {
         cy.setCookie("CookieConsent", "true")
@@ -71,8 +85,8 @@ TestFilter(['regression'], () => {
     it('Should match previous screenshot of completed form', () => {
       cy.visit('/login')
 
-      cy.get('#email').type(userEmail)
-      cy.get('#password').type(Cypress.env('testUserPassword'))
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
 
       cy.get('[data-cy=card]').matchImageSnapshot('complete-form');
     })
@@ -80,7 +94,7 @@ TestFilter(['regression'], () => {
     it('Should match previous screenshot of login error', () => {
       cy.visit('/login')
 
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.password)
       cy.get('#password').type('12345678')
 
       cy.get('[data-cy=login]').click()
@@ -91,12 +105,26 @@ TestFilter(['regression'], () => {
   })
 
   describe('Login Page Form Tests', () => {
+    let seedResponse = {}
+    let user = {}
+
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('auth-login/login-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-login/login-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('Should have inactive login button without email', () => {
@@ -107,7 +135,7 @@ TestFilter(['regression'], () => {
 
     it('Should have inactive login button without password', () => {
       cy.visit('/login')
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('[data-cy=login]').should('have.css', "pointer-events", "none")
     })
 
@@ -125,7 +153,7 @@ TestFilter(['regression'], () => {
     it('Should show error if password is wrong', () => {
       cy.visit('/login')
 
-      cy.get('#email').type(userEmail)
+      cy.get('#email').type(user.email)
       cy.get('#password').type('12345678')
 
       cy.get('[data-cy=login]').click()

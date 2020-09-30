@@ -45,25 +45,9 @@ TestFilter(['regression'], () => {
 
     beforeEach(() => {
       cy.server()
-      cy.fixture('reserved-snapshot-data').then((data) => {
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/lists/reservation/12345678-test-resv-0001-abcdefghijkl',
-          response: data['getReservation']
-        })
-
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/lists/12345678-test-list-0001-abcdefghijkl/shared',
-          response: data['getList']
-        })
-
-        cy.route({
-          method: 'GET',
-          url: '/' + Cypress.env('environment') + '/products/12345678-test-prod-0001-abcdefghijkl',
-          response: data['getProduct']
-        })
-      })
+      cy.route('GET', '**/lists/reservation/12345678-test-resv-0001-abcdefghijkl', 'fx:reserved/snapshot-get-reservation')
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl/shared', 'fx:reserved/snapshot-get-list')
+      cy.route('GET', '**/products/12345678-test-prod-0001-abcdefghijkl', 'fx:reserved/snapshot-get-product')
 
       cy.setCookie("CookieConsent", "true")
     })

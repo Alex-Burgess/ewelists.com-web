@@ -1,41 +1,5 @@
 import TestFilter from '../../support/TestFilter';
 
-// API request setup attempt
-TestFilter(['smoke'], () => {
-  describe.only('API request attempt', () => {
-    const userEmail = "eweuser8+viewlist@gmail.com"
-    const userName = 'Test View-List-Page'
-    let userId = ""
-    let listId = ""
-
-    before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
-
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-        })
-      })
-    })
-
-    after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-    })
-
-    beforeEach(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.visit('/lists/' + listId)
-    })
-
-    it('should reserve gift when user authed', () => {
-      // Ensure page has loaded and contains products
-      cy.contains("Cypress Test Gift List")
-    })
-  })
-})
-
-
 // Smoke tests
 TestFilter(['smoke', 'regression'], () => {
   // Main Test scenarios which are covered by smoke tests are:
@@ -44,55 +8,45 @@ TestFilter(['smoke', 'regression'], () => {
   // Quanity of 1, or more
 
   describe('View List - Reserve Gift When Authed E2E Test', () => {
-    const sizes = Cypress.env("snapshotSizes");
-    const userEmail = "eweuser8+viewlist@gmail.com"
-    const userName = 'Test View-List-Page'
-    let userId = ""
-    let listId = ""
-    let notfoundId = ""
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('view-list/seed-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-
-          cy.exec(Cypress.env('addGiftScript')
-            + ' -L ' + Cypress.env("listsTable")
-            + ' -G ' + Cypress.env("notfoundTable")
-            + ' -u ' + userId
-            + ' -l ' + listId
-            + ' -f ' + 'cypress/fixtures/notfound.json'
-          ).then((result) => {
-            notfoundId = result.stdout
-            cy.log("Created notfound gift: " + notfoundId)
-          })
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/view-list/seed-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
+        cy.log("Products IDs: " + seedResponse.product_ids)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteProductScript') + ' -p ' + notfoundId + ' -t ' + Cypress.env("notfoundTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
-      cy.visit('/lists/' + listId)
+      cy.login(user.email, user.password)
+      cy.visit('/lists/' + seedResponse.list_id)
     })
 
     it('should reserve gift when user authed', () => {
       // Ensure page has loaded and contains products
-      cy.contains("Cypress Test Gift List")
-      cy.get('[data-cy=product-card]').should('have.length', 1)
+      cy.contains("Cypress Test Wish List")
+      cy.get('[data-cy=product-card-' + seedResponse['product_ids'][0] + ']').find('[data-cy=button-reserve]').click()
 
-      // Open Reserve popout
-      cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
-      cy.get('#name').should('have.value', userName).should('have.attr', "disabled")
-      cy.get('#email').should('have.value', userEmail).should('have.attr', "disabled")
-      cy.get('[data-cy=popout-button-reserve]').eq(0).click()
+      cy.get('[data-cy=popout-reserve-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('#name-' + seedResponse['product_ids'][0]).should('have.value', user.name).should('have.attr', "disabled")
+        cy.get('#email-' + seedResponse['product_ids'][0]).should('have.value', user.email).should('have.attr', "disabled")
+        cy.get('[data-cy=popout-button-reserve]').click()
+      })
 
       // Should be redirect to reservation page
       cy.url().should('include', '/reserve/')
@@ -100,58 +54,48 @@ TestFilter(['smoke', 'regression'], () => {
   })
 
   describe('View List - Reserve Gift When Not Authed E2E Test', () => {
-    const sizes = Cypress.env("snapshotSizes");
-    const userEmail = "eweuser8+viewlist@gmail.com"
-    const userName = 'Test View-List-Page'
-    let userId = ""
-    let listId = ""
-    let productsId = ""
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('view-list/seed-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-
-          cy.exec(Cypress.env('addGiftScript')
-            + ' -L ' + Cypress.env("listsTable")
-            + ' -G ' + Cypress.env("productsTable")
-            + ' -u ' + userId
-            + ' -l ' + listId
-            + ' -q ' + 2
-            + ' -f ' + 'cypress/fixtures/product.json'
-          ).then((result) => {
-            productsId = result.stdout
-            cy.log("Created products gift: " + productsId)
-          })
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/view-list/seed-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
+        cy.log("Products IDs: " + seedResponse.product_ids)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteProductScript') + ' -p ' + productsId + ' -t ' + Cypress.env("productsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
-      cy.visit('/lists/' + listId)
+      cy.visit('/lists/' + seedResponse.list_id)
     })
 
     it('should reserve gift when user authed', () => {
       // Ensure page has loaded and contains products
-      cy.contains("Cypress Test Gift List")
-      cy.get('[data-cy=product-card]').should('have.length', 1)
+      cy.contains("Cypress Test Wish List")
 
       // Open Reserve popout
-      cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
+      cy.get('[data-cy=product-card-' + seedResponse['product_ids'][0] + ']').find('[data-cy=button-reserve]').click()
 
-      cy.get('#name').type('Cypress ReserveUser1').should('have.value', "Cypress ReserveUser1")
-      cy.get('#email').type('eweuser8+reserveuser1@gmail.com').should('have.value', "eweuser8+reserveuser1@gmail.com")
-      cy.get('[data-cy=popout-button-quantity-increase]').eq(0).click()
-      cy.get('[data-cy=popout-button-reserve]').eq(0).click()
+      cy.get('[data-cy=popout-reserve-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('#name-' + seedResponse['product_ids'][0]).type('Cypress ReserveUser1').should('have.value', "Cypress ReserveUser1")
+        cy.get('#email-' + seedResponse['product_ids'][0]).type('eweuser8+reserveuser1@gmail.com').should('have.value', "eweuser8+reserveuser1@gmail.com")
+        cy.get('[data-cy=popout-button-quantity-increase]').click()
+        cy.get('[data-cy=popout-button-reserve]').click()
+      })
 
       // Should be redirect to reservation page
       cy.url().should('include', '/reserve/')
@@ -161,8 +105,6 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
-    const sizes = Cypress.env("snapshotSizes");
-
     beforeEach(() => {
       // Stub API responses
       cy.server()
@@ -174,6 +116,7 @@ TestFilter(['regression'], () => {
       cy.visit('/lists/12345678-test-list-0001-abcdefghijkl')
     })
 
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot of when ${size} resolution`, () => {
         if (Cypress._.isArray(size)) {

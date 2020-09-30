@@ -80,30 +80,31 @@ TestFilter(['smoke', 'regression'], () => {
   describe('Header Link Tests For Authed Views', () => {
     // Note: We don't test white and transparent header bars in auth view, as this is effectively covered.
     // But for completeness we could add them in the future.
-
-    const userEmail = "eweuser8+header-links@gmail.com"
-    const userName = 'Test Header'
-    let userId = ""
-    let listId = ""
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('header/header-e2e').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/header/header-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
       cy.visit('/')
     })
 
@@ -148,8 +149,8 @@ TestFilter(['smoke', 'regression'], () => {
       cy.viewport('iphone-x')
 
       // Transparent header is used on list ideas page
-      cy.visit('/settings/' + listId)
-      cy.get('[data-cy=header-mobile-bar-back-button]').find('a').should('have.attr', 'href', '/edit/' + listId)
+      cy.visit('/settings/' + seedResponse.list_id)
+      cy.get('[data-cy=header-mobile-bar-back-button]').find('a').should('have.attr', 'href', '/edit/' + seedResponse.list_id)
       cy.get('[data-cy=header-mobile-bar-title]').contains('List Settings')
     })
   })
@@ -209,29 +210,31 @@ TestFilter(['regression'], () => {
   })
 
   describe('Header Visual Snapshot Tests For Authed Pages', () => {
-    const userEmail = "eweuser8+header-snapshot@gmail.com"
-    const userName = 'Test Header'
-    let userId = ""
-    let listId = ""
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('header/header-snapshot').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/header/header-snapshot.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.setCookie("CookieConsent", "true")
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
     })
 
     it('Should have correct snapshot for dark header', () => {
@@ -251,7 +254,7 @@ TestFilter(['regression'], () => {
 
     it('Should have correct snapshot for mobile bar', () => {
       cy.viewport('iphone-x')
-      cy.visit('/settings/' + listId)
+      cy.visit('/settings/' + seedResponse.list_id)
       cy.get('[data-cy=header]').matchImageSnapshot('header-mobile-bar-authed');
     })
 

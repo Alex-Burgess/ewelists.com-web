@@ -1,0 +1,18 @@
+{
+  "user": {
+    "email": "eweuser8+dashboard@gmail.com",
+    "userId":"12345678-test-user-0001-abcdefghijkl",
+    "name": "Test Dashboard-Page"
+  },
+  "owned":[{
+    "listId":"12345678-test-list-0001-abcdefghijkl",
+    "title":"Baby Gift List",
+    "description":"Some gift ideas",
+    "occasion":"Baby Shower",
+    "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
+    "listOwner":"12345678-test-user-0001-abcdefghijkl",
+    "state":"open",
+    "eventDate":"31 July 2020"
+  }],
+  "closed":[]
+}

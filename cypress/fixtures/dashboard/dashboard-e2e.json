@@ -1,0 +1,13 @@
+{
+  "user": {
+    "email": "eweuser8+dashboard@gmail.com",
+    "name": "Test Dashboard",
+    "password": "P4ssw0rd!"
+  },
+  "create_list_data": {
+    "title": "Cypress Baby Shower Wish List",
+    "description": "A gift wish list for my baby shower.",
+    "occasion": "Baby Shower",
+    "imageUrl": "/images/babyshower-default.jpg"
+  }
+}

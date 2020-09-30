@@ -5,16 +5,25 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke'], () => {
   describe('Sign up E2E Test', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+signup" + val + "@gmail.com"
+    let user = {}
+
+    before(() => {
+      cy.fixture('auth-signup/signup-e2e.json').then(fixture => {
+        user = fixture.user
+        var val = Math.floor(Math.random() * 1000);
+        user['email'] = "eweuser8+signup" + val + "@gmail.com"
+        cy.log("User email: " + user.email)
+      })
+    })
 
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
 
     after(() => {
-      // Clean up new user that was created.
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('Signs up with test user email', () => {
@@ -27,14 +36,14 @@ TestFilter(['smoke'], () => {
       cy.get('[data-cy=button-signup-with-email]').click()
 
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#email').type(userEmail).should('have.value', userEmail)
-      cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+      cy.get('#email').type(user.email).should('have.value', user.email)
+      cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=button-signup-form]').click()
 
       // Check that welcome email is received
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("welcomeEmailSubject"),
         after: date,
       })
@@ -49,7 +58,7 @@ TestFilter(['smoke'], () => {
 
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("verifyEmailSubject"),
         after: date,
       })
@@ -72,16 +81,25 @@ TestFilter(['smoke'], () => {
 
 TestFilter(['regression'], () => {
   describe('Sign up E2E Test with snapshots', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+signup" + val + "@gmail.com"
+    let user = {}
+
+    before(() => {
+      cy.fixture('auth-signup/signup-e2e.json').then(fixture => {
+        user = fixture.user
+        var val = Math.floor(Math.random() * 1000);
+        user['email'] = "eweuser8+signup" + val + "@gmail.com"
+        cy.log("User email: " + user.email)
+      })
+    })
 
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
     })
 
     after(() => {
-      // Clean up new user that was created.
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('Signs up with test user email', () => {
@@ -95,15 +113,15 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-empty')
 
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#email').type(userEmail).should('have.value', userEmail)
-      cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+      cy.get('#email').type(user.email).should('have.value', user.email)
+      cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-complete')
       cy.get('[data-cy=button-signup-form]').click()
 
       // Check that welcome email is received
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("welcomeEmailSubject"),
         after: date,
       })
@@ -119,7 +137,7 @@ TestFilter(['regression'], () => {
 
       cy.task("gmail:check", {
         from: Cypress.env("contactEmail"),
-        to: userEmail,
+        to: user.email,
         subject: Cypress.env("verifyEmailSubject"),
         after: date,
       })
@@ -185,11 +203,25 @@ TestFilter(['regression'], () => {
 
 
   describe('Signup Form Tests', () => {
-    var val = Math.floor(Math.random() * 1000);
-    const userEmail = "eweuser8+signup" + val + "@gmail.com"
+    let user = {}
+
+    before(() => {
+      cy.fixture('auth-signup/signup-e2e.json').then(fixture => {
+        user = fixture.user
+        var val = Math.floor(Math.random() * 1000);
+        user['email'] = "eweuser8+signup" + val + "@gmail.com"
+        cy.log("User email: " + user.email)
+      })
+    })
 
     beforeEach(() => {
       cy.setCookie("CookieConsent", "true")
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     it('Should have inactive signup button if password missing', () => {
@@ -200,16 +232,11 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=button-signup-form]').should('have.css', "pointer-events", "none")
     })
 
-    after(() => {
-      // Clean up new user that was created.
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-    })
-
     it('Should have inactive signup button if email missing', () => {
       cy.visit('/signup')
       cy.get('[data-cy=button-signup-with-email]').click()
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+      cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=button-signup-form]').should('have.css', "pointer-events", "none")
     })
 
@@ -217,7 +244,7 @@ TestFilter(['regression'], () => {
       cy.visit('/signup')
       cy.get('[data-cy=button-signup-with-email]').click()
       cy.get('#email').type('test@gmail.com').should('have.value', 'test@gmail.com')
-      cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+      cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=button-signup-form]').should('have.css', "pointer-events", "none")
     })
 
@@ -263,8 +290,8 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=button-signup-with-email]').click()
 
       cy.get('#name').type('Test User').should('have.value', 'Test User')
-      cy.get('#email').type(userEmail).should('have.value', userEmail)
-      cy.get('#password').type(Cypress.env('testUserPassword')).should('have.value', Cypress.env('testUserPassword'))
+      cy.get('#email').type(user.email).should('have.value', user.email)
+      cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=button-signup-form]').click()
 
       // confirmation code button should be inactive

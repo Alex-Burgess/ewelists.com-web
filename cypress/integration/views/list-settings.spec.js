@@ -3,30 +3,35 @@ import TestFilter from '../../support/TestFilter';
 // Smoke tests
 TestFilter(['smoke', 'regression'], () => {
   describe('Edit E2E Test', () => {
-    const sizes = Cypress.env("snapshotSizes");
     const userEmail = "eweuser8+listsettings@gmail.com"
     const userName = 'Test List-Settings-Page'
-    let userId = ""
-    let listId = ""
+
+    let seedResponse = {}
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n "' + userName + '" -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('list-settings/list-settings-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
 
-        cy.exec(Cypress.env('createListScript') + ' -u ' + userId + ' -t ' + Cypress.env("listsTable")).then((result) => {
-          listId = result.stdout
-        })
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/list-settings/list-settings-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
-      cy.visit('/settings/' + listId)
+      cy.login(user.email, user.password)
+      cy.visit('/settings/' + seedResponse.list_id)
     })
 
     it('should edit details of the list', () => {
@@ -40,7 +45,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('.datepicker').click();
       cy.contains('24').click();
       cy.get('#mui-component-select-occasion').click()
-      cy.contains('Birthday').click();
+      cy.contains('Baby Shower').click();
       cy.get('#description').type(" for my birthday").should('have.value', "A test list for my birthday")
 
       cy.get('[data-cy=button-save]').click()
@@ -69,46 +74,34 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {
-    const userEmail = "eweuser8+listsettings@gmail.com"
-    const userName = '"Test List-Settings-Page"'
-
-    const sizes = Cypress.env("snapshotSizes");
+    let user = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('list-settings/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/list-settings/snapshot-seed.json').then((result) => {
+        const response = JSON.parse(result.stdout)
+        cy.log("User ID: " + response.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
-
+      cy.login(user.email, user.password)
       cy.server()
-      cy.route({
-        method: 'GET',
-        url: '/' + Cypress.env('environment') + '/lists/12345678-test-list-0001-abcdefghijkl',
-        response: {
-          "list":{
-            "listId":"12345678-test-list-0001-abcdefghijkl",
-            "title":"Baby Shower Wish List",
-            "description":"Gift ideas for my baby shower",
-            "occasion":"Baby Shower",
-            "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
-            "listOwner":"7b58df8d-bccd-42e2-ab0f-1a8c62d0af9f",
-            "state":"open",
-            "eventDate":"31 October 2020"
-          },
-          "products":{},
-          "reserved":[]
-        }
-      })
-
-
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl', 'fx:list-settings/snapshot-response')
       cy.visit('/settings/12345678-test-list-0001-abcdefghijkl')
     })
 
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot when ${size} resolution`, () => {
         cy.setCookie("CookieConsent", "true")

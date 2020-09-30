@@ -2,24 +2,32 @@ import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke', 'regression'], () => {
   describe('Dashboard Page E2E Tests', () => {
-    const userEmail = "eweuser8+dashboard@gmail.com"
-    const userName = '"Test Dashboard-E2E"'
-    let listId = ""
-    let userId = ""
+    let user = {}
+    let seedResponse = {}
+    let listData = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId")).then((result) => {
-        userId = result.stdout
+      cy.fixture('dashboard/dashboard-e2e.json').then(fixture => {
+        user = fixture.user
+        listData = fixture.create_list_data
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/dashboard/dashboard-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
       })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + userId + ' -t ' + Cypress.env("listsTable"))
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
     })
 
     it('creates new list', () => {
@@ -28,21 +36,22 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=button-create-new-list]').click()
 
       // Complete form
-      cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('#title').type(listData.title).should('have.value', listData.title)
       cy.get('.datepicker').click();
       cy.contains('24').click();
       cy.get('#mui-component-select-occasion').click()
-      cy.contains('Baby Shower').click();
-      cy.get('#description').type("A test list").should('have.value', "A test list")
+      cy.contains(listData.occasion).click();
+      cy.get('#description').type(listData.description).should('have.value', listData.description)
 
       // Submit form and check list created
       cy.get('[data-cy=button-create-list]').click()
-      cy.contains('Baby Shower Test List')
+      cy.contains(listData.title)
       cy.url().should('include', '/edit/')
 
       // Get list id for use in delete script
       cy.url().then(url => {
-        listId = url.split('/edit/')[1]
+        const listId = url.split('/edit/')[1]
+        seedResponse['list_id'] = listId
         cy.log("Created List ID: " + listId)
       })
     })
@@ -51,50 +60,38 @@ TestFilter(['smoke', 'regression'], () => {
 
 TestFilter(['regression'], () => {
   describe('Dashboard Page Visual Regression tests', () => {
-    const userEmail = "eweuser8+dashboard@gmail.com"
-    const userName = '"Test Dashboard-Page"'
-
-    const sizes = Cypress.env("snapshotSizes");
+    let user = {}
+    let seedResponse = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('dashboard/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/dashboard/snapshot-seed.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
-      cy.route({
-        method: 'GET',
-        url: '/' + Cypress.env('environment') + '/lists/',
-        response: {
-          "user": {
-            "email": userEmail,
-            "userId":"12345678-test-user-0001-abcdefghijkl",
-            "name": userName
-          },
-          "owned":[{
-            "listId":"12345678-test-list-0001-abcdefghijkl",
-            "title":"Baby Gift List",
-            "description":"Some gift ideas",
-            "occasion":"Baby Shower",
-            "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
-            "listOwner":"12345678-test-user-0001-abcdefghijkl",
-            "state":"open",
-            "eventDate":"31 July 2020"
-          }],
-          "closed":[]
-        }
-      })
-
-      cy.visit('/');
+      cy.route('GET', '**/lists/', 'fx:dashboard/snapshot-response')
+      cy.visit('/')
     })
 
+    const sizes = Cypress.env("snapshotSizes");
     sizes.forEach((size) => {
       it(`Should match previous screenshot 'dashboard Page' When '${size}' resolution`, () => {
         if (Cypress._.isArray(size)) {
@@ -112,27 +109,40 @@ TestFilter(['regression'], () => {
   });
 
   describe('Create List Form Tests', () => {
-    const userEmail = "eweuser8+dashboard@gmail.com"
-    const userName = '"Test Dashboard-CreateForm"'
+    let user = {}
+    let seedResponse = {}
+    let listData = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
-    })
+      cy.fixture('dashboard/dashboard-e2e.json').then(fixture => {
+        user = fixture.user
+        listData = fixture.create_list_data
+        cy.log("User email: " + user.email)
+      })
 
-    beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
-      cy.visit('/')
-      cy.get('[data-cy=button-create-new-list]').click()
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/dashboard/dashboard-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.login(user.email, user.password)
+      cy.visit('/')
+      cy.get('[data-cy=button-create-new-list]').click()
     })
 
     it('Should have inactive form button when not complete', () => {
       cy.get('.signUpCard').matchImageSnapshot('create-list-form-empty')
 
-      cy.get('#title').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('#title').type(listData.title).should('have.value', listData.title)
       cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
 
       cy.get('.datepicker').click();
@@ -140,10 +150,10 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
 
       cy.get('#mui-component-select-occasion').click()
-      cy.contains('Baby Shower').click();
+      cy.contains(listData.occasion).click();
       cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "none")
 
-      cy.get('#description').type("Baby Shower Test List").should('have.value', "Baby Shower Test List")
+      cy.get('#description').type(listData.description).should('have.value', listData.description)
       cy.get('[data-cy=button-create-list]').should('have.css', "pointer-events", "auto")
 
       cy.get('.signUpCard').matchImageSnapshot('create-list-form-complete')
@@ -155,45 +165,34 @@ TestFilter(['regression'], () => {
   })
 
   describe('Open List Item Tests', () => {
-    const userEmail = "eweuser8+dashboard@gmail.com"
-    const userName = '"Test Dashboard-OpenList"'
+    let user = {}
+    let seedResponse = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('dashboard/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/dashboard/snapshot-seed.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
-      cy.route({
-        method: 'GET',
-        url: '/' + Cypress.env('environment') + '/lists/',
-        response: {
-          "user": {
-            "email": userEmail,
-            "userId":"12345678-test-user-0001-abcdefghijkl",
-            "name": userName
-          },
-          "owned":[{
-            "listId":"12345678-test-list-0001-abcdefghijkl",
-            "title":"Baby Gift List",
-            "description":"Some gift ideas",
-            "occasion":"Baby Shower",
-            "imageUrl":"https://test.ewelists.com/images/babyshower-default.jpg",
-            "listOwner":"12345678-test-user-0001-abcdefghijkl",
-            "state":"open",
-            "eventDate":"31 July 2020"
-          }],
-          "closed":[]
-        }
-      })
-
+      cy.route('GET', '**/lists/', 'fx:dashboard/snapshot-response')
       cy.visit('/')
     })
 
@@ -221,45 +220,34 @@ TestFilter(['regression'], () => {
   })
 
   describe('Closed List Item Tests', () => {
-    const userEmail = "eweuser8+dashboard@gmail.com"
-    const userName = '"Test Dashboard-ClosedList"'
+    let user = {}
+    let seedResponse = {}
 
     before(() => {
-      cy.exec(Cypress.env('createUserScript') + ' -e ' + userEmail + ' -n ' + userName + ' -U ' + Cypress.env("userPoolId"))
+      cy.fixture('dashboard/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/dashboard/snapshot-seed.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
     })
 
     after(() => {
-      cy.exec(Cypress.env('deleteUserScript') + ' -e ' + userEmail + ' -U ' + Cypress.env("userPoolId") + ' -t ' + Cypress.env("listsTable"))
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
     })
 
     beforeEach(() => {
-      cy.login(userEmail, Cypress.env('testUserPassword'))
+      cy.login(user.email, user.password)
 
       // Fakes the API request so that we don't need to update the DB.
       cy.server()
-      cy.route({
-        method: 'GET',
-        url: '/' + Cypress.env('environment') + '/lists/',
-        response: {
-          "user": {
-            "email": userEmail,
-            "userId":"12345678-test-user-0001-abcdefghijkl",
-            "name": userName
-          },
-          "owned":[],
-          "closed":[{
-            "listId":"12345678-test-list-0001-abcdefghijkl",
-            "title":"Baby Gift List",
-            "description":"Some gift ideas",
-            "occasion":"Baby Shower",
-            "imageUrl":"https://test.ewelists.com/images/babyshower-closed.jpg",
-            "listOwner":"12345678-test-user-0001-abcdefghijkl",
-            "state":"closed",
-            "eventDate":"31 July 2020"
-          }]
-        }
-      })
-
+      cy.route('GET', '**/lists/', 'fx:dashboard/closed-response')
       cy.visit('/')
     })
 
