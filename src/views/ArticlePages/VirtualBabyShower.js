@@ -150,7 +150,7 @@ export default function VirtualBabyShower(props) {
         </p>
         <p>
           We’d love to see some of your fabulous pictures so don’t forget to tag us at <b>#ewelists</b> and follow us on
-          <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com"> Instagram </a> for lots of gift list inspiration.
+          <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/ewelists"> Instagram </a> for lots of gift list inspiration.
         </p>
       </div>
     </div>
