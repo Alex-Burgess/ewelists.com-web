@@ -32,6 +32,7 @@ import ArticleOutdoorPlay from "views/ArticlePages/OutdoorPlay.js";
 import ArticleIndoorPlay from "views/ArticlePages/IndoorPlay.js";
 import ArticlePlayRoom from "views/ArticlePages/PlayRoom.js";
 import ArticleNewbornFeeding from "views/ArticlePages/NewbornFeeding.js";
+import ArticleBabyShower from "views/ArticlePages/BabyShower.js";
 
 export default function Routes({appProps}) {
   return (
@@ -53,6 +54,7 @@ export default function Routes({appProps}) {
       <AppliedRoute path="/list-ideas/childrens-indoor-play" exact component={ArticleIndoorPlay} props={appProps} />
       <AppliedRoute path="/list-ideas/play-room-ideas" exact component={ArticlePlayRoom} props={appProps} />
       <AppliedRoute path="/list-ideas/newborn-baby-feeding" exact component={ArticleNewbornFeeding} props={appProps} />
+      <AppliedRoute path="/list-ideas/baby-shower" exact component={ArticleBabyShower} props={appProps} />
       <UnauthenticatedRoute path="/login" exact component={LoginPage} props={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} props={appProps} />
       <UnauthenticatedRoute path="/signup-complete" exact component={SocialConfirmationPage} props={appProps} />

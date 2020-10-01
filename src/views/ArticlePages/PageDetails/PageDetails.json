@@ -1,4 +1,13 @@
 {
+  "baby-shower": {
+    "category": "MATERNITY",
+    "title": "Baby Shower",
+    "titleColour": "Yellow",
+    "url": "/list-ideas/baby-shower",
+    "img": "baby-shower",
+    "description_short": "Your guide to hosting a baby shower, or baby sprinkle.",
+    "beginning_content": "Although the modern baby shower really took off in the US during the post war era, baby showers have actually been around for centuries and are celebrated across many different cultures. As well as a celebration, they have traditionally been..."
+  },
   "newborn-baby-feeding": {
     "category": "BABY",
     "title": "Newborn Baby Feeding",
@@ -87,6 +96,6 @@
     "url": "/list-ideas/play-room-ideas",
     "img": "play-room",
     "description_short": "Create your perfect play room.",
-    "beginning_content": "Keep toys tidy and organised by creating your own dedicated play space or play room. With some careful choices you can have your play area looking great and fitting in with the rest of your home decor. Here are some of our favourite pieces to get you started."
+    "beginning_content": "Keep toys tidy and organised by creating your own dedicated play space or play room. With some careful choices you can have your play area looking great and fitting in with the rest of your home decor. Here are some of our favourite pieces to get you started..."
   }
 }
