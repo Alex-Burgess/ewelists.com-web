@@ -11,7 +11,7 @@ import ChecklistCard from "./Sections/ChecklistCard.js";
 // data id
 const name = 'baby-shower'
 
-export default function BabyEssentials(props) {
+export default function BabyShower(props) {
   const [lists, setLists] = useState({});
 
   const content = (
