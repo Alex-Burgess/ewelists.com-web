@@ -6,7 +6,6 @@
   "video": false,
   "screenshotOnRunFailure": false,
   "env": {
-    "environment": "test",
     "failOnSnapshotDiff": false,
     "updateSnapshots": false,
     "snapshotSizes": [
@@ -22,15 +21,6 @@
     "domain": "test-ewelists.auth.eu-west-1.amazoncognito.com",
     "redirect_signin": "http://localhost:3000/",
     "redirect_signout": "http://localhost:3000/login",
-    "productsTable": "products-test",
-    "notfoundTable": "notfound-test",
-    "listsTable": "lists-test",
-    "createProductScript": "python cypress/scripts/create_product.py -P cypress-test",
-    "deleteProductScript": "python cypress/scripts/delete_product.py -P cypress-test",
-    "createNotFoundScript": "python cypress/scripts/create_notfound.py -P cypress-test",
-    "createListScript": "python cypress/scripts/create_list.py -P cypress-test",
-    "deleteListScript": "python cypress/scripts/delete_list.py -P cypress-test",
-    "addGiftScript": "python cypress/scripts/add_gift.py -P cypress-test",
     "contactEmail": "contact@ewelists.com",
     "verifyEmailSubject": "Verify your Ewelists account (test)",
     "welcomeEmailSubject": "Welcome to Ewelists (test)",

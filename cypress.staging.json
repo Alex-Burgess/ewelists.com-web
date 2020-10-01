@@ -6,7 +6,6 @@
   "video": false,
   "screenshotOnRunFailure": false,
   "env": {
-    "environment": "staging",
     "failOnSnapshotDiff": true,
     "updateSnapshots": false,
     "snapshotSizes": [
@@ -16,27 +15,17 @@
       "macbook-13",
       [1920, 1080]
     ],
-    "testUserPassword": "P4ssw0rd!",
     "userPoolId": "eu-west-1_Le825O3Pt",
     "appClientId": "5tmme79b0m94mp3i87e300piqp",
     "identityPoolId": "eu-west-1:704a4a75-e23e-4b9f-b7b1-ad7113e9c28d",
     "domain": "staging-ewelists.auth.eu-west-1.amazoncognito.com",
     "redirect_signin": "https://staging.ewelists.com",
     "redirect_signout": "https://staging.ewelists.com/login",
-    "productsTable": "products-staging",
-    "notfoundTable": "notfound-staging",
-    "listsTable": "lists-staging",
-    "createUserScript": "python cypress/scripts/create_user.py",
-    "deleteUserScript": "python cypress/scripts/delete_user.py",
-    "createProductScript": "python cypress/scripts/create_product.py",
-    "deleteProductScript": "python cypress/scripts/delete_product.py",
-    "createNotFoundScript": "python cypress/scripts/create_notfound.py",
-    "createListScript": "python cypress/scripts/create_list.py",
-    "deleteListScript": "python cypress/scripts/delete_list.py",
-    "addGiftScript": "python cypress/scripts/add_gift.py -P cypress-test",
     "contactEmail": "contact@ewelists.com",
     "verifyEmailSubject": "Verify your Ewelists account (staging)",
-    "welcomeEmailSubject": "Welcome to Ewelists (staging)"
+    "welcomeEmailSubject": "Welcome to Ewelists (staging)",
+    "seedDB": "python cypress/scripts/seed_db.py -u eu-west-1_Le825O3Pt -l lists-staging -n notfound-staging -p products-staging",
+    "cleanDB": "python cypress/scripts/clean_db.py -u eu-west-1_Le825O3Pt -l lists-staging -n notfound-staging -p products-staging"
   },
   "projectId": "vf6c6c"
 }
