@@ -25,37 +25,64 @@ def main(user_pool_id, lists_table, notfound_table, products_table, fixture, pro
         response_data['list_id'] = list_id
 
     if 'products' in data:
-        product_ids = handle_products(lists_table, notfound_table, products_table, user_id, list_id, data)
+        product_ids, reservation_ids = handle_products(lists_table, notfound_table, products_table, user_id, list_id, data)
         response_data['product_ids'] = product_ids
+        response_data['reservation_ids'] = reservation_ids
 
     print(json.dumps(response_data))
-    # Example response
-    # {
-    #     "user_id": user_id,
-    #     "list_id": "dfbd",
-    #     "product_ids": [
-    #         "2345456456",
-    #         "2334534535"
-    #     ],
-    #     "reservation_ids": [
-    #         "34434536456"
-    #     ]
-    # }
     return True
 
 
 def handle_products(lists_table, notfound_table, products_table, user_id, list_id, data):
     products = []
+    reservations = []
 
     for product in data['products']:
         product_id = create_product(notfound_table, products_table, user_id, product)
-        add_to_list(lists_table, list_id, product_id, product)
+        create_product_list_item(lists_table, list_id, product_id, product)
         products.append(product_id)
 
-    return products
+        if 'reservations' in product:
+            for reservation in product['reservations']:
+                reservation_id = create_reservation_item(lists_table, list_id, user_id, product_id, data['list']['title'], product['type'], reservation)
+                reservations.append(reservation_id)
+
+    return products, reservations
 
 
-def add_to_list(table, list_id, product_id, product):
+def create_reservation_item(table_name, list_id, list_owner_id, product_id, title, type, reservation_data):
+    dynamodb = dynamodb_session()
+    resv_id = str(uuid.uuid4())
+
+    try:
+        item = {
+            'PK': {'S': "LIST#{}".format(list_id)},
+            'SK': {'S': "RESERVATION#{}#{}#{}".format(product_id, reservation_data['userId'], resv_id)},
+            'reservationId': {'S': resv_id},
+            'productId': {'S': product_id},
+            'userId': {'S': reservation_data['userId']},
+            'listId': {'S': list_id},
+            'listOwnerId': {'S': list_owner_id},
+            'name': {'S': reservation_data['name']},
+            'email': {'S': reservation_data['email']},
+            'quantity': {'N': str(reservation_data['quantity'])},
+            'state': {'S': reservation_data['state']},
+            'reservedAt': {'N': reservation_data['reservedAt']},
+            'listTitle': {'S': title},
+            'productType': {'S': type}
+        }
+    except Exception as e:
+        error("list data in fixture was not as expected", e)
+
+    try:
+        dynamodb.put_item(TableName=table_name, Item=item)
+    except Exception as e:
+        error("Unexpected error when creating reservation in table (" + table_name + ")", e)
+
+    return resv_id
+
+
+def create_product_list_item(table, list_id, product_id, product):
     dynamodb = dynamodb_session()
 
     try:

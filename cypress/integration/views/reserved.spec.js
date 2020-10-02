@@ -2,42 +2,44 @@ import TestFilter from '../../support/TestFilter';
 
 // Smoke tests
 // TODO - E2E
-// TestFilter(['smoke', 'regression'], () => {
-//   describe('Reserved Page - Purchased E2E Test - Not Authed', () => {
-//     const sizes = Cypress.env("snapshotSizes");
-//     let listId = ""
-//     let productsId = ""
-//     let resvId = ""
-//
-//     // To setup test need to do the following:
-//     // Create a list
-//     // Add a product
-//     // Create a reservation
-//     before(() => {
-//       cy.fixture('create-list-post-body.json')
-//         .then(data => cy.request('https://4sdcvv0n2e.execute-api.eu-west-1.amazonaws.com/test/lists', data))
-//       // https://{{lists_url_id}}.execute-api.eu-west-1.amazonaws.com/{{env}}/lists
-//
-//     })
-//
-//     after(() => {
-//       cy.fixture('reserved-e2e-data').then((data) => {
-//         cy.exec(Cypress.env('deleteListScript') + ' -l ' + listId + ' -u ' + data['list'].listOwner + ' -t ' + Cypress.env("listsTable"))
-//         // cy.exec(Cypress.env('deleteProductScript') + ' -p ' + productsId + ' -t ' + Cypress.env("productsTable"))
-//       })
-//     })
-//
-//     beforeEach(() => {
-//       cy.setCookie("CookieConsent", "true")
-//       cy.visit('/reserve/' + resvId)
-//     })
-//
-//     it.only('should reserve gift when user authed', () => {
-//       // Ensure page has loaded and contains products
-//       cy.contains("Reservation")
-//     })
-//   })
-// })
+TestFilter(['smoke', 'regression'], () => {
+  describe('Reserved Page - Purchased E2E Test - Not Authed', () => {
+    let seedResponse = {}
+    let user = {}
+
+    before(() => {
+      cy.fixture('reserved/seed-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/reserved/seed-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
+        cy.log("Products IDs: " + seedResponse.product_ids)
+        cy.log("Reservation IDs: " + seedResponse.reservation_ids)
+      })
+    })
+
+    after(() => {
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/reserve/' + seedResponse.reservation_ids[0])
+    })
+
+    it.only('should reserve gift when user authed', () => {
+      // Ensure page has loaded and contains products
+      cy.contains("Reservation")
+    })
+  })
+})
 
 TestFilter(['regression'], () => {
   describe('Visual Snapshot Tests', () => {

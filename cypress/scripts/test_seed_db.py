@@ -20,29 +20,54 @@ class TestSeedDb:
         assert returned_json['user_id'] == 'test.user@gmail.com'
         assert len(returned_json['list_id']) == 36
         assert len(returned_json['product_ids']) == 2
+        assert len(returned_json['reservation_ids']) == 2
 
 
 class TestHandleProducts:
     def test_add_products(self, dynamodb_mock, example_fixture):
-        product_ids = seed_db.handle_products('lists-unittest', 'notfound-unittest', 'products-unittest', '12345678-user-0001-1234-abcdefghijkl', '12345678-list-0001-1234-abcdefghijkl', example_fixture)
+        product_ids, reservation_ids = seed_db.handle_products('lists-unittest', 'notfound-unittest', 'products-unittest', '12345678-user-0001-1234-abcdefghijkl', '12345678-list-0001-1234-abcdefghijkl', example_fixture)
         assert len(product_ids[0]) == 36
         assert len(product_ids[1]) == 36
+        assert len(reservation_ids[0]) == 36
+        assert len(reservation_ids[1]) == 36
 
 
-class TestAddToList:
-    def test_add_to_list(self, dynamodb_mock, notfound_product):
-        assert seed_db.add_to_list('lists-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
+class TestCreateReservationItem:
+    def test_create_reservation_item(self, dynamodb_mock):
+        reservation_data = {
+            "userId": "12345678-test-user-r001-abcdefghijkl",
+            "name": "Cypress TestReserver",
+            "email": "eweuser8+testreserver@gmail.com",
+            "quantity": 1,
+            "state": "reserved",
+            "reservedAt": "1573739584"
+        }
+
+        assert seed_db.create_reservation_item(
+            'lists-unittest',
+            '12345678-list-0001-1234-abcdefghijkl',
+            '12345678-user-0001-1234-abcdefghijkl',
+            '12345678-prod-0001-1234-abcdefghijkl',
+            'A test wish list',
+            'products',
+            reservation_data
+        )
+
+
+class TestCreateProductListItem:
+    def test_create_product_list_item(self, dynamodb_mock, notfound_product):
+        assert seed_db.create_product_list_item('lists-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
 
     def test_bad_product(self, dynamodb_mock):
         with pytest.raises(SystemExit) as e:
-            seed_db.add_to_list('wrong-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', {})
+            seed_db.create_product_list_item('wrong-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', {})
 
         assert e.type == SystemExit
         assert e.value.code == 1
 
     def test_add_error(self, dynamodb_mock, notfound_product):
         with pytest.raises(SystemExit) as e:
-            seed_db.add_to_list('wrong-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
+            seed_db.create_product_list_item('wrong-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
 
         assert e.type == SystemExit
         assert e.value.code == 1

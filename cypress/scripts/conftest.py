@@ -152,7 +152,7 @@ def example_fixture():
             "createdAt": "1573739584",
             "description": "A gift list for Cypress birthday.",
             "eventDate": "31 October 2018",
-            "imageUrl": "/images/celebration-default.jpg"
+            "imageUrl": "/images/birthday-default.jpg"
         },
         "products": [
             {
@@ -164,9 +164,27 @@ def example_fixture():
                 "productUrl": "https://www.johnlewis.com/john-lewis-partners-baby-sleeveless-organic-gots-cotton-bodysuits-pack-of-5-white/p3182352",
                 "imageUrl": "https://johnlewis.scene7.com/is/image/JohnLewis/002955092?$rsp-pdp-port-640$",
                 "type": "products",
-                "quantity": 1,
-                "reserved": 0,
-                "purchased": 0
+                "quantity": 2,
+                "reserved": 2,
+                "purchased": 0,
+                "reservations": [
+                  {
+                    "userId": "12345678-test-user-r001-abcdefghijkl",
+                    "name": "Cypress TestReserver",
+                    "email": "eweuser8+testreserver@gmail.com",
+                    "quantity": 1,
+                    "state": "reserved",
+                    "reservedAt": "1573739584"
+                  },
+                  {
+                    "userId": "eweuser8+testreserver2@gmail.com",
+                    "name": "Cypress TestReserver2",
+                    "email": "eweuser8+testreserver2@gmail.com",
+                    "quantity": 1,
+                    "state": "reserved",
+                    "reservedAt": "1573739584"
+                  }
+                ]
             },
             {
                 "brand": "John Lewis",
