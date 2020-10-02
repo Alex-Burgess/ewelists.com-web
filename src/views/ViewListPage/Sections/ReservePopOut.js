@@ -62,7 +62,7 @@ function ReservePopout(props) {
   }, [user, cookies.email, cookies.name]);
 
   const validateForm = () => {
-    if (email == null || name == "null") {
+    if (email == null || name === "null") {
       return false
     } else {
       return email.length > 0 && name.length > 0;

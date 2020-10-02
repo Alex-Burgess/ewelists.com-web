@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 // custom components
-import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
 import SectionHeadings from "./Sections/SectionHeadings.js";
 import ListArticle from "./Sections/ListArticle.js";
-import Products from "./Sections/Products.js";
-import ChecklistCard from "./Sections/ChecklistCard.js";
 
 // data id
 const name = 'virtual-baby-shower'
 
 export default function VirtualBabyShower(props) {
-  const [lists, setLists] = useState({});
-
   const content = (
     <div>
       <div>
@@ -48,13 +43,13 @@ export default function VirtualBabyShower(props) {
         <p>
           Choose which virtual platform you are going to use and make sure you test it out before hand to make sure
           everything works. Here are some of the common platforms that are used.
-          <ul>
-            <li>House party: 8 guests maximum</li>
-            <li>Facetime: 32 guests maximum, all guests need an Apple device</li>
-            <li>Skype: 50 guests maximum</li>
-            <li>Zoom: 100 guests maximum on free plan for 40 minutes</li>
-          </ul>
         </p>
+        <ul>
+          <li>House party: 8 guests maximum</li>
+          <li>Facetime: 32 guests maximum, all guests need an Apple device</li>
+          <li>Skype: 50 guests maximum</li>
+          <li>Zoom: 100 guests maximum on free plan for 40 minutes</li>
+        </ul>
       </div>
       <div>
         <SectionHeading name="plan" text="Plan the event" />
@@ -66,14 +61,14 @@ export default function VirtualBabyShower(props) {
         </p>
         <p>
           Here’s an example of how you might plan a 60 minute virtual baby shower:
-          <ul>
-            <li>10 mins for everyone to join and have a chit chat, admire backgrounds, outfits etc</li>
-            <li>20 mins to play games and enjoy some food and drinks</li>
-            <li>10 mins to open presents (allocate more time if there are lots of presents)</li>
-            <li>10 mins for mum-to-be to do a tour of the nursery, or perhaps for everyone to give their top tip</li>
-            <li>10 mins to wrap up and do goodbyes</li>
-          </ul>
         </p>
+        <ul>
+          <li>10 mins for everyone to join and have a chit chat, admire backgrounds, outfits etc</li>
+          <li>20 mins to play games and enjoy some food and drinks</li>
+          <li>10 mins to open presents (allocate more time if there are lots of presents)</li>
+          <li>10 mins for mum-to-be to do a tour of the nursery, or perhaps for everyone to give their top tip</li>
+          <li>10 mins to wrap up and do goodbyes</li>
+        </ul>
       </div>
       <div>
         <SectionHeading name="invites" text="Send out the invitations" />
@@ -88,17 +83,17 @@ export default function VirtualBabyShower(props) {
           Make sure you include as much information as possible on the invite, that way everyone will know what to
           expect and you should hopefully minimise questions in the lead up to the event. Here’s a list things to
           consider including:
-          <ul>
-            <li>Date and time</li>
-            <li>Virtual platform link and dial in details</li>
-            <li>Virtual background instructions, or how to decorate their physical background</li>
-            <li>What to wear, perhaps you might like people to wear a colour</li>
-            <li>What food and drinks to bring</li>
-            <li>Anything required for games, such as pen and paper, sending photos or advice cards</li>
-            <li>Gift list details, where to send the gifts, and by when</li>
-            <li>RSVP details</li>
-          </ul>
         </p>
+        <ul>
+          <li>Date and time</li>
+          <li>Virtual platform link and dial in details</li>
+          <li>Virtual background instructions, or how to decorate their physical background</li>
+          <li>What to wear, perhaps you might like people to wear a colour</li>
+          <li>What food and drinks to bring</li>
+          <li>Anything required for games, such as pen and paper, sending photos or advice cards</li>
+          <li>Gift list details, where to send the gifts, and by when</li>
+          <li>RSVP details</li>
+        </ul>
       </div>
       <div>
         <SectionHeading name="decorations" text="Decorations" />
@@ -121,14 +116,14 @@ export default function VirtualBabyShower(props) {
           Make sure you include as much information as possible on the invite, that way everyone will know what to
           expect and you should hopefully minimise questions in the lead up to the event. Here’s a list things to
           consider including:
-          <ul>
-            <li><b>Name that tune</b> - play a few cords of a baby song and the guests need to guess the song.</li>
-            <li><b>Guess the baby</b> - each guests brings a picture of them as a baby and everyone has to guess who it is.</li>
-            <li><b>Match the celeb baby name</b> - come up with a list of unusual children’s names and everyone needs to guess the celebrity parent.</li>
-            <li><b>Baby alphabet game</b> - go around the group saying the letters of the alphabet, each guest names a baby name beginning with the letter that lands on them.</li>
-            <li><b>Sharing advice tips</b> - each guest can share a piece of advice, or perhaps a tip for what to pack in a hospital bag</li>
-          </ul>
         </p>
+        <ul>
+          <li><b>Name that tune</b> - play a few cords of a baby song and the guests need to guess the song.</li>
+          <li><b>Guess the baby</b> - each guests sends in a picture of them as a baby and everyone has to guess who it is.</li>
+          <li><b>Match the celeb baby name</b> - come up with a list of unusual children’s names and everyone needs to guess the celebrity parent.</li>
+          <li><b>Baby alphabet game</b> - go around the group saying the letters of the alphabet, each guest names a baby name beginning with the letter that lands on them.</li>
+          <li><b>Sharing advice tips</b> - each guest can share a piece of advice, or perhaps a tip for what to pack in a hospital bag</li>
+        </ul>
       </div>
       <div>
         <SectionHeading name="list" text="Organising a gift list" />
@@ -155,17 +150,6 @@ export default function VirtualBabyShower(props) {
       </div>
     </div>
   );
-
-  useEffect( () => {
-    async function getLists(){
-      const lists = await getUsersLists();
-      setLists(lists);
-    }
-
-    if (props.isAuthenticated) {
-      getLists();
-    }
-  }, [props.isAuthenticated]);
 
   return (
     <ListArticle
