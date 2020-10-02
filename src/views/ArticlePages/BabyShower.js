@@ -6,7 +6,6 @@ import SectionHeading from "./Sections/SectionHeading.js";
 import SectionHeadings from "./Sections/SectionHeadings.js";
 import ListArticle from "./Sections/ListArticle.js";
 import Products from "./Sections/Products.js";
-import ChecklistCard from "./Sections/ChecklistCard.js";
 
 // data id
 const name = 'baby-shower'
@@ -18,11 +17,10 @@ export default function BabyShower(props) {
     <div>
       <div>
         <p>
-          Although the modern baby shower really took off in the US during the post war era, baby showers have actually
-          been around for centuries and are celebrated across many different cultures. As well as a celebration, they
-          have traditionally been used as a way to share advice and help with the expense of things for the new arrival.
-          We think they are a lovely way to help parents feel special, and it’s a great opportunity for your close
-          friends and family to bond with you on your journey, and perhaps help you with a little gift.
+          As well as a celebration, baby showers have traditionally been used as a way to share advice and help with the
+          expense of things for the new arrival. We think they are a lovely way to help parents feel special, and it’s a
+          great opportunity for your close friends and family to bond with you on your journey, and perhaps help you
+          with a little gift.
         </p>
       </div>
       <SectionHeadings
@@ -61,7 +59,7 @@ export default function BabyShower(props) {
           a meal for your freezer.
         </p>
         <p>
-          <b>Wet the Baby’s Head</b> - Okay, this term has traditionally been used to describe the dad getting together
+          <b>Wet the Baby’s Head</b> - This term has traditionally been used to describe the dad getting together
           with his mates for a few drinks after the baby is born. But who says it needs to be a male only affair. Having
           a celebration after the birth means you get to show off your new little bundle of joy, how delightful is that!
         </p>
@@ -80,15 +78,6 @@ export default function BabyShower(props) {
         lists={lists}
         isAuthenticated={props.isAuthenticated}
       />
-      <SectionHeadings
-        headings={[
-          {"name": "trending", "text": "What’s trending"},
-          {"name": "location", "text": "When and where"},
-          {"name": "theme", "text": "Picking a theme"},
-          {"name": "activities", "text": "Games and activities"},
-          {"name": "list", "text": "Organising a gift list"}
-        ]}
-      />
       <div>
         <SectionHeading name="location" text="When and where" />
         <p>
@@ -98,7 +87,8 @@ export default function BabyShower(props) {
           the pressure off mum-to-be and allows her to just show up and enjoy herself.
         </p>
         <p>
-        For the host there are a few things to think about. Here are some ideas to help you get your plan underway.
+          For the host there are a few things to think about. Here are some ideas to help you get your plan underway: 
+        </p>
         <ul>
           <li>Organise a date that works for the most important people</li>
           <li>Send out the invitations 3-4 weeks in advance.</li>
@@ -107,7 +97,6 @@ export default function BabyShower(props) {
           <li>Games or activities to keep things light-hearted</li>
           <li>Goody bag for guests</li>
         </ul>
-        </p>
       </div>
       <div>
         <SectionHeading name="theme" text="Picking a theme" />
@@ -135,7 +124,7 @@ export default function BabyShower(props) {
         isAuthenticated={props.isAuthenticated}
       />
       <div>
-        <SectionHeading name="activites" text="Games and activities" />
+        <SectionHeading name="activities" text="Games and activities" />
         <p>
           Okay we know this one isn’t for everyone, but hear us out. Having some activities for guests is a good way to
           make the celebration lighthearted and gives guests something to mingle over. It’s also an excellent way to
@@ -143,16 +132,13 @@ export default function BabyShower(props) {
           you could always have some activity stations dotted around where guests can go and take part at their leisure.
           Here are some of our favourite ideas.
         </p>
-        <p>
-        For the host there are a few things to think about. Here are some ideas to help you get your plan underway.
         <ul>
           <li><b>Guess the baby</b> - each guests brings a picture of them as a baby and everyone has to guess who it is.</li>
-          <li><b>Guess the date and weight</b> - ask each guest to guess the arrival date, birth weight and gender if you haven’t revealed. The closest guess wins a bottle of bubbles.</li>
+          <li><b>Guess the date and weight</b> - ask each guest to guess the arrival date, birth weight and gender (if you haven’t revealed). The closest guess wins a bottle of bubbles.</li>
           <li><b>Decorate the baby vest</b> - lay out some plain white baby vests along with toxic free fabric pens. Each guest can decorate a baby vest which can be used by the baby.</li>
           <li><b>Match the celeb baby name</b> - get a list of unusual children’s names and everyone needs to guess the celebrity parent.</li>
           <li><b>Birthday messages</b> - this works well with close friends and family. Write an individual number from 1-18 on a piece of card. Hand each guest a number and ask them to write a message to your little one, to be given to them on the birthday that matches the number.</li>
         </ul>
-        </p>
       </div>
       <div>
         <SectionHeading name="list" text="Organising a gift list" />
@@ -163,11 +149,11 @@ export default function BabyShower(props) {
           a gift, this is such a special time for you and for them. Helping them know what things you really need is a
           good way to reduce duplicated gifts or having to return items.
         </p>
+        <p>
           It’s up to you if you want to include the details of the gift list in the invite, perhaps you might like to
           include it on a different piece of paper along with a polite message, so people can choose if they want to use
           it or not. Alternatively, you can share your gift list link with your mum and baby shower host, as it’s likely
           people will ask them what you might need. They can then share the link on your behalf.
-        <p>
         </p>
         <p>
           Why not get started today by creating a gift list with ewelists. You can add items from any store, easily
