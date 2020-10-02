@@ -1,17 +1,20 @@
 import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke'], () => {
-  describe('Reset password E2E Test', () => {
+  describe.only('Reset password E2E Test', () => {
     let seedResponse = {}
     let user = {}
 
     before(() => {
-      cy.fixture('auth-reset/reset-e2e.json').then(fixture => {
+      cy.readFile('cypress/fixtures/auth-reset/reset-e2e.json').then((fixture) => {
+        var val = Math.floor(Math.random() * 1000);
+        fixture['user'].email = "eweuser8+reset" + val + "@gmail.com"
         user = fixture.user
         cy.log("User email: " + user.email)
+        cy.writeFile('cypress/fixtures/auth-reset/reset-e2e.json.tmp', fixture)
       })
 
-      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e.json').then((result) => {
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e.json.tmp').then((result) => {
         seedResponse = JSON.parse(result.stdout)
         cy.log("User ID: " + seedResponse.user_id)
       })
@@ -41,7 +44,6 @@ TestFilter(['smoke'], () => {
         after: new Date(),
       })
       .then(email => {
-        cy.log("Email body: " + JSON.stringify(email.body))
         const body = email.body.html
 
         assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
@@ -105,7 +107,6 @@ TestFilter(['regression'], () => {
         after: new Date(),
       })
       .then(email => {
-        cy.log("Email body: " + JSON.stringify(email.body))
         const body = email.body.html
 
         assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
