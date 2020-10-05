@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { API } from "aws-amplify";
 // libs
-import { onError } from "libs/errorLib";
+import { confirmPurchase } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -29,23 +28,8 @@ function Purchase(props) {
     setIsPurchasing(true);
 
     try {
-      await API.put("lists", "/purchase/" + resvId + "/email/" + email, {
-        body: {
-          "quantity": reservedQuantity,
-          "title": listTitle,
-          "name": name,
-          "product": {
-            "type": product['type'],
-            "brand": product['brand'],
-            "details": product['details'],
-            "productUrl": product['productUrl'],
-            "imageUrl": product['imageUrl']
-          }
-        }
-      });
+      await confirmPurchase(resvId, email, name, reservedQuantity, listTitle, product)
     } catch (e) {
-      onError(e);
-
       if (e.response.data.error === 'Product was already purchased.') {
         props.setReserved(false);
         props.setConfirmed(true);
@@ -75,7 +59,7 @@ function Purchase(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" className={classes.linkWidth}>
+          <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" className={classes.linkWidth} data-cy="link-buy-gift">
             <Button color="primary" className={classes.customButton}>
               Buy Gift
             </Button>
@@ -89,7 +73,7 @@ function Purchase(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary2" className={classes.customButton} disabled={isPurchasing} onClick={() => purchased()}>
+          <Button color="primary2" className={classes.customButton} disabled={isPurchasing} onClick={() => purchased()} data-cy="button-purchased">
             Purchased
           </Button>
         </GridItem>

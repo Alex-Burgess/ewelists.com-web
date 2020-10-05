@@ -131,8 +131,8 @@ TestFilter(['regression'], () => {
         cy.matchImageSnapshot(`View-List-Page-${size}`)
 
         // Snapshot reserve popout
-        cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
-        cy.get('[data-cy=popout-reserve]').eq(0).matchImageSnapshot(`Reserve-popout-${size}`)
+        cy.get('[data-cy=product-card-12345678-prod-t001-1234-abcdefghijkl]').find('[data-cy=button-reserve]').click()
+        cy.get('[data-cy=popout-reserve-12345678-prod-t001-1234-abcdefghijkl]').matchImageSnapshot(`Reserve-popout-${size}`)
       })
     })
   })
@@ -153,38 +153,42 @@ TestFilter(['regression'], () => {
 
     it(`should have inactive button, if name or email not supplied`, () => {
       // Open popout
-      cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
+      cy.get('[data-cy=product-card-12345678-prod-t001-1234-abcdefghijkl]').find('[data-cy=button-reserve]').click()
 
-      // Should be inactive to start with
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "none")
+      cy.get('[data-cy=popout-reserve-12345678-prod-t001-1234-abcdefghijkl]').within(($product) => {
+        // Should be inactive to start with
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "none")
 
-      // Should be active after entering both fields
-      cy.get('#name').type('Cypress ReserveUser1')
-      cy.get('#email').type('eweuser8+reserveuser1@gmail.com')
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "auto")
+        // Should be active after entering both fields
+        cy.get('#name-12345678-prod-t001-1234-abcdefghijkl').type('Cypress ReserveUser1')
+        cy.get('#email-12345678-prod-t001-1234-abcdefghijkl').type('eweuser8+reserveuser1@gmail.com')
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "auto")
 
-      // Clear name
-      cy.get('#name').clear()
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "none")
+        // Clear name
+        cy.get('#name-12345678-prod-t001-1234-abcdefghijkl').clear()
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "none")
 
-      // Clear name
-      cy.get('#name').type('Cypress ReserveUser1')
-      cy.get('#email').clear()
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "none")
+        // Clear name
+        cy.get('#name-12345678-prod-t001-1234-abcdefghijkl').type('Cypress ReserveUser1')
+        cy.get('#email-12345678-prod-t001-1234-abcdefghijkl').clear()
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "none")
+      })
     })
 
     it(`should have inactive button, immediately after form submission`, () => {
       // Open popout
-      cy.get('[data-cy=product-card]').eq(0).find('[data-cy=button-reserve]').click()
+      cy.get('[data-cy=product-card-12345678-prod-t001-1234-abcdefghijkl]').find('[data-cy=button-reserve]').click()
 
-      // Should be active after entering both fields
-      cy.get('#name').type('Cypress ReserveUser1')
-      cy.get('#email').type('eweuser8+reserveuser1@gmail.com')
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "auto")
+      cy.get('[data-cy=popout-reserve-12345678-prod-t001-1234-abcdefghijkl]').within(($product) => {
+        // Should be active after entering both fields
+        cy.get('#name-12345678-prod-t001-1234-abcdefghijkl').type('Cypress ReserveUser1')
+        cy.get('#email-12345678-prod-t001-1234-abcdefghijkl').type('eweuser8+reserveuser1@gmail.com')
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "auto")
 
-      // Click reserve button and check then disabled
-      cy.get('[data-cy=popout-button-reserve]').eq(0).click()
-      cy.get('[data-cy=popout-button-reserve]').eq(0).should('have.css', "pointer-events", "none")
+        // Click reserve button and check then disabled
+        cy.get('[data-cy=popout-button-reserve]').click()
+        cy.get('[data-cy=popout-button-reserve]').should('have.css', "pointer-events", "none")
+      })
     })
   })
 })

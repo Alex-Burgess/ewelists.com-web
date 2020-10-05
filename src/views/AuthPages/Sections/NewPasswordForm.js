@@ -89,7 +89,7 @@ export default function NewPasswordForm(props) {
   return (
     <form onSubmit={handleConfirmClick}>
       <h3 className={classes.title + " " + classes.textCenter}>Confirmation Code</h3>
-      <div>
+      <div id="confirmation-form-intro">
         A confirmation code was sent to your email ({email}).
       </div>
       <Input

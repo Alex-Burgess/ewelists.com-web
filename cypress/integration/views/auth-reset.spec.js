@@ -1,7 +1,7 @@
 import TestFilter from '../../support/TestFilter';
 
 TestFilter(['smoke'], () => {
-  describe.only('Reset password E2E Test', () => {
+  describe('Reset password E2E Test', () => {
     let seedResponse = {}
     let user = {}
 
@@ -70,12 +70,15 @@ TestFilter(['regression'], () => {
     let user = {}
 
     before(() => {
-      cy.fixture('auth-reset/reset-e2e-snapshot.json').then(fixture => {
+      cy.readFile('cypress/fixtures/auth-reset/reset-e2e-snapshot.json').then((fixture) => {
+        var val = Math.floor(Math.random() * 1000);
+        fixture['user'].email = "eweuser8+reset" + val + "@gmail.com"
         user = fixture.user
         cy.log("User email: " + user.email)
+        cy.writeFile('cypress/fixtures/auth-reset/reset-e2e-snapshot.json.tmp', fixture)
       })
 
-      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e-snapshot.json').then((result) => {
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e-snapshot.json.tmp').then((result) => {
         seedResponse = JSON.parse(result.stdout)
         cy.log("User ID: " + seedResponse.user_id)
       })
@@ -93,11 +96,11 @@ TestFilter(['regression'], () => {
       cy.contains('Reset')
 
       cy.get('#email').type(user.email)
-      cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form');
+      cy.get('[data-cy=card]').matchImageSnapshot('complete-reset-form', { blackout: ['#email']});
       cy.get('[data-cy=submit-reset]').click()
 
       cy.contains('Confirmation Code')
-      cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form');
+      cy.get('[data-cy=card]').matchImageSnapshot('empty-confirmation-form', { blackout: ['#confirmation-form-intro']});
 
       // Get the confirmation code from email
       cy.task("gmail:check", {
@@ -116,11 +119,11 @@ TestFilter(['regression'], () => {
         cy.get('#code').type(code)
         cy.get('#password').type(user.password)
         cy.get('#confirmPassword').type(user.password)
-        cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#code']});
+        cy.get('[data-cy=card]').matchImageSnapshot('complete-confirmation-form', { blackout: ['#confirmation-form-intro']});
 
         cy.get('[data-cy=submit-verify]').click()
         cy.contains('Password Reset Complete')
-        cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form');
+        cy.get('[data-cy=card]').matchImageSnapshot('reset-complete-form', { blackout: ['#confirmation-form-intro']});
 
         cy.contains("Login with your new credentials").click()
         cy.url().should('include', '/login')

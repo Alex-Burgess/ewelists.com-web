@@ -115,7 +115,7 @@ TestFilter(['regression'], () => {
       cy.get('#name').type('Test User').should('have.value', 'Test User')
       cy.get('#email').type(user.email).should('have.value', user.email)
       cy.get('#password').type(user.password).should('have.value', user.password)
-      cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-complete')
+      cy.get('[data-cy=card]').matchImageSnapshot('signup-email-form-complete', { blackout: ['#email']})
       cy.get('[data-cy=button-signup-form]').click()
 
       // Check that welcome email is received

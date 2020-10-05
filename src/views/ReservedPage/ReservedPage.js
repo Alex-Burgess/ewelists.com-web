@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API } from "aws-amplify";
 // libs
-import { onError } from "libs/errorLib";
+import { getSharedList, getProduct, getReservation } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -49,48 +48,9 @@ export default function EditPage(props) {
   const [load, setLoad] = useState(false);
 
   useEffect( () => {
-    async function getProduct(id, type) {
-      let response;
-
-      try {
-        response = await API.get(type, "/" + id);
-      } catch (e) {
-        onError("Could not find a product in the " + type + " table for Id: " + id)
-      }
-
-      return response;
-    }
-
-    async function getList(listId) {
-      let response;
-      try {
-        response = await API.get("lists", "/" + listId + "/shared");
-      } catch (e) {
-        onError("List ID " + listId + " does not exist for the user.")
-        return false
-      }
-
-      return response;
-    }
-
-    async function getReservation(resvId) {
-      let response;
-      try {
-        response = await API.get("lists", "/reservation/" + resvId);
-      } catch (e) {
-        onError("Reservation ID " + resvId + " does not exist.")
-        return false
-      }
-
-      return response;
-    }
-
     const getPageDetails = async (resvId) => {
       // Get reservation details
       const reservation = await getReservation(resvId);
-      // TODO 1
-      // console.log("reservation response: " + JSON.stringify(reservation))
-
       if (reservation) {
         setEmail(reservation.email);
         setName(reservation.name);
@@ -104,9 +64,6 @@ export default function EditPage(props) {
 
       // Get product details
       const product_response = await getProduct(reservation.productId, reservation.productType);
-      // TODO 3
-      // console.log("product response: " + JSON.stringify(product_response))
-
       let product = {};
       product['brand'] = product_response.brand;
       product['details'] = product_response.details;
@@ -121,9 +78,7 @@ export default function EditPage(props) {
       setProduct(product);
 
       // Get product quantities
-      const list = await getList(reservation.listId);
-      // TODO 2
-      // console.log("get list response: " + JSON.stringify(list))
+      const list = await getSharedList(reservation.listId);
 
       if (list) {
         setListTitle(list.list.title);

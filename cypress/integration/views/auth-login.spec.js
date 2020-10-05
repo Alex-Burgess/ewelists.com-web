@@ -88,19 +88,19 @@ TestFilter(['regression'], () => {
       cy.get('#email').type(user.email)
       cy.get('#password').type(user.password)
 
-      cy.get('[data-cy=card]').matchImageSnapshot('complete-form');
+      cy.get('[data-cy=card]').matchImageSnapshot('complete-form', { blackout: ['#email']});
     })
 
     it('Should match previous screenshot of login error', () => {
       cy.visit('/login')
 
-      cy.get('#email').type(user.password)
+      cy.get('#email').type('eweuser8+missing@gmail.com')
       cy.get('#password').type('12345678')
 
       cy.get('[data-cy=login]').click()
 
       cy.contains("There is no account with the email provided.")
-      cy.get('[data-cy=card]').matchImageSnapshot('login-error');
+      cy.get('[data-cy=card]').matchImageSnapshot('login-error', { blackout: ['#email']});
     })
   })
 

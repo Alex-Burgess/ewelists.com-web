@@ -1,0 +1,13 @@
+{
+  "reservationId":"12345678-test-resv-0001-abcdefghijkl",
+  "productId":"12345678-test-prod-0001-abcdefghijkl",
+  "userId":"eweuser8+testreserver@gmail.com",
+  "listId":"12345678-test-list-0001-abcdefghijkl",
+  "listOwnerId":"12345678-test-user-0001-abcdefghijkl",
+  "name":"Cypress TestReserver",
+  "email":"eweuser8+testreserver@gmail.com",
+  "quantity":1,
+  "state":"cancelled",
+  "listTitle":"Baby Shower Wish List",
+  "productType":"products"
+}

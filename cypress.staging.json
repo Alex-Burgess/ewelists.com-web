@@ -1,5 +1,6 @@
 {
   "baseUrl": "https://staging.ewelists.com",
+  "defaultCommandTimeout": 10000,
   "experimentalComponentTesting": true,
   "componentFolder": "src",
   "testFiles": "**/*spec.js",

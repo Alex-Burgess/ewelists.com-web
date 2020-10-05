@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { API } from "aws-amplify";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { debugError } from "libs/errorLib";
+import { updateReservationQuantity, cancelReservation } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -42,14 +42,8 @@ function Manage(props) {
     }
 
     try {
-      await API.put("lists", "/reserve/" +  resvId + "/email/" + email,{
-        body: {
-          "quantity": newQuantity,
-          "name": name
-        }
-      });
+      await updateReservationQuantity(resvId, email, name, newQuantity);
     } catch (e) {
-      onError(e);
       setError('Oops! There was an issue updating the quantity of this gift, please contact us.');
       setIsUpdating(false);
       return false
@@ -83,8 +77,6 @@ function Manage(props) {
       setNewQuantity(newQuantity - 1);
       setNewProductReserved(newProductReserved - 1)
     }
-
-
   }
 
 
@@ -93,14 +85,8 @@ function Manage(props) {
     setIsUnreserving(true);
 
     try {
-      await API.del("lists", "/reserve/" +  resvId + "/email/" + email,{
-        body: {
-          "name": name
-        }
-      });
+      await cancelReservation(resvId, email, name);
     } catch (e) {
-      onError(e);
-
       if (e.response.data.error === 'Product was already purchased.') {
         props.setReserved(false);
         props.setConfirmed(true);
@@ -129,7 +115,7 @@ function Manage(props) {
           </p>
         </GridItem>
         <GridItem md={3} sm={3} xs={12} className={classes.buttonWrapper}>
-          <Button color="primary2" className={classes.customButton} disabled={isUnreserving} onClick={() => unReserveProduct()}>
+          <Button color="primary2" className={classes.customButton} disabled={isUnreserving} onClick={() => unReserveProduct()} data-cy="button-unreserve">
             Unreserve
           </Button>
         </GridItem>
@@ -147,17 +133,17 @@ function Manage(props) {
         </GridItem>
         <GridItem md={3} sm={3} xs={6} className={classes.buttonWrapper}>
           <InputLabel className={classes.label}>
-            <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()}>
+            <Button color="primary" size="sm" simple onClick={() => decreaseQuantity()} data-cy="button-decrease-quantity">
               <Remove />
             </Button>
             {` `}{newQuantity}{` `}
-            <Button color="primary" size="sm" simple onClick={() => increaseQuantity()}>
+            <Button color="primary" size="sm" simple onClick={() => increaseQuantity()} data-cy="button-increase-quantity">
               <Add />
             </Button>
           </InputLabel>
         </GridItem>
         <GridItem md={3} sm={3} xs={6} className={classes.buttonWrapper}>
-          <Button color="primary2" className={classes.customButton} disabled={isUpdating} onClick={() => updateProduct()}>
+          <Button color="primary2" className={classes.customButton} disabled={isUpdating} onClick={() => updateProduct()} data-cy="button-update-product">
             <span className={classes.shareText}>
               { showUpdated
                 ? 'Updated!'
