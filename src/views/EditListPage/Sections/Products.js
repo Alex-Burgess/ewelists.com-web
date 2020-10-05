@@ -71,6 +71,7 @@ export default function SectionProducts(props) {
           classes.textCenter
         ]}
         customClassesForCells={[0, 1, 2, 3, 4]}
+        dataCy="table-edit-products"
       />
     )
   }
@@ -89,6 +90,7 @@ export default function SectionProducts(props) {
           classes.textCenter
         ]}
         customHeadClassesForCells={[0]}
+        data-cy="table-edit-products"
       />
     )
   }
@@ -114,7 +116,7 @@ export default function SectionProducts(props) {
   const renderProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved, price) => {
     return (
       [
-      <div className={classes.imgContainer} key={1}>
+      <div className={classes.imgContainer} key={1} id={productId}>
         <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
           <img src={imageUrl} alt="..." className={classes.img} />
         </button>
@@ -159,7 +161,7 @@ export default function SectionProducts(props) {
   const renderMobileProduct = (productId, productUrl, imageUrl, brand, details, quantity, reserved, price) => {
     return (
       [
-          <div className={classes.textCenter}>
+          <div className={classes.textCenter} id={productId}>
             <div className={classes.imgContainer} key={1}>
               <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
                 <img src={imageUrl} alt="..." className={classes.img} />
@@ -242,7 +244,7 @@ export default function SectionProducts(props) {
               : null
             }
             <div className={classes.addItemButton}>
-              <Button round color="primary" onClick={() => props.switchToAddProduct(1)} >
+              <Button round color="primary" onClick={() => props.switchToAddProduct(1)} data-cy="button-add-item">
                 <Playlist /> Add Item
               </Button>
             </div>

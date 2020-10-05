@@ -153,10 +153,10 @@ export default function EditPopOut(props) {
             <Add />
           </Button>
         </div>
-        <Button round type="submit" disabled={isDeleting} onClick={() => deleteProduct()}>
+        <Button round type="submit" disabled={isDeleting} onClick={() => deleteProduct()} data-cy="popout-button-delete">
           Delete
         </Button>
-        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()}>
+        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()} data-cy="popout-button-update">
           Update
         </Button>
       </div>
@@ -176,7 +176,7 @@ export default function EditPopOut(props) {
             <Add />
           </Button>
         </div>
-        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()}>
+        <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()} data-cy="popout-button-update">
           Update
         </Button>
       </div>
@@ -212,7 +212,7 @@ export default function EditPopOut(props) {
             {" "}
             <Close className={classes.modalClose} />
           </Button>
-          <Card plain product>
+          <Card plain product data-cy={"popout-edit-" + product.productId}>
             <div className={classes.productImageContainer}>
               <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" data-cy="link-product-image">
                 <img src={product['imageUrl']} className={classes.productImage} alt=".." />

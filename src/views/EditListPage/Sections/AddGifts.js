@@ -296,7 +296,7 @@ export default function SectionAddGifts(props) {
               </Button>
             </div>
             <div className={classes.textCenter}>
-              <Button round color="primary" onClick={() => createProduct()} disabled={!validateNotFoundForm() || isAdding}>
+              <Button round color="primary" onClick={() => createProduct()} disabled={!validateNotFoundForm() || isAdding} data-cy="button-add-notfound-gift">
                 Add to list
               </Button>
             </div>
@@ -345,7 +345,7 @@ export default function SectionAddGifts(props) {
                   <Add />
                 </Button>
               </span>
-              <Button default size="sm" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()}>
+              <Button default size="sm" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
                 Add to list
               </Button>
               </div>
@@ -407,7 +407,7 @@ export default function SectionAddGifts(props) {
                   <Add />
                 </Button>
               </span>,
-              <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()}>
+              <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
                 Add to list
               </Button>
             ]
@@ -456,7 +456,7 @@ export default function SectionAddGifts(props) {
             value: searchUrl
           }}
         />
-        <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching}>
+      <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching} data-cy="button-search-product">
           <Search />
         </Button>
         <Button justIcon onClick={() => setSearchUrl('')}>
@@ -481,7 +481,7 @@ export default function SectionAddGifts(props) {
             value: searchUrl
           }}
         />
-        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching}>
+        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching} data-cy="button-search-product">
           <Search /> Search
         </Button>
         <Button onClick={() => setSearchUrl('')}>

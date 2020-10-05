@@ -19,7 +19,7 @@ class TestSeedDb:
 
         assert returned_json['user_id'] == 'test.user@gmail.com'
         assert len(returned_json['list_id']) == 36
-        assert len(returned_json['product_ids']) == 2
+        assert len(returned_json['product_ids']) == 3
         assert len(returned_json['reservation_ids']) == 2
 
 
@@ -28,6 +28,7 @@ class TestHandleProducts:
         product_ids, reservation_ids = seed_db.handle_products('lists-unittest', 'notfound-unittest', 'products-unittest', '12345678-user-0001-1234-abcdefghijkl', '12345678-list-0001-1234-abcdefghijkl', example_fixture)
         assert len(product_ids[0]) == 36
         assert len(product_ids[1]) == 36
+        assert len(product_ids[2]) == 36
         assert len(reservation_ids[0]) == 36
         assert len(reservation_ids[1]) == 36
 

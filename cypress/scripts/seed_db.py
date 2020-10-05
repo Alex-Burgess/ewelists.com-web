@@ -39,7 +39,11 @@ def handle_products(lists_table, notfound_table, products_table, user_id, list_i
 
     for product in data['products']:
         product_id = create_product(notfound_table, products_table, user_id, product)
-        create_product_list_item(lists_table, list_id, product_id, product)
+
+        # If there is no quantity, we will create the product but not add it to the list
+        if 'quantity' in product:
+            create_product_list_item(lists_table, list_id, product_id, product)
+
         products.append(product_id)
 
         if 'reservations' in product:

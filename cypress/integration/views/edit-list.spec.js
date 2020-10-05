@@ -1,11 +1,5 @@
 import TestFilter from '../../support/TestFilter';
 
-// TODO: Remaining Tests
-// On hover tests for social links, tab icons.
-// On hover tests for edit product popout buttons.
-// TODO: Test add items form, including snapshots
-// NOTE: This does not test fb and whatsapp buttons phone.
-
 TestFilter(['smoke', 'regression'], () => {
   describe('Edit List E2E Tests', () => {
     let seedResponse = {}
@@ -34,19 +28,99 @@ TestFilter(['smoke', 'regression'], () => {
 
     beforeEach(() => {
       cy.login(user.email, user.password)
+      cy.visit('/edit/' + seedResponse.list_id);
     })
 
-    it('Adds and item, edits the item, then deletes the item.', () => {
-      cy.visit('/edit/' + seedResponse.list_id);
-      cy.contains('Cypress Test Wish List')
-      // TODO - no functionality tested
-      // TODO - E2E test
-      // Start with empty list
-      // Add item
-      // Edit item
-      // Delete item
-      // Will need to extend delete list script to delete any other items associated with list.
-      // Delete script could return count of items deleted to make it testable.
+    it('Adds notfound item.', () => {
+      cy.get('#AddItems').click()
+      cy.get('#searchUrl').scrollIntoView({offset: {top: 600, left: 0}}).should('be.visible')
+      cy.get('#searchUrl').type('https://notfound.com')
+      cy.get('[data-cy=button-search-product]').click()
+
+      // Complete form to add product
+      cy.get('#brand').type('Local Brand')
+      cy.get('#details').type('Scooter')
+      cy.get('[data-cy=button-add-notfound-gift]').click()
+
+      // Check gift added to table
+      cy.get('table').contains('tr', 'Local Brand')
+
+      // Add product to object for cleanup
+      cy.get('[data-cy=table-edit-products]').contains('tr', 'Local Brand').within(($product) => {
+        cy.get('td').eq(0).get('div').invoke('attr', 'id').then((id) => {
+          cy.log("Created Notfound product Id: " + id)
+          seedResponse['product_ids'].push(id)
+        })
+      })
+    })
+
+    it('Edits notfound item.', () => {
+      cy.get('table').contains('tr', 'John Lewis').within(elem => {
+        cy.contains('Trike')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('[data-cy=popout-button-update]').click()
+      })
+
+      cy.get('table').contains('tr', '1')
+    })
+
+    it('Deletes notfound item.', () => {
+      cy.get('table').contains('tr', 'John Lewis').within(elem => {
+        cy.contains('Trike')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('[data-cy=popout-button-delete]').click()
+      })
+
+      cy.get('table').contains('tr', 'John Lewis').should('not.exist')
+    })
+
+    it('Adds found item.', () => {
+      cy.get('[data-cy=button-add-item]').click()
+      cy.get('#searchUrl').scrollIntoView({offset: {top: 600, left: 0}}).should('be.visible')
+      cy.get('#searchUrl').type('https://www.amazon.co.uk/dp/B07DJ5KX53/')
+      cy.get('[data-cy=button-search-product]').click()
+
+      // Complete form to add product
+      cy.get('[data-cy=button-add-found-gift]').click()
+
+      // Check gift added to table
+      cy.get('table').contains('tr', 'BABYBJÖRN')
+    })
+
+    it('Edits found item.', () => {
+      cy.get('table').contains('tr', 'BABYBJÖRN').within(elem => {
+        cy.contains('Travel Cot')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][1] + ']').within(($product) => {
+        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('[data-cy=popout-button-update]').click()
+      })
+
+      cy.get('table').contains('tr', '1')
+    })
+
+    it('Deletes found item.', () => {
+      cy.get('table').contains('tr', 'BABYBJÖRN').within(elem => {
+        cy.contains('Travel Cot')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][1] + ']').within(($product) => {
+        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('[data-cy=popout-button-delete]').click()
+      })
+
+      cy.get('table').contains('tr', 'John Lewis').should('not.exist')
     })
   })
 })
@@ -247,7 +321,5 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=link-quantity-decrease]').eq(1).click()
       cy.get('[data-cy=div-quantity]').eq(1).contains("1")
     })
-
-    // Test for delete and update buttons - onhover.
   })
 })

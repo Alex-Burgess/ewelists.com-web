@@ -32,7 +32,7 @@ export default function CustomTable(props) {
   const classes = useStyles();
   return (
     <div className={classes.tableResponsive}>
-      <Table className={classes.table}>
+      <Table className={classes.table} data-cy={props.dataCy}>
         {tableHead !== undefined ? (
           <TableHead className={classes[tableHeaderColor]}>
             <TableRow className={classes.tableRow}>

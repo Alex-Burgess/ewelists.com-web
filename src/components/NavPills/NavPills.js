@@ -75,7 +75,7 @@ export default function NavPills(props) {
               root: pillsClasses,
               label: classes.label
             }}
-            id={prop.tabButton}
+            id={prop.tabButton.replace(/\s/g, '')}
           />
         );
       })}

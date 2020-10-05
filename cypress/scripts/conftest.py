@@ -194,6 +194,16 @@ def example_fixture():
                 "quantity": 1,
                 "reserved": 0,
                 "purchased": 0
+            },
+            {
+                "brand": "BABYBJÖRN",
+                "retailer": "amazon.com",
+                "price": "219.99",
+                "priceCheckedDate": "2020-08-27 16:00:00",
+                "details": "Travel Cot Easy Go, Anthracite, with transport bag",
+                "productUrl": "https://www.amazon.co.uk/BABYBJ%C3%96RN-Travel-Easy-Anthracite-transport/dp/B07DJ5KX53/",
+                "imageUrl": "//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07DJ5KX53&Format=_SL250_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=ewelists-21",
+                "type": "products"
             }
         ]
     }
