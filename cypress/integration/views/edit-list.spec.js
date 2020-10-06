@@ -33,14 +33,14 @@ TestFilter(['smoke', 'regression'], () => {
 
     it('Adds notfound item.', () => {
       cy.get('#AddItems').click()
-      cy.get('#searchUrl').scrollIntoView({offset: {top: 600, left: 0}}).should('be.visible')
-      cy.get('#searchUrl').type('https://notfound.com')
-      cy.get('[data-cy=button-search-product]').click()
+      // Seems to be a bug (?) with using swipeable view and cypress so use force as work around.
+      cy.get('#searchUrl').should('have.attr', 'placeholder', 'Enter url...').type('https://notfound.com', {force: true})
+      cy.get('[data-cy=button-search-product]').click({force: true})
 
       // Complete form to add product
-      cy.get('#brand').type('Local Brand')
-      cy.get('#details').type('Scooter')
-      cy.get('[data-cy=button-add-notfound-gift]').click()
+      cy.get('#brand').type('Local Brand', {force: true})
+      cy.get('#details').type('Scooter', {force: true})
+      cy.get('[data-cy=button-add-notfound-gift]').click({force: true})
 
       // Check gift added to table
       cy.get('table').contains('tr', 'Local Brand')
@@ -83,13 +83,13 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     it('Adds found item.', () => {
+      // Seems to be a bug (?) with using swipeable view and cypress so use force as work around.
       cy.get('[data-cy=button-add-item]').click()
-      cy.get('#searchUrl').scrollIntoView({offset: {top: 600, left: 0}}).should('be.visible')
-      cy.get('#searchUrl').type('https://www.amazon.co.uk/dp/B07DJ5KX53/')
-      cy.get('[data-cy=button-search-product]').click()
+      cy.get('#searchUrl').type('https://www.amazon.co.uk/dp/B07DJ5KX53/', {force: true})
+      cy.get('[data-cy=button-search-product]').click({force: true})
 
       // Complete form to add product
-      cy.get('[data-cy=button-add-found-gift]').click()
+      cy.get('[data-cy=button-add-found-gift]').click({force: true})
 
       // Check gift added to table
       cy.get('table').contains('tr', 'BABYBJÖRN')

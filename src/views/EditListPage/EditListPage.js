@@ -118,18 +118,17 @@ export default function EditPage(props) {
   }
 
   const setActive = (id) => {
+    setTabId(id);
     if (mobile) {
       if (window.pageYOffset < 200) {
         window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
       }
     }
-
-    setTabId(id);
   }
 
   const switchToAddProduct = (id) => {
-    window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
     setTabId(id);
+    window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
   }
 
   const navScrollHeight = () => {
