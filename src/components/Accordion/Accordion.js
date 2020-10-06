@@ -3,9 +3,9 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 
 // @material-ui/icons
 import ExpandMore from "@material-ui/icons/ExpandMore";
@@ -14,7 +14,7 @@ import styles from "assets/jss/material-kit-pro-react/components/accordionStyle.
 
 const useStyles = makeStyles(styles);
 
-export default function Accordion(props) {
+export default function AccordionComponent(props) {
   const [active, setActive] = React.useState(
     props.active.length === undefined ? [props.active] : props.active
   );
@@ -46,7 +46,7 @@ export default function Accordion(props) {
     <div className={classes.root}>
       {collapses.map((prop, key) => {
         return (
-          <ExpansionPanel
+          <Accordion
             expanded={active === key || active.indexOf(key) !== -1}
             onChange={handleChange(key)}
             key={key}
@@ -55,7 +55,7 @@ export default function Accordion(props) {
               expanded: classes.expansionPanelExpanded
             }}
           >
-            <ExpansionPanelSummary
+            <AccordionSummary
               expandIcon={<ExpandMore />}
               classes={{
                 root: `${classes.expansionPanelSummary} ${
@@ -69,23 +69,23 @@ export default function Accordion(props) {
               }}
             >
               <h4 className={classes.title}>{prop.title}</h4>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails className={classes.expansionPanelDetails}>
+            </AccordionSummary>
+            <AccordionDetails className={classes.expansionPanelDetails}>
               {prop.content}
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+            </AccordionDetails>
+          </Accordion>
         );
       })}
     </div>
   );
 }
 
-Accordion.defaultProps = {
+AccordionComponent.defaultProps = {
   active: -1,
   activeColor: "primary"
 };
 
-Accordion.propTypes = {
+AccordionComponent.propTypes = {
   // index of the default active collapse
   active: PropTypes.oneOfType([
     PropTypes.number,

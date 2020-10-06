@@ -71,7 +71,8 @@ RegularButton.propTypes = {
     "facebook",
     "messenger",
     "instagram",
-    "google"
+    "google",
+    "whatsapp"
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   auth: PropTypes.bool,
