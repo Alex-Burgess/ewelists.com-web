@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { API } from "aws-amplify";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { debugError } from "libs/errorLib";
+import { createList } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating date-time-picker
@@ -75,42 +75,20 @@ function CreatePopOut(props) {
     );
   }
 
-  const createList = async () => {
+  const createAction = async () => {
     setIsCreating(true);
 
     const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
-    const new_image_url = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
+    const imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
 
-    debugError("Creating list with values: title: " + title + ", description: " + description + ", date: " + date + ", occasion: " + occasion + ", imageUrl: " + new_image_url);
-
-    var createList = {
-      "title": title,
-      "description": description,
-      "eventDate": date,
-      "occasion": occasion,
-      "imageUrl": new_image_url
-    }
-
-    let response;
     try {
-      response = await createListRequest(createList);
-      const listId = response.listId;
-      debugError("List was created with ID (" + listId + "), redirecting to edit page for list.")
-
+      const response = await createList(title, description, date, occasion, imageUrl);
       setIsCreating(false);
-      history.push('/edit/' + listId);
+      history.push('/edit/' + response.listId);
     } catch (e) {
-      console.log('Response: ' + JSON.stringify(e.response.data.error));
-      onError(e);
       setIsCreating(false);
       setError('There was an unexpected error, if this persists please contact us.');
     }
-  }
-
-  const createListRequest = (createList) => {
-    return API.post("lists", "/", {
-      body: createList
-    });
   }
 
   const renderOccasionSelect = () => {
@@ -243,7 +221,7 @@ function CreatePopOut(props) {
                     color="primary"
                     className={classes.buttonSuccess}
                     disabled={!validateForm() || isCreating}
-                    onClick={createList}
+                    onClick={createAction}
                     data-cy="button-create-list"
                   >
                     Create

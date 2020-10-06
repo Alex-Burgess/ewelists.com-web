@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { API } from "aws-amplify";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { addToList, createProduct, searchByUrl } from "libs/apiLib";
+import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -76,14 +76,12 @@ export default function SectionAddGifts(props) {
     setError('');
     setIsSearching(true);
     let product;
-
     let url = parseUrl(searchUrl);
 
     try {
-      const response = await API.get("products", "/url/" + encodeURIComponent(url));
+      const response = await searchByUrl(url);
       product = response.product;
     } catch (e) {
-      onError('Unexpected error occurred when searching for product.');
       setError('Product could not be found.');
       setIsSearching(false);
       return false
@@ -114,20 +112,10 @@ export default function SectionAddGifts(props) {
     setError('');
     debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
-    let addDetails = {
-      "quantity": productQuantity,
-      "productType": "products"
-    };
-
-    let response;
-
     try {
-      response = await API.post("lists", "/" + listId + "/product/" +  productId, {
-        body: addDetails
-      });
+      const response = await addToList(listId, productId, productQuantity, "products")
+      debugError("Add response: " + response.message);
     } catch (e) {
-      onError(e);
-
       if (e.response.data.error === 'Product already exists in list.') {
         setError('Product already exists in your list.  You can change the quantity in Manage List.');
       } else {
@@ -137,8 +125,6 @@ export default function SectionAddGifts(props) {
       setIsAdding(false);
       return false
     }
-
-    debugError("Add response: " + response.message);
 
     let product = {
       productId: productId,
@@ -160,48 +146,30 @@ export default function SectionAddGifts(props) {
     props.setActive(0);
   }
 
-  const createProduct = async event => {
+  const createGift = async event => {
     setIsAdding(true);
     setError('');
 
     let createResponse;
-    let requestBody = {
-      "brand": notFoundBrand,
-      "details": notFoundDetails,
-      "url": notFoundUrl,
-    };
 
     try {
-      createResponse = await API.post("notfound", "/", { body: requestBody });
+      createResponse = await createProduct(notFoundBrand, notFoundDetails, notFoundUrl);
+      debugError("created product: " + createResponse.productId);
     } catch (e) {
-      onError('Unexpected error occurred when creating product.');
       setError('Product could not be added to your list.');
       setIsAdding(false);
       return false
     }
-
-    debugError("created product: " + createResponse.productId);
 
     // Update list with new product id
-    let addDetails = {
-      "quantity": notFoundQuantity,
-      "productType": "notfound"
-    };
-
-    let updateListResponse;
-
     try {
-      updateListResponse = await API.post("lists", "/" + listId + "/product/" +  createResponse.productId, {
-        body: addDetails
-      });
+      const updateListResponse = await addToList(listId, createResponse.productId, notFoundQuantity, "notfound")
+      debugError("Add response: " + updateListResponse.message);
     } catch (e) {
-      onError('Unexpected error occurred when adding product to list');
       setError('Product could not be added to your list.');
       setIsAdding(false);
       return false
     }
-
-    debugError("Add response: " + updateListResponse.message);
 
     // Update state
     var product = {
@@ -296,7 +264,7 @@ export default function SectionAddGifts(props) {
               </Button>
             </div>
             <div className={classes.textCenter}>
-              <Button round color="primary" onClick={() => createProduct()} disabled={!validateNotFoundForm() || isAdding} data-cy="button-add-notfound-gift">
+              <Button round color="primary" onClick={() => createGift()} disabled={!validateNotFoundForm() || isAdding} data-cy="button-add-notfound-gift">
                 Add to list
               </Button>
             </div>

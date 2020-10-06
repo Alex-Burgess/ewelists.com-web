@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { API } from "aws-amplify";
 // libs
 import { onError, debugError } from "libs/errorLib";
-import { getList } from "libs/apiLib";
+import { getList, updateList } from "libs/apiLib";
 // react plugin for creating date-time-picker
 import Datetime from "react-datetime";
 // @material-ui/core components
@@ -86,7 +85,6 @@ export default function SectionDetails(props) {
     const setListDetails = async () => {
       try {
         const response = await getList(listId);
-        // setListLoaded(true);
         setListState(response);
       } catch (e) {
         setLoadError(true);
@@ -99,19 +97,7 @@ export default function SectionDetails(props) {
 
   const saveDetails = async () => {
     try {
-      var requestBody = {
-        "title": newTitle,
-        "description": newDescription,
-        "eventDate": newDate,
-        "occasion": newOccasion,
-        "imageUrl":  newImageUrl,
-      };
-
-      debugError('Updating list details: ' + JSON.stringify(requestBody));
-
-      await API.put("lists", "/" + listId, {
-        body: requestBody
-      });
+      await updateList(listId, newTitle, newDescription, newDate, newOccasion, newImageUrl)
 
       setTitle(newTitle);
       setDescription(newDescription);

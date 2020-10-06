@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { API } from "aws-amplify";
 import { useHistory } from "react-router-dom";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { onError } from "libs/errorLib";
+import { deleteList, deleteProduct } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -34,28 +34,24 @@ function SectionDeletePopout(props) {
   const { open, listId, products } = props;
   const [error, setError] = useState('');
 
-  const deleteList = async event => {
-    // Delete the list
+  const deleteAction = async event => {
+    // Step 1: Delete the list
     try {
-      const response = await API.del("lists", "/" + listId);
-      debugError(response.message);
+      await deleteList(listId);
     } catch (e) {
-      onError(e);
       setError('Unexpected error occurred when deleting list. Check that the list still exists.');
       return false
     }
 
-    // Delete notfound products
+    // Step 2: Delete notfound products
     for (var key in products) {
       let product = products[key];
 
       if (product.type === "notfound") {
-        debugError("Deleting product: " + key);
-
         try {
-          await API.del("notfound", "/" + key);
+          await deleteProduct(key)
         } catch (e) {
-          onError(e);
+          onError("There was an issue cleaning up products when deleting the list.");
         }
       }
     }
@@ -112,7 +108,7 @@ function SectionDeletePopout(props) {
           <Button color="secondary" onClick={() => props.setShowDeletePopOut(false)} data-cy="button-close">
             No
           </Button>
-          <Button color="primary" onClick={deleteList} data-cy="button-confirm">
+          <Button color="primary" onClick={deleteAction} data-cy="button-confirm">
             Yes
           </Button>
         </DialogActions>

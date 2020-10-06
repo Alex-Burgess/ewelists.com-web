@@ -96,31 +96,29 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     it('Edits found item.', () => {
-      cy.get('table').contains('tr', 'BABYBJÖRN').within(elem => {
-        cy.contains('Travel Cot')
+      cy.get('table').contains('tr', 'Tender Leaf Toys').within(elem => {
+        cy.contains('Forest Chair')
         cy.get('[data-cy=link-image]').click()
       });
 
-      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][1] + ']').within(($product) => {
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][2] + ']').within(($product) => {
         cy.get('[data-cy=link-quantity-decrease]').click()
         cy.get('[data-cy=popout-button-update]').click()
       })
-
-      cy.get('table').contains('tr', '1')
     })
 
     it('Deletes found item.', () => {
-      cy.get('table').contains('tr', 'BABYBJÖRN').within(elem => {
-        cy.contains('Travel Cot')
+      cy.get('table').contains('tr', 'Tender Leaf Toys').within(elem => {
+        cy.contains('Forest Chair')
         cy.get('[data-cy=link-image]').click()
       });
 
-      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][1] + ']').within(($product) => {
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][2] + ']').within(($product) => {
         cy.get('[data-cy=link-quantity-decrease]').click()
         cy.get('[data-cy=popout-button-delete]').click()
       })
 
-      cy.get('table').contains('tr', 'John Lewis').should('not.exist')
+      cy.get('table').contains('tr', 'Tender Leaf Toys').should('not.exist')
     })
   })
 })

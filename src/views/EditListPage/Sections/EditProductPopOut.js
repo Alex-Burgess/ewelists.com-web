@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { API } from "aws-amplify";
 // libs
-import { onError, debugError } from "libs/errorLib";
+import { debugError } from "libs/errorLib";
+import { updateProductQuantity, removeProductFromList, deleteProduct } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -57,7 +57,7 @@ export default function EditPopOut(props) {
     props.handleClose(product['productId']);
   }
 
-  const deleteProduct = async () => {
+  const removeProduct = async () => {
     setError('');
     setIsDeleting(true);
 
@@ -77,9 +77,8 @@ export default function EditPopOut(props) {
 
 
     try {
-      await API.del("lists", "/" + listId + "/product/" +  productId);
+      await removeProductFromList(listId, productId);
     } catch (e) {
-      onError('Unexpected error occurred when deleting product from list.');
       setError('Item could not be deleted from your list.');
       setIsDeleting(false);
       return false
@@ -90,9 +89,8 @@ export default function EditPopOut(props) {
     if (type === 'notfound'){
       // Delete product from table
       try {
-        await API.del("notfound", "/" + productId);
+        await deleteProduct(productId);
       } catch (e) {
-        onError('Unexpected error occurred when deleting product.');
         setError('Product could not be deleted.');
         setIsDeleting(false);
         return false
@@ -121,11 +119,8 @@ export default function EditPopOut(props) {
     }
 
     try {
-      await API.put("lists", "/" + listId + "/product/" +  productId, {
-        body: { "quantity": newQuantity }
-      });
+      await updateProductQuantity(listId, productId, newQuantity);
     } catch (e) {
-      onError('Unexpected error occurred when updating product on list.');
       setError('Product could not be updated.');
       setIsUpdating(false);
       return false
@@ -153,7 +148,7 @@ export default function EditPopOut(props) {
             <Add />
           </Button>
         </div>
-        <Button round type="submit" disabled={isDeleting} onClick={() => deleteProduct()} data-cy="popout-button-delete">
+        <Button round type="submit" disabled={isDeleting} onClick={() => removeProduct()} data-cy="popout-button-delete">
           Delete
         </Button>
         <Button round color="primary" type="submit" disabled={isUpdating} onClick={() => updateProduct()} data-cy="popout-button-update">

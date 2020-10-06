@@ -1,10 +1,10 @@
-import { GetLists, GetList } from "./ApiCalls";
 import { onError } from "libs/errorLib";
+import { getLists, getList } from "libs/apiLib";
 
 export async function getUsersLists() {
   let lists = {};
 
-  const response = await GetLists();
+  const response = await getLists();
 
   let responseLists = response.owned;
 
@@ -13,7 +13,7 @@ export async function getUsersLists() {
 
     let listResponse;
     try {
-      listResponse = await GetList(list.listId);
+      listResponse = await getList(list.listId);
 
       let products = [];
       for (var key in listResponse.products) {

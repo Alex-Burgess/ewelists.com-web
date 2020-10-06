@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 // libs
 import { onError } from "libs/errorLib";
+import { getLists } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -23,8 +24,6 @@ import Primary from "components/Typography/Primary.js";
 // Sections
 import CreateList from "./CreateList.js";
 
-import { GetLists } from "./YourListsApi";
-
 import styles from "assets/jss/material-kit-pro-react/views/dashboardPage/yourListsStyle.js";
 const useStyles = makeStyles(styles);
 
@@ -38,14 +37,14 @@ export default function YourLists(props) {
   const [closedLists, setClosedLists] = useState([]);
 
   useEffect( () => {
-    async function getLists(){
+    async function getQuery(){
       let response;
       try {
-        response = await GetLists();
+        response = await getLists();
         setOpenLists(response.owned);
         setClosedLists(response.closed);
       } catch (e) {
-        onError(e);
+        onError("Get List Error.");
       }
     }
 
@@ -53,7 +52,7 @@ export default function YourLists(props) {
       props.setTabTitle('Your Lists');
     }
 
-    getLists();
+    getQuery();
     updateTab();
     setIsLoading(false);
   }, [props]);

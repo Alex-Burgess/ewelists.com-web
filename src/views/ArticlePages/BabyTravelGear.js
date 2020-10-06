@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // custom components
-import { getUsersLists } from "./Sections//GetUsersLists";
-import SectionHeading from "./Sections//SectionHeading.js";
-import SectionHeadings from "./Sections//SectionHeadings.js";
-import ListArticle from "./Sections//ListArticle.js";
-import Products from "./Sections//Products.js";
+import { getUsersLists } from "./Sections/GetUsersLists";
+import SectionHeading from "./Sections/SectionHeading.js";
+import SectionHeadings from "./Sections/SectionHeadings.js";
+import ListArticle from "./Sections/ListArticle.js";
+import Products from "./Sections/Products.js";
 import Quote from "components/Typography/Quote.js";
 
 // Blog Data

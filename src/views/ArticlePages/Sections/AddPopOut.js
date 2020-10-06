@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import update from 'immutability-helper';
-import { API } from "aws-amplify";
 // libs
 import { onError, debugError } from "libs/errorLib";
+import { addToList } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -78,13 +78,7 @@ export default function AddPopOut(props) {
     debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     try {
-      await API.post("lists", "/" + listId + "/product/" +  productId, {
-        body: {
-          "quantity": "1",
-          "productType": "products"
-        }
-      });
-      debugError("Added product to list.")
+      await addToList(listId, productId, "1", "products")
     } catch (e) {
       onError(e);
 

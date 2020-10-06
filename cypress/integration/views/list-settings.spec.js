@@ -2,7 +2,7 @@ import TestFilter from '../../support/TestFilter';
 
 // Smoke tests
 TestFilter(['smoke', 'regression'], () => {
-  describe('Edit E2E Test', () => {
+  describe('List Settings E2E Test', () => {
     const userEmail = "eweuser8+listsettings@gmail.com"
     const userName = 'Test List-Settings-Page'
 

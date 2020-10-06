@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';
-import { API } from "aws-amplify";
 // libs
 import { onError } from "libs/errorLib";
+import { reserveProduct } from "libs/apiLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -107,7 +107,7 @@ function ReservePopout(props) {
     }
   }
 
-  const reserveProduct = async () => {
+  const reserveGift = async () => {
     setReserveError('');
     setIsReserving(true);
 
@@ -115,20 +115,7 @@ function ReservePopout(props) {
     let response;
 
     try {
-      response = await API.post("lists", "/" + listId + "/reserve/" +  productId + "/email/" + email, {
-        body: {
-          "quantity": reserveQuantity,
-          "title": listTitle,
-          "name": name,
-          "product": {
-            "type": product['type'],
-            "brand": product['brand'],
-            "details": product['details'],
-            "productUrl": product['productUrl'],
-            "imageUrl": product['imageUrl']
-          }
-        }
-      });
+      response = await reserveProduct(listId, productId, email, name, reserveQuantity, listTitle, product);
     } catch (e) {
       if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
         setAccountError(true);
@@ -234,7 +221,7 @@ function ReservePopout(props) {
                   Log In
                 </Button>
               </Link>
-            : <Button default color="primary" className={classes.reserveButton} disabled={!validateForm() || isReserving} onClick={() => reserveProduct()} data-cy="popout-button-reserve">
+            : <Button default color="primary" className={classes.reserveButton} disabled={!validateForm() || isReserving} onClick={() => reserveGift()} data-cy="popout-button-reserve">
                 Reserve Gift
               </Button>
           }
