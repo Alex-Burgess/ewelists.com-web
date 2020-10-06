@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+// libs
+import { facebookShare } from "libs/shareLib.js";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -12,7 +14,6 @@ import CardHeader from "components/Card/CardHeader.js";
 import Button from "components/Buttons/Button.js";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 // Custom components
-import { Facebook } from "components/Share/Share.js";
 import config from 'config.js';
 
 import styles from "assets/jss/material-kit-pro-react/views/editListPage/listDetailsStyle.js";
@@ -97,7 +98,7 @@ export default function SectionListDetails(props) {
                               </Button>
                             </a>
                           </span>
-                        : <Button color="messenger" round justIcon share onClick={() => Facebook(listUrl)} data-cy="button-fb">
+                        : <Button color="messenger" round justIcon share onClick={() => facebookShare(listUrl)} data-cy="button-fb">
                             <i className="fab fa-facebook-messenger" />
                           </Button>
                       }
