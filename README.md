@@ -1,5 +1,5 @@
 # ewelists-web
-Web application written in React. This documentation has a few basic notes, but more comprehensive documentation is available at the main repo [Ewelists](https://github.com/Alex-Burgess/ewelists.com).
+Web application written in React. This documentation has a few basic notes, but more comprehensive documentation is available at the main repo [Ewelists](https://github.com/Ewelists/ewelists.com).
 
 ## React Docs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
