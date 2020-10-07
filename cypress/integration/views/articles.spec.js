@@ -12,10 +12,7 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     it('should have products with a signup and buy now buttons', () => {
-      cy.get('[data-cy=product-card]').contains('Sign up to Create List')
-      cy.get('[data-cy=product-card]').contains('Buy Now')
-
-      cy.get('[data-cy=product-card]').eq(0).find('a').as('product_links')
+      cy.get('[data-cy=product-card-12345678-blog-i001-1234-abcdefghijkl]').find('a').as('product_links')
       // Links 0 and 1 are link to product retailer page
       cy.get('@product_links').eq(2).should('have.attr', 'href', '/signup').contains('Sign up to Create List')
       cy.get('@product_links').eq(3).should('have.attr', 'href', 'https://totterandtumble.co.uk').contains('Buy Now')
@@ -51,23 +48,27 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     it('should have products with a signup and buy now buttons', () => {
-      // All products should have two buttons
-      cy.get('[data-cy=product-card]').contains('Add To List')
-      cy.get('[data-cy=product-card]').contains('Buy Now')
-
       // Product should have buy now button
-      cy.get('[data-cy=product-card]').eq(0).find('a').as('product_links')
+      cy.get('[data-cy=product-card-12345678-blog-i001-1234-abcdefghijkl]').find('a').as('product_links')
       cy.get('@product_links').eq(2).should('have.attr', 'href', 'https://totterandtumble.co.uk').contains('Buy Now')
 
       // Add to list button should open pop up
-      cy.get('[data-cy=button-add-to-list]').eq(0).click()
-      cy.get('[data-cy=popout-add-to-list]').contains('Add Item To List')
-      cy.get('[data-cy=popout-add-to-list]').contains('You have no lists yet')
-      cy.get('[data-cy=popout-add-to-list]').find('a').should('have.attr', 'href', '/?create').contains('Create a list')
+      cy.get('[data-cy=product-card-12345678-blog-i001-1234-abcdefghijkl]').within(($product) => {
+        cy.get('[data-cy=button-add-to-list]').click()
+      })
 
-      // Close Pop out
-      cy.get('[data-cy=popout-close-button]').eq(0).click()
-      cy.get('[data-cy=popout-add-to-list]').eq(0).should('have.css', "visibility", "hidden")
+      // Test popout
+      cy.get('[data-cy=popout-add-to-list-12345678-blog-i001-1234-abcdefghijkl]').within(($product) => {
+        cy.contains('Add Item To List')
+        cy.contains('You have no lists yet')
+        cy.get('a').should('have.attr', 'href', '/?create').contains('Create a list')
+
+        // Close Pop out
+        cy.get('[data-cy=popout-close-button]').click()
+      })
+
+      // popouts should be hidden
+      cy.get('[data-cy=popout-add-to-list-12345678-blog-i001-1234-abcdefghijkl]').should('have.css', "visibility", "hidden")
     })
   })
 
@@ -102,14 +103,20 @@ TestFilter(['smoke', 'regression'], () => {
 
     it('should have products with a signup and buy now buttons', () => {
       // Product should have Add to list button
-      cy.get('[data-cy=product-card]').eq(0).contains('Add To List')
+      cy.get('[data-cy=product-card-12345678-blog-i001-1234-abcdefghijkl]').contains('Add To List')
 
       // Add to list button should open pop up
-      cy.get('[data-cy=button-add-to-list]').eq(0).click()
-      cy.get('[data-cy=popout-add-to-list]').eq(0).contains('Add Item To List')
-      cy.get('[data-cy=popout-add-to-list]').eq(0).contains('Cypress Test Wish List')
-      cy.get('[data-cy=popout-add-to-list]').eq(0).find('[data-cy=popout-button-add-action]').click()
-      cy.get('[data-cy=popout-add-to-list]').eq(0).find('[data-cy=popout-added-icon]')
+      cy.get('[data-cy=product-card-12345678-blog-i001-1234-abcdefghijkl]').within(($product) => {
+        cy.get('[data-cy=button-add-to-list]').click()
+      })
+
+      // Test popout
+      cy.get('[data-cy=popout-add-to-list-12345678-blog-i001-1234-abcdefghijkl]').within(($product) => {
+        cy.contains('Add Item To List')
+        cy.contains('Cypress Test Wish List')
+        cy.get('[data-cy=popout-button-add-action]').click()
+        cy.get('[data-cy=popout-added-icon]')
+      })
     })
   })
 })

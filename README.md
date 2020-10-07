@@ -41,6 +41,11 @@ Builds the application for staging environment.
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## UI and E2E Cypress tests
+Open cypress test runner:
+```
+npx cypress open
+```
+
 Run All tests:
 ```
 npx cypress run --headless --browser chrome

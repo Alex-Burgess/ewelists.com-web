@@ -199,7 +199,7 @@ export default function AddPopOut(props) {
         onClose={() => closeEditPopOut()}
         aria-labelledby="notice-modal-slide-title"
         aria-describedby="notice-modal-slide-description"
-        data-cy="popout-add-to-list"
+        data-cy={"popout-add-to-list-" + product.productId}
       >
       <DialogTitle
         id="notice-modal-slide-title"
