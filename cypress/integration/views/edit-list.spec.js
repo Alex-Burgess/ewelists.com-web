@@ -179,7 +179,7 @@ TestFilter(['regression'], () => {
         cy.get("#navTabContainer").matchImageSnapshot(`Edit-Reserved-${size}`);
 
         // snapshot Add items setion
-        cy.get("[id='Add Items']").click()
+        cy.get('#AddItems').click()
         cy.get("#searchUrl")
         cy.get("#navTabContainer").matchImageSnapshot(`Edit-Add-${size}`);
       });
