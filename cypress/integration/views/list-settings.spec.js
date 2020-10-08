@@ -34,12 +34,13 @@ TestFilter(['smoke', 'regression'], () => {
       cy.visit('/settings/' + seedResponse.list_id)
     })
 
-    it('should edit details of the list', () => {
+    it.only('should edit details of the list', () => {
       // Ensure page has loaded
       cy.contains("Settings")
       cy.contains("A test list")
 
       cy.get('[data-cy=button-edit]').click()
+      cy.get('#title').should('have.value', "Cypress Test Wish List")
 
       cy.get('#title').clear().type("Birthday Gift List").should('have.value', "Birthday Gift List")
       cy.get('.datepicker').click();

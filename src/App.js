@@ -22,7 +22,7 @@ export default function App(props) {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
-  const [cookies, setCookie] = useCookies(['name', 'email']);
+  const [setCookie] = useCookies(['name', 'email']);
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -166,6 +166,8 @@ export default function App(props) {
     }
 
     onLoad();
+    // ignoring warning about missing getAttributes as dependency
+    // eslint-disable-next-line
   }, [history, location]);
 
   async function getAttributes() {
