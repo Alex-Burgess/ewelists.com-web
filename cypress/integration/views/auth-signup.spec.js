@@ -318,4 +318,83 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=link-login]').should('have.attr', 'href', '/login')
     })
   })
+
+  describe('Sign up with email case differences', () => {
+    let user = {}
+
+    before(() => {
+      cy.fixture('auth-signup/signup-case.json').then(fixture => {
+        user = fixture.user
+        var val = Math.floor(Math.random() * 1000);
+        user['email'] = "Eweuser8+signup" + val + "@gmail.com"
+        cy.log("User email: " + user.email)
+      })
+    })
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    it('Signs up with capitalised email and confirms result is lower case', () => {
+      // Set date/time for start of test, so we can filter how we look for signup emails
+      const date = new Date()
+
+      // Complete signup form for new user
+      cy.visit('/signup')
+      cy.contains('Sign Up')
+      cy.get('[data-cy=button-signup-with-email]').click()
+
+      cy.get('#name').type(user.name)
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('[data-cy=button-signup-form]').click()
+
+      // Check that welcome email is received
+      cy.task("gmail:check", {
+        from: Cypress.env("contactEmail"),
+        to: user.email,
+        subject: Cypress.env("welcomeEmailSubject"),
+        after: date,
+      })
+      .then(email => {
+        const body = email.body.html
+
+        assert.isTrue(body.indexOf("Just a quick note to say thank you for signing up with ewelists") >= 0, "Found welcome email")
+      });
+
+      // Get confirmation code from email and complete final signup step
+      cy.contains('Confirmation Code')
+
+      cy.task("gmail:check", {
+        from: Cypress.env("contactEmail"),
+        to: user.email,
+        subject: Cypress.env("verifyEmailSubject"),
+        after: date,
+      })
+      .then(email => {
+        const body = email.body.html
+
+        assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Found otp in email!")
+
+        const code = body.match(/ [0-9]{6} /)[0].trim()
+
+        cy.get('#confirmationCode').type(code)
+
+        cy.get('[data-cy=confirm-signup-button]').click()
+        cy.contains("Your Lists")
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+
+        cy.getCookie('email')
+          .should('have.property', 'value', encodeURIComponent(user.email.toLowerCase()))
+
+        user.email = user.email.toLowerCase()
+      });
+    })
+  })
 })

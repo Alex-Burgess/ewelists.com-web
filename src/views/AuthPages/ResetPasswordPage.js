@@ -37,7 +37,8 @@ export default function ResetPasswordPage(props) {
     event.preventDefault();
 
     try {
-      await Auth.forgotPassword(email);
+      setEmail(email.toLowerCase());
+      await Auth.forgotPassword(email.toLowerCase());
       setCodeSent(true);
     } catch (e) {
       onAuthError(e, email);

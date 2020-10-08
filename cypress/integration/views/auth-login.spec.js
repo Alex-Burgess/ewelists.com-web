@@ -160,6 +160,16 @@ TestFilter(['regression'], () => {
 
       cy.contains("The email or password you provided was incorrect.")
     })
+
+    it('Should log in if users email matches but with different case.', () => {
+      cy.visit('/login')
+
+      cy.get('#email').type(user.email.toUpperCase())
+      cy.get('#password').type(user.password)
+      cy.get('[data-cy=login]').click()
+
+      cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
   })
 
   describe('Login Page Links', () => {

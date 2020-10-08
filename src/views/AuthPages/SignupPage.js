@@ -96,8 +96,10 @@ export default function SignupPage(props) {
 
 
     try {
+      setEmail(email.toLowerCase());
+
       const newUser = await Auth.signUp({
-        username: email,
+        username: email.toLowerCase(),
         password: password,
         attributes: {
           name: name
@@ -152,7 +154,7 @@ export default function SignupPage(props) {
           id="password"
           formControlProps={{
             fullWidth: true,
-            value: email,
+            value: password,
             onChange: event => setPassword(event.target.value),
             className: classes.loginInputs
           }}

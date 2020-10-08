@@ -192,3 +192,58 @@ TestFilter(['regression'], () => {
     })
   })
 })
+
+TestFilter(['regression'], () => {
+  describe('Reserve Gift with capitalised email', () => {
+    let seedResponse = {}
+    let user = {}
+
+    before(() => {
+      cy.fixture('view-list/seed-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/view-list/seed-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
+        cy.log("Products IDs: " + seedResponse.product_ids)
+      })
+    })
+
+    after(() => {
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/lists/' + seedResponse.list_id)
+    })
+
+    it('should reserve gift when user authed', () => {
+      // Ensure page has loaded and contains products
+      cy.contains("Cypress Test Wish List")
+
+      // Open Reserve popout
+      cy.get('[data-cy=product-card-' + seedResponse['product_ids'][0] + ']').find('[data-cy=button-reserve]').click()
+
+      cy.get('[data-cy=popout-reserve-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('#name-' + seedResponse['product_ids'][0]).type('Cypress ReserveUser1')
+        cy.get('#email-' + seedResponse['product_ids'][0]).type('Eweuser8+reserveuser1@gmail.com')
+        cy.get('[data-cy=popout-button-quantity-increase]').click()
+        cy.get('[data-cy=popout-button-reserve]').click()
+      })
+
+      // Should be redirect to reservation page
+      cy.url().should('include', '/reserve/')
+
+      // Should be lowercase email in cookie
+      cy.getCookie('email')
+        .should('have.property', 'value', encodeURIComponent('eweuser8+reserveuser1@gmail.com'))
+    })
+  })
+})

@@ -103,19 +103,20 @@ function ReservePopout(props) {
   const setUserDetailsCookie = () => {
     if (cookiesAllowed) {
       setCookie('name', name, { path: '/' });
-      setCookie('email', email, { path: '/' });
+      setCookie('email', email.toLowerCase(), { path: '/' });
     }
   }
 
   const reserveGift = async () => {
     setReserveError('');
     setIsReserving(true);
+    setEmail(email.toLowerCase());
 
     let productId = product['productId'];
     let response;
 
     try {
-      response = await reserveProduct(listId, productId, email, name, reserveQuantity, listTitle, product);
+      response = await reserveProduct(listId, productId, email.toLowerCase(), name, reserveQuantity, listTitle, product);
     } catch (e) {
       if (e.response.data.error === 'User has an account, login required before product can be reserved.') {
         setAccountError(true);

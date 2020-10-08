@@ -166,12 +166,12 @@ TestFilter(['regression'], () => {
     let user = {}
 
     before(() => {
-      cy.fixture('auth-login/login-e2e.json').then(fixture => {
+      cy.fixture('auth-reset/form.json').then(fixture => {
         user = fixture.user
         cy.log("User email: " + user.email)
       })
 
-      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-login/login-e2e.json').then((result) => {
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/form.json').then((result) => {
         seedResponse = JSON.parse(result.stdout)
         cy.log("User ID: " + seedResponse.user_id)
       })
@@ -278,6 +278,68 @@ TestFilter(['regression'], () => {
         cy.get('#confirmPassword').type('P4ssw0rd-').should('have.value', 'P4ssw0rd-')
         cy.get('[data-cy=submit-verify]').click()
         cy.contains("Your confirmed password does not match the new password.")
+      });
+    })
+  })
+
+  describe('Reset password With Capitalised Email', () => {
+    let seedResponse = {}
+    let user = {}
+
+    before(() => {
+      cy.readFile('cypress/fixtures/auth-reset/reset-e2e.json').then((fixture) => {
+        var val = Math.floor(Math.random() * 1000);
+        fixture['user'].email = "eweuser8+reset" + val + "@gmail.com"
+        user = fixture.user
+        cy.log("User email: " + user.email)
+        cy.writeFile('cypress/fixtures/auth-reset/reset-e2e.json.tmp', fixture)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/auth-reset/reset-e2e.json.tmp').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
+    })
+
+    after(() => {
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    it('resets password for test user with upper email', () => {
+      cy.visit('/reset')
+      cy.contains('Reset')
+
+      cy.get('#email').type(user.email.toUpperCase())
+      cy.get('[data-cy=submit-reset]').click()
+
+      cy.contains('Confirmation Code')
+
+      // Get the confirmation code from email
+      cy.task("gmail:check", {
+        from: Cypress.env("contactEmail"),
+        to: user.email,
+        subject: Cypress.env("verifyEmailSubject"),
+        after: new Date(),
+      })
+      .then(email => {
+        const body = email.body.html
+
+        assert.isTrue(body.indexOf("Your One Time Password (OTP) is below") >= 0, "Email contained One Time Password.");
+
+        const code = body.match(/ [0-9]{6} /)[0].trim()
+
+        cy.get('#code').type(code)
+        cy.get('#password').type(user.password)
+        cy.get('#confirmPassword').type(user.password)
+
+        cy.get('[data-cy=submit-verify]').click()
+        cy.contains('Password Reset Complete')
+
+        cy.contains("Login with your new credentials").click()
+        cy.url().should('include', '/login')
       });
     })
   })

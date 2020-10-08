@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from "react-router-dom";
 import CookieConsent, { Cookies } from "react-cookie-consent";
+import { useCookies } from 'react-cookie';
 import { Auth, Hub } from "aws-amplify";
 import qs from "qs";
 // @material-ui/core components
@@ -21,6 +22,7 @@ export default function App(props) {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
+  const [cookies, setCookie] = useCookies(['name', 'email']);
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -173,6 +175,9 @@ export default function App(props) {
       sub: attributes['sub'],
       name: attributes['name']
     }
+
+    setCookie('name', user.name, { path: '/' });
+    setCookie('email', user.email, { path: '/' });
 
     debugError("Retrieved user details: " + JSON.stringify(user));
     setUser(user);

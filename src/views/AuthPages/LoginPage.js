@@ -55,7 +55,7 @@ export default function LoginPage(props) {
     event.preventDefault();
 
     try {
-      await Auth.signIn(email, password);
+      await Auth.signIn(email.toLowerCase(), password);
       props.userHasAuthenticated(true);
     } catch (e) {
       onAuthError(e, email);
