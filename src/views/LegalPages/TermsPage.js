@@ -13,7 +13,7 @@ export default function TermsPage(props) {
   const classes = useStyles();
   return (
     <div>
-      <HeaderWhite isAuthenticated={props.isAuthenticated} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderWhite />
 
       <div className={classes.main}>
         <div className={classes.content}>

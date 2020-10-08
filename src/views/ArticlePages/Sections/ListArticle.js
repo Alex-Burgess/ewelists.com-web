@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+// libs
+import { useAppContext } from "libs/contextLib";
 // core components
 import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "components/Footer/FooterDark.js";
@@ -18,20 +20,20 @@ const useStyles = makeStyles(styles);
 
 export default function ListArticle(props) {
   const classes = useStyles();
-
-  const { name, content, user, isAuthenticated, mobile, tablet } = props;
+  const { setTabTitle } = useAppContext();
+  const { name, content } = props;
 
   const title = details[name].title;
   const subtitle = details[name].description_short;
   const img = details[name].img;
 
   useEffect( () => {
-    props.setTitle(title)
-  }, [props, title]);
+    setTabTitle(title)
+  }, [setTabTitle, title]);
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={isAuthenticated} user={user}  mobile={mobile} tablet={tablet}/>
+      <HeaderTransparent />
       <Parallax image={img} filter="dark" className={classes.articleBg + " " + classes.darkFilter}>
       </Parallax>
       <div className={classes.main}>
@@ -64,9 +66,6 @@ export default function ListArticle(props) {
 }
 
 ListArticle.propTypes = {
-  isAuthenticated: PropTypes.bool,
   name: PropTypes.string,
   content: PropTypes.object,
-  mobile: PropTypes.bool,
-  tablet: PropTypes.bool
 };

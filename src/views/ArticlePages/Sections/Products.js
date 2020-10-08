@@ -15,6 +15,7 @@ import Button from "components/Buttons/Button.js";
 // custom components
 import AddPopOut from "./AddPopOut.js";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { onError } from "libs/errorLib";
 import { getBlogProducts } from "libs/apiLib";
 
@@ -23,7 +24,8 @@ const useStyles = makeStyles(styles);
 
 export default function Products(props) {
   const classes = useStyles();
-  const { products, lists, isAuthenticated } = props;
+  const { products, lists } = props;
+  const { isAuthenticated } = useAppContext();
   const [addPopouts, setAddPopouts] = useState({});
 
   const [data, setProductData] = useState({});
@@ -133,6 +135,5 @@ export default function Products(props) {
 
 Products.propTypes = {
   products: PropTypes.array,
-  lists: PropTypes.object,
-  isAuthenticated: PropTypes.bool
+  lists: PropTypes.object
 };

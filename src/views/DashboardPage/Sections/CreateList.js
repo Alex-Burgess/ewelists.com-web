@@ -43,7 +43,7 @@ function CreatePopOut(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const { open } = props;
+  const { open, setCreate } = props;
 
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
@@ -127,7 +127,7 @@ function CreatePopOut(props) {
       }}
       open={open}
       TransitionComponent={Transition}
-      onClose={() => props.setCreate(false)}
+      onClose={() => setCreate(false)}
       aria-labelledby="classic-modal-slide-title"
       aria-describedby="classic-modal-slide-description"
     >
@@ -141,7 +141,7 @@ function CreatePopOut(props) {
           className={classes.modalCloseButton}
           key="close"
           aria-label="Close"
-          onClick={() => props.setCreate(false)}
+          onClick={() => setCreate(false)}
           data-cy="button-form-close"
         >
           {" "}
@@ -247,6 +247,7 @@ function CreatePopOut(props) {
 
 CreatePopOut.propTypes = {
   open: PropTypes.bool,
+  setCreate: PropTypes.func
 };
 
 export default CreatePopOut;

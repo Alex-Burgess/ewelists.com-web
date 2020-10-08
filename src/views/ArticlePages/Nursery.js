@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import ListArticle from "./Sections/ListArticle.js";
@@ -11,6 +13,7 @@ import SectionHeadings from "./Sections/SectionHeadings.js";
 const name = 'nursery-list';
 
 export default function Nursery(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -56,7 +59,6 @@ export default function Nursery(props) {
           "12345678-prod-n003-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         Cribs are usually a bit bigger and on average last to approximately six months, which in comparison to a Moses
@@ -72,7 +74,6 @@ export default function Nursery(props) {
           "12345678-prod-n029-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     <SectionHeading name="cots" text="Cots and Cot Beds" />
       <p>
@@ -92,7 +93,6 @@ export default function Nursery(props) {
           "12345678-prod-n010-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     <SectionHeading name="sets" text="Furniture Sets" />
       <p>
@@ -111,7 +111,6 @@ export default function Nursery(props) {
           "12345678-prod-n031-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <SectionHeading name="additional" text="Additional Furniture" />
       <p>
@@ -133,7 +132,6 @@ export default function Nursery(props) {
           "12345678-prod-n032-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         It's also worth thinking ahead and thinking about storage for teddies, toys and books, all of which you'll soon
@@ -148,7 +146,6 @@ export default function Nursery(props) {
           "12345678-prod-n035-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <SectionHeading name="soft" text="Soft Furnishings" />
       <p>
@@ -163,7 +160,6 @@ export default function Nursery(props) {
           "12345678-prod-n041-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <SectionHeading name="accessories" text="Accessories" />
       <p>
@@ -200,7 +196,6 @@ export default function Nursery(props) {
           "12345678-prod-n038-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -211,20 +206,15 @@ export default function Nursery(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

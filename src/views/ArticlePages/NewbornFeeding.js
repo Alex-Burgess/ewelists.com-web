@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -10,6 +12,7 @@ import Products from "./Sections/Products.js";
 const name = 'newborn-baby-feeding'
 
 export default function NewbornFeeding(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -82,7 +85,6 @@ export default function NewbornFeeding(props) {
           "6741b52a-42f0-43c3-be32-5101dc859515"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="breast" text="Breast Feeding" />
@@ -109,7 +111,6 @@ export default function NewbornFeeding(props) {
           "4f743d8a-17f2-4611-a450-f5ca56a64373"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -125,7 +126,6 @@ export default function NewbornFeeding(props) {
           "03f44cd2-3ddf-40c4-8388-af09587f7d79"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -170,7 +170,6 @@ export default function NewbornFeeding(props) {
           "3ae93242-73bd-473e-9d70-cfa2a5960a0c"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -186,7 +185,6 @@ export default function NewbornFeeding(props) {
           "cfa28233-e277-4d99-ad00-ff7bd3fcf5a8",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="bottle" text="Bottle Feeding" />
@@ -207,7 +205,6 @@ export default function NewbornFeeding(props) {
           "1d7a457d-fb5b-4784-9c61-2981aa36405d",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -226,7 +223,6 @@ export default function NewbornFeeding(props) {
           "b86797b8-e5af-4679-8a95-9c23d524bbf7"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -246,7 +242,6 @@ export default function NewbornFeeding(props) {
           "61b14e99-4538-43f8-b11d-855b8e0228b7"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="night" text="Feeding at night" />
@@ -273,7 +268,6 @@ export default function NewbornFeeding(props) {
           "4db7fe58-208c-447e-806b-c1367ada0d41"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -291,20 +285,15 @@ export default function NewbornFeeding(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

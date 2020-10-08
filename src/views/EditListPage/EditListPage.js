@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import qs from "qs";
 import update from 'immutability-helper';
 // libs
+import { useAppContext } from "libs/contextLib";
 import { getList, getProducts } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,9 +27,10 @@ const useStyles = makeStyles(styles);
 
 export default function EditPage(props) {
   const classes = useStyles();
+  const { search } = useLocation();
+  const { setTabTitle, mobile } = useAppContext();
 
   const listId = props.match.params.id;
-  const mobile = props.mobile;
 
   const [listLoaded, setListLoaded] = useState(false);
   const [productsLoading, setProductsLoading] = useState(true);
@@ -44,7 +47,7 @@ export default function EditPage(props) {
 
   useEffect( () => {
     function getTabId() {
-      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+      const params = qs.parse(search, { ignoreQueryPrefix: true });
       return parseInt(params['tab'])
     }
 
@@ -52,11 +55,11 @@ export default function EditPage(props) {
     if (id) {
       setTabId(id);
     }
-  }, [props.location.search]);
+  }, [search]);
 
   useEffect( () => {
     function setListState(response) {
-      props.setTabTitle('Editing ' + response.list.title);
+      setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -92,7 +95,7 @@ export default function EditPage(props) {
     };
 
     getListDetails();
-  }, [listId, props]);
+  }, [listId, setTabTitle]);
 
   const deleteProductFromState = (id) => {
     setProducts(
@@ -153,7 +156,6 @@ export default function EditPage(props) {
                 <div>
                   <Reserved
                     loading={productsLoading}
-                    mobile={mobile}
                     reserved={reserved}
                     products={products}
                   />
@@ -166,7 +168,6 @@ export default function EditPage(props) {
               tabContent: (
                 <div>
                   <ClosedProducts
-                    mobile={mobile}
                     products={products}
                   />
                 </div>
@@ -192,7 +193,6 @@ export default function EditPage(props) {
                 <div>
                   <Products
                     loading={productsLoading}
-                    mobile={mobile}
                     products={products}
                     listId={listId}
                     deleteProductFromState={deleteProductFromState}
@@ -237,7 +237,7 @@ export default function EditPage(props) {
 
   return (
     <div>
-      <HeaderDark isAuthenticated={true} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderDark />
       <div className={classes.main}>
         {loadError
           ? <div>
@@ -254,8 +254,6 @@ export default function EditPage(props) {
                 occasion={occasion}
                 date={date}
                 imageUrl={imageUrl}
-                mobile={props.mobile}
-                user={props.user}
                 closed={closed}
               />
               <div className={classes.profileTabs} id="navTabContainer">

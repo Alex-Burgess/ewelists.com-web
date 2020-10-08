@@ -33,14 +33,14 @@ Transition.displayName = "Transition";
 
 export default function AddPopOut(props) {
   const classes = useStyles();
-  const { open, lists, product } = props;
+  const { open, lists, product, handleClose } = props;
   const [added, setAdded] = useState({});
   const [adding, setAdding] = useState({});
   const [addError, setAddError] = useState({});
 
   const closeEditPopOut = () => {
     clearError();
-    props.handleClose(product['productId']);
+    handleClose(product['productId']);
   }
 
   const updateAdding = (state, id) => {
@@ -173,7 +173,7 @@ export default function AddPopOut(props) {
             </small>
           </span>,
           <span>
-            <a href={"/?create"} target="_blank" rel="noopener noreferrer">
+            <a href={"/?create=true"} target="_blank" rel="noopener noreferrer">
               <Button round color="primary">
                 Create a list
               </Button>
@@ -247,5 +247,6 @@ export default function AddPopOut(props) {
 AddPopOut.propTypes = {
   open: PropTypes.bool,
   lists: PropTypes.object,
-  product: PropTypes.object
+  product: PropTypes.object,
+  handleClose: PropTypes.func
 };

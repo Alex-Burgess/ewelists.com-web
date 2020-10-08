@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 // libs
+import { useAppContext } from "libs/contextLib";
 import { onError } from "libs/errorLib";
 import { reserveProduct } from "libs/apiLib";
 // nodejs library to set properties for components
@@ -41,8 +42,9 @@ function ReservePopout(props) {
   const classes = useStyles();
   const history = useHistory();
   const [cookies, setCookie] = useCookies(['name', 'email']);
+  const { user, cookiesAllowed } = useAppContext();
 
-  const { listId, listTitle, open, product, user, cookiesAllowed } = props;
+  const { listId, listTitle, open, product, closeReservePopout } = props;
 
   const [reserveQuantity, setReserveQuantity] = useState(1);
   const [reserveError, setReserveError] = useState('');
@@ -71,7 +73,7 @@ function ReservePopout(props) {
 
   const closePopout = () => {
     setReserveError('');
-    props.closeReservePopout(product['productId']);
+    closeReservePopout(product['productId']);
   }
 
   const increaseQuantity = () => {
@@ -290,8 +292,7 @@ ReservePopout.propTypes = {
   listId: PropTypes.string,
   listTitle: PropTypes.string,
   product: PropTypes.object,
-  user: PropTypes.object,
-  cookiesAllowed: PropTypes.bool
+  closeReservePopout: PropTypes.func
 };
 
 export default ReservePopout;

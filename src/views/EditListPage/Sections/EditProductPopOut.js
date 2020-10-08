@@ -30,7 +30,7 @@ Transition.displayName = "Transition";
 
 export default function EditPopOut(props) {
   const classes = useStyles();
-  const { open, listId, product } = props;
+  const { open, listId, product, deleteProductFromState, updateProductToState, handleClose } = props;
   const [error, setError] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
@@ -54,7 +54,7 @@ export default function EditPopOut(props) {
 
   const closeEditPopOut = () => {
     setNewQuantity(product['quantity']);
-    props.handleClose(product['productId']);
+    handleClose(product['productId']);
   }
 
   const removeProduct = async () => {
@@ -100,8 +100,8 @@ export default function EditPopOut(props) {
     }
 
     setIsDeleting(false);
-    props.deleteProductFromState(productId);
-    props.handleClose(productId);
+    deleteProductFromState(productId);
+    handleClose(productId);
   }
 
   const updateProduct = async () => {
@@ -129,8 +129,8 @@ export default function EditPopOut(props) {
     product['quantity'] =newQuantity
 
     setIsUpdating(false);
-    props.updateProductToState(product)
-    props.handleClose(productId);
+    updateProductToState(product)
+    handleClose(productId);
   }
 
   const allButtons = () => {
@@ -265,5 +265,8 @@ export default function EditPopOut(props) {
 EditPopOut.propTypes = {
   open: PropTypes.bool,
   listId: PropTypes.string,
-  product: PropTypes.object
+  product: PropTypes.object,
+  deleteProductFromState: PropTypes.func,
+  updateProductToState: PropTypes.func,
+  handleClose: PropTypes.func
 };

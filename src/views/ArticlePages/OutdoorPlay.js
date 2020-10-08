@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -10,6 +12,7 @@ import Products from "./Sections/Products.js";
 const name = 'childrens-outdoor-play'
 
 export default function OutdoorPlay(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -43,7 +46,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o017-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="ride-on" text="Ride on toys" />
@@ -62,7 +64,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o008-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="garden" text="Fun in the garden" />
@@ -85,7 +86,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-o016-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -96,20 +96,15 @@ export default function OutdoorPlay(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

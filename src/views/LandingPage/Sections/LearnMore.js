@@ -1,6 +1,6 @@
 import React from 'react';
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
+// libs
+import { useAppContext } from "libs/contextLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -13,11 +13,9 @@ const useStyles = makeStyles(styles);
 
 export default function LearnMore(props) {
   const classes = useStyles();
-  const { mobile } = props;
+  const { mobile } = useAppContext();
 
   const scrollPage = () => {
-    // Mobile is undefined, not sure why?
-    // console.log("Mobile: " + props.mobile)
     if (mobile) {
       window.scrollTo({ top: 820, behavior: 'smooth' })
     } else {
@@ -40,7 +38,3 @@ export default function LearnMore(props) {
     </div>
   );
 }
-
-LearnMore.propTypes = {
-  mobile: PropTypes.bool
-};

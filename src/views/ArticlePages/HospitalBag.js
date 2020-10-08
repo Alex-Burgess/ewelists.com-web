@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -11,6 +13,7 @@ import ChecklistCard from "./Sections/ChecklistCard.js";
 const name = 'hospital-bag-checklist';
 
 export default function HostpitalBag(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -57,7 +60,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h005-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard packing items={
           ['Birth ball', 'Maternity notes and birth plan', 'TENS Machine', 'Plastic bag for dirty clothes', 'Ziplock bags']
@@ -82,7 +84,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h006-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard packing items={
           ['Drinks and snacks', 'Entertainment', 'Straw or bottle with straw', 'Headphones', 'Lip balm', 'Massage oils',
@@ -116,7 +117,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h017-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard packing items={
           ['2 x night dresses', 'Dressing Gown', 'Tankini for the pool', 'Loose fitting clothes', '5 x large comfy knickers',
@@ -155,7 +155,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h018-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard packing items={
           ['4 x sleep suits and vests', 'Scratch mittens', 'Booties', 'Cardigan', 'Hat', '2 x muslin squares',
@@ -175,7 +174,6 @@ export default function HostpitalBag(props) {
           "12345678-prod-h013-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard packing items={
           ['Cool comfy clothing', 'Change of clothes', 'Phone', 'Camera', 'Charger', 'Swimwear for the pool']
@@ -189,22 +187,15 @@ export default function HostpitalBag(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
-    <div>
-      <ListArticle
-        isAuthenticated={props.isAuthenticated}
-        user={props.user}
-        name={name}
-        content={ content }
-        setTitle={props.setTabTitle}
-        mobile={props.mobile}
-        tablet={props.tablet}
-      />
-    </div>
+    <ListArticle
+      name={name}
+      content={content}
+    />
   );
 }

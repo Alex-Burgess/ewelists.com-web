@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -10,6 +12,7 @@ import Products from "./Sections/Products.js";
 const name = 'childrens-indoor-play'
 
 export default function OutdoorPlay(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -47,7 +50,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r006-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="building" text="Building and Puzzles" />
@@ -68,7 +70,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r015-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="trains" text="Train Sets" />
@@ -84,7 +85,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r012-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="creative" text="Creative Play" />
@@ -104,7 +104,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r016-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="roleplay" text="Roleplay Toys" />
@@ -124,7 +123,6 @@ export default function OutdoorPlay(props) {
           "12345678-blog-r027-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -135,20 +133,15 @@ export default function OutdoorPlay(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

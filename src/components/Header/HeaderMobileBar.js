@@ -1,12 +1,16 @@
 import React from 'react';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+// libs
+import { useAppContext } from "libs/contextLib";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderDark from "components/Header/HeaderDark.js";
 
 export default function HeaderMobileBar(props) {
-  const { url, title, user, mobile, isAuthenticated } = props;
+  const { mobile } = useAppContext();
+
+  const { url, title } = props;
 
   return (
     <div>
@@ -18,16 +22,13 @@ export default function HeaderMobileBar(props) {
             title={title}
             url={url}
           />
-        : <HeaderDark isAuthenticated={isAuthenticated} user={user} mobile={mobile} />
+        : <HeaderDark />
       }
     </div>
   );
 }
 
 HeaderMobileBar.propTypes = {
-  isAuthenticated: PropTypes.bool,
   url: PropTypes.string,
-  title: PropTypes.string,
-  user: PropTypes.object,
-  mobile: PropTypes.bool
+  title: PropTypes.string
 };

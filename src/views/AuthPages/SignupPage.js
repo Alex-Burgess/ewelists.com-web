@@ -209,7 +209,7 @@ export default function SignupPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={false} mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderWhite />
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>

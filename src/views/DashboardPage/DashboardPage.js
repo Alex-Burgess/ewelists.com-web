@@ -21,9 +21,9 @@ export default function DashboardPage(props) {
   return (
     <div>
       <div className={classes.page}>
-        <HeaderDark isAuthenticated={true} user={props.user} mobile={props.mobile} tablet={props.tablet}/>
+        <HeaderDark />
         <div className={classes.main}>
-          <YourLists showCreate={create} setCreate={setCreate} setTabTitle={props.setTabTitle}/>
+          <YourLists showCreate={create} setCreate={setCreate} />
         </div>
         <div className={classes.flexer} />
       </div>
@@ -34,5 +34,5 @@ export default function DashboardPage(props) {
 
 DashboardPage.propTypes = {
   create: PropTypes.bool,
-  // setCreate: PropTypes.function
+  setCreate: PropTypes.func
 };

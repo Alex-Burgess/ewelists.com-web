@@ -34,7 +34,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.visit('/settings/' + seedResponse.list_id)
     })
 
-    it.only('should edit details of the list', () => {
+    it('should edit details of the list', () => {
       // Ensure page has loaded
       cy.contains("Settings")
       cy.contains("A test list")

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import qs from "qs";
 // libs
 import { onError } from "libs/errorLib";
@@ -24,12 +24,13 @@ const laptopImg = config.imagePrefix + "/images/create-list";
 export default function LoginPage(props) {
   const classes = useStyles();
   const history = useHistory();
+  const { search } = useLocation();
 
   const [account, setAccount] = useState('');
 
   useEffect( () => {
     function checkUrlParams() {
-      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+      const params = qs.parse(search, { ignoreQueryPrefix: true });
 
       if (params['account'] === 'Google' || params['account'] === 'Facebook') {
           setAccount(params['account']);
@@ -44,12 +45,12 @@ export default function LoginPage(props) {
     };
 
     checkUrlParams();
-  }, [props.location.search, history]);
+  }, [search, history]);
 
 
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={false} mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderWhite />
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>

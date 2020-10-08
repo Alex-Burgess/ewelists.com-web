@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import update from 'immutability-helper';
 import FadeLoader from "react-spinners/FadeLoader";
+// libs
+import { useAppContext } from "libs/contextLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-
 // @material-ui icons
 import Edit from "@material-ui/icons/Edit";
 import Playlist from "@material-ui/icons/PlaylistAdd";
@@ -23,11 +24,12 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { mobile, listId, products, loading } = props;
+  const { mobile } = useAppContext();
+  const { listId, products, loading, deleteProductFromState, updateProductToState, switchToAddProduct } = props;
 
   const [editPopouts, setEditPopouts] = useState({});
 
-  const handleEditClose = (id) => {
+  const handleClose = (id) => {
     setEditPopouts({
       editPopouts: update(editPopouts, {
         [id]: {$set: false}
@@ -35,7 +37,7 @@ export default function SectionProducts(props) {
     })
   }
 
-  const handleEditClickOpen = (id) => {
+  const handleOpen = (id) => {
     setEditPopouts({
       ...editPopouts,
         [id]: true
@@ -117,12 +119,12 @@ export default function SectionProducts(props) {
     return (
       [
       <div className={classes.imgContainer} key={1} id={productId}>
-        <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
+        <button onClick={() => handleOpen(productId)} className={classes.undoButton} data-cy="link-image">
           <img src={imageUrl} alt="..." className={classes.img} />
         </button>
       </div>,
       <span key={1}>
-        <button onClick={() => handleEditClickOpen(productId)} className={classes.brand} data-cy="link-brand">
+        <button onClick={() => handleOpen(productId)} className={classes.brand} data-cy="link-brand">
           {brand}
         </button>
         <br />
@@ -149,7 +151,7 @@ export default function SectionProducts(props) {
           placement="left"
           classes={{ tooltip: classes.tooltip }}
         >
-          <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)} data-cy="link-edit">
+          <Button link className={classes.actionButton} onClick={() => handleOpen(productId)} data-cy="link-edit">
             <Edit />
           </Button>
         </Tooltip>
@@ -163,11 +165,11 @@ export default function SectionProducts(props) {
       [
           <div className={classes.textCenter} id={productId}>
             <div className={classes.imgContainer} key={1}>
-              <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-image">
+              <button onClick={() => handleOpen(productId)} className={classes.undoButton} data-cy="link-image">
                 <img src={imageUrl} alt="..." className={classes.img} />
               </button>
             </div>
-            <button onClick={() => handleEditClickOpen(productId)} className={classes.undoButton} data-cy="link-brand">
+            <button onClick={() => handleOpen(productId)} className={classes.undoButton} data-cy="link-brand">
               <h4 className={classes.brand}>
                 {brand}
               </h4>
@@ -197,7 +199,7 @@ export default function SectionProducts(props) {
               placement="left"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button link className={classes.actionButton} onClick={() => handleEditClickOpen(productId)} data-cy="link-edit">
+              <Button link className={classes.actionButton} onClick={() => handleOpen(productId)} data-cy="link-edit">
                 <Edit />
               </Button>
             </Tooltip>
@@ -215,9 +217,9 @@ export default function SectionProducts(props) {
               : false }
             listId={listId}
             product={product}
-            handleClose={handleEditClose}
-            deleteProductFromState={props.deleteProductFromState}
-            updateProductToState={props.updateProductToState}
+            handleClose={handleClose}
+            deleteProductFromState={deleteProductFromState}
+            updateProductToState={updateProductToState}
             key={key}
           />
     )
@@ -244,7 +246,7 @@ export default function SectionProducts(props) {
               : null
             }
             <div className={classes.addItemButton}>
-              <Button round color="primary" onClick={() => props.switchToAddProduct(1)} data-cy="button-add-item">
+              <Button round color="primary" onClick={() => switchToAddProduct(1)} data-cy="button-add-item">
                 <Playlist /> Add Item
               </Button>
             </div>
@@ -259,7 +261,9 @@ export default function SectionProducts(props) {
 
 SectionProducts.propTypes = {
   loading: PropTypes.bool,
-  mobile: PropTypes.bool,
   listId: PropTypes.string,
-  products: PropTypes.object
+  products: PropTypes.object,
+  deleteProductFromState: PropTypes.func,
+  updateProductToState: PropTypes.func,
+  switchToAddProduct: PropTypes.func
 };

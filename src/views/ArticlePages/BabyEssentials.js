@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -11,6 +13,7 @@ import ChecklistCard from "./Sections/ChecklistCard.js";
 const name = 'newborn-baby-essentials-list'
 
 export default function BabyEssentials(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -50,7 +53,6 @@ export default function BabyEssentials(props) {
           "bad5205b-3891-4659-8bbe-1443eed7c11a"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -67,7 +69,6 @@ export default function BabyEssentials(props) {
           "553d4076-e548-42bd-9e6a-7f5f27734200"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -87,7 +88,6 @@ export default function BabyEssentials(props) {
           "7bfc99d0-1378-4bec-abab-dc6a5fce8592"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard items={
           ['7-10 all in one suits', 'Cardigan', '7-10 short sleeve or sleeveless vests', 'Hat', 'Warm outer layer']
@@ -113,7 +113,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e045-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -130,7 +129,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e019-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -146,7 +144,6 @@ export default function BabyEssentials(props) {
           "c813f95e-c7e6-47bd-bf62-6a979ff936f2"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -163,7 +160,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e044-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard items={
           ['Moses Basket or Crib', 'Rocking Stand for Moses Basket', 'Sheets for Moses Basket', 'Blankets for Swaddling', 'Swaddle Sleeping Bag', 'Changing Dresser', 'Changing Mat', 'Nappies', 'Wipes', 'Cotton Pads' ]
@@ -182,7 +178,6 @@ export default function BabyEssentials(props) {
           "ef23e257-aa5f-467f-bb7b-8d80696d3bec"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -197,7 +192,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e024-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -213,7 +207,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e027-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard items={
           ['Muslins', 'Breast Pump', 'Bottles', 'Steriliser']
@@ -250,7 +243,6 @@ export default function BabyEssentials(props) {
           "12345678-blog-e047-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <ChecklistCard items={
           ['Buggy', 'Car seat', 'Car seat buggy adapters']
@@ -264,20 +256,15 @@ export default function BabyEssentials(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

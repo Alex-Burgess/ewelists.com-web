@@ -61,7 +61,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=popout-add-to-list-12345678-blog-i001-1234-abcdefghijkl]').within(($product) => {
         cy.contains('Add Item To List')
         cy.contains('You have no lists yet')
-        cy.get('a').should('have.attr', 'href', '/?create').contains('Create a list')
+        cy.get('a').should('have.attr', 'href', '/?create=true').contains('Create a list')
 
         // Close Pop out
         cy.get('[data-cy=popout-close-button]').click()

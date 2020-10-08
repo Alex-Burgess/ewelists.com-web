@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import qs from "qs";
+// libs
+import { useAppContext } from "libs/contextLib";
 // Sections for this page
 import LandingPage from "views/LandingPage/LandingPage.js";
 import DashboardPage from "views/DashboardPage/DashboardPage.js";
 
 
 export default function HomePage(props) {
+  const { isAuthenticated } = useAppContext();
+  const { search } = useLocation();
   const [create, setCreate] = useState(false);
 
   useEffect( () => {
     function checkUrlParams() {
-      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+      const params = qs.parse(search, { ignoreQueryPrefix: true });
 
-      switch (params['po']) {
-        case "create":
-          setCreate(true);
-          break;
-        default:
-          break;
+      if (params['create']) {
+        setCreate(true);
       }
     };
 
     checkUrlParams();
-  }, [props.location.search]);
+  }, [search]);
 
   return (
     <div>
-      {props.isAuthenticated
-        ? <DashboardPage create={create} setCreate={setCreate} user={props.user} mobile={props.mobile} tablet={props.tablet} setTabTitle={props.setTabTitle}/>
+      {isAuthenticated
+        ? <DashboardPage create={create} setCreate={setCreate} />
         : <LandingPage />
       }
     </div>

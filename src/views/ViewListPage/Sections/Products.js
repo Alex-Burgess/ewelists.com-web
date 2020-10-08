@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import update from 'immutability-helper';
 import FadeLoader from "react-spinners/FadeLoader";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -34,8 +35,9 @@ const useStyles = makeStyles(styles);
 export default function Products(props) {
   const classes = useStyles();
   const [cookies] = useCookies(['email']);
+  const { isAuthenticated } = useAppContext();
 
-  const { listId, listTitle, userId, products, reserved, loading, isAuthenticated } = props;
+  const { listId, listTitle, userId, products, reserved, loading } = props;
 
   const [desktop, setDesktop] = useState(true);
   const [filterItems, setFilterItems] = useState('all');
@@ -313,15 +315,10 @@ export default function Products(props) {
         open={reservePopouts[product['productId']]
           ? reservePopouts[product['productId']]
           : false }
-        product={product}
-        closeReservePopout={closeReservePopout}
         listId={listId}
         listTitle={listTitle}
-        user={props.user}
-        cookiesAllowed={props.cookiesAllowed}
-        updateReservedQuantity={props.updateReservedQuantity}
-        unreserveProduct={props.unreserveProduct}
-        updateUserReservation={props.updateUserReservation}
+        product={product}
+        closeReservePopout={closeReservePopout}
         key={i}
       />
     )
@@ -501,6 +498,5 @@ Products.propTypes = {
   listId: PropTypes.string,
   listTitle: PropTypes.string,
   userId: PropTypes.string,
-  user: PropTypes.object,
-  isAuthenticated: PropTypes.bool
+  user: PropTypes.object
 };

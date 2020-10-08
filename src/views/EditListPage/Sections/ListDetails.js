@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { facebookShare } from "libs/shareLib.js";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -23,8 +24,9 @@ const copy = require('clipboard-copy')
 
 export default function SectionListDetails(props) {
   const classes = useStyles();
+  const { user, mobile } = useAppContext();
 
-  const { listId, title, description, occasion, date, imageUrl, mobile, user, closed } = props;
+  const { listId, title, description, occasion, date, imageUrl, closed } = props;
 
   const listUrl = config.rootDomain + "/lists/" + listId;
   const mailToText = "mailto:?subject=" + user.name + " shared a gift list with you&body=Hi!%0D%0A%0D%0AYou can view " + title + " at the link below if you wish to buy a gift:%0D%0A%0D%0A" + listUrl;
@@ -154,7 +156,5 @@ SectionListDetails.propTypes = {
   description: PropTypes.string,
   occasion: PropTypes.string,
   date: PropTypes.string,
-  imageUrl: PropTypes.string,
-  mobile: PropTypes.bool,
-  user: PropTypes.object
+  imageUrl: PropTypes.string
 };

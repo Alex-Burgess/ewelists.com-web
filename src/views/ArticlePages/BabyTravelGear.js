@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -11,6 +13,7 @@ import Quote from "components/Typography/Quote.js";
 const name = 'baby-travel-gear'
 
 export default function TravelGear(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -64,7 +67,6 @@ export default function TravelGear(props) {
           "12345678-prod-t010-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         Once your child is a little older and no longer fits in a travel cot, things a little more tricky, but a travel
@@ -79,7 +81,6 @@ export default function TravelGear(props) {
           "12345678-prod-t032-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <SectionHeading name="gettingaround" text="Getting around" />
       <p>
@@ -98,7 +99,6 @@ export default function TravelGear(props) {
           "12345678-prod-t005-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         Depending on your destination, it may be more practical to use a carrier than a buggy. For example, if you're
@@ -114,7 +114,6 @@ export default function TravelGear(props) {
           "12345678-prod-t035-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         If your child has reached the point where they mostly don't need or want to be in a buggy or carrier, then ideas
@@ -131,7 +130,6 @@ export default function TravelGear(props) {
           "12345678-prod-t014-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     <SectionHeading name="meals" text="Meal Times" />
       <p>
@@ -150,7 +148,6 @@ export default function TravelGear(props) {
           "12345678-prod-t018-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         A lot of people who haven't flown with a baby before, don't realise that
@@ -166,7 +163,6 @@ export default function TravelGear(props) {
           "12345678-prod-t021-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         When eating out with your baby or toddler, a lot of places will likely have high chairs.  However, if you have
@@ -180,7 +176,6 @@ export default function TravelGear(props) {
           "12345678-prod-t019-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <SectionHeading name="air" text="Air Travel Tips" />
       <p>
@@ -217,7 +212,6 @@ export default function TravelGear(props) {
           "12345678-prod-t037-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <p>
         If you're taking a long haul flight with an infant, most major airlines have some form of carrycot. However, you
@@ -236,7 +230,6 @@ export default function TravelGear(props) {
           "12345678-prod-t028-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     <SectionHeading name="car" text="Car Travel Tips" />
       <p>
@@ -258,7 +251,6 @@ export default function TravelGear(props) {
           "12345678-prod-t031-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -269,20 +261,15 @@ export default function TravelGear(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

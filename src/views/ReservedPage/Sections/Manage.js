@@ -22,7 +22,21 @@ const useStyles = makeStyles(styles);
 
 function Manage(props) {
   const classes = useStyles();
-  const { resvId, reservedQuantity, productQuantity, productReserved, productPurchased, name, email } = props;
+  const {
+    resvId,
+    reservedQuantity,
+    productQuantity,
+    productReserved,
+    productPurchased,
+    name,
+    email,
+    setUnreserved,
+    setReserved,
+    setConfirmed,
+    setCancelled,
+    setReservedQuantity,
+    setProductReserved
+  } = props;
 
   const [error, setError] = useState();
   const [isUpdating, setIsUpdating] = useState(false);
@@ -49,8 +63,8 @@ function Manage(props) {
       return false
     }
 
-    props.setReservedQuantity(newQuantity);
-    props.setProductReserved(newProductReserved);
+    setReservedQuantity(newQuantity);
+    setProductReserved(newProductReserved);
 
     // Show updated in button
     setIsUpdating(false);
@@ -88,11 +102,11 @@ function Manage(props) {
       await cancelReservation(resvId, email, name);
     } catch (e) {
       if (e.response.data.error === 'Product was already purchased.') {
-        props.setReserved(false);
-        props.setConfirmed(true);
+        setReserved(false);
+        setConfirmed(true);
       } else if (e.response.data.error === 'Product is not reserved by user.'){
-        props.setReserved(false);
-        props.setCancelled(true);
+        setReserved(false);
+        setCancelled(true);
       } else {
         setError('Oops! There was an issue unreserving this gift, please contact us.');
       }
@@ -102,8 +116,8 @@ function Manage(props) {
     }
 
     setIsUnreserving(false);
-    props.setReserved(false);
-    props.setUnreserved(true);
+    setReserved(false);
+    setUnreserved(true);
   }
 
   const renderUnreserve = () => {
@@ -188,7 +202,13 @@ Manage.propTypes = {
   productReserved: PropTypes.number,
   productPurchased: PropTypes.number,
   name: PropTypes.string,
-  email: PropTypes.string
+  email: PropTypes.string,
+  setUnreserved: PropTypes.func,
+  setReserved: PropTypes.func,
+  setConfirmed: PropTypes.func,
+  setCancelled: PropTypes.func,
+  setReservedQuantity: PropTypes.func,
+  setProductReserved: PropTypes.func
 };
 
 export default Manage;

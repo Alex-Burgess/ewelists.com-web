@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // libs
+import { useAppContext } from "libs/contextLib";
 import { addToList, createProduct, searchByUrl } from "libs/apiLib";
 import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
@@ -29,7 +30,8 @@ const useStyles = makeStyles(styles);
 
 export default function SectionAddGifts(props) {
   const classes = useStyles();
-  const { mobile, listId } = props;
+  const { mobile } = useAppContext();
+  const { listId, addProductToState, setActive } = props;
 
   const [error, setError] = useState('');
   const [searchResult, setSearchResult] = useState('');
@@ -139,11 +141,11 @@ export default function SectionAddGifts(props) {
       imageUrl: productImageUrl
     }
 
-    props.addProductToState(product)
+    addProductToState(product)
     setIsAdding(false);
     setListUpdated(true);
     setSearchUrl('');
-    props.setActive(0);
+    setActive(0);
   }
 
   const createGift = async event => {
@@ -184,11 +186,11 @@ export default function SectionAddGifts(props) {
       purchased: 0
     }
 
-    props.addProductToState(product)
+    addProductToState(product)
     setIsAdding(false);
     setListUpdated(true);
     setSearchUrl('');
-    props.setActive(0);
+    setActive(0);
   }
 
   const parseUrl = (url) => {
@@ -496,6 +498,7 @@ export default function SectionAddGifts(props) {
 }
 
 SectionAddGifts.propTypes = {
-  mobile: PropTypes.bool,
-  listId: PropTypes.string
+  listId: PropTypes.string,
+  addProductToState: PropTypes.func,
+  setActive: PropTypes.func
 };

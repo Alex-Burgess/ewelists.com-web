@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import ListArticle from "./Sections/ListArticle.js";
@@ -8,6 +10,7 @@ import Products from "./Sections/Products.js";
 const name = 'christmas-ideas-for-toddlers'
 
 export default function ChristmasIdeasForToddlers(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -39,7 +42,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c005-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -76,7 +78,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c009-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -104,7 +105,6 @@ export default function ChristmasIdeasForToddlers(props) {
           "12345678-prod-c015-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -115,20 +115,15 @@ export default function ChristmasIdeasForToddlers(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

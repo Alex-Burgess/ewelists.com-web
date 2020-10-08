@@ -170,6 +170,12 @@ TestFilter(['regression'], () => {
 
       cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
+
+    it('Should show error if google domain error was passed as url parameter', () => {
+      cy.visit('/login?error=GoogleDomainError')
+
+      cy.contains("An account has already been registed with this email address. Log in with your username and password.")
+    })
   })
 
   describe('Login Page Links', () => {

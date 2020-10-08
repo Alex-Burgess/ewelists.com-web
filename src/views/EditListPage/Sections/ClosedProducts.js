@@ -1,6 +1,8 @@
 import React from 'react';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+// libs
+import { useAppContext } from "libs/contextLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -14,7 +16,8 @@ const useStyles = makeStyles(styles);
 
 export default function ClosedProducts(props) {
   const classes = useStyles();
-  const { mobile, products } = props;
+  const { mobile } = useAppContext();
+  const { products } = props;
 
   const renderDesktopProductView = () => {
     return (
@@ -151,6 +154,5 @@ export default function ClosedProducts(props) {
 }
 
 ClosedProducts.propTypes = {
-  mobile: PropTypes.bool,
   products: PropTypes.object
 };

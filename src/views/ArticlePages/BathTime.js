@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -10,6 +12,7 @@ import Products from "./Sections/Products.js";
 const name = 'baby-bath-time';
 
 export default function BathTime(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -43,7 +46,6 @@ export default function BathTime(props) {
           "12345678-prod-b002-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -59,7 +61,6 @@ export default function BathTime(props) {
           "12345678-prod-b004-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -77,7 +78,6 @@ export default function BathTime(props) {
           "12345678-prod-b008-1234-abcdefghijkl",
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="bath" text="Which type of bath to buy" />
@@ -97,7 +97,6 @@ export default function BathTime(props) {
           "12345678-prod-b012-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <p>
@@ -112,7 +111,6 @@ export default function BathTime(props) {
           "12345678-prod-b014-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="fun" text="Making bath-time fun" />
@@ -132,7 +130,6 @@ export default function BathTime(props) {
           "12345678-prod-b021-1234-abcdefghijkl"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
     </div>
   );
@@ -143,20 +140,15 @@ export default function BathTime(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

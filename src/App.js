@@ -1,14 +1,14 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from "react-router-dom";
 import CookieConsent, { Cookies } from "react-cookie-consent";
-import { useCookies } from 'react-cookie';
 import { Auth, Hub } from "aws-amplify";
 import qs from "qs";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // libs
+import { AppContext } from "libs/contextLib";
 import { onError, debugError } from "libs/errorLib";
-import { initGA, onView } from './libs/googleAnalyticsLib';
+import { initGA, onView } from 'libs/googleAnalyticsLib';
 // components
 import Routes from "./Routes";
 import ScrollToTop from "components/Scroll/ScrollToTop.js";
@@ -22,7 +22,6 @@ export default function App(props) {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
-  const [setCookie] = useCookies(['name', 'email']);
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -178,8 +177,8 @@ export default function App(props) {
       name: attributes['name']
     }
 
-    setCookie('name', user.name, { path: '/' });
-    setCookie('email', user.email, { path: '/' });
+    Cookies.set('name', user.name, { path: '/' });
+    Cookies.set('email', user.email, { path: '/' });
 
     debugError("Retrieved user details: " + JSON.stringify(user));
     setUser(user);
@@ -188,6 +187,7 @@ export default function App(props) {
   async function handleLogout() {
     await Auth.signOut();
     userHasAuthenticated(false);
+    history.push("/");
   }
 
   return (
@@ -196,7 +196,18 @@ export default function App(props) {
             <ScrollToTop />
             <Title title={tabTitle} environment={process.env.REACT_APP_STAGE}/>
             <ErrorBoundary>
-              <Routes appProps={{isAuthenticated, userHasAuthenticated, user, mobile, tablet, setTabTitle, handleLogout, cookiesAllowed}} />
+              <AppContext.Provider value={{
+                  isAuthenticated,
+                  userHasAuthenticated,
+                  handleLogout,
+                  user,
+                  mobile,
+                  tablet,
+                  setTabTitle,
+                  cookiesAllowed
+                }}>
+                <Routes />
+              </AppContext.Provider>
               {!isAuthenticated
                 ? <CookieConsent
                     style={{ background: "#294861" }}

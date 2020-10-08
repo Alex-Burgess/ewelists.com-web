@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles);
 
 export default function NewPasswordForm(props) {
   const classes = useStyles();
-  const { email } = props;
+  const { email, setConfirmed } = props;
 
   const [code, setCode] = useState('');
   const [password, setPassword] = useState('');
@@ -49,7 +49,7 @@ export default function NewPasswordForm(props) {
         password
       );
 
-      props.setConfirmed(true);
+      setConfirmed(true);
     } catch (e) {
       onAuthError(e, email);
       setConfirmationError(e.message);
@@ -81,8 +81,6 @@ export default function NewPasswordForm(props) {
       code.length > 0 &&
       password.length > 6 &&
       confirmPassword.length > 6
-      // password.length > 6 &&
-      // password === confirmPassword
     );
   }
 
@@ -152,5 +150,6 @@ export default function NewPasswordForm(props) {
 }
 
 NewPasswordForm.propTypes = {
-  email: PropTypes.string.isRequired
+  email: PropTypes.string.isRequired,
+  setConfirmed: PropTypes.func
 };

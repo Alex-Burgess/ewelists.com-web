@@ -1,11 +1,19 @@
 import React from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { scrollToId } from "components/Scroll/ScrollToId";
 
 export default function SectionHeadings(props) {
   const { headings } = props;
+
+  const scrollToId = (e, target) => {
+    e.preventDefault();
+
+    var elementHeightInWindow = document.getElementById(target).getBoundingClientRect().top;
+    var viewPortOffset = document.documentElement.scrollTop;
+    var scrollHeight = elementHeightInWindow + viewPortOffset - 85;
+
+    window.scrollTo({ top: scrollHeight, behavior: 'smooth' });
+  }
 
   return (
     <div>

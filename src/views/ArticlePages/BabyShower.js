@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+// libs
+import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
 import SectionHeading from "./Sections/SectionHeading.js";
@@ -11,6 +13,7 @@ import Products from "./Sections/Products.js";
 const name = 'baby-shower'
 
 export default function BabyShower(props) {
+  const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
   const content = (
@@ -76,7 +79,6 @@ export default function BabyShower(props) {
           "62693651-06e9-4905-af9b-bdc16d7a788c"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="location" text="When and where" />
@@ -87,7 +89,7 @@ export default function BabyShower(props) {
           the pressure off mum-to-be and allows her to just show up and enjoy herself.
         </p>
         <p>
-          For the host there are a few things to think about. Here are some ideas to help you get your plan underway: 
+          For the host there are a few things to think about. Here are some ideas to help you get your plan underway:
         </p>
         <ul>
           <li>Organise a date that works for the most important people</li>
@@ -121,7 +123,6 @@ export default function BabyShower(props) {
           "61a90907-7eb4-472f-81dc-b160309335ab"
         ]}
         lists={lists}
-        isAuthenticated={props.isAuthenticated}
       />
       <div>
         <SectionHeading name="activities" text="Games and activities" />
@@ -173,20 +174,15 @@ export default function BabyShower(props) {
       setLists(lists);
     }
 
-    if (props.isAuthenticated) {
+    if (isAuthenticated) {
       getLists();
     }
-  }, [props.isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <ListArticle
-      isAuthenticated={props.isAuthenticated}
-      user={props.user}
       name={name}
-      content={ content }
-      setTitle={props.setTabTitle}
-      mobile={props.mobile}
-      tablet={props.tablet}
+      content={content}
     />
   );
 }

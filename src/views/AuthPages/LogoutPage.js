@@ -1,5 +1,9 @@
-function LogoutPage(props) {
-  props.handleLogout();
+import { useAppContext } from "libs/contextLib";
+
+function LogoutPage() {
+  const { handleLogout } = useAppContext();
+
+  handleLogout();
   return null;
 }
 

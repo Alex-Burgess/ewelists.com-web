@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Auth } from "aws-amplify";
 import qs from "qs";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { onAuthError } from "libs/errorLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,13 +25,15 @@ const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
   const classes = useStyles();
+  const { search } = useLocation();
+  const { userHasAuthenticated } = useAppContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   useEffect( () => {
     function checkUrlParams() {
-      const params = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+      const params = qs.parse(search, { ignoreQueryPrefix: true });
 
       if (params['error']) {
         switch (params['error']) {
@@ -45,7 +48,7 @@ export default function LoginPage(props) {
     };
 
     checkUrlParams();
-  }, [props.location.search]);
+  }, [search]);
 
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
@@ -56,7 +59,7 @@ export default function LoginPage(props) {
 
     try {
       await Auth.signIn(email.toLowerCase(), password);
-      props.userHasAuthenticated(true);
+      userHasAuthenticated(true);
     } catch (e) {
       onAuthError(e, email);
 
@@ -72,7 +75,7 @@ export default function LoginPage(props) {
 
   return (
     <div className={classes.page}>
-      <HeaderWhite isAuthenticated={false} mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderWhite />
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={10} md={6} className={classes.gridLogin}>

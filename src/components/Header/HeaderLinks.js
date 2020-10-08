@@ -12,6 +12,8 @@ import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToApp from "@material-ui/icons/ExitToApp";
+// libs
+import { useAppContext } from "libs/contextLib";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 
@@ -20,7 +22,9 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinksAuth(props) {
   const classes = useStyles();
-  const { dropdownHoverColor, isAuthenticated, user, tablet, headerColor } = props;
+  const { isAuthenticated, user, tablet } = useAppContext();
+
+  const { dropdownHoverColor, headerColor } = props;
 
   const signUpClasses = classNames({
     [classes.navLink]: true,
@@ -154,9 +158,5 @@ HeaderLinksAuth.propTypes = {
   headerColor: PropTypes.oneOf([
     "white",
     "dark"
-  ]),
-  isAuthenticated: PropTypes.bool,
-  user: PropTypes.object,
-  mobile: PropTypes.bool,
-  tablet: PropTypes.bool
+  ])
 };

@@ -18,7 +18,19 @@ const useStyles = makeStyles(styles);
 
 function Purchase(props) {
   const classes = useStyles();
-  const { resvId, listTitle, name, reservedQuantity, product, email } = props;
+
+  const {
+    resvId,
+    listTitle,
+    name,
+    reservedQuantity,
+    product,
+    email,
+    setPurchased,
+    setReserved,
+    setConfirmed,
+    setCancelled
+  } = props;
 
   const [error, setError] = useState('');
   const [isPurchasing, setIsPurchasing] = useState(false);
@@ -31,11 +43,11 @@ function Purchase(props) {
       await confirmPurchase(resvId, email, name, reservedQuantity, listTitle, product)
     } catch (e) {
       if (e.response.data.error === 'Product was already purchased.') {
-        props.setReserved(false);
-        props.setConfirmed(true);
+        setReserved(false);
+        setConfirmed(true);
       } else if (e.response.data.error === 'Product is not reserved by user.'){
-        props.setReserved(false);
-        props.setCancelled(true);
+        setReserved(false);
+        setCancelled(true);
       } else {
         setError('Oops! There was an issue confirming the purchase of this gift, please contact us.');
       }
@@ -45,8 +57,8 @@ function Purchase(props) {
     }
 
     setIsPurchasing(false);
-    props.setReserved(false);
-    props.setPurchased(true);
+    setReserved(false);
+    setPurchased(true);
   }
 
   return (
@@ -97,7 +109,11 @@ Purchase.propTypes = {
   name: PropTypes.string,
   reservedQuantity: PropTypes.number,
   product: PropTypes.object,
-  email: PropTypes.string
+  email: PropTypes.string,
+  setPurchased: PropTypes.func,
+  setReserved: PropTypes.func,
+  setConfirmed: PropTypes.func,
+  setCancelled: PropTypes.func
 };
 
 export default Purchase;

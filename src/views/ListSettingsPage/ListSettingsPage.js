@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { onError, debugError } from "libs/errorLib";
 import { getList, updateList } from "libs/apiLib";
 // react plugin for creating date-time-picker
@@ -40,6 +41,7 @@ const occasionList = ['Baby Shower', 'Birthday', 'Christmas', 'Baptism', 'Christ
 
 export default function SectionDetails(props) {
   const classes = useStyles();
+  const { setTabTitle } = useAppContext();
 
   const listId = props.match.params.id;
 
@@ -61,7 +63,7 @@ export default function SectionDetails(props) {
 
   useEffect( () => {
     function setListState(response) {
-      props.setTabTitle('Editing ' + response.list.title);
+      setTabTitle('Editing ' + response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -93,7 +95,7 @@ export default function SectionDetails(props) {
 
     setListDetails();
     setLoaded(true);
-  }, [listId, props]);
+  }, [listId, setTabTitle]);
 
   const saveDetails = async () => {
     try {
@@ -361,7 +363,7 @@ export default function SectionDetails(props) {
 
   return (
     <div>
-      <HeaderMobileBar isAuthenticated={props.isAuthenticated} user={props.user} url={"/edit/" + listId} title='List Settings' mobile={props.mobile} />
+      <HeaderMobileBar url={"/edit/" + listId} title='List Settings' />
       <div className={classes.main}>
         <div className={classes.container}>
           <h2 className={classes.title + " " + classes.textCenter + " " + classes.mobileHide}><Settings className={classes.icon}/> Settings</h2>

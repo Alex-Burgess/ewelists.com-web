@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 // libs
+import { useAppContext } from "libs/contextLib";
 import { onError } from "libs/errorLib";
 import { getLists } from "libs/apiLib";
 // nodejs library to set properties for components
@@ -28,9 +29,10 @@ import styles from "assets/jss/material-kit-pro-react/views/dashboardPage/yourLi
 const useStyles = makeStyles(styles);
 
 export default function YourLists(props) {
+  const { setTabTitle } = useAppContext();
   const classes = useStyles();
 
-  const { showCreate } = props;
+  const { showCreate, setCreate } = props;
 
   const [isLoading, setIsLoading] = useState(true);
   const [openLists, setOpenLists] = useState([]);
@@ -48,14 +50,10 @@ export default function YourLists(props) {
       }
     }
 
-    function updateTab(){
-      props.setTabTitle('Your Lists');
-    }
-
     getQuery();
-    updateTab();
+    setTabTitle('Your Lists');
     setIsLoading(false);
-  }, [props]);
+  }, [setTabTitle]);
 
   const renderOpenLists = (lists: Lists[]) => {
     let allLists: Lists[] = [];
@@ -154,7 +152,7 @@ export default function YourLists(props) {
           {!isLoading && renderClosedLists(closedLists)}
           <GridItem xs={12} sm={4} md={4} className={classes.addList}>
               <div className={classes.centerButton}>
-                <Button round justIcon color="secondary" size="lg" onClick={() => props.setCreate(true)} data-cy="button-create-new-list">
+                <Button round justIcon color="secondary" size="lg" onClick={() => setCreate(true)} data-cy="button-create-new-list">
                   <Add />
                 </Button>
                 <div className={classes.createText}>
@@ -163,7 +161,7 @@ export default function YourLists(props) {
               </div>
           </GridItem>
         </GridContainer>
-        <CreateList open={showCreate} setCreate={props.setCreate} />
+        <CreateList open={showCreate} setCreate={setCreate} />
       </div>
     </div>
   );
@@ -171,4 +169,5 @@ export default function YourLists(props) {
 
 YourLists.propTypes = {
   showCreate: PropTypes.bool,
+  setCreate: PropTypes.func
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import update from 'immutability-helper';
+import { useHistory } from "react-router-dom";
 // libs
-import { debugError } from "libs/errorLib";
+import { useAppContext } from "libs/contextLib";
 import { getSharedList, getProducts } from "libs/apiLib";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,9 +20,11 @@ const useStyles = makeStyles(styles);
 
 export default function ViewList(props) {
   const classes = useStyles();
+  const history = useHistory();
+  const { setTabTitle, user } = useAppContext();
 
   const listId = props.match.params.id;
-  const userId = props.user.sub;
+  const userId = user.sub;
 
   const [listLoaded, setListLoaded] = useState(false);
   const [productsLoading, setProductsLoading] = useState(false);
@@ -37,7 +39,7 @@ export default function ViewList(props) {
 
   useEffect( () => {
     function setListState(response) {
-      props.setTabTitle(response.list.title);
+      setTabTitle(response.list.title);
       setTitle(response.list.title);
       setDescription(response.list.description);
       setOccasion(response.list.occasion);
@@ -70,99 +72,16 @@ export default function ViewList(props) {
 
           setProductsLoading(false);
       } catch (e) {
-        props.history.push('/error/' + listId);
+        history.push('/error/' + listId);
       }
     };
 
     getListDetails();
-  }, [listId, props, props.history]);
-
-  const updateReservedQuantity = async (reservedQuantity, product) => {
-    let productId = product['productId'];
-    const new_reserved_quantity = products[productId].reserved + reservedQuantity;
-    debugError("Reserved quantity increasing from " + product['reserved'] + " to " + new_reserved_quantity);
-
-    let userReservedObject = {
-      [userId] : {
-        productId: productId,
-        quantity: reservedQuantity,
-        userId: userId,
-      }
-    }
-
-    setReserved(
-      update(reserved, {
-        [productId]: {$set: userReservedObject}
-      })
-    )
-
-    setProducts(
-      update(products, {
-        [productId]: {
-          reserved: {$set: new_reserved_quantity}
-        }
-      })
-    )
-  }
-
-  const unreserveProduct = async (product) => {
-    let productId = product['productId'];
-    debugError("Unreserving product (" + productId + ") for user (" + userId + ")");
-
-    let userReservedQuantity = reserved[productId][userId].quantity;
-    let productTotalReservedQuantity = products[productId].reserved;
-    const reservedQuantity = productTotalReservedQuantity - userReservedQuantity;
-    debugError("New product reserved quantity: " + reservedQuantity);
-
-    setReserved(
-      update(reserved, {
-        [productId]: {$unset: [userId]}
-      })
-    )
-
-    setProducts(
-      update(products, {
-        [productId]: {
-          reserved: {$set: reservedQuantity}
-        }
-      })
-    )
-  }
-
-  const updateUserReservation = async (newUserQuantity, product) => {
-    let productId = product['productId'];
-
-    let userOldReservedQuantity = reserved[productId][userId].quantity;
-    const quantityChange = newUserQuantity - userOldReservedQuantity
-    debugError("Updating product (" + productId + ") reservation for user (" + userId + ") to " + newUserQuantity);
-
-    let productOldReservedQuantity = products[productId].reserved;
-    const productNewReservedQuantity = productOldReservedQuantity + quantityChange
-    debugError("Updating product (" + productId + ") total reserved to (" + productNewReservedQuantity + ")");
-
-    setReserved(
-      update(reserved, {
-        [productId]: {
-          [userId]: {$merge: {
-              quantity: newUserQuantity
-            }
-          }
-        }
-      })
-    )
-
-    setProducts(
-      update(products, {
-        [productId]: {
-          reserved: {$set: productNewReservedQuantity}
-        }
-      })
-    )
-  }
+  }, [listId, setTabTitle, history]);
 
   return (
     <div>
-      <HeaderTransparent isAuthenticated={props.isAuthenticated} user={props.user}  mobile={props.mobile} tablet={props.tablet}/>
+      <HeaderTransparent />
       <Parallax className={classes.articleBg} />
       <div className={classes.main}>
         {listLoaded
@@ -184,12 +103,7 @@ export default function ViewList(props) {
               userId={userId}
               listId={listId}
               listTitle={title}
-              user={props.user}
-              isAuthenticated={props.isAuthenticated}
-              cookiesAllowed={props.cookiesAllowed}
-              updateReservedQuantity={updateReservedQuantity}
-              unreserveProduct={unreserveProduct}
-              updateUserReservation={updateUserReservation}
+              user={user}
             />
         }
       </div>

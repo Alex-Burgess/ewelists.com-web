@@ -136,10 +136,10 @@ TestFilter(['regression'], () => {
     beforeEach(() => {
       cy.login(user.email, user.password)
       cy.visit('/')
-      cy.get('[data-cy=button-create-new-list]').click()
     })
 
     it('Should have inactive form button when not complete', () => {
+      cy.get('[data-cy=button-create-new-list]').click()
       cy.get('.signUpCard').matchImageSnapshot('create-list-form-empty')
 
       cy.get('#title').type(listData.title).should('have.value', listData.title)
@@ -160,7 +160,13 @@ TestFilter(['regression'], () => {
     })
 
     it('Should close create form', () => {
+      cy.get('[data-cy=button-create-new-list]').click()
       cy.get('[data-cy=button-form-close]').click()
+    })
+
+    it('Should open create form with url parameter', () => {
+      cy.visit('/?create=true')
+      cy.contains("Enter List Details")
     })
   })
 

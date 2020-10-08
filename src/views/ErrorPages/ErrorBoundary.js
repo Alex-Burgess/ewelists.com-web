@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// Libs
 import { logError } from "libs/errorLib";
-import HeaderWhite from "components/Header/HeaderWhite.js";
+// Components
 import Footer from "components/Footer/FooterGrey.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -25,7 +26,6 @@ class ErrorBoundary extends React.Component {
 
     return this.state.hasError ? (
       <div className={classes.page}>
-        <HeaderWhite isAuthenticated={false} mobile={this.props.mobile} />
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={7}>

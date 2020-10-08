@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 // libs
 import { getSharedList, getProduct, getReservation } from "libs/apiLib";
 // @material-ui/core components
@@ -25,6 +26,7 @@ const useStyles = makeStyles(styles);
 
 export default function EditPage(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   const resvId = props.match.params.id;
 
@@ -58,7 +60,7 @@ export default function EditPage(props) {
         setListTitle(reservation.title);
         setReservedQuantity(reservation.quantity);
       } else {
-          props.history.push('/error/' + resvId);
+          history.push('/error/' + resvId);
           return false
       }
 
@@ -116,12 +118,12 @@ export default function EditPage(props) {
 
     getPageDetails(resvId);
 
-  }, [resvId, props.location.state, props.history]);
+  }, [resvId, history]);
 
 
   return (
     <div>
-      <HeaderMobileBar isAuthenticated={props.isAuthenticated} user={props.user} url={"/lists/" + listId} title='Reserved Gift' mobile={props.mobile} />
+      <HeaderMobileBar url={"/lists/" + listId} title='Reserved Gift' />
       <div className={classes.main}>
         <div className={classes.container}>
           {load

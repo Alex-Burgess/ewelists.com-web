@@ -31,7 +31,7 @@ function SectionDeletePopout(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const { open, listId, products } = props;
+  const { open, listId, products, setShowDeletePopOut } = props;
   const [error, setError] = useState('');
 
   const deleteAction = async event => {
@@ -70,7 +70,7 @@ function SectionDeletePopout(props) {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={() => props.setShowDeletePopOut(false)}
+        onClose={() => setShowDeletePopOut(false)}
         aria-labelledby="small-modal-slide-title"
         aria-describedby="small-modal-slide-description"
         data-cy="popout-delete"
@@ -85,7 +85,7 @@ function SectionDeletePopout(props) {
             className={classes.modalCloseButton}
             key="close"
             aria-label="Close"
-            onClick={() => props.setShowDeletePopOut(false)}
+            onClick={() => setShowDeletePopOut(false)}
           >
             {" "}
             <Close className={classes.modalClose} />
@@ -105,7 +105,7 @@ function SectionDeletePopout(props) {
             classes.modalFooter + " " + classes.modalFooterCenter
           }
         >
-          <Button color="secondary" onClick={() => props.setShowDeletePopOut(false)} data-cy="button-close">
+          <Button color="secondary" onClick={() => setShowDeletePopOut(false)} data-cy="button-close">
             No
           </Button>
           <Button color="primary" onClick={deleteAction} data-cy="button-confirm">
@@ -134,7 +134,8 @@ function SectionDeletePopout(props) {
 SectionDeletePopout.propTypes = {
   open: PropTypes.bool,
   listId: PropTypes.string,
-  products: PropTypes.object
+  products: PropTypes.object,
+  setShowDeletePopOut: PropTypes.func
 };
 
 export default SectionDeletePopout;

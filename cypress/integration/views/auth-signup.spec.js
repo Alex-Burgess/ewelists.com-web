@@ -319,6 +319,18 @@ TestFilter(['regression'], () => {
     })
   })
 
+  describe('Social confirmation page', () => {
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+    })
+
+    it('Should have valid terms, privacy and login links', () => {
+      cy.visit('/signup-complete?account=Google')
+      cy.contains('Welcome to Ewelists')
+      cy.contains('Lets get started with creating your first list!')
+    })
+  })
+
   describe('Sign up with email case differences', () => {
     let user = {}
 
