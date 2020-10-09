@@ -1,0 +1,29 @@
+{
+  "list":{
+    "listId":"12345678-test-list-0001-abcdefghijkl",
+    "title":"Baby Shower Wish List",
+    "description":"Gift ideas for my baby shower",
+    "occasion":"Baby Shower",
+    "imageUrl":"https://test.ewelists.com/images/babyshower-closed.jpg",
+    "listOwner":"7b58df8d-bccd-42e2-ab0f-1a8c62d0af9f",
+    "state":"closed",
+    "eventDate":"31 October 2020"
+  },
+  "products":{
+    "12345678-prod-t034-1234-abcdefghijkl":{
+      "productId":"12345678-prod-t034-1234-abcdefghijkl",
+      "quantity":1,
+      "reserved":0,
+      "purchased":0,
+      "type":"products"
+    },
+    "12345678-prod-t001-1234-abcdefghijkl":{
+      "productId":"12345678-prod-t001-1234-abcdefghijkl",
+      "quantity":2,
+      "reserved":0,
+      "purchased":0,
+      "type":"products"
+    }
+  },
+  "reserved":{}
+}

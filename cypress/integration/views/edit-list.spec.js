@@ -186,6 +186,63 @@ TestFilter(['regression'], () => {
     });
   });
 
+  describe('Edit Closed List Page Visual Regression tests', () => {
+    let user = {}
+
+    before(() => {
+      cy.fixture('edit-list/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/edit-list/snapshot-seed.json').then((result) => {
+        const seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.login(user.email, user.password)
+
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl', 'fx:edit-list/get-closed-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:edit-list/get-product-1-response')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:edit-list/get-product-2-response')
+      cy.route('GET', '**/products/12345678-blog-e007-1234-abcdefghijkl', 'fx:edit-list/get-product-3-response')
+
+      cy.visit('/edit/12345678-test-list-0001-abcdefghijkl');
+    })
+
+    const sizes = Cypress.env("snapshotSizes");
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot 'edit list Page' When '${size}' resolution`, () => {
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
+        Cypress.config('defaultCommandTimeout', 100000);
+        cy.contains("Travel Cot Easy Go")  // Wait for last product to load
+
+        // Snapshot main view
+        cy.get('header').invoke('css', 'position', 'relative');
+        cy.matchImageSnapshot(`Edit-Closed-List-Reserved-Tab-${size}`);
+
+        // snapshot reserved setion
+        cy.get("#ViewList").click()
+        cy.contains("Mamas & Papas")  // Wait for last product to load
+        cy.get("#navTabContainer").matchImageSnapshot(`Edit-Closed-List-View-Tab-${size}`);
+      });
+    });
+  })
+
   describe('Social Links', () => {
     let user = {}
     let listId = '12345678-test-list-0001-abcdefghijkl'
@@ -318,6 +375,57 @@ TestFilter(['regression'], () => {
       // Cannot have less than 1
       cy.get('[data-cy=link-quantity-decrease]').eq(1).click()
       cy.get('[data-cy=div-quantity]').eq(1).contains("1")
+    })
+  })
+
+  describe('Edit Page Functionality', () => {
+    let user = {}
+    let listId = '12345678-test-list-0001-abcdefghijkl'
+
+    before(() => {
+      cy.fixture('edit-list/snapshot-seed.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/edit-list/snapshot-seed.json').then((result) => {
+        const seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+      })
+    })
+
+    after(() => {
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify({"user_email": user.email}) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.login(user.email, user.password)
+    })
+
+    it('Should open page with tab specified as url parameter', () =>{
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route('GET', '**/lists/' + listId, 'fx:edit-list/get-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:edit-list/get-product-1-response')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:edit-list/get-product-2-response')
+      cy.route('GET', '**/products/12345678-blog-e007-1234-abcdefghijkl', 'fx:edit-list/get-product-3-response')
+
+      cy.visit('/edit/' + listId + '?tab=1');
+      cy.get('#AddItems').should('have.attr', 'aria-selected', 'true')
+    })
+
+    it('Should open closed list', () =>{
+      // Fakes the API request so that we don't need to update the DB.
+      cy.server()
+      cy.route('GET', '**/lists/' + listId, 'fx:edit-list/get-closed-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:edit-list/get-product-1-response')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:edit-list/get-product-2-response')
+      cy.route('GET', '**/products/12345678-blog-e007-1234-abcdefghijkl', 'fx:edit-list/get-product-3-response')
+
+      cy.visit('/edit/' + listId);
+      cy.contains("This list is now closed.")
     })
   })
 })

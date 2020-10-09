@@ -1,0 +1,48 @@
+{
+  "list":{
+    "listId":"12345678-test-list-0001-abcdefghijkl",
+    "title":"Baby Gift List",
+    "description":"Some gift ideas",
+    "occasion":"Baby Shower",
+    "imageUrl":"https://test.ewelists.com/images/babyshower-closed.jpg",
+    "listOwner":"12345678-test-user-0001-abcdefghijkl",
+    "state":"closed",
+    "eventDate":"31 July 2020"
+  },
+  "products":{
+    "12345678-blog-e007-1234-abcdefghijkl":{
+      "productId":"12345678-blog-e007-1234-abcdefghijkl",
+      "quantity":1,
+      "reserved":1,
+      "purchased":0,
+      "type":"products"
+    },
+    "12345678-prod-t001-1234-abcdefghijkl":{
+      "productId":"12345678-prod-t001-1234-abcdefghijkl",
+      "quantity":1,
+      "reserved":0,
+      "purchased":0,
+      "type":"products"
+    },
+    "12345678-prod-t034-1234-abcdefghijkl":{
+      "productId":"12345678-prod-t034-1234-abcdefghijkl",
+      "quantity":1,
+      "reserved":0,
+      "purchased":0,
+      "type":"products"
+    }
+  },
+  "reserved":[{
+    "reservationId":"d4523c94-aa19-4564-83df-f8445465d926",
+    "productId":"12345678-prod-t001-1234-abcdefghijkl",
+    "userId":"12345678-test-user-0001-abcdefghijkl",
+    "listId":"12345678-test-list-0001-abcdefghijkl",
+    "listOwnerId":"12345678-test-user-0001-abcdefghijkl",
+    "name":"Test User",
+    "email":"test.user@gmail.com",
+    "quantity":1,
+    "state":"reserved",
+    "listTitle":"Baby Gift List",
+    "productType":"products"
+  }]
+}

@@ -136,6 +136,36 @@ TestFilter(['regression'], () => {
       })
     })
   })
+
+  describe('Closed List Visual Snapshot Tests', () => {
+    beforeEach(() => {
+      // Stub API responses
+      cy.server()
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl/shared', 'fx:view-list/get-closed-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:view-list/get-product-response-1')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:view-list/get-product-response-2')
+
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/lists/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    const sizes = Cypress.env("snapshotSizes");
+    sizes.forEach((size) => {
+      it(`Should match previous screenshot of when ${size} resolution`, () => {
+        if (Cypress._.isArray(size)) {
+          cy.viewport(size[0], size[1])
+        } else {
+          cy.viewport(size)
+        }
+        cy.contains("Baby Shower Wish List")
+        cy.contains("This list is now closed")
+
+        cy.get('header').invoke('css', 'position', 'relative');
+        Cypress.config('defaultCommandTimeout', 50000)
+        cy.matchImageSnapshot(`View-Closed-List-Page-${size}`)
+      })
+    })
+  })
 })
 
 TestFilter(['regression'], () => {
@@ -244,6 +274,80 @@ TestFilter(['regression'], () => {
       // Should be lowercase email in cookie
       cy.getCookie('email')
         .should('have.property', 'value', encodeURIComponent('eweuser8+reserveuser1@gmail.com'))
+    })
+  })
+})
+
+TestFilter(['regression'], () => {
+  describe('Reserve Gift with capitalised email', () => {
+    let seedResponse = {}
+    let user = {}
+
+    before(() => {
+      cy.fixture('view-list/seed-e2e.json').then(fixture => {
+        user = fixture.user
+        cy.log("User email: " + user.email)
+      })
+
+      cy.exec(Cypress.env('seedDB') + ' -f cypress/fixtures/view-list/seed-e2e.json').then((result) => {
+        seedResponse = JSON.parse(result.stdout)
+        cy.log("User ID: " + seedResponse.user_id)
+        cy.log("List ID: " + seedResponse.list_id)
+        cy.log("Products IDs: " + seedResponse.product_ids)
+      })
+    })
+
+    after(() => {
+      seedResponse['user_email'] = user.email
+      cy.exec(Cypress.env('cleanDB') + ' -d \'' + JSON.stringify(seedResponse) + '\'').then((result) => {
+        cy.log("Delete response: " + result.stdout)
+      })
+    })
+
+    beforeEach(() => {
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/lists/' + seedResponse.list_id)
+    })
+
+    it('should reserve gift when user authed', () => {
+      // Ensure page has loaded and contains products
+      cy.contains("Cypress Test Wish List")
+
+      // Open Reserve popout
+      cy.get('[data-cy=product-card-' + seedResponse['product_ids'][0] + ']').find('[data-cy=button-reserve]').click()
+
+      cy.get('[data-cy=popout-reserve-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.get('#name-' + seedResponse['product_ids'][0]).type('Cypress ReserveUser1')
+        cy.get('#email-' + seedResponse['product_ids'][0]).type('Eweuser8+reserveuser1@gmail.com')
+        cy.get('[data-cy=popout-button-quantity-increase]').click()
+        cy.get('[data-cy=popout-button-reserve]').click()
+      })
+
+      // Should be redirect to reservation page
+      cy.url().should('include', '/reserve/')
+
+      // Should be lowercase email in cookie
+      cy.getCookie('email')
+        .should('have.property', 'value', encodeURIComponent('eweuser8+reserveuser1@gmail.com'))
+    })
+  })
+})
+
+TestFilter(['regression'], () => {
+  describe('View List Page Functionality', () => {
+    beforeEach(() => {
+      // Stub API responses
+      cy.server()
+      cy.route('GET', '**/lists/12345678-test-list-0001-abcdefghijkl/shared', 'fx:view-list/get-closed-list-response')
+      cy.route('GET', '**/products/12345678-prod-t001-1234-abcdefghijkl', 'fx:view-list/get-product-response-1')
+      cy.route('GET', '**/products/12345678-prod-t034-1234-abcdefghijkl', 'fx:view-list/get-product-response-2')
+
+      cy.setCookie("CookieConsent", "true")
+      cy.visit('/lists/12345678-test-list-0001-abcdefghijkl')
+    })
+
+    it(`should show closed list message`, () => {
+      cy.contains("This list is now closed")
     })
   })
 })
