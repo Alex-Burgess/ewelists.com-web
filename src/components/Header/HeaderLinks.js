@@ -22,7 +22,7 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinksAuth(props) {
   const classes = useStyles();
-  const { isAuthenticated, user, tablet } = useAppContext();
+  const { isAuthenticated, user, breakpoint } = useAppContext();
 
   const { dropdownHoverColor, headerColor } = props;
 
@@ -41,7 +41,7 @@ export default function HeaderLinksAuth(props) {
   });
 
   if (isAuthenticated) {
-    if (tablet) {
+    if (breakpoint === 'xs' || breakpoint === 'sm' || breakpoint === 'md') {
       return (
         <List className={classes.list + " " + classes.mlAuto}>
           <ListItem className={classes.listItem}>
@@ -103,7 +103,7 @@ export default function HeaderLinksAuth(props) {
       );
     }
   } else {
-    if (tablet) {
+    if (breakpoint === 'xs' || breakpoint === 'sm' || breakpoint === 'md') {
       return (
         <List className={classes.list + " " + classes.mlAuto}>
           <ListItem className={classes.listItem}>
