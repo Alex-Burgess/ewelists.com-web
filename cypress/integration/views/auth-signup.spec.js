@@ -403,7 +403,7 @@ TestFilter(['regression'], () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/')
 
         cy.getCookie('email')
-          .should('have.property', 'value', encodeURIComponent(user.email.toLowerCase()))
+          .should('have.property', 'value', user.email.toLowerCase())
 
         user.email = user.email.toLowerCase()
       });
