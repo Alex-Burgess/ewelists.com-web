@@ -13,10 +13,10 @@ const useStyles = makeStyles(styles);
 
 export default function LearnMore(props) {
   const classes = useStyles();
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
 
   const scrollPage = () => {
-    if (mobile) {
+    if (breakpoint === 'xs') {
       window.scrollTo({ top: 820, behavior: 'smooth' })
     } else {
       window.scrollTo({ top: 790, behavior: 'smooth' })

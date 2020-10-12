@@ -28,8 +28,7 @@ export default function App(props) {
   const [cookiesAllowed, setCookiesAllowed] = useState(false);
   const [tabTitle, setTabTitle] = useState('Ewelists');
   const [user, setUser] = useState({});
-  const [mobile, setMobile] = useState(false);
-  const [tablet, setTablet] = useState(false);
+  const [breakpoint, setBreakpoint] = useState('');
 
   // Google Analytics
   if (isAuthenticated || Cookies.get('CookieConsent') === 'true') {
@@ -53,13 +52,17 @@ export default function App(props) {
   // Page size
   useEffect( () => {
     function updateDimensions() {
-      if (window.innerWidth < 400){
-        setMobile(true);
-      } else if (window.innerWidth < 960) {
-        setTablet(true);
+      // Set breakpoints
+      if (window.innerWidth < 576){
+        setBreakpoint('xs');
+      } else if (window.innerWidth < 768) {
+        setBreakpoint('sm');
+      } else if (window.innerWidth < 992) {
+        setBreakpoint('md');
+      } else if (window.innerWidth < 1200) {
+        setBreakpoint('lg');
       } else {
-        setTablet(false);
-        setMobile(false);
+        setBreakpoint('xl');
       }
     };
 
@@ -201,10 +204,9 @@ export default function App(props) {
                   userHasAuthenticated,
                   handleLogout,
                   user,
-                  mobile,
-                  tablet,
                   setTabTitle,
-                  cookiesAllowed
+                  cookiesAllowed,
+                  breakpoint
                 }}>
                 <Routes />
               </AppContext.Provider>

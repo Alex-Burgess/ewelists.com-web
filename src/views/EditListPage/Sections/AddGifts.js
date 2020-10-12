@@ -30,7 +30,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionAddGifts(props) {
   const classes = useStyles();
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
   const { listId, addProductToState, setActive } = props;
 
   const [error, setError] = useState('');
@@ -402,7 +402,7 @@ export default function SectionAddGifts(props) {
       <Card plain>
           <CardBody plain>
       {
-        mobile
+        breakpoint === 'xs' || breakpoint === 'sm'
           ? renderMobileSearchResultTable()
           : renderDesktopSearchResultTable()
       }
@@ -468,7 +468,7 @@ export default function SectionAddGifts(props) {
           <GridItem xs={12} sm={12} md={10} lg={9}
             className={classes.mrAuto + " " + classes.mlAuto}
           >
-            { mobile
+            { breakpoint === 'xs' || breakpoint === 'sm'
               ? renderMobileSearchInput()
               : renderDesktopSearchInput()
             }

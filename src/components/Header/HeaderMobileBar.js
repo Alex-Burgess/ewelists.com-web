@@ -8,13 +8,13 @@ import Header from "components/Header/Header.js";
 import HeaderDark from "components/Header/HeaderDark.js";
 
 export default function HeaderMobileBar(props) {
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
 
   const { url, title } = props;
 
   return (
     <div>
-      {mobile
+      {breakpoint === 'xs'
         ? <Header
             fixed
             color="dark"

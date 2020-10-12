@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles);
 
 export default function ClosedProducts(props) {
   const classes = useStyles();
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
   const { products } = props;
 
   const renderDesktopProductView = () => {
@@ -142,7 +142,7 @@ export default function ClosedProducts(props) {
         <Card plain>
           <CardBody plain>
             {
-              mobile
+              breakpoint === 'xs' || breakpoint === 'sm'
               ? renderMobileProductView()
               : renderDesktopProductView()
             }

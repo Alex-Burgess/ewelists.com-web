@@ -24,7 +24,7 @@ const copy = require('clipboard-copy')
 
 export default function SectionListDetails(props) {
   const classes = useStyles();
-  const { user, mobile } = useAppContext();
+  const { user, breakpoint } = useAppContext();
 
   const { listId, title, description, occasion, date, imageUrl, closed } = props;
 
@@ -87,7 +87,7 @@ export default function SectionListDetails(props) {
                           <i className="far fa-envelope" />
                         </Button>
                       </a>
-                      { mobile
+                      { breakpoint === 'xs'
                         ? <span>
                             <a href={fbMobileLink}>
                               <Button color="messenger" round share justIcon>

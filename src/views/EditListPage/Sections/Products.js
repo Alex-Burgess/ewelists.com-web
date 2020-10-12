@@ -24,7 +24,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionProducts(props) {
   const classes = useStyles();
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
   const { listId, products, loading, deleteProductFromState, updateProductToState, switchToAddProduct } = props;
 
   const [editPopouts, setEditPopouts] = useState({});
@@ -231,7 +231,7 @@ export default function SectionProducts(props) {
         <Card plain>
           <CardBody plain>
             {
-              mobile
+              breakpoint === 'xs' || breakpoint === 'sm'
               ? renderMobileProductView()
               : renderDesktopProductView()
             }

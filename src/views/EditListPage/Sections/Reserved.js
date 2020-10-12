@@ -17,7 +17,7 @@ const useStyles = makeStyles(styles);
 
 export default function SectionReserved(props) {
   const classes = useStyles();
-  const { mobile } = useAppContext();
+  const { breakpoint } = useAppContext();
   const { reserved, products, loading } = props;
 
   const stateText = (state) => {
@@ -176,7 +176,7 @@ export default function SectionReserved(props) {
             <Card plain>
               <CardBody plain>
                 {
-                  mobile
+                  breakpoint === 'xs' || breakpoint === 'sm'
                   ? renderMobileView()
                   : renderDesktopView()
                 }
