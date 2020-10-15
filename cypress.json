@@ -16,17 +16,17 @@
       "macbook-13",
       [1920, 1080]
     ],
-    "userPoolId": "eu-west-1_vqox9Z8q7",
-    "appClientId": "2effvksije4gnnrlefivcv246t",
-    "identityPoolId": "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
+    "userPoolId": "eu-west-1_LW335q3ga",
+    "appClientId": "57l6m89od9d2s2vsjflig7dtkb",
+    "identityPoolId": "eu-west-1:bcadf81b-b117-4879-af06-9303deba01df",
     "domain": "test-ewelists.auth.eu-west-1.amazoncognito.com",
     "redirect_signin": "http://localhost:3000/",
     "redirect_signout": "http://localhost:3000/login",
     "contactEmail": "contact@ewelists.com",
     "verifyEmailSubject": "Verify your Ewelists account (test)",
     "welcomeEmailSubject": "Welcome to Ewelists (test)",
-    "seedDB": "python cypress/scripts/seed_db.py -P cypress-test -u eu-west-1_vqox9Z8q7 -l lists-test -n notfound-test -p products-test",
-    "cleanDB": "python cypress/scripts/clean_db.py -P cypress-test -u eu-west-1_vqox9Z8q7 -l lists-test -n notfound-test -p products-test"
+    "seedDB": "python cypress/scripts/seed_db.py -P cypress-test -u eu-west-1_LW335q3ga -l lists-test -n notfound-test -p products-test",
+    "cleanDB": "python cypress/scripts/clean_db.py -P cypress-test -u eu-west-1_LW335q3ga -l lists-test -n notfound-test -p products-test"
   },
   "projectId": "vf6c6c"
 }

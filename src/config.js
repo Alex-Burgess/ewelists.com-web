@@ -1,16 +1,16 @@
 const test = {
   apiGateway: {
     REGION: "eu-west-1",
-    LISTS: "https://4sdcvv0n2e.execute-api.eu-west-1.amazonaws.com/test/lists",
-    NOTFOUND: "https://pff49212ai.execute-api.eu-west-1.amazonaws.com/test/notfound",
-    PRODUCTS: "https://4cu83a3xga.execute-api.eu-west-1.amazonaws.com/test/products",
-    CONTACT: "https://dond3owxm5.execute-api.eu-west-1.amazonaws.com/test/contact"
+    LISTS: "https://gud7ku7zf6.execute-api.eu-west-1.amazonaws.com/test/lists",
+    NOTFOUND: "https://5w37xs4dnf.execute-api.eu-west-1.amazonaws.com/test/notfound",
+    PRODUCTS: "https://u9guul2t42.execute-api.eu-west-1.amazonaws.com/test/products",
+    CONTACT: "https://fsl437n0mb.execute-api.eu-west-1.amazonaws.com/test/contact"
   },
   cognito: {
     REGION: "eu-west-1",
-    USER_POOL_ID: "eu-west-1_vqox9Z8q7",
-    APP_CLIENT_ID: "2effvksije4gnnrlefivcv246t",
-    IDENTITY_POOL_ID: "eu-west-1:2208d797-dfc9-40b4-8029-827c9e76e029",
+    USER_POOL_ID: "eu-west-1_LW335q3ga",
+    APP_CLIENT_ID: "57l6m89od9d2s2vsjflig7dtkb",
+    IDENTITY_POOL_ID: "eu-west-1:bcadf81b-b117-4879-af06-9303deba01df",
     DOMAIN: "test-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
     REDIRECTSIGNIN: "http://localhost:3000",
@@ -28,16 +28,16 @@ const test = {
 const staging = {
   apiGateway: {
     REGION: "eu-west-1",
-    LISTS: "https://yawecld0ag.execute-api.eu-west-1.amazonaws.com/staging/lists",
-    NOTFOUND: "https://jnbwllwjwl.execute-api.eu-west-1.amazonaws.com/staging/notfound",
-    PRODUCTS: "https://p0ugkk400f.execute-api.eu-west-1.amazonaws.com/staging/products",
-    CONTACT: "https://gwwqb70lka.execute-api.eu-west-1.amazonaws.com/staging/contact"
+    LISTS: "https://1t9bk9chy6.execute-api.eu-west-1.amazonaws.com/staging/lists",
+    NOTFOUND: "https://9il4415hr2.execute-api.eu-west-1.amazonaws.com/staging/notfound",
+    PRODUCTS: "https://pylbx9egxj.execute-api.eu-west-1.amazonaws.com/staging/products",
+    CONTACT: "https://97lx3orrxf.execute-api.eu-west-1.amazonaws.com/staging/contact"
   },
   cognito: {
     REGION: "eu-west-1",
-    USER_POOL_ID: "eu-west-1_Le825O3Pt",
-    APP_CLIENT_ID: "5tmme79b0m94mp3i87e300piqp",
-    IDENTITY_POOL_ID: "eu-west-1:704a4a75-e23e-4b9f-b7b1-ad7113e9c28d",
+    USER_POOL_ID: "eu-west-1_GhBKej6to",
+    APP_CLIENT_ID: "53055ln8c1vmejj56pe7j8tqa3",
+    IDENTITY_POOL_ID: "eu-west-1:049fcad6-1b09-4d60-bfa4-6ce8115a5db5",
     DOMAIN: "staging-ewelists.auth.eu-west-1.amazoncognito.com",
     SCOPE: ['email', 'profile', 'aws.cognito.signin.user.admin', 'openid'],
     REDIRECTSIGNIN: "https://staging.ewelists.com",
