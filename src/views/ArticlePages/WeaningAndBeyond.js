@@ -9,9 +9,9 @@ import ListArticle from "./Sections/ListArticle.js";
 import Products from "./Sections/Products.js";
 
 // Blog Data
-const name = 'weening-and-beyond'
+const name = 'weaning-and-beyond'
 
-export default function OutdoorPlay(props) {
+export default function Weaning(props) {
   const { isAuthenticated } = useAppContext();
   const [lists, setLists] = useState({});
 
@@ -27,7 +27,7 @@ export default function OutdoorPlay(props) {
       </div>
       <SectionHeadings
         headings={[
-          {"name": "weening", "text": "Weening stage"},
+          {"name": "weaning", "text": "Weaning stage"},
           {"name": "feeding-myself", "text": "Feeding myself"},
           {"name": "family", "text": "Eating with the family"},
           {"name": "storage", "text": "Food prep and storage"},
@@ -43,7 +43,7 @@ export default function OutdoorPlay(props) {
         </p>
       </div>
       <div>
-        <SectionHeading name="weening" text="Weening stage" />
+        <SectionHeading name="weaning" text="Weaning stage" />
         <p>
           This is an enjoyable part of your baby's development. Your little one is now taking a real interest in the
           world around them and delights you with beautiful smiles and giggles. All babies develop at their own pace,
@@ -65,7 +65,7 @@ export default function OutdoorPlay(props) {
           for some kit. There are some beautiful highchairs out there, but if they don't pass the dried Weetabix test,
           you might regret their purchase. Look for an easy to clean chair that has minimal cracks for food to hide.
           Padding is a favourite place for food to stick, so opt for no padding or removable padding that goes in the
-          wash. It's also an idea to have a chair that is relatively easy to move around; light and compact helps
+          wash. It{"'"}s also an idea to have a chair that is relatively easy to move around; light and compact helps
           enormously if you want to tuck the chair away after dinner.
         </p>
       </div>
@@ -119,7 +119,7 @@ export default function OutdoorPlay(props) {
         </p>
         <p>
           Continuing with our theme of keeping mess to a minimum, this is the time that we recommend double layering the
-          bibs, with a soft sleeved bib as the first layer, followed by a clean wipe bib with a deep spill pocket. If
+          bibs, with a soft sleeved bib as the first layer, followed by a wipe clean bib with a deep spill pocket. If
           you need to worry about protecting your floor, you could place a spill mat under the highchair. Of course, if
           you have a dog, that's one less thing to worry about :)
         </p>
@@ -241,7 +241,7 @@ export default function OutdoorPlay(props) {
         <p>
           Although not strictly necessary, you might like to have some equipment designed especially for travelling.
           Perhaps you regularly go to visit family and might benefit from having some gear ready to go. Whatever you
-          chose, make sure its storage-friendly and keep all the items together, so you're prepared.
+          choose, make sure its storage-friendly and keep all the items together, so you're prepared.
         </p>
         <Products
           products={[

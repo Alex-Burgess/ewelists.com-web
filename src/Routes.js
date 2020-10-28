@@ -32,7 +32,7 @@ import ArticlePlayRoom from "views/ArticlePages/PlayRoom.js";
 import ArticleNewbornFeeding from "views/ArticlePages/NewbornFeeding.js";
 import ArticleBabyShower from "views/ArticlePages/BabyShower.js";
 import ArticleVirtualBabyShower from "views/ArticlePages/VirtualBabyShower.js";
-import ArticleWeeningAndBeyond from "views/ArticlePages/WeeningAndBeyond.js"
+import ArticleWeaningAndBeyond from "views/ArticlePages/WeaningAndBeyond.js"
 
 export default function Routes() {
   return (
@@ -56,7 +56,7 @@ export default function Routes() {
       <Route path="/list-ideas/newborn-baby-feeding" exact component={ArticleNewbornFeeding} />
       <Route path="/list-ideas/baby-shower" exact component={ArticleBabyShower} />
       <Route path="/list-ideas/virtual-baby-shower" exact component={ArticleVirtualBabyShower} />
-      <Route path="/list-ideas/weening-and-beyond" exact component={ArticleWeeningAndBeyond} />
+      <Route path="/list-ideas/weaning-and-beyond" exact component={ArticleWeaningAndBeyond} />
       <UnauthenticatedRoute path="/login" exact component={LoginPage} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} />
       <UnauthenticatedRoute path="/signup-complete" exact component={SocialConfirmationPage} />
