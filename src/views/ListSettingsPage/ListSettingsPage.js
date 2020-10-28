@@ -197,7 +197,7 @@ export default function SectionDetails(props) {
               }}
             />
             <InputLabel>
-              Description:
+              Welcome message:
             </InputLabel>
             <Input
               id="description"

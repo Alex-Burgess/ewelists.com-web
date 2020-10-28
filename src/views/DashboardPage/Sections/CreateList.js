@@ -202,7 +202,7 @@ function CreatePopOut(props) {
                 </GridItem>
               </GridContainer>
               <Input
-                labelText="Description"
+                labelText="Welcome message:"
                 id="description"
                 formControlProps={{
                   fullWidth: true,
