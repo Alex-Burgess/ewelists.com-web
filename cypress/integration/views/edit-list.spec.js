@@ -176,11 +176,13 @@ TestFilter(['regression'], () => {
         // snapshot reserved setion
         cy.get("#Reserved").click()
         cy.contains("RESERVED GIFTS")
+        cy.wait(1000)
         cy.get("#navTabContainer").matchImageSnapshot(`Edit-Reserved-${size}`);
 
         // snapshot Add items setion
         cy.get('#AddItems').click()
-        cy.get("#searchUrl")
+        cy.get("#searchUrl").click()
+        cy.wait(500)
         cy.get("#navTabContainer").matchImageSnapshot(`Edit-Add-${size}`);
       });
     });

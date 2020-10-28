@@ -79,7 +79,7 @@ function CreatePopOut(props) {
     setIsCreating(true);
 
     const occasion_parsed = occasion.toLowerCase().replace(/\s/g,'');
-    const imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
+    const imageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default-2.png';
 
     try {
       const response = await createList(title, description, date, occasion, imageUrl);

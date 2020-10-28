@@ -139,7 +139,7 @@ export default function SectionDetails(props) {
     let newOccasion = event.target.value;
 
     const occasion_parsed = newOccasion.toLowerCase().replace(/\s/g,'');
-    let newImageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default.jpg';
+    let newImageUrl = config.imagePrefix + '/images/' + occasion_parsed + '-default-2.png';
 
     setNewOccasion(newOccasion);
     setNewImageUrl(newImageUrl);
