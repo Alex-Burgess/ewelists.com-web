@@ -32,7 +32,16 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-Builds the app for a local/test environment to the `build` folder.
+Builds the app for a local/test environment to the `build` folder.  To then deploy the application to the test environment:
+* Update robots.txt file:
+```
+mv build/staging.robots.txt build/robots.txt
+```
+* Upload to s3 bucket:
+```
+aws s3 sync build/ s3://test.ewelists.com --delete
+```
+
 
 ### `REACT_APP_STAGE=staging npm run build`
 
@@ -53,7 +62,7 @@ npx cypress run --headless --browser chrome
 
 Run a specific test:
 ```
-npx cypress run --spec "cypress/integration/about.spec.js" --headless --browser chrome
+npx cypress run --headless --browser chrome --spec "cypress/integration/about.spec.js"
 ```
 
 Update snapshots:

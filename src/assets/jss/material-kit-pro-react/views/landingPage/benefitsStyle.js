@@ -19,6 +19,9 @@ const ideasSection = theme => ({
     [theme.breakpoints.down("sm")]: {
       marginBottom: "60px",
     },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "30px",
+    }
   },
   image: {
     backgroundRepeat: "no-repeat",
@@ -29,7 +32,7 @@ const ideasSection = theme => ({
       backgroundSize: "300px",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "220px",
+      height: "230px",
       backgroundSize: "300px",
       backgroundPosition: "center",
     }

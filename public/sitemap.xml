@@ -32,6 +32,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://ewelists.com/about</loc>
+    <lastmod>2019-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://ewelists.com/how-it-works</loc>
+    <lastmod>2019-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://ewelists.com/list-ideas</loc>
     <lastmod>2020-02-06</lastmod>
     <changefreq>weekly</changefreq>

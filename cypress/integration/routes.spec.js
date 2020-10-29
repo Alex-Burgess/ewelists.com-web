@@ -5,6 +5,7 @@ const pages = [
   ['contact', 'Send us a message'],
   ['cookies', 'How We Use Cookies'],
   ['error', 'Oops'],
+  ['how-it-works', 'Receive the gifts that help you'],
   ['landing', 'The Gift List Tool For Parents'],
   ['list-ideas', 'Gift List Ideas'],
   ['login', 'Log in'],

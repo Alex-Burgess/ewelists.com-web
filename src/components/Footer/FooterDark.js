@@ -48,13 +48,16 @@ export default function FooterDark(props) {
             <h5>About</h5>
             <ul>
               <li>
-                <Link to="/list-ideas" data-cy="footer-dark-link-ideas">Blog</Link>
+                <Link to="/about" data-cy="footer-dark-link-about">About Us</Link>
               </li>
               <li>
-                <Link to="/about" data-cy="footer-dark-link-about">About us</Link>
+                <Link to="/how-it-works" data-cy="footer-dark-link-how">How It Works</Link>
               </li>
               <li>
-                <Link to="/contact" data-cy="footer-dark-link-contact">Contact us</Link>
+                <Link to="/contact" data-cy="footer-dark-link-contact">Contact Us</Link>
+              </li>
+              <li>
+                <Link to="/list-ideas" data-cy="footer-dark-link-ideas">Inspiration</Link>
               </li>
             </ul>
           </GridItem>

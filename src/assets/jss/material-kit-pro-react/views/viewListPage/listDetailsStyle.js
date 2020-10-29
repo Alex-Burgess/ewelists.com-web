@@ -48,6 +48,9 @@ const style = theme => ({
     "& svg": {
       position: "relative",
       top: "8px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingBottom: "0px",
     }
   },
 });

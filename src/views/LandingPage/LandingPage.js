@@ -8,7 +8,8 @@ import HeaderWhite from "components/Header/HeaderWhite.js";
 import Hero from "./Sections/Hero.js";
 import Product from "./Sections/Product.js";
 import Ideas from "./Sections/Ideas.js";
-import LearnMore from "./Sections/LearnMore.js";
+// import LearnMore from "./Sections/LearnMore.js";
+import HowItWorks from "./Sections/HowItWorks.js";
 import GetStarted from "./Sections/GetStarted.js";
 import Benefits from "./Sections/Benefits.js";
 
@@ -24,7 +25,7 @@ export default function LandingPage(props) {
       <HeaderWhite />
       <div className={classes.main}>
         <Hero />
-        <LearnMore />
+        <HowItWorks />
         <Benefits />
         <Product />
         <Ideas />

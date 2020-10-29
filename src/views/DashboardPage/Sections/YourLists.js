@@ -156,7 +156,7 @@ export default function YourLists(props) {
                   <Add />
                 </Button>
                 <div className={classes.createText}>
-                  Create a New List
+                  Create List
                 </div>
               </div>
           </GridItem>

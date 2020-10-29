@@ -40,6 +40,7 @@ TestFilter(['regression'], () => {
       cy.get('[data-cy=footer-dark-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=footer-dark-link-about]').should('have.attr', 'href', '/about')
       cy.get('[data-cy=footer-dark-link-contact]').should('have.attr', 'href', '/contact')
+      cy.get('[data-cy=footer-dark-link-how]').should('have.attr', 'href', '/how-it-works')
     })
 
     it('Should have correct legal links', () => {

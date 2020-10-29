@@ -56,7 +56,8 @@ const style = theme => ({
       fontSize: "13px"
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "14px"
+      fontSize: "14px",
+      marginBottom: "0px"
     },
   },
   section: {
@@ -66,9 +67,6 @@ const style = theme => ({
       padding: "0px 0px",
     }
   },
-  // priceContainer: {
-  //   display: "inline-flex"
-  // },
   price: {
     fontSize: "18px",
     color: grayColor[22]
@@ -98,17 +96,22 @@ const style = theme => ({
     textAlign: "left"
   },
   productImage: {
+    height: "18vw",
+    maxHeight: "276.59px",
+    objectFit: "contain",
     [theme.breakpoints.down("xs")]: {
       height: "82vw",
-      maxHeight: "276.59px",
+      maxHeight: "180.05px",
       minWidth: "295px"
-    },
-    height: "18vw",
-    maxHeight: "180.05px",
-    objectFit: "contain",
+    }
   },
   productDetails: {
     height: "145px",
+    [theme.breakpoints.down("xs")]: {
+      height: "unset",
+      paddingBottom: "7px"
+    },
+
   },
   filterButtonContainer: {
     display: "none",
@@ -142,7 +145,7 @@ const style = theme => ({
     [theme.breakpoints.down("xs")]: {
       minWidth: "285px",
       width: "100%",
-      marginBottom: "30px"
+      marginBottom: "5px"
     }
   },
   undoButton: {
@@ -157,6 +160,7 @@ const style = theme => ({
     marginTop: "15px",
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0px",
+      marginTop: "30px",
     }
   },
   cardCategory: {

@@ -20,7 +20,14 @@ TestFilter(['smoke','regression'], () => {
       cy.url().should('include', '/signup')
     })
 
-    it('Checks the Learn More button scrolls correct amount for large screens', () => {
+    it('Checks the Get Started button redirects to signup page', () => {
+      cy.visit('/')
+      cy.get('[data-cy=button-how-it-works]').click()
+      cy.url().should('include', '/how-it-works')
+    })
+
+    // Removed learn move scroll button.
+    it.skip('Checks the Learn More button scrolls correct amount for large screens', () => {
       cy.visit('/')
       cy.get('[data-cy=learn-more-button]').click()
       cy.window().then(($window) => {
@@ -30,7 +37,8 @@ TestFilter(['smoke','regression'], () => {
       });
     })
 
-    it('Checks the Learn More button scrolls correct amount for mobiles', () => {
+    // Removed learn move scroll button.
+    it.skip('Checks the Learn More button scrolls correct amount for mobiles', () => {
       cy.viewport('iphone-x')
       cy.visit('/')
       cy.get('[data-cy=learn-more-button]').click()

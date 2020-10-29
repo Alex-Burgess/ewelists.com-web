@@ -107,6 +107,11 @@ export default function HeaderLinksAuth(props) {
       return (
         <List className={classes.list + " " + classes.mlAuto}>
           <ListItem className={classes.listItem}>
+            <Link to="/how-it-works" className={linkClasses} data-cy="sidebar-link-how">
+              How It Works
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
             <Link to="/list-ideas" className={linkClasses} data-cy="sidebar-link-ideas">
               Ideas
             </Link>
@@ -126,6 +131,11 @@ export default function HeaderLinksAuth(props) {
     } else {
       return (
         <List className={classes.list + " " + classes.mlAuto}>
+          <ListItem className={classes.listItem}>
+            <Link to="/how-it-works" className={linkClasses} data-cy="header-link-how">
+              How It Works
+            </Link>
+          </ListItem>
           <ListItem className={classes.listItem}>
             <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
               Ideas

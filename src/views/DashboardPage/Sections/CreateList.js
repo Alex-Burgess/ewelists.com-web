@@ -152,7 +152,7 @@ function CreatePopOut(props) {
             classes.cardTitle + " " + classes.modalTitle + " " + classes.textCenter
           }
         >
-          Enter List Details
+          Create List
         </h3>
       </DialogTitle>
       <DialogContent

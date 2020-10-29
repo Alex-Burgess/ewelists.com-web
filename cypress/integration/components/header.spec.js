@@ -11,6 +11,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.visit('/contact')
       cy.get('[data-cy=header-logo-blue]')
       cy.get('[data-cy=header-link-logo]').should('have.attr', 'href', '/')
+      cy.get('[data-cy=header-link-how]').should('have.attr', 'href', '/how-it-works')
       cy.get('[data-cy=header-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=header-link-login]').should('have.attr', 'href', '/login')
       cy.get('[data-cy=header-link-signup]').should('have.attr', 'href', '/signup')
@@ -36,6 +37,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('#header-mobile-sidebar').should('have.css', 'visibility', 'visible')
 
       // Sidebar links should exist
+      cy.get('[data-cy=sidebar-link-how]').should('have.attr', 'href', '/how-it-works')
       cy.get('[data-cy=sidebar-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=sidebar-link-login]').should('have.attr', 'href', '/login')
       cy.get('[data-cy=sidebar-link-signup]').should('have.attr', 'href', '/signup')
@@ -46,6 +48,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.visit('/list-ideas')
       cy.get('[data-cy=header-logo-white]')
       cy.get('[data-cy=header-link-logo]').should('have.attr', 'href', '/')
+      cy.get('[data-cy=header-link-how]').should('have.attr', 'href', '/how-it-works')
       cy.get('[data-cy=header-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=header-link-login]').should('have.attr', 'href', '/login')
       cy.get('[data-cy=header-link-signup]').should('have.attr', 'href', '/signup')
@@ -71,6 +74,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('#header-mobile-sidebar').should('have.css', 'visibility', 'visible')
 
       // Sidebar links should exist
+      cy.get('[data-cy=sidebar-link-how]').should('have.attr', 'href', '/how-it-works')
       cy.get('[data-cy=sidebar-link-ideas]').should('have.attr', 'href', '/list-ideas')
       cy.get('[data-cy=sidebar-link-login]').should('have.attr', 'href', '/login')
       cy.get('[data-cy=sidebar-link-signup]').should('have.attr', 'href', '/signup')
