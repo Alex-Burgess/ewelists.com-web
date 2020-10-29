@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import useClippy from 'use-clippy';
 // libs
 import { onError, debugError } from "libs/errorLib";
 import { contactRequest } from "libs/apiLib";
@@ -25,6 +26,46 @@ export default function ContactUsPage(props) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+
+  const pasteLink = () => {
+    navigator.clipboard.readText()
+    .then(text => {
+      console.log('Pasted content: ', text);
+      setEmail(text)
+    })
+    .catch(err => {
+      console.error('Failed to read clipboard contents: ', err);
+    });
+  }
+
+  // const pasteName = async () => {
+  //   console.log('Name input is focused.');
+  //
+  //   // navigator.clipboard.readText()
+  //   // .then(text => {
+  //   //   console.log('Pasted name content: ', text);
+  //   //   setName(text)
+  //   // })
+  //   // .catch(err => {
+  //   //   console.error('Failed to read clipboard contents: ', err);
+  //   // });
+  //
+  //   let items = await navigator.clipboard.readText();
+  //
+  //   console.log("item: " + JSON.stringify(items));
+  //   console.log("items length: " + items.length);
+  //   // for (let item of items) {
+  //       // if (!item.types.includes("text/html"))
+  //       //     continue;
+  //
+  //       // let reader = new FileReader;
+  //       // reader.addEventListener("load", loadEvent => {
+  //       //     document.getElementById("html-output").innerHTML = reader.result;
+  //       // });
+  //       // reader.readAsText(await item.getType("text/html"));
+  //       // break;
+  //   // }
+  // }
 
   const sendMail = async event => {
     let details = {
@@ -57,40 +98,19 @@ export default function ContactUsPage(props) {
     return (
       <form>
         <Input
-          labelText="Your Name"
-          id="name"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            onChange: event => setName(event.target.value)
-          }}
-        />
-        <Input
-          labelText="Email address"
+          labelText="Paste url"
           id="email"
           formControlProps={{
             fullWidth: true
           }}
           inputProps={{
-            onChange: event => setEmail(event.target.value)
-          }}
-        />
-        <Input
-          labelText="Your message"
-          id="message"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            multiline: true,
-            rows: 6,
-            onChange: event => setMessage(event.target.value)
+            onChange: event => setEmail(event.target.value),
+            value: email
           }}
         />
         <div className={classes.textCenter}>
-          <Button color="primary" round data-cy="contact" onClick={() => sendMail()} disabled={!validateForm()}>
-            Contact us
+          <Button color="primary" onClick={() => pasteLink()}>
+            Paste
           </Button>
           {error
             ? <div className={classes.textCenter}>
@@ -114,9 +134,9 @@ export default function ContactUsPage(props) {
           <GridItem xs={12} sm={10} md={8} className={classes.gridLogin}>
             <Card className={classes.customCard} data-cy="contact-card">
               <CardBody signup>
-                <h3 className={classes.title + " " + classes.textCenter}>Send us a message</h3>
+                <h3 className={classes.title + " " + classes.textCenter}>Paste Test Page</h3>
                 <h4>
-                  You can contact us with anything related to Ewelists. We{"'"}ll get back to you ASAP.
+                  Paste from your clipboard here.
                 </h4>
                 <div id="formWrapper">
                   {submit
