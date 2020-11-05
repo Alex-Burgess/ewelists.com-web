@@ -2,6 +2,7 @@ import {
   title,
   cardTitle,
   grayColor,
+  primaryColor
 } from "assets/jss/material-kit-pro-react.js";
 
 import modalStyle from "assets/jss/material-kit-pro-react/modalStyle.js";
@@ -120,18 +121,43 @@ const style = theme => ({
   formIntro: {
     fontSize: "1.2em",
     fontWeight: "400",
-    color: "#777",
+    color: primaryColor[0],
     lineHeight: "1.2",
     marginBottom: "15px",
     textAlign: "left",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1.5em"
+      fontSize: "1.2em",
+      textAlign: "center"
+    }
+  },
+  notesIntro: {
+    fontSize: "1.2em",
+    fontWeight: "400",
+    color: primaryColor[0],
+    lineHeight: "1.2",
+    marginBottom: "3px",
+    textAlign: "left",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.2em",
+      textAlign: "center"
     }
   },
   cardCategory: {
     color: "#6c757d",
     marginTop: "0px",
     marginBottom: "0px"
+  },
+  notes: {
+    textAlign: "left",
+    fontSize: "16px",
+    fontWeight: "400",
+    color: "#495057"
+  },
+  sectionSpacer: {
+    [theme.breakpoints.down("xs")]: {
+      borderBottom:"1px solid rgba(153, 153, 153,0.3)",
+      paddingTop: "20px"
+    }
   }
 });
 

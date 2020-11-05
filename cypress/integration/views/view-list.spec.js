@@ -104,7 +104,7 @@ TestFilter(['smoke', 'regression'], () => {
 })
 
 TestFilter(['regression'], () => {
-  describe('Visual Snapshot Tests', () => {
+  describe.only('Visual Snapshot Tests', () => {
     beforeEach(() => {
       // Stub API responses
       cy.server()

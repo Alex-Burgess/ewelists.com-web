@@ -22,7 +22,8 @@
       "quantity":2,
       "reserved":0,
       "purchased":0,
-      "type":"products"
+      "type":"products",
+      "notes": "I would like the colour black please!"
     }
   },
   "reserved":{}

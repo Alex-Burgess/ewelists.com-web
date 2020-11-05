@@ -169,11 +169,24 @@ function ReservePopout(props) {
           <h3 className={classes.title + " " + classes.modalTitle + " " + classes.desktop}>
             Reserve Item
           </h3>
+          <div className={classes.sectionSpacer} />
+          {product.notes
+            ? <div>
+                <h3 className={classes.notesIntro}>
+                    Notes to gift buyer
+                </h3>
+                <div className={classes.notes}>
+                  {product.notes}
+                </div>
+                <div className={classes.sectionSpacer} />
+              </div>
+            : null
+          }
           <h3 className={classes.formIntro + " " + classes.desktop}>
               Please enter some details about yourself, so we know who is reserving the item.
           </h3>
           <h3 className={classes.formIntro + " " + classes.mobile}>
-              Please enter some details about yourself:
+              Enter your details about yourself
           </h3>
           <Input
               id={"name-" + product.productId}
