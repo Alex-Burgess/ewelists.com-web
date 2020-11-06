@@ -15,7 +15,8 @@
       "quantity":2,
       "reserved":1,
       "purchased":0,
-      "type":"products"
+      "type":"products",
+      "notes": "I would like the colour grey."
     }
   },
   "reserved":{

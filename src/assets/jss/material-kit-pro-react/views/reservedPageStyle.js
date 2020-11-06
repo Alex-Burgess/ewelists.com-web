@@ -61,6 +61,7 @@ const pageStyle = theme => ({
   icon: {
     fontSize: "2.2rem",
     paddingRight: "5px",
+    paddingTop: "4px",
     verticalAlign: "bottom",
   },
   textCenter: {

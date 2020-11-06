@@ -10,6 +10,7 @@ import HeaderMobileBar from "components/Header/HeaderMobileBar.js";
 import Footer from "components/Footer/FooterDark.js";
 // custom components
 import ProductDetails from "./Sections/ProductDetails.js";
+import Notes from "./Sections/Notes.js";
 import Manage from "./Sections/Manage.js";
 import Purchase from "./Sections/Purchase.js";
 import BackToList from "./Sections/BackToList.js";
@@ -45,6 +46,7 @@ export default function EditPage(props) {
   const [productQuantity, setProductQuantity] = useState(0);
   const [productReserved, setProductReserved] = useState(0);
   const [productPurchased, setProductPurchased] = useState(0);
+  const [productNotes, setProductNotes] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [load, setLoad] = useState(false);
@@ -84,10 +86,11 @@ export default function EditPage(props) {
 
       if (list) {
         setListTitle(list.list.title);
-        const product_quantities = list.products[reservation.productId];
-        setProductQuantity(product_quantities['quantity'])
-        setProductReserved(product_quantities['reserved'])
-        setProductPurchased(product_quantities['purchased'])
+        const product_data = list.products[reservation.productId];
+        setProductQuantity(product_data['quantity'])
+        setProductReserved(product_data['reserved'])
+        setProductPurchased(product_data['purchased'])
+        setProductNotes(product_data.notes)
       } else {
         reservation['state'] = 'error';
       }
@@ -137,6 +140,12 @@ export default function EditPage(props) {
                 />
               {reserved
                   ? <div>
+                      {productNotes
+                        ? <Notes
+                            notes={productNotes}
+                          />
+                        : null
+                      }
                       <Purchase
                         resvId={resvId}
                         listTitle={listTitle}

@@ -153,10 +153,10 @@ const style = theme => ({
     fontWeight: "400",
     color: "#495057"
   },
-  sectionSpacer: {
+  spacer: {
+    display: "none",
     [theme.breakpoints.down("xs")]: {
-      borderBottom:"1px solid rgba(153, 153, 153,0.3)",
-      paddingTop: "20px"
+      display: "block"
     }
   }
 });

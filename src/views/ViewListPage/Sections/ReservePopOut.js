@@ -169,7 +169,7 @@ function ReservePopout(props) {
           <h3 className={classes.title + " " + classes.modalTitle + " " + classes.desktop}>
             Reserve Item
           </h3>
-          <div className={classes.sectionSpacer} />
+          <hr className={classes.spacer}/>
           {product.notes
             ? <div>
                 <h3 className={classes.notesIntro}>
@@ -178,7 +178,7 @@ function ReservePopout(props) {
                 <div className={classes.notes}>
                   {product.notes}
                 </div>
-                <div className={classes.sectionSpacer} />
+                <hr className={classes.spacer}/>
               </div>
             : null
           }

@@ -63,7 +63,7 @@ function Purchase(props) {
 
   return (
     <div className={classes.section}>
-      <h3 className={classes.subTitle + " " + classes.sectionHeading}><Redeem className={classes.icon}/> Purchase Gift</h3>
+      <h3 className={classes.subTitle + " " + classes.sectionHeading}><Redeem className={classes.icon}/>Purchase Gift</h3>
       <GridContainer>
         <GridItem md={9} sm={9} xs={12} >
           <p className={classes.shortText}>
