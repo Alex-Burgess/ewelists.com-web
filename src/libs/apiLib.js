@@ -135,13 +135,19 @@ export const confirmPurchase = async (id, email, name, quanity, title, product) 
   }
 }
 
-export const addToList = async (listId, productId, quantity, type) => {
+export const addToList = async (listId, productId, quantity, type, notes) => {
+  const body = {
+    "quantity": quantity,
+    "productType": type
+  }
+
+  if (notes) {
+    body['notes'] = notes
+  }
+
   try {
     return await API.post("lists", "/" + listId + "/product/" +  productId, {
-      body: {
-        "quantity": quantity,
-        "productType": type
-      }
+      body: body
     });
   } catch (e) {
     onError("Could not add product (" + productId + ") to list (" + listId + "). Error: " + e.response.data.error)

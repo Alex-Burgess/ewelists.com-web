@@ -21,7 +21,9 @@ const style = theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       width: "160px",
-      maxHeight: "100%"
+      maxHeight: "100%",
+      marginLeft: "auto",
+      marginRight: "auto"
     }
   },
   customFormControl: {
@@ -45,7 +47,7 @@ const style = theme => ({
     fontSize: "0.9em",
     fontWeight: "300",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "0.85em",
+      fontSize: "1.15em",
     }
   },
   errorContainer: {
@@ -56,7 +58,7 @@ const style = theme => ({
     marginRight: "Auto",
     [theme.breakpoints.down("xs")]: {
       width: "80%",
-      minHeight: "20px",
+      minHeight: "0px",
     }
   },
   messageContainer: {
@@ -65,10 +67,13 @@ const style = theme => ({
   },
   results: {
     minHeight: "390px",
-    marginTop: "30px"
+    marginTop: "30px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "0px",
+    }
   },
   price: {
-    paddingTop: "15px",
+    paddingTop: "5px",
     fontSize: "18px",
     fontWeight: "300",
     color: grayColor[22]
@@ -89,13 +94,26 @@ const style = theme => ({
       color: primaryColor[2] + "  !important"
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1.05em",
+      fontSize: "1.45em",
     }
   },
   tdQuantity: {
     minWidth: "130px",
+    maxWidth: "250px",
+    textAlign: "center",
     [theme.breakpoints.down("md")]: {
-      minWidth: "130px"
+      minWidth: "130px",
+      // maxWidth: "unset",
+    }
+  },
+  reserveButton: {
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
+  },
+  quantityContainer: {
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "10px"
     }
   }
 });

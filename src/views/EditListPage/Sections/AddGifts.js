@@ -53,6 +53,7 @@ export default function SectionAddGifts(props) {
   const [productUrl, setProductUrl] = useState('');
   const [productImageUrl, setProductImageUrl] = useState('');
   const [productQuantity, setProductQuantity] = useState(1);
+  const [notes, setNotes] = useState(null);
 
   const decreaseProductQuantity = () => {
     var quantity = productQuantity;
@@ -115,7 +116,7 @@ export default function SectionAddGifts(props) {
     debugError("adding product (" + productId + ") to list: (" + listId + ")");
 
     try {
-      const response = await addToList(listId, productId, productQuantity, "products")
+      const response = await addToList(listId, productId, productQuantity, "products", notes)
       debugError("Add response: " + response.message);
     } catch (e) {
       if (e.response.data.error === 'Product already exists in list.') {
@@ -165,7 +166,7 @@ export default function SectionAddGifts(props) {
 
     // Update list with new product id
     try {
-      const updateListResponse = await addToList(listId, createResponse.productId, notFoundQuantity, "notfound")
+      const updateListResponse = await addToList(listId, createResponse.productId, notFoundQuantity, "notfound", notes)
       debugError("Add response: " + updateListResponse.message);
     } catch (e) {
       setError('Product could not be added to your list.');
@@ -226,17 +227,7 @@ export default function SectionAddGifts(props) {
           </h5>
           <form className={classes.form}>
             <Input
-              labelText="Brand"
-              id="brand"
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                onChange: event => setNotFoundBrand(event.target.value)
-              }}
-            />
-            <Input
-              labelText="Details"
+              labelText="What is it? e.g. Scooter"
               id="details"
               formControlProps={{
                 fullWidth: true
@@ -246,14 +237,24 @@ export default function SectionAddGifts(props) {
               }}
             />
             <Input
-              labelText="Link"
-              id="url"
+              labelText="Where is it from? e.g. Amazon"
+              id="brand"
               formControlProps={{
                 fullWidth: true
               }}
               inputProps={{
-                value: notFoundUrl,
-                onChange: event => setNotFoundUrl(event.target.value)
+                onChange: event => setNotFoundBrand(event.target.value)
+              }}
+            />
+            <Input
+              labelText="Add any extra notes (optional). e.g. colour"
+              id="notes"
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                value: notes,
+                onChange: event => setNotes(event.target.value)
               }}
             />
             <div className={classes.textCenter}>
@@ -278,62 +279,57 @@ export default function SectionAddGifts(props) {
 
   const renderMobileSearchResultTable = () => {
     return (
-      <Table
-          tableHead={[
-            "",
-            ""
-          ]}
-          tableData={[
-            [
-              <div className={classes.textCenter}>
-                <div className={classes.imgContainer}>
-                  <a href={productUrl} target="_blank" rel="noopener noreferrer">
-                    <img src={productImageUrl} alt="..." className={classes.img} />
-                  </a>
-                </div>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
-                  {productBrand}
-                </a>
-                <br />
-                <small className={classes.tdNameSmall}>
-                  {productDetails}
-                </small>
-                {productPrice
-                  ? <div className={classes.price}>
-                      £ {productPrice}
-                    </div>
-                  : null
-                }
-              </div>,
-              <div className={classes.textCenter}>
-              <span>
-                <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
-                  <Remove />
-                </Button>
-                {` `}{productQuantity}{` `}
-                <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
-                  <Add />
-                </Button>
-              </span>
-              <Button default size="sm" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
-                Add to list
-              </Button>
+      <GridContainer>
+        <GridItem xs={12} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}>
+          <div className={classes.imgContainer}>
+            <a href={productUrl} target="_blank" rel="noopener noreferrer">
+              <img src={productImageUrl} alt="..." className={classes.img} />
+            </a>
+          </div>
+          <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
+            {productBrand}
+          </a>
+          <br />
+          <small className={classes.tdNameSmall}>
+            {productDetails}
+          </small>
+          {productPrice
+            ? <div className={classes.price}>
+                £ {productPrice}
               </div>
-
-            ]
-          ]
+            : null
           }
-          tableShopping
-          customHeadCellClasses={[
-            classes.textCenter
-          ]}
-          customHeadClassesForCells={[2]}
-          customCellClasses={[
-            classes.tdName,
-            classes.tdQuantity
-          ]}
-          customClassesForCells={[0,1]}
-        />
+        </GridItem>
+        <GridItem xs={12} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter + " " + classes.quantityContainer}>
+          <span>
+            <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
+              <Remove />
+            </Button>
+            {` `}{productQuantity}{` `}
+            <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
+              <Add />
+            </Button>
+          </span>
+        </GridItem>
+        <GridItem xs={12} sm={7} md={7}>
+          <Input
+            labelText="Add any extra notes (optional). e.g. colour"
+            id="notes"
+            formControlProps={{
+              fullWidth: true
+            }}
+            inputProps={{
+              value: notes,
+              onChange: event => setNotes(event.target.value)
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={7} md={7}>
+          <Button default size="lg" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
+            Add to list
+          </Button>
+        </GridItem>
+      </GridContainer>
     )
   }
 
@@ -341,7 +337,6 @@ export default function SectionAddGifts(props) {
     return (
       <Table
           tableHead={[
-            "",
             "",
             "",
             ""
@@ -368,18 +363,37 @@ export default function SectionAddGifts(props) {
                   : null
                 }
               </span>,
-              <span>
-                <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
-                  <Remove />
-                </Button>
-                {` `}{productQuantity}{` `}
-                <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
-                  <Add />
-                </Button>
-              </span>,
-              <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
-                Add to list
-              </Button>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                  <Input
+                    labelText="Add any extra notes (optional). e.g. colour"
+                    id="notes"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      value: notes,
+                      onChange: event => setNotes(event.target.value)
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={6} md={6} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}>
+                  <span>
+                    <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
+                      <Remove />
+                    </Button>
+                    {` `}{productQuantity}{` `}
+                    <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
+                      <Add />
+                    </Button>
+                  </span>
+                </GridItem>
+                <GridItem xs={12} sm={6} md={6}>
+                  <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
+                    Add to list
+                  </Button>
+                </GridItem>
+              </GridContainer>
             ]
           ]
           }
