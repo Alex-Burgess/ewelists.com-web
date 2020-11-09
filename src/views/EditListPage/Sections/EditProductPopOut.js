@@ -17,7 +17,10 @@ import Add from "@material-ui/icons/Add";
 import Button from "components/Buttons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import Input from "components/Input/CustomInput.js";
 import ErrorText from "components/Typography/Error.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/editListPage/editProductPopOutStyle.js";
 const useStyles = makeStyles(styles);
@@ -33,13 +36,15 @@ export default function EditPopOut(props) {
   const { open, listId, product, deleteProductFromState, updateProductToState, handleClose } = props;
   const [error, setError] = useState('');
   const [newQuantity, setNewQuantity] = useState('');
+  const [newNotes, setNewNotes] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const totalReserved = product['reserved'] + product['purchased'];
+  const totalReserved = product.reserved + product.purchased;
 
   useEffect(() => {
-    setNewQuantity(product['quantity'])
+    setNewQuantity(product.quantity)
+    setNewNotes(product.notes)
   }, [product])
 
   const decreaseQuantity = () => {
@@ -53,18 +58,19 @@ export default function EditPopOut(props) {
   }
 
   const closeEditPopOut = () => {
-    setNewQuantity(product['quantity']);
-    handleClose(product['productId']);
+    setNewQuantity(product.quantity);
+    setNewNotes(product.notes)
+    handleClose(product.productId);
   }
 
   const removeProduct = async () => {
     setError('');
     setIsDeleting(true);
 
-    let productId = product['productId'];
-    let type = product['type'];
+    let productId = product.productId;
+    let type = product.type;
 
-    const reservedQuantity = product['reserved'] + product['purchased'];
+    const reservedQuantity = product.reserved + product.purchased;
 
     if (reservedQuantity > 0) {
       debugError("Reserved number: " + reservedQuantity);
@@ -108,25 +114,27 @@ export default function EditPopOut(props) {
     setIsUpdating(true);
     setError('');
 
-    let productId = product['productId'];
-    let quantity = product['quantity'];
+    let productId = product.productId;
     debugError("Updating product (" + productId + ") for list (" + listId + ")");
 
-    if (quantity === newQuantity) {
-      setError('There are no updates to this item.');
-      setIsUpdating(false);
-      return false;
-    }
+    // let quantity = product.quantity;
+    //
+    // if (quantity === newQuantity) {
+    //   setError('There are no updates to this item.');
+    //   setIsUpdating(false);
+    //   return false;
+    // }
 
     try {
-      await updateProductQuantity(listId, productId, newQuantity);
+      await updateProductQuantity(listId, productId, newQuantity, newNotes);
     } catch (e) {
       setError('Product could not be updated.');
       setIsUpdating(false);
       return false
     }
 
-    product['quantity'] =newQuantity
+    product['quantity'] = newQuantity
+    product['notes'] = newNotes
 
     setIsUpdating(false);
     updateProductToState(product)
@@ -208,52 +216,75 @@ export default function EditPopOut(props) {
             <Close className={classes.modalClose} />
           </Button>
           <Card plain product data-cy={"popout-edit-" + product.productId}>
-            <div className={classes.productImageContainer}>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" data-cy="link-product-image">
-                <img src={product['imageUrl']} className={classes.productImage} alt=".." />
-              </a>
-            </div>
-            <CardBody plain className={classes.productDetails}>
-              <a href={product['productUrl']} target="_blank" rel="noopener noreferrer" data-cy="link-product-brand">
-                <h4 className={classes.cardTitle}>{product['brand']}</h4>
-              </a>
-              <p className={classes.description}>
-                {product['details']}
-              </p>
-              <h6 className={classes.quantity}>
-                {product['quantity']} Requested - {product['reserved'] + product['purchased']} Reserved
-                { product['reserved'] > 0
-                  ? product['reserved'] === 1
+            <GridContainer alignItems="center">
+              <GridItem xs={12} sm={12} md={6}>
+                <div className={classes.productImageContainer}>
+                  <a href={product.productUrl} target="_blank" rel="noopener noreferrer" data-cy="link-product-image">
+                    <img src={product.imageUrl} className={classes.productImage} alt=".." />
+                  </a>
+                </div>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <CardBody plain className={classes.productDetails}>
+                  <a href={product.productUrl} target="_blank" rel="noopener noreferrer" data-cy="link-product-brand">
+                    <h4 className={classes.cardTitle}>{product.brand}</h4>
+                  </a>
+                  <p className={classes.description}>
+                    {product.details}
+                  </p>
+                  <h6 className={classes.quantity}>
+                    {product.quantity} Requested - {product.reserved + product.purchased} Reserved
+                    { product.reserved > 0
+                      ? product.reserved === 1
+                        ? <div>
+                            (Pending purchase confirmation)
+                          </div>
+                        : <div>
+                            ({product.reserved} pending purchase confirmation)
+                          </div>
+                      : null
+                    }
+                  </h6>
+                </CardBody>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={12}>
+                <div className={classes.notesContainer}>
+                  <Input
+                    labelText="Notes to gift buyer"
+                    id={"notes-" + product.productId}
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      value: newNotes,
+                      multiline: true,
+                      rows: 3,
+                      onChange: event => setNewNotes(event.target.value)
+                    }}
+                  />
+                </div>
+                <div className={classes.textCenter}>
+                  {product.reserved + product.purchased > 0
                     ? <div>
-                        (Pending purchase confirmation)
+                        <h6 className={classes.quantity}>
+                          This gift has been reserved, it is no longer possible to remove it from the list, but you can increase the quantity.
+                        </h6>
+                        {editButtons()}
                       </div>
-                    : <div>
-                        ({product['reserved']} pending purchase confirmation)
-                      </div>
+                    : allButtons()
+                  }
+                </div>
+                {error
+                  ?
+                    <div className={classes.errorContainer + " " + classes.centerText}>
+                      <ErrorText>
+                        <p>{error}</p>
+                      </ErrorText>
+                    </div>
                   : null
                 }
-              </h6>
-              <div className={classes.textCenter}>
-                {product['reserved'] + product['purchased'] > 0
-                  ? <div>
-                      <h6 className={classes.quantity}>
-                        This gift has been reserved, it is no longer possible to remove it from the list, but you can increase the quantity.
-                      </h6>
-                      {editButtons()}
-                    </div>
-                  : allButtons()
-                }
-              </div>
-              {error
-                ?
-                  <div className={classes.errorContainer + " " + classes.centerText}>
-                    <ErrorText>
-                      <p>{error}</p>
-                    </ErrorText>
-                  </div>
-                : null
-              }
-            </CardBody>
+              </GridItem>
+            </GridContainer>
           </Card>
         </DialogContent>
       </Dialog>

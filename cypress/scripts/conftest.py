@@ -193,7 +193,8 @@ def example_fixture():
                 "type": "notfound",
                 "quantity": 1,
                 "reserved": 0,
-                "purchased": 0
+                "purchased": 0,
+                "notes": "Custom user notes"
             },
             {
                 "brand": "BABYBJÖRN",

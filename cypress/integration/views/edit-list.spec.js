@@ -40,6 +40,7 @@ TestFilter(['smoke', 'regression'], () => {
       // Complete form to add product
       cy.get('#brand').type('Local Brand', {force: true})
       cy.get('#details').type('Scooter', {force: true})
+      cy.get('#notes').type('I would like size small', {force: true})
       cy.get('[data-cy=button-add-notfound-gift]').click({force: true})
 
       // Check gift added to table
@@ -61,11 +62,20 @@ TestFilter(['smoke', 'regression'], () => {
       });
 
       cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][0] + ']').within(($product) => {
-        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('#notes-' + seedResponse['product_ids'][0]).type('To keep at Grandparents house.')
+        cy.get('[data-cy=link-quantity-increase]').click()
         cy.get('[data-cy=popout-button-update]').click()
       })
 
-      cy.get('table').contains('tr', '1')
+      cy.get('table').contains('tr', 'John Lewis').within(elem => {
+        cy.contains('Trike')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][0] + ']').within(($product) => {
+        cy.contains('3 Requested - 0 Reserved')
+        cy.contains('To keep at Grandparents house.')
+      })
     })
 
     it('Deletes notfound item.', () => {
@@ -89,6 +99,7 @@ TestFilter(['smoke', 'regression'], () => {
       cy.get('[data-cy=button-search-product]').click({force: true})
 
       // Complete form to add product
+      cy.get('#notes').type('This will be great in the playroom', {force: true})
       cy.get('[data-cy=button-add-found-gift]').click({force: true})
 
       // Check gift added to table
@@ -102,8 +113,20 @@ TestFilter(['smoke', 'regression'], () => {
       });
 
       cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][2] + ']').within(($product) => {
-        cy.get('[data-cy=link-quantity-decrease]').click()
+        cy.get('#notes-' + seedResponse['product_ids'][2]).contains('We really want this item.')
+        cy.get('#notes-' + seedResponse['product_ids'][2]).clear().type('This item is a must.')
+        cy.get('[data-cy=link-quantity-increase]').click()
         cy.get('[data-cy=popout-button-update]').click()
+      })
+
+      // Test that popout show updated details
+      cy.get('table').contains('tr', 'Tender Leaf Toys').within(elem => {
+        cy.contains('Forest Chair')
+        cy.get('[data-cy=link-image]').click()
+      });
+
+      cy.get('[data-cy=popout-edit-' + seedResponse['product_ids'][2] + ']').within(($product) => {
+        cy.contains('This item is a must.')
       })
     })
 

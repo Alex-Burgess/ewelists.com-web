@@ -98,6 +98,9 @@ def create_product_list_item(table, list_id, product_id, product):
             "quantity": {'N': str(product['quantity'])},
             "reserved": {'N': str(product['reserved'])}
         }
+
+        if 'notes' in product:
+            item['notes'] = {'S': product['notes']}
     except Exception as e:
         error("The product json object was not correct.", e)
 

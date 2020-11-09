@@ -59,6 +59,10 @@ class TestCreateProductListItem:
     def test_create_product_list_item(self, dynamodb_mock, notfound_product):
         assert seed_db.create_product_list_item('lists-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
 
+    def test_create_product_list_item_with_notes(self, dynamodb_mock, notfound_product):
+        notfound_product['notes'] = "Custom user notes"
+        assert seed_db.create_product_list_item('lists-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', notfound_product)
+
     def test_bad_product(self, dynamodb_mock):
         with pytest.raises(SystemExit) as e:
             seed_db.create_product_list_item('wrong-unittest', '12345678-list-0001-1234-abcdefghijkl', '12345678-user-0001-1234-abcdefghijkl', {})

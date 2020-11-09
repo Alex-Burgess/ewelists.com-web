@@ -177,10 +177,13 @@ export const reserveProduct = async (listId, productId, email, name, quanity, ti
   }
 }
 
-export const updateProductQuantity = async (listId, productId, quantity) => {
+export const updateProductQuantity = async (listId, productId, quantity, notes) => {
   try {
     return await API.put("lists", "/" + listId + "/product/" +  productId, {
-      body: { "quantity": quantity }
+      body: {
+        "quantity": quantity,
+        "notes": notes
+      }
     });
   } catch (e) {
     onError("Unexpected error occurred when updating product on list . Error: " + e.response.data.error)

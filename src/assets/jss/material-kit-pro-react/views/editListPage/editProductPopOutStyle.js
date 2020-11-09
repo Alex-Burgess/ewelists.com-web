@@ -74,6 +74,9 @@ const style = theme => ({
     fontWeight: "normal",
     paddingTop: "10px"
   },
+  notesContainer: {
+    paddingTop: "20px"
+  }
 });
 
 export default style;

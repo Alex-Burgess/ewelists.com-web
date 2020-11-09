@@ -43,7 +43,8 @@
           "type": "products",
           "quantity": 1,
           "reserved": 0,
-          "purchased": 0
+          "purchased": 0,
+          "notes": "We really want this item."
       }
   ]
 }

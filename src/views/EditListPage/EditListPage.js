@@ -114,7 +114,8 @@ export default function EditPage(props) {
     setProducts(
       update(products, {
         [product['productId']]: {
-          quantity: {$set: product['quantity']}
+          quantity: {$set: product['quantity']},
+          notes: {$set: product['notes']}
         }
       })
     )
