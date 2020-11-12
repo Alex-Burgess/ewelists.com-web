@@ -20,7 +20,7 @@ const style = theme => ({
       width: "100%"
     },
     [theme.breakpoints.down("xs")]: {
-      width: "160px",
+      width: "100%",
       maxHeight: "100%",
       marginLeft: "auto",
       marginRight: "auto"
@@ -30,7 +30,7 @@ const style = theme => ({
     paddingTop: "14px",
     minWidth: "500px",
     [theme.breakpoints.down("xs")]: {
-      minWidth: "310px",
+      minWidth: "272px",
     }
   },
   customQuanityFormControl: {
@@ -47,18 +47,17 @@ const style = theme => ({
     fontSize: "0.9em",
     fontWeight: "300",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1.15em",
+      fontSize: "14px",
     }
   },
   errorContainer: {
     textAlign: "center !important",
-    minHeight: "50px",
+    minHeight: "0px",
     width: "60%",
     marginLeft: "Auto",
     marginRight: "Auto",
     [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      minHeight: "0px",
+      width: "80%"
     }
   },
   messageContainer: {
@@ -74,6 +73,7 @@ const style = theme => ({
   },
   price: {
     paddingTop: "5px",
+    paddingBottom: "10px",
     fontSize: "18px",
     fontWeight: "300",
     color: grayColor[22]
@@ -94,7 +94,7 @@ const style = theme => ({
       color: primaryColor[2] + "  !important"
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1.45em",
+      fontSize: "15px",
     }
   },
   tdQuantity: {
@@ -115,6 +115,53 @@ const style = theme => ({
     [theme.breakpoints.down("xs")]: {
       paddingTop: "10px"
     }
+  },
+  switchButton: {
+    textAlign: "center",
+    paddingTop: "30px"
+  },
+  description: {
+    color: grayColor[0],
+    fontWeight: "400",
+    fontSize: "15px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "13px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
+      marginBottom: "0px"
+    },
+  },
+  searchInput: {
+    backgroundColor: "#f2f2f2",
+    boxShadow: "none",
+    width: "600px",
+    display: "inline-flex",
+    // maxWidth: "600px",
+    "&:focus-within": {
+      border: "1px solid black"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "550px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "15px",
+      width: "100%"
+    }
+  },
+  searchButton: {
+    height: "46px",
+    margin: "0px 0px 0px 3px",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "10px"
+    }
+  },
+  notes: {
+    marginTop: "30px"
+  },
+  searchResult: {
+    border: "1px solid #d3d3d3",
+    padding: "10px 0px"
   }
 });
 

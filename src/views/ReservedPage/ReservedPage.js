@@ -73,10 +73,14 @@ export default function EditPage(props) {
       product['details'] = product_response.details;
       product['productUrl'] = product_response.productUrl;
 
-      if (reservation.productType === 'products') {
+      if (product_response.imageUrl) {
         product['imageUrl'] = product_response.imageUrl;
       } else {
         product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
+      }
+
+      if (product_response.price) {
+        product['price'] = product_response.price;
       }
 
       setProduct(product);

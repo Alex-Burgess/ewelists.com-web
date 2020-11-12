@@ -28,7 +28,7 @@ const useStyles = makeStyles(styles);
 export default function EditPage(props) {
   const classes = useStyles();
   const { search } = useLocation();
-  const { setTabTitle, mobile } = useAppContext();
+  const { setTabTitle, breakpoint } = useAppContext();
 
   const listId = props.match.params.id;
 
@@ -123,7 +123,8 @@ export default function EditPage(props) {
 
   const setActive = (id) => {
     setTabId(id);
-    if (mobile) {
+
+    if (breakpoint === 'xs') {
       if (window.pageYOffset < 200) {
         window.scrollTo({ top: navScrollHeight(), behavior: 'smooth' })
       }
@@ -209,7 +210,6 @@ export default function EditPage(props) {
               tabContent: (
                 <div>
                   <AddGifts
-                    mobile={mobile}
                     listId={listId}
                     addProductToState={addProductToState}
                     setActive={setActive}
@@ -224,7 +224,6 @@ export default function EditPage(props) {
                 <div>
                   <Reserved
                     loading={productsLoading}
-                    mobile={mobile}
                     reserved={reserved}
                     products={products}
                   />

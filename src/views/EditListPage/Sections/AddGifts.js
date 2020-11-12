@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 // libs
 import { useAppContext } from "libs/contextLib";
-import { addToList, createProduct, searchByUrl } from "libs/apiLib";
+import { addToList, createProduct, searchByUrl, queryMetadata } from "libs/apiLib";
 import { debugError } from "libs/errorLib";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import SearchBar from "material-ui-search-bar";
 // @material-ui icons
-import Search from "@material-ui/icons/Search";
 import Add from "@material-ui/icons/Add";
-import Clear from "@material-ui/icons/Clear";
 import Remove from "@material-ui/icons/Remove";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -34,8 +33,9 @@ export default function SectionAddGifts(props) {
   const { listId, addProductToState, setActive } = props;
 
   const [error, setError] = useState('');
-  const [searchResult, setSearchResult] = useState('');
+  const [searchResult, setSearchResult] = useState(false);
   const [searchSuccess, setSearchSuccess] = useState(false);
+  const [showSearchResultMessage, setShowSearchResultMessage] = useState(false);
   const [searchUrl, setSearchUrl] = useState('');
   const [listUpdated, setListUpdated] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
@@ -53,7 +53,7 @@ export default function SectionAddGifts(props) {
   const [productUrl, setProductUrl] = useState('');
   const [productImageUrl, setProductImageUrl] = useState('');
   const [productQuantity, setProductQuantity] = useState(1);
-  const [notes, setNotes] = useState(null);
+  const [notes, setNotes] = useState('');
 
   const decreaseProductQuantity = () => {
     var quantity = productQuantity;
@@ -75,9 +75,25 @@ export default function SectionAddGifts(props) {
     setNotFoundQuantity(quantity);
   }
 
+  const clear = () => {
+    setSearchResult(false);
+    setSearchUrl('');
+    setShowSearchResultMessage(false);
+  }
+
+  const switchForm = () => {
+    setSearchSuccess(false);
+    setShowSearchResultMessage(false);
+  }
+
   const searchProduct = async event => {
     setError('');
     setIsSearching(true);
+
+    if (searchUrl.length === 0){
+      return false
+    }
+
     let product;
     let url = parseUrl(searchUrl);
 
@@ -85,7 +101,7 @@ export default function SectionAddGifts(props) {
       const response = await searchByUrl(url);
       product = response.product;
     } catch (e) {
-      setError('Product could not be found.');
+      setError('There was an unexpected error.');
       setIsSearching(false);
       return false
     }
@@ -99,9 +115,29 @@ export default function SectionAddGifts(props) {
       setProductUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
-      debugError("Notfound url: " + url);
-      setNotFoundUrl(url);
-      setSearchSuccess(false);
+      debugError("Url not found in products table: " + url);
+
+      let metadata;
+      try {
+        metadata = await queryMetadata(url);
+      } catch (e) {
+        setIsSearching(false);
+        // return false
+      }
+
+      if (metadata) {
+        setSearchSuccess(true);
+        setProductBrand(metadata.site_name || '');
+        setProductDetails(metadata.title || '');
+        setProductPrice(metadata.price || '');
+        setProductUrl(url);
+        setProductImageUrl(metadata.image || '');
+      } else {
+        debugError("Notfound url: " + url);
+        setNotFoundUrl(url);
+        setSearchSuccess(false);
+        setShowSearchResultMessage(true);
+      }
     }
 
     setSearchResult(true);
@@ -113,10 +149,28 @@ export default function SectionAddGifts(props) {
   const addProductToList = async event => {
     setIsAdding(true);
     setError('');
-    debugError("adding product (" + productId + ") to list: (" + listId + ")");
+    let id = productId;
+    let type = 'products';
 
+    if (productId.length === 0) {
+      let createResponse;
+
+      try {
+        createResponse = await createProduct(productBrand, productDetails, productUrl, productImageUrl, productPrice);
+        // createResponse = await createProduct(productBrand, productDetails, productUrl);
+        debugError("created product: " + createResponse.productId);
+        id = createResponse.productId;
+        type = 'notfound';
+      } catch (e) {
+        setError('Product could not be added to your list.');
+        setIsAdding(false);
+        return false
+      }
+    }
+
+    debugError("adding product (" + id + ") to list: (" + listId + ")");
     try {
-      const response = await addToList(listId, productId, productQuantity, "products", notes)
+      const response = await addToList(listId, id, productQuantity, type, notes)
       debugError("Add response: " + response.message);
     } catch (e) {
       if (e.response.data.error === 'Product already exists in list.') {
@@ -130,14 +184,14 @@ export default function SectionAddGifts(props) {
     }
 
     let product = {
-      productId: productId,
+      productId: id,
       quantity: productQuantity,
       reserved: 0,
       purchased: 0,
       price: productPrice,
       brand: productBrand,
       details: productDetails,
-      type: 'products',
+      type: type,
       productUrl: productUrl,
       imageUrl: productImageUrl
     }
@@ -149,6 +203,7 @@ export default function SectionAddGifts(props) {
     setActive(0);
   }
 
+  // Creates gift in notfound table and adds to list
   const createGift = async event => {
     setIsAdding(true);
     setError('');
@@ -222,9 +277,13 @@ export default function SectionAddGifts(props) {
         <GridItem xs={12} sm={7} md={7} lg={7}
           className={classes.mrAuto + " " + classes.mlAuto}
         >
-          <h5>
-            We don't currently have any details for this product. Add the item with some basic details below and we'll update the item a.s.a.p.
-          </h5>
+          {
+            showSearchResultMessage
+            ? <h5>
+                We don't currently have any details for this product. Add the item with some basic details below and we'll update the item a.s.a.p.
+              </h5>
+            : null
+          }
           <form className={classes.form}>
             <Input
               labelText="What is it? e.g. Scooter"
@@ -279,13 +338,15 @@ export default function SectionAddGifts(props) {
 
   const renderMobileSearchResultTable = () => {
     return (
-      <GridContainer>
-        <GridItem xs={12} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}>
+      <GridContainer alignItems="center" className={classes.searchResult}>
+        <GridItem xs={5} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}>
           <div className={classes.imgContainer}>
             <a href={productUrl} target="_blank" rel="noopener noreferrer">
               <img src={productImageUrl} alt="..." className={classes.img} />
             </a>
           </div>
+        </GridItem>
+        <GridItem xs={7} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter + " " + classes.quantityContainer}>
           <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
             {productBrand}
           </a>
@@ -299,19 +360,19 @@ export default function SectionAddGifts(props) {
               </div>
             : null
           }
+          <div>
+            <span>
+              <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
+                <Remove />
+              </Button>
+              {` `}{productQuantity}{` `}
+              <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
+                <Add />
+              </Button>
+            </span>
+          </div>
         </GridItem>
-        <GridItem xs={12} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter + " " + classes.quantityContainer}>
-          <span>
-            <Button color="primary" size="sm" simple onClick={() => decreaseProductQuantity()}>
-              <Remove />
-            </Button>
-            {` `}{productQuantity}{` `}
-            <Button color="primary" size="sm" simple onClick={() => setProductQuantity(productQuantity + 1)}>
-              <Add />
-            </Button>
-          </span>
-        </GridItem>
-        <GridItem xs={12} sm={7} md={7}>
+        <GridItem xs={12} sm={7} md={7} className={classes.notes}>
           <Input
             labelText="Add any extra notes (optional). e.g. colour"
             id="notes"
@@ -325,7 +386,7 @@ export default function SectionAddGifts(props) {
           />
         </GridItem>
         <GridItem xs={12} sm={7} md={7}>
-          <Button default size="lg" color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
+          <Button default color="primary" className={classes.reserveButton} disabled={isAdding} onClick={() => addProductToList()} data-cy="button-add-found-gift">
             Add to list
           </Button>
         </GridItem>
@@ -415,62 +476,42 @@ export default function SectionAddGifts(props) {
     return (
       <Card plain>
           <CardBody plain>
-      {
-        breakpoint === 'xs' || breakpoint === 'sm'
-          ? renderMobileSearchResultTable()
-          : renderDesktopSearchResultTable()
-      }
-      </CardBody>
-    </Card>
+            {
+              breakpoint === 'xs' || breakpoint === 'sm'
+                ? renderMobileSearchResultTable()
+                : renderDesktopSearchResultTable()
+            }
+            <div className={classes.switchButton}>
+              <p className={classes.description}>
+                Details not what you thought they were? Use our form to add your item instead.
+              </p>
+              <Button color="secondary" onClick={() => switchForm()} data-cy="button-switch-to-custom">
+                Custom Form
+              </Button>
+            </div>
+          </CardBody>
+        </Card>
     )
   }
 
-  const renderDesktopSearchInput = () => {
+  const renderSearchInput = () => {
     return (
       <div className={classes.textCenter}>
-        <Input
-          id="searchUrl"
-          formControlProps={{
-            fullWidth: false,
-            className: classes.customFormControl
-          }}
-          inputProps={{
-            placeholder: "Enter url...",
-            onChange: event => setSearchUrl(event.target.value),
-            value: searchUrl
-          }}
+        <SearchBar
+          value={searchUrl}
+          placeholder={"Paste link..."}
+          onChange={(newValue) => setSearchUrl(newValue)}
+          onRequestSearch={() => searchProduct()}
+          onCancelSearch={() => clear()}
+          className={classes.searchInput}
         />
-      <Button color="primary" justIcon onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching} data-cy="button-search-product">
-          <Search />
-        </Button>
-        <Button justIcon onClick={() => setSearchUrl('')}>
-          <Clear />
-        </Button>
-      </div>
-    )
-  }
-
-  const renderMobileSearchInput = () => {
-    return (
-      <div className={classes.textCenter}>
-        <Input
-          id="searchUrl"
-          formControlProps={{
-            fullWidth: false,
-            className: classes.customFormControl
-          }}
-          inputProps={{
-            placeholder: "Enter url...",
-            onChange: event => setSearchUrl(event.target.value),
-            value: searchUrl
-          }}
-        />
-        <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching} data-cy="button-search-product">
-          <Search /> Search
-        </Button>
-        <Button onClick={() => setSearchUrl('')}>
-          <Clear /> Clear
-        </Button>
+        {
+          searchResult
+          ? null
+          : <Button color="primary" onClick={() => searchProduct()} disabled={!validateSearchForm() || isSearching} data-cy="button-search-product" className={classes.searchButton}>
+              Search
+            </Button>
+        }
       </div>
     )
   }
@@ -482,10 +523,7 @@ export default function SectionAddGifts(props) {
           <GridItem xs={12} sm={12} md={10} lg={9}
             className={classes.mrAuto + " " + classes.mlAuto}
           >
-            { breakpoint === 'xs' || breakpoint === 'sm'
-              ? renderMobileSearchInput()
-              : renderDesktopSearchInput()
-            }
+            {renderSearchInput()}
             <div className={classes.errorContainer}>
             {error
               ? <ErrorText>

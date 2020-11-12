@@ -212,14 +212,24 @@ export const getProduct = async (id, type) => {
   }
 }
 
-export const createProduct = async (brand, details, url) => {
+export const createProduct = async (brand, details, url, image, price) => {
+  let body = {
+    "brand": brand,
+    "details": details,
+    "url": url,
+  }
+
+  if (image) {
+    body['imageUrl'] = image;
+  }
+
+  if (price) {
+    body['price'] = price;
+  }
+
   try {
     return await API.post("notfound", "/", {
-      body: {
-        "brand": brand,
-        "details": details,
-        "url": url,
-      }
+      body: body
     });
   } catch (e) {
     onError("Could not create the product in table. Error: " + e.response.data.error);
@@ -291,7 +301,7 @@ export const getProducts = async (products) => {
       product['details'] = productResponse.details;
       product['productUrl'] = productResponse.productUrl;
 
-      if (product.type === 'products') {
+      if (productResponse.imageUrl) {
         product['imageUrl'] = productResponse.imageUrl;
       } else {
         product['imageUrl'] = config.imagePrefix + '/images/product-default.jpg';
@@ -313,6 +323,15 @@ export const searchByUrl = async (url) => {
     return await API.get("products", "/url/" + encodeURIComponent(url));
   } catch (e) {
     onError("Unexpected error occurred when searching for product url. Error: " + e.response.data.error);
+    throw e;
+  }
+}
+
+export const queryMetadata = async (url) => {
+  try {
+    return await API.get("products", "/query/metadata/" + encodeURIComponent(url));
+  } catch (e) {
+    onError("Unexpected error occurred when searching for url metadata. Error: " + e.response.data.error);
     throw e;
   }
 }

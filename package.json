@@ -15,6 +15,7 @@
     "gulp-append-prepend": "^1.0.8",
     "history": "^5.0.0",
     "immutability-helper": "^3.1.1",
+    "material-ui-search-bar": "^1.0.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "nouislider": "^14.6.2",

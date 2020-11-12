@@ -34,7 +34,7 @@ TestFilter(['smoke', 'regression'], () => {
     it('Adds notfound item.', () => {
       cy.get('#AddItems').click()
       // Seems to be a bug (?) with using swipeable view and cypress so use force as work around.
-      cy.get('#searchUrl').should('have.attr', 'placeholder', 'Enter url...').type('https://notfound.com', {force: true})
+      cy.get('.MuiInput-input').type('https://notfound.com', {force: true})
       cy.get('[data-cy=button-search-product]').click({force: true})
 
       // Complete form to add product
@@ -95,7 +95,7 @@ TestFilter(['smoke', 'regression'], () => {
     it('Adds found item.', () => {
       // Seems to be a bug (?) with using swipeable view and cypress so use force as work around.
       cy.get('[data-cy=button-add-item]').click()
-      cy.get('#searchUrl').type('https://www.amazon.co.uk/dp/B07DJ5KX53/', {force: true})
+      cy.get('.MuiInput-input').type('https://www.amazon.co.uk/dp/B07DJ5KX53/', {force: true})
       cy.get('[data-cy=button-search-product]').click({force: true})
 
       // Complete form to add product
@@ -142,6 +142,19 @@ TestFilter(['smoke', 'regression'], () => {
       })
 
       cy.get('table').contains('tr', 'Tender Leaf Toys').should('not.exist')
+    })
+
+    it('Switches to manual add form.', () => {
+      // Seems to be a bug (?) with using swipeable view and cypress so use force as work around.
+      cy.get('[data-cy=button-add-item]').click()
+      cy.get('.MuiInput-input').type('https://www.amazon.co.uk/dp/B07DJ5KX53/', {force: true})
+      cy.get('[data-cy=button-search-product]').click({force: true})
+
+      // Switch to manual form
+      cy.get('[data-cy=button-switch-to-custom]').click({force: true})
+
+      // Check gift added to table
+      cy.contains('What is it?')
     })
   })
 })
@@ -204,9 +217,19 @@ TestFilter(['regression'], () => {
 
         // snapshot Add items setion
         cy.get('#AddItems').click()
-        cy.get("#searchUrl").click()
+        cy.contains('Search')
         cy.wait(500)
         cy.get("#navTabContainer").matchImageSnapshot(`Edit-Add-${size}`);
+
+        // snapshot found item
+        cy.get('.MuiInput-input').eq(0).type('https://www.amazon.co.uk/dp/B07DJ5KX53/', {force: true})
+        cy.get('[data-cy=button-search-product]').click({force: true})
+        cy.contains('Travel Cot')
+        cy.get("#navTabContainer").matchImageSnapshot(`Edit-Found-${size}`);
+
+        // snapshot manual form item
+        cy.get('[data-cy=button-switch-to-custom]').click({force: true})
+        cy.get("#navTabContainer").matchImageSnapshot(`Edit-CustomForm-${size}`);
       });
     });
   });
