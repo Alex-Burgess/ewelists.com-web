@@ -26,6 +26,7 @@ const style = theme => ({
     ...cardTitle,
     textAlign: "center",
     marginBottom: "0px !important",
+    marginTop: "0px",
     [theme.breakpoints.down("md")]: {
       fontSize: "1rem"
     },
@@ -52,6 +53,7 @@ const style = theme => ({
     display: "-webkit-box",
     WebkitLineClamp: "2",
     WebkitBoxOrient: "vertical",
+    textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       fontSize: "13px"
     },
@@ -69,7 +71,8 @@ const style = theme => ({
   },
   price: {
     fontSize: "18px",
-    color: grayColor[22]
+    color: grayColor[22],
+    textAlign: "center"
   },
   pullRight: {
     float: "right"
@@ -95,6 +98,9 @@ const style = theme => ({
   textLeft: {
     textAlign: "left"
   },
+  cardImage: {
+    marginTop: "10px"
+  },
   productImage: {
     height: "18vw",
     maxHeight: "276.59px",
@@ -109,6 +115,7 @@ const style = theme => ({
     height: "145px",
     [theme.breakpoints.down("xs")]: {
       height: "unset",
+      minHeight: "125px",
       paddingBottom: "7px"
     },
 
@@ -130,7 +137,6 @@ const style = theme => ({
   },
   footer: {
     display: "block",
-    paddingBottom: "3rem"
   },
   textCenter: {
     textAlign: "center"
@@ -158,6 +164,7 @@ const style = theme => ({
   },
   customProduct: {
     marginTop: "15px",
+    border: "1px solid lightgray",
     [theme.breakpoints.down("xs")]: {
       marginBottom: "0px",
       marginTop: "30px",

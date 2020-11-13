@@ -258,7 +258,7 @@ export default function Products(props) {
       return (
         <GridItem md={4} sm={6} key={i}>
           <Card plain product className={classes.customProduct} data-cy={"product-card-" + product.productId }>
-            <CardHeader noShadow image>
+            <CardHeader noShadow image className={classes.cardImage}>
               {renderImage(userReserved, userPurchased, allReserved, product['imageUrl'], userReservation['reservationId'], product['productId'])}
             </CardHeader>
             <CardBody plain className={classes.productDetails}>
@@ -278,12 +278,12 @@ export default function Products(props) {
               }
             </CardBody>
             <CardFooter plain className={classes.footer}>
-              {renderButton(userReserved, userPurchased, allReserved, userReservation['reservationId'], product['productId'])}
               <div className={classes.remaining}>
                 <h6 className={classes.cardCategory + " " + classes.textCenter}>
                   {renderRemainingQuantities(userReserved, userPurchased, allReserved, quantityRemaining, userReservation['reserved_quantity'], userReservation['purchased_quantity'])}
                 </h6>
               </div>
+              {renderButton(userReserved, userPurchased, allReserved, userReservation['reservationId'], product['productId'])}
             </CardFooter>
           </Card>
         </GridItem>
