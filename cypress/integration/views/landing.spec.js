@@ -20,9 +20,15 @@ TestFilter(['smoke','regression'], () => {
       cy.url().should('include', '/signup')
     })
 
-    it('Checks the Get Started button redirects to signup page', () => {
+    it('Checks the Get Started button redirects to how it works', () => {
       cy.visit('/')
       cy.get('[data-cy=button-how-it-works]').click()
+      cy.url().should('include', '/how-it-works')
+    })
+
+    it('Checks the More details button redirects to how it works', () => {
+      cy.visit('/')
+      cy.get('[data-cy=button-more-details]').click()
       cy.url().should('include', '/how-it-works')
     })
 

@@ -8,6 +8,7 @@ import Group from "@material-ui/icons/Group";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Button from "components/Buttons/Button.js";
 import InfoArea from "./InfoArea.js";
 
 import styles from "assets/jss/material-kit-pro-react/views/landingPage/productStyle.js";
@@ -59,6 +60,11 @@ export default function LandingProduct(props) {
                 iconColor="yellowOrange"
                 vertical
               />
+            </GridItem>
+            <GridItem xs={12} sm={12} md={12} className={classes.textCenter}>
+              <Button size="lg" color="primary" href="/how-it-works" data-cy="button-more-details">
+                More Details
+              </Button>
             </GridItem>
           </GridContainer>
         </div>
