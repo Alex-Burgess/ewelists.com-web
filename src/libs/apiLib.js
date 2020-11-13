@@ -311,6 +311,10 @@ export const getProducts = async (products) => {
         product['price'] = productResponse.price;
       }
 
+      if (productResponse.retailer) {
+        product['retailer'] = productResponse.retailer;
+      }
+
       productDetails[key] = product;
     }
   }

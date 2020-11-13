@@ -158,6 +158,10 @@ const style = theme => ({
     [theme.breakpoints.down("xs")]: {
       display: "block"
     }
+  },
+  retailerLink: {
+    color: primaryColor[0],
+    textDecoration: "underline"
   }
 });
 

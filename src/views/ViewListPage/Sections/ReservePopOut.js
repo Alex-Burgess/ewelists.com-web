@@ -157,6 +157,13 @@ function ReservePopout(props) {
           <h6 className={classes.cardCategory + " " + classes.centerText}>
             Remaining: {product['quantity'] - product['reserved'] - product['purchased']}
           </h6>
+          {
+            product.retailer
+            ? <div className={classes.centerText + " " + classes.retailerLink}>
+                <a href={product.productUrl} >View at {product.retailer}</a>
+              </div>
+            : null
+          }
         </CardBody>
       </Card>
     )
