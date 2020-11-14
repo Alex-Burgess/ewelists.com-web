@@ -36,24 +36,24 @@ export default function SectionAddGifts(props) {
   const [searchResult, setSearchResult] = useState(false);
   const [searchSuccess, setSearchSuccess] = useState(false);
   const [showSearchResultMessage, setShowSearchResultMessage] = useState(false);
-  const [searchUrl, setSearchUrl] = useState('');
   const [listUpdated, setListUpdated] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  // data
+  const [searchUrl, setSearchUrl] = useState('');
+  const [addUrl, setAddUrl] = useState('');
+  const [notes, setNotes] = useState('');
   // Notfound state
   const [notFoundBrand, setNotFoundBrand] = useState('');
   const [notFoundDetails, setNotFoundDetails] = useState('');
   const [notFoundQuantity, setNotFoundQuantity] = useState(1);
-  const [notFoundUrl, setNotFoundUrl] = useState('');
   // product state
   const [productId, setProductId] = useState('');
   const [productBrand, setProductBrand] = useState('');
   const [productDetails, setProductDetails] = useState('');
   const [productPrice, setProductPrice] = useState('');
-  const [productUrl, setProductUrl] = useState('');
   const [productImageUrl, setProductImageUrl] = useState('');
   const [productQuantity, setProductQuantity] = useState(1);
-  const [notes, setNotes] = useState('');
 
   const decreaseProductQuantity = () => {
     var quantity = productQuantity;
@@ -77,8 +77,19 @@ export default function SectionAddGifts(props) {
 
   const clear = () => {
     setSearchResult(false);
-    setSearchUrl('');
     setShowSearchResultMessage(false);
+    setSearchUrl('');
+    setAddUrl('');
+    setNotes('');
+    setNotFoundBrand('');
+    setNotFoundDetails('');
+    setNotFoundQuantity(1);
+    setProductId('');
+    setProductBrand('');
+    setProductDetails('');
+    setProductPrice('');
+    setProductImageUrl('');
+    setProductQuantity(1);
   }
 
   const switchForm = () => {
@@ -107,12 +118,13 @@ export default function SectionAddGifts(props) {
     }
 
     if (product.productId) {
+      debugError("Url found in products table: " + url);
       setSearchSuccess(true);
       setProductId(product.productId);
       setProductBrand(product.brand);
       setProductDetails(product.details);
       setProductPrice(product.price);
-      setProductUrl(product.productUrl);
+      setAddUrl(product.productUrl);
       setProductImageUrl(product.imageUrl);
     } else {
       debugError("Url not found in products table: " + url);
@@ -125,16 +137,24 @@ export default function SectionAddGifts(props) {
         // return false
       }
 
-      if (metadata) {
+      if (! metadata) {
+        debugError("Url check issue: " + url);
+        setAddUrl(url);
+        setSearchSuccess(false);
+        setShowSearchResultMessage(true);
+      }
+      else if (metadata.title && metadata.site_name && metadata.image) {
+        debugError("Url data found: " + url);
+        debugError("Metadata: " + JSON.stringify(metadata));
         setSearchSuccess(true);
         setProductBrand(metadata.site_name || '');
         setProductDetails(metadata.title || '');
         setProductPrice(metadata.price || '');
-        setProductUrl(url);
+        setAddUrl(url);
         setProductImageUrl(metadata.image || '');
       } else {
         debugError("Notfound url: " + url);
-        setNotFoundUrl(url);
+        setAddUrl(url);
         setSearchSuccess(false);
         setShowSearchResultMessage(true);
       }
@@ -156,8 +176,7 @@ export default function SectionAddGifts(props) {
       let createResponse;
 
       try {
-        createResponse = await createProduct(productBrand, productDetails, productUrl, productImageUrl, productPrice);
-        // createResponse = await createProduct(productBrand, productDetails, productUrl);
+        createResponse = await createProduct(productBrand, productDetails, addUrl, productImageUrl, productPrice);
         debugError("created product: " + createResponse.productId);
         id = createResponse.productId;
         type = 'notfound';
@@ -192,14 +211,14 @@ export default function SectionAddGifts(props) {
       brand: productBrand,
       details: productDetails,
       type: type,
-      productUrl: productUrl,
+      productUrl: addUrl,
       imageUrl: productImageUrl
     }
 
     addProductToState(product)
     setIsAdding(false);
     setListUpdated(true);
-    setSearchUrl('');
+    clear();
     setActive(0);
   }
 
@@ -211,7 +230,7 @@ export default function SectionAddGifts(props) {
     let createResponse;
 
     try {
-      createResponse = await createProduct(notFoundBrand, notFoundDetails, notFoundUrl);
+      createResponse = await createProduct(notFoundBrand, notFoundDetails, addUrl);
       debugError("created product: " + createResponse.productId);
     } catch (e) {
       setError('Product could not be added to your list.');
@@ -235,7 +254,7 @@ export default function SectionAddGifts(props) {
       brand: notFoundBrand,
       details: notFoundDetails,
       type: 'notfound',
-      url: notFoundUrl,
+      url: addUrl,
       imageUrl: config.imagePrefix + '/images/product-default.jpg',
       quantity: notFoundQuantity,
       reserved: 0,
@@ -245,7 +264,7 @@ export default function SectionAddGifts(props) {
     addProductToState(product)
     setIsAdding(false);
     setListUpdated(true);
-    setSearchUrl('');
+    clear();
     setActive(0);
   }
 
@@ -266,8 +285,8 @@ export default function SectionAddGifts(props) {
     return (
       notFoundBrand.length > 0 &&
       notFoundDetails.length > 0 &&
-      notFoundUrl.length > 0 &&
-      notFoundUrl.startsWith("http")
+      addUrl.length > 0 &&
+      addUrl.startsWith("http")
     );
   }
 
@@ -341,13 +360,13 @@ export default function SectionAddGifts(props) {
       <GridContainer alignItems="center" className={classes.searchResult}>
         <GridItem xs={5} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter}>
           <div className={classes.imgContainer}>
-            <a href={productUrl} target="_blank" rel="noopener noreferrer">
+            <a href={addUrl} target="_blank" rel="noopener noreferrer">
               <img src={productImageUrl} alt="..." className={classes.img} />
             </a>
           </div>
         </GridItem>
         <GridItem xs={7} sm={7} md={7} className={classes.mrAuto + " " + classes.mlAuto + " " + classes.textCenter + " " + classes.quantityContainer}>
-          <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
+          <a href={addUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
             {productBrand}
           </a>
           <br />
@@ -405,12 +424,12 @@ export default function SectionAddGifts(props) {
           tableData={[
             [
               <div className={classes.imgContainer}>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer">
+                <a href={addUrl} target="_blank" rel="noopener noreferrer">
                   <img src={productImageUrl} alt="..." className={classes.img} />
                 </a>
               </div>,
               <span key={1}>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
+                <a href={addUrl} target="_blank" rel="noopener noreferrer" className={classes.brand}>
                   {productBrand}
                 </a>
                 <br />
