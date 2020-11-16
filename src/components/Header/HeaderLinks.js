@@ -112,6 +112,11 @@ export default function HeaderLinksAuth(props) {
             </Link>
           </ListItem>
           <ListItem className={classes.listItem}>
+            <Link to="/about" className={linkClasses} data-cy="sidebar-link-how">
+              About
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem}>
             <Link to="/list-ideas" className={linkClasses} data-cy="sidebar-link-ideas">
               Ideas
             </Link>
@@ -137,9 +142,14 @@ export default function HeaderLinksAuth(props) {
             </Link>
           </ListItem>
           <ListItem className={classes.listItem}>
+            <Link to="/about" className={linkClasses} data-cy="header-link-how">
+              About
+            </Link>
+          <ListItem className={classes.listItem}>
             <Link to="/list-ideas" className={linkClasses} data-cy="header-link-ideas">
               Ideas
             </Link>
+          </ListItem>
           </ListItem>
           <ListItem className={classes.listItem}>
             <Link to="/login" className={linkClasses} data-cy="header-link-login">

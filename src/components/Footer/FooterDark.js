@@ -26,7 +26,7 @@ export default function FooterDark(props) {
       >
       <div>
         <GridContainer>
-          <GridItem xs={12} sm={3} md={8}>
+          <GridItem xs={12} sm={6} md={8}>
             <h5>Join Us</h5>
             <p>
               Join us and other parents who believe in making parenting simpler.
@@ -44,24 +44,27 @@ export default function FooterDark(props) {
               </li>
             </ul>
           </GridItem>
-          <GridItem xs={12} sm={2} md={2}>
+          <GridItem xs={12} sm={3} md={2}>
             <h5>About</h5>
             <ul>
               <li>
-                <Link to="/about" data-cy="footer-dark-link-about">About Us</Link>
+                <Link to="/about" data-cy="footer-dark-link-about">Our Story</Link>
               </li>
               <li>
                 <Link to="/how-it-works" data-cy="footer-dark-link-how">How It Works</Link>
               </li>
               <li>
+                <Link to="/faq" data-cy="footer-dark-link-faq">FAQ</Link>
+              </li>
+              <li>
                 <Link to="/contact" data-cy="footer-dark-link-contact">Contact Us</Link>
               </li>
               <li>
-                <Link to="/list-ideas" data-cy="footer-dark-link-ideas">Inspiration</Link>
+                <Link to="/list-ideas" data-cy="footer-dark-link-ideas">Ideas</Link>
               </li>
             </ul>
           </GridItem>
-          <GridItem xs={12} sm={2} md={2}>
+          <GridItem xs={12} sm={3} md={2}>
             <h5>Legal</h5>
             <ul>
               <li>

@@ -7,6 +7,7 @@ import HomePage from "views/HomePage/HomePage.js";
 import ErrorPage from "views/ErrorPages/ErrorPage.js";
 import AboutPage from "views/AboutPage/AboutPage.js";
 import HowItWorksPage from "views/HowItWorksPage/HowItWorksPage.js";
+import FaqPage from "views/FaqPage/FaqPage.js";
 import LoginPage from "views/AuthPages/LoginPage.js";
 import SignupPage from "views/AuthPages/SignupPage.js";
 import SocialConfirmationPage from "views/AuthPages/SocialConfirmationPage.js";
@@ -41,6 +42,7 @@ export default function Routes() {
       <Route path="/" exact component={HomePage} />
       <Route path="/about" exact component={AboutPage} />
       <Route path="/how-it-works" exact component={HowItWorksPage} />
+      <Route path="/faq" exact component={FaqPage} />
       <Route path="/terms" exact component={TermsPage} />
       <Route path="/privacy" exact component={PrivacyPage} />
       <Route path="/cookies" exact component={CookiesPage} />
