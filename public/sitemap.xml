@@ -42,6 +42,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://ewelists.com/faw</loc>
+    <lastmod>2020-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://ewelists.com/list-ideas</loc>
     <lastmod>2020-02-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -70,12 +75,6 @@
     <lastmod>2020-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ewelists.com/list-ideas/christmas-ideas-for-toddlers</loc>
-    <lastmod>2020-02-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ewelists.com/list-ideas/newborn-baby-essentials-list</loc>
@@ -122,6 +121,18 @@
   <url>
     <loc>https://ewelists.com/list-ideas/weaning-and-beyond</loc>
     <lastmod>2020-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ewelists.com/list-ideas/christmas-ideas-for-toddlers</loc>
+    <lastmod>2020-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ewelists.com/list-ideas/my-first-christmas</loc>
+    <lastmod>2020-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

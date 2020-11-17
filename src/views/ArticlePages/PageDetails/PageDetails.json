@@ -1,4 +1,22 @@
 {
+  "first-christmas": {
+    "category": "CHRISTMAS",
+    "title": "My First Christmas",
+    "titleColour": "OrangeRed",
+    "url": "/list-ideas/my-first-christmas",
+    "img": "first-christmas",
+    "description_short": "Gift ideas for that oh so special First Christmas",
+    "beginning_content": "Yippee, December is getting closer and there is an air of excitement about your little one’s first Christmas! You might be wondering what on earth to put on a baby’s wish list, but with so much happening in their first year..."
+  },
+  "christmas-ideas-for-toddlers": {
+    "category": "CHRISTMAS",
+    "title": "Christmas Ideas for Toddlers",
+    "titleColour": "Red",
+    "url": "/list-ideas/christmas-ideas-for-toddlers",
+    "img": "christmas-ideas-for-toddlers2",
+    "description_short": "Christmas gifts for the fun toddler and pre-schooler years",
+    "beginning_content": "The excitement around Christmas just gets better and better as your little one grows. If you’re anything like us, you‘ll be getting giddy on nostalgia and want to create those same feelings you had when you were small..."
+  },
   "weaning-and-beyond": {
     "category": "BABY",
     "title": "Weaning and Beyond",
@@ -79,15 +97,6 @@
     "img": "baby-bath-time",
     "description_short": "How to give your baby a bath, with everyting you need.",
     "beginning_content": "It can be a daunting prospect when it comes to giving your new baby a bath. They are so small and slippery and you worry if they will like it. The first thing to say is that you don’t need to bathe your baby straight away or every day for..."
-  },
-  "christmas-ideas-for-toddlers": {
-    "category": "CHRISTMAS",
-    "title": "Christmas Ideas for Toddlers",
-    "titleColour": "Red",
-    "url": "/list-ideas/christmas-ideas-for-toddlers",
-    "img": "christmas-ideas-for-toddlers",
-    "description_short": "Some of our favourite Christmas ideas for toddlers!",
-    "beginning_content": "If you are stuck wondering what to get a toddler for Christmas, here are some of our favourite ideas! Toddlers love to mimic adults and join in ‘helping’ with every day tasks. Here are some great ideas to encourage role play..."
   },
   "childrens-outdoor-play": {
     "category": "PLAY",

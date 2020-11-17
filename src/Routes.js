@@ -26,7 +26,6 @@ import ArticleTravelGear from "views/ArticlePages/BabyTravelGear.js";
 import ArticleHospitalBag from "views/ArticlePages/HospitalBag.js";
 import ArticleNursery from "views/ArticlePages/Nursery.js";
 import ArticleBathTime from "views/ArticlePages/BathTime.js";
-import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasForToddlers.js";
 import ArticleBabyEssentials from "views/ArticlePages/BabyEssentials.js";
 import ArticleOutdoorPlay from "views/ArticlePages/OutdoorPlay.js";
 import ArticleIndoorPlay from "views/ArticlePages/IndoorPlay.js";
@@ -35,6 +34,8 @@ import ArticleNewbornFeeding from "views/ArticlePages/NewbornFeeding.js";
 import ArticleBabyShower from "views/ArticlePages/BabyShower.js";
 import ArticleVirtualBabyShower from "views/ArticlePages/VirtualBabyShower.js";
 import ArticleWeaningAndBeyond from "views/ArticlePages/WeaningAndBeyond.js"
+import ArticleFirstChristmas from "views/ArticlePages/FirstChristmas.js"
+import ArticleChristmasIdeasForToddlers from "views/ArticlePages/ChristmasIdeasForToddlers.js";
 
 export default function Routes() {
   return (
@@ -52,7 +53,6 @@ export default function Routes() {
       <Route path="/list-ideas/hospital-bag-checklist" exact component={ArticleHospitalBag} />
       <Route path="/list-ideas/nursery-list" exact component={ArticleNursery} />
       <Route path="/list-ideas/baby-bath-time" exact component={ArticleBathTime} />
-      <Route path="/list-ideas/christmas-ideas-for-toddlers" exact component={ArticleChristmasIdeasForToddlers} />
       <Route path="/list-ideas/newborn-baby-essentials-list" exact component={ArticleBabyEssentials} />
       <Route path="/list-ideas/childrens-outdoor-play" exact component={ArticleOutdoorPlay} />
       <Route path="/list-ideas/childrens-indoor-play" exact component={ArticleIndoorPlay} />
@@ -61,6 +61,8 @@ export default function Routes() {
       <Route path="/list-ideas/baby-shower" exact component={ArticleBabyShower} />
       <Route path="/list-ideas/virtual-baby-shower" exact component={ArticleVirtualBabyShower} />
       <Route path="/list-ideas/weaning-and-beyond" exact component={ArticleWeaningAndBeyond} />
+      <Route path="/list-ideas/my-first-christmas" exact component={ArticleFirstChristmas} />
+      <Route path="/list-ideas/christmas-ideas-for-toddlers" exact component={ArticleChristmasIdeasForToddlers} />
       <UnauthenticatedRoute path="/login" exact component={LoginPage} />
       <UnauthenticatedRoute path="/signup" exact component={SignupPage} />
       <UnauthenticatedRoute path="/signup-complete" exact component={SocialConfirmationPage} />

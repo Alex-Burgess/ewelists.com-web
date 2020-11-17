@@ -9,8 +9,8 @@ export default function LandingIdeas(props) {
   const classes = useStyles();
 
   const recentArticles = [
-    'newborn-baby-essentials-list',
-    'hospital-bag-checklist'
+    'first-christmas',
+    'christmas-ideas-for-toddlers'
   ];
 
   return (
