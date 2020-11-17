@@ -27,6 +27,7 @@ TestFilter(['smoke', 'regression'], () => {
     })
 
     beforeEach(() => {
+      cy.setCookie("Test", "true")
       cy.login(user.email, user.password)
       cy.visit('/edit/' + seedResponse.list_id);
     })

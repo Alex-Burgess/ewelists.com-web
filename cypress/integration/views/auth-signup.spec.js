@@ -35,7 +35,7 @@ TestFilter(['smoke'], () => {
       cy.contains('Sign Up')
       cy.get('[data-cy=button-signup-with-email]').click()
 
-      cy.get('#name').type('Test User').should('have.value', 'Test User')
+      cy.get('#name').type('Test Cypress').should('have.value', 'Test Cypress')
       cy.get('#email').type(user.email).should('have.value', user.email)
       cy.get('#password').type(user.password).should('have.value', user.password)
       cy.get('[data-cy=button-signup-form]').click()

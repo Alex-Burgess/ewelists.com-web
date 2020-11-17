@@ -1,6 +1,19 @@
 import { API } from "aws-amplify";
+import { Cookies } from "react-cookie-consent";
 import { onError } from "libs/errorLib";
 import config from 'config.js';
+
+//
+// Check for test Cookie
+//
+const cookieTest = () => {
+  if (Cookies.get('Test') === 'true') {
+    return true
+  }
+
+  return false
+}
+
 
 //
 // Lists Apis
@@ -143,6 +156,10 @@ export const addToList = async (listId, productId, quantity, type, notes) => {
 
   if (notes) {
     body['notes'] = notes
+  }
+
+  if (cookieTest()) {
+    body['test_flag'] = true
   }
 
   try {
