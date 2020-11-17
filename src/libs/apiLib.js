@@ -6,12 +6,10 @@ import config from 'config.js';
 //
 // Check for test Cookie
 //
-const cookieTest = () => {
-  if (Cookies.get('Test') === 'true') {
-    return true
-  }
+let test_flag = false;
 
-  return false
+if (Cookies.get('Test') === 'true') {
+  test_flag = true;
 }
 
 
@@ -158,7 +156,7 @@ export const addToList = async (listId, productId, quantity, type, notes) => {
     body['notes'] = notes
   }
 
-  if (cookieTest()) {
+  if (test_flag) {
     body['test_flag'] = true
   }
 

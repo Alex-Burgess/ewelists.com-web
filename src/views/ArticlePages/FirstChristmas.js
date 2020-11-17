@@ -3,11 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useAppContext } from "libs/contextLib";
 // custom components
 import { getUsersLists } from "./Sections/GetUsersLists";
-import SectionHeading from "./Sections/SectionHeading.js";
-import SectionHeadings from "./Sections/SectionHeadings.js";
 import ListArticle from "./Sections/ListArticle.js";
 import Products from "./Sections/Products.js";
-import ChecklistCard from "./Sections/ChecklistCard.js";
 
 // data id
 const name = 'first-christmas'

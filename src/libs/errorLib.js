@@ -1,37 +1,39 @@
 import * as Sentry from "@sentry/browser";
+import { Cookies } from "react-cookie-consent";
 import config from "config";
 
-const test_sentry = process.env.REACT_APP_SENTRY;
+//
+// Check for logs should be sent to sentry
+//
+let logToSentry = true;
 
-let isLocal = false;
-
-if (config.environment === 'test' && test_sentry !== 'true' ) {
-  isLocal = true;
+if (process.env.REACT_APP_SENTRY === 'false' || Cookies.get('Test') === 'true') {
+  logToSentry = false;
 }
 
 
 export function initSentry() {
-  if (isLocal) {
+  if (logToSentry) {
+    Sentry.init({
+      dsn: config.sentry,
+      environment: config.environment
+    });
+  } else {
     return;
   }
-
-  Sentry.init({
-    dsn: config.sentry,
-    environment: config.environment
-  });
 }
 
 export function logError(error, errorInfo = null) {
-  if (isLocal) {
+  if (logToSentry) {
+    Sentry.withScope((scope) => {
+      errorInfo && scope.setExtras(errorInfo);
+      Sentry.captureException(error);
+    });
+  } else {
     console.log(error);
     console.log(errorInfo);
     return;
   }
-
-  Sentry.withScope((scope) => {
-    errorInfo && scope.setExtras(errorInfo);
-    Sentry.captureException(error);
-  });
 }
 
 export function onError(error, id = null) {
@@ -76,9 +78,9 @@ export function onAuthError(error, email) {
 }
 
 export function debugError(error) {
-  if (isLocal) {
-    console.log("DEBUG:" + error);
-  } else {
+  if (logToSentry) {
     return
+  } else {
+    console.log("DEBUG:" + error);
   }
 }
