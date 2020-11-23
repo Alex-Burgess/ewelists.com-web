@@ -18,6 +18,7 @@ import AddPopOut from "./AddPopOut.js";
 import { useAppContext } from "libs/contextLib";
 import { onError } from "libs/errorLib";
 import { getBlogProducts } from "libs/apiLib";
+import { trackEvent } from 'libs/analyticsLib';
 
 import styles from "assets/jss/material-kit-pro-react/views/articlePages/productsStyle.js";
 const useStyles = makeStyles(styles);
@@ -58,6 +59,7 @@ export default function Products(props) {
       ...addPopouts,
         [id]: true
     })
+    trackEvent('blog', 'button-add-to-list', null);
   }
 
   const renderAddPopOuts = () => {
@@ -109,13 +111,13 @@ export default function Products(props) {
                              <Playlist /> Add To List
                            </Button>
                         : <a href="/signup" target="_blank" rel="noopener noreferrer">
-                            <Button color="primary2" className={classes.button}>
+                            <Button color="primary2" className={classes.button} onClick={() => { trackEvent('blog', 'button-signup-to-create-list', null) }}>
                              Sign up to Create List
                            </Button>
                          </a>
                         }
                         <a href={data[id].productUrl} target="_blank" rel="noopener noreferrer">
-                          <Button color="primary" className={classes.button}>
+                          <Button color="primary" className={classes.button} onClick={() => { trackEvent('blog', 'button-buy-now', null) }}>
                             Buy Now
                           </Button>
                         </a>

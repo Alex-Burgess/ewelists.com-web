@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
 // libs
 import { onAuthError } from "libs/errorLib";
+import { trackEvent } from 'libs/analyticsLib';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -105,6 +106,7 @@ export default function SignupPage(props) {
           name: name
         }
       });
+      trackEvent('user', 'created-account', null)
       setNewUser(newUser);
     } catch (e) {
       onAuthError(e, email);

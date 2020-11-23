@@ -21,8 +21,9 @@ const test = {
   rootDomain: "https://test.ewelists.com",
   sentry: "https://d8b578cadd2a449eb20814921c4de6bf@o393405.ingest.sentry.io/5244580",
   ga: "UA-168019304-3",
-  facebookDesktopUrl: "https://www.facebook.com/dialog/send",
-  facebookAppId: "1053511994854271"
+  facebookAppId: "1053511994854271",
+  fbPixel: "365472881409579",
+  facebookDesktopUrl: "https://www.facebook.com/dialog/send"
 };
 
 const staging = {
@@ -48,8 +49,9 @@ const staging = {
   rootDomain: "https://staging.ewelists.com",
   sentry: "https://07023ac975a14c6abb70d9d6a48e2255@o393405.ingest.sentry.io/5244570",
   ga: "UA-168019304-1",
-  facebookDesktopUrl: "https://www.facebook.com/dialog/send",
-  facebookAppId: "1053511994854271"
+  facebookAppId: "1053511994854271",
+  fbPixel: "365472881409579",
+  facebookDesktopUrl: "https://www.facebook.com/dialog/send"
 };
 
 const prod = {
@@ -75,8 +77,9 @@ const prod = {
   rootDomain: "https://ewelists.com",
   sentry: "https://c5ce6fba823641b8be4c628d42133e57@o393405.ingest.sentry.io/5242440",
   ga: "UA-168019304-2",
-  facebookDesktopUrl: "https://www.facebook.com/dialog/send",
-  facebookAppId: "1053511994854271"
+  facebookAppId: "1053511994854271",
+  fbPixel: "1293814097654330",
+  facebookDesktopUrl: "https://www.facebook.com/dialog/send"
 };
 
 var config;

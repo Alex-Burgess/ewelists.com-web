@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // libs
 import { AppContext } from "libs/contextLib";
 import { onError, debugError } from "libs/errorLib";
-import { initGA, onView } from 'libs/googleAnalyticsLib';
+import { initGA, onView } from 'libs/analyticsLib';
 // components
 import Routes from "./Routes";
 import ScrollToTop from "components/Scroll/ScrollToTop.js";
@@ -30,7 +30,7 @@ export default function App(props) {
   const [user, setUser] = useState({});
   const [breakpoint, setBreakpoint] = useState('');
 
-  // Google Analytics
+  // Google Analytics & Facebook Pixel
   if (isAuthenticated || Cookies.get('CookieConsent') === 'true') {
     initGA();
     onView(window.location.pathname + window.location.search);

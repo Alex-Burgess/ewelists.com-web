@@ -1,6 +1,7 @@
 import React from 'react';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { trackEvent } from 'libs/analyticsLib';
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -19,7 +20,7 @@ export default function LandingCreate(props) {
           <h3 className={classes.subTitle}>
             Share your gift ideas with ewelists.  It's simple to use and it's free!
           </h3>
-          <Button size="lg" color="primary" href="/how-it-works" data-cy="button-how-it-works">
+          <Button size="lg" color="primary" href="/how-it-works" data-cy="button-how-it-works" onClick={() => { trackEvent('landing', 'button-how-it-works', null) }}>
             How it works
           </Button>
         </GridItem>

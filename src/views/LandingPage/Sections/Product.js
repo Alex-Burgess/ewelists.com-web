@@ -1,6 +1,7 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { trackEvent } from 'libs/analyticsLib';
 // @material-ui/icons
 import List from "@material-ui/icons/List";
 import Perm from "@material-ui/icons/PermIdentity";
@@ -62,7 +63,7 @@ export default function LandingProduct(props) {
               />
             </GridItem>
             <GridItem xs={12} sm={12} md={12} className={classes.textCenter}>
-              <Button size="lg" color="primary" href="/how-it-works" data-cy="button-more-details">
+              <Button size="lg" color="primary" href="/how-it-works" data-cy="button-more-details" onClick={() => { trackEvent('landing', 'button-more-details', null) }}>
                 More Details
               </Button>
             </GridItem>

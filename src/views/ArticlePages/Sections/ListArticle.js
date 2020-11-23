@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 // libs
 import { useAppContext } from "libs/contextLib";
+import { trackEvent } from 'libs/analyticsLib';
 // core components
 import Parallax from "components/Parallax/Parallax.js";
 import FooterDark from "components/Footer/FooterDark.js";
@@ -51,7 +52,7 @@ export default function ListArticle(props) {
                   {content}
                 </div>
                 <div className={classes.button}>
-                  <Button color="secondary" href="/signup" data-cy="create-list-button">
+                  <Button color="secondary" href="/signup" data-cy="create-list-button" onClick={() => { trackEvent('blog', 'button-create-list', null) }}>
                     Create List
                   </Button>
                 </div>

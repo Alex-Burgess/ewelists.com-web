@@ -1,6 +1,7 @@
 import React from 'react';
 // libs
 import {imageSize} from 'libs/imageLib.js';
+import { trackEvent } from 'libs/analyticsLib';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -29,7 +30,7 @@ export default function Hero(props) {
             <h1 className={classes.title}>The Gift List Tool For Parents</h1>
             <br />
             <div className={classes.buttonContainer}>
-              <Button color="transparent_white" size="lg" href="/signup" data-cy="create-button">
+              <Button color="transparent_white" size="lg" href="/signup" data-cy="create-button" onClick={() => { trackEvent('landing', 'button-hero-create', null) }}>
                 Create Your List
               </Button>
             </div>
